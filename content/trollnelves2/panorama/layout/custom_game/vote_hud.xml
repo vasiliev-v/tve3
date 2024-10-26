@@ -31,11 +31,13 @@
             </Panel>
             <Panel class="MapsContainer" id="MapsContainer" />
         </Panel>
+		<!--
 		<Panel class="ChooseAngelWolf" id = "ChooseAngelWolf">
             <Panel class="ChooseAngelWolfHeader">
                 <Label class="ChooseAngelWolfTitle" text="#ChooseAngelWolfInGame" />
             </Panel>
             <Panel class="AngelWolfContainer" id="AngelWolfContainer" />
         </Panel>
+		-->
 	</Panel>
 </root>

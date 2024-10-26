@@ -12,7 +12,7 @@ function mod_system:Init()
         if GameRules:State_Get() == DOTA_GAMERULES_STATE_PRE_GAME then
             return
         end
-        CustomGameEventManager:Send_ServerToAllClients("troll_elves_load_mods_list", {maps = MOD_LIST}) 
+      --  CustomGameEventManager:Send_ServerToAllClients("", {maps = MOD_LIST}) 
         return 0.1
     end)
 end

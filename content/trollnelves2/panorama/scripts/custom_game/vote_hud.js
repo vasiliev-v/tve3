@@ -44,8 +44,8 @@ function ShowInit()
     GameEvents.SubscribeProtected( "troll_elves_load_maps_list", troll_elves_load_maps_list );
     GameEvents.SubscribeProtected( "troll_elves_map_votes_change_visual", SwapStyle );
 
-    GameEvents.SubscribeProtected( "troll_elves_load_mods_list", troll_elves_load_mods_list );
-    GameEvents.SubscribeProtected( "troll_elves_mod_votes_change_visual", SwapStyleMods );
+    //GameEvents.SubscribeProtected( "troll_elves_load_mods_list", troll_elves_load_mods_list );
+    //GameEvents.SubscribeProtected( "troll_elves_mod_votes_change_visual", SwapStyleMods );
 }
 
 function troll_elves_load_maps_list(data)
@@ -126,6 +126,7 @@ function CreatePanelMap(info, i)
 ///
 ///
 ///
+/*
 function troll_elves_load_mods_list(data)
 {
     if (Init2)
@@ -199,7 +200,7 @@ function CreatePanelMod(info, i)
     SetButtonActive2(ChooseMapButton, i)
 }
 
-
+*/
 function CheckMapVisible()
 {
     if (Game.GetMapInfo().map_display_name == "clanwars")

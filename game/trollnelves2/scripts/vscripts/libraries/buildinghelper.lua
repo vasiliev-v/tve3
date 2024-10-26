@@ -393,11 +393,11 @@ function BuildingHelper:UpdateGrid()
     
     GameRules:SendCustomMessage("<font color='#00FF22 '> Map: "  .. GameRules.MapName .. "</font>" ,  0, 0)
 
-    if mod_system:GetCurrentModFromVotes() then
-        GameRules:SendCustomMessage("#ChooseAngelWolfInGameTrue" ,  0, 0)
-    else
-        GameRules:SendCustomMessage("#ChooseAngelWolfInGameFalse" ,  0, 0)
-    end
+   --if mod_system:GetCurrentModFromVotes() then
+   --     GameRules:SendCustomMessage("#ChooseAngelWolfInGameTrue" ,  0, 0)
+    --else
+    --    GameRules:SendCustomMessage("#ChooseAngelWolfInGameFalse" ,  0, 0)
+    --end
     
 
     if GameRules.trollHero and GameRules.trollID then
