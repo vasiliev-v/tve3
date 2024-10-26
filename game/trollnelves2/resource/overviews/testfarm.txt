@@ -1,0 +1,8 @@
+testfarm
+{
+	material materials/overviews/testfarm.vmat
+	pos_x -9159
+	pos_y 10599
+	scale 16.856
+}
+

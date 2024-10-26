@@ -1,0 +1,115 @@
+map_system = class({})
+
+local MAPS_LIST = {}
+
+if string.match(GetMapName(),"1x1")  then
+	MAPS_LIST = 
+	{
+		{"random", 0},
+		{"1x1icepeak", -125}, 
+		{"1x1cursedisland",-127}, 
+		{"1x1cave", -127}
+	}
+else
+	MAPS_LIST = 
+	{
+		{"random", 0},
+		-- {"forest", -127},
+		{"summer", -127},
+		{"spring",-127},
+		{"autumn", -127.125},
+		{"ghosttown", -126},
+		{"winter", 1},
+		{"china", -255.125},
+		{"desert", -127},
+		{"jungle", -127}, 
+		{"helheim", -125}
+	}
+end
+
+function map_system:Init()
+    map_system.votes_map = {}
+    CustomGameEventManager:RegisterListener("troll_elves_map_votes", Dynamic_Wrap(map_system, "SetVotesMap"))
+    Timers:CreateTimer(0, function()
+        if GameRules:State_Get() == DOTA_GAMERULES_STATE_PRE_GAME then
+            return
+        end
+        CustomGameEventManager:Send_ServerToAllClients("troll_elves_load_maps_list", {maps = MAPS_LIST}) 
+        return 0.1
+    end)
+end
+
+function map_system:SetVotesMap(data) 
+	map_system.votes_map[data.PlayerID] = data.panel_id
+
+	local maps_list = MAPS_LIST
+
+	local vote_players = 0
+
+	for _, i in pairs(map_system.votes_map) do
+		vote_players = vote_players + 1
+	end
+
+	local table_k = {}
+
+	for map_id, i in pairs(maps_list) do
+		local has_info = false
+		for _, map_id_select in pairs(map_system.votes_map) do
+			if tostring(map_id_select) == tostring(map_id)  then
+				if table_k[tostring(map_id_select)] then
+					table_k[tostring(map_id_select)] = table_k[tostring(map_id_select)] + 1
+				else
+					table_k[tostring(map_id_select)] = 1
+				end
+				has_info = true
+			end
+		end
+		if not has_info then
+			table_k[tostring(map_id)] = 0
+		end
+	end
+
+	local table_votes = {}
+
+	for map_id, votes in pairs(table_k) do
+		local percent = votes / vote_players * 100
+		table.insert( table_votes, { map_id = tonumber(map_id), votes = votes, percent = percent  } )
+	end
+
+	table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
+
+	CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", {table_votes})
+end
+
+function map_system:GetCurrentMapFromVotes()
+	local final_map = MAPS_LIST[RandomInt(2, #MAPS_LIST)]
+	local maps_list = MAPS_LIST
+
+	local table_k = {}
+	for _, map_id in pairs(map_system.votes_map) do
+		if table_k[tostring(map_id)] then
+			table_k[tostring(map_id)] = table_k[tostring(map_id)] + 1
+		else
+			table_k[tostring(map_id)] = 1
+		end
+	end
+
+	local table_votes = {}
+	for map_id, votes in pairs(table_k) do
+		table.insert( table_votes, { map_id = tonumber(map_id), votes = votes } )
+	end
+	
+	table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
+
+	if table_votes[1] then
+		if table_votes[1].map_id ~= 1 then
+			final_map = maps_list[table_votes[1].map_id]
+		end
+	end
+    return final_map
+end
+
+map_system:Init()
+
+
+

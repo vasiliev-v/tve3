@@ -1,0 +1,8 @@
+1x1cursedisland
+{
+	material materials/overviews/1x1cursedisland.vmat
+	pos_x -4031
+	pos_y 713
+	scale 7.848
+}
+

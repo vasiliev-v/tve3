@@ -1,0 +1,8 @@
+ghosttown
+{
+	material materials/overviews/ghosttown.vmat
+	pos_x -8173
+	pos_y 8496
+	scale 16.856
+}
+

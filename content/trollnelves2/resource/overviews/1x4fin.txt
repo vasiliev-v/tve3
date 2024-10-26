@@ -1,0 +1,8 @@
+1x4fin
+{
+	material materials/overviews/1x4fin.vmat
+	pos_x -6540
+	pos_y 6168
+	scale 12.906
+}
+

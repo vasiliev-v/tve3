@@ -1,0 +1,8 @@
+cave
+{
+	material materials/overviews/cave.vmat
+	pos_x -4338
+	pos_y 880
+	scale 8.664
+}
+

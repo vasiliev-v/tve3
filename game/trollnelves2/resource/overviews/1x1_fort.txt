@@ -1,0 +1,8 @@
+1x1_fort
+{
+	material materials/overviews/1x1_fort.vmat
+	pos_x -5830
+	pos_y 2048
+	scale 11.129
+}
+

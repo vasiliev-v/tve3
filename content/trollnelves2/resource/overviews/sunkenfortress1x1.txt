@@ -1,0 +1,8 @@
+sunkenfortress1x1
+{
+	material materials/overviews/sunkenfortress1x1.vmat
+	pos_x -5830
+	pos_y 2048
+	scale 11.129
+}
+
