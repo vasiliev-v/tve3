@@ -1,0 +1,569 @@
+@define BACKGROUND_COLOR: #000000;
+@define BACKGROUND_COLOR_WHITE: #FFFFFF28;
+
+.FlyoutScoreboardRoot {
+  horizontal-align: right;
+  vertical-align: top;
+  flow-children: down;
+  padding: 10px;
+  transform: translatex( 130%);
+  opacity: 0;
+  transition: transform 0.1s ease 0.0s, opacity 0.2s ease 0.0s;
+}
+
+.FlyoutScoreboardRoot.flyout_scoreboard_visible {
+  transform: translatey( 0px);
+  opacity: 1;
+}
+
+#TeamsContainer {
+  flow-children: down;
+  horizontal-align: center;
+}
+
+.FlyoutTeam {
+
+}
+
+.FlyoutTeam.no_players {
+  visibility: collapse;
+}
+
+.local_player_team.FlyoutTeam {
+  z-index: 99;
+}
+
+.FlyoutTeamData {
+  flow-children: right;
+}
+
+.TeamInfo {
+  border-top: 1px grey solid;
+  height: 100%;
+}
+
+#TeamColor_GradentFromTransparentLeft {
+  width: 100%;
+  height: 100%;
+}
+
+#TeamColorOverlay {
+  background-color: gradient( linear, 10% 0%, 100% 0%, from( #00000000), to( #000000FF));
+  width: 100%;
+  height: 100%;
+}
+
+.FlyoutPlayer {
+  flow-children: right;
+}
+
+.TeamCloseSpacer {}
+
+#PlayersContainer {
+  flow-children: down;
+}
+
+.local_player_teammate #PlayersContainer {
+  box-shadow: fill #ffffff40 -3px -3px 3px 6px;
+}
+
+.TeamId {
+  flow-children: right;
+}
+
+#TeamLogo {
+  vertical-align: top;
+  horizontal-align: right;
+  height: 30px;
+  width: 30px;
+  margin-top: 2px;
+  margin-right: 2px;
+}
+
+#TeamScore {
+  vertical-align: center;
+  horizontal-align: center;
+  color: #cccccc;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px black;
+  font-weight: bold;
+  margin-top: -3px;
+  text-overflow: clip;
+}
+
+.one_player #TeamScore {
+  font-size: 28px;
+}
+
+#TeamScorePanel {
+  margin-top: 1px;
+  margin-left: 228px;
+  width: 50px;
+  height: 100%;
+  background-color: BACKGROUND_COLOR;
+}
+
+.Legend {
+  flow-children: right;
+}
+
+.Legend Label {
+  text-shadow: 2px 2px 2px black;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #90999b;
+}
+
+.PlayerRow {
+  margin-top: 5px;
+  height: 50px;
+}
+
+#PlayerRowContainer {
+  flow-children: right;
+  height: 50px;
+}
+
+#HeroIcon {
+  vertical-align: middle;
+  border-top: 1px solid black;
+}
+
+#LevelContainer,
+#KillsContainer,
+#ScoreContainer,
+#DeathsContainer,
+#ElfScoreContainer,
+#TrollScoreContainer,
+#AssistsContainer {
+  height: 100%;
+}
+
+.ScoreboardPanel {
+  background-color: BACKGROUND_COLOR;
+  margin-top: 1px;
+  border-left: 1px grey solid;
+  opacity: 0.90;
+}
+
+.LegendPanel {
+  margin-top: 1px;
+  border-left: 1px grey solid;
+}
+
+.ScoreboardPanel Label {
+  font-size: 30px;
+  text-shadow: 2px 2px 2px black;
+}
+
+.UltimateIndicatorShared {
+  margin-left: 44px;
+  margin-top: 2px;
+  vertical-align: center;
+  width: 20px;
+  height: 20px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#Level {
+  vertical-align: center;
+  horizontal-align: center;
+  color: #898b8c;
+}
+
+#Kills,
+#Deaths,
+#ElfScore,
+#TrollScore,
+#Assists {
+  vertical-align: center;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 3px;
+  width: 100%;
+}
+
+#PlayerName {
+  color: white;
+  font-size: 14px;
+  margin-bottom: -4px;
+  margin-top: 0px;
+  white-space: nowrap;
+}
+
+#PlayerColor {
+  width: 100%;
+  height: 7px;
+  vertical-align: bottom;
+  color: white;
+}
+
+#HeroNameAndDescription {
+  color: #898b8c;
+  font-size: 11px;
+  text-shadow: 2px 2px 2px black;
+  margin-top: 1px;
+}
+
+#MuteButton {
+  margin-right: 0px;
+  margin-top: 0px;
+  horizontal-align: right;
+  vertical-align: top;
+  width: 18px;
+  height: 18px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: url("file://{images}/custom_game/button_audio_on.psd");
+  visibility: visible;
+  opacity: 0.8;
+}
+
+#MuteButton:hover {
+  opacity: 1;
+}
+
+.player_muted #MuteButton {
+  background-image: url("file://{images}/custom_game/button_audio_off.psd");
+}
+
+#ResourcesAmount {
+  margin-right: -1px;
+  margin-bottom: 0px;
+  vertical-align: bottom;
+  horizontal-align: right;
+  flow-children: right;
+  visibility: collapse;
+}
+
+#PlayerGoldAmount {
+  color: #ffd300;
+  font-size: 13px;
+  text-shadow: 2px 2px 2px black;
+  margin-left: 1px;
+}
+
+#PlayerLumberAmount {
+  color: green;
+  font-size: 13px;
+  text-shadow: 2px 2px 2px black;
+  margin-left: 1px;
+}
+
+.local_player_team #ResourcesAmount {
+  visibility: visible;
+}
+
+.local_player_teammate #GiveResourcesTable {
+  visibility: visible;
+}
+
+#PlayerDetailsContainer {
+  height: 100%;
+}
+
+#GiveResourcesTable {
+  flow-children: right;
+  visibility: collapse;
+}
+
+#GoldEntry,
+#LumberEntry {
+  width: 90px;
+}
+
+#PlayerAndHeroName {
+  flow-children: down;
+  padding-left: 8px;
+}
+
+.is_local_player #Kills,
+.is_local_player #Deaths,
+.is_local_player #Assists,
+.is_local_player #ElfScore,
+.is_local_player #TrollScore,
+.is_local_player #Level,
+.is_local_player #HeroName {
+  color: white;
+}
+
+.ScoreCol_TeamInfo {
+  width: 5px;
+}
+
+.ScoreCol_PlayerDetails {
+  width: 170px;
+}
+
+.ScoreCol_Hero {
+  width: 53px;
+}
+
+.ScoreCol_TeamScore {
+  width: 50px;
+  text-align: center;
+  opacity: 0.90;
+}
+
+.ScoreCol_Kills,
+.ScoreCol_Score,
+.ScoreCol_Deaths,
+.ScoreCol_ElfScore,
+.ScoreCol_TrollScore,
+.ScoreCol_Assists {
+  width: 50px;
+  text-align: center;
+}
+
+#PlayerMainInformation {
+  flow-children: down;
+}
+
+#PlayerScoreInformation {
+  flow-children: right;
+  height: 100%;
+}
+
+#PlayerOneMainInformation {
+  flow-children: right;
+}
+
+
+#PlayerTwoMainInformation {
+  width: 100%;
+  height: 25px;
+  flow-children: right;
+}
+
+
+
+
+#GoldPanel,
+#LumberPanel {
+  margin-left: 2px;
+  flow-children: right;
+  vertical-align: center;
+}
+
+.GoldIcon {
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    background-image: url("s2r://panorama/images/hud/icon_gold.psd");
+}
+
+.LumberIcon {
+    width: 20px;
+    height: 14px;
+    background-size: 100%;
+    background-image: url("file://{images}/custom_game/lumber_icon.png");
+}
+
+
+
+#ResourcePanels {
+  flow-children: down;
+}
+
+.ResourcePanelSwapOne {
+  flow-children: right;
+  height: 25px;
+}
+
+.ResourcePanelSwapTwo {
+  flow-children: right;
+  height: 25px;
+}
+
+TextEntry #PlaceholderText {
+  font-size: 12px;
+  align: center center;
+}
+
+TextEntry {
+  font-size: 12px;
+  align: center center;
+}
+
+#goldImage {
+  width: 30px;
+  height: 100%;
+  background-size: 100%;
+  background-image: url("s2r://panorama/images/hud/icon_gold.psd");
+}
+
+.lumberImage {
+  width: 30px;
+  height: 100%;
+  background-size: 100%;
+  background-image: url("file://{images}/custom_game/lumber_icon.png");
+}
+
+.ButtonLumberC {
+  height: 100%;
+  width: 90px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #111111FF), to( #222222FF));
+  border: 1px solid baseBorder;
+  flow-children: right;
+}
+
+.ButtonGoldC {
+  height: 100%;
+  width: 90px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #111111FF), to( #222222FF));
+  border: 1px solid baseBorder;
+  flow-children: right;
+}
+
+#GiveAllResouce {
+  margin-left: 10px;
+  font-size: 12px;
+  vertical-align: center;
+}
+
+.GiveButton {
+  height: 100%;
+  width: 90px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #111111FF), to( #222222FF));
+  border: 1px solid baseBorder;
+}
+
+
+#GiveText {
+  align: center center;
+  font-size: 15px;
+  vertical-align: center;
+}
+
+
+#DopPanels {
+  flow-children: down;
+  height: 100%;
+}
+
+.flyout-button {
+  width: 80px;
+  height: 25px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #111111FF), to( #222222FF));
+  border: 1px solid baseBorder;
+}
+
+.flyout-button Label {
+  align: center center;
+  font-size: 16px;
+}
+
+
+
+.flyout-button:hover {
+  brightness: 2;
+}
+
+.GiveButton:hover {
+  brightness: 2;
+}
+
+.ButtonLumberC:hover {
+  brightness: 2;
+}
+
+.ButtonGoldC:hover {
+  brightness: 2;
+}
+
+.flyout-button:active {
+  brightness: 0.5;
+}
+
+.GiveButton:active {
+  brightness: 0.5;
+}
+
+.ButtonLumberC:active {
+  brightness: 0.5;
+}
+
+.ButtonGoldC:active {
+  brightness: 0.5;
+}
+
+
+
+
+
+#ChangePanelType {
+  height: 20px;
+  flow-children: right;
+}
+
+#MinType {
+  width: 45px;
+  height: 100%;
+  background-image: url("file://{images}/custom_game/leaderboard_game/mini.png");
+}
+#MedType {
+  width: 45px;
+  height: 100%;
+  margin-left: 5px;
+  background-image: url("file://{images}/custom_game/leaderboard_game/medium.png");
+}
+#MaxType {
+  margin-left: 5px;
+  width: 45px;
+  height: 100%;
+  background-image: url("file://{images}/custom_game/leaderboard_game/maximum.png");
+}
+
+#MinType:hover,
+#MedType:hover,
+#MaxType:hover {
+  brightness: 2;
+}
+
+#MinType:active,
+#MedType:active,
+#MaxType:active {
+  brightness: 1.5;
+}
+
+.rainbow_nickname{
+
+  color: gradient( linear, 100% 0%, 0% 0%, from( rgb(0, 183, 255)), color-stop( 0.5, rgb(0, 255, 85)), to( rgb(255, 196, 0)));
+}
+
+ .rainbow_nickname_animate{
+
+  animation-name: Colorgradient;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  font-weight: bold;
+  text-shadow: 0px 0px 8px 0 gold;
+ }
+
+ @keyframes 'Colorgradient'{
+  0%{
+      color: gradient( linear, 100% 0%, 0% 0%, from( #fedd45, color-stop( 0.5, #fff700), to( #eebb0a));
+       text-shadow: 0px 0px 8px 0 gold;
+  }
+  25%{
+      color: gradient( linear, 100% 0%, 0% 0%, from( #fff700), color-stop( 0.5, #eebb0a), to( #fedd45));
+      text-shadow: 0px 0px 8px 1 gold;
+  }
+  50%{
+      color: gradient( linear, 100% 0%, 0% 0%, from( #eebb0a), color-stop( 0.5, #fedd45), to( #fff700));
+      text-shadow: 0px 0px 8px 2 gold;
+  }
+  75%{
+      color: gradient( linear, 100% 0%, 0% 0%, from( #fff700), color-stop( 0.5, #eebb0a), to( #fedd45));
+      text-shadow: 0px 0px 8px 1 gold;
+  }
+  100%{
+      color: gradient( linear, 100% 0%, 0% 0%, from( #fedd45), color-stop( 0.5, #fff700), to( #eebb0a ));
+      text-shadow: 0px 0px 8px 0 gold;
+  }
+}
+

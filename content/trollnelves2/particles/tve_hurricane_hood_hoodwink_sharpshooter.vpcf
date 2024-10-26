@@ -1,0 +1,69 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_RestartAfterDuration"
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_target.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_2hoodwink_sharpshooter_target.vpcf"
+			m_flDelay = 1.0
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_3hoodwink_sharpshooter_target.vpcf"
+			m_flDelay = 2.0
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_4hoodwink_sharpshooter_target.vpcf"
+			m_flDelay = 3.0
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_dust.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_flash.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_flash.vpcf"
+			m_flDelay = 1.0
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_caustic.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_leaves_burst.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_burst.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_leaves.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/hurricane_hoodwink_sharpshooter_swirl.vpcf"
+			m_bDisableChild = true
+		},
+	]
+}

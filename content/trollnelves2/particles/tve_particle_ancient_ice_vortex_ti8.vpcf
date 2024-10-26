@@ -1,0 +1,80 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 4
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 5
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 275.0, 275.0, 275.0 ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_vecCP1Pos = [ 0.0, 0.0, 20.0 ]
+		},
+		{
+			_class = "C_OP_SetControlPointRotation"
+			m_vecRotAxis = [ 0.0, 1.0, 0.0 ]
+			m_flRotRate = 40.0
+			m_nCP = 1
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/econ/items/ancient_apparition/ancient_apparation_ti8/ancient_ice_vortex_ti8_ground_bright.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/ancient_apparition/ancient_apparation_ti8/ancient_ice_vortex_ti8_pull.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/ancient_apparition/ancient_apparation_ti8/ancient_ice_vortex_ti8_pull_streak.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/enigma_circles_aghanim_beam_channel_ground_rings.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/tve-winter_teleport_end_winter_major_2016_lvl3.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/tve_es_earthshaker_arcana_aftershock_v2_sphere.vpcf"
+		},
+	]
+}

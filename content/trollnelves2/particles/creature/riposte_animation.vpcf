@@ -1,0 +1,176 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 128
+	m_flConstantRadius = 90.000000
+	m_ConstantColor = 
+	[
+		255,
+		255,
+		255,
+		38,
+	]
+	m_Renderers = 
+	[
+	]
+	m_Operators = 
+	[
+		
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 0.000000
+			m_flBias = 0.750000
+		},
+		
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_flEndTime = 99999.000000
+			m_Rate = -8.000000
+			m_nField = 16
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+		},
+		
+		{
+			_class = "C_OP_LockToBone"
+		},
+		
+		{
+			_class = "C_OP_EndCapTimedDecay"
+			m_flDecayTime = 0.500000
+		},
+		
+		{
+			_class = "C_OP_Decay"
+		},
+		
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 1.000000
+		},
+		
+		{
+			_class = "C_OP_LerpScalar"
+			m_flOutput = 0.100000
+			m_nFieldOutput = 10
+		},
+	]
+	m_Initializers = 
+	[
+		
+		{
+			_class = "C_INIT_InitFloat"
+			m_InputValue = 
+			{
+				m_nType = "PF_TYPE_RANDOM_UNIFORM"
+				m_flRandomMin = 1.000000
+				m_flRandomMax = 2.000000
+				m_nRandomMode = "PF_RANDOM_MODE_CONSTANT"
+			}
+			m_nOutputField = 1
+		},
+		
+		{
+			_class = "C_INIT_CreateOnModel"
+			m_vecDirectionBias = 
+			[
+				0.000000,
+				0.000000,
+				1.000000,
+			]
+			m_nDesiredHitbox = 0
+			m_HitboxSetName = "attach_hitloc"
+		},
+		
+		{
+			_class = "C_INIT_InitFloat"
+			m_nOutputField = 10
+		},
+		
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 10
+		},
+		
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = 
+			[
+				255,
+				34,
+				34,
+				255,
+			]
+			m_ColorMin = 
+			[
+				209,
+				108,
+				88,
+				255,
+			]
+		},
+		
+		{
+			_class = "C_INIT_InitVec"
+			m_InputValue = 
+			{
+				m_nType = "PVEC_TYPE_RANDOM_UNIFORM_OFFSET"
+				m_vRandomMin = 
+				[
+					0.000000,
+					0.000000,
+					1000.000000,
+				]
+				m_vRandomMax = 
+				[
+					0.000000,
+					0.000000,
+					1500.000000,
+				]
+				m_nVectorAttribute = 0
+				m_vVectorAttributeScale = 
+				[
+					1.000000,
+					1.000000,
+					1.000000,
+				]
+			}
+			m_nOutputField = 2
+		},
+	]
+	m_Emitters = 
+	[
+		
+		{
+			_class = "C_OP_ContinuousEmitter"
+		},
+	]
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/creature/riposte_animation_smoke.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/creature/riposte_animation_tornado.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 5
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

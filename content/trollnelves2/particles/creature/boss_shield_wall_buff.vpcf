@@ -1,0 +1,61 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_flConstantRadius = 180.000000
+	m_flConstantLifespan = 0.500000
+	m_ConstantColor = 
+	[
+		123,
+		179,
+		255,
+		90,
+	]
+	m_flStopSimulationAfterTime = 10000000000.000000
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/medusa/medusa_daughters/medusa_daughters_mana_shield_end_b.vpcf"
+			m_bEndCap = true
+		},
+		
+		{
+			m_bEndCap = true
+			m_ChildRef = resource:"particles/econ/items/medusa/medusa_daughters/medusa_daughters_mana_shield_end.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/creature/boss_shield_wall_buff_pulse.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/creature/boss_shield_wall_buff_color.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/creature/boss_shield_wall_buff_scales.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/medusa/medusa_daughters/medusa_daughters_mana_shield_e.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

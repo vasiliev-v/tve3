@@ -1,0 +1,108 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf58:version{9bada39c-a931-42d0-abdd-e5c1b13d37a6} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 12
+	m_flCullRadius = -1.0
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 6
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/heroes/lion/lion.vmdl"
+				m_nModSpecificData = 365
+				m_groundType = "PET_GROUND_PLANE"
+				m_sequenceName = "idle"
+				m_hitboxSetName = "default"
+			}
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_RemapSpeedtoCP"
+			m_nOutControlPointNumber = 6
+			m_flInputMin = 280.0
+			m_flInputMax = 300.0
+			m_flOutputMin = 0.5
+		},
+		{
+			_class = "C_OP_RemapSpeedtoCP"
+			m_nOutControlPointNumber = 7
+			m_flInputMin = 280.0
+			m_flInputMax = 300.0
+			m_flOutputMin = 0.25
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/econ/events/ti10/emblem/ti10_emblem_effect_ground_dark.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/ti10/emblem/ti10_emblem_effect_ring_darken.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/ti10/emblem/ti10_emblem_effect_ground_crack.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/cosmetic/auras/crystal_emblem/crystal_emblem_light_aura.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/cosmetic/auras/crystal_emblem/crystal_emblem_base_detail.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/ti9/ti9_banner_emblem.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/cosmetic/auras/crystal_emblem/crystal_emblem_core.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/ti10/emblem/ti10_emblem_effect_swirl.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/cosmetic/auras/crystal_emblem/crystal_emblem_ground_dark.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/tournament/gold_emblem_gems.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/ti10/emblem/ti10_emblem_effect_detail.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/diretide_2020/emblem/fall20_emblem_v1_effect_rope.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/diretide_2020/emblem/fall20_emblem_v1_effect_rope.vpcf"
+			m_flDelay = 1.0
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/diretide_2020/emblem/fall20_emblem_v1_effect_rope.vpcf"
+			m_flDelay = 2.0
+		},
+		{
+			m_ChildRef = resource:"particles/econ/events/diretide_2020/emblem/fall20_emblem_v1_effect_rope.vpcf"
+			m_flDelay = 3.0
+		},
+	]
+}

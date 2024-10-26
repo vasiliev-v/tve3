@@ -1,0 +1,44 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nBehaviorVersion = 12
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/items4_fx/scepter_aura_ring.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/items4_fx/scepter_aura_light.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/creature/mana_aura_ring_detail.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/creature/mana_aura_ring_tight.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/creature/mana_aura_flek.vpcf"
+		},
+	]
+	m_nMaxParticles = 0
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

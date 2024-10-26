@@ -1,0 +1,42 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/layout/custom_game/spell_temple/spell_temple.css" />
+	</styles>
+
+	 <scripts>
+		<include src="s2r://panorama/layout/custom_game/spell_temple/spell_temple.js" />
+	</scripts>  
+
+	<Panel class="SpellShopMain" hittest="false">
+        <Panel class="SpellMapPanel" id="SpellMapPanel">
+            <Panel class="SpellButtonOpen" id="SpellButtonOpen" onactivate="OpenSpellShop();">
+                <Panel class="SpellButtonOpenIcon" />
+            </Panel>
+        </Panel>
+        <Panel class="SpellShopPanel CloseSpellShop" id="SpellShopPanel">
+            <Panel class="SpellShopHeader">
+                <Label class="SpellShopHeaderLabel" text="#SpellShop_Name" />
+                <Panel class="CloseSpellShopButton" onactivate="CloseSpellShop();"/> 
+            </Panel>
+            <Panel class="SpellShopPanelBody">
+                <Panel class="SpellShopSpellsList">
+                    <Label class="SpellShopSpellsListChoose" text="#SpellShop_ChooseSpell"/>
+                    <Panel class="SpellShopSpellsListBody" id="SpellShopSpellsListBody" />
+                    <Panel class="SpellShopPanelBuy">
+                        <Panel class="UnlockPanelBuy">
+                            <Panel class="UnlockPanelBuyButtonCost">
+                                <Panel class="UnlockPanelBuyButtonCostIcon" />
+                                <Label class="UnlockPanelBuyButtonCostLabel" id="UnlockPanelBuyButtonCostLabel" text="0" />
+                            </Panel>
+                        </Panel>
+                        <Label class="UnlockPanelBuyButtonDescription" text="#SpellShop_DescriptionBuy" />
+                    </Panel>
+                </Panel>
+                <Panel class="PreviewSpellInfo" id="PreviewSpellInfo">
+                    
+                </Panel>
+            </Panel>
+        </Panel>
+	</Panel>
+</root>

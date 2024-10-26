@@ -1,0 +1,15 @@
+<root>
+    <styles>
+ 		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/shared_scoreboard_styles.css" />
+        <include src="file://{resources}/styles/custom_game/multiteam_flyout_scoreboard.css" />
+    </styles>
+	<Panel hittest="false" class="FlyoutTeam">
+		<Panel class="FlyoutTeamData">
+			<Panel class="TeamInfo ScoreCol_TeamInfo">
+				<Panel id="TeamColor_GradentFromTransparentLeft" />
+			</Panel>
+			<Panel id="PlayersContainer" />
+		</Panel>
+	</Panel>
+</root>

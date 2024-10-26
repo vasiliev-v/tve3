@@ -1,0 +1,25 @@
+<root>
+
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="s2r://panorama/styles/custom_game/day_quest.css" />
+	</styles>
+
+	<scripts>
+		<include src="s2r://panorama/scripts/custom_game/day_quest.js" />
+	</scripts>
+
+	<Panel hittest="false" class="DayQuestMainPanel">
+
+		<Panel id="QuestPanelSwap" class="QuestPanelSwap">
+			<Panel class="SwapPanel" onactivate="ToggleInfo();">
+				<Panel id="SwapPanelIcon" class="SwapPanelIcon" />
+			</Panel>
+			<Panel id="QuestsPanel">
+				<Panel class="QuestPanelInformation">
+					<Label class="QuestPanelInformationLabel" text="#troll_quest_title" />
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

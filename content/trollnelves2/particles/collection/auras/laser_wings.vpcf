@@ -1,0 +1,51 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nBehaviorVersion = 12
+	m_nMaxParticles = 0
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/items/queenofpain/queenofpain_arcana/queenofpain_arcana_wings.vmdl"
+				m_nModSpecificData = 2147496578
+				m_sequenceName = "qop_arc_idle"
+				m_hitboxSetName = "default"
+			}
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+	]
+	m_Initializers = 
+	[
+	]
+	m_Operators = 
+	[
+		
+		{
+			_class = "C_OP_BasicMovement"
+		},
+	]
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/mmr_rewards/test/qop_arcana_wings_v2_ambient_trace.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/mmr_rewards/test/qop_arcana_wings_v2_ambient_trace_r.vpcf"
+		},
+	]
+}

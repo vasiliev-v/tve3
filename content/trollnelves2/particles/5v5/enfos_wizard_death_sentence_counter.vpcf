@@ -1,0 +1,74 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 8
+	m_BoundingBoxMin = 
+	[
+		255.000000,
+		255.000000,
+		25.000000,
+	]
+	m_BoundingBoxMax = 
+	[
+		30.000000,
+		30.000000,
+		30.000000,
+	]
+	m_flCullRadius = -1.000000
+	m_flConstantRadius = 0.000000
+	m_flMaxDrawDistance = 4000.000000
+	m_flNoDrawTimeToGoToSleep = 2.000000
+	m_bShouldSort = false
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_previewState = 
+			{
+				m_hitboxSetName = "default"
+				m_materialGroupName = "0"
+			}
+		},
+	]
+	m_nFirstMultipleOverride_BackwardCompat = 4
+	m_nBehaviorVersion = 12
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/5v5/enfos_wizard_death_sentence_counter_c.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/5v5/enfos_wizard_death_sentence_counter_b.vpcf"
+		},
+	]
+	m_Initializers = 
+	[
+		
+		{
+			_class = "C_INIT_DistanceToCPInit"
+			m_flInputMax = 1222.000000
+			m_flOutputMin = 25.000000
+			m_flOutputMax = 255.000000
+			m_vecDistanceScale = 
+			[
+				25.000000,
+				25.000000,
+				25.000000,
+			]
+			m_flRemapBias = 25.000000
+		},
+	]
+	m_Operators = 
+	[
+	]
+	m_ConstantNormal = 
+	[
+		0.000000,
+		0.000000,
+		2.000000,
+	]
+}

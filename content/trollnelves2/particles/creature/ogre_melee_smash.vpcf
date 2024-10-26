@@ -1,0 +1,35 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nBehaviorVersion = 12
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/imported/ogre_melee_smash_c.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/imported/ogre_melee_smash_flash.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/imported/ogre_melee_smash_scorch.vpcf"
+		},
+	]
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

@@ -1,0 +1,55 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/items/legion_commander/legacy_of_the_fallen_legion/legacy_of_the_fallen_legion.vmdl"
+				m_nModSpecificData = 7930
+				m_sequenceName = "lc_questidle"
+				m_hitboxSetName = "default"
+				m_materialGroupName = "0"
+			}
+		},
+	]
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/legion/legion_fallen/legion_fallen_ambient_alt_feathers_l.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/legion/legion_fallen/legion_fallen_ambient_alt_feathers_l_glow.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/legion/legion_fallen/legion_fallen_ambient_alt_feathers_l_b.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/legion/legion_fallen/legion_fallen_ambient_alt_feathers_r.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/legion/legion_fallen/legion_fallen_ambient_alt_feathers_r_glow.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/econ/items/legion/legion_fallen/legion_fallen_ambient_alt_feathers_r_b.vpcf"
+		},
+	]
+}

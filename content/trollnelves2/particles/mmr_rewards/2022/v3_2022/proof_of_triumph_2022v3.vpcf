@@ -1,0 +1,94 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 5
+	m_flConstantRadius = 24.000000
+	m_ConstantColor = 
+	[
+		128,
+		128,
+		128,
+		255,
+	]
+	m_nConstantSequenceNumber = 3
+	m_nBehaviorVersion = 4
+	m_nFirstMultipleOverride_BackwardCompat = 9
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		
+		{
+			_class = "C_OP_MaintainEmitter"
+			m_nParticlesToMaintain = 32
+		},
+	]
+	m_Initializers = 
+	[
+		
+		{
+			_class = "C_INIT_CreateSequentialPath"
+			m_PathParams = 
+			{
+				m_nEndControlPointNumber = 1
+			}
+			m_flNumToAssign = 10.000000
+		},
+	]
+	m_Operators = 
+	[
+		
+		{
+			_class = "C_OP_SetPerChildControlPoint"
+			m_nNumControlPoints = 2
+		},
+		
+		{
+			_class = "C_OP_LockToBone"
+			m_bRigid = true
+			m_bUseBones = true
+		},
+		
+		{
+			_class = "C_OP_EndCapTimedDecay"
+			m_flDecayTime = 0.250000
+		},
+		
+		{
+			_class = "C_OP_RemapTransformOrientationToYaw"
+			m_TransformInput = 
+			{
+				m_nControlPoint = 1
+			}
+		},
+	]
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/mmr_rewards/2022/v3_2022/laser_wings_big_2022v3.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/mmr_rewards/2022/v3_2022/laser_wings_big_2022v3_r.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/mmr_rewards/2022/v3_2022/proof_of_bravery_2022v3.vpcf"
+		},
+	]
+}

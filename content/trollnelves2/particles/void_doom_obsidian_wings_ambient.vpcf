@@ -1,0 +1,61 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/items/doom/ti8_doom_obsidian_overlord_back/ti8_doom_obsidian_overlord_back.vmdl"
+				m_nModSpecificData = 9991
+				m_sequenceName = "idle_anim"
+				m_hitboxSetName = "default"
+				m_materialGroupName = "0"
+			}
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetControlPointPositions"
+			m_vecCP1Pos = [ 128.0, 0.0, -128.0 ]
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_l.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_r.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_wing_r_01.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_wing_r_02.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_wing_r_03.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_wing_l_01.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_wing_l_02.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/doom/doom_obsidian/doom_obsidian_wings_ambient_wing_l_03.vpcf"
+		},
+	]
+}

@@ -1,0 +1,74 @@
+.ResourcePanel
+{
+	width: 200px;
+	flow-children:down;
+	vertical-align:bottom;
+	horizontal-align:right;
+	margin-right: 95px;
+	background-image: url("s2r://panorama/images/hud/reborn/inventory_bg_psd.vtex");
+	border: 1px solid #000e;
+}
+
+.ResourcePanels
+{
+    width: 100px;
+    padding: 7px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/hud/reborn/inventory_item_well_psd.vtex");
+	background-size: 100%;
+	height: 35px;
+	flow-children: right;
+}
+
+.Texts{
+  	font-weight: bold;
+  	vertical-align: center;
+    text-align: center;
+	margin-left: 5px;
+	text-shadow: 0px 0px 4px 2.0 black;
+}
+
+#GoldText{
+	color: #d9ca00;
+	margin-top: -5px;
+}
+
+#GoldIcon {	
+	width:18px; 
+	height:18px; 
+	margin-top: 0px;
+}
+
+#LumberText{
+	color: #098f2f;
+}
+
+#LumberIcon {	
+	width:17px; 
+	height:17px;
+}
+
+#CheeseText{
+	color: #c1b400;
+}
+
+#CheeseIcon {	
+	width:26px; 
+}
+
+#LumberPriceIcon{
+	width:26px;
+}
+
+#LumberPriceText{
+	color:brown;
+}
+
+.GoldnLumber{
+	flow-children:right;
+}
+
+#CheeseLumberPricePanel{
+	flow-children:right;
+}
+

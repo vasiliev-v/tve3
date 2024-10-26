@@ -1,0 +1,59 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 1
+	m_hSnapshot = resource:"particles/mmr_rewards/2022/vsnaps/wing_1.vsnap"
+	m_nSnapshotControlPoint = 6
+	m_nBehaviorVersion = 12
+	m_ConstantColor = 
+	[
+		0,
+		0,
+		255,
+		255,
+	]
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Initializers = 
+	[
+	]
+	m_Operators = 
+	[
+		
+		{
+			_class = "C_OP_LockToBone"
+			m_bRigid = true
+			m_bUseBones = true
+		},
+		
+		{
+			_class = "C_OP_SetChildControlPoints"
+		},
+		
+		{
+			_class = "C_OP_PositionLock"
+			m_bLockRot = true
+		},
+	]
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/laser_wings_dynamic_trace_rope.vpcf"
+		},
+	]
+}

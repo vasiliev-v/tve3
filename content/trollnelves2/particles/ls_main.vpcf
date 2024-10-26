@@ -1,0 +1,186 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{73c3d623-a141-4df2-b548-41dd786e6300} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 1
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 2
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.000000
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		
+		{
+			_class = "C_INIT_RingWave"
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 80.000000
+			}
+			m_flInitialSpeedMin = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 200.000000
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 200.000000
+			}
+		},
+		
+		{
+			_class = "C_INIT_PositionPlaceOnGround"
+			m_flOffset = 80.000000
+			m_flMaxTraceLength = 512.000000
+			m_CollisionGroupName = "DEBRIS"
+			m_bIncludeWater = true
+		},
+		
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMin = 
+			[
+				-250.000000,
+				0.000000,
+				0.000000,
+			]
+			m_vecOutputMax = 
+			[
+				250.000000,
+				0.000000,
+				0.000000,
+			]
+			m_flNoiseScale = 0.000000
+		},
+	]
+	m_Operators = 
+	[
+		
+		{
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+		},
+		
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		
+		{
+			_class = "C_OP_MovementRotateParticleAroundAxis"
+			m_flRotRate = -450.000000
+		},
+		
+		{
+			_class = "C_OP_SetChildControlPoints"
+			m_nFirstControlPoint = 3
+		},
+		
+		{
+			_class = "C_OP_OscillateVector"
+			m_RateMin = 
+			[
+				0.000000,
+				0.000000,
+				-25.000000,
+			]
+			m_RateMax = 
+			[
+				0.000000,
+				0.000000,
+				25.000000,
+			]
+			m_flEndTime_min = 999.000000
+			m_flEndTime_max = 999.000000
+		},
+		
+		{
+			_class = "C_OP_PositionLock"
+		},
+	]
+	m_Constraints = 
+	[
+		
+		{
+			_class = "C_OP_ConstrainDistance"
+			m_fMinDistance = 50.000000
+			m_fMaxDistance = 80.000000
+			m_CenterOffset = 
+			[
+				0.000000,
+				0.000000,
+				60.000000,
+			]
+		},
+		
+		{
+			_class = "C_OP_PlanarConstraint"
+			m_PointOnPlane = 
+			[
+				0.000000,
+				0.000000,
+				16.000000,
+			]
+		},
+		
+		{
+			_class = "C_OP_PlanarConstraint"
+			m_PointOnPlane = 
+			[
+				0.000000,
+				0.000000,
+				150.000000,
+			]
+			m_PlaneNormal = 
+			[
+				0.000000,
+				0.000000,
+				-1.000000,
+			]
+		},
+	]
+	m_Renderers = 
+	[
+	]
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/ls_child_a.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/ls_child_b.vpcf"
+		},
+	]
+}

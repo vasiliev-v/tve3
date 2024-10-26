@@ -1,0 +1,553 @@
+#ClanButton
+{
+    margin-left: 490px;
+    margin-top: 1.4px;
+    flow-children: down;
+}
+
+#ClanButton:hover .ClanButtonIcon
+{
+    brightness: 2.0;
+}
+
+.ClanButtonIcon {
+    background-image: url("file://{images}/custom_game/clan/button.png");
+    background-size: contain;
+    width: 29px;
+    height:29px;
+    brightness: 1;
+    wash-color: #CDF;
+    opacity: 1;
+    horizontal-align: center;
+}
+.ClanButtonLabel {
+    color: white;
+    horizontal-align: center;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px 2 black;
+    margin-top: 1px;
+}
+
+.ClanMainPanel {
+    width: 100%;
+    height: 100%;
+}
+
+#ClanPanel {
+    width: 500px;
+    height: 700px;
+    background-color: #141c24;
+    align: center center;
+    visibility: collapse;
+    pre-transform-scale2d: 0;
+    transition-property: pre-transform-scale2d;
+    transition-duration: 0.5s;
+    flow-children: down;
+    margin-bottom: 100px;
+}
+
+#ClanPanel.sethidden {
+    pre-transform-scale2d: 0;
+    transition-property: pre-transform-scale2d;
+    transition-duration: 0.5s;
+}
+
+#ClanPanel.setvisible {
+    pre-transform-scale2d: 1;
+    transition-property: pre-transform-scale2d;
+    transition-duration: 0.5s;
+}
+
+.TopPanel {
+    width: 100%;
+    height: 50px;
+    background-color: #29343d;
+    box-shadow: black 0px 0px 10px 0px;
+    border: 1px solid black;
+}
+
+.CloseShop {
+    width: 30px;
+    height: 30px;
+    vertical-align: center;
+    background-image: url("s2r://panorama/images/control_icons/x_close_grey_psd.vtex");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: #000000bb;
+    wash-color: #888888;
+    transition-property: wash-color;
+    transition-duration: 0.1s;
+    horizontal-align: right;
+    margin-right: 20px;
+}
+
+.CloseShop:hover {
+    background-color: #000000bb;
+    wash-color: white;
+}
+
+.MainPanel
+{
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+    horizontal-align: center;
+    height: 100%;
+
+    flow-children: right;
+}
+
+.Info_Title
+{
+    font-size: 26px;
+    align: center center;
+    font-weight: bold;
+    color: white;
+}
+
+.BodyPanel
+{
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    border-bottom: 2px solid black;
+    height: 85%;
+    flow-children: down;
+}
+
+.NoClanTitle
+{
+    font-weight: bold;
+    color:white;
+    horizontal-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.NoClanDescription
+{
+    color:white;
+    horizontal-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.Buttons
+{
+    width: 100%;
+    height: 100%;
+    flow-children: right;
+}
+
+.ButtonGreen
+{
+    height: 100%;
+    width: 100%;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+}
+
+.ButtonGreen:hover
+{
+    brightness: 1.4;
+}
+
+.ButtonGreen:active
+{
+    brightness: 1;
+}
+
+.ButtonText
+{
+    align: center center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#ClanNotification
+{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    visibility: collapse;
+}
+
+#ClanNotificationCreateClan
+{
+    width: 500px;
+    height: 200px;
+    align: center center;
+    background-color: gradient( linear, 0% 0%, 100% 100%, from( #141c23 ), to( #1D2A35cc) );
+    border: 1px solid black;
+    flow-children: down;
+    visibility: collapse;
+}
+
+.ClanNotificationCreateClanTop
+{
+    width: 100%;
+    height: 40px;
+    background-color: #0e1318fc;
+    border-bottom: 1px solid black;
+}
+
+.ClanNotificationCreateClanTopLabel
+{
+    align: center center;
+    color:white;
+    font-size: 18px;
+}
+
+.ClanNameEntryPanel
+{
+    width: 80%;
+    height: 40px;
+    horizontal-align: center;
+    border: 2px solid #55666315;
+    flow-children: right;
+    margin-top: 20px;
+}
+
+.ClanNameEntry
+{
+    margin-top: 0px;
+    width: 91%;
+    background-color: #00000000;
+    border: 0px solid #00000000;
+    font-size: 24px;
+}
+
+.ClanNameEntryPanelIcon
+{
+    width: 27px;
+    height: 27px;
+    vertical-align: center;
+    background-image: url("file://{images}/custom_game/clan/button.png");
+    background-size: 100% 100%;
+}
+
+TextEntry #PlaceholderText
+{
+    vertical-align: center;
+}
+
+.ButtonsCreateClan
+{
+    horizontal-align: center;
+    height: 100%;
+    flow-children: right;
+    margin-top: 20px;
+}
+
+.ButtonCreateClan
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #222222 ), to( #4B555D ) );
+    background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+    background-size: cover;
+    border: 1px solid #83838390;
+    min-width: 192px;
+    max-width: 500px;
+    margin: 8px;
+    padding: 10px 30px;
+}
+
+.ButtonCreateClan:hover
+{
+    brightness: 1.4;
+}
+
+#LoadingSpinner
+{
+    width: 50px;
+    height: 50px;
+    align: center center;
+    background-image: url("s2r://panorama/images/status_icons/loadingthrobber_round_psd.vtex");
+    background-size: 100%;
+    animation-name: SpinnerRotate;
+    animation-duration: 1.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    visibility: collapse;
+}
+
+@keyframes 'SpinnerRotate'
+{
+    0%
+    {
+        transform: rotateZ( 360deg );
+    }
+    50%
+    {
+        transform: rotateZ( 180deg );
+    }
+    100%
+    {
+        transform: rotateZ( 0deg );
+    }
+}
+
+#Error
+{
+    color: red;
+    align: center center;
+    font-size: 36px;
+    visibility: collapse;
+}
+
+.ClanNameTitle
+{
+    font-weight: bold;
+    color:white;
+    horizontal-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.ClanNameMaxPlayers
+{
+    color:white;
+    horizontal-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.PlayersNavigation
+{
+    width: 450px;
+    horizontal-align: center;
+    height: 20px;
+    background-color: #0007;
+    margin-top: 20px;
+    flow-children: right;
+}
+
+.PlayersNavigationPlayersLabel
+{
+    color: white;
+    text-align: center;
+    width: 80%;
+}
+
+
+.PlayersNavigationPlayersLabelRating
+{
+    color: white;
+    text-align: center;
+    width: 20%;
+}
+
+.PlayersList
+{
+    width: 450px;
+    horizontal-align: center;
+    height: 450px;
+    flow-children: down;
+    overflow: squish scroll;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.LinePlayer
+{
+    width: 100%;
+    height: 40px;
+    flow-children: right;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    border: 1px solid black;
+}
+
+.RatingLabel
+{
+    vertical-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ButtonRed
+{
+    height: 100%;
+    width: 100%;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #a15a5a ), to( #d4353533 ) );
+}
+
+.ButtonRed:hover
+{
+    brightness: 1.4;
+}
+
+.ButtonRed:active
+{
+    brightness: 1;
+}
+
+VerticalScrollBar, HTMLVerticalScrollBar
+{
+    width: 1px;
+}
+
+
+.crown
+{
+    height: 20px;
+    width: 20px;
+    background-image: url("s2r://panorama/images/control_icons/guild_leader_png.vtex");
+    background-size: 100%;
+    vertical-align: center;
+    margin-right:5px;
+    margin-left:10px;
+    opacity: 0;
+}
+
+.InviteListTitle
+{
+    width: 95%;
+    background-color: #0007;
+    margin-top: 20px;
+    text-align: center;
+    horizontal-align: center;
+    color: white;
+    padding: 4px 0px;
+}
+
+.ClanInvitePanel
+{
+    margin-top: 5px;
+    width: 95%;
+    height: 40px;
+    horizontal-align: center;
+    flow-children: right;
+}
+
+.InviteYou
+{
+    color: white;
+    vertical-align: center;
+}
+
+.InviteYouClanName
+{
+    color: white;
+    vertical-align: center;
+    color: gold;
+    height: 20px;
+    width: 110px;
+}
+
+.ClanInviteAccept
+{
+    width: 30px;
+    height: 30px;
+    vertical-align: center;
+    background-image: url("file://{images}/custom_game/clan/accept.png");
+    background-size: 100%;
+}
+
+.ClanInviteDecline
+{
+    width: 30px;
+    height: 30px;
+    vertical-align: center;
+    background-image: url("s2r://panorama/images/control_icons/x_close_grey_psd.vtex");
+    background-size: 100%;
+    wash-color: red;
+    margin-left: 5px;
+}
+
+.ClanInviteAccept:hover
+{
+    brightness: 1.5;
+}
+
+.ClanInviteDecline:hover
+{
+    brightness: 1.5;
+}
+
+.LeaderButtonInvite
+{
+    height: 100%;
+    width: 50%;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+}
+
+.LeaderButtonInvite:hover
+{
+    brightness: 1.4;
+}
+
+.LeaderButtonInvite:active
+{
+    brightness: 1;
+}
+
+
+.LeaderButtonKick
+{
+    height: 100%;
+    width: 50%;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #a15a5a ), to( #d4353533 ) );
+}
+
+.LeaderButtonKick:hover
+{
+    brightness: 1.4;
+}
+
+.LeaderButtonKick:active
+{
+    brightness: 1;
+}
+
+#InviteClan
+{
+    width: 500px;
+    height: 700px;
+    background-color: #141c24;
+    align: center center;
+    visibility: collapse;
+    flow-children: down;
+    margin-bottom: 100px;
+}
+
+#InvitePlayersList
+{
+    width: 100%;
+    height: 87%;
+    background-color: rgba(0,0,0,0.5);
+    flow-children: down;
+    overflow: squish scroll;
+}
+
+.ButtonInviteClan
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #222222 ), to( #4B555D ) );
+    background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+    background-size: cover;
+    border: 1px solid #83838390;
+    width: 100%;
+    height: 100%;
+}
+
+.ButtonInviteClan:hover
+{
+    brightness: 1.4;
+}
+
+.InvitePlayerButton
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+    width: 130px;
+    height: 100%;
+}
+
+.InvitePlayerButton:hover
+{
+    brightness: 1.4;
+}
+
+.InvitePlayerButtonLabel
+{
+    color: white;
+    align: center center;
+}

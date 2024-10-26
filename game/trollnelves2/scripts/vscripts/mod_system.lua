@@ -71,7 +71,7 @@ function mod_system:GetCurrentModFromVotes()
 	if table_votes[1] == nil then
 		return true
 	end
-	if table_votes[1].percent >= 51 then
+	if table_votes[1].percent >= 3333 then
 		return false
 	else
 		return true

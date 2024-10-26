@@ -1,0 +1,57 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vrfunknown:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nBehaviorVersion = 12
+	m_nMaxParticles = 0
+	m_controlPointConfigurations = 
+	[
+		
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = 
+					[
+						0.000000,
+						0.000000,
+						120.000000,
+					]
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/heroes_staging/void_spirit/void_spirit_trailer.vmdl"
+				m_sequenceName = "vs_portal"
+			}
+		},
+	]
+	m_bShouldSort = false
+	m_Children = 
+	[
+		
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_void_spirit/astral_step/astral_step_portal_selected_flare.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_void_spirit/astral_step/astral_step_portal_selected_flash_end.vpcf"
+		},
+		
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_void_spirit/astral_step/astral_step_portal_selected_embers_end.vpcf"
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+	]
+}

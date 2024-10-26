@@ -1,0 +1,67 @@
+<root>
+
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/clan.css" />
+	</styles>
+
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/clan.js" />
+	</scripts>
+
+	<Panel hittest="false" class="ClanMainPanel">
+		<Panel id="ClanButton" onactivate="ToggleClan();">
+			<Panel class="ClanButtonIcon" />
+			<Label class="ClanButtonLabel" text="#clan_button" />
+		</Panel>
+
+		<Panel id="ClanPanel">
+			<Panel class="TopPanel">
+				<Label class="Info_Title" text="#Clan_title" />
+				<Panel class="CloseShop" onactivate="ToggleClan();"/>
+			</Panel>
+			<Panel id="BodyPanel" class="BodyPanel">
+
+			</Panel>
+			<Panel id="Buttons" class="Buttons">
+
+			</Panel>
+		</Panel>
+
+		<Button id="ClanNotification">
+			<Panel id="ClanNotificationCreateClan">
+				<Panel class="ClanNotificationCreateClanTop">
+					<Label class="ClanNotificationCreateClanTopLabel" text="#clan_created" />
+				</Panel>
+				<Panel class="ClanNameEntryPanel">
+					<TextEntry id="ClanName" class="ClanNameEntry" maxchars="20" placeholder="#text_clan_name" />
+					<Panel class="ClanNameEntryPanelIcon" /> 
+				</Panel>
+				<Panel class="ButtonsCreateClan">
+					<Panel class="ButtonCreateClan" onactivate="CloseCreateClan();" >
+						<Label class="ButtonText" text="#clan_cancel" />
+					</Panel>
+					<Panel class="ButtonCreateClan" onactivate="CreateClanServer();" >
+						<Label class="ButtonText" text="#clan_created_button" />
+					</Panel>
+				</Panel>
+			</Panel>
+
+			<Panel id="InviteClan">
+				<Panel class="ClanNotificationCreateClanTop">
+					<Label class="ClanNotificationCreateClanTopLabel" text="#clan_invite_player" />
+				</Panel>
+				<Panel id="InvitePlayersList" />
+				<Panel class="ButtonInviteClan" onactivate="CloseClanInvite();" >
+					<Label class="ButtonText" text="#clan_back" />
+				</Panel>
+			</Panel>
+
+			<Panel id="LoadingSpinner" />
+
+			<Label id="Error" text="#clan_default_error" />
+		</Button>
+
+
+	</Panel>
+</root>
