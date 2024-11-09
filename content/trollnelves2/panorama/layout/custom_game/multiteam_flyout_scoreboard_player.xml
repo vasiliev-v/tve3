@@ -52,7 +52,7 @@
                 target,
                 casterID,
             });
-            $.Msg('Flag: ');
+            //$.Msg('Flag: ');
         }
         function OnGiveAllResourcesButton() {
             const playerPanel = $.GetContextPanel();

@@ -54,9 +54,10 @@ TIMER_SAVER_HERO = 60
 TIMER_KILL_CW = 181
 
 EVENT_START = false
-CHANCE_DROP_GEM_BARRACKS_3 = 25
-SEASON_MAP = "desert" --"autumn"--"ghosttown" -- name map
-SEASON_ITEM = "item_autumn" --"item_ghosttown"           --  "item_winter_1" item_spring;  item_summer; item_autumn; "item_summer"--
+CHANCE_DROP_GEM_BANK = 75
+CHANCE_DROP_GEM_BARRACKS_3 = 75
+CHANCE_DROP_GOLD_BANK = 1
+CHANCE_DROP_GOLD_BARRACKS_3 = 1
 
 PLAYER_COLORS = {
     {0, 102, 255}, -- синий

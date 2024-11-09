@@ -3,58 +3,63 @@ if drop == nil then
 end
 require('settings')
 item_drop = {
-	--{items = {"item_branches"}, chance = 5, duration = 5, limit = 3, units = {} },
-	{items = {"item_vip"}, limit = 1, chance = 1, units = {"npc_dota_hero_crystal_maiden","npc_dota_hero_lycan","npc_dota_hero_treant"} },
-	{items = {"item_get_gem"}, limit = 10, chance = 10, units = {"npc_dota_hero_crystal_maiden","npc_dota_hero_lycan","npc_dota_hero_treant"} },
-	--{items = {SEASON_ITEM}, limit = 10, chance = 500, units = {"npc_dota_hero_treant"} },
-	
-	{items = {"item_get_gold"}, limit = 1, chance = 5, units = {"event_line_boss_halloween"} },
-	{items = {"item_event_birthday"}, limit = 1, chance = 400, units = {"event_line_boss_halloween"} },
+	{items = {"item_vip"}, limit = 2, chance = 10, units = {"npc_dota_hero_treant"} },
+	{items = {"item_get_gem"}, limit = 10, chance = 100, units = {"npc_dota_hero_treant"} },
+	{items = {"item_get_gold"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+	{items = {"item_event_desert"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+	{items = {"item_event_winter"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+	{items = {"item_event_helheim"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+	{items = {"item_event_birthday"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
 	
 	-- {items = {"item_get_gold"}, limit = 1, chance = 5, units = {"npc_dota_hero_crystal_maiden","npc_dota_hero_lycan","npc_dota_hero_treant","npc_dota_hero_lina","event_line_boss_halloween"} },
-	{items = {"item_get_gold"}, limit = 1, chance = 50, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina"} },
 	--{items = {"item_get_gold"}, limit = 1, chance = 5, units = {"barracks_3"} },
+	--{items = {SEASON_ITEM}, limit = 10, chance = 500, units = {"npc_dota_hero_treant"} },
+	--[[ 
+	{items = {"item_get_gold"}, limit = 1, chance = 5, units = {"event_line_boss_halloween"} },
+	{items = {"item_event_birthday"}, limit = 1, chance = 400, units = {"event_line_boss_halloween"} },
 
-	{items = {SEASON_ITEM}, limit = 15, chance = 500, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {SEASON_ITEM}, limit = 15, chance = 450, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {SEASON_ITEM}, limit = 15, chance = 400, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {SEASON_ITEM}, limit = 15, chance = 350, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {SEASON_ITEM}, limit = 15, chance = 300, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {SEASON_ITEM}, limit = 15, chance = 250, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {SEASON_ITEM}, limit = 15, chance = 250, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {SEASON_ITEM}, limit = 15, chance = 150, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	
+	{items = {"item_get_gold"}, limit = 1, chance = 50, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina"} },
 	{items = {SEASON_ITEM}, limit = 15, chance = 100, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 90, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 80, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 70, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 	{items = {SEASON_ITEM}, limit = 15, chance = 50, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 60, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 50, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 40, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 30, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {SEASON_ITEM}, limit = 15, chance = 25, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 	
-	{items = {"item_get_gem"}, limit = 1, chance = 500, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_get_gem"}, limit = 1, chance = 400, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_get_gem"}, limit = 1, chance = 300, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_get_gem"}, limit = 1, chance = 200, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 	{items = {"item_get_gem"}, limit = 1, chance = 100, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_get_gem"}, limit = 1, chance = 50, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_get_gem"}, limit = 1, chance = 80, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_get_gem"}, limit = 1, chance = 60, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_get_gem"}, limit = 1, chance = 40, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_get_gem"}, limit = 1, chance = 20, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_get_gem"}, limit = 1, chance = 10, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 
-	{items = {"item_vip"}, limit = 1, chance = 500, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_vip"}, limit = 1, chance = 450, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_vip"}, limit = 1, chance = 400, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_vip"}, limit = 1, chance = 350, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_vip"}, limit = 1, chance = 300, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_vip"}, limit = 1, chance = 250, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_vip"}, limit = 1, chance = 100, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_vip"}, limit = 1, chance = 90, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_vip"}, limit = 1, chance = 80, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_vip"}, limit = 1, chance = 70, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_vip"}, limit = 1, chance = 60, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_vip"}, limit = 1, chance = 50, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 	
-	{items = {"item_event_desert"}, limit = 1, chance = 300, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_event_desert"}, limit = 1, chance = 200, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_event_desert"}, limit = 1, chance = 100, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_desert"}, limit = 1, chance = 60, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_desert"}, limit = 1, chance = 40, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_desert"}, limit = 1, chance = 20, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 	
-	{items = {"item_event_winter"}, limit = 1, chance = 300, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_event_winter"}, limit = 1, chance = 200, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_event_winter"}, limit = 1, chance = 100, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_winter"}, limit = 1, chance = 60, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_winter"}, limit = 1, chance = 40, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_winter"}, limit = 1, chance = 20, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 	
-	{items = {"item_event_helheim"}, limit = 1, chance = 300, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_event_helheim"}, limit = 1, chance = 200, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
-	{items = {"item_event_helheim"}, limit = 1, chance = 100, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_helheim"}, limit = 1, chance = 60, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_helheim"}, limit = 1, chance = 40, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
+	{items = {"item_event_helheim"}, limit = 1, chance = 20, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 	
 	{items = {"item_event_birthday"}, limit = 1, chance = 1, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
 
-	
+	]]
 	-- {items = {"item_event_birthday"}, limit = 1, chance = 2, units = {"barracks_3"} },
 	--{items = {"item_lifesteal"}, limit = 200, chance = 70, units = {"npc_neutral_boss_1"} },
 	--{items = {"item_dmg_14"}, limit = 200, chance = 70, units = {"npc_neutral_boss_1"} },
@@ -77,11 +82,11 @@ function drop:RollItemDrop(unit)
 			local items = drop.items or nil
 			local items_num = #items
 			local units = drop.units or nil -- если юниты не были определены, то срабатывает для любого
-			local chance = drop.chance or 500 -- если шанс не был определен, то он равен 100
+			local chance = drop.chance or 100 -- если шанс не был определен, то он равен 100
 			local loot_duration = drop.duration or nil -- длительность жизни предмета на земле
 			local limit = drop.limit or nil -- лимит предметов
 			local item_name = items[1] -- название предмета
-			local roll_chance = RandomFloat(0, 500)
+			local roll_chance = RandomFloat(0, 100)
 			
 			if string.match(GetMapName(),"ghosttown") then --new --"halloween"
 				chance = 100
@@ -105,24 +110,23 @@ function drop:RollItemDrop(unit)
 					item_name = items[RandomInt(1, #items)]
 				end
 				
-				if SEASON_ITEM == item_name then
+				--if SEASON_ITEM == item_name then
 					local randTime = RandomInt( 30, 240 )
 					Timers:CreateTimer(randTime, function()
-						if string.match(GetMapName(),SEASON_MAP)  then
+				--		if string.match(GetMapName(),SEASON_MAP)  then
 							RandomDropLoot()
-						--	RandomDropLoot()
-						else
-							RandomDropLoot()
-						end
+				--		--	RandomDropLoot()
+				--		else
+				--			RandomDropLoot()
+				--		end
 					end);
-				else
-					local spawnPoint = unit:GetAbsOrigin()	
-					local newItem = CreateItem( item_name, nil, nil )
-					local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )
-					local dropRadius = RandomFloat( 50, 300 )
-					
-					newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
-				end
+				--else
+				--	local spawnPoint = unit:GetAbsOrigin()	
+				--	local newItem = CreateItem( item_name, nil, nil )
+				--	local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )
+				--	local dropRadius = RandomFloat( 50, 300 )
+				--	newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
+				--end
 				if loot_duration then
 					newItem:SetContextThink( "KillLoot", function() return KillLoot( newItem, drop ) end, loot_duration )
 				end
@@ -152,12 +156,13 @@ function RandomDropLoot()
 	local spawnPoint = Vector(-320,-320,256)
 	local dropRadius = RandomFloat( 2600, 7800 )
 	local randRadius = spawnPoint + RandomVector( dropRadius )
-	for i = 0, 20 do
+	for i = 0, 99 do
 		randRadius = spawnPoint + RandomVector( dropRadius )
 		local gridX = GridNav:GridPosToWorldCenterX(randRadius.x)
     	local gridY = GridNav:GridPosToWorldCenterY(randRadius.y)
 		local position = Vector(gridX, gridY, 0)
-		if GridNav:IsTraversable(position) and not GridNav:IsBlocked(position) then
+		if not GridNav:IsTraversable(position) and not GridNav:IsBlocked(position) and 
+	       not GridNav:IsBlocked(position) and not GridNav:IsNearbyTree(position, 34, true) then
 			break	
 		end
 	end

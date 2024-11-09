@@ -1817,6 +1817,9 @@
 		"AbilityValues"
         {
             "max_blink_range" "1000"
+			"up1" 			  "1200"
+			"up2" 			  "1400"
+			"up3" 			  "1600"
         }
 
 		"OnSpellStart"
@@ -1827,6 +1830,9 @@
 				"Function"              "ItemBlink"
 				"Target"                "POINT"
 				"MaxBlinkRange"         "%max_blink_range"
+				"MaxBlinkRange1"         "%up1"
+				"MaxBlinkRange2"         "%up2"
+				"MaxBlinkRange3"         "%up3"
 			}
 		}
 	}

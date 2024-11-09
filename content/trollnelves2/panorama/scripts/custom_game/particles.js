@@ -6,7 +6,7 @@ var poriadok = new Array(0, 3, 7, 6, 10, 11, 12, 13, 14, 15, 1, 2, 4, 8, 9, 16, 
 function UpdateParticles( table_name, key, data )
 {
     var ID = Players.GetLocalPlayer();
-	//$.Msg( ID, ": ", "Table ", table_name, " changed: '", key, "' = ", data );
+	////$.Msg( ID, ": ", "Table ", table_name, " changed: '", key, "' = ", data );
     var myint = 1;
     if (ID == key)
     {
@@ -179,7 +179,7 @@ function SelectPart(num)
         $("#partapngb"+selectedpart).visible = false;
         selectedpart = null;
     }
-    //$.Msg("SelectedPart = "+selectedpart);
+    ////$.Msg("SelectedPart = "+selectedpart);
 }
 
 function DefaultButtonReady()

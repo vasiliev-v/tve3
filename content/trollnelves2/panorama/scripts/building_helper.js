@@ -196,12 +196,12 @@ function StartBuildingHelper( params )
                 {
                     if (specialGrid[gridType].Square)
                     {
-                        //$.Msg("Setting ",specialGrid[gridType].Square," grid squares with ",gridType.toUpperCase()," [",GRID_TYPES[gridType.toUpperCase()],"]")
+                        ////$.Msg("Setting ",specialGrid[gridType].Square," grid squares with ",gridType.toUpperCase()," [",GRID_TYPES[gridType.toUpperCase()],"]")
                         BlockGridSquares(entPos, Number(specialGrid[gridType].Square), GRID_TYPES[gridType.toUpperCase()])
                     }
                     else if (specialGrid[gridType].Radius)
                     {
-                        //$.Msg("Setting ",specialGrid[gridType].Radius," grid radius with ",gridType.toUpperCase()," [",GRID_TYPES[gridType.toUpperCase()],"]")
+                        ////$.Msg("Setting ",specialGrid[gridType].Radius," grid radius with ",gridType.toUpperCase()," [",GRID_TYPES[gridType.toUpperCase()],"]")
                         BlockGridInRadius(entPos, Number(specialGrid[gridType].Radius), GRID_TYPES[gridType.toUpperCase()])
                     }
                 }              
@@ -450,8 +450,8 @@ function RegisterGNV(msg){
     var squareY = msg.squareY
     var boundX = msg.boundX
     var boundY = msg.boundY
-   // $.Msg("Registering GNV ["+squareX+","+squareY+"] ","Min Bounds: X="+boundX+", Y="+boundY)
-   // $.Msg("gnvRLELen: ", msg.gnv.length)
+   // //$.Msg("Registering GNV ["+squareX+","+squareY+"] ","Min Bounds: X="+boundX+", Y="+boundY)
+   // //$.Msg("gnvRLELen: ", msg.gnv.length)
     var arr = [];
     // Running-length decoding
     var strlength = "";
@@ -505,7 +505,7 @@ function RegisterGNV(msg){
         for (var j = 0; j<squareX; j++){
             a.push((GridNav[i][j] == 1 ) ? '=' : '.');
         }
-        $.Msg(a.join(''))
+        //$.Msg(a.join(''))
     }*/
 
     // Debug Prints
@@ -523,7 +523,7 @@ function RegisterGNV(msg){
         BlockGridSquares(treePos, 2, "TREE")
     }
 
-  //  $.Msg("Free: ",tab["1"]," Blocked: ",tab["2"], " gnvLen: ", msg.gnv.length)
+  //  //$.Msg("Free: ",tab["1"]," Blocked: ",tab["2"], " gnvLen: ", msg.gnv.length)
 }
 
 // Ask the server for the Terrain grid
@@ -590,7 +590,7 @@ function IsBlocked(position) {
     if ((flag & adjust)==adjust)
         flag-=GRID_TYPES["BUILDABLE"]
 
-    //$.Msg('GRID:',Root.GridNav[x][y],' ENTGRID:',entGridValue,' FLAG:',flag,' REQUIRES:', requires)
+    ////$.Msg('GRID:',Root.GridNav[x][y],' ENTGRID:',entGridValue,' FLAG:',flag,' REQUIRES:', requires)
 
     // If the bits don't match, its invalid
     if ((flag & requires) != requires)
@@ -746,7 +746,7 @@ function Length2D(v1, v2) {
 }
 
 function PrintGridCoords(x,y) {
-   // $.Msg('(',x,',',y,') = [',WorldToGridPosX(x),',',WorldToGridPosY(y),']')
+   // //$.Msg('(',x,',',y,') = [',WorldToGridPosX(x),',',WorldToGridPosY(y),']')
 }
 
 function HasModifier(entIndex, modifierName) {

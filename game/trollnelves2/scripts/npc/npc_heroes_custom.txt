@@ -84,8 +84,8 @@
 	    "StatusMana"        "200"                   // Base mana.
 	    "StatusManaRegen"     "5"                 // Mana regeneration rate.
 
-	    "VisionDaytimeRange"    "1600"                  // Range of vision at night time.
-	    "VisionNighttimeRange"    "1600"                  // Range of vision at night time.
+	    "VisionDaytimeRange"    "1200"                  // Range of vision at night time.
+	    "VisionNighttimeRange"    "1200"                  // Range of vision at night time.
 
 		"AttackDesire"			   "0.1"//"0.5"
 		"DisableWearables"         "1"
@@ -116,13 +116,13 @@
 		"Ability18"   	    "troll_spell_wolf"
 		"Ability19"   	    "troll_spell_reveal"
 		"Ability20"   	    "troll_spell_night_buff"
-		"Ability21"   	    "monkey_king"
-		"Ability22"   	    "attack_gold"
-		"Ability23"   	    "block_buff"
-		"Ability24"   	    "antiblock"
-		"Ability25"   	    "attribute_antibonuses"
-		"Ability26"   	    "special_bonus_cooldown_reduction_50"
-		"Ability27"   	    "special_bonus_cooldown_reduction_30"
+		"Ability21"   	    "attack_gold"
+		"Ability22"   	    "block_buff"
+		"Ability23"   	    "antiblock"
+		"Ability24"   	    "attribute_antibonuses"
+		"Ability25"   	    "special_bonus_cooldown_reduction_50"
+		"Ability26"   	    "special_bonus_cooldown_reduction_30"
+		"Ability27"   	    ""
 		"Ability28"   	    ""
 		"Ability29"   	    ""
 		"Ability30"   	    ""
@@ -169,8 +169,8 @@
 		"StatusMana"        "1"                   // Base mana.
 		"StatusManaRegen"     "1"                 // Mana regeneration rate.
 
-		"VisionDaytimeRange"    "1600"                  // Range of vision at night time.
-		"VisionNighttimeRange"    "1600"                  // Range of vision at night time.
+		"VisionDaytimeRange"    "1200"                  // Range of vision at night time.
+		"VisionNighttimeRange"    "1200"                  // Range of vision at night time.
 		
 
 		"DisableClumpingBehavior"  "1" 					//Отключает слипание при попадании в чужую модельку

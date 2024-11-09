@@ -4,7 +4,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
     Show() {
         super.Show();
         this.RootPanel.ToggleClass("Show");
-        $.Msg("UILowerHudWindow Open");
+        //$.Msg("UILowerHudWindow Open");
     }
 
     Hide() {
@@ -110,7 +110,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
 
     }
     OnDragStart(scrPanel, dragCallback) {
-        $.Msg("LowerHud OnDragStart start");
+        //$.Msg("LowerHud OnDragStart start");
         let imageID = scrPanel.GetAttributeInt("ImageID", -1);
         if (imageID == -1) {
             return;
@@ -149,7 +149,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         return true;
     }
     OnDragEnd(scrPanel, draggedPanel) {
-        $.Msg("LowerHud OnDragEnd")
+        //$.Msg("LowerHud OnDragEnd")
         draggedPanel.DeleteAsync(0);
         scrPanel.SetHasClass("dragging_from", false);
 
@@ -157,7 +157,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         return true;
     }
     OnDropItemEnd(scrPanel, draggedPanel) {
-        $.Msg("LowerHud OnDropItemEnd");
+        //$.Msg("LowerHud OnDropItemEnd");
         let isDrop = !GameUI.Dota2Assistant.IsCursorInPanel(this.ItemInventory);
         if (isDrop) {
             let dropPos = GameUI.GetScreenWorldPosition(GameUI.GetCursorPosition());
@@ -176,7 +176,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         return true;
     }
     OnDragEnter(scrPanel, draggedPanel) {
-        $.Msg("LowerHud Panel enter");
+        //$.Msg("LowerHud Panel enter");
         let panelBG = scrPanel;
         let imageType = panelBG.GetAttributeString("ImageType", "");
         if (draggedPanel.paneltype == "DOTAItemImage" && imageType == "Item") {
@@ -190,7 +190,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         return true;
     }
     OnDragLeave(scrPanel, draggedPanel) {
-        $.Msg("LowerHud Panel leave");
+        //$.Msg("LowerHud Panel leave");
         let panelBG = scrPanel;
         let imageType = panelBG.GetAttributeString("ImageType", "");
         if (draggedPanel.paneltype == "DOTAItemImage" && imageType == "Item") {
@@ -200,7 +200,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         return true;
     }
     OnDragItemDrop(scrPanel, draggedPanel) {
-            $.Msg("LowerHud OnDragItemDrop start");
+            //$.Msg("LowerHud OnDragItemDrop start");
             let abilityImage = scrPanel;
             let srcAbilitySlot = draggedPanel.SrcAbilitySlot;
             let srcHeroIndex = draggedPanel.SrcHeroIndex;
@@ -215,12 +215,12 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
             } else if (GameUI.Dota2Assistant.IsCursorInPanel(this.SellItemButton)) {
                 if (this.SellItemType != -1 && srcAbilitySlot != -1) {
                     if (this.SellItemType == 0) { //装备
-                        $.Msg("srcAbilitySlot=" + srcAbilitySlot + " 000000000");
+                        //$.Msg("srcAbilitySlot=" + srcAbilitySlot + " 000000000");
                         GameUI.ViDelegateAssisstant.Exec2(this.SellItemEndCallback, srcHeroIndex, srcAbilitySlot);
 
 
                     } else {
-                        $.Msg("srcAbilitySlot=" + srcAbilitySlot + " 1111111");
+                        //$.Msg("srcAbilitySlot=" + srcAbilitySlot + " 1111111");
                         GameUI.ViDelegateAssisstant.Exec2(this.SellAbilityEndCallback, srcAbilitySlot);
                     }
                     draggedPanel.Complete = true;
@@ -328,7 +328,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
     InitItemInventory() {
         let playerID = Game.GetLocalPlayerID();
         let playerHeroIndex = Players.GetPlayerHeroEntityIndex(playerID);
-        $.Msg("playerHeroIndex=" + playerHeroIndex);
+        //$.Msg("playerHeroIndex=" + playerHeroIndex);
         for (let iter = 0; iter < 2; ++iter) {
             let inventoryRoot = this.ItemInventoryList[iter];
             for (let i = 0; i < 3; ++i) {
@@ -374,8 +374,8 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         //         let pos = itemImage.GetPositionWithinWindow();
         //         let fx = pos.x + itemImage.actuallayoutwidth + 5;
         //         let fy = pos.y;
-        //         // $.Msg("pos=" + JSON.stringify(pos));
-        //         // $.Msg("fx=" + fx + " " + "fy=" + fy);
+        //         // //$.Msg("pos=" + JSON.stringify(pos));
+        //         // //$.Msg("fx=" + fx + " " + "fy=" + fy);
         //         this.InventoryMenu.FindChildTraverse("Body").SetPositionInPixels(fx / itemImage.actualuiscale_x, fy / itemImage.actualuiscale_y, 0);
         //         this.InventoryMenu.ToggleClass("ShowInventoryMenu");
         //         this.InventoryMenu.FindChildTraverse("Body").SetAcceptsFocus(true);
@@ -398,10 +398,10 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         for (let iter = 6; iter < 9; ++iter) {
             imageOverlay[iter].visible = canDragInventory == 1 ? false : true;
         }
-        $.Msg("UpdateInventoryOverlay");
+        //$.Msg("UpdateInventoryOverlay");
     }
     UpdateAbilitySell(canUseInventory) {
-        $.Msg("UpdateAbilitySell");
+        //$.Msg("UpdateAbilitySell");
         for (let iter = 0; iter < this.AbilityInventoryList.Count; ++iter) {
             let abilityPanel = this.AbilityInventoryList.Get(iter);
             let abilityImage = abilityPanel.FindChildTraverse("AbilityImage");
@@ -425,7 +425,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         }
     }
     SellInventory() {
-        $.Msg("SellSellSellSellv");
+        //$.Msg("SellSellSellSellv");
         let sellButton = this.InventoryMenu.FindChildTraverse("Sell");
         this.ToggleInventoryMenuWindows();
         $.DispatchEvent("DropInputFocus", sellButton);
@@ -503,7 +503,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
         panel.FindChildTraverse("SummonerAbility").SetHasClass("NotCastAbility", !canCastAbility);
     }
     UpdateShopLevel(shopLevel) {
-       // $.Msg("shopLevel=" + shopLevel);
+       // //$.Msg("shopLevel=" + shopLevel);
         this.ShopLevelImage.SetHasClass("star1", shopLevel == 1);
         this.ShopLevelImage.SetHasClass("star2", shopLevel == 2);
         this.ShopLevelImage.SetHasClass("star3", shopLevel == 3);
@@ -540,7 +540,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
             let health = Entities.GetHealth(iLocalPortraitUnit);
             let healthPercent = parseFloat((health / maxHealth).toFixed(3));
             let healthThinkRegen = Entities.GetHealthThinkRegen(iLocalPortraitUnit);
-            // $.Msg("healthThinkRegen=" + healthThinkRegen);
+            // //$.Msg("healthThinkRegen=" + healthThinkRegen);
             this.HealthLabel.text = health + " / " + maxHealth;
             this.HealthProgress.value = healthPercent;
             this.HealthRegenLabel.text = "+" + healthThinkRegen.toFixed(1);
@@ -654,7 +654,7 @@ class UILowerHudWindow extends GameUI.UIBaseWindow {
             let b = Abilities.GetCooldownLength(itemID);
             let c = Abilities.GetCooldownTime(itemID);
             let d = Abilities.GetCooldownTimeRemaining(itemID);
-            // $.Msg("itemSlot=" + itemSlot + " " + a + "  " + b + " " + c + " " + d);
+            // //$.Msg("itemSlot=" + itemSlot + " " + a + "  " + b + " " + c + " " + d);
         }
     }
     ActiveShopButton(isActive) {

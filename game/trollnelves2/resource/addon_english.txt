@@ -1391,11 +1391,24 @@
 		"DOTA_Tooltip_ability_medusa_split_shot_lua"                             "Split Shot"
 		"DOTA_Tooltip_ability_medusa_split_shot_lua_Description"                 ""
 		
-		"DOTA_Tooltip_ability_convert_gold"						"Exchange of gold for lumber"
+		"DOTA_Tooltip_ability_convert_gold"						"Exchange of gold for lumber LVL 2"
 		"DOTA_Tooltip_ability_convert_gold_Description"			"Automatic exchange of gold for wood when attacking."
 		
-		"DOTA_Tooltip_modifier_troll_warlord_convert_gold"						"Exchange of gold for lumber"
+		"DOTA_Tooltip_modifier_troll_warlord_convert_gold"						"Exchange of gold for lumber LVL 2"
 		"DOTA_Tooltip_modifier_troll_warlord_convert_gold_Description"			"Automatic exchange of gold for wood when attacking."
+
+		"DOTA_Tooltip_Ability_troll_warlord_convert_gold"						"Exchange of gold for lumber LVL 2"
+		"DOTA_Tooltip_Ability_troll_warlord_convert_gold_Description"			"Automatic exchange of gold for wood when attacking."
+
+		"DOTA_Tooltip_ability_convert_gold"						"Exchange of gold for lumber LVL 1"
+		"DOTA_Tooltip_ability_convert_gold_Description"			"Manual exchange of gold for wood throughout the map using troll hut."
+
+		"DOTA_Tooltip_modifier_troll_warlord_cnvrt_manuale"						"Exchange of gold for lumber LVL 1"
+		"DOTA_Tooltip_modifier_troll_warlord_cnvrt_manuale_Description"			"Manual exchange of gold for wood throughout the map using troll hut."
+
+		"DOTA_Tooltip_Ability_troll_warlord_cnvrt_manuale"						"Exchange of gold for lumber LVL 1"
+		"DOTA_Tooltip_Ability_troll_warlord_cnvrt_manuale_Description"			"Manual exchange of gold for wood throughout the map using troll hut."	
+
 
 		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven"                  "Buff Troll"
 		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Max attack speed. +6131 armor. No cooldown skill. +1000 Regenaration."
@@ -1875,7 +1888,7 @@
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4_Description"                         ""
 
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5"                                     "Upgrade To Troll Hut 5"
-		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_Description"                         "Attack speed +500 and reveals the appearance of a troll. Allows you to buy a lumber all over the map."
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_Description"                         "Allows you to buy a lumber all over the map."
 
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_6"                                     "Upgrade To Troll Hut 6"
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_6_Description"                         "Allows you to create a Bear."
@@ -2429,7 +2442,10 @@
 		"DOTA_Tooltip_ability_cm_haste_speed"                                          	  "MOVESPEED: "
 
 		"DOTA_Tooltip_ability_cm_heal_building"                                           "Heal Building"
-		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Use this ability on the building to heal it. Restores 300 Health or 30% - whichever is bigger. For ability cooldown duration the building receives a debuff that makes other angel heals heal 3 times less. "
+		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Use this ability on the building to heal it. Cancels the effect of Desol. "
+		"DOTA_Tooltip_ability_cm_heal_building_heal"                                          "MINIMUM HEAL: "
+		"DOTA_Tooltip_ability_cm_heal_building_percent"                                          "MAXIMUM HEAL: "
+
 
 		"DOTA_Tooltip_ability_invul_ability"                                              "Invulnerability"
 		"DOTA_Tooltip_ability_invul_ability_Description"                                  "Makes this unit invulnerable. "
@@ -2450,6 +2466,9 @@
 		"DOTA_Tooltip_ability_item_blink_datadriven"					  "Blink"
 		"DOTA_Tooltip_ability_item_blink_datadriven_Description"			  "<br>Instantly teleports a short distance."
 		"DOTA_Tooltip_ability_item_blink_datadriven_max_blink_range"		  "RANGE: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_up1"		  "RANGE UPGRATE 1: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_up2"		  "RANGE UPGRATE 2: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_up3"		  "RANGE UPGRATE 3: "
 
 		"DOTA_Tooltip_ability_item_root_ability"                                          "Root"
 		"DOTA_Tooltip_ability_item_root_ability_Description"                              "<br>Causes the troll to become numb."
@@ -2970,7 +2989,7 @@
 		"DOTA_Tooltip_ability_item_stormcrafter_datadriven_Description"                                    "Stop Animation of units. Use for increse your fps! Range: global.<br>Cooldown: 5 sec."
 
 		"DOTA_Tooltip_Ability_smoke_screen_datadriven"												"Smoke"
-		"DOTA_Tooltip_Ability_smoke_screen_datadriven_Description"                               	"Grants a -%move_slow%  slow for %duration% seconds. Wolves have a %miss_chance%% miss chance."
+		"DOTA_Tooltip_Ability_smoke_screen_datadriven_Description"                               	"Grants a -%move_slow%  slow for %duration% seconds. Troll have a %miss_chance%% miss chance."
 		"DOTA_Tooltip_Ability_smoke_screen_datadriven_radius"										"RADIUS: "
 
 		
@@ -3647,6 +3666,8 @@ The effect is issued for 1 year. Your support helps the game develop."
 		"error_limit_queue"																	"Building queue limit exceeded. Maximum 20 buildings."
 		"error_limit_queue_wisp"															"Building queue limit exceeded."
 		"error_take_normal_builder"															"The unit does not have this ability!<br>Choose the unit you want!"
+		"error_not_kick_normal"																"You can't kick a player who has a PTS greater than -499"
+		"error_not_send_money_block"														"The player has disabled resource transfer."
 
 		"trigs1"																			"There is never too much gold!"
 		"trigs2"																			"Waiting pays the cost!"
@@ -3696,37 +3717,7 @@ The effect is issued for 1 year. Your support helps the game develop."
         "DOTA_Chat_PlayerKilledAssist"              ""
         "DOTA_Chat_PlayerKilledAssistNearby"        ""
 		"DOTA_Chat_PlayerKilledAssistNearbySingle"  ""
-		
-		"elf_tips1"																		"<br><br><b>Elf Tips</b>
-		<br>·You can build tent at the very start of the game near the troll base while you go search for a base. That way you will have a head start, just don't finish building it otherwise you won't be able to destroy it since the troll will be nearby. 
-		<br>·Build your rock in the middle of the steps
-		"
-		"elf_tips2"																		"·You can use glyph on yourself to troll the troll for 10seconds
-					<br>·Good towers early on can scare the troll away for good and give you time to dig dem gold mines. 2 towers are enough at the beginning!  Just upgrade it! 
-					<br>·Don't foget to use your abilities! It's better to start with Root since it has a lower cooldown than Glyph. 
-					<br>·Use glyph not only to save yourself from the desperate situation but to also prevent troll from farming
-					<br>·Find a friend that will co-operate with you and build duo base. You will be two times as strong. 
-					<br>·Right click the repair ability for an autocast repair, it will repair the closest building to you that has a health deficit! "
-		"elf_tips3"																	"·Share your resources. If you have extra resources share them! Teamwork is needed in this game so the troll doesn't get farmed too fast! "
-		
-		"troll_tips"																		"<b>Troll/Wolf Tips</b>
-					<br>·Make sure you don't die. If you die even once it's game over! 
-					<br>·Every attack gives you gold depending on how much damage you did
-					<br>·Buy items to become stronger! 
-					<br>·You should replace items by selling them and buying better ones
-					<br>·Always use your 1st skill (Reveal) to avoid wasting time finding Elves!. 
-					<br>·Try to find enemies which do not have a lot of strong towers so it is easier to farm up
-					<br>·Don't forget to upgrade your hut! Not only it will help you in a bad time, but it's also really good if you have wolves on your team. 
-					<br>·You can use teleport and invis together. That way you will be able to teleport while being invisible. 
-					<br>·Have fun trolling these small elves. 
-					"
-		"angel_tips"																		"<br><br><b>Angel Tips</b>
-		<br/>·Donate gold to those who really need it, like the Elf who got attacked by the Troll at the beginning.. 
-		<br/>·Don't let the Troll kill you! You've got lots of gold in your hands.                            
-		<br/>·Always empty your pocket!  Give gold to players because the troll can steal it!               
-        <br/>·You can assist players under attack by healing their wall or stunning the troll.             
-        <br/>·RUN RUN RUN When the troll/wolf comes! 
-		"
+
 		"PlayerInfo1"			"AVG SCORE: "
 		"PlayerInfo2"			"COUNT GAME: "
 		"PlayerInfo3"			"WIN RATE: "
@@ -3757,8 +3748,6 @@ The effect is issued for 1 year. Your support helps the game develop."
 		"Statistics_Button"		"Statistics"
 		"fps_on"				"ON"
 		"fps_off"				"OFF"
-		"quest_kill_troll"		"fdsfdskfdsfdsf dsf dsf dsf dsf dsf dsf dsf sd fs 
-fdsf dsf dsf dsf dsf sdf sdf sdf sdf sdf sdf "
 
 		"Information_title"						"GUIDE"
 		"button_title1"							"FIRST MINUTE"
@@ -4011,10 +4000,18 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		
 		"troll_spell_gold_hit"                            		 "Gold Hit"
         "troll_spell_gold_hit_description"                       "Active: Adds gold to hit."
-        "troll_spell_gold_hit_description_level_1"               "+1 Gold * Map Speed"
-        "troll_spell_gold_hit_description_level_2"               "+2 Gold  * Map Speed"
-        "troll_spell_gold_hit_description_level_3"               "+3 Gold  * Map Speed"
+        "troll_spell_gold_hit_description_level_1"               "+1 Gold * Map Speed<br>Incoming damage: +400%<br>Duration: 5<br>CD: 150"
+        "troll_spell_gold_hit_description_level_2"               "+2 Gold  * Map Speed<br>Incoming damage: +400%<br>Duration: 10<br>CD: 100"
+        "troll_spell_gold_hit_description_level_3"               "+3 Gold  * Map Speed<br>Incoming damage: +400%<br>Duration: 15<br>CD: 60"
 		"DOTA_Tooltip_modifier_troll_spell_gold_hit"			 "Active: Adds gold to hit."
+
+
+		"DOTA_Tooltip_ability_troll_spell_gold_hit"                                                "Gold Hit"
+		"DOTA_Tooltip_ability_troll_spell_gold_hit_Description"                                     "Adds gold to hit."
+		"DOTA_Tooltip_ability_troll_spell_gold_hit_duration"                 "DURATION: "
+		"DOTA_Tooltip_ability_troll_spell_gold_hit_damage"                 "INCOMING DAMAGE: "
+
+		
 
 		"troll_spell_hp_reg"                            		 "HP Regen"
         "troll_spell_hp_reg_description"                       "Passive: Increases the speed of regeneration."
@@ -4071,13 +4068,21 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_silence_target_description_level_2"               "Duration: 16<br>CD: 200"
         "troll_spell_silence_target_description_level_3"               "Duration: 24<br>CD: 150"
 		"DOTA_Tooltip_modifier_troll_spell_silence_target"			   "Active: Target Silence"
-				
+
+		"DOTA_Tooltip_ability_troll_spell_silence_target"                                                "Target Silence"
+		"DOTA_Tooltip_ability_troll_spell_silence_target_Description"                                     "Target Silence"
+		"DOTA_Tooltip_ability_troll_spell_silence_target_time_dur"                 "DURATION: "
+		
 		"troll_spell_silence_area"                            		 "Global Silince"
         "troll_spell_silence_area_description"                       "Active: Global Silence"
         "troll_spell_silence_area_description_level_1"               "Duration: 5<br>CD: 300"
         "troll_spell_silence_area_description_level_2"               "Duration: 8<br>CD: 250"
         "troll_spell_silence_area_description_level_3"               "Duration: 12<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_silence_area"			 "Active: Global Silence"
+
+		"DOTA_Tooltip_ability_troll_spell_silence_area"                                                "Global Silince"
+		"DOTA_Tooltip_ability_troll_spell_silence_area_Description"                                     "Global Silence"
+		"DOTA_Tooltip_ability_troll_spell_silence_area_tooltip_duration"                 "DURATION: "
 				
 		"troll_spell_stun_target"                            		 "Target Stun"
         "troll_spell_stun_target_description"                       "Active: Target Stun"
@@ -4085,6 +4090,10 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_stun_target_description_level_2"               "Duration: 2<br>CD: 250"
         "troll_spell_stun_target_description_level_3"               "Duration: 4<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_stun_target"			 "Active: Target Stun"
+
+		"DOTA_Tooltip_ability_troll_spell_stun_target"                                                "Target Stun"
+		"DOTA_Tooltip_ability_troll_spell_stun_target_Description"                                     "Target Stun"
+		"DOTA_Tooltip_ability_troll_spell_stun_target_bolt_stun_duration"                 "DURATION: "
 				
 		"troll_spell_haste"                            		 "Haste"
         "troll_spell_haste_description"                       "Active: Increases movespeed"
@@ -4092,132 +4101,127 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_haste_description_level_2"               "Duration: 15<br>CD: 250<br>Evasion: 4%"
         "troll_spell_haste_description_level_3"               "Duration: 30<br>CD: 200<br>Evasion: 8%"
 		"DOTA_Tooltip_modifier_troll_spell_haste"			 "Active: Increases movespeed"
+
+		"DOTA_Tooltip_ability_troll_spell_haste"                                                "Haste"
+		"DOTA_Tooltip_ability_troll_spell_haste_Description"                                     "Increases movespeed"
+		"DOTA_Tooltip_ability_troll_spell_haste_duration"                 "DURATION: "
+		"DOTA_Tooltip_ability_troll_spell_haste_eva"                 "EVASION: "
+		"DOTA_Tooltip_ability_troll_spell_haste_SPEED"                 "MOVESPEED: "
 				
-		"troll_spell_ward"                            		 ""
-        "troll_spell_ward_description"                       ""
-        "troll_spell_ward_description_level_1"               ""
-        "troll_spell_ward_description_level_2"               ""
-        "troll_spell_ward_description_level_3"               ""
-		"DOTA_Tooltip_modifier_troll_spell_ward"			 ""
+		"troll_spell_ward"                            		 "Ward"
+        "troll_spell_ward_description"                       "Active: Creates a Ward that provides vision"
+        "troll_spell_ward_description_level_1"               "Duration: 60<br>CD: 60"
+        "troll_spell_ward_description_level_2"               "Duration: 120<br>CD: 60"
+        "troll_spell_ward_description_level_3"               "Duration: 180<br>CD: 60"
+		"DOTA_Tooltip_modifier_troll_spell_ward"			 "Active: Creates a Ward that provides vision"
+
+		"DOTA_Tooltip_ability_troll_spell_ward"                                                "Ward"
+		"DOTA_Tooltip_ability_troll_spell_ward_Description"                                     "Creates a Ward that provides vision"
+		"DOTA_Tooltip_ability_troll_spell_ward_duration"                 "DURATION: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_bkb"                            		"BKB"
+        "troll_spell_bkb_description"                       "Active: Immunity to magic"
+        "troll_spell_bkb_description_level_1"               "Duration: 1<br>CD: 300"
+        "troll_spell_bkb_description_level_2"               "Duration: 2<br>CD: 250"
+        "troll_spell_bkb_description_level_3"               "Duration: 3<br>CD: 200"
+		"DOTA_Tooltip_modifier_troll_spell_bkb"			 "Active: Immunity to magic"
+
+		"DOTA_Tooltip_ability_troll_spell_bkb"                                                "BKB"
+		"DOTA_Tooltip_ability_troll_spell_bkb_Description"                                     "Immunity to magic"
+		"DOTA_Tooltip_ability_troll_spell_bkb_duration"                 "DURATION: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_slow_target"                            		 "Target Slow"
+        "troll_spell_slow_target_description"                       "Active: Slows the MS of the selected target"
+        "troll_spell_slow_target_description_level_1"               "MS: -80<br>Duration: 10<br>CD: 120"
+        "troll_spell_slow_target_description_level_2"               "MS: -90<br>Duration: 15<br>CD: 80"
+        "troll_spell_slow_target_description_level_3"               "MS: -100<br>Duration: 20<br>CD: 60"
+		"DOTA_Tooltip_modifier_troll_spell_slow_target"			 "Active: Slows the MS of the selected target"
+
+		"DOTA_Tooltip_ability_troll_spell_slow_target"                                                "Target Slow"
+		"DOTA_Tooltip_ability_troll_spell_slow_target_Description"                                     "Slows the MS of the selected target"
+		"DOTA_Tooltip_ability_troll_spell_slow_target_duration"                 "DURATION: "
+		"DOTA_Tooltip_ability_troll_spell_slow_target_speed"                 "REDUCE MS: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_slow_area"                            		 "Area Slow"
+        "troll_spell_slow_area_description"                       "Active: Slows MS in an area"
+        "troll_spell_slow_area_description_level_1"               "MS: -50<br>Miss chance: 10%<br>Duration: 2<br>CD: 300"
+        "troll_spell_slow_area_description_level_2"               "MS: -60<br>Miss chance: 20%<br>Duration: 5<br>CD: 250"
+        "troll_spell_slow_area_description_level_3"               "MS: -70<br>Miss chance: 30%<br>Duration: 10<br>CD: 200"
+		"DOTA_Tooltip_modifier_troll_spell_slow_area"			 "Active: Slows MS in an area"
+
+		"DOTA_Tooltip_ability_troll_spell_slow_area"                                                "Area Slow"
+		"DOTA_Tooltip_ability_troll_spell_slow_area_Description"                                     "Slows MS in an area"
+		"DOTA_Tooltip_ability_troll_spell_slow_area_duration"                 "DURATION: "
+		"DOTA_Tooltip_ability_troll_spell_slow_area_movement_slow"              "REDUCE MS: "
+		"DOTA_Tooltip_ability_troll_spell_slow_area_miss_chance"                 "MISS: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_invis"                            		 "Invis"
+        "troll_spell_invis_description"                       "Active: Gives invisibility"
+        "troll_spell_invis_description_level_1"               "Duration: 20<br>CD: 60"
+        "troll_spell_invis_description_level_2"               "Duration: 40<br>CD: 60"
+        "troll_spell_invis_description_level_3"               "Duration: 60<br>CD: 60"
+		"DOTA_Tooltip_modifier_troll_spell_invis"			 "Active: Gives invisibility"
+
+		"DOTA_Tooltip_ability_troll_spell_invis"                                                "Invis"
+		"DOTA_Tooltip_ability_troll_spell_invis_Description"                                     "Gives invisibility"
+		"DOTA_Tooltip_ability_troll_spell_invis_duration"                 "DURATION: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_evasion"                            		 "Evasion"
+        "troll_spell_evasion_description"                       "Active: Gives 100% evasion"
+        "troll_spell_evasion_description_level_1"               "Duration: 2<br>CD: 300"
+        "troll_spell_evasion_description_level_2"               "Duration: 3<br>CD: 250"
+        "troll_spell_evasion_description_level_3"               "Duration: 5<br>CD: 200"
+		"DOTA_Tooltip_modifier_troll_spell_evasion"			 "Active: Gives 100% evasion"
+
+		"DOTA_Tooltip_ability_troll_spell_evasion"                                                "Evasion"
+		"DOTA_Tooltip_ability_troll_spell_evasion_Description"                                     "Gives 100% evasion"
+		"DOTA_Tooltip_ability_troll_spell_evasion_duration"                 "DURATION: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_atkspeed"                            		 "Attack Speed"
+        "troll_spell_atkspeed_description"                       "Active: Gives Attack Speed"
+        "troll_spell_atkspeed_description_level_1"               "Incoming damage: +200%<br>Duration: 2<br>CD: 300"
+        "troll_spell_atkspeed_description_level_2"               "Incoming damage: +200%<br>Duration: 3<br>CD: 250"
+        "troll_spell_atkspeed_description_level_3"               "Incoming damage: +200%<br>Duration: 5<br>CD: 200"
+		"DOTA_Tooltip_modifier_troll_spell_atkspeed"			 "Active: Gives Attack Speed"
+
+		"DOTA_Tooltip_ability_troll_spell_atkspeed"                                                "Attack Speed"
+		"DOTA_Tooltip_ability_troll_spell_atkspeed_Description"                                     "Gives Attack Speed"
+		"DOTA_Tooltip_ability_troll_spell_atkspeed_duration"                 "DURATION: "
+		"DOTA_Tooltip_ability_troll_spell_atkspeed_damage"                 "IMCOMMING DAMAGE: "
+		"DOTA_Tooltip_ability_troll_spell_atkspeed_SPEED"                 "ATTAK SPEED: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_wolf"                            		 "Mini wolf"
+        "troll_spell_wolf_description"                       "Active: Creates a wolf"
+        "troll_spell_wolf_description_level_1"               "HP: 50<br>MS:300<br>CD: 300"
+        "troll_spell_wolf_description_level_2"               "HP: 100<br>MS:340<br>CD: 150"
+        "troll_spell_wolf_description_level_3"               "HP: 200<br>MS:380<br>CD: 60"
+		"DOTA_Tooltip_modifier_troll_spell_wolf"			 "Active: Creates a wolf"
+
+		"DOTA_Tooltip_ability_troll_spell_wolf"                                                "Mini wolf"
+		"DOTA_Tooltip_ability_troll_spell_wolf_Description"                                     "Creates a wolf"
+		"DOTA_Tooltip_ability_troll_spell_wolf_bear_hp"                 "HP: "
+		"DOTA_Tooltip_ability_troll_spell_wolf_ms"                 "MS: "
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_reveal"                            		"Additional Reveal"
+        "troll_spell_reveal_description"                       "Passive: Adds an additional Reveal"
+        "troll_spell_reveal_description_level_1"               "Reveal +1"
+        "troll_spell_reveal_description_level_2"               "Reveal +2"
+        "troll_spell_reveal_description_level_3"               "Reveal +3"
+		"DOTA_Tooltip_modifier_troll_spell_reveal"			 "Passive: Adds an additional Reveal"
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_night_buff"                            	"Night Buff"
+        "troll_spell_night_buff_description"                    "Passive: Increases stats at night"
+        "troll_spell_night_buff_description_level_1"            ""
+        "troll_spell_night_buff_description_level_2"            ""
+        "troll_spell_night_buff_description_level_3"            ""
+		"DOTA_Tooltip_modifier_troll_spell_night_buff"			"Passive: Increases stats at night"
 				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
-		""                            		 ""
-        "_description"                       ""
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"troll_spell_gold_wisp"                            		 "Anti block"
+        "troll_spell_gold_wisp_description"                       "Passive: Splash attack on Gold Wisp and Workers 1-3 lvl when killing Tower 1, it grants running speed"
+        "troll_spell_gold_wisp_description_level_1"               "Radius: 128<br>Duration: 5"
+        "troll_spell_gold_wisp_description_level_2"               "Radius: 160<br>Duration: 10"
+        "troll_spell_gold_wisp_description_level_3"               "Radius: 192<br>Duration: 25"
+		"DOTA_Tooltip_modifier_troll_spell_gold_wisp"			 "Passive: Splash attack on Gold Wisp and Workers 1-3 when killing Tower 1, it grants MS"
 				
 		""                            		 ""
         "_description"                       ""
@@ -4267,6 +4271,138 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "_description_level_2"               ""
         "_description_level_3"               ""
 		"DOTA_Tooltip_modifier_"			 ""
+				
+		""                            		 ""
+        "_description"                       ""
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 ""
+				
+		""                            		 ""
+        "_description"                       ""
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 ""
+				
+		""                            		 ""
+        "_description"                       ""
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 ""
+				
+		""                            		 ""
+        "_description"                       ""
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 ""
+				
+		""                            		 ""
+        "_description"                       ""
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 ""
+				
+		""                            		 ""
+        "_description"                       ""
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 ""
+				
+		""                            		 ""
+        "_description"                       ""
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+		"elf_tips1"																		"<br><br><b>Elf Tips</b>
+		<br>·You can build tent at the very start of the game near the troll base while you go search for a base. That way you will have a head start, just don't finish building it otherwise you won't be able to destroy it since the troll will be nearby. 
+		<br>·Build your rock in the middle of the steps
+		"
+		"elf_tips2"																		"·You can use glyph on yourself to troll the troll for 10seconds
+					<br>·Good towers early on can scare the troll away for good and give you time to dig dem gold mines. 2 towers are enough at the beginning!  Just upgrade it! 
+					<br>·Don't foget to use your abilities! It's better to start with Root since it has a lower cooldown than Glyph. 
+					<br>·Use glyph not only to save yourself from the desperate situation but to also prevent troll from farming
+					<br>·Find a friend that will co-operate with you and build duo base. You will be two times as strong. 
+					<br>·Right click the repair ability for an autocast repair, it will repair the closest building to you that has a health deficit! "
+		"elf_tips3"																	"·Share your resources. If you have extra resources share them! Teamwork is needed in this game so the troll doesn't get farmed too fast! "
+		
+		"troll_tips"																		"<b>Troll/Wolf Tips</b>
+					<br>·Make sure you don't die. If you die even once it's game over! 
+					<br>·Every attack gives you gold depending on how much damage you did
+					<br>·Buy items to become stronger! 
+					<br>·You should replace items by selling them and buying better ones
+					<br>·Always use your 1st skill (Reveal) to avoid wasting time finding Elves!. 
+					<br>·Try to find enemies which do not have a lot of strong towers so it is easier to farm up
+					<br>·Don't forget to upgrade your hut! Not only it will help you in a bad time, but it's also really good if you have wolves on your team. 
+					<br>·You can use teleport and invis together. That way you will be able to teleport while being invisible. 
+					<br>·Have fun trolling these small elves. 
+					"
+		"angel_tips"																		"<br><br><b>Angel Tips</b>
+		<br/>·Donate gold to those who really need it, like the Elf who got attacked by the Troll at the beginning.. 
+		<br/>·Don't let the Troll kill you! You've got lots of gold in your hands.                            
+		<br/>·Always empty your pocket!  Give gold to players because the troll can steal it!               
+        <br/>·You can assist players under attack by healing their wall or stunning the troll.             
+        <br/>·RUN RUN RUN When the troll/wolf comes! 
+		"
 		
 	}
 }

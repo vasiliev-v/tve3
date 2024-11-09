@@ -35,61 +35,62 @@ function SpiritBearSpawn( event )
 	if synergyAbility == nil then
 		synergyAbility = caster:FindAbilityByName("lone_druid_synergy")
 	end
-	if caster.bear and IsValidEntity(caster.bear) and not caster.bear:IsAlive() then
-		caster.bear:RespawnUnit()
-		-- caster.bear:AddNewModifier(caster.bear, nil, "modifier_death_armor_bear", {})
-		FindClearSpaceForUnit(caster.bear, origin, true)
-		if caster.bear:HasModifier("modifier_bear_synergy") then
-			caster.bear:RemoveModifierByName("modifier_bear_synergy")
-			synergyAbility:ApplyDataDrivenModifier(caster, caster.bear, "modifier_bear_synergy", nil)
+	if caster.wolfperk and IsValidEntity(caster.wolfperk) and not caster.wolfperk:IsAlive() then
+		caster.wolfperk:RespawnUnit()
+		-- caster.wolfperk:AddNewModifier(caster.wolfperk, nil, "modifier_death_armor_bear", {})
+		FindClearSpaceForUnit(caster.wolfperk, origin, true)
+		if caster.wolfperk:HasModifier("modifier_bear_synergy") then
+			caster.wolfperk:RemoveModifierByName("modifier_bear_synergy")
+			synergyAbility:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_bear_synergy", nil)
 		end
 		if ability ~= nil then
-			ability:ApplyDataDrivenModifier(caster, caster.bear, "modifier_spirit_bear", nil)
+			ability:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_spirit_bear", nil)
 		end
 		
 		-- Apply the synergy buff if the ability exists
 		if synergyAbility ~= nil then
-			synergyAbility:ApplyDataDrivenModifier(caster, caster.bear, "modifier_bear_synergy", nil)
+			synergyAbility:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_bear_synergy", nil)
 		end
 		return
 	end
 	
 	-- Check if the bear is alive, heals and spawns them near the caster if it is
-	if caster.bear and IsValidEntity(caster.bear) and caster.bear:IsAlive() then
-		FindClearSpaceForUnit(caster.bear, origin, true)
-		caster.bear:SetHealth(caster.bear:GetMaxHealth())
+	if caster.wolfperk and IsValidEntity(caster.wolfperk) and caster.wolfperk:IsAlive() then
+		FindClearSpaceForUnit(caster.wolfperk, origin, true)
+		caster.wolfperk:SetHealth(caster.wolfperk:GetMaxHealth())
 		
 		-- Spawn particle
-		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_lone_druid/lone_druid_bear_spawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.bear)	
+		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_lone_druid/lone_druid_bear_spawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.wolfperk)	
 		
 		-- Re-Apply the synergy buff if we found one
-		if caster.bear:HasModifier("modifier_bear_synergy") then
-			caster.bear:RemoveModifierByName("modifier_bear_synergy")
-			synergyAbility:ApplyDataDrivenModifier(caster, caster.bear, "modifier_bear_synergy", nil)
+		if caster.wolfperk:HasModifier("modifier_bear_synergy") then
+			caster.wolfperk:RemoveModifierByName("modifier_bear_synergy")
+			synergyAbility:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_bear_synergy", nil)
 		end
 	else
 		-- Create the unit and make it controllable
 		SpiritCheckWolf( event )
-		caster.bear = CreateUnitByName(unit_name, origin, true, caster, caster, caster:GetTeamNumber())
-		caster.bear:AddNewModifier(caster.bear, nil, "modifier_invulnerable", {duration = 1})
-		caster.bear:SetControllableByPlayer(player, true)
+		caster.wolfperk = CreateUnitByName(unit_name, origin, true, caster, caster, caster:GetTeamNumber())
+		caster.wolfperk:AddNewModifier(caster.wolfperk, nil, "modifier_invulnerable", {duration = 1})
+		caster.wolfperk:SetControllableByPlayer(player, true)
 		-- Apply the backslash on death modifier
 		if ability ~= nil then
-			ability:ApplyDataDrivenModifier(caster, caster.bear, "modifier_spirit_bear", nil)
+			ability:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_spirit_bear", nil)
 		end
 		
 		-- Apply the synergy buff if the ability exists
 		if synergyAbility ~= nil then
-			synergyAbility:ApplyDataDrivenModifier(caster, caster.bear, "modifier_bear_synergy", nil)
+			synergyAbility:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_bear_synergy", nil)
 		end
-		InitializeBadHero(caster.bear)
+		InitializeBadHero(caster.wolfperk)
 		
-		for i=0, caster.bear:GetAbilityCount()-1 do
-			local ability = caster.bear:GetAbilityByIndex(i)
+		for i=0, caster.wolfperk:GetAbilityCount()-1 do
+			local ability = caster.wolfperk:GetAbilityByIndex(i)
 			if ability then ability:SetLevel(ability:GetMaxLevel()) end
 		end
 		-- Learn its abilities: return lvl 2, entangle lvl 3, demolish lvl 4. By Index
 	end
+	wearables:SetWolf(player)
 end
 
 --[[
@@ -116,21 +117,21 @@ function SpiritBearLevel( event )
 		synergyAbility = caster:FindAbilityByName("lone_druid_synergy")
 	end
 	
-	if caster.bear and caster.bear:IsAlive() then 
+	if caster.wolfperk and caster.wolfperk:IsAlive() then 
 		-- Remove the old bear in its position
-		local origin = caster.bear:GetAbsOrigin()
-		caster.bear:RemoveSelf()
+		local origin = caster.wolfperk:GetAbsOrigin()
+		caster.wolfperk:RemoveSelf()
 		SpiritCheckWolf( event )
 		-- Create the unit and make it controllable
-		caster.bear = CreateUnitByName(unit_name, origin, true, caster, caster, caster:GetTeamNumber())
-		caster.bear:AddNewModifier(caster.bear, nil, "modifier_invulnerable", {duration = 3})
-		caster.bear:SetControllableByPlayer(player, true)
+		caster.wolfperk = CreateUnitByName(unit_name, origin, true, caster, caster, caster:GetTeamNumber())
+		caster.wolfperk:AddNewModifier(caster.wolfperk, nil, "modifier_invulnerable", {duration = 3})
+		caster.wolfperk:SetControllableByPlayer(player, true)
 		-- Apply the backslash on death modifier
-		ability:ApplyDataDrivenModifier(caster, caster.bear, "modifier_spirit_bear", nil)
+		ability:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_spirit_bear", nil)
 		
 		-- Apply the synergy buff if the ability exists
 		if synergyAbility ~= nil then
-			synergyAbility:ApplyDataDrivenModifier(caster, caster.bear, "modifier_bear_synergy", nil)
+			synergyAbility:ApplyDataDrivenModifier(caster, caster.wolfperk, "modifier_bear_synergy", nil)
 		end
 
 	end
@@ -157,7 +158,7 @@ function SpiritCheckWolf( event )
 			local wolf = PlayerResource:GetSelectedHeroEntity(pID)
 			if wolf ~= nil then
 				if wolf:IsWolf() then
-					DebugPrint("in1")
+					--DebugPrint("in1")
 					trollnelves2:ControlUnitForTroll(wolf)
 					return nil
 				end

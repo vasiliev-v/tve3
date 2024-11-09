@@ -6,6 +6,7 @@ require('drop')
 require('error_debug')
 require('settings')
 
+CheckBank = false
 CheckBarak3 = false
 -- A build ability is used (not yet confirmed)
 function Build( event )
@@ -217,6 +218,34 @@ function Build( event )
                 UpdateModel(unit, "models/flag_2.vmdl", 0.5)  
             end
         end
+        if hero:HasModifier("modifier_elf_spell_armor_wall") and string.match(building_name,"rock") then
+            if hero:FindModifierByName("modifier_elf_spell_armor_wall"):GetStackCount() == 1  then
+                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor", {}):SetStackCount(1) 
+            elseif hero:FindModifierByName("modifier_elf_spell_armor_wall"):GetStackCount() == 2 then
+                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor", {}):SetStackCount(2) 
+            elseif hero:FindModifierByName("modifier_elf_spell_armor_wall"):GetStackCount() == 3 then
+                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor", {}):SetStackCount(3) 
+            end
+        end
+        if hero:HasModifier("modifier_elf_spell_tower_damage") and string.match(building_name,"tower") then
+            if hero:FindModifierByName("modifier_elf_spell_tower_damage"):GetStackCount() == 1  then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_dmg", {}):SetStackCount(1) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_damage"):GetStackCount() == 2 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_dmg", {}):SetStackCount(2) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_damage"):GetStackCount() == 3 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_dmg", {}):SetStackCount(3) 
+            end
+        end
+
+        if hero:HasModifier("modifier_elf_spell_tower_range") and string.match(building_name,"tower") then
+            if hero:FindModifierByName("modifier_elf_spell_tower_range"):GetStackCount() == 1  then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_range", {}):SetStackCount(1) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_range"):GetStackCount() == 2 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_range", {}):SetStackCount(2) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_range"):GetStackCount() == 3 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_range", {}):SetStackCount(3) 
+            end
+        end
 
     end)
     
@@ -400,10 +429,10 @@ function UpgradeBuilding( event )
     
     local ability = event.ability
     local skips = GetAbilityKV(ability:GetAbilityName(),"SkipRequirements")
-    DebugPrint("ability:GetAbilityName() " .. ability:GetAbilityName())
+    --DebugPrint("ability:GetAbilityName() " .. ability:GetAbilityName())
     if skips then
         for _, skipUnitName in pairs(skips) do
-            DebugPrint("skipUnitName " .. skipUnitName)
+            --DebugPrint("skipUnitName " .. skipUnitName)
             ModifyStartedConstructionBuildingCount(hero, skipUnitName, 1)
             ModifyCompletedConstructionBuildingCount(hero, skipUnitName, 1)
         end
@@ -754,15 +783,37 @@ function UpgradeBuilding( event )
             end
     end
 
-    if newBuildingName == "bank" and (not CheckBarak3 and not string.match(GetMapName(),"clanwars")) then
+    if newBuildingName == "bank" and (not CheckBank and not string.match(GetMapName(),"clanwars")) then
         if GameRules.Bonus[playerID] == nil then
             GameRules.Bonus[playerID] = 0
         end
-        GameRules.Bonus[playerID] = GameRules.Bonus[playerID] + 5
-        CheckBarak3 = true
-        local roll_chance = RandomFloat(0, 500)
+        GameRules.Bonus[playerID] = GameRules.Bonus[playerID] + 10
+        CheckBank = true
+        local roll_chance = RandomFloat(0, 100)
         local playername = PlayerResource:GetPlayerName(playerID)
 	    GameRules:SendCustomMessageToTeam("<font color='#009900'>"..playername.."</font> built Bank at "..ConvertToTime(GameRules:GetGameTime() - GameRules.startTime).." in X" .. GameRules.MapSpeed .. " mode.", hero:GetTeamNumber(), hero:GetTeamNumber(), hero:GetTeamNumber())
+        if roll_chance <= CHANCE_DROP_GEM_BANK then
+            local spawnPoint = newBuilding:GetAbsOrigin()	
+            local newItem = CreateItem( "item_get_gem", nil, nil )
+            local dropRadius = RandomFloat( 250, 450 )
+            local randRadius = spawnPoint + RandomVector( dropRadius )
+            CreateItemOnPositionForLaunch( randRadius, newItem )
+            newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
+        end
+        if roll_chance <= CHANCE_DROP_GOLD_BANK then
+            local spawnPoint = newBuilding:GetAbsOrigin()	
+            local newItem = CreateItem( "item_get_gold", nil, nil )
+            local dropRadius = RandomFloat( 250, 450 )
+            local randRadius = spawnPoint + RandomVector( dropRadius )
+            CreateItemOnPositionForLaunch( randRadius, newItem )
+            newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
+        end
+    elseif newBuildingName == "barracks_3" and (not CheckBarak3 and not string.match(GetMapName(),"clanwars")) then
+        GameRules.Bonus[playerID] = GameRules.Bonus[playerID] + 5
+        CheckBarak3 = true
+        local roll_chance = RandomFloat(0, 100)
+        local playername = PlayerResource:GetPlayerName(playerID)
+	    GameRules:SendCustomMessageToTeam("<font color='#009900'>"..playername.."</font> built Barracks 3 at "..ConvertToTime(GameRules:GetGameTime() - GameRules.startTime).." in X" .. GameRules.MapSpeed .. " mode.", hero:GetTeamNumber(), hero:GetTeamNumber(), hero:GetTeamNumber())
         if roll_chance <= CHANCE_DROP_GEM_BARRACKS_3 then
             local spawnPoint = newBuilding:GetAbsOrigin()	
             local newItem = CreateItem( "item_get_gem", nil, nil )
@@ -771,9 +822,43 @@ function UpgradeBuilding( event )
             CreateItemOnPositionForLaunch( randRadius, newItem )
             newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
         end
-    elseif newBuildingName == "barracks_3" then
-        local playername = PlayerResource:GetPlayerName(playerID)
-	    GameRules:SendCustomMessageToTeam("<font color='#009900'>"..playername.."</font> built Barracks 3 at "..ConvertToTime(GameRules:GetGameTime() - GameRules.startTime).." in X" .. GameRules.MapSpeed .. " mode.", hero:GetTeamNumber(), hero:GetTeamNumber(), hero:GetTeamNumber())
+        if roll_chance <= CHANCE_DROP_GOLD_BARRACKS_3 then
+            local spawnPoint = newBuilding:GetAbsOrigin()	
+            local newItem = CreateItem( "item_get_gold", nil, nil )
+            local dropRadius = RandomFloat( 250, 450 )
+            local randRadius = spawnPoint + RandomVector( dropRadius )
+            CreateItemOnPositionForLaunch( randRadius, newItem )
+            newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
+        end
+    end
+
+    if hero:HasModifier("modifier_elf_spell_armor_wall") and string.match(newBuildingName,"rock") then
+        if hero:FindModifierByName("modifier_elf_spell_armor_wall"):GetStackCount() == 1  then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_wall_spell_armor", {}):SetStackCount(1) 
+        elseif hero:FindModifierByName("modifier_elf_spell_armor_wall"):GetStackCount() == 2 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_wall_spell_armor", {}):SetStackCount(2) 
+        elseif hero:FindModifierByName("modifier_elf_spell_armor_wall"):GetStackCount() == 3 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_wall_spell_armor", {}):SetStackCount(3) 
+        end
+    end
+    if hero:HasModifier("modifier_elf_spell_tower_damage") and string.match(newBuildingName,"tower") then
+        if hero:FindModifierByName("modifier_elf_spell_tower_damage"):GetStackCount() == 1  then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_dmg", {}):SetStackCount(1) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_damage"):GetStackCount() == 2 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_dmg", {}):SetStackCount(2) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_damage"):GetStackCount() == 3 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_dmg", {}):SetStackCount(3) 
+        end
+    end
+
+    if hero:HasModifier("modifier_elf_spell_tower_range") and string.match(newBuildingName,"tower") then
+        if hero:FindModifierByName("modifier_elf_spell_tower_range"):GetStackCount() == 1  then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_range", {}):SetStackCount(1) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_range"):GetStackCount() == 2 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_range", {}):SetStackCount(2) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_range"):GetStackCount() == 3 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_range", {}):SetStackCount(3) 
+        end
     end
 
     Timers:CreateTimer(buildTime,function()

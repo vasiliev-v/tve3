@@ -27,6 +27,10 @@ function VotekickStart(eventSourceIndex, event)
 		if ctrHeroID:IsAngel() then
 			return 
 		end 
+		if tonumber(GameRules.scores[event.target].elf) + tonumber(GameRules.scores[event.target].troll) >= -499 then
+			SendErrorMessage(event.PlayerID, "error_not_kick_normal")
+        	return 
+		end
 		local countEflVote = 0
 		if ctrHeroID:IsElf() then
 			local elfCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
@@ -193,8 +197,8 @@ function CheckWolfInTeam(hero)
 			local wolf = PlayerResource:GetSelectedHeroEntity(pID)
 			if wolf ~= nil and hero ~= wolf and wolf ~= GameRules.trollHero and GameRules.KickList[pID] == nil then
 				if wolf:IsWolf() then
-					DebugPrintTable(wolf)
-					DebugPrint("ControlUnitForTroll")
+					--DebugPrintTable(wolf)
+					--DebugPrint("ControlUnitForTroll")
 					trollnelves2:ControlUnitForTroll(wolf)
 					return nil
 				end

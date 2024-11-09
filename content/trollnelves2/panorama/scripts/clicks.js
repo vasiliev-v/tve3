@@ -85,13 +85,13 @@ GameUI.SetMouseCallback( function( eventName, arg ) {
   
   if ( eventName === "pressed" || eventName === "doublepressed")
   {
-    // $.Msg("state1 " + state)
+    // //$.Msg("state1 " + state)
     // Builder Clicks
     if (IsBuilder(mainSelected))
-      $.Msg("state2 " + state)
+      //$.Msg("state2 " + state)
       if (LEFT_CLICK)
       {
-        //$.Msg("state3 " + state)
+        ////$.Msg("state3 " + state)
         return (state === "active") ? SendBuildCommand() : OnLeftButtonPressed()
       }
       else if (RIGHT_CLICK)

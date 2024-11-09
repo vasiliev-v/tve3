@@ -11013,12 +11013,12 @@
 		"Level"                                 "1"
 		"HealthBarOffset"                       "200"
 		"AbilityLayout"     "16"
-		"Ability1" 			"monkey_king" //treant_debuff
-		"Ability2" 			"reveal_area"
-		"Ability3" 			"troll_teleport"
-		"Ability4" 			"attack_gold_wisp"
-		"Ability5"    	    "bear_movespeed"
-		"Ability6"    	    "bear_desolator"
+		"Ability1" 			"reveal_area" //treant_debuff
+		"Ability2" 			"troll_teleport"
+		"Ability3" 			"attack_gold_wisp"
+		"Ability4" 			"bear_movespeed"
+		"Ability5"    	    "bear_desolator"
+		"Ability6"    	    ""
 		"Ability7"    	    ""
 		"Ability8"    	    ""
 		"Ability9"    	    ""
@@ -14846,7 +14846,7 @@
 		"Ability4"					"buy_lumber_8"
 		"Ability5"					"sell_lumber_1"
 		"Ability6"					"sell_lumber_8"
-		"Ability7"					"troll_warlord_attack_speed"
+		"Ability7"					"troll_warlord_cnvrt_manuale"
 
 		"TeamGainGold"				"true"
 
@@ -14920,7 +14920,7 @@
 		"Ability4"					"buy_lumber_8"
 		"Ability5"					"sell_lumber_1"
 		"Ability6"					"sell_lumber_8"
-		"Ability7"					"troll_warlord_attack_speed"
+		"Ability7"					"troll_warlord_cnvrt_manuale"
 		"Ability8"					"troll_warlord_convert_gold"
 
 		"TeamGainGold"				"true"
@@ -17938,10 +17938,10 @@
   		//----------------------------------------------------------------
   		"BaseClass"                             "npc_dota_creature"
 		"HasInventory" 				"1" 
-  		"Model"                                 "models/heroes/lycan/summon_wolves.vmdl"
+  		"Model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		"precache"
   		{
-  			"model"                                 "models/heroes/lycan/summon_wolves.vmdl"
+  			"model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		}
   		"ModelScale"                            "1"
   		"Level"                                 "1"
@@ -17950,7 +17950,7 @@
   		"ArmorPhysical"                         "1"
   		"MagicalResistance"                     "0"
   		// Attack
-  		"AttackCapabilities"            		"DOTA_UNIT_CAP_NO_ATTACK"
+  		"AttackCapabilities"            		"DOTA_UNIT_CAP_MELEE_ATTACK"
   		"AttackDamageMin"                       "5"
   		"AttackDamageMax"                       "5"
   		"AttackRate"                            "1.0"
@@ -17968,8 +17968,8 @@
   		"BountyGoldMax"                         "0.0"
   		// Bounds
   		"BoundsHullName"                        "DOTA_HULL_SIZE_SMALL"
-  		"RingRadius"                            "64"
-  		"CollisionSize"                         "64"
+  		"RingRadius"                            "48"
+  		"CollisionSize"                         "48"
   		"FormationRank"                         "0"
   		// Movement
   		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
@@ -18000,10 +18000,10 @@
   		//----------------------------------------------------------------
   		"BaseClass"                             "npc_dota_creature"
 		"HasInventory" 				"1" 
-  		"Model"                                 "models/heroes/lycan/summon_wolves.vmdl"
+  		"Model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		"precache"
   		{
-  			"model"                                 "models/heroes/lycan/summon_wolves.vmdl"
+  			"model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		}
   		"ModelScale"                            "1"
   		"Level"                                 "1"
@@ -18012,7 +18012,7 @@
   		"ArmorPhysical"                         "1"
   		"MagicalResistance"                     "0"
   		// Attack
-  		"AttackCapabilities"            		"DOTA_UNIT_CAP_NO_ATTACK"
+  		"AttackCapabilities"            		"DOTA_UNIT_CAP_MELEE_ATTACK"
   		"AttackDamageMin"                       "5"
   		"AttackDamageMax"                       "5"
   		"AttackRate"                            "1.0"
@@ -18030,8 +18030,8 @@
   		"BountyGoldMax"                         "0.0"
   		// Bounds
   		"BoundsHullName"                        "DOTA_HULL_SIZE_SMALL"
-  		"RingRadius"                            "64"
-  		"CollisionSize"                         "64"
+  		"RingRadius"                            "48"
+  		"CollisionSize"                         "48"
   		"FormationRank"                         "0"
   		// Movement
   		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
@@ -18063,10 +18063,10 @@
   		//----------------------------------------------------------------
   		"BaseClass"                             "npc_dota_creature"
 		"HasInventory" 				"1" 
-  		"Model"                                 "models/heroes/lycan/summon_wolves.vmdl"
+  		"Model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		"precache"
   		{
-  			"model"                                 "models/heroes/lycan/summon_wolves.vmdl"
+  			"model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		}
   		"ModelScale"                            "1"
   		"Level"                                 "1"
@@ -18075,7 +18075,7 @@
   		"ArmorPhysical"                         "1"
   		"MagicalResistance"                     "0"
   		// Attack
-  		"AttackCapabilities"            		"DOTA_UNIT_CAP_NO_ATTACK"
+  		"AttackCapabilities"            		"DOTA_UNIT_CAP_MELEE_ATTACK"
   		"AttackDamageMin"                       "5"
   		"AttackDamageMax"                       "5"
   		"AttackRate"                            "1.0"
@@ -18093,8 +18093,8 @@
   		"BountyGoldMax"                         "0.0"
   		// Bounds
   		"BoundsHullName"                        "DOTA_HULL_SIZE_SMALL"
-  		"RingRadius"                            "64"
-  		"CollisionSize"                         "64"
+  		"RingRadius"                            "48"
+  		"CollisionSize"                         "48"
   		"FormationRank"                         "0"
   		// Movement
   		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"

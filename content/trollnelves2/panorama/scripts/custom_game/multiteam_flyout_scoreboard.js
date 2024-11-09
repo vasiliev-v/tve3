@@ -26,7 +26,7 @@ function setSecondInterval(func, seconds) {
   let g_ScoreboardHandle = null;
   const teamsContainer = $( "#TeamsContainer" );
   if (!ScoreboardUpdater_InitializeScoreboard) {
-    $.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." );
+    //$.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." );
     return;
   }
 

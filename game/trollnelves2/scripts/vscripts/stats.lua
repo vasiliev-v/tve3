@@ -38,7 +38,7 @@ function Stats.SubmitMatchData(winner,callback)
 			if GameRules.rep[pID] == nil then
 				GameRules.rep[pID] = 0
 			end
-			DebugPrint("pID " .. pID )
+			--DebugPrint("pID " .. pID )
 			if GameRules.Bonus[pID] == nil then
 				GameRules.Bonus[pID] = 0
 			end
@@ -140,6 +140,7 @@ function Stats.SubmitMatchData(winner,callback)
 						if not hero:IsTroll() then
 							data.Team = tostring(2)
 						end
+						data.Rep = -2
 					end 
 						
 					if PlayerResource:GetConnectionState(pID) ~= 2 and hero:IsTroll() and PlayerResource:GetTeam(pID) == winner then
@@ -220,20 +221,20 @@ function Stats.SendData(data,callback)
 		return
 	end
 	local encData = json.encode(data)
-	DebugPrint("***********************************************")
-	DebugPrint(GameRules.server)
-	DebugPrint(encData)
-	DebugPrint("***********************************************")
+	--DebugPrint("***********************************************")
+	--DebugPrint(GameRules.server)
+	--DebugPrint(encData)
+	--DebugPrint("***********************************************")
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		DebugPrint("***********************************************")
-		DebugPrint(res.Body)
-		DebugPrint("Response code: " .. res.StatusCode)
-		DebugPrint("***********************************************")
+		--DebugPrint("***********************************************")
+		--DebugPrint(res.Body)
+		--DebugPrint("Response code: " .. res.StatusCode)
+		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error connecting", 1, 1)
-			DebugPrint("Error connecting")
+			--DebugPrint("Error connecting")
 		end
 		
 		if callback then
@@ -245,12 +246,12 @@ function Stats.SendData(data,callback)
 end
 
 function Stats.RequestData(obj, pId, callback)
-	DebugPrint("***********RequestData*************************")
+	--DebugPrint("***********RequestData*************************")
 	
 	GameRules.scores[pId] = {elf = 0, troll = 0}
 	GameRules.scores[pId].elf = 0
 	GameRules.scores[pId].troll = 0
-	DebugPrintTable(obj)
+	--DebugPrintTable(obj)
 	local nick = tostring(PlayerResource:GetPlayerName(pId))
 	local message = nick .. " is not in the rating!"
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pId))
@@ -291,18 +292,18 @@ function Stats.RequestData(obj, pId, callback)
 end
 
 function Stats.RequestRep(obj, pId, callback)
-	DebugPrint("***********RequestRep*************************")
+	--DebugPrint("***********RequestRep*************************")
 	
 	GameRules.rep[pId] = 0
 	GameRules.GetRep[pId] = 0
-	DebugPrintTable(obj)
+	--DebugPrintTable(obj)
 	local nick = tostring(PlayerResource:GetPlayerName(pId))
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pId))
 	PoolTable["10"]["0"] = "0"
 	if #obj > 0 then
 		if obj[1].gold ~= nil and #obj == 1 then
 			PoolTable["10"]["0"] = obj[1].gold 
-			DebugPrint("obj[1].gold " .. obj[1].gold )
+			--DebugPrint("obj[1].gold " .. obj[1].gold )
 			GameRules.GetRep[pId] = obj[1].gold 
 		end
 	end
@@ -321,17 +322,17 @@ function Stats.RequestDataTop10(idTop, callback)
 		return
 	end
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
-	DebugPrint("***********************************************")
+	--DebugPrint("***********************************************")
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
-			DebugPrint("Connection failed! Code: ".. res.StatusCode)
-			DebugPrint(res.Body)
+			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
+			--DebugPrint(res.Body)
 			return -1
 		end
 		
 		local obj,pos,err = json.decode(res.Body)
 		--DeepPrintTable(obj)
-		DebugPrint("***********************************************")
+		--DebugPrint("***********************************************")
 		top:OnLoadTop(obj,idTop)
 		---CustomNetTables:SetTableValue("stats", tostring( pId ), { steamID = obj.steamID, score = obj.score })
 		return obj
@@ -345,20 +346,20 @@ end
 	function Stats.RequestXp(pId, callback)
 	local req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "xp/" .. tostring(PlayerResource:GetSteamID(pId)))
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
-	DebugPrint("***********************************************")
+	--DebugPrint("***********************************************")
 	
 	GameRules.xp[pId] = 0
 	
 	req:Send(function(res)
 	if res.StatusCode ~= 200 then
-	DebugPrint("Connection failed! Code: ".. res.StatusCode)
-	DebugPrint(res.Body)
+	--DebugPrint("Connection failed! Code: ".. res.StatusCode)
+	--DebugPrint(res.Body)
 	return -1
 	end
 	local obj,pos,err = json.decode(res.Body)
-	DebugPrint(obj.steamID)
-	DebugPrint("***********************************************"  .. #obj)
-	DebugPrintTable(obj)
+	--DebugPrint(obj.steamID)
+	--DebugPrint("***********************************************"  .. #obj)
+	--DebugPrintTable(obj)
 	if #obj > 0 then
 	GameRules.xp[pId] = obj[2].score
 	end

@@ -49,12 +49,12 @@
  
 	
 	<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/dota_hud_chat_wheel.xml" />	
-	
 	<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/rewards.xml" />	
- 
 	<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/information.xml" />	
-	
 	<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/spell_shop/spell_shop.xml" /> 
+	
+	<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/battlepass.xml" /> 
+	<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/day_quest.xml" />	
 	
 
 	<!--  
@@ -62,8 +62,7 @@
 	
 
 
-	<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/battlepass.xml" /> 
-	<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/day_quest.xml" />	
+
 
 	
 <CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/spell_temple/spell_temple.xml" /> 

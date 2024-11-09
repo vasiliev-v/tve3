@@ -75,6 +75,10 @@ function trollnelves2:_Inittrollnelves2()
  mode:SetGiveFreeTPOnDeath(false)
  mode:SetTPScrollSlotItemOverride("item_anti_angel")
 
+ mode:SetDaynightCycleAdvanceRate(1)
+ mode:SetDaynightCycleDisabled(false)
+ GameRules:SetTimeOfDay(0.25)
+
 
 -- Remove TP Scrolls
 --[[ 
@@ -154,7 +158,7 @@ end, self)
   local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
   math.randomseed(tonumber(timeTxt))
   
-  DebugPrint('[TROLLNELVES2] Done loading trollnelves2!\n\n')
+  --DebugPrint('[TROLLNELVES2] Done loading trollnelves2!\n\n')
 end
 
 -- This function is called as the first player loads and sets up the trollnelves2 parameters
@@ -181,27 +185,50 @@ function trollnelves2:ExperienceFilter( kv )
     end
     return true
 end
-
+local getGold = {}
 function trollnelves2:DamageFilter( kv )
   if kv.entindex_attacker_const ~= nil then
     local heroAttacker = EntIndexToHScript(kv.entindex_attacker_const)
     local heroKilled = EntIndexToHScript(kv.entindex_victim_const)
     local team = heroAttacker:GetTeamNumber()
+    local OwnHeroAtacker = PlayerResource:GetSelectedHeroEntity(heroAttacker:GetPlayerOwnerID())
+    local OwnHeroKilled = PlayerResource:GetSelectedHeroEntity(heroKilled:GetPlayerOwnerID())
   
     if string.match(heroKilled:GetUnitName(), "wisp") and team == DOTA_TEAM_BADGUYS then
       kv.damage = 10
     end
-    
 
     if string.match(GetMapName(),"clanwars") then
-      local OwnHeroAtacker = PlayerResource:GetSelectedHeroEntity(heroAttacker:GetPlayerOwnerID())
-      local OwnHeroKilled = PlayerResource:GetSelectedHeroEntity(heroKilled:GetPlayerOwnerID())
       if OwnHeroAtacker and OwnHeroKilled then
         if OwnHeroAtacker:IsElf() and OwnHeroKilled:IsElf() and OwnHeroAtacker ~= OwnHeroKilled then
           kv.damage = 0
         end
       end
     end
+
+    if OwnHeroAtacker:HasModifier("modifier_elf_spell_damage_gold") and 
+    ((GameRules.MapSpeed == 1 and  GameRules:GetGameTime() - GameRules.startTime <= 1800) or 
+    (GameRules.MapSpeed == 2 and  GameRules:GetGameTime() - GameRules.startTime <= 900) or 
+    (GameRules.MapSpeed == 3 and  GameRules:GetGameTime() - GameRules.startTime <= 300))
+    then
+      if getGold[heroAttacker:GetPlayerOwnerID()] == nil then
+        getGold[heroAttacker:GetPlayerOwnerID()] = 0
+      end
+			if OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 1  then
+				getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] + kv.damage * 0.04
+			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 2 then
+				getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] + kv.damage * 0.08 
+			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 3 then
+				getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] + kv.damage * 0.15
+			end
+      local goldToGive = math.floor(getGold[heroAttacker:GetPlayerOwnerID()])
+      if goldToGive >= 1 then
+        PlayerResource:ModifyGold(OwnHeroAtacker, goldToGive, true)
+        getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] - goldToGive
+      end
+		end
+
+
 
     return true
   end

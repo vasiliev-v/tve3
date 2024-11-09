@@ -755,12 +755,28 @@
 		
 		"DOTA_Tooltip_ability_medusa_split_shot_lua"                             "Split Shot"
 		"DOTA_Tooltip_ability_medusa_split_shot_lua_Description"                 "Атакует неограниченноеколичество целей за раз"
-		
-		"DOTA_Tooltip_ability_troll_warlord_convert_gold"						"Exchange of gold for lumber"
-		"DOTA_Tooltip_ability_troll_warlord_convert_gold_Description"			"Автоматический перевод золота в дерево при атаке."
-		
+
 		"DOTA_Tooltip_modifier_convert_gold"						"Exchange of gold for lumber"
 		"DOTA_Tooltip_modifier_convert_gold_Description"			"Автоматический перевод золота в дерево при атаке."
+
+		"DOTA_Tooltip_ability_convert_gold"						"Exchange of gold for lumber LVL 2"
+		"DOTA_Tooltip_ability_convert_gold_Description"			"Automatic exchange of gold for wood when attacking."
+		
+		"DOTA_Tooltip_modifier_troll_warlord_convert_gold"						"Exchange of gold for lumber LVL 2"
+		"DOTA_Tooltip_modifier_troll_warlord_convert_gold_Description"			"Автоматический перевод золота в дерево при атаке."
+
+		"DOTA_Tooltip_Ability_troll_warlord_convert_gold"						"Exchange of gold for lumber LVL 2"
+		"DOTA_Tooltip_Ability_troll_warlord_convert_gold_Description"			"Автоматический перевод золота в дерево при атаке.."
+
+		"DOTA_Tooltip_ability_convert_gold"						"Exchange of gold for lumber LVL 1"
+		"DOTA_Tooltip_ability_convert_gold_Description"			"Ручной обмен золота на дерево по всей карте с помощью troll hut."
+
+		"DOTA_Tooltip_modifier_troll_warlord_cnvrt_manuale"						"Exchange of gold for lumber LVL 1"
+		"DOTA_Tooltip_modifier_troll_warlord_cnvrt_manuale_Description"			"Ручной обмен золота на дерево по всей карте с помощью troll hut."
+
+		"DOTA_Tooltip_Ability_troll_warlord_cnvrt_manuale"						"Exchange of gold for lumber LVL 1"
+		"DOTA_Tooltip_Ability_troll_warlord_cnvrt_manuale_Description"			"Ручной обмен золота на дерево по всей карте с помощью troll hut."	
+		
 
 		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven"                  "Buff Troll"
 		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Максимальная скорость атаки. +6131 armor. Нет КД у скиллов. +1000 Regenaration."
@@ -1148,7 +1164,7 @@
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4_Description"                         ""
 
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5"                                     "Upgrade To Troll Hut 5"
-		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_Description"                         "Скорость атаки +500. Позволяет покупать дерево(lumber) по всей карте и раскрывает видимость Тролля и Волков. "
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_Description"                         "Позволяет покупать дерево(lumber) по всей карте."
 
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_6"                                     "Upgrade To Troll Hut 6"
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_6_Description"                         "Позволяет призвать медведя. Медведь может использовать предметы, как тролль, но не получает золото."
@@ -1274,7 +1290,7 @@
 		"DOTA_Tooltip_ability_cm_haste_Description"                                       "Максимально увеличивает вашу скорость передвижения и дает %eva%% уклонение от волков, но не от Тролля."
 
 		"DOTA_Tooltip_ability_cm_heal_building"                                           "Heal Building"
-		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Используйте эту способность на здании, чтобы вылечить его. Восстанавливает 300 здоровья или 30% - в зависимости от того, что больше. На время восстановления способности здание получает дебафф, который заставляет других ангелов лечить в 3 раза меньше. "
+		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Используйте эту способность на здании, чтобы вылечить его."
 
 		"DOTA_Tooltip_ability_invul_ability"                                              "Invulnerability"
 		"DOTA_Tooltip_ability_invul_ability_Description"                                  "Делает юнитов бессмертными! "
@@ -1787,7 +1803,7 @@
 		"DOTA_Tooltip_ability_item_stormcrafter_datadriven_Description"                                    "Останавливает анимации юнитов. Используйте, чтобы игра меньше лагала! Радиус действия: глобальный.<br>Перезарядка: 5 сек."
 
 		"DOTA_Tooltip_Ability_smoke_screen_datadriven"												"Smoke"
-		"DOTA_Tooltip_Ability_smoke_screen_datadriven_Description"                               	"Дает замедление -%move_slow%%  на %duration% секунд. Шанс промаха для Волков %miss_chance%%."
+		"DOTA_Tooltip_Ability_smoke_screen_datadriven_Description"                               	"Дает замедление -%move_slow%%  на %duration% секунд. Шанс промаха для Тролля %miss_chance%%."
 
 		"DOTA_Tooltip_Ability_vengefulspirit_wave_of_terror_datadriven"									"Wave of terror"
 		"DOTA_Tooltip_Ability_vengefulspirit_wave_of_terror_datadriven_Description"                               	"-%armor_reduction% брони."
@@ -2094,6 +2110,8 @@
 		"error_limit_queue"																	"Превышен лимит очереди построек. Максимум 15 построек. "
 		"error_limit_queue_wisp"															"Превышен лимит очереди построек."
 		"error_take_normal_builder"															"У юнита нет этой способности!<br>Выберите нужного юнита!"
+		"error_not_kick_normal"																"Вы не можете выгнать игрока, у которого PTS больше -499"
+		"error_not_send_money_block"														"Игрок отключил передачу ресурсов."
 
 		"trigs1"																			"Золота много не бывает!"
 		"trigs2"																			"Ожидание окупает затраты!"

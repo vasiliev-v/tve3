@@ -76,12 +76,12 @@ PLAYERTABLES_VERSION = "0.90"
 
     --Retrieve values on the client
       var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
-      $.Msg(PlayerTables.GetTableVaue("new_table", "count"));
+      //$.Msg(PlayerTables.GetTableVaue("new_table", "count"));
 
     --Subscribe to changes on the client
       var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
       PlayerTables.SubscribeNetTableListener("new_table", function(tableName, changes, deletions){
-        $.Msg(tableName + " changed: " + changes + " -- " + deletions);
+        //$.Msg(tableName + " changed: " + changes + " -- " + deletions);
       });
 
 ]]

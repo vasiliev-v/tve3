@@ -113,7 +113,7 @@ function wearables:RemoveWearables(hero)
 	while cur ~= nil do --пока наш текущий указатель не равен nil(пустота/пустой указатель)
 		cur = cur:NextMovePeer() -- выбираем следующий указатель на подобъект нашего обьекта
 		if cur ~= nil and cur:GetClassname() ~= "" and (cur:GetClassname() == "dota_item_wearable" or cur:GetClassname() == "prop_dynamic") then -- проверяем, елси текущий указатель не пуст, название класса не пустое, и если этот класс есть класс "dota_item_wearable", то есть надеваемые косметические предметы
-			DebugPrint(cur:GetClassname())
+			--DebugPrint(cur:GetClassname())
 			table.insert(wearables, cur) -- добавляем в таблицу на удаление текущий предмет(сверху проверяли класс текущего объекта)
 		end
 	end
@@ -300,55 +300,55 @@ function SetModelVip(npc, num)
 		if PoolTable["1"][num] == nil  then
 			return
 		end
-		if npc:GetUnitName() == "npc_dota_hero_lycan" then
+		if npc:IsTroll() and npc.wolfperk then
 			if num == "620" then 
-				npc:SetOriginalModel("models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "621" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/sirius_curse/sirius_curse.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/sirius_curse/sirius_curse.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/sirius_curse/sirius_curse.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/sirius_curse/sirius_curse.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "622" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/ambry_true_form/ambry_true_form.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/ambry_true_form/ambry_true_form.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/ambry_true_form/ambry_true_form.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/ambry_true_form/ambry_true_form.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "623" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/thegreatcalamityti4/thegreatcalamityti4.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/thegreatcalamityti4/thegreatcalamityti4.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/thegreatcalamityti4/thegreatcalamityti4.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/thegreatcalamityti4/thegreatcalamityti4.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "624" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/hunter_kings_trueform/hunter_kings_trueform.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/hunter_kings_trueform/hunter_kings_trueform.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/hunter_kings_trueform/hunter_kings_trueform.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/hunter_kings_trueform/hunter_kings_trueform.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "625" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/alpha_trueform9/alpha_trueform9.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/alpha_trueform9/alpha_trueform9.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/alpha_trueform9/alpha_trueform9.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/alpha_trueform9/alpha_trueform9.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "626" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/_ascension_of_the_hallowed_beast_form/_ascension_of_the_hallowed_beast_form.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/_ascension_of_the_hallowed_beast_form/_ascension_of_the_hallowed_beast_form.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/_ascension_of_the_hallowed_beast_form/_ascension_of_the_hallowed_beast_form.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/_ascension_of_the_hallowed_beast_form/_ascension_of_the_hallowed_beast_form.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "627" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/frostivus2018_lycan_savage_beast_form/frostivus2018_lycan_savage_beast_form.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/frostivus2018_lycan_savage_beast_form/frostivus2018_lycan_savage_beast_form.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/frostivus2018_lycan_savage_beast_form/frostivus2018_lycan_savage_beast_form.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/frostivus2018_lycan_savage_beast_form/frostivus2018_lycan_savage_beast_form.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "628" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/2018_lycan_shapeshift/2018_lycan_shapeshift.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/2018_lycan_shapeshift/2018_lycan_shapeshift.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/2018_lycan_shapeshift/2018_lycan_shapeshift.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/2018_lycan_shapeshift/2018_lycan_shapeshift.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "629" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/mutant_exorcist_form/mutant_exorcist_form.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/mutant_exorcist_form/mutant_exorcist_form.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/mutant_exorcist_form/mutant_exorcist_form.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/mutant_exorcist_form/mutant_exorcist_form.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "630" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/_werewolf_samurai_wolf_form_v1/_werewolf_samurai_wolf_form_v1.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/_werewolf_samurai_wolf_form_v1/_werewolf_samurai_wolf_form_v1.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/_werewolf_samurai_wolf_form_v1/_werewolf_samurai_wolf_form_v1.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/_werewolf_samurai_wolf_form_v1/_werewolf_samurai_wolf_form_v1.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			elseif  num == "631" then
-				npc:SetOriginalModel("models/items/lycan/ultimate/watchdog_lycan_true_form/watchdog_lycan_true_form.vmdl")
-				npc:SetModel("models/items/lycan/ultimate/watchdog_lycan_true_form/watchdog_lycan_true_form.vmdl")
-				npc:SetModelScale(1)
+				npc.wolfperk:SetOriginalModel("models/items/lycan/ultimate/watchdog_lycan_true_form/watchdog_lycan_true_form.vmdl")
+				npc.wolfperk:SetModel("models/items/lycan/ultimate/watchdog_lycan_true_form/watchdog_lycan_true_form.vmdl")
+				npc.wolfperk:SetModelScale(1)
 			end
 		elseif npc:IsTroll() and npc.bear then
 			if num == "673"  then 

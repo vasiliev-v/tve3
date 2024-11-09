@@ -6,11 +6,11 @@ var ui = GameUI.CustomUIConfig();
     ui.playerLumber = [];
     ui.playerFood = [];
     ui.playerMaxFood = [];
-  //  $.Msg("Initializing resource.js... ui: ", ui);
+  //  //$.Msg("Initializing resource.js... ui: ", ui);
 }());
 
 function OnPlayerLumberChanged(args) {
-    // $.Msg("Player lumber changed: ", args);
+    // //$.Msg("Player lumber changed: ", args);
     var playerID = args.playerID;
     var lumber = args.lumber;
     ui.playerLumber[playerID] = lumber;
@@ -23,7 +23,7 @@ function UpdateLumberValue() {
 }
 
 function OnPlayerGoldChanged(args) {
-    // $.Msg("Player gold changed: ", args);
+    // //$.Msg("Player gold changed: ", args);
     var playerID = args.playerID;
     var gold = args.gold;
     ui.playerGold[playerID] = gold;
@@ -36,7 +36,7 @@ function UpdateGoldValue() {
 }
 
 function OnPlayerFoodChanged(args) {
-  //  $.Msg("Player food changed: ", args);
+  //  //$.Msg("Player food changed: ", args);
     var playerID = args.playerID;
     var food = args.food;
     var maxFood = args.maxFood;
@@ -46,7 +46,7 @@ function OnPlayerFoodChanged(args) {
 }
 
 function OnPlayerWispChanged(args) {
-   // $.Msg("Player wisp changed: ", args);
+   // //$.Msg("Player wisp changed: ", args);
    // var playerID = args.playerID;
    // var wisp = args.wisp;
    // var maxWisp = args.maxWisp;
@@ -56,7 +56,7 @@ function OnPlayerWispChanged(args) {
 }
 
 function OnPlayerMineChanged(args) {
-    // $.Msg("Player wisp changed: ", args);
+    // //$.Msg("Player wisp changed: ", args);
     // var playerID = args.playerID;
     // var wisp = args.wisp;
     // var maxWisp = args.maxWisp;
@@ -89,12 +89,12 @@ var lumberPopupSchedules = {};
 var lumberPopupColor = [10, 200, 90];
 
 function TreeWispHarvestStarted(args) {
-   // $.Msg("Tree wisp harvest started: ", args);
+   // //$.Msg("Tree wisp harvest started: ", args);
     PopupNumbersInterval(lumberPopupSchedules, args.entityIndex, args.amount, args.interval, lumberPopupColor, 0, null, args.statusAnim);
 }
 
 function TreeWispHarvestStopped(args) {
- //   $.Msg("Tree wisp harvest stopped: ", args);
+ //   //$.Msg("Tree wisp harvest stopped: ", args);
     StopNumberPopupInterval(lumberPopupSchedules, args.entityIndex);
 }
 
@@ -102,12 +102,12 @@ var goldPopupSchedules = {};
 var goldPopupColor = [255, 200, 33];
 
 function GoldGainStarted(args) {
-   // $.Msg("Gold gain started: ", args);
+   // //$.Msg("Gold gain started: ", args);
     PopupNumbersInterval(goldPopupSchedules, args.entityIndex, args.amount, args.interval, goldPopupColor, 0, null, args.statusAnim);
 }
 
 function GoldGainStopped(args) {
-   // $.Msg("Gold gain stopped: ", args);
+   // //$.Msg("Gold gain stopped: ", args);
     StopNumberPopupInterval(goldPopupSchedules, args.entityIndex);
 }
 
@@ -148,7 +148,7 @@ function PopupNumbers(entityIndex, pfx, color, lifetime, number, presymbol, post
 }
 
 function PlayerPickedHero(args) {
-    $.Msg("Player picked hero: ", args);
+    //$.Msg("Player picked hero: ", args);
     // Ignoring args because it doesn't give player id (args.player gives playerID + 1 or is it some user id stuff?)
     // Better be safe and just get local player id.
     var localId = Players.GetLocalPlayer();

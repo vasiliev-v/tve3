@@ -8,6 +8,6 @@ function setupTooltip(){
         //$("#toolpanel").BCreateChildren("<DOTAScenePanel id='cam' style='width:400px;height:400px;' renderdeferred='false' antialias='true' particleonly='false' allowrotation='true' unit='npc_dota_custom_creep_5_1' />");
         //$.DispatchEvent("DOTAGlobalSceneFireEntityInput", "cam", "donkey", "RunScriptFile", "ptooltips");
     }      
-    //$.Msg(num);
+    ////$.Msg(num);
 }
 

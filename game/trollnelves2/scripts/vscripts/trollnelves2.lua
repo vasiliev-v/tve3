@@ -4,7 +4,7 @@
 TROLLNELVES2_DEBUG_SPEW = true
 
 if trollnelves2 == nil then
-    DebugPrint('[TROLLNELVES2] creating trollnelves2 game mode')
+    --DebugPrint('[TROLLNELVES2] creating trollnelves2 game mode')
     _G.trollnelves2 = class({})
 end
 
@@ -38,7 +38,7 @@ require('libraries/worldpanels')
 
 function trollnelves2:PostLoadPrecache()
     Pets:Init()
-    DebugPrint("[BAREBONES] Performing Post-Load precache")
+    --DebugPrint("[BAREBONES] Performing Post-Load precache")
 end
 -- Gets called when a player chooses if he wants to be troll or not
 function OnPlayerTeamChoose(eventSourceIndex, args)
@@ -83,7 +83,7 @@ function trollnelves2:GameSetup()
         -- StartReklama()
         Donate:CreateList()
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
-        DebugPrint("count player " .. GameRules.PlayersCount)
+        --DebugPrint("count player " .. GameRules.PlayersCount)
         Timers:CreateTimer(TEAM_CHOICE_TIME, function()
             if string.match(GetMapName(),"clanwars") then
                 GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_1, 1)
@@ -176,7 +176,7 @@ function SelectHeroes()
     local sumChance = 0
     if #wannabeTrollIDs > 0 then
         if #GameRules.BonusTrollIDs > 0 then
-            DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
+            --DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
             table.sort(GameRules.BonusTrollIDs, mySort)
             for _, bonus in ipairs(GameRules.BonusTrollIDs) do
                 local playerID, chance = unpack(bonus)
@@ -255,7 +255,7 @@ function SelectHeroes()
 end
 
 function trollnelves2:OnHeroInGame(hero)
-    DebugPrint("OnHeroInGame")
+    --DebugPrint("OnHeroInGame")
     if hero:GetUnitName() == "npc_dota_hero_wisp" then
         local abil = hero:FindAbilityByName("dummy_passive")
         abil:SetLevel(abil:GetMaxLevel())
@@ -293,7 +293,7 @@ end
 
 
 function InitializeHero(hero)
-    DebugPrint("Initialize hero")
+    --DebugPrint("Initialize hero")
     if hero:GetUnitName() == "npc_dota_hero_bear"  then
         return
     end
@@ -331,7 +331,7 @@ function InitializeHero(hero)
 end
 
 function InitializeBadHero(hero)
-    DebugPrint("Initialize bad hero")
+    --DebugPrint("Initialize bad hero")
     local playerID = hero:GetPlayerOwnerID()
     local status, nextCall = Error_debug.ErrorCheck(function() 
         hero.hpReg = 0
@@ -364,7 +364,7 @@ function InitializeBadHero(hero)
 end
 
 function InitializeBuilder(hero)
-    DebugPrint("Initialize builder")
+    --DebugPrint("Initialize builder")
     local playerID = hero:GetPlayerOwnerID()
     hero.food = 0
     hero.wisp = 0
@@ -387,9 +387,8 @@ function InitializeBuilder(hero)
     hero:AddItemByName("item_glyph_ability")
     if string.match(GetMapName(),"clanwars") then
         hero:AddItemByName("item_max_move2")
-    else
-        
-        hero:AddItemByName("item_night_ability")
+    else  
+        --hero:AddItemByName("item_night_ability")
         hero:AddItemByName("item_blink_datadriven")
     end
     hero:AddItemByName("item_stormcrafter_datadriven")
@@ -484,7 +483,7 @@ end
 function InitializeTroll(hero)
     
     local playerID = hero:GetPlayerOwnerID()
-    DebugPrint("Initialize troll, playerID: ", playerID)
+    --DebugPrint("Initialize troll, playerID: ", playerID)
     GameRules.trollHero = hero
     GameRules.trollID = playerID
 
@@ -642,7 +641,7 @@ end
 function InitializeTroll2(hero)
     
     local playerID = hero:GetPlayerOwnerID()
-    DebugPrint("Initialize troll, playerID: ", playerID)
+    --DebugPrint("Initialize troll, playerID: ", playerID)
     GameRules.trollHero2 = hero
     GameRules.trollID2 = playerID
     hero.units = {}
@@ -839,7 +838,7 @@ function InitializeTroll2(hero)
 end
 
 function InitializeAngel(hero)
-    DebugPrint("Initialize angel")
+    --DebugPrint("Initialize angel")
     hero:AddItemByName("item_blink_datadriven")
     --if not string.match(GetMapName(),"halloween") then 
     --    hero:RemoveAbility("silence_datadriven")
@@ -854,7 +853,7 @@ function trollnelves2:ControlUnitForTroll(hero)
     for _,unit in pairs(units) do
         local unit_name_hut = unit:GetUnitName();
         if unit_name_hut == "troll_hut_6" then --if unit_name_hut == "troll_hut_10" then --if unit_name_hut == "troll_hut_7" then
-            DebugPrint("in2")
+            --DebugPrint("in2")
             checkTrollHutLevel6 = true --checkTrollHutLevel7 = true
         end
     end 
@@ -866,7 +865,7 @@ function trollnelves2:ControlUnitForTroll(hero)
         local unit_name = unit:GetUnitName();
         if string.match(unit_name, "shop") or
             string.match(unit_name, "troll_hut") then
-            DebugPrint("in3")
+            --DebugPrint("in3")
             unit:SetOwner(hero)
             unit:SetControllableByPlayer(playerID, true)
         end
@@ -881,7 +880,7 @@ function trollnelves2:ControlUnitForTroll(hero)
                     if team == DOTA_TEAM_BADGUYS then
                         PlayerResource:SetUnitShareMaskForPlayer(playerID, pID, 2, true)
                         PlayerResource:SetUnitShareMaskForPlayer(GameRules.trollID, pID, 2, false)
-                        DebugPrint("GOOO1!! " .. pID)
+                        --DebugPrint("GOOO1!! " .. pID)
                     end
                 end
             end
@@ -891,8 +890,8 @@ end
 
 function InitializeWolf(hero)
     local playerID = hero:GetPlayerOwnerID()
-    DebugPrint("Initialize wolf, playerID: " .. playerID)
-    -- DebugPrint("GameRules.trollID: " .. GameRules.trollID)
+    --DebugPrint("Initialize wolf, playerID: " .. playerID)
+    -- --DebugPrint("GameRules.trollID: " .. GameRules.trollID)
     local koeff = 1
     if (GameRules:GetGameTime() - GameRules.startTime) <= 600 then
         koeff = 2
@@ -1119,9 +1118,9 @@ end
 -- It can be used to pre-initialize any values/tables that will be needed later
 function trollnelves2:Inittrollnelves2()
     trollnelves2 = self
-    DebugPrint('[TROLLNELVES2] Starting to load trollnelves2 trollnelves2...')
+    --DebugPrint('[TROLLNELVES2] Starting to load trollnelves2 trollnelves2...')
     trollnelves2:_Inittrollnelves2()
-    DebugPrint('[TROLLNELVES2] Done loading trollnelves2 trollnelves2!\n\n')
+    --DebugPrint('[TROLLNELVES2] Done loading trollnelves2 trollnelves2!\n\n')
      --[[  new
     GameRules:GetGameModeEntity():SetExecuteOrderFilter(trollnelves2.FilterExecuteOrder, self)
     -- end new]]
@@ -1274,9 +1273,9 @@ function DisableAbilityIfMissingRequirements(playerID, hero, abilityHandle, unit
         hero = GameRules.trollHero
     end
     if requirements then
-       -- DebugPrint("unitName: " .. unitName)
+       -- --DebugPrint("unitName: " .. unitName)
         for _, requiredUnitName in ipairs(requirements) do
-        --    DebugPrint("requiredUnitName: " .. requiredUnitName)
+        --    --DebugPrint("requiredUnitName: " .. requiredUnitName)
             local requiredBuildingCurrentCount = hero.buildings[requiredUnitName].completedConstructionCount
             if unitName == "rock_16" or unitName == "rock_17" or unitName == "rock_18" then
                 if requiredUnitName == "flag" then
@@ -1391,7 +1390,7 @@ function SelectHeroes2()
     local sumChance = 0
     if #wannabeTrollIDs > 0 then
         if #GameRules.BonusTrollIDs > 0 then
-            DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
+            --DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
             table.sort(GameRules.BonusTrollIDs, mySort)
             for _, bonus in ipairs(GameRules.BonusTrollIDs) do
                 local playerID, chance = unpack(bonus)
@@ -1495,7 +1494,7 @@ function SelectHeroes2()
     local sumChance = 0
     if #wannabeTrollIDs > 0 then
         if #GameRules.BonusTrollIDs > 0 then
-            DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
+            --DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
             table.sort(GameRules.BonusTrollIDs, mySort)
             for _, bonus in ipairs(GameRules.BonusTrollIDs) do
                 local playerID, chance = unpack(bonus)

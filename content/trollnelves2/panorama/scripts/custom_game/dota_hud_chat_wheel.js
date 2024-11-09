@@ -241,7 +241,7 @@ function FindLabelByNum(num) {
 }
 
 function OnMouseOver(num) {
-    //$.Msg(num);
+    ////$.Msg(num);
     $( "#WheelPointer" ).RemoveClass( "Hidden" );
     $( "#Arrow" ).RemoveClass( "Hidden" );
     for ( var i = 0; i < 8; i++ )

@@ -143,7 +143,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		var lumberValue = ui.playerLumber[playerId];
 
 
-		//$.Msg("Scoreboard update... playerId: ", playerId, "; goldValue: ", goldValue, "; lumberValue: ", lumberValue);
+		////$.Msg("Scoreboard update... playerId: ", playerId, "; goldValue: ", goldValue, "; lumberValue: ", lumberValue);
 
 
 		if (isTeammate) {
@@ -169,7 +169,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		}
 
 
-		//$.Msg("Setting Scoreboard resources for playerId: ", playerId, "; playerStatsScore: ", playerStatsScore, "; ");
+		////$.Msg("Setting Scoreboard resources for playerId: ", playerId, "; playerStatsScore: ", playerStatsScore, "; ");
 		if(playerStatsScore)
 		{
 			_ScoreboardUpdater_SetTextSafe( playerPanel, "ElfScore", playerStatsScore.playerScoreElf.toString() );
@@ -296,7 +296,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		var playerItems = Game.GetPlayerItems( playerId );
 		if ( playerItems )
 		{
-	//		$.Msg( "playerItems = ", playerItems );
+	//		//$.Msg( "playerItems = ", playerItems );
 			for ( var i = playerItems.inventory_slot_min; i < playerItems.inventory_slot_max; ++i )
 			{
 				var itemPanelName = "_dynamic_item_" + i;
@@ -334,14 +334,14 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 		return;
 
 	var teamId = teamDetails.team_id;
-//	$.Msg( "_ScoreboardUpdater_UpdateTeamPanel: ", teamId );
+//	//$.Msg( "_ScoreboardUpdater_UpdateTeamPanel: ", teamId );
 
-	//$.Msg("ID - " + teamId);
+	////$.Msg("ID - " + teamId);
 	var teamPanelName = "_dynamic_team_" + teamId;
 	var teamPanel = containerPanel.FindChild( teamPanelName );
 	if ( teamPanel === null )
 	{
-//		$.Msg( "UpdateTeamPanel.Create: ", teamPanelName, " = ", scoreboardConfig.teamXmlName );
+//		//$.Msg( "UpdateTeamPanel.Create: ", teamPanelName, " = ", scoreboardConfig.teamXmlName );
 		teamPanel = $.CreatePanel( "Panel", containerPanel, teamPanelName );
 		teamPanel.SetAttributeInt( "team_id", teamId );
 		teamPanel.BLoadLayout( scoreboardConfig.teamXmlName, false, false );
@@ -374,7 +374,7 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 		for( var i = 0;i<16;i++){
 			var playerPanel = playersContainer.FindChild("_dynamic_player_" + i);
 			if(playerPanel){
-				//$.Msg("Found " + playerPanel.id + " in team " + teamId);
+				////$.Msg("Found " + playerPanel.id + " in team " + teamId);
 				if(teamPlayers.indexOf(i) == -1){
 					playerPanel.style.visibility = "collapse";
 					playerPanel.RemoveAndDeleteChildren();
@@ -416,7 +416,7 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 		if ( teamColor_GradentFromTransparentLeft )
 		{
 			var gradientText = 'gradient( linear, 0% 100%, 200% 100%, from( #00000000 ), to( ' + teamColor + ' ) );';
-//			$.Msg( gradientText );
+//			//$.Msg( gradientText );
 			teamColor_GradentFromTransparentLeft.style.backgroundColor = gradientText;
 		}
 	}
@@ -428,7 +428,7 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 //=============================================================================
 function _ScoreboardUpdater_ReorderTeam( scoreboardConfig, teamsParent, teamPanel, teamId, newPlace, prevPanel )
 {
-//	$.Msg( "UPDATE: ", GameUI.CustomUIConfig().teamsPrevPlace );
+//	//$.Msg( "UPDATE: ", GameUI.CustomUIConfig().teamsPrevPlace );
 	var oldPlace = null;
 	if ( GameUI.CustomUIConfig().teamsPrevPlace.length > teamId )
 	{
@@ -438,7 +438,7 @@ function _ScoreboardUpdater_ReorderTeam( scoreboardConfig, teamsParent, teamPane
 
 	if ( newPlace != oldPlace )
 	{
-//		$.Msg( "Team ", teamId, " : ", oldPlace, " --> ", newPlace );
+//		//$.Msg( "Team ", teamId, " : ", oldPlace, " --> ", newPlace );
 		teamPanel.RemoveClass( "team_getting_worse" );
 		teamPanel.RemoveClass( "team_getting_better" );
 		if ( newPlace > oldPlace )
@@ -480,7 +480,7 @@ function stableCompareFunc( a, b ) {
 		return 0;
 	}
 
-//			$.Msg( GameUI.CustomUIConfig().teamsPrevPlace );
+//			//$.Msg( GameUI.CustomUIConfig().teamsPrevPlace );
 
 	var a_prev = GameUI.CustomUIConfig().teamsPrevPlace[ a.team_id ];
 	var b_prev = GameUI.CustomUIConfig().teamsPrevPlace[ b.team_id ];

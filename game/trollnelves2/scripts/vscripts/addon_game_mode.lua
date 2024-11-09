@@ -20,7 +20,7 @@ function Precache( context )
 		See trollnelves2:PostLoadPrecache() in trollnelves2.lua for more information
 	]]
 	
-	DebugPrint("[TROLLNELVES2] Performing pre-load precache")
+	--DebugPrint("[TROLLNELVES2] Performing pre-load precache")
 	
 	-- Particles can be precached individually or by folder
 	-- It it likely that precaching a single particle system will precache all of its children, but this may not be guaranteed
@@ -407,7 +407,7 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = false
+	GameRules.test = true
 	GameRules.test2 = false
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
@@ -425,6 +425,7 @@ function Activate()
 		GameRules.WOLF_START_SPAWN_TIME = 300 -- When the players will be able to choose wolf instead of auto chosen to angels. In seconds.
 	end
 	
+	GameRules:GetGameModeEntity():SetDaynightCycleAdvanceRate(1 * GameRules.MapSpeed)
 
 	GameRules.PoolTable = {}
     GameRules.PoolTable[0] = {} -- валюта

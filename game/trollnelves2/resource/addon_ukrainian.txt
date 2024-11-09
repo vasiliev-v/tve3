@@ -1235,7 +1235,7 @@
 		"DOTA_Tooltip_ability_cm_haste_Description"                                       "Максимально збільшує швидкість пересування і дає 100% ухилення від вовків, але не від Троля."
 
 		"DOTA_Tooltip_ability_cm_heal_building"                                           "Heal Building"
-		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Використовуйте цю здатність на будівлі, щоб її вилікувати. Відновлює 300 здоров'я або 30% – залежно від того, що більше. На час відновлення здібності будинок отримує дебафф, який змушує інших ангелів лікувати утричі менше. "
+		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Використовуйте цю здатність на будівлі, щоб її вилікувати. "
 
 		"DOTA_Tooltip_ability_invul_ability"                                              "Invulnerability"
 		"DOTA_Tooltip_ability_invul_ability_Description"                                  "Робить юнітів безсмертними! "

@@ -355,7 +355,7 @@ function chatcommand:OnPlayerChat(event)
             local map = mapList[7] -- mapList[RandomInt(1,#mapList)]
             GameRules.MapName = map[1]
             local vector = map[2]
-            DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
+            --DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
             DOTA_SpawnMapAtPosition( GameRules.MapName, Vector(0,0,vector), false, nil,  Dynamic_Wrap( BuildingHelper, "UpdateGrid"), nil )
 		elseif event.text == "!remap" then
 			BuildingHelper.Grid = {} -- Construction grid
@@ -409,7 +409,7 @@ function chatcommand:OnPlayerChat(event)
 	--		for i=1,#hero.units do
 	--			if hero.units[i] and not hero.units[i]:IsNull() then
 	--				local unit = hero.units[i]
-	--				DebugPrint(unit:GetUnitName())
+	--				--DebugPrint(unit:GetUnitName())
 	--				local dataTable = { entityIndex = unit:GetEntityIndex() }
 	--				local player = hero:GetPlayerOwner()
 	--				if player then
@@ -428,7 +428,7 @@ function chatcommand:OnPlayerChat(event)
 	--		for i=1,#hero.units do
 	--			if hero.units[i] and not hero.units[i]:IsNull() then
 	--				local unit = hero.units[i]
-	--				DebugPrint(unit:GetUnitName())
+	--				--DebugPrint(unit:GetUnitName())
 	--				local dataTable = { entityIndex = unit:GetEntityIndex() }
 	--				local player = hero:GetPlayerOwner()
 	--				if player then
@@ -444,9 +444,9 @@ function chatcommand:OnPlayerChat(event)
 	--elseif event.text  ==  "stats"  then
 	--local playerStatsScore = CustomNetTables:GetTableValue("scorestats",tostring(event.playerid)); 
 	--CustomNetTables:SetTableValue("scorestats", tostring(event.playerid), { playerScoreElf = tostring(GameRules.scores[event.playerid].elf), playerScoreTroll = tostring(GameRules.scores[event.playerid].troll) })
-	--DebugPrint(GameRules.scores[event.playerid].elf)
-	--DebugPrint(GameRules.scores[event.playerid].troll)
-	--DebugPrintTable("playerStatsScore   "  ..  playerStatsScore)
+	----DebugPrint(GameRules.scores[event.playerid].elf)
+	----DebugPrint(GameRules.scores[event.playerid].troll)
+	----DebugPrintTable("playerStatsScore   "  ..  playerStatsScore)
 	--elseif event.text == "blink" then 
 	--	hero:ClearInventoryCM()
 	--elseif event.text == "test" then
@@ -460,8 +460,8 @@ function chatcommand:OnPlayerChat(event)
 	--elseif event.text == "get" then
 	--Stats.RequestDataTop10(callback)
 	--local stats = CustomNetTables:GetTableValue( "top10", "test" )
-	--DebugPrint(stats)
-	--DebugPrintTable(stats)
+	----DebugPrint(stats)
+	----DebugPrintTable(stats)
 	--trollnelves2:OnLoadTop(stats.steamID, 1)
 	--elseif event.text == "test_r" then
 	--GameRules:SendCustomMessage("Please do not leave the game.", 1, 1)

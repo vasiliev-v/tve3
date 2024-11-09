@@ -9,6 +9,6 @@ function setupTooltip(){
         //$.DispatchEvent("DOTAGlobalSceneFireEntityInput", "cam", "donkey", "RunScriptFile", "ptooltips");
     }
        
-    //$.Msg(num);
+    ////$.Msg(num);
 }
 

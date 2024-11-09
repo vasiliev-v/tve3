@@ -35,3 +35,12 @@ function modifier_troll_spell_gold_wisp:OnRefresh( kv )
 		abil:SetLevel(countStack)
 	end
 end
+
+function modifier_troll_spell_gold_wisp:OnStackCountChanged()
+	if IsServer() then
+		local hero = self:GetParent()
+		local abil = hero:FindAbilityByName("troll_spell_gold_wisp")
+		local countStack = hero:FindModifierByName("modifier_troll_spell_gold_wisp"):GetStackCount()
+		abil:SetLevel(countStack)
+	end
+end

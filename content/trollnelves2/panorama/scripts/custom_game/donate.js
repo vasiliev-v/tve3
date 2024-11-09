@@ -59,7 +59,7 @@ function DonatePanelUpdate( table, id, lists ) {
 				}
 			} 
 		} else {
-//			$.Msg( "ANIME" )
+//			//$.Msg( "ANIME" )
 			var listsinfo = panel.Children()
 			for ( i in listsinfo ) {
 				var rows = listsinfo[i].Children()
@@ -71,8 +71,8 @@ function DonatePanelUpdate( table, id, lists ) {
 						for ( n in lists ) {
 							for ( iitem in lists[n] ) {
 								var iteminfo = lists[n][iitem]
-//								$.Msg( iteminfo )
-//								$.Msg( lists[n] )
+//								//$.Msg( iteminfo )
+//								//$.Msg( lists[n] )
 								if ( iteminfo.name == item_name ) {
 									if ( iteminfo.count > 0 ) {
 										button.AddClass( "DonateItemButton" )

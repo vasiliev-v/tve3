@@ -434,12 +434,12 @@ function GoldOnAttack (event)
 			koeff = 0
 		end
 		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
-		if caster:HasModifier("modifier_troll_spell_gold_hit")  then
-			if caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 1  then
+		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
+			if caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 1  then
 				dmg = dmg + (1 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 2 then
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 2 then
 				dmg = dmg + (2 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 3 then
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 3 then
 				dmg = dmg + (3 * GameRules.MapSpeed) * koeff
 			end
 		end
@@ -674,6 +674,15 @@ function SpawnUnitOnChannelSucceeded(event)
 			if string.match(unit_name,"%a+") == "worker" then
 				ABILITY_Repair = unit:FindAbilityByName("repair")
 				ABILITY_Repair:ToggleAutoCast()
+				if hero:HasModifier("modifier_elf_spell_cd_worker")  then
+					if hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
+					end
+				end
 			end
 		end
 	end
@@ -1501,7 +1510,15 @@ function ItemBlink(keys)
 	local origin_point = keys.caster:GetAbsOrigin()
 	local target_point = keys.target_points[1]
 	local difference_vector = target_point - origin_point
-	
+	if keys.caster:HasModifier("modifier_elf_spell_blink")  then
+		if keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 1  then
+			keys.MaxBlinkRange = keys.MaxBlinkRange1 
+		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 2 then
+			keys.MaxBlinkRange = keys.MaxBlinkRange2
+		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 3 then
+			keys.MaxBlinkRange = keys.MaxBlinkRange3
+		end
+	end
 	if difference_vector:Length2D() > keys.MaxBlinkRange then  --Clamp the target point to the MaxBlinkRange range in the same direction.
 		target_point = origin_point + (target_point - origin_point):Normalized() * keys.MaxBlinkRange
 	end
@@ -1616,21 +1633,14 @@ function HealBuilding(event)
 	local ability = event.ability
 	local heal = math.max(event.FixedHeal,(event.PercentageHeal*target:GetMaxHealth()/100))
 	if target.state == "complete" then 
-		if target.healed then
-			heal = heal/3
-		end
 		if target:HasModifier("modifier_disable_repair") then
-			heal = heal/2
+			target:RemoveModifierByName("modifier_disable_repair")
 		end
 		if (target:GetHealth() + heal) > target:GetMaxHealth() then
 			target:SetHealth(target:GetMaxHealth())
 			else
 			target:SetHealth(target:GetHealth() + heal)
 		end
-		target.healed = true
-		Timers:CreateTimer(ability:GetCooldownTime(),function()
-			target.healed = false
-		end)
 	end 
 end
 
@@ -2014,7 +2024,7 @@ function SkillOnChannelSucceeded(event)
 					local count = ability:GetSpecialValueFor("count")
 					if hero:FindModifierByName(skill_name  .. "_aura") then
 						local stack = hero:FindModifierByName(skill_name  .. "_aura"):GetStackCount()
-						DebugPrint(stack)
+						----DebugPrint(stack)
 						troll:AddNewModifier(troll, troll, skill_name  .. "_aura", {}):SetStackCount(count)
 					else
 						troll:AddNewModifier(troll, troll, skill_name  .. "_aura", {}):SetStackCount(count)

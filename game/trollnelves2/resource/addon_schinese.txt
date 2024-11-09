@@ -777,7 +777,7 @@
 		"DOTA_Tooltip_ability_cm_haste_Description"                                       "增加你的移动速度至极致， 使用这个技能逃离巨魔。"
 
 		"DOTA_Tooltip_ability_cm_heal_building"                                           "修复建筑"
-		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "此技能可以对建筑使用，恢复建筑300或30%其生命值，以更大值为准，同时建筑获得一个debuff，其它精灵使者对它的治疗效果减少2/3. "
+		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "此技能可以对建筑使用"
 
 		"DOTA_Tooltip_ability_invul_ability"                                              "无懈可击"
 		"DOTA_Tooltip_ability_invul_ability_Description"                                  "令这个单位无敌。 "

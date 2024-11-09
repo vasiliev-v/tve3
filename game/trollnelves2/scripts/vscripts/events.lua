@@ -11,9 +11,9 @@ require('error_debug')
 
 
 function trollnelves2:OnGameRulesStateChange()
-    DebugPrint("GameRulesStateChange ******************")
+    --DebugPrint("GameRulesStateChange ******************")
     local newState = GameRules:State_Get()
-    DebugPrint(newState)
+    --DebugPrint(newState)
     if newState == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
         trollnelves2:GameSetup()
         trollnelves2:PostLoadPrecache()
@@ -28,7 +28,7 @@ end
 
 -- An NPC has spawned somewhere in game.  This includes heroes
 function trollnelves2:OnNPCSpawned(keys)
-    DebugPrint("OnNPCSpawned:")
+    --DebugPrint("OnNPCSpawned:")
     local npc = EntIndexToHScript(keys.entindex)
     if npc.GetPhysicalArmorValue then
         npc:AddNewModifier(npc, nil, "modifier_custom_armor", {})
@@ -89,7 +89,7 @@ function trollnelves2:OnPlayerReconnect(event)
         Timers:CreateTimer(0, function()
             if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
               Timers:CreateTimer(2.25, function()
-                DebugPrint("222 GameRules.disconnectedHeroSelects[playerID] " .. tostring(GameRules.disconnectedHeroSelects[playerID]))
+                --DebugPrint("222 GameRules.disconnectedHeroSelects[playerID] " .. tostring(GameRules.disconnectedHeroSelects[playerID]))
                 local heroname = GameRules.disconnectedHeroSelects[playerID]
                 -- PlayerResource:SetSelectedHero(playerID, GameRules.disconnectedHeroSelects[playerID])
                 local hero = CreateHeroForPlayer("npc_dota_hero_crystal_maiden", PlayerResource:GetPlayer(playerID))
@@ -134,7 +134,7 @@ function trollnelves2:OnPlayerReconnect(event)
                         UTIL_Remove(oldhero)
                     end
                 else
-                    DebugPrint("FFUCK HERO IS NULL!!!!")
+                    --DebugPrint("FFUCK HERO IS NULL!!!!")
                 end
               end)
             else
@@ -207,7 +207,7 @@ function trollnelves2:OnPlayerReconnect(event)
                         end
                     end
                 else
-                    DebugPrint("FFUCK HERO IS NULL!!!! 2222")
+                    --DebugPrint("FFUCK HERO IS NULL!!!! 2222")
                 end
               end)
             else
@@ -330,7 +330,7 @@ function trollnelves2:OnDisconnect(event)
 end
 
 function trollnelves2:OnConnectFull(keys)
-    DebugPrint("OnConnectFull ******************")
+    --DebugPrint("OnConnectFull ******************")
   --  local entIndex = keys.index + 1
     -- The Player entity of the joining user
   --  local player = EntIndexToHScript(entIndex)
@@ -344,8 +344,8 @@ function trollnelves2:OnConnectFull(keys)
 end
 
 function trollnelves2:OnConnectPlayer(keys)
-    DebugPrint("OnConnectPlayer ******************")
-    DebugPrintTable(keys)
+    --DebugPrint("OnConnectPlayer ******************")
+    --DebugPrintTable(keys)
 end
 
 
@@ -408,7 +408,7 @@ end
 	It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
 ]]
 function trollnelves2:OnAllPlayersLoaded()
-    DebugPrint("[TROLLNELVES2] All Players have loaded into the game")
+    --DebugPrint("[TROLLNELVES2] All Players have loaded into the game")
     
 end
 
@@ -596,7 +596,7 @@ function trollnelves2:OnEntityKilled(keys)
             
             if hero then -- Skip looping unnecessarily when elf dies
                 local name = killed:GetUnitName()
-                -- DebugPrint("name " .. name)
+                -- --DebugPrint("name " .. name)
                 ModifyStartedConstructionBuildingCount(hero, name, -1)
                 if killed.state == "complete" then
                     ModifyCompletedConstructionBuildingCount(hero, name, -1)
@@ -604,7 +604,7 @@ function trollnelves2:OnEntityKilled(keys)
                 if killed.ancestors then
                     for _, ancestorUnitName in pairs(killed.ancestors) do
                         if name ~= ancestorUnitName then
-                            -- DebugPrint("ancestorUnitName " .. ancestorUnitName)
+                            -- --DebugPrint("ancestorUnitName " .. ancestorUnitName)
                             ModifyStartedConstructionBuildingCount(hero,
                                 ancestorUnitName,
                             -1)
@@ -760,7 +760,7 @@ function CheckTrollVictory()
 end
 
 function GiveResources(eventSourceIndex, event)
-    DebugPrint("Give resources, event source index: ", eventSourceIndex)
+    --DebugPrint("Give resources, event source index: ", eventSourceIndex)
     local targetID = event.target
     local casterID = event.PlayerID
     local gold = math.floor(math.abs(tonumber(event.gold)))
@@ -845,7 +845,7 @@ end
 
 function ChooseHelpSide(eventSourceIndex, event)
     local status, nextCall = Error_debug.ErrorCheck(function() 
-    DebugPrint("Choose help side: " .. eventSourceIndex);
+    --DebugPrint("Choose help side: " .. eventSourceIndex);
     local team = event.team
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
