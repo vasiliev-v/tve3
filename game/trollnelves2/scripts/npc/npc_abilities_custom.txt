@@ -17498,6 +17498,7 @@
 		}
 	}
 
+
 	"elf_spell_true"{
 		"BaseClass"						"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
@@ -17573,7 +17574,8 @@
 		}		
 	}
 	
-		"elf_spell_invis"{
+	"elf_spell_invis"
+	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
 		"AbilityTextureName"			"treant_natures_guise"
@@ -17594,7 +17596,6 @@
 		"Modifiers"{
 			"modifier_stand_invis"{
 				"ThinkInterval"			"0.5"
-				}
 				"OnCreated"{
 					"Duration"      "%duration"
 					"ApplyModifier"{
@@ -17620,5 +17621,5 @@
 				}
 			}
 		}
-
+	}
 }
