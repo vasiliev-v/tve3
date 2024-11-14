@@ -27,7 +27,8 @@ function VotekickStart(eventSourceIndex, event)
 		if ctrHeroID:IsAngel() then
 			return 
 		end 
-		if tonumber(GameRules.scores[event.target].elf) + tonumber(GameRules.scores[event.target].troll) >= -499 then
+		if (tonumber(GameRules.scores[event.target].elf)   + tonumber(GameRules.scores[event.target].troll)  >= -499) or
+		   (tonumber(GameRules.scores[event.PlayerID].elf) + tonumber(GameRules.scores[event.PlayerID].troll) < -499) then
 			SendErrorMessage(event.PlayerID, "error_not_kick_normal")
         	return 
 		end

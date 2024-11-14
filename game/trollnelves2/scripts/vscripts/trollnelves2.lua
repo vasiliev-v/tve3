@@ -346,6 +346,12 @@ function InitializeBadHero(hero)
                 local ratedHpReg = fullHpReg * rate
                 hero:SetHealth(hero:GetHealth() + ratedHpReg)
             end
+            if rate == nil then
+                rate = 1 
+            end
+            if rate == 0 then
+                rate = 1 
+            end
             return rate
         end)
     end)
