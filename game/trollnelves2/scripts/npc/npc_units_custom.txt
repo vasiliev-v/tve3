@@ -6648,8 +6648,8 @@
 	    "SoundSet"                  "Hero_Venomancer"
 
 
-		"AttackDamageMin"			"40960"		// Damage range min.
-		"AttackDamageMax"			"40960"		// Damage range max.
+		"AttackDamageMin"			"81920"		// Damage range min.
+		"AttackDamageMax"			"81920"		// Damage range max.
 	    "ArmorPhysical"             "16"//"32"
 		"StatusHealth"              "21000"
 	    "StatusHealthRegen"         "0"
@@ -6710,16 +6710,6 @@
 		"Requirements"{
 				"tower_21"		"1"
 		}
-
-		"Upgrades"
-	    {
-	        "Count"     "1"
-	        "1"{
-				"unit_name"			"tower_12_2"//"tower_11_2"
-				"gold_cost"			"999999"
-				"lumber_cost"		"999999"
-			}
-	    }
 
 
 		// Abilities
@@ -6929,8 +6919,8 @@
 		// Abilities
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
-		"Ability1"					"tower_frost_slow"
-		"Ability2"					""
+		"Ability1"					"tower_atk_spd"
+		"Ability2"					"tower_frost_slow"
 		"Ability3"					""
 		"Ability4"					""
 		"Ability10"					""
@@ -6950,8 +6940,8 @@
 		"SoundSet"					"Hero_Drow_Ranger"
 
 
-		"AttackDamageMin"			"81920"		// Damage range min.
-		"AttackDamageMax"			"81920"		// Damage range max.
+		"AttackDamageMin"			"163840"		// Damage range min.
+		"AttackDamageMax"			"163840"		// Damage range max.
 	    "ArmorPhysical"             "16"//"32"//"40"
 		"StatusHealth"              "45000"
 	    "StatusHealthRegen"         "0"
@@ -7023,21 +7013,11 @@
 			"tower_21"		"1"
 		}
 
-		"Upgrades"
-	    {
-	        "Count"     "1"
-	        "1"{
-				"unit_name"			"tower_12_2"
-				"gold_cost"			"999999"
-				"lumber_cost"		"999999"
-			}
-	    }
-
 		// Abilities
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
-		"Ability1"					"tower_frost_slow_2"
-		"Ability2"					""
+		"Ability1"					"tower_atk_spd"
+		"Ability2"					"tower_frost_slow_2"
 		"Ability3"					""
 		"Ability4"					""
 		"Ability10"					""
@@ -8457,11 +8437,11 @@
 	    }
 
 		"Requirements"{
-		"bank"				"1" //"barracks_3"				"1"
+		"bank"				        "1" //"barracks_3"				"1"
 		"rock_21"					"1"
 		"trader_3"					"1"
 		"research_lab_6_1"			"1" //"research_lab_5_1"			"1"
-		"tower_22"					"1"
+		"tower_22"					"10"
 		}
 		"Upgrades"
 	    {
@@ -8554,10 +8534,10 @@
 
 		"Requirements"{
 		"bank"				"1"//"barracks_3"				"1"
-		"rock_21"		"1"
+		"rock_21"		    "1"
 		"trader_3"					"1"
 		"research_lab_6_1"			"1"//"research_lab_5_1"			"1"
-		"tower_22"					"1"
+		"tower_22"					"10"
 		}
 		"Upgrades"
 	    {
@@ -8653,7 +8633,7 @@
 			"rock_21"					"1"
 			"trader_3"					"1"
 			"research_lab_6_1"			"1" //"research_lab_5_1"			"1"
-			"tower_22"					"1"
+			"tower_22"					"10"
 		}
 		"Upgrades"
 	    {
@@ -8745,7 +8725,7 @@
 			"rock_21"					"1"
 			"trader_3"					"1"
 			"research_lab_6_1"			"1"//"research_lab_5_1"			"1"
-			"tower_22"					"1"
+			"tower_22"					"10"
 		}
 
 		// Abilities
@@ -14839,7 +14819,7 @@
 		}
 		// Abilities
 		//----------------------------------------------------------------
-		"AbilityLayout"				"4"
+		"AbilityLayout"				"7"
 		"Ability1"					"gain_gold_team"
 		"Ability2"					"fountain_ability"
 		"Ability3"					"buy_lumber_1"
@@ -14922,6 +14902,7 @@
 		"Ability6"					"sell_lumber_8"
 		"Ability7"					"troll_warlord_cnvrt_manuale"
 		"Ability8"					"troll_warlord_convert_gold"
+		"Ability8"					"troll_warlord_attack_speed_norm"
 
 		"TeamGainGold"				"true"
 
@@ -17857,9 +17838,9 @@
 		"Ability1" 					"repair"
 		"Ability2" 					"build_tower_1"//"build_rock_1"
 		"Ability3" 					"build_mother_of_nature"
-		"Ability4" 					"gyrocopter_call_down"
-		"Ability5"					"cm_haste"
-		"Ability6" 					"commit_suicide"
+		"Ability4" 					"cm_haste"
+		"Ability5"					"commit_suicide"
+		"Ability6" 					""
 		"Ability7"					""
 		"Ability8"					""
 		"Ability9"					""

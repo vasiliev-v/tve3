@@ -251,13 +251,15 @@ function UpdateAbilityTooltips() {
                         tooltipManager.FindChildTraverse('AbilityExtraDescription').style.color = "#008000";
                         tooltipManager.FindChildTraverse('AbilityExtraDescription').style.fontSize = '18px';
                         tooltipManager.FindChildTraverse('AbilityExtraDescription').text = textLumer;
-                    }
+                    } 
 
                     if (requirementKeys.length > 0) {
                         reqText = reqText + "Requirements:";
                     }
                     for (var requirementKey of requirementKeys) {
-                        reqText = reqText + "<br>" + $.Localize("#" + requirementsObject[requirementKey]);
+                        reqText = reqText + " <br>  " + $.Localize("#" + requirementsObject[requirementKey][1]);
+                        if (requirementsObject[requirementKey][2] > 1)
+                            reqText = reqText + "  -  " + requirementsObject[requirementKey][2];
                     } 
                     if (reqText != "")
                     {

@@ -522,9 +522,7 @@ function KillWispOnAttackTroll (event)
 			end
 		end	
 	end
-	if string.match(target:GetUnitName(),"%a+") == "tower" then
-		caster:AddNewModifier(caster, nil, "modifier_troll_spell_ms_max", {Duration = time})
-	end
+	caster:AddNewModifier(caster, nil, "modifier_troll_spell_ms_max", {Duration = time})
 end
 
 function ExchangeLumber(event)
@@ -683,6 +681,9 @@ function SpawnUnitOnChannelSucceeded(event)
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
 					end
 				end
+			end
+			if unit_name == "worker_builder" then
+				hero.worker_builder = unit
 			end
 		end
 	end
@@ -1635,6 +1636,9 @@ function HealBuilding(event)
 	if target.state == "complete" then 
 		if target:HasModifier("modifier_disable_repair") then
 			target:RemoveModifierByName("modifier_disable_repair")
+		end
+		if target:HasModifier("modifier_disable_repair2") then
+			target:RemoveModifierByName("modifier_disable_repair2")
 		end
 		if (target:GetHealth() + heal) > target:GetMaxHealth() then
 			target:SetHealth(target:GetMaxHealth())

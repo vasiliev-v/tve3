@@ -1279,17 +1279,23 @@ function DisableAbilityIfMissingRequirements(playerID, hero, abilityHandle, unit
         hero = GameRules.trollHero
     end
     if requirements then
-       -- --DebugPrint("unitName: " .. unitName)
+        --DebugPrint("unitName: " .. unitName)
+        --DebugPrintTable(requirements)
         for _, requiredUnitName in ipairs(requirements) do
         --    --DebugPrint("requiredUnitName: " .. requiredUnitName)
-            local requiredBuildingCurrentCount = hero.buildings[requiredUnitName].completedConstructionCount
+            local requiredUnit, countUnit = unpack(requiredUnitName)
+            local requiredBuildingCurrentCount = hero.buildings[requiredUnit].completedConstructionCount
             if unitName == "rock_16" or unitName == "rock_17" or unitName == "rock_18" then
-                if requiredUnitName == "flag" then
+                if requiredUnit == "flag" then
                     requiredBuildingCurrentCount = 1
                 end
             end
-            if requiredBuildingCurrentCount < 1 then
-                table.insert(missingRequirements, requiredUnitName)
+            if countUnit == nil then
+                countUnit = 1
+            end
+            if requiredBuildingCurrentCount < countUnit then
+                local missCount = countUnit - requiredBuildingCurrentCount 
+                table.insert(missingRequirements, {requiredUnit, missCount})
                 disableAbility = true
             end
         end

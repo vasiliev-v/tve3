@@ -181,12 +181,16 @@ for requirementName, requirementCount in pairs(requirements) do
     allRequirements[requirementName] = requirementCount
     local requirementClass = GetClass(requirementName)
     local requirementLevel = GetUnitKV(requirementName).Level
-    local currentRequirementClassData =
-    allBuildingRequirementClasses[unitName][requirementClass]
+    --DebugPrint("2321321")
+    --DebugPrintTable(GetUnitKV(unitName))
+    --DebugPrintTable(GetUnitKV(unitName).Requirements)
+    --DebugPrint(GetUnitKV(unitName).Requirements[requirementName])
+    local requirementCountNeed = GetUnitKV(unitName).Requirements[requirementName]
+    local currentRequirementClassData = allBuildingRequirementClasses[unitName][requirementClass]
     local currentRequirementClassLevel = currentRequirementClassData and currentRequirementClassData.level or 0
     if requirementLevel > currentRequirementClassLevel then
         allBuildingRequirementClasses[unitName][requirementClass] =
-        {level = requirementLevel, unitName = requirementName}
+        {level = requirementLevel, unitName = requirementName, count = requirementCountNeed}
     end
 end
 end
@@ -237,6 +241,8 @@ function BuildingHelper:ParseKV()
                 
                 if info['Requirements'] then
                     values.requirements = info["Requirements"]
+                    --DebugPrint("values.requirements")
+                    --DebugPrintTable(values.requirements)
                 end
                 if info["StartingBuilding"] == 1 then
                     AddBuildingRequirements(name, info, {},
@@ -335,8 +341,8 @@ function BuildingHelper:ParseKV()
     for unitName, requirementClasses in pairs(allBuildingRequirementClasses) do
         GameRules.buildingRequirements[unitName] = {}
         for requirementClass, requirementClassData in pairs(requirementClasses) do
-            table.insert(GameRules.buildingRequirements[unitName],
-            requirementClassData.unitName)
+            table.insert(GameRules.buildingRequirements[unitName], {requirementClassData.unitName, requirementClassData.count})
+           -- DebugPrintTable(requirementClass)
         end
     end
 end

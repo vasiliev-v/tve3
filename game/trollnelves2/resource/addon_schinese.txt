@@ -339,7 +339,7 @@
 		"DOTA_Tooltip_ability_tower_atk_spd_Description"									"每一击都提供额外的攻击速度. 最后一次自动攻击将对敌方造成10秒的攻击速度减慢."
 		
 		"DOTA_Tooltip_ability_tower_frost_slow"												"冰箭"
-		"DOTA_Tooltip_ability_tower_frost_slow_Description"									"塔射出的箭变的寒冷，使敌人的攻击速度减慢1%，移动速度减7（不是百分比）攻击速度。与其他冰箭叠加，叠加持续三秒"
+		"DOTA_Tooltip_ability_tower_frost_slow_Description"									"塔射出的箭变的寒冷，使敌人的攻击速度减慢-%movespeed%% ，移动速度减7（不是百分比）攻击速度。与其他冰箭叠加，叠加持续三秒"
 
 		"DOTA_Tooltip_ability_tower_poison"													"毒刺"
 		"DOTA_Tooltip_ability_tower_poison_Description"	    								"每一次命中都会对敌人施加一次debuff，使其生命回复降低5%。叠加持续3秒，生命回复不能低于0."

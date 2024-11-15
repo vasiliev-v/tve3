@@ -128,6 +128,7 @@ function Build( event )
             table.insert(hero.units, unit)
             AddUpgradeAbilities(unit)
             UpdateSpells(hero)
+
             local item = CreateItem("item_building_cancel", unit, unit)
             if building_name ~= "flag" then
                 unit:AddItem(item)

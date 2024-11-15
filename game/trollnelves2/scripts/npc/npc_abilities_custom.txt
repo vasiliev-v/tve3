@@ -3078,7 +3078,7 @@
 	}
 }
 	
-"troll_warlord_attack_speed"
+"troll_warlord_attack_speed_old"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
@@ -3140,6 +3140,56 @@
 			{
 				"MODIFIER_STATE_PROVIDES_VISION" "MODIFIER_STATE_VALUE_ENABLED" 
 			}
+		}
+
+		"modifier_troll_warlord_attack_presence"
+		{
+			"IsHidden"			"0" //hidden?
+			"IsBuff"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%ATTACKSPEED_BONUS"
+			}
+		}
+	}
+}
+
+"troll_warlord_attack_speed"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"OnCastbar"					"0"
+	"AbilityTextureName"			"item_atk_spd_6"
+	
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"999999"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityValues"
+        {
+            "ATTACKSPEED_BONUS" "500"
+            "presence_radius" "999999"
+        }
+
+	"Modifiers"
+	{
+		"modifier_troll_warlord_attack_speed"
+		{
+			"Passive"			"1"
+			"IsHidden"			"0"
+	
+			"Aura"          	"modifier_troll_warlord_attack_presence"
+			"Aura_Radius"   	"%presence_radius"
+			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO" //mechanic?
+			"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE" //immune?
 		}
 
 		"modifier_troll_warlord_attack_presence"
@@ -8661,8 +8711,8 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "999999"
-            "lumber_cost" "999999"
+            "gold_cost" "65536"
+            "lumber_cost" "512"
             "food_cost" "20"
             "unit_count" "1"
             "wisp_cost" "0"
@@ -11617,7 +11667,7 @@
 		"AbilityValues"
         {
             "heal" "300 600 900"
-            "heal" "30 45 70"
+            "percent" "30 45 70"
         }
 
 		"OnSpellStart"
@@ -11747,6 +11797,15 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"drow_ranger_frost_arrows"
+
+		"AbilityValues"
+        {
+			"chance"  "10"
+            "attack_speed" "-7"
+			"movespeed"    "-1"
+            "duration"     "3"
+        }
+		
 		
 		"OnCreated"{
 			"ApplyModifier"{
@@ -11761,17 +11820,27 @@
 				"IsHidden"			"1"
 				"IsDebuff"			"0"
 
-				"OnAttack"{
-					"ApplyModifier"{
-						"ModifierName"	"modifier_frost_slow_target"
-						"Target"		"TARGET"
+				"OnAttackStart"{
+					"Random"
+					{
+						"Chance"		"%chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+
+						"OnSuccess"
+						{
+							"ApplyModifier"{
+								"ModifierName"	"modifier_frost_slow_target"
+								"Target"		"TARGET"
+							}
+						}
 					}
+					
 				}
 			}
 			"modifier_frost_slow_target"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"3"
+				"Duration"			"%duration"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				//"EffectName"		"particles/generic_gameplay/generic_frozen.vpcf"
@@ -11779,8 +11848,8 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-7" 
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-1" 
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed" 
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed" 
 				}
 			}
 		}
@@ -11792,31 +11861,50 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"drow_ranger_frost_arrows"
+
+		"AbilityValues"
+        {
+			"crit_chance"  "5"
+            "attack_speed" "-10"
+			"movespeed"    "-2"
+            "duration"     "4"
+        }
+		
 		
 		"OnCreated"{
 			"ApplyModifier"{
 				"Target"				"CASTER"
-				"ModifierName"			"modifier_frost_attack_2"
+				"ModifierName"			"modifier_frost_attack"
 			}
 		}
 
 		"Modifiers"{
-			"modifier_frost_attack_2"{
+			"modifier_frost_attack"{
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"IsDebuff"			"0"
 
-				"OnAttack"{
-					"ApplyModifier"{
-						"ModifierName"	"modifier_frost_slow_target_2"
-						"Target"		"TARGET"
+				"OnAttackStart"{
+					"Random"
+					{
+						"Chance"		"%chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+
+						"OnSuccess"
+						{
+							"ApplyModifier"{
+								"ModifierName"	"modifier_frost_slow_target"
+								"Target"		"TARGET"
+							}
+						}
 					}
+					
 				}
 			}
-			"modifier_frost_slow_target_2"{
+			"modifier_frost_slow_target"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"3"
+				"Duration"			"%duration"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				//"EffectName"		"particles/generic_gameplay/generic_frozen.vpcf"
@@ -11824,8 +11912,8 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-12" //"-10"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-2" //"-1"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed" 
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed" 
 				}
 			}
 		}
@@ -11837,6 +11925,12 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"venomancer_poison_sting"
+
+		"AbilityValues"
+        {
+			"regen"        "5"
+            "duration"     "3"
+        }
 		
 		"Modifiers"{
 			
@@ -11853,7 +11947,7 @@
 					"ApplyModifier" {
 						"Target"        "TARGET"
 						"ModifierName"  "modifier_poison"
-						"Duration"		"3"
+						"Duration"		"%duration"
 					}
 				}
 			}
@@ -11869,7 +11963,7 @@
 			"modifier_poison_target"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"3"
+				"Duration"			"%duration"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				"IsHidden"          "1"
@@ -11899,6 +11993,12 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"poison_viper"//"venomancer_poison_sting"
 		
+		"AbilityValues"
+        {
+			"regen"        "5"
+            "duration"     "6"
+        }
+
 		"Modifiers"{
 			
 			"modifier_poison_attack" {
@@ -11914,7 +12014,7 @@
 					"ApplyModifier" {
 						"Target"        "TARGET"
 						"ModifierName"  "modifier_poison"
-						"Duration"		"6"
+						"Duration"		"%duration"
 					}
 				}
 			}
@@ -11930,7 +12030,7 @@
 			"modifier_poison_target"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"6"
+				"Duration"			"%duration"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				"IsHidden"          "1"
@@ -13171,7 +13271,7 @@
             "creep_duration" "2.0"
             "hero_damage" "15000"
             "bounce_range" "600"
-            "bounces" "3"
+            "bounces" "5"
             "speed" "1000"
             "bounce_delay" "0.3"
             "bounces_tooltip" "2"
@@ -14079,7 +14179,7 @@
 
 		"AbilityValues"
         {
-            "duration" "3"
+            "duration" "4"
             "net_speed" "1500"
             "fake_ensnare_distance" "900"
         }

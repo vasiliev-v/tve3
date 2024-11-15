@@ -512,13 +512,13 @@
 		"DOTA_Tooltip_ability_upgrade_to_tower_10_5_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 65536-131072"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_11"                                        "Upgrade To Tower 11 lvl 1"
-		"DOTA_Tooltip_ability_upgrade_to_tower_11_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 40960"
+		"DOTA_Tooltip_ability_upgrade_to_tower_11_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 81920"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_11_1"                                        "Upgrade To Tower 11 lvl 2"
 		"DOTA_Tooltip_ability_upgrade_to_tower_11_1_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 256000"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_12"                                        "Upgrade To Tower 12 lvl 1"
-		"DOTA_Tooltip_ability_upgrade_to_tower_12_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 81920"
+		"DOTA_Tooltip_ability_upgrade_to_tower_12_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 163840"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_12_1"                                        "Upgrade To Tower 12 lvl 2"
 		"DOTA_Tooltip_ability_upgrade_to_tower_12_1_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 256000"
@@ -569,10 +569,10 @@
 		"DOTA_Tooltip_ability_upgrade_to_tower_21_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 999999<br>Умение: Fury Swipes"
 
 		"DOTA_Tooltip_ability_upgrade_to_true_sight_tower"                                "Upgrade To True Sight Tower"
-		"DOTA_Tooltip_ability_upgrade_to_true_sight_tower_Description"                    "Улучшите башню, чтобы открыть вокруг себя невидимых юнитов.(радиус 800) "
+		"DOTA_Tooltip_ability_upgrade_to_true_sight_tower_Description"                    "Улучшите башню, чтобы открыть вокруг себя невидимых юнитов. "
 
 		"DOTA_Tooltip_ability_upgrade_to_high_true_sight_tower"                           "Upgrade To High True Sight Tower"
-		"DOTA_Tooltip_ability_upgrade_to_high_true_sight_tower_Description"               "Улучшите башню, чтобы получить обзор через текстуры и деревья в радиусе 1200.(раскрывает невидимость в радиусе 1200)"
+		"DOTA_Tooltip_ability_upgrade_to_high_true_sight_tower_Description"               "Улучшите башню, чтобы получить обзор через текстуры и деревья."
 
 		"DOTA_Tooltip_ability_build_trader_1"                                             "Build Trader 1"
 		"DOTA_Tooltip_ability_build_trader_1_Description"                                 "Создайте Trader, чтобы обменивать дерево(lumber) на золото(gold)! "
@@ -655,37 +655,37 @@
 		"DOTA_Tooltip_ability_upgrade_to_research_lab_7_1_Description"                             "Постройте лабораторию, чтобы иметь возможность улучшить свои башни! "
 
 		"DOTA_Tooltip_ability_true_sight_ability"                                         "True Sight Ability"
-		"DOTA_Tooltip_ability_true_sight_ability_Description"                             "Раскрывает невидимых юнитов. Радиус действия 800."
+		"DOTA_Tooltip_ability_true_sight_ability_Description"                             "Раскрывает невидимых юнитов. Радиус действия %radius%."
 		"DOTA_Tooltip_ability_true_sight_ability_radius"                                  "RADIUS: "
 
 		"DOTA_Tooltip_ability_high_true_sight_ability"                                         "High True Sight Ability"
-		"DOTA_Tooltip_ability_high_true_sight_ability_Description"                             "Раскрывает невидимых юнитов, радиус действия: 1200. Имеет неограниченный обзор в радиусе 1200."
+		"DOTA_Tooltip_ability_high_true_sight_ability_Description"                             "Раскрывает невидимых юнитов, радиус действия: %radius%. Имеет неограниченный обзор в радиусе %radius%."
 		"DOTA_Tooltip_ability_high_true_sight_ability_radius"                                  "RADIUS: "
 		
 		"DOTA_Tooltip_ability_tower_atk_spd"												"Practise aim"
 		"DOTA_Tooltip_ability_tower_atk_spd_Description"									"Обеспечивает дополнительную скорость атаки с каждым ударом. Дебафф дополнительной скорости атаки действует на врага %duration% секунд после того, как последняя автоатака нанесла ему удар."
 		
 		"DOTA_Tooltip_ability_tower_frost_slow"												"Ice arrow"
-		"DOTA_Tooltip_ability_tower_frost_slow_Description"									"Стреляет ледяными стрелами, замедляя врагов при атаки на 1% скорости передвижения и 7 (не процентов) скорости атаки. Суммируется с другими ледяными стрелами. Один заряд длится 3 секунды."
+		"DOTA_Tooltip_ability_tower_frost_slow_Description"									"Стреляет ледяными стрелами, замедляя врагов при атаки на -%movespeed%% скорости передвижения и -%attack_speed%  (не процентов) скорости атаки. Суммируется с другими ледяными стрелами. Один заряд длится %duration% секунды. Шанс %chance%% " 
 
 		"DOTA_Tooltip_ability_tower_frost_slow_2"												"Ice arrow 2"
-		"DOTA_Tooltip_ability_tower_frost_slow_2_Description"									"Стреляет ледяными стрелами, замедляя врагов при атаки на 2% скорости передвижения и 12 (не процентов) скорости атаки. Суммируется с другими ледяными стрелами. Один заряд длится 4 секунды."
+		"DOTA_Tooltip_ability_tower_frost_slow_2_Description"									"Стреляет ледяными стрелами, замедляя врагов при атаки на -%movespeed%% скорости передвижения и -%attack_speed%  (не процентов) скорости атаки. Суммируется с другими ледяными стрелами. Один заряд длится %duration% секунды. Шанс %chance%% "
 
 
 		"DOTA_Tooltip_ability_tower_poison"													"Venom"
-		"DOTA_Tooltip_ability_tower_poison_Description"	    								"Каждый удар накладывает на врага дебафф, который снижает его регенерацию на 5%. Каждый стак длится 3 секунды, регенерация HP не может быть ниже 0."
+		"DOTA_Tooltip_ability_tower_poison_Description"	    								"Каждый удар накладывает на врага дебафф, который снижает его регенерацию на %regen%% . Каждый стак длится %duration% секунды, регенерация HP не может быть ниже 0."
 		
-		"DOTA_Tooltip_modifier_poison_attack"												"Каждый стак снижает 5% регенерации."
+		"DOTA_Tooltip_modifier_poison_attack_Description"												"Каждый стак снижает %regen%% регенерации."
 		
 		"DOTA_Tooltip_ability_tower_poison_2"													"Venom"
-		"DOTA_Tooltip_ability_tower_poison_2_Description"	    								"Каждый удар накладывает на врага дебафф, который снижает его регенерацию на 5%. Каждый стак длится 6 секунды, регенерация HP не может быть ниже 0."
+		"DOTA_Tooltip_ability_tower_poison_2_Description"	    								"Каждый удар накладывает на врага дебафф, который снижает его регенерацию на %regen%% . Каждый стак длится %duration% секунды, регенерация HP не может быть ниже 0."
 
 
 		"DOTA_Tooltip_modifier_poison_target"                                             "nothing"
 		"DOTA_Tooltip_modifier_poison_target_Description"                                 "gadfds"
 
 		"DOTA_Tooltip_modifier_poison_counter"                                             "Venom"
-		"DOTA_Tooltip_modifier_poison_counter_Description"                                 "Каждый стак снижает 5% регенерации."
+		"DOTA_Tooltip_modifier_poison_counter_Description"                                 "Каждый стак снижает %regen%% регенерации."
 
 		"DOTA_Tooltip_ability_sniper_headshot"                                         		"Время Пострелять!"
 		"DOTA_Tooltip_ability_sniper_headshot_Description"                             	"С вероятностью 5% замедляет противника на 50%. Длительность: 0.25 сек."
@@ -1287,7 +1287,7 @@
 		"DOTA_Tooltip_ability_abaddon_aphotic_shield_Description"                         "Снимает с союзника негативные эффекты и блокирует 100 урона. Действует 5 сек."
 
 		"DOTA_Tooltip_ability_cm_haste"                                                   "Haste"
-		"DOTA_Tooltip_ability_cm_haste_Description"                                       "Максимально увеличивает вашу скорость передвижения и дает %eva%% уклонение от волков, но не от Тролля."
+		"DOTA_Tooltip_ability_cm_haste_Description"                                       "Максимально увеличивает вашу скорость передвижения и дает %eva%%."
 
 		"DOTA_Tooltip_ability_cm_heal_building"                                           "Heal Building"
 		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Используйте эту способность на здании, чтобы вылечить его."
