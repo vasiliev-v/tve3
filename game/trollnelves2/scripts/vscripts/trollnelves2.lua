@@ -1206,6 +1206,7 @@ end
 function UpdateSpells(unit)
     local playerID = unit:GetPlayerOwnerID()
     local hero = unit
+    local ownerHero = PlayerResource:GetSelectedHeroEntity(playerID)
     for a = 0, unit:GetAbilityCount() - 1 do
         local tempAbility = unit:GetAbilityByIndex(a)
         if tempAbility then
@@ -1215,6 +1216,24 @@ function UpdateSpells(unit)
                 local buildingName = abilityKV.UnitName
                 DisableAbilityIfMissingRequirements(playerID, hero, tempAbility,
                 buildingName)
+            end
+        end
+    end
+    if ownerHero then
+        if ownerHero.build_worker then
+            if ownerHero.build_worker:IsAlive() then
+                for a = 0, ownerHero.build_worker:GetAbilityCount() - 1 do
+                    DebugPrint("Done")
+                    local tempAbility = ownerHero.build_worker:GetAbilityByIndex(a)
+                    if tempAbility then
+                        local abilityKV = GetAbilityKV(tempAbility:GetAbilityName());
+                        local bIsBuilding = abilityKV and abilityKV.Building or 0
+                        if bIsBuilding == 1 then
+                            local buildingName = abilityKV.UnitName
+                            DisableAbilityIfMissingRequirements(playerID, hero, tempAbility, buildingName)
+                        end
+                    end
+                end
             end
         end
     end

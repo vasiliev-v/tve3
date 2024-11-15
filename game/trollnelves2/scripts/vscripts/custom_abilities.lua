@@ -682,8 +682,18 @@ function SpawnUnitOnChannelSucceeded(event)
 					end
 				end
 			end
-			if unit_name == "worker_builder" then
-				hero.worker_builder = unit
+			if string.match(unit_name,"worker_builder") then
+				unit.units = {}
+				unit.disabledBuildings = {}
+				unit.buildings = {} -- This keeps the name and quantity of each building
+				hero.build_worker = unit
+				for _, buildingName in ipairs(GameRules.buildingNames) do
+					unit.buildings[buildingName] = {
+						startedConstructionCount = 0,
+						completedConstructionCount = 0
+					}
+				end
+				UpdateSpells(hero)
 			end
 		end
 	end
