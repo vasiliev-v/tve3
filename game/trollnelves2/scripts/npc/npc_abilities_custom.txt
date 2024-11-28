@@ -7885,7 +7885,13 @@
 				"Radius"				"%radius1"
 				"Duration"				"%duration"
 			}
+			 "CreateThinker"
+			{
+				"ModifierName"	"modifier_blood_rite_delay"
+				"Target"		"POINT"
+			}
 		}
+		
 		"Modifiers"
 		{
 			"modifier_shrapnel_stack_counter_datadriven"
@@ -7894,6 +7900,31 @@
 				"IsHidden"				"0"
 				"IsPurgable"			"0"
 				"IsDebuff"				"0"
+			}
+			"modifier_blood_rite_delay"
+			{
+				"Duration"	"%duration"
+				
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"hero_bloodseeker.bloodRite"
+						"Target"		"TARGET"
+					}
+					
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius1 %radius1 %radius1"
+						}
+					}
+				}
 			}
 		}
 	}

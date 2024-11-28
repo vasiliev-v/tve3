@@ -344,8 +344,5 @@ function chatcommand:OnPlayerChat(event)
 	--GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
 		elseif event.text  ==  "!money"  then
 			-- PlayerResource:ModifyGold(hero, nil)
-			--
-			--local PoolTable = CustomNetTables:SetTableValue("buildings", "tower_19")
-			DebugPrintTable(GameRules.buildingRequirements["tower_19"])
 		end
 end

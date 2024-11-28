@@ -6,10 +6,7 @@ item_drop = {
 	{items = {"item_vip"}, limit = 2, chance = 10, units = {"npc_dota_hero_treant"} },
 	{items = {"item_get_gem"}, limit = 10, chance = 100, units = {"npc_dota_hero_treant"} },
 	{items = {"item_get_gold"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
-	{items = {"item_event_desert"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
-	{items = {"item_event_winter"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
-	{items = {"item_event_helheim"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
-	{items = {"item_event_birthday"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+
 	
 	-- {items = {"item_get_gold"}, limit = 1, chance = 5, units = {"npc_dota_hero_crystal_maiden","npc_dota_hero_lycan","npc_dota_hero_treant","npc_dota_hero_lina","event_line_boss_halloween"} },
 	--{items = {"item_get_gold"}, limit = 1, chance = 5, units = {"barracks_3"} },
@@ -18,6 +15,10 @@ item_drop = {
 	{items = {"item_get_gold"}, limit = 1, chance = 5, units = {"event_line_boss_halloween"} },
 	{items = {"item_event_birthday"}, limit = 1, chance = 400, units = {"event_line_boss_halloween"} },
 
+		{items = {"item_event_desert"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+	{items = {"item_event_winter"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+	{items = {"item_event_helheim"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
+	{items = {"item_event_birthday"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
 	
 	{items = {"item_get_gold"}, limit = 1, chance = 50, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina"} },
 	{items = {SEASON_ITEM}, limit = 15, chance = 100, units = {"npc_dota_hero_doom_bringer","npc_dota_hero_phantom_assassin","npc_dota_hero_tidehunter","npc_dota_hero_lina","event_line_boss_halloween","npc_dota_hero_pudge"} },
