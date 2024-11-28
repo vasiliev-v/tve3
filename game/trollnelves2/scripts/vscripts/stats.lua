@@ -1,7 +1,7 @@
 require('top')
 
 Stats = Stats or {}
-local dedicatedServerKey = GetDedicatedServerKeyV3("1")
+local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA" --GetDedicatedServerKeyV3("1")
 local checkResult = {}
 
 function Stats.SubmitMatchData(winner,callback)
@@ -313,7 +313,7 @@ end
 
 function Stats.RequestDataTop10(idTop, callback)
 
-	if GameRules:IsCheatMode() then
+	if GameRules:IsCheatMode() and not GameRules.isTesting then
 		return -1 
 	end
 
