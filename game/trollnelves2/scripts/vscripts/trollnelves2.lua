@@ -175,7 +175,6 @@ function SelectHeroes()
             end
 
             DebugPrint("party2 " .. pID .. "party_id2 " ..  party_id)
-            DebugPrint("party2 " .. pID .. "party2    " ..  party)
 
             if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
                 if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > 1 or PoolTable ~= "0") and not partyGame then
