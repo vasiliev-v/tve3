@@ -157,8 +157,10 @@ function VoteKick(eventSourceIndex, event)
 	if tonumber(GameRules.scores[event.playerID1].elf) + tonumber(GameRules.scores[event.playerID1].troll) <= -500 then
 		disKick = math.floor((tonumber(GameRules.scores[event.playerID1].elf) + tonumber(GameRules.scores[event.playerID1].troll))/500) * 0.1
 	end
+	if event.vote == 1 then
 	local text = "Vote: " .. votes[ event.playerID1 ] .. "; Count Player: " .. countVote[event.playerID1] .. "; Percent: " .. votes[ event.playerID1 ]/countVote[event.playerID1] .. "; Need perc.: " .. PERC_KICK_PLAYER + disKick .. "; Min player: 6" 
 	GameRules:SendCustomMessageToTeam("<font color='#FF0000'>" ..  text  .. "</font>", team, 0, 0)
+	end
 	if team == DOTA_TEAM_GOODGUYS then
 		Timers:CreateTimer(35.0, function() 
 			

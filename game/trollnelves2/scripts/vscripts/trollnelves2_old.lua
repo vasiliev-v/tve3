@@ -163,22 +163,18 @@ function SelectHeroes()
             local pointScore = tonumber(GameRules.scores[pID].elf or 0) + tonumber(GameRules.scores[pID].troll or 0)
             local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))["2"]["0"]
             local party_id = tonumber(tostring(PlayerResource:GetPartyID(pID)))
-            local partyGame = false 
-            if party_id and party_id == 0 then
+
+            if not party_id and party_id = 0 then
                 DebugPrint("not  party_id and party_id = 0 ID " .. pID)
             else 
                 DebugPrint("party" .. pID .. "party_id        " ..  party_id)
-                local pary_chance = RandomInt(0, 100)
-                if pary_chance > 25 then
-                    partyGame = false 
-                end
             end
 
             DebugPrint("party2 " .. pID .. "party_id2 " ..  party_id)
             DebugPrint("party2 " .. pID .. "party2    " ..  party)
 
             if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
-                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > 1 or PoolTable ~= "0") and not partyGame then
+                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > 1 and not party_id and party_id = 0) or (PoolTable ~= "0" and not party_id and party_id = 0) then
                     table.insert(wannabeTrollIDs, pID)
                 elseif GameRules.PlayersCount < MIN_RATING_PLAYER or GameRules:IsCheatMode() then
                     table.insert(wannabeTrollIDs, pID)
