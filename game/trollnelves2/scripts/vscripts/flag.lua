@@ -25,7 +25,7 @@ function FlagStart(eventSourceIndex, event)
 		elseif GameRules.countFlag[event.PlayerID] ~= nil then
 			SendErrorMessage(event.PlayerID, "You can only invite 1 person.")
 		else 
-			local timeLeft = math.ceil(lastFlagTime[event.PlayerID] + 60 - GameRules:GetGameTime())
+			local timeLeft = math.ceil(lastFlagTime[event.PlayerID] + 60 - GameRules:GetGameTime() or 60)
 			SendErrorMessage(event.PlayerID, "You will be able to send the flag in " .. timeLeft .. " seconds.")
 		end
 	end	

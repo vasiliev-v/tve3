@@ -1256,15 +1256,6 @@ function BuySkill(event)
 	if hero == nil then
 		return
 	end
-
-	--if GameRules.test2 == true then
-	--hero = GameRules.trollHero
-	--end
-
-	if hero ~= GameRules.trollHero and hero ~= GameRules.trollHero2 then
-		SendErrorMessage(playerID, "error_buy_skill_only_troll")
-		return
-	end
 	
 	local units = Entities:FindAllByClassname("npc_dota_lone_druid_bear")
 	for _,unit in pairs(units) do

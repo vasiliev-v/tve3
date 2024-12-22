@@ -396,7 +396,7 @@ function Activate()
 	GameRules.trollID = nil
 	GameRules.trollHero = nil
 	GameRules.trollID2 = nil
-	GameRules.trollHero2 = nil
+
 	GameRules.Bonus = {}
 	GameRules.BonusPercent = 0
 	GameRules.BonusTrollIDs = {}
@@ -407,7 +407,7 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = true
+	GameRules.test = false
 	GameRules.test2 = false
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}

@@ -365,11 +365,6 @@ function UpgradeBuilding( event )
         hero = GameRules.trollHero
         playerID = GameRules.trollID
     end
-
-    if string.match(building:GetUnitName(),"troll2_hut") then
-        hero = GameRules.trollHero2
-        playerID = GameRules.trollID2
-    end
     
     -- I do it like this so you are able to have two buildings upgrade into the same upgraded building with different prices and only having one ability
     local count = tonumber(upgrades.Count)
