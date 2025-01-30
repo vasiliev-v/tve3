@@ -3923,64 +3923,6 @@
 		}
 	}
 }
-
-"troll_warlord_attack_speed_norm"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"OnCastbar"					"0"
-	"AbilityTextureName"			"item_atk_spd_6"
-	
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"999999"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"ATTACKSPEED_BONUS"				"500"
-		}
-		"02"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"presence_radius"				"999999"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_troll_warlord_attack_speed"
-		{
-			"Passive"			"1"
-			"IsHidden"			"0"
-	
-			"Aura"          	"modifier_troll_warlord_attack_presence"
-			"Aura_Radius"   	"%presence_radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO" //mechanic?
-			"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE" //immune?
-		}
-
-		"modifier_troll_warlord_attack_presence"
-		{
-			"IsHidden"			"0" //hidden?
-			"IsBuff"			"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%ATTACKSPEED_BONUS"
-			}
-		}
-	}
-}
 	
 	"troll_warlord_cooldown_reduction"
 {
@@ -11235,12 +11177,12 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"gold_cost"			"65536"
+				"gold_cost"			"999999"
 			}	
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"lumber_cost"		"1024"
+				"lumber_cost"		"999999"
 			}	
 			"03"
 			{
@@ -15420,7 +15362,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET || DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"windrunner_windrun"
 		"MaxLevel"						"1"
-		"AbilityCooldown"				"150"
+		"AbilityCooldown"				"45"
 		
 		"precache"
 		{

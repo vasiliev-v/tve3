@@ -28,7 +28,7 @@ function OnSpellStart(event)
 
 		if enemy:IsHero() then
 			local effect_cast = ParticleManager:CreateParticle(
-				"particles/units/heroes/hero_silencer/silencer_global_silence.vpcf",
+				"particles/units/heroes/hero_silencer/silencer_global_silence_hero.vpcf",
 				PATTACH_ABSORIGIN_FOLLOW,
 				enemy
 			)
@@ -94,7 +94,7 @@ function modifier_ability_global_silence:CheckState()
 end
 
 function modifier_ability_global_silence:GetEffectName()
-	return "particles/generic_gameplay/generic_silenced.vpcf"
+	return "particles/econ/items/drow/drow_arcana/drow_arcana_silenced.vpcf"
 end
 
 function modifier_ability_global_silence:GetEffectAttachType()

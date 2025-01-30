@@ -17,34 +17,6 @@ game_spells_lib.spells_list =
     --]]
      --{"troll_spell_block_damage", "troll_spell_block_damage", "modifier_troll_spell_block_damage", {"troll_spell_block_damage_description_level_1", "troll_spell_block_damage_description_level_2", "troll_spell_block_damage_description_level_3"}, "1"},
     {},
-    {"elf_spell_ms", "elf_spell_ms", "modifier_elf_spell_ms", {"elf_spell_ms_description_level_1", "elf_spell_ms_description_level_2", "elf_spell_ms_description_level_3"}, "0"},
-    {"elf_spell_gold", "elf_spell_gold", "modifier_elf_spell_gold", {"elf_spell_gold_description_level_1", "elf_spell_gold_description_level_2", "elf_spell_gold_description_level_3"}, "0"},
-    {"elf_spell_lumber", "elf_spell_lumber", "modifier_elf_spell_lumber", {"elf_spell_lumber_description_level_1", "elf_spell_lumber_description_level_2", "elf_spell_lumber_description_level_3"}, "0"},
-    {"elf_spell_cd_reduce", "elf_spell_cd_reduce", "modifier_elf_spell_cd_reduce", {"elf_spell_cd_reduce_description_level_1", "elf_spell_cd_reduce_description_level_2", "elf_spell_cd_reduce_description_level_3"}, "0"},
-    {"elf_spell_cd_worker", "elf_spell_cd_worker", "modifier_elf_spell_cd_worker", {"elf_spell_cd_worker_description_level_1", "elf_spell_cd_worker_description_level_2", "elf_spell_cd_worker_description_level_3"}, "0"},
-    {"elf_spell_armor_wall", "elf_spell_armor_wall", "modifier_elf_spell_armor_wall", {"elf_spell_armor_wall_description_level_1", "elf_spell_armor_wall_description_level_2", "elf_spell_armor_wall_description_level_3"}, "0"},
-    {"elf_spell_tower_damage", "elf_spell_tower_damage", "modifier_elf_spell_tower_damage", {"elf_spell_tower_damage_description_level_1", "elf_spell_tower_damage_description_level_2", "elf_spell_tower_damage_description_level_3"}, "0"},
-    {"elf_spell_limit_gold", "elf_spell_limit_gold", "modifier_elf_spell_limit_gold", {"elf_spell_limit_gold_description_level_1", "elf_spell_limit_gold_description_level_2", "elf_spell_limit_gold_description_level_3"}, "0"},
-    {"elf_spell_limit_lumber", "elf_spell_limit_lumber", "modifier_elf_spell_limit_lumber", {"elf_spell_limit_lumber_description_level_1", "elf_spell_limit_lumber_description_level_2", "elf_spell_limit_lumber_description_level_3"}, "0"},
-    {"elf_spell_true", "elf_spell_true", "modifier_elf_spell_true", {"elf_spell_true_description_level_1", "elf_spell_true_description_level_2", "elf_spell_true_description_level_3"}, "0"},
-    {"elf_spell_tower_range", "elf_spell_tower_range", "modifier_elf_spell_tower_range", {"elf_spell_tower_range_description_level_1", "elf_spell_tower_range_description_level_2", "elf_spell_tower_range_description_level_3"}, "0"},
-    {"elf_spell_blink", "elf_spell_blink", "modifier_elf_spell_blink", {"elf_spell_blink_description_level_1", "elf_spell_blink_description_level_2", "elf_spell_blink_description_level_3"}, "0"},
-    {"elf_spell_damage_gold", "elf_spell_damage_gold", "modifier_elf_spell_damage_gold", {"elf_spell_damage_gold_description_level_1", "elf_spell_damage_gold_description_level_2", "elf_spell_damage_gold_description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-    {"elf_spell_", "elf_spell_", "modifier_elf_spell_", {"elf_spell__description_level_1", "elf_spell__description_level_2", "elf_spell__description_level_3"}, "0"},
-
-
     {"troll_spell_ms", "troll_spell_ms", "modifier_troll_spell_ms", {"troll_spell_ms_description_level_1", "troll_spell_ms_description_level_2", "troll_spell_ms_description_level_3"}, "1"},
     {"troll_spell_gold_hit", "troll_spell_gold_hit", "modifier_troll_spell_gold_hit", {"troll_spell_gold_hit_description_level_1", "troll_spell_gold_hit_description_level_2", "troll_spell_gold_hit_description_level_3"}, "1"},
     {"troll_spell_hp_reg", "troll_spell_hp_reg", "modifier_troll_spell_hp_reg", {"troll_spell_hp_reg_description_level_1", "troll_spell_hp_reg_description_level_2", "troll_spell_hp_reg_description_level_3"}, "1"},
@@ -93,7 +65,7 @@ game_spells_lib.PLAYER_INFO =
 }
 
 game_spells_lib.current_activated_spell = {}
-game_spells_lib.spells_cost_random = 500
+game_spells_lib.spells_cost_random = 200
 game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
 
 CustomNetTables:SetTableValue("game_spells_lib", "spell_list", game_spells_lib.spells_list)
@@ -209,8 +181,7 @@ function game_spells_lib:AddPlayerSpell(id, spell_name, modifier_name, hero)
         game_spells_lib.current_activated_spell[id] = {}
     end
     table.insert(game_spells_lib.current_activated_spell[id], spell_name)
-    local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {}):SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
-    DebugPrint("lvl " .. game_spells_lib:GetSpellLevel(id, spell_name))
+    local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {})
     if spell_mod then
         spell_mod:SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
     end
@@ -267,10 +238,9 @@ function game_spells_lib:event_buy_spell(data)
             CustomGameEventManager:Send_ServerToPlayer( player, 'event_spell_shop_drop', {spell_name = drop_info[1], upgrade = drop_info[2]} )
         end
     end
-    DebugPrintTable(drop_info)
-    if drop_info ~= nil and drop_info[2] < 4 and drop_info[2] > 0 then
+
+    if drop_info ~= nil then
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
-        local dataShop = {}
         if drop_info[4] == nil then
             PoolTable["12"][tostring(GetTableLng(PoolTable["12"]))] = drop_info   
         elseif drop_info[2] > 0 and drop_info[2] < 4 then
@@ -278,14 +248,6 @@ function game_spells_lib:event_buy_spell(data)
         end
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
         game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))[12]
-		dataShop.SteamID = tostring(PlayerResource:GetSteamID(player_id))
-		dataShop.Num = tostring(drop_info[1])
-        dataShop.Score = tostring(drop_info[2])
-        dataShop.Nick = "skill"
-        dataShop.Coint = tostring(cost)
-        dataShop.TypeDonate = "gem"
-        dataShop.PlayerID = player_id
-        Shop.GetSkill(dataShop, callback)
     end
 
 end
@@ -309,10 +271,11 @@ function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
     end
     local upgrade_info = {}
     local find_random_to_upgrade = {}
+
     for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
-        --DebugPrintTable(game_spells_lib.PLAYER_INFO[player_id][tostring(i)])
-        --DebugPrint(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"])
-        if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"]) < 2 then
+        DebugPrintTable(game_spells_lib.PLAYER_INFO[player_id][tostring(i)])
+        DebugPrint(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"])
+        if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"]) < 2 then
             for _, spell_history in pairs(game_spells_lib.spells_list) do
                 if spell_history[1] == game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] and tonumber(spell_history[5]) == idPerk then
                     table.insert(find_random_to_upgrade, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"])
@@ -320,10 +283,10 @@ function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
             end
         end
     end
-    --DebugPrintTable(find_random_to_upgrade)
+    DebugPrintTable(find_random_to_upgrade)
     if #find_random_to_upgrade <= 0 then
         for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
-            if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"]) < 3 then
+            if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"]) < 3 then
                 for _, spell_history in pairs(game_spells_lib.spells_list) do
                     if spell_history[1] == game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] and tonumber(spell_history[5]) == idPerk then
                         table.insert(find_random_to_upgrade, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"])
@@ -336,7 +299,7 @@ function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
     if random_upgrade then
         for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
             if game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] == random_upgrade then
-                game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"] = tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"])  + 1
+                game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"] = tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"])  + 1
                 table.insert(upgrade_info, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"])
                 table.insert(upgrade_info, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"])
                 table.insert(upgrade_info, 0)

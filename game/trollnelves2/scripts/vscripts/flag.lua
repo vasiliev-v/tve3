@@ -3,7 +3,7 @@ local lastFlagTime = {}
 
 
 function FlagStart(eventSourceIndex, event)
-	--DebugPrint("FlagStart")
+	DebugPrint("FlagStart")
 	if event.target ~= nil then
 		local hero = PlayerResource:GetSelectedHeroEntity(event.target)
 		local casterHero = PlayerResource:GetSelectedHeroEntity(event.PlayerID)	
@@ -16,7 +16,7 @@ function FlagStart(eventSourceIndex, event)
 		    and GameRules.PlayersBase[event.PlayerID] ~= nil and GameRules.countFlag[event.PlayerID] == nil
 			-- and (GameRules:GetGameTime() - GameRules.startTime < 120  or  (lastFlagTime[event.target] == nil or lastFlagTime[event.target] + 240 < GameRules:GetGameTime()) )
 			and (lastFlagTime[event.PlayerID] == nil or lastFlagTime[event.PlayerID] + 60 < GameRules:GetGameTime()) then	
-			--DebugPrint("FlagStart SEND")
+			DebugPrint("FlagStart SEND")
 			lastFlagTime[event.PlayerID] = GameRules:GetGameTime()
 			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.target), "show_flag_options", {["name"] = playerName, ["id"] = event.target,["casterID"] = event.casterID} )
 			GameRules.PlayersBaseSendFlag[event.PlayerID] = 1 
@@ -25,19 +25,19 @@ function FlagStart(eventSourceIndex, event)
 		elseif GameRules.countFlag[event.PlayerID] ~= nil then
 			SendErrorMessage(event.PlayerID, "You can only invite 1 person.")
 		else 
-			local timeLeft = math.ceil(lastFlagTime[event.PlayerID] + 60 - GameRules:GetGameTime() or 60)
+			local timeLeft = math.ceil(lastFlagTime[event.PlayerID] + 60 - GameRules:GetGameTime())
 			SendErrorMessage(event.PlayerID, "You will be able to send the flag in " .. timeLeft .. " seconds.")
 		end
 	end	
 end
 
 function FlagGive(eventSourceIndex, event)
-	--DebugPrint("event.vote " .. event.vote)
+	DebugPrint("event.vote " .. event.vote)
 	local hero = PlayerResource:GetSelectedHeroEntity(event.PlayerID)
 	local caster = PlayerResource:GetSelectedHeroEntity(event.casterID)
 	if event.vote == 1 and caster:IsElf() and hero:IsElf() and GameRules.PlayersBase[event.casterID] ~= nil and GameRules.countFlag[event.casterID] == nil and GameRules.PlayersBaseSendFlag[event.casterID] ~= nil then
-        --DebugPrint("GameRules.PlayersBase[event.casterID] FlagGive " .. GameRules.PlayersBase[event.casterID])
-        --DebugPrint("event.casterID FlagGive " .. event.casterID)
+        DebugPrint("GameRules.PlayersBase[event.casterID] FlagGive " .. GameRules.PlayersBase[event.casterID])
+        DebugPrint("event.casterID FlagGive " .. event.casterID)
 		if hero.units ~= nil then
 			for i=1,#hero.units do
 				if hero.units[i] and not hero.units[i]:IsNull() and hero.units[i]:GetUnitName() == "flag" then

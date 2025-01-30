@@ -83,7 +83,7 @@ end
 --------------------------------------------------------------------------------
 -- Interval Effects
 function modifier_generic_invisibility:OnIntervalThink()
-    --DebugPrint("on interval think")
+    DebugPrint("on interval think")
 	self.hidden = true
     self:StartIntervalThink(-1)
 end

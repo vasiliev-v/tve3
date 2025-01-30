@@ -206,7 +206,6 @@ function shrapnel_start_charge( keys )
 	local ability = keys.ability
 	local modifierName = "modifier_shrapnel_stack_counter_datadriven"
 	local maximum_charges = 2
-	
 	-- Initialize stack
 	caster:SetModifierStackCount( modifierName, caster, 0 )
 	caster.shrapnel_charges = maximum_charges
@@ -229,16 +228,6 @@ function shrapnel_start_charge( keys )
 		local CD = caster:GetCooldownReduction()
 		if caster:GetUnitName() == "npc_dota_hero_bear" then
 			CD = PlayerResource:GetSelectedHeroEntity(caster:GetPlayerOwnerID()):GetCooldownReduction()
-		end
-		maximum_charges = 2
-		if caster:HasModifier("modifier_troll_spell_reveal")  then
-			if caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 1  then
-				maximum_charges = 3
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 2 then
-				maximum_charges = 4
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 3 then
-				maximum_charges = 5
-			end
 		end
 		local charge_replenish_time = 60 * CD
 		if caster.start_charge and caster.shrapnel_charges < maximum_charges then
@@ -283,15 +272,6 @@ function shrapnel_fire( keys )
 		local dummyModifierName = "modifier_shrapnel_dummy_datadriven"
 		local radius = ability:GetLevelSpecialValueFor( "radius", ( ability:GetLevel() - 1 ) )
 		local maximum_charges = 2
-		if caster:HasModifier("modifier_troll_spell_reveal")  then
-			if caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 1  then
-				maximum_charges = 3
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 2 then
-				maximum_charges = 4
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 3 then
-				maximum_charges = 5
-			end
-		end
 		local CD = caster:GetCooldownReduction()
 		if caster:GetUnitName() == "npc_dota_hero_bear" then
 			CD = PlayerResource:GetSelectedHeroEntity(caster:GetPlayerOwnerID()):GetCooldownReduction()
@@ -392,12 +372,12 @@ function TeleportTo (event)
 		if caster:GetTeamNumber() == 2 then
 			FindClearSpaceForUnit( caster , Vector(-472,-628,256) , true )
 			ResolveNPCPositions(caster:GetAbsOrigin(),260)
-			caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 15})
+			--caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 15})
 			
 		else
 			FindClearSpaceForUnit( caster , Vector(800,-725,256) , true )
 			ResolveNPCPositions(caster:GetAbsOrigin(),260)
-			caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 15})
+			--caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 15})
 			
 		end
 	else
@@ -406,7 +386,7 @@ function TeleportTo (event)
 			if #units == 0 then
 			--	caster:SetHullRadius(1) --160
 				FindClearSpaceForUnit( caster , GameRules.trollTps[i] , true )
-				caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 15})
+				--caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 15})
 				break
 			end
 		end
@@ -416,7 +396,7 @@ function TeleportTo (event)
 	
 
 	
-	caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 1})
+	--caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 1})
     ResolveNPCPositions(caster:GetAbsOrigin(),130)
 	--caster:SetHullRadius(hull) --160
 end
@@ -434,12 +414,12 @@ function GoldOnAttack (event)
 			koeff = 0
 		end
 		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
-		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
-			if caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 1  then
+		if caster:HasModifier("modifier_troll_spell_gold_hit")  then
+			if caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 1  then
 				dmg = dmg + (1 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 2 then
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 2 then
 				dmg = dmg + (2 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 3 then
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 3 then
 				dmg = dmg + (3 * GameRules.MapSpeed) * koeff
 			end
 		end
@@ -486,43 +466,30 @@ function GoldOnAttack (event)
 end
 
 function KillWispOnAttack (event)
-	local caster = event.caster
-	local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed
-	local target = event.unit
-	caster.attackTarget = target:GetEntityIndex()
-	target.attackers = target.attackers or {}
-	target.attackers[caster:GetEntityIndex()] = true
-	if target:GetUnitName() == 'gold_wisp' or target:GetUnitName() == 'worker_1' or target:GetUnitName() == 'worker_2' or target:GetUnitName() == 'worker_3' then
-		local units = Entities:FindAllByClassname("npc_dota_creature")
-		units = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin() , nil, 192 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
-		for _, unit in pairs(units) do
-			if unit:GetUnitName() == 'gold_wisp' or unit:GetUnitName() == 'worker_1' or unit:GetUnitName() == 'worker_2' or unit:GetUnitName() == 'worker_3'  then
-				ApplyDamage({victim = unit, attacker = caster, damage = 1, damage_type = DAMAGE_TYPE_PHYSICAL })
-			end
-		end	
-	end
-end
-
-function KillWispOnAttackTroll (event)
-	local caster = event.caster
-	local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed
-	local time = event.SpeedTime
-	local radius = event.RadiusSkill
-	local target = event.unit
-	caster.attackTarget = target:GetEntityIndex()
-	target.attackers = target.attackers or {}
-	target.attackers[caster:GetEntityIndex()] = true
-	if target:GetUnitName() == 'gold_wisp' or string.match(target:GetUnitName(),"%a+") == "gold_mine" or target:GetUnitName() == 'gold_wisp' or target:GetUnitName() == 'worker_1' or target:GetUnitName() == 'worker_2' or target:GetUnitName() == 'worker_3' then
-		local units = Entities:FindAllByClassname("npc_dota_creature")
-		units = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin() , nil, radius , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
-		for _, unit in pairs(units) do
-			if unit:GetUnitName() == 'gold_wisp' or string.match(target:GetUnitName(),"%a+") == "gold_mine" or unit:GetUnitName() == 'worker_1' or unit:GetUnitName() == 'worker_2' or unit:GetUnitName() == 'worker_3'  then
-				ApplyDamage({victim = unit, attacker = caster, damage = dmg, damage_type = DAMAGE_TYPE_PHYSICAL })
-				PlayerResource:ModifyGold(caster,dmg,true)
-			end
-		end	
-	end
-	caster:AddNewModifier(caster, nil, "modifier_troll_spell_ms_max", {Duration = time})
+		local caster = event.caster
+		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed
+		local target = event.unit
+		caster.attackTarget = target:GetEntityIndex()
+		target.attackers = target.attackers or {}
+		target.attackers[caster:GetEntityIndex()] = true
+		if target:GetUnitName() == 'gold_wisp' or target:GetUnitName() == 'worker_1' or target:GetUnitName() == 'worker_2' or target:GetUnitName() == 'worker_3' then
+			local units = Entities:FindAllByClassname("npc_dota_creature")
+			units = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin() , nil, 128 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
+    		for _, unit in pairs(units) do
+				if unit:GetUnitName() == 'gold_wisp'  then
+					ApplyDamage({victim = unit, attacker = caster, damage = 1, damage_type = DAMAGE_TYPE_PHYSICAL })
+				end
+				if unit:GetUnitName() == 'worker_1'  then
+					ApplyDamage({victim = unit, attacker = caster, damage = 1, damage_type = DAMAGE_TYPE_PHYSICAL })
+				end
+				if unit:GetUnitName() == 'worker_2'  then
+					ApplyDamage({victim = unit, attacker = caster, damage = 1, damage_type = DAMAGE_TYPE_PHYSICAL })
+				end
+				if unit:GetUnitName() == 'worker_3'  then
+					ApplyDamage({victim = unit, attacker = caster, damage = 1, damage_type = DAMAGE_TYPE_PHYSICAL })
+				end
+			end	
+		end
 end
 
 function ExchangeLumber(event)
@@ -672,28 +639,6 @@ function SpawnUnitOnChannelSucceeded(event)
 			if string.match(unit_name,"%a+") == "worker" then
 				ABILITY_Repair = unit:FindAbilityByName("repair")
 				ABILITY_Repair:ToggleAutoCast()
-				if hero:HasModifier("modifier_elf_spell_cd_worker")  then
-					if hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 1  then
-						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(1) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 2 then
-						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(2) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 3 then
-						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
-					end
-				end
-			end
-			if string.match(unit_name,"worker_builder") then
-				unit.units = {}
-				unit.disabledBuildings = {}
-				unit.buildings = {} -- This keeps the name and quantity of each building
-				hero.build_worker = unit
-				for _, buildingName in ipairs(GameRules.buildingNames) do
-					unit.buildings[buildingName] = {
-						startedConstructionCount = 0,
-						completedConstructionCount = 0
-					}
-				end
-				UpdateSpells(hero)
 			end
 		end
 	end
@@ -1256,6 +1201,15 @@ function BuySkill(event)
 	if hero == nil then
 		return
 	end
+
+	--if GameRules.test2 == true then
+	--hero = GameRules.trollHero
+	--end
+
+	if hero ~= GameRules.trollHero and hero ~= GameRules.trollHero2 then
+		SendErrorMessage(playerID, "error_buy_skill_only_troll")
+		return
+	end
 	
 	local units = Entities:FindAllByClassname("npc_dota_lone_druid_bear")
 	for _,unit in pairs(units) do
@@ -1512,15 +1466,7 @@ function ItemBlink(keys)
 	local origin_point = keys.caster:GetAbsOrigin()
 	local target_point = keys.target_points[1]
 	local difference_vector = target_point - origin_point
-	if keys.caster:HasModifier("modifier_elf_spell_blink")  then
-		if keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 1  then
-			keys.MaxBlinkRange = keys.MaxBlinkRange1 
-		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 2 then
-			keys.MaxBlinkRange = keys.MaxBlinkRange2
-		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 3 then
-			keys.MaxBlinkRange = keys.MaxBlinkRange3
-		end
-	end
+	
 	if difference_vector:Length2D() > keys.MaxBlinkRange then  --Clamp the target point to the MaxBlinkRange range in the same direction.
 		target_point = origin_point + (target_point - origin_point):Normalized() * keys.MaxBlinkRange
 	end
@@ -1635,17 +1581,21 @@ function HealBuilding(event)
 	local ability = event.ability
 	local heal = math.max(event.FixedHeal,(event.PercentageHeal*target:GetMaxHealth()/100))
 	if target.state == "complete" then 
-		if target:HasModifier("modifier_disable_repair") then
-			target:RemoveModifierByName("modifier_disable_repair")
+		if target.healed then
+			heal = heal/3
 		end
-		if target:HasModifier("modifier_disable_repair2") then
-			target:RemoveModifierByName("modifier_disable_repair2")
+		if target:HasModifier("modifier_disable_repair") then
+			heal = heal/2
 		end
 		if (target:GetHealth() + heal) > target:GetMaxHealth() then
 			target:SetHealth(target:GetMaxHealth())
 			else
 			target:SetHealth(target:GetHealth() + heal)
 		end
+		target.healed = true
+		Timers:CreateTimer(ability:GetCooldownTime(),function()
+			target.healed = false
+		end)
 	end 
 end
 
@@ -2029,7 +1979,7 @@ function SkillOnChannelSucceeded(event)
 					local count = ability:GetSpecialValueFor("count")
 					if hero:FindModifierByName(skill_name  .. "_aura") then
 						local stack = hero:FindModifierByName(skill_name  .. "_aura"):GetStackCount()
-						----DebugPrint(stack)
+						DebugPrint(stack)
 						troll:AddNewModifier(troll, troll, skill_name  .. "_aura", {}):SetStackCount(count)
 					else
 						troll:AddNewModifier(troll, troll, skill_name  .. "_aura", {}):SetStackCount(count)

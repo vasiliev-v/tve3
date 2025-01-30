@@ -77,9 +77,9 @@ function OnProjectileHit_ExtraData1( event )
     local hTarget = event.target
     local extraData = event.ability.extradata
     local vLocation = hTarget:GetAbsOrigin()
-    --DebugPrint("1")
+    DebugPrint("1")
 	if hTarget==nil then return end
-    --DebugPrint("2")
+    DebugPrint("2")
 	-- calculate distance percentage
 	local origin = Vector( extraData.originX, extraData.originY, extraData.originZ )
 	local distance = (vLocation-origin):Length2D()

@@ -36,12 +36,3 @@ function modifier_troll_spell_slow_target:OnRefresh( kv )
 	end
 end
 
-function modifier_troll_spell_slow_target:OnStackCountChanged()
-	if IsServer() then
-		local hero = self:GetParent()
-		local abil = hero:FindAbilityByName("troll_spell_slow_target")
-		local countStack = hero:FindModifierByName("modifier_troll_spell_slow_target"):GetStackCount()
-		abil:SetLevel(countStack)
-	end
-end
-

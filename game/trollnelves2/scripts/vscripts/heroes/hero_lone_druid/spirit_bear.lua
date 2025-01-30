@@ -208,7 +208,7 @@ function SpiritCheckWolf( event )
 			local wolf = PlayerResource:GetSelectedHeroEntity(pID)
 			if wolf ~= nil then
 				if wolf:IsWolf() then
-					--DebugPrint("in1")
+					DebugPrint("in1")
 					trollnelves2:ControlUnitForTroll(wolf)
 					return nil
 				end

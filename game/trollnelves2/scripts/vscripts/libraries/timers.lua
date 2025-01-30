@@ -201,10 +201,6 @@ function Timers:CreateTimer(name, args, context)
   end
   if not args.callback then
     print("Invalid timer created: "..name)
-    local data = {}
-	  data.Log = "Invalid timer created: "..name
-	  data.Srok = ""
-	  Error_debug.SendData(data,callback)
     return
   end
 

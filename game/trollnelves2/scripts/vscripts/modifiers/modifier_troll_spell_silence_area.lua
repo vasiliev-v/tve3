@@ -36,11 +36,3 @@ function modifier_troll_spell_silence_area:OnRefresh( kv )
 	end
 end
 
-function modifier_troll_spell_silence_area:OnStackCountChanged()
-	if IsServer() then
-		local hero = self:GetParent()
-		local abil = hero:FindAbilityByName("troll_spell_silence_area")
-		local countStack = hero:FindModifierByName("modifier_troll_spell_silence_area"):GetStackCount()
-		abil:SetLevel(countStack)
-	end
-end

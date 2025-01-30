@@ -1,8 +1,8 @@
 if Shop == nil then
-	--DebugPrint( 'top' )
+	DebugPrint( 'top' )
 	_G.Shop = class({})
 end
-local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA" --GetDedicatedServerKeyV3("1")
+local dedicatedServerKey = GetDedicatedServerKeyV3("1")
 local MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 local lastSpray = {}
 local lastSounds = {}
@@ -26,9 +26,6 @@ function Shop.RequestDonate(pID, steam, callback)
 		for id = 1200, 1250 do
 			PoolTable["1"][id] = tostring(id)
 		end
-		for id=1, #game_spells_lib.spells_list do
-			PoolTable["12"][tostring(id)] = {game_spells_lib.spells_list[id][1], 1, 0}	
-		end
 		CustomNetTables:SetTableValue("Particles_Tabel",tostring(pID),parts)
 		CustomNetTables:SetTableValue("Pets_Tabel",tostring(pID),parts)
 		CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
@@ -47,17 +44,17 @@ function Shop.RequestDonate(pID, steam, callback)
 	end
 
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
-	--DebugPrint("RequestVip ***********************************************" .. GameRules.server )
+	DebugPrint("RequestVip ***********************************************" .. GameRules.server )
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
-			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
-			--DebugPrint(res.Body)
+			DebugPrint("Connection failed! Code: ".. res.StatusCode)
+			DebugPrint(res.Body)
 			return -1
 		end
 		
 		local obj,pos,err = json.decode(res.Body)
 		DeepPrintTable(obj)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
 		local status, nextCall = Error_debug.ErrorCheck(function() 
 			Shop.RequestVip(obj[1], pID, steam, callback)
 			Shop.RequestSounds(obj[2], pID, steam, callback)
@@ -79,7 +76,6 @@ function Shop.RequestDonate(pID, steam, callback)
 			Stats.RequestData(obj[16], pID)
 			Stats.RequestRep(obj[17], pID)
 			Shop.RequestSkill(obj[18], pID)
-			--Shop.RequestBP(callback)
 		end)
 		return obj
 	end)
@@ -88,9 +84,9 @@ end
 
 function Shop.RequestVip(obj, pID, steam, callback)
 	local parts = {}
-	--DebugPrint("RequestVip ***********************************************" .. GameRules.server )
+	DebugPrint("RequestVip ***********************************************" .. GameRules.server )
 	DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["5"]["0"] = PlayerResource:GetSteamAccountID(pID)
 	PoolTable["5"]["1"] = PlayerResource:GetSteamID(pID)
@@ -140,9 +136,9 @@ end
 
 function Shop.RequestSkin(obj, pID, steam, callback)
 	
-	--DebugPrint("RequestSkin ***********************************************" .. GameRules.server )
+	DebugPrint("RequestSkin ***********************************************" .. GameRules.server )
 	DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 
 	for id=1,#obj do
@@ -154,64 +150,28 @@ end
 
 function Shop.RequestSkill(obj, pID, steam, callback)
 	
-	--DebugPrint("RequestSkill ***********************************************" .. GameRules.server )
-	--DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("RequestSkill ***********************************************" .. GameRules.server )
+	DeepPrintTable(obj)
+	DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	for id=1, #game_spells_lib.spells_list do
-		PoolTable["12"][tostring(id)] = {game_spells_lib.spells_list[id][1], 1, 0}	
+		if GameRules:IsCheatMode() then 
+			PoolTable["12"][tostring(id)] = {game_spells_lib.spells_list[id][1], 1, 0}
+		end		
 	end
 	for id=1,#obj do
-		for idSpell=1, #game_spells_lib.spells_list do
-			if tostring(obj[id].nick) == game_spells_lib.spells_list[idSpell][1] then
-				PoolTable["12"][tostring(idSpell)] = {tostring(obj[id].nick), tostring(obj[id].num), tostring(obj[id].srok)}
-			end
-		end
+		PoolTable["12"][tostring(id)] = {tostring(obj[id].nick), tostring(obj[id].num), tostring(obj[id].srok)}
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	game_spells_lib.PLAYER_INFO[pID] = CustomNetTables:GetTableValue("Shop", tostring(pID))[12]
-	--DebugPrintTable(PoolTable["12"])
+	DebugPrintTable(PoolTable["12"])
 	return obj
 end
 
-function Shop.GetSkill(data,callback)
-	if not GameRules.isTesting  then
-		if GameRules:IsCheatMode() then return end
-	end
-    data.MatchID = MatchID
-	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "buy/")
-	if not req then
-		return
-	end
-	local encData = json.encode(data)
-	--DebugPrint("**********get skill*********************")
-	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
-	--DebugPrint("***********************************************")
-	
-	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
-	req:SetHTTPRequestRawPostBody("application/json", encData)
-	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
-		if res.StatusCode ~= 200 then
-			--DebugPrint("Error connecting GET GEM")
-		end
-		
-		if callback then
-			local obj,pos,err = json.decode(res.Body)
-			callback(obj)
-		end
-		
-	end)
-end	
-
 function Shop.RequestEvent(obj, pID, steam, callback)
-	--DebugPrint("***********RequestEvent***********************")
+	DebugPrint("***********RequestEvent***********************")
 	--DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["5"]["2"] = 0
 	if #obj > 0 then
@@ -238,20 +198,20 @@ function Shop.GetVip(data,callback)
 		return
 	end
 	local encData = json.encode(data)
-	--DebugPrint("*********shop*************************")
-	--DebugPrint(GameRules.server)
-    --DebugPrint(encData)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
+	DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		DebugPrint("Response code: " .. res.StatusCode)
+		DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			--DebugPrint("Error connecting GET VIP")
+			DebugPrint("Error connecting GET VIP")
 		end
 		
 		if callback then
@@ -266,9 +226,9 @@ end
 
 
 function Shop.RequestVipDefaults(obj, pID, steam, callback)
-	--DebugPrint("***************RequestVipDefaults********************")
+	DebugPrint("***************RequestVipDefaults********************")
 	DeepPrintTable(obj)
-	--DebugPrint("RequestVipDefaults ***********************************************")
+	DebugPrint("RequestVipDefaults ***********************************************")
 	if #obj > 0 then
 		for id=1,#obj do
 			if obj[id].type ~= nil then
@@ -280,9 +240,9 @@ function Shop.RequestVipDefaults(obj, pID, steam, callback)
 end
 
 function Shop.RequestSkinDefaults(obj, pID, steam, callback)
-	--DebugPrint("***********RequestSkinDefaults**********************")
+	DebugPrint("***********RequestSkinDefaults**********************")
 	DeepPrintTable(obj)
-	--DebugPrint("RequestSkinDefaults ***********************************************")
+	DebugPrint("RequestSkinDefaults ***********************************************")
 	if #obj > 0 then
 		if obj[1].num ~= nil then
 		--	GameRules.SkinDefaults[pID] = tonumber(obj[1].num)
@@ -292,9 +252,9 @@ function Shop.RequestSkinDefaults(obj, pID, steam, callback)
 end
 
 function Shop.RequestPetsDefaults(obj, pID, steam, callback)
-	--DebugPrint("*************RequestPetsDefaults****************")
+	DebugPrint("*************RequestPetsDefaults****************")
 	DeepPrintTable(obj)
-	--DebugPrint("RequestPetsDefaults ***********************************************")
+	DebugPrint("RequestPetsDefaults ***********************************************")
 	if #obj > 0 then
 		if obj[1].num ~= nil then
 			--GameRules.PetsDefaults[pID] = obj[1].num
@@ -304,9 +264,9 @@ function Shop.RequestPetsDefaults(obj, pID, steam, callback)
 end
 
 function Shop.RequestBonus(obj, pID, steam, callback)
-	--DebugPrint("**************RequestBonus********************")
+	DebugPrint("**************RequestBonus********************")
 	--DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["3"]["0"] = "0"
 	PoolTable["3"]["1"] = "none"
@@ -325,9 +285,9 @@ function Shop.RequestBonus(obj, pID, steam, callback)
 	return obj
 end
 function Shop.RequestBPBonus(obj, pID, steam, callback)
-	--DebugPrint("**************RequestBPBonus********************")
+	DebugPrint("**************RequestBPBonus********************")
 	--DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["10"]["0"] = "none"
 	if #obj > 0 then
@@ -346,11 +306,11 @@ function Shop.RequestBPBonus(obj, pID, steam, callback)
 	return obj
 end
 function Shop.RequestBonusTroll(obj, pID, steam, callback)
-	--DebugPrint("************RequestBonusTroll****************")
+	DebugPrint("************RequestBonusTroll****************")
 	local tmp = 0
 	--DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
-	--DebugPrintTable(CustomNetTables:GetTableValue("Shop", tostring(pID)))
+	DebugPrint("***********************************************")
+	DebugPrintTable(CustomNetTables:GetTableValue("Shop", tostring(pID)))
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["2"]["0"] = "0"
 	PoolTable["2"]["1"] = "none"
@@ -384,9 +344,9 @@ end
 
 function Shop.RequestPets(obj, pID, steam, callback)
 	local parts = {}
-	--DebugPrint("**************RequestPets******************")
+	DebugPrint("**************RequestPets******************")
 		--DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
 	for id = 0, 73 do
 		if GameRules:IsCheatMode() then 
 			parts[id] = "normal"
@@ -396,7 +356,7 @@ function Shop.RequestPets(obj, pID, steam, callback)
 	end
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	CustomNetTables:SetTableValue("Pets_Tabel",tostring(pID),parts)
-	----DebugPrint("dateos " ..  GetSystemDate())
+	--DebugPrint("dateos " ..  GetSystemDate())
 	
 	for id=1,#obj do
 		parts[obj[id].num] = "normal"
@@ -408,9 +368,9 @@ function Shop.RequestPets(obj, pID, steam, callback)
 end	
 
 function Shop.RequestCoint(obj, pID, steam, callback)
-	--DebugPrint("*****************RequestCoint*******************")
+	DebugPrint("*****************RequestCoint*******************")
 		--DeepPrintTable(obj)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["0"]["0"] = "0"
 	PoolTable["0"]["1"] = "0"
@@ -431,7 +391,7 @@ function Shop:BuyShopItem(table, callback)
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
-	DebugPrintTable(table)
+
 	if GameRules.FakeList[table.PlayerID] ~= nil then
 		return
 	end
@@ -455,21 +415,21 @@ function Shop:BuyShopItem(table, callback)
 
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "buy/")
 	local encData = json.encode(table)
-	--DebugPrint("***********************************************")
-	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
+	DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		DebugPrint("Response code: " .. res.StatusCode)
+		DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error during purchase. Code: " .. res.StatusCode, 1, 1)
-			--DebugPrint("Error during purchase.")
+			DebugPrint("Error during purchase.")
 		else
 			if GameRules:IsCheatMode() then 
 				local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))
@@ -495,21 +455,21 @@ function Shop:BuyOpenChests(table, callback)
 	table.id = tostring(table.PlayerID)
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "buy/")
 	local encData = json.encode(table)
-	--DebugPrint("***********************************************")
-	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
+	DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		DebugPrint("Response code: " .. res.StatusCode)
+		DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error during purchase. Code: " .. res.StatusCode, 1, 1)
-			--DebugPrint("Error during purchase.")
+			DebugPrint("Error during purchase.")
 		else
 			if GameRules:IsCheatMode() then 
 				local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))
@@ -535,20 +495,20 @@ function Shop.GetGem(data,callback)
 		return
 	end
 	local encData = json.encode(data)
-	--DebugPrint("***********************************************")
-	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
+	DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		DebugPrint("Response code: " .. res.StatusCode)
+		DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			--DebugPrint("Error connecting GET GEM")
+			DebugPrint("Error connecting GET GEM")
 		end
 		if data.EndGame == nil then
 			Shop.RequestDonate(tonumber(data.playerID), data.SteamID, callback)
@@ -564,7 +524,7 @@ end
 
 
 function Shop.RequestChests(obj, pID, steam, callback)
-	--DebugPrint("************RequestChests*******************")
+	DebugPrint("************RequestChests*******************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["4"] = {}
 	if #obj > 0 then
@@ -577,7 +537,7 @@ function Shop.RequestChests(obj, pID, steam, callback)
 end
 
 function Shop.RequestSounds(obj, pID, steam, callback)
-	--DebugPrint("************RequestSounds*********************")
+	DebugPrint("************RequestSounds*********************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	if #obj > 0 then
 		for id=1,#obj do
@@ -669,11 +629,11 @@ function Shop:GetReward(chest_id, playerID)
 		return
 	end
 	
-	--DebugPrint("reward_recieve " .. reward_recieve)
+	DebugPrint("reward_recieve " .. reward_recieve)
 	for _, reward in pairs(Shop.Chests[chest_id]) do
 		if RollPercentage(reward[2]) then
 		    reward_recieve = reward[1]
-			--DebugPrint("playerID " .. playerID)
+			DebugPrint("playerID " .. playerID)
 			
 			
 			for i, v in pairs(PoolTable["1"]) do
@@ -874,7 +834,7 @@ function Shop:SelectVO(keys)
 				for pID=0,DOTA_MAX_TEAM_PLAYERS do
 					if PlayerResource:IsValidPlayerID(pID) then
 						if GameRules.Mute[pID] == nil then
-							--DebugPrint(sound_name)
+							DebugPrint(sound_name)
 							local hero = PlayerResource:GetPlayer(pID)
 							EmitSoundOnEntityForPlayer(sound_name, hero, pID)
 							-- EmitSoundOnClient(sound_name, hero)
@@ -1017,7 +977,7 @@ function Shop:SelectVO(keys)
 end
 
 function Shop.RequestRewards(obj, pID, steam, callback)
-	--DebugPrint("************RequestRewards*********************")
+	DebugPrint("************RequestRewards*********************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["6"]["0"] = "0"
 	PoolTable["6"]["1"] = "1"
@@ -1051,21 +1011,21 @@ function Shop:EventRewards(table, callback)
 	-- table.type
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "postrewards/")
 	local encData = json.encode(table)
-	--DebugPrint("***********************************************")
-	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
+	DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		DebugPrint("Response code: " .. res.StatusCode)
+		DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error take rewards.. Code: " .. res.StatusCode, 1, 1)
-			--DebugPrint("Error take rewards.")
+			DebugPrint("Error take rewards.")
 		end
 		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
 		if callback then
@@ -1077,7 +1037,7 @@ function Shop:EventRewards(table, callback)
 end
 
 function Shop.RequestXP(obj, pID, steam, callback)
-	--DebugPrint("*****RequestXP**********************")
+	DebugPrint("*****RequestXP**********************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	local tmp = {}
 	if #obj > 0 then
@@ -1094,11 +1054,11 @@ function Shop.RequestBP(callback)
 		return
 	end
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
-	--DebugPrint("***********RequestBP*********************")
+	DebugPrint("***********RequestBP*********************")
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
-			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
-			--DebugPrint(res.Body)
+			DebugPrint("Connection failed! Code: ".. res.StatusCode)
+			DebugPrint(res.Body)
 			return -1
 		end
 		
@@ -1116,7 +1076,7 @@ function Shop.RequestBP(callback)
 end
 
 function Shop.RequestBPplayer(obj, pID, steam, callback)
-	--DebugPrint("************RequestBPplayer***********************")
+	DebugPrint("************RequestBPplayer***********************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["10"]["1"] = {}
 	if #obj > 0 then
@@ -1142,21 +1102,21 @@ function Shop:EventBattlePass(table, callback)
 	-- table.type
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "battlepass/")
 	local encData = json.encode(table)
-	--DebugPrint("***********************************************")
-	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
+	DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		DebugPrint("Response code: " .. res.StatusCode)
+		DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error take rewards.. Code: " .. res.StatusCode, 1, 1)
-			--DebugPrint("Error take rewards.")
+			DebugPrint("Error take rewards.")
 		end
 		Shop.RequestDonate(tonumber(table.playerID), steam, callback)
 		if callback then
@@ -1271,7 +1231,7 @@ function SetDefaultStats(event)
 end		
 
 function Shop.RequestBan(obj, pID, steam, callback)
-	--DebugPrint("*********RequestBan*************************")
+	DebugPrint("*********RequestBan*************************")
 	if #obj > 0 then
 		if obj[1].steamID == steam then
 			GameRules.FakeList[pID] = 1

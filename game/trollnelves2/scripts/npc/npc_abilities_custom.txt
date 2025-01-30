@@ -3078,7 +3078,7 @@
 	}
 }
 	
-"troll_warlord_attack_speed_old"
+"troll_warlord_attack_speed"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
@@ -3150,90 +3150,6 @@
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%ATTACKSPEED_BONUS"
 			}
-		}
-	}
-}
-
-"troll_warlord_attack_speed"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"OnCastbar"					"0"
-	"AbilityTextureName"			"item_atk_spd_6"
-	
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"999999"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityValues"
-        {
-            "ATTACKSPEED_BONUS" "500"
-            "presence_radius" "999999"
-        }
-
-	"Modifiers"
-	{
-		"modifier_troll_warlord_attack_speed"
-		{
-			"Passive"			"1"
-			"IsHidden"			"0"
-	
-			"Aura"          	"modifier_troll_warlord_attack_presence"
-			"Aura_Radius"   	"%presence_radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO" //mechanic?
-			"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE" //immune?
-		}
-
-		"modifier_troll_warlord_attack_presence"
-		{
-			"IsHidden"			"0" //hidden?
-			"IsBuff"			"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%ATTACKSPEED_BONUS"
-			}
-		}
-	}
-}
-
-"troll_warlord_cnvrt_manuale"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"OnCastbar"					"0"
-	"AbilityTextureName"			"gold"
-	
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"999999"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityValues"
-        {
-            "ATTACKSPEED_BONUS" "500"
-            "presence_radius" "999999"
-        }
-
-	"Modifiers"
-	{
-		"modifier_troll_warlord_cnvrt_manuale"
-		{
-			"Passive"			"1"
-			"IsHidden"			"0"
 		}
 	}
 }
@@ -7885,13 +7801,7 @@
 				"Radius"				"%radius1"
 				"Duration"				"%duration"
 			}
-			 "CreateThinker"
-			{
-				"ModifierName"	"modifier_blood_rite_delay"
-				"Target"		"POINT"
-			}
 		}
-		
 		"Modifiers"
 		{
 			"modifier_shrapnel_stack_counter_datadriven"
@@ -7900,31 +7810,6 @@
 				"IsHidden"				"0"
 				"IsPurgable"			"0"
 				"IsDebuff"				"0"
-			}
-			"modifier_blood_rite_delay"
-			{
-				"Duration"	"%duration"
-				
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"hero_bloodseeker.bloodRite"
-						"Target"		"TARGET"
-					}
-					
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-						"ControlPoints"
-						{
-							"00" "0 0 0"
-							"01" "%radius1 %radius1 %radius1"
-						}
-					}
-				}
 			}
 		}
 	}
@@ -8172,7 +8057,6 @@
 			}
 		}
 	}
-	
 	
 	"bear_movespeed"{
 		"BaseClass"						"ability_datadriven"
@@ -8742,8 +8626,8 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "65536"
-            "lumber_cost" "512"
+            "gold_cost" "999999"
+            "lumber_cost" "999999"
             "food_cost" "20"
             "unit_count" "1"
             "wisp_cost" "0"
@@ -11569,7 +11453,8 @@
 				}
 			}
 			
-		}	
+		}
+		
 	}
 	
 	"monkey_king"
@@ -11683,9 +11568,9 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"			"omniknight_purification"
-		"MaxLevel"						"3"
-		"AbilityCooldown"				"120 80 60"
-		"AbilityManaCost"				"0"
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"60"
+		"AbilityManaCost"				"100"
 		
 		"precache"
 		{
@@ -11695,11 +11580,6 @@
 			"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
 
 		}
-		"AbilityValues"
-        {
-            "heal" "300 600 900"
-            "percent" "30 45 70"
-        }
 
 		"OnSpellStart"
 		{
@@ -11730,8 +11610,8 @@
 			"RunScript"{
 				"ScriptFile"			"custom_abilities.lua"
 				"Function"				"HealBuilding"
-				"FixedHeal"				"%heal"
-				"PercentageHeal"		"%percent"
+				"FixedHeal"				"300"
+				"PercentageHeal"		"30"
 			}
 		}
 	}
@@ -11828,15 +11708,6 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"drow_ranger_frost_arrows"
-
-		"AbilityValues"
-        {
-			"chance"  "10"
-            "attack_speed" "-7"
-			"movespeed"    "-1"
-            "duration"     "3"
-        }
-		
 		
 		"OnCreated"{
 			"ApplyModifier"{
@@ -11851,27 +11722,17 @@
 				"IsHidden"			"1"
 				"IsDebuff"			"0"
 
-				"OnAttackStart"{
-					"Random"
-					{
-						"Chance"		"%chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
-
-						"OnSuccess"
-						{
-							"ApplyModifier"{
-								"ModifierName"	"modifier_frost_slow_target"
-								"Target"		"TARGET"
-							}
-						}
+				"OnAttack"{
+					"ApplyModifier"{
+						"ModifierName"	"modifier_frost_slow_target"
+						"Target"		"TARGET"
 					}
-					
 				}
 			}
 			"modifier_frost_slow_target"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"%duration"
+				"Duration"			"3"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				//"EffectName"		"particles/generic_gameplay/generic_frozen.vpcf"
@@ -11879,8 +11740,8 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed" 
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed" 
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-7" 
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-1" 
 				}
 			}
 		}
@@ -11892,50 +11753,31 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"drow_ranger_frost_arrows"
-
-		"AbilityValues"
-        {
-			"crit_chance"  "5"
-            "attack_speed" "-10"
-			"movespeed"    "-2"
-            "duration"     "4"
-        }
-		
 		
 		"OnCreated"{
 			"ApplyModifier"{
 				"Target"				"CASTER"
-				"ModifierName"			"modifier_frost_attack"
+				"ModifierName"			"modifier_frost_attack_2"
 			}
 		}
 
 		"Modifiers"{
-			"modifier_frost_attack"{
+			"modifier_frost_attack_2"{
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"IsDebuff"			"0"
 
-				"OnAttackStart"{
-					"Random"
-					{
-						"Chance"		"%chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
-
-						"OnSuccess"
-						{
-							"ApplyModifier"{
-								"ModifierName"	"modifier_frost_slow_target"
-								"Target"		"TARGET"
-							}
-						}
+				"OnAttack"{
+					"ApplyModifier"{
+						"ModifierName"	"modifier_frost_slow_target_2"
+						"Target"		"TARGET"
 					}
-					
 				}
 			}
-			"modifier_frost_slow_target"{
+			"modifier_frost_slow_target_2"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"%duration"
+				"Duration"			"3"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				//"EffectName"		"particles/generic_gameplay/generic_frozen.vpcf"
@@ -11943,8 +11785,8 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed" 
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed" 
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-12" //"-10"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-2" //"-1"
 				}
 			}
 		}
@@ -11956,12 +11798,6 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"venomancer_poison_sting"
-
-		"AbilityValues"
-        {
-			"regen"        "5"
-            "duration"     "3"
-        }
 		
 		"Modifiers"{
 			
@@ -11978,7 +11814,7 @@
 					"ApplyModifier" {
 						"Target"        "TARGET"
 						"ModifierName"  "modifier_poison"
-						"Duration"		"%duration"
+						"Duration"		"3"
 					}
 				}
 			}
@@ -11994,7 +11830,7 @@
 			"modifier_poison_target"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"%duration"
+				"Duration"			"3"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				"IsHidden"          "1"
@@ -12024,12 +11860,6 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"poison_viper"//"venomancer_poison_sting"
 		
-		"AbilityValues"
-        {
-			"regen"        "5"
-            "duration"     "6"
-        }
-
 		"Modifiers"{
 			
 			"modifier_poison_attack" {
@@ -12045,7 +11875,7 @@
 					"ApplyModifier" {
 						"Target"        "TARGET"
 						"ModifierName"  "modifier_poison"
-						"Duration"		"%duration"
+						"Duration"		"6"
 					}
 				}
 			}
@@ -12061,7 +11891,7 @@
 			"modifier_poison_target"{
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsPurgable"		"0"
-				"Duration"			"%duration"
+				"Duration"			"6"
 				"Passive"			"0"
 				"IsDebuff"			"1"
 				"IsHidden"          "1"
@@ -13302,7 +13132,7 @@
             "creep_duration" "2.0"
             "hero_damage" "15000"
             "bounce_range" "600"
-            "bounces" "5"
+            "bounces" "3"
             "speed" "1000"
             "bounce_delay" "0.3"
             "bounces_tooltip" "2"
@@ -14210,7 +14040,7 @@
 
 		"AbilityValues"
         {
-            "duration" "4"
+            "duration" "3"
             "net_speed" "1500"
             "fake_ensnare_distance" "900"
         }
@@ -16832,925 +16662,4 @@
 		"BaseClass"	"special_bonus_cast_range_350"
 	}
 
-  "troll_spell_silence_target"
-  {
-        "BaseClass"						"ability_datadriven"
-        "AbilityTextureName"			"troll_spell_silence_target"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityCastPoint"				"0"
-		"AbilityCastRange"				"600"
-		"AbilityManaCost"				"0"
-		"AbilityCooldown"				"250 200 150"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
-		"MaxLevel"						"3"
-		"AbilityValues"
-        {
-            "time_dur" "10 16 24"
-        }
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"				"TARGET"
-				"ModifierName"			"modifier_silence"
-				"Duration"				"%time_dur"
-			}
-		}
-  }
-
-  "troll_spell_silence_area"
-  {
-        "BaseClass"						"ability_datadriven"
-        "AbilityTextureName"            "troll_spell_silence_area"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCooldown"				"300 250 200"
-		"MaxLevel"						"3"
-		"AbilityManaCost"				"0"	
-		"AbilityValues"
-        {
-			"tooltip_duration"		"5 8 12"
-			"damage"				"0"
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"            "abilities/silencer/global_silence"
-				"Function"              "OnSpellStart"
-			}
-		}	
-  }
-
-  "troll_spell_stun_target"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"			"troll_spell_stun_target"
-		"MaxLevel"						"3"
-
-		"precache"
-		{
-			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-			"particle"          "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-			"particle"          "particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
-			"particle"          "particles/generic_gameplay/generic_stunned.vpcf"
-		}
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"              "600"
-		"AbilityCastPoint"              "0"
-
-		// Time     
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "300 250 200"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"               "0"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-        {
-            "bolt_speed" "2000"
-            "bolt_stun_duration" "1 4 8"
-            "vision_radius" "2000"
-        }
-
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"            "TARGET"
-				"EffectName"        "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast.vpcf"
-				"Dodgeable"         "1"
-				"ProvidesVision"    "1"
-				"VisionRadius"      "%vision_radius"
-				"MoveSpeed"         "%bolt_speed"
-				"SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}
-
-			"FireSound"
-			{
-				"EffectName"        "Hero_Sven.StormBolt"
-				"Target"            "CASTER"
-			}
-			
-		}
-
-		"OnProjectileHitUnit"
-		{
-			"FireSound"
-			{
-				"EffectName"        "Hero_Sven.StormBoltImpact"
-				"Target"            "TARGET"
-			}
-
-			"FireEffect"
-			{
-				"EffectName"    "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast_explosion.vpcf"
-				"EffectAttachType"  "attach_origin"
-				"Target"        "TARGET"
-				"ControlPointEntities"
-				{
-					"TARGET"    "attach_origin"
-					"TARGET"    "attach_origin"
-					"TARGET"    "attach_origin"
-					"TARGET"    "attach_origin" //CP3 has a child explosion origin
-				}
-			}
-
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_storm_bolt_datadriven"
-				"Target"        "TARGET"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_storm_bolt_datadriven"
-			{
-				"Duration"      "%bolt_stun_duration"
-				"IsDebuff"      "1"
-				"OverrideAnimation" "ACT_DOTA_DISABLED"
-
-				"EffectName"    "particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"  "follow_overhead"
-
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}	
-	}
-	"troll_spell_haste"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET || DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"troll_spell_haste"
-		"MaxLevel"						"3"
-		"AbilityCooldown"				"300 250 200"
-		
-		"precache"
-		{
-			"soundfile"                 "soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
-			"particle"                  "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_focusfire_v2.vpcf"
-		}
-
-		"AbilityValues"
-        {
-            "duration" "15 30 45"
-            "speed" "1000"
-            "eva" "2 4 8"
-        }
-		
-		"OnSpellStart"{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_troll_spell_haste_bonus_ms"
-				"Target"				"CASTER"
-			}
-		}
-		"Modifiers"{
-			"modifier_troll_spell_haste_bonus_ms"{
-				"Duration"				"%duration"
-				 
-				"EffectName"            "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
-				"EffectAttachType"      "follow_origin"
-				
-				"Properties"{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%speed"
-					"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%eva"
-				}
-			}
-		}
-	}
-
-	"troll_spell_ward"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"            "troll_spell_ward"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"              "0.0"
-		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"60"
-		"AbilityCastRange"				"900"	
-		"MaxLevel"						"3"
-		"AbilityValues"
-        {
-            "duration" "60 120 180"
-        }
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"            "abilities/spawn_winter"
-				"Name"					"models/items/shadowshaman/serpent_ward/shaman_charmer_of_firesnake_ability/shaman_charmer_of_firesnake_ability.vmdl"
-				"Function"              "OnSpellStart"
-				"SizeModel"				"1"
-			}
-		}	
-	}
-
-	"troll_spell_bkb"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"            "troll_spell_bkb"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"              "0.0"
-		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"300 150 60"
-		"MaxLevel"						"3"
-		"AbilityValues"
-        {
-            "duration" "1 2 3"
-        }
-		"OnSpellStart"
-		{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_troll_spell_bkb_datadriven"
-				"Target"				"CASTER"
-			}
-		}	
-		"Modifiers"
-		{
-			"modifier_troll_spell_bkb_datadriven"
-			{
-				"Duration"      "%duration"
-				"EffectName"    "particles/items_fx/black_king_bar_avatar.vpcf"
-				"EffectAttachType"  "follow_origin"
-
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"    "MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}	
-	}
-
-	"troll_spell_slow_target"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"			"troll_spell_slow_target"
-		"MaxLevel"						"3"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
-		"precache"
-		{
-			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-			"particle"          "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-			"particle"          "particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
-			"particle"          "particles/generic_gameplay/generic_stunned.vpcf"
-		}
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"              "600"
-		"AbilityCastPoint"              "0"
-
-		// Time     
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "120 80 60"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"               "0"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-        {
-            "duration" "10 15 20"
-			"speed"	   "-80 -90 -100"
-        }
-
-		"OnSpellStart"
-		{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_troll_spell_slow_target_datadriven"
-				"Target"				"TARGET"
-			}
-		}	
-		"Modifiers"
-		{
-			"modifier_troll_spell_slow_target_datadriven"
-			{
-				"Duration"      "%duration"
-				"EffectName"    "particles/econ/events/ti8/shivas_guard_ti8_slow.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"IsDebuff"      "1"
-				"Properties"{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%speed"
-				}
-			}
-		}
-	}
-	"troll_spell_slow_area"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                     "ability_datadriven"
-        "AbilityTextureName"            "troll_spell_slow_area"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"MaxLevel"						"3"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"900"	
-		"AbilityCastPoint"              "0.0"
-		"AbilityDamage"					"50"
-		"AbilityManaCost"               "0"	
-		"AbilityCooldown"				"300 250 200"
-		"precache"
-		{
-			"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-			"particle" 	"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
-			"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
-		}
-
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"           "TARGET"
-				"EffectName"       "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
-				"Dodgeable"        "0"
-				"ProvidesVision"   "0"
-				"MoveSpeed"        "1300"
-				"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}		
-
-			"FireSound"
-			{
-				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Cast"
-				"Target"		"CASTER"
-			}
-
-			"ApplyModifier"
-			{
-				"ModifierName"    "modifier_drunken_haze"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO"
-				}
-				"Duration"		"%duration"
-			}
-
-			"ApplyModifier"
-			{
-				"ModifierName"    "modifier_drunken_haze"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"%duration_creeps"
-			}
-
-			"FireSound"
-			{
-				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Target"
-				"Target"		"CASTER"
-			}
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  				"TARGET"
-					"Radius" 				"%radius"
-					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 				"DOTA_UNIT_TARGET_HERO"
-				}
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_drunken_haze"
-			{
-				"IsDebuff"	"1"
-
-				"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-				"EffectAttachType"		"follow_origin"
-
-				"StatusEffectName"		"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
-				"StatusEffectPriority"	"5"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MISS_PERCENTAGE"				"%miss_chance"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movement_slow"
-				}	
-			}
-		}
-		
-		"AbilityValues"
-        {
-            "radius" "1200"
-            "duration" "2 5 10"
-            "duration_creeps" "10"
-            "movement_slow" "-50 -60 -70"
-            "miss_chance" "10 20 30"
-            "damage" "0"
-        }
-	}
-	"troll_spell_invis"{
-		"BaseClass"                     "ability_lua"
-		"ScriptFile"				    "abilities/troll_spell_invis"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"troll_spell_invis"
-		"AbilityCooldown"				"60"//"30"
-		"MaxLevel"						"3"
-
-		"precache"
-		{
-			"soundfile"                     "soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
-		}
-
-		"AbilityValues"
-        {
-            "duration" "20 40 60"
-        }
-	}
-
-	"troll_spell_evasion"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"              "0.0"
-		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"300 250 200"
-		"MaxLevel"						"3"
-		"AbilityTextureName"			"troll_spell_evasion"
-		"AbilityValues"
-        {
-            "duration" "2 3 5"
-			"eva"		"100"
-        }
-		"OnSpellStart"
-		{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_troll_spell_evasion_datadriven"
-				"Target"				"CASTER"
-			}
-		}	
-		"Modifiers"
-		{
-			"modifier_troll_spell_evasion_datadriven"
-			{
-				"Duration"      "%duration"
-				"EffectName"    "particles/econ/items/phantom_assassin/pa_crimson_witness_2021/pa_crimson_witness_blur_ambient_smoke_body.vpcf"
-				"EffectAttachType"  "follow_origin"
-
-				"Properties"{
-					"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%eva"
-				}
-			}
-		}	
-	}
-
-	"troll_spell_atkspeed"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"troll_spell_atkspeed"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"              "0.0"
-		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"300 250 200"
-		"MaxLevel"						"3"
-		"AbilityValues"
-        {
-            "duration" "2 3 5"
-			"speed"		"600"
-			"damage"	"200"
-        }
-		"OnSpellStart"
-		{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_troll_spell_atkspeed_datadriven"
-				"Target"				"CASTER"
-			}
-		}	
-		"Modifiers"
-		{
-			"modifier_troll_spell_atkspeed_datadriven"
-			{
-				"Duration"      "%duration"
-				"EffectName"    "particles/econ/items/phantom_assassin/pa_fall20_immortal_shoulders/pa_fall20_blur_ambient_smoke_light.vpcf"
-				"EffectAttachType"  "follow_origin"
-
-				"Properties"{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"			"%speed"
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"			"%damage"
-				}
-			}
-		}	
-	}
-
-	"troll_spell_gold_hit"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"troll_spell_gold_hit"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"              "0.0"
-		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"150 100 60"
-		"MaxLevel"						"3"
-		"AbilityValues"
-        {
-            "duration" "5 15 20"
-			"damage"	"400"
-        }
-		"OnSpellStart"
-		{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_troll_spell_gold_hit_passive"
-				"Target"				"CASTER"
-			}
-		}	
-		"Modifiers"
-		{
-			"modifier_troll_spell_gold_hit_passive"
-			{
-				"Duration"      "%duration"
-				"EffectName"    "particles/econ/items/phantom_assassin/pa_fall20_immortal_shoulders/pa_fall20_blur_ambient_smoke_light.vpcf"
-				"EffectAttachType"  "follow_origin"
-
-				"Properties"{
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"			"%damage"
-				}
-			}
-		}	
-	}
-
-	
-
-"troll_spell_wolf"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"					"ability_datadriven"
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"DisplayAdditionalHeroes"	"1"
-	"AbilityTextureName"		"troll_spell_wolf"
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastPoint"				"0.5"
-	"MaxLevel"						"3"
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"300 150 60"
-
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityValues"
-        {
-            "bear_hp" "50 100 200"
-            "bear_regen_tooltip" "1"
-            "bear_bat" "1.75"
-            "bear_armor" "1"
-            "backlash_damage" "0"
-			"ms"		"300 340 380"
-        }
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_lone_druid/lone_druid_spirit_bear_death.vpcf"
-		"particle"	"particles/units/heroes/hero_lone_druid/lone_druid_bear_spawn.vpcf"
-		"particle"	"particles/status_fx/status_effect_spirit_bear.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
-		"model"		"models/heroes/lone_druid/spirit_bear.vmdl"
-	}
-
-	"OnUpgrade"
-	{
-		"RunScript"
-	    {
-	        "ScriptFile"    "heroes/hero_lone_druid/spirit_wolf.lua"
-	        "Function"      "SpiritBearLevel"
-	    }
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
-	    {
-	        "ScriptFile"    "heroes/hero_lone_druid/spirit_wolf.lua"
-	        "Function"      "SpiritBearSpawn"
-	    }
-
-	    "FireSound"
-	    {
-	    	"EffectName"	"Hero_LoneDruid.SpiritBear.Cast" 
-	    	"Target"		"CASTER"
-	    }
-	}
-
-	"Modifiers"
-	{
-		"modifier_spirit_bear"
-		{
-			"IsHidden"		"1"
-
-			"StatusEffectName"		"particles/status_fx/status_effect_spirit_bear.vpcf"
-			"StatusEffectPriority"	"1"
-
-			"OnCreated"
-			{
-				"FireEffect"
-				{
-					"Target"			"TARGET"
-					"EffectName"		"particles/units/heroes/hero_lone_druid/lone_druid_bear_spawn.vpcf"
-					"EffectAttachType"	"follow_origin"
-				}
-			}
-
-			"OnDeath"
-			{
-				"FireEffect"
-				{
-					"Target"			"TARGET"
-					"EffectName"		"particles/units/heroes/hero_lone_druid/lone_druid_spirit_bear_death.vpcf"
-					"EffectAttachType"	"follow_origin"
-				}
-				"RunScript"
-			    {
-			        "ScriptFile"    "heroes/hero_lone_druid/spirit_wolf.lua"
-			        "Function"      "SpiritBearDeath"
-			    }
-			}
-		}
-	}
-}
-
-"troll_spell_night_buff"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"troll_spell_night_buff"
-	"MaxLevel"						"3"
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
-	{
-		"particle"			"particles/units/heroes/hero_night_stalker/nightstalker_night_buff.vpcf"
-		"particle"			"particles/units/heroes/hero_night_stalker/nightstalker_change.vpcf"
-	}
-		
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityValues"
-        {
-            "bonus_movement_speed_pct_night" "20 40 50"
-            "bonus_attack_speed_night" "20 40 60"
-            "bonus_evasion" "1 2 3"
-        }
-
-	"Modifiers"
-	{
-		"troll_spell_night_buff_datadriven"
-		{
-			"Passive"	"1"
-			"IsHidden"	"1" //"1"
-
-			"AllowIllusionDuplicate"	"1"
-
-			"ThinkInterval"	"0.1"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"scripts/vscripts/heroes/hero_night_stalker/hunter_in_the_night.lua"
-					"Function"		"HunterInTheNight"
-					"modifier"		"troll_spell_night_buff_buff_datadriven"
-				}
-			}
-		}
-
-		"troll_spell_night_buff_buff_datadriven"
-		{
-			"IsHidden"	"1"
-
-			"AllowIllusionDuplicate"	"1"
-
-			"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_night_buff.vpcf"
-			"EffectAttachType"	"follow_origin"
-
-			"OnCreated"
-			{
-				"FireEffect"
-				{
-					"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_change.vpcf"
-					"EffectAttachType"	"follow_origin"
-					"Target"		"CASTER"
-				}
-			}
-
-			"OnDestroy"
-			{
-				"FireEffect"
-				{
-					"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_change.vpcf"
-					"EffectAttachType"	"follow_origin"
-					"Target"		"CASTER"
-				}
-			}
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed_pct_night"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed_night"
-				"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%bonus_evasion"
-			}
-		}
-	}
-}
-
-"troll_spell_gold_wisp"{
-	"BaseClass"						"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"troll_spell_gold_wisp"
-	"MaxLevel"						"3"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityValues"
-        {
-            "radius" "128 160 192"
-            "time" "5 10 25"
-        }
-		"OnCreated"
-		{
-			"ApplyModifier"
-			{
-				"Target"            "CASTER"
-				"ModifierName"      "troll_spell_gold_wisp_mod"
-			}
-		}
-		"Modifiers"{
-			"troll_spell_gold_wisp_mod"{
-				"IsHidden"			"1"
-				"Passive"			"1"
-				"OnDealDamage"{
-					"RunScript"{
-						"ScriptFile"		"custom_abilities.lua"
-						"Function"			"KillWispOnAttackTroll"
-						"RadiusSkill"		"%radius"
-						"SpeedTime"			"%time"
-						"DamageDealt"		"%attack_damage"
-					}
-				}
-			}
-		}
-	}
-
-
-	"elf_spell_true"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"    		"true_sight"
-		"MaxLevel"						"3"
-
-		"OnCreated"{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_elf_spell_true_sight_datadriven"
-				"Target"				"CASTER"
-			}
-		}
-		"OnOwnerDied"{
-			"RemoveModifier"{
-				"ModifierName"			"modifier_elf_spell_true_sight_datadriven"
-			}
-		}
-		
-		"AbilityValues"
-        {
-            "radius" "200 400 600"
-        }
-
-		"Modifiers"
-		{
-			"modifier_elf_spell_true_sight_datadriven"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-		
-				"ThinkInterval"  "0.03"
-				"OnIntervalThink"
-				{
-					"ActOnTargets"
-					{
-						"Target"
-						{
-							"Center"  	"TARGET"
-							"Radius" 	"%radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_ALL"
-						}
-					
-						"Action"    
-						{
-							"RemoveModifier"
-							{
-								"ModifierName"	"modifier_elf_spell_true_sight_reveal"
-								"Target" 		"TARGET"
-							}
-
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_elf_spell_true_sight_reveal"
-								"Target" 		"TARGET"
-							}
-						}
-					}			
-				}		
-			}
-
-			"modifier_elf_spell_true_sight_reveal"
-			{
-				"IsHidden"			"1"
-				"Priority"                     "MODIFIER_PRIORITY_ULTRA"
-				"Duration"			"0.1"	//The True Sight effect lingers for 0.1 seconds.
-				"States"
-				{
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
-				}
-			}
-		}		
-	}
-	
-	"elf_spell_invis"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
-		"AbilityTextureName"			"treant_natures_guise"
-		"MaxLevel"						"3"
-		"AbilityChannelTime"			"1"
-		
-		"AbilityValues"
-        {
-            "duration" "15 30 60"
-        }
-		
-		"OnChannelSucceeded"{
-			"ApplyModifier"{
-				"Target"             "CASTER"
-				"ModifierName"        "modifier_stand_invis"
-			}
-		}
-		"Modifiers"{
-			"modifier_stand_invis"{
-				"ThinkInterval"			"0.5"
-				"OnCreated"{
-					"Duration"      "%duration"
-					"ApplyModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_invisible"
-					}
-				}
-				"OnOrder"{
-					"RemoveModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_invisible"
-					}					
-					"RemoveModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_stand_invis"
-					}
-				}
-				"OnDestroy"{
-					"RemoveModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_invisible"
-					}
-				}
-			}
-		}
-	}
 }

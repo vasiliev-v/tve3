@@ -132,20 +132,20 @@ function Clanwars.SendData(data,callback)
 		return
 	end
 	local encData = json.encode(data)
-	--DebugPrint("***********************************************")
-	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
-	--DebugPrint("***********************************************")
+	DebugPrint("***********************************************")
+	DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	DebugPrint("***********************************************")
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
-		--DebugPrint("Response code: " .. res.StatusCode)
-		--DebugPrint("***********************************************")
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		DebugPrint("Response code: " .. res.StatusCode)
+		DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error connecting", 1, 1)
-			--DebugPrint("Error connecting")
+			DebugPrint("Error connecting")
 		end
 		
 		if callback then

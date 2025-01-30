@@ -36,11 +36,3 @@ function modifier_troll_spell_wolf:OnRefresh( kv )
 	end
 end
 
-function modifier_troll_spell_wolf:OnStackCountChanged()
-	if IsServer() then
-		local hero = self:GetParent()
-		local abil = hero:FindAbilityByName("troll_spell_wolf")
-		local countStack = hero:FindModifierByName("modifier_troll_spell_wolf"):GetStackCount()
-		abil:SetLevel(countStack)
-	end
-end

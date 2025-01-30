@@ -29,10 +29,10 @@ function OnSpellStart(event)
 end
 
 function OnProjectileHit(event)
-    --DebugPrint("event.ParticleMy")
+    DebugPrint("event.ParticleMy")
     
-    --DebugPrint(event.ParticleMy1)
-    --DebugPrint(event.articley)
+    DebugPrint(event.ParticleMy1)
+    DebugPrint(event.articley)
     local caster = event.ability:GetCaster()
     ParticleManager:CreateParticle(event.ParticleMy3, DOTA_PROJECTILE_ATTACHMENT_ATTACK_1 , event.ability.target)
     ParticleManager:CreateParticle(event.ParticleMy1, DOTA_PROJECTILE_ATTACHMENT_ATTACK_1 , event.ability.target)
