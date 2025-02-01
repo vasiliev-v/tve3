@@ -206,11 +206,11 @@ function CheckMapVisible()
     if (Game.GetMapInfo().map_display_name == "clanwars")
     {
         $("#ChooseMapList").style.visibility = "collapse"
-       // $("#ChooseAngelWolf").style.visibility = "collapse"
+        $("#ChooseAngelWolf").style.visibility = "collapse"
     }
     else if (Game.GetMapInfo().map_display_name == "1x1")
     {
-      //  $("#ChooseAngelWolf").style.visibility = "collapse"
+        $("#ChooseAngelWolf").style.visibility = "collapse"
     }
 }
 

@@ -7,6 +7,9 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/resource.js" />
 	</scripts>
+	<script>
+		$.Msg( "Compiled Panorama Resource!" );
+	</script>
 	<Panel hittest="false" class='ResourcePanel'>
 
 

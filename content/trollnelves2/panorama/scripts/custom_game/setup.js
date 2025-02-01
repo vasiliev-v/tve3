@@ -143,11 +143,11 @@ function SetupUnusedItemHotkeys() {
     itemHotkeys.push(GetKeyBind("InventoryTp"));
     
     for (var i = 0; i < 6; i++) {
-        //$.Msg(Game.GetKeybindForInventorySlot(i));
+        $.Msg(Game.GetKeybindForInventorySlot(i));
         itemHotkeys.push(Game.GetKeybindForInventorySlot(i));
     }
     itemHotkeys.push(GetKeyBind("InventoryNeutral"));
-    //$.Msg("Setup unused item hotkeys");
+    $.Msg("Setup unused item hotkeys");
     for (var i = 0; i < itemHotkeys.length; i++) {
         var hotkey = itemHotkeys[i];
         const cmd_name = hotkey + Math.floor(Math.random() * 99999999);
@@ -156,21 +156,21 @@ function SetupUnusedItemHotkeys() {
                 UseItemCommandCalled(data, hotkey, slot);
             }, "", 0);
         })(hotkey, i - 1);
-       // //$.Msg("hotkey ", hotkey );
-        ////$.Msg("cmd_name ", cmd_name );
+       // $.Msg("hotkey ", hotkey );
+        //$.Msg("cmd_name ", cmd_name );
         Game.CreateCustomKeyBind(hotkey, "UseHotkey_" + cmd_name);
     }
 }
 
 function UseItemCommandCalled(data, hotkey, slot) {
-   // //$.Msg("Use item command called: ", data, "; ", hotkey, "; ");
+   // $.Msg("Use item command called: ", data, "; ", hotkey, "; ");
     var selectedUnitID = Players.GetLocalPlayerPortraitUnit();
     var itemID = Entities.GetItemInSlot(selectedUnitID, slot);
     var abilitySlot = unusedHotkeyAbilitySlots[hotkey];
-   // //$.Msg("ItemID: ", itemID);
+   // $.Msg("ItemID: ", itemID);
     let itemName = Abilities.GetAbilityName(itemID);
     if (itemID !== -1 && (itemName != "item_full" && itemName != "item_stormcrafter_datadriven" && itemName != "item_anti_angel")) {
-        //$.Msg("itemName: ", itemName);
+        $.Msg("itemName: ", itemName);
         Abilities.ExecuteAbility(itemID, selectedUnitID, false);
     } else if (abilitySlot != null) {
         var abilityID = Entities.GetAbility(selectedUnitID, abilitySlot);
@@ -179,11 +179,11 @@ function UseItemCommandCalled(data, hotkey, slot) {
 }
 
 function UpdateAbilityTooltips() {
-    ////$.Msg("UpdateAbilityTooltips");
+    //$.Msg("UpdateAbilityTooltips");
     CleanUpUiSchedules();
     const abilityListPanel = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("abilities");
     var selectedUnit = Players.GetLocalPlayerPortraitUnit();
-    ////$.Msg("Selected unit: ", selectedUnit);
+    //$.Msg("Selected unit: ", selectedUnit);
     var x = {nextHotkeyIndex: 0};
     unusedHotkeyAbilitySlots = [];
     for (var i = 0; i < 16; i++) {
@@ -219,7 +219,7 @@ function UpdateAbilityTooltips() {
                     var requirementsObject = upgradedUnitName.length > 0 && CustomNetTables.GetTableValue("buildings", (Players.GetLocalPlayer() + upgradedUnitName)) || {};
                     var requirementKeys = Object.keys(requirementsObject);
                     var reqText = "";
-                    ////$.Msg(requirementsObject)
+                    //$.Msg(requirementsObject)
                     var repair = (abilityName && (abilityName.indexOf("repair") > -1 || abilityName.indexOf("train") > -1)) && (CustomNetTables.GetTableValue("abilities", Entities.GetUnitName(selectedUnit)) || abilityName && CustomNetTables.GetTableValue("abilities", abilityName.substr(6)));
                     var repair_speed = repair && repair.speed || 0;
                     if (repair_speed > 0 )
@@ -251,15 +251,13 @@ function UpdateAbilityTooltips() {
                         tooltipManager.FindChildTraverse('AbilityExtraDescription').style.color = "#008000";
                         tooltipManager.FindChildTraverse('AbilityExtraDescription').style.fontSize = '18px';
                         tooltipManager.FindChildTraverse('AbilityExtraDescription').text = textLumer;
-                    } 
+                    }
 
                     if (requirementKeys.length > 0) {
                         reqText = reqText + "Requirements:";
                     }
                     for (var requirementKey of requirementKeys) {
-                        reqText = reqText + " <br>  " + $.Localize("#" + requirementsObject[requirementKey][1]);
-                        if (requirementsObject[requirementKey][2] > 1)
-                            reqText = reqText + "  -  " + requirementsObject[requirementKey][2];
+                        reqText = reqText + "<br>" + $.Localize("#" + requirementsObject[requirementKey]);
                     } 
                     if (reqText != "")
                     {
@@ -330,7 +328,7 @@ function UpdateAbilityTooltips() {
 }
 
 function UpdateItemTooltips() {
-    ////$.Msg("UpdateItemTooltips");
+    //$.Msg("UpdateItemTooltips");
     const inventoryListContainer = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("inventory_list_container");
     for (var i = 0; i < 6; i++) {
         var inventoryPanel = inventoryListContainer.FindChildTraverse("inventory_slot_" + i);
@@ -356,10 +354,10 @@ function UpdateItemTooltipsAndAbilityCustomHotkeys() {
 
 function UpdateAbilityCustomHotkeys() {
     CleanUpUiSchedules();
-    ////$.Msg("UpdateAbilityCustomHotkeys");
+    //$.Msg("UpdateAbilityCustomHotkeys");
     const abilityListPanel = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("abilities");
     var selectedUnit = Players.GetLocalPlayerPortraitUnit();
-    ////$.Msg("Selected unit: ", selectedUnit);
+    //$.Msg("Selected unit: ", selectedUnit);
     var x = {nextHotkeyIndex: 0};
     unusedHotkeyAbilitySlots = [];
     var abilityCount = Entities.GetAbilityCount(selectedUnit);
@@ -424,10 +422,10 @@ function IsHotkeyAvailable(selectedUnit, index) {
 function CleanUpUiSchedules() {
     for (var a = 0; a < uiWaitingSchedules.length; a++) {
         try {
-       //     //$.Msg("Canceling schedule: ", uiWaitingSchedules[a]);
+       //     $.Msg("Canceling schedule: ", uiWaitingSchedules[a]);
             $.CancelScheduled(uiWaitingSchedules[a]);
         } catch (e) {
-    //        //$.Msg("................................................................An error occured: ", e);
+    //        $.Msg("................................................................An error occured: ", e);
         }
     }
     uiWaitingSchedules.length = 0;

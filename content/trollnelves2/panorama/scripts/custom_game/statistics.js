@@ -61,7 +61,7 @@ function UpdateTopWins() {
     $.CreatePanelWithProperties("DOTAAvatarImage", Line, "AvatarLeaderboard", { style: "width:51px;height:51px;", steamid: player_table[1] });
     var SteamID = $.CreatePanel("Label", Line, "player_id_rating_"+player_table[1]);
     SteamID.AddClass("RatingLabel");
-    //$.Msg(player_rep)
+    $.Msg(player_rep)
     var text = "no"
     if (player_table[0] != 0)
         text = player_table[0]

@@ -629,8 +629,6 @@ function CheckBuyAllSpells()
                 {
                     if(player_table[id][2] < 3 && player_table[id][1] == perkInShop[i])
                     {
-                        //$.Msg(player_table[id][2])
-                        //$.Msg(player_table[id])
                         all_spells_player_has_max_level = false
                     }
                 }

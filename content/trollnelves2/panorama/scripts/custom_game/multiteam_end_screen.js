@@ -4,7 +4,7 @@
 {
 	if ( ScoreboardUpdater_InitializeScoreboard === null ) { $.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." ); }
 
-	//$.Msg("Initializing multiteam_end_screen.js");
+	$.Msg("Initializing multiteam_end_screen.js");
 	var scoreboardConfig =
 	{
 		"teamXmlName" : "file://{resources}/layout/custom_game/multiteam_end_screen_team.xml",
@@ -40,7 +40,7 @@
 					var playerResourceStats = CustomNetTables.GetTableValue("resources",playerId + "_resource_stats");
 					var playerStatsScore = CustomNetTables.GetTableValue("scorestats",playerId.toString());
                     if(playerResourceStats != null) {
-						////$.Msg("Setting end game resources for playerId: ", playerId, "; playerResourceStats: ", playerResourceStats, "; ");
+						//$.Msg("Setting end game resources for playerId: ", playerId, "; playerResourceStats: ", playerResourceStats, "; ");
 						_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerGoldAmount", Math.round(playerResourceStats.gold/1000) );
 						_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerLumberAmount", Math.round(playerResourceStats.lumber/1000) );
 						_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerGPSAmount", Math.round(playerResourceStats.goldGained/playerResourceStats.timePassed) );

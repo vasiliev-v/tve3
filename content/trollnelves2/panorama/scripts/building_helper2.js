@@ -431,8 +431,8 @@ function RegisterGNV(msg){
   var squareY = msg.squareY
   var boundX = msg.boundX
   var boundY = msg.boundY
-  //$.Msg("Registering GNV ["+squareX+","+squareY+"] ","Min Bounds: X="+boundX+", Y="+boundY)
-  //$.Msg("gnvRLELen: ", msg.gnv.length)
+  $.Msg("Registering GNV ["+squareX+","+squareY+"] ","Min Bounds: X="+boundX+", Y="+boundY)
+  $.Msg("gnvRLELen: ", msg.gnv.length)
   var arr = [];
   // Running-length decoding
   var strlength = "";
@@ -494,7 +494,7 @@ function RegisterGNV(msg){
     BlockGridSquares(treePos, 2, "TREE")
   }
 
-  //$.Msg("Free: ",tab["1"]," Blocked: ",tab["2"], " gnvLen: ", msg.gnv.length)
+  $.Msg("Free: ",tab["1"]," Blocked: ",tab["2"], " gnvLen: ", msg.gnv.length)
 }
 
 // Ask the server for the Terrain grid
@@ -717,7 +717,7 @@ function Length2D(v1, v2) {
 }
 
 function PrintGridCoords(x,y) {
-  //$.Msg('(',x,',',y,') = [',WorldToGridPosX(x),',',WorldToGridPosY(y),']')
+  $.Msg('(',x,',',y,') = [',WorldToGridPosX(x),',',WorldToGridPosY(y),']')
 }
 
 function HasModifier(entIndex, modifierName) {

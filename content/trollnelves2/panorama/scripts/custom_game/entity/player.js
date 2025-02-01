@@ -107,13 +107,13 @@ class Player extends GameUI.Entity {
     UpdateVerification() {
         if (GameUI.ViewControllerManager.Instance.VerificationView != null) {
             if (GameUI.Player.Instance.Property.Verify.Value == 0) {
-                //$.Msg("VerificationView.Open()")
+                $.Msg("VerificationView.Open()")
                 GameUI.ViewControllerManager.Instance.VerificationView.Open();
             } else {
-                //$.Msg("VerificationView.Close()")
+                $.Msg("VerificationView.Close()")
                 GameUI.ViewControllerManager.Instance.VerificationView.Close(true);
             }
-        //    //$.Msg("GameUI.Player.Instance.Property.Verify.Value=" + GameUI.Player.Instance.Property.Verify.Value);
+        //    $.Msg("GameUI.Player.Instance.Property.Verify.Value=" + GameUI.Player.Instance.Property.Verify.Value);
         }
     }
 
@@ -161,7 +161,7 @@ class Player extends GameUI.Entity {
         }
         let stage = GameUI.Player.Instance.Property.Stage.Value;
         if (stage == GameUI.PlayerStage.PRE) {
-            // //$.Msg("stage == GameModeRecordStage.PRE");
+            // $.Msg("stage == GameModeRecordStage.PRE");
             if (GameUI.ViewControllerManager.Instance.BuyCardView != null) {
                 GameUI.ViewControllerManager.Instance.BuyCardView.Open();
             }
@@ -190,7 +190,7 @@ class Player extends GameUI.Entity {
         let onlineQuest = GameUI.Player.Instance.Property.OnlineQuest.Value;
         let onlineQuestProperty = onlineQuest.Get(GameUI.ConstValue.DailyMissionID);
         if (onlineQuestProperty == null) {
-            //$.Msg("onlineQuestProperty == null");
+            $.Msg("onlineQuestProperty == null");
             return;
         }
 
@@ -201,7 +201,7 @@ class Player extends GameUI.Entity {
         let onlineQuest = GameUI.Player.Instance.Property.OnlineQuest.Value;
         let onlineQuestProperty = onlineQuest.Get(GameUI.ConstValue.DailyMissionID);
         if (onlineQuestProperty == null) {
-            //$.Msg("onlineQuestProperty == null");
+            $.Msg("onlineQuestProperty == null");
             return;
         }
         let progress = onlineQuestProperty.Progress;
@@ -212,10 +212,10 @@ class Player extends GameUI.Entity {
         if (!onlineQuest) {
             return 0;
         }
-        ////$.Msg("onlineQuest=" + JSON.stringify(onlineQuest));
+        //$.Msg("onlineQuest=" + JSON.stringify(onlineQuest));
         let onlineQuestProperty = onlineQuest.Get(GameUI.ConstValue.DailyMissionID);
         if (onlineQuestProperty == null) {
-            //$.Msg("onlineQuestProperty == null");
+            $.Msg("onlineQuestProperty == null");
             return 0;
         }
         let onlineQuestID = onlineQuestProperty.QuestID;
@@ -302,7 +302,7 @@ class Player extends GameUI.Entity {
         let onlineQuest = GameUI.Player.Instance.Property.OnlineQuest.Value;
         let onlineQuestProperty = onlineQuest.Get(GameUI.ConstValue.DailyMissionID);
         if (onlineQuestProperty == null) {
-            //$.Msg("onlineQuestProperty == null");
+            $.Msg("onlineQuestProperty == null");
             return;
         }
         let progress = this._GetPlayerQuestProgress();
@@ -398,7 +398,7 @@ class Player extends GameUI.Entity {
                 freenum++;
             }
         }
-        //$.Msg("freenum" + freenum)
+        $.Msg("freenum" + freenum)
         for (let iter = 0; iter < maxNum; ++iter) {
             if (iter < freenum && this._CanGetBattlePassFreeItem(iter)) {
                 count++;
@@ -438,10 +438,10 @@ class Player extends GameUI.Entity {
         }
     }
     UpdatePlayerTreasureRedDot() {
-        //$.Msg("UpdatePlayerTreasureRedDot----------------------------------------------");
+        $.Msg("UpdatePlayerTreasureRedDot----------------------------------------------");
 
         let playerItems = GameUI.Player.Instance.Property.OwnPlayerItems.Value.Values;
-     //   //$.Msg("playerItems=" + JSON.stringify(playerItems));
+     //   $.Msg("playerItems=" + JSON.stringify(playerItems));
         for (let iter in playerItems) {
             if (playerItems[iter].ID == GameUI.ConstValue.SilverTreasureID) {
                 var silverTreasureCount = playerItems[iter].Count;
@@ -464,7 +464,7 @@ class Player extends GameUI.Entity {
     }
 
     StartProperty(stream) {
-      //  //$.Msg("Player:StartProperty" + stream);
+      //  $.Msg("Player:StartProperty" + stream);
         this.Property.Start(stream);
     }
 
@@ -477,7 +477,7 @@ class Player extends GameUI.Entity {
     }
 
     OnPropertyUpdate(stream) {
-        ////$.Msg("Player:OnPropertyUpdate");
+        //$.Msg("Player:OnPropertyUpdate");
         this._property.OnPropertyUpdate(stream, this);
     }
 
@@ -514,16 +514,16 @@ class Player extends GameUI.Entity {
         }
         let playerID = Game.GetLocalPlayerID();
         GameUI.PlayerServerInvoker.REQ_ReRandomCard(playerID);
-        //$.Msg("Send Refresh to Server");
+        $.Msg("Send Refresh to Server");
     }
     FreeRefresh() {
-        //$.Msg("Send FreeRefresh to Server");
+        $.Msg("Send FreeRefresh to Server");
         let playerID = Game.GetLocalPlayerID();
         GameUI.PlayerServerInvoker.REQ_ReVipFreeRandomCard(playerID);
 
     }
     UseGoldToRefresh() {
-        //$.Msg("Send UseGoldToRefresh to Server");
+        $.Msg("Send UseGoldToRefresh to Server");
         let playerID = Game.GetLocalPlayerID();
         GameUI.PlayerServerInvoker.REQ_UseGoldRandomCard(playerID);
 
@@ -538,7 +538,7 @@ class Player extends GameUI.Entity {
         } else {
             Game.EmitSound("General.Cancel");
         }
-        //$.Msg("Send ShopLevelUp to Server");
+        $.Msg("Send ShopLevelUp to Server");
     }
     GetRandomGoldCoin() {
         let costCoin = 0;

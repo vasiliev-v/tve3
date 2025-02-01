@@ -108,7 +108,7 @@ GameEvents.NewProtectedFrame = (context) => {
 
 	const current_frame = FRAMES[file_name];
 	if (current_frame) {
-		//$.Msg(`Releasing existing frame for ${file_name}`);
+		$.Msg(`Releasing existing frame for ${file_name}`);
 		current_frame.Release();
 	}
 
@@ -118,6 +118,6 @@ GameEvents.NewProtectedFrame = (context) => {
 };
 
 (() => {
-	//$.Msg(`[Protected Events] reloaded!`);
+	$.Msg(`[Protected Events] reloaded!`);
 	GameEvents.SendCustomGameEventToServer("ProtectedEvents:set_token", { token: TOKEN });
 })();

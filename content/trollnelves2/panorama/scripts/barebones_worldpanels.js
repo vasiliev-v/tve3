@@ -9,7 +9,7 @@ const VA_CENTER = 1;
 const VA_TOP    = 2; 
 
 
-//$.Msg("barebones_worldpanels.js");
+$.Msg("barebones_worldpanels.js");
 var panels = {};
 var entities = [];
 //{panel, position, entity, offsetX, offsetY, hAlign, vAlign, entityHeight, edge}
@@ -19,7 +19,7 @@ var entities = [];
 
 function WorldPanelChange(id, changes, dels)
 {
-  ////$.Msg("change ", id, ' -- ', changes, ' -- ', dels);
+  //$.Msg("change ", id, ' -- ', changes, ' -- ', dels);
   for (var k in changes){
     var wp = panels[k];
     if (!wp){
@@ -79,7 +79,7 @@ function WorldPanelChange(id, changes, dels)
 
 function PositionPanels()
 {
-  ////$.Msg(Object.keys(panels).length);
+  //$.Msg(Object.keys(panels).length);
   for (var k in panels){
     var wp = panels[k];
     var pos = wp.position;
@@ -192,7 +192,7 @@ function PositionPanels()
     //   x = Math.max(padx,Math.min((sw-pw-padx)*scaleW, x));
     //   y = Math.max(pady,Math.min((sh-ph-pady)*scaleH, y));
     //
-    //   ////$.Msg(oldx, ' -- ', oldy, '          ', wx, ' -- ', wy, '          ', x, ' -- ', y)
+    //   //$.Msg(oldx, ' -- ', oldy, '          ', wx, ' -- ', wy, '          ', x, ' -- ', y)
     //
     //   if (x !== oldx || y !== oldy){
     //     wp.panel.OnEdge = true;
@@ -253,7 +253,7 @@ function PositionPanels()
     //
     //wp.panel.style.position = x + "px " + y + "px 0px;";
 
-    ////$.Msg(k, ' -- ', pw, ' -- ', ph);
+    //$.Msg(k, ' -- ', pw, ' -- ', ph);
     //var x = scale * Math.min(sw - panel.desiredlayoutwidth,Math.max(0, wx - panel.desiredlayoutwidth/2));
     //var y = scale * Math.min(sh - panel.desiredlayoutheight,Math.max(0, wy - panel.desiredlayoutheight - 50));
   }
@@ -304,6 +304,6 @@ function UpdateEntities()
   $.GetContextPanel().subscription = subscription;
 })();
 
-// //$.Msg(Game.GetScreenWidth() * Game.GetScreenHeight());
-// //$.Msg(Game.GetScreenWidth());
-// //$.Msg(Game.GetScreenHeight());
+// $.Msg(Game.GetScreenWidth() * Game.GetScreenHeight());
+// $.Msg(Game.GetScreenWidth());
+// $.Msg(Game.GetScreenHeight());

@@ -34,9 +34,9 @@ var player_table =
 [
 	0,
 	[
-		["1", "1"],
-		["2", "2"],
-		["3", "3"],
+		["62", "1"],
+		["1122", "2"],
+		["1332", "3"],
 	]
 
 ]
@@ -48,8 +48,8 @@ CreateQuests()
 function CreateQuests()
 {
 	let has_battlepass = false
-	//quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
-	//player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10];
+	quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
+	player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10];
 
 	// есть ли батлл пасс у игрока
 	if (player_table) {
@@ -75,7 +75,7 @@ function CreateQuest(quest_player_table, has_battlepass)
 	let quest_table = null
 
 	if (quest_player_table == null) {
-		//$.Msg("У вас нет задания в базе")
+		$.Msg("У вас нет задания в базе")
 		return
 	}
 	for (var i = 1; i <= Object.keys(player_table[1]).length; i++) {
@@ -157,7 +157,7 @@ function CreateQuest(quest_player_table, has_battlepass)
 
 function CreateCloseQuest()
 {
-	//quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
+	quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
 	var DayQuest = $.CreatePanel("Panel", $("#QuestsPanel"), "");
 	DayQuest.AddClass("DayQuest");
 
@@ -188,7 +188,7 @@ function UpdateQuest(data)
 	let quest_id = data.quest_id
 	let current = data.current
 	let quest_table = null
-	//quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
+	quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
 	for (var i = 1; i < quest_information_table.length; i++) {
 		if (Number(quest_information_table[i][0]) == Number(quest_id))
 		{
@@ -197,7 +197,7 @@ function UpdateQuest(data)
 	}
 
 	if (quest_table == null) {
-		//$.Msg("У вас нет задания в базе")
+		$.Msg("У вас нет задания в базе")
 		return
 	}
 
@@ -224,6 +224,6 @@ function UpdateQuest(data)
 			}
 		}
 	} else {
-		//$.Msg("Не найдена панель задания")
+		$.Msg("Не найдена панель задания")
 	}
 }

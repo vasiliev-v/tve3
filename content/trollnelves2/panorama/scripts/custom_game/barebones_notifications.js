@@ -34,7 +34,7 @@ function RemoveNotification(msg, panel){
 function AddNotification(msg, panel) {
   var newNotification = true;
   var lastNotification = panel.GetChild(panel.GetChildCount() - 1)
-  ////$.Msg(msg)
+  //$.Msg(msg)
 
   msg.continue = msg.continue || false;
   //msg.continue = true;
@@ -62,13 +62,13 @@ function AddNotification(msg, panel) {
     notification = $.CreatePanel('Label', lastNotification, '');
 
   if (typeof(msg.duration) != "number"){
-    ////$.Msg("[Notifications] Notification Duration is not a number!");
+    //$.Msg("[Notifications] Notification Duration is not a number!");
     msg.duration = 3
   }
   
   if (newNotification){
     $.Schedule(msg.duration, function(){
-      ////$.Msg('callback')
+      //$.Msg('callback')
       if (lastNotification.deleted)
         return;
       

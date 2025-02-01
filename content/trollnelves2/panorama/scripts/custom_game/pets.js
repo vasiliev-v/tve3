@@ -6,7 +6,7 @@ var poriadok = new Array( 0,1,  2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,15);//"#bir
 function UpdateParticles( table_name, key, data )
 {
     var ID = Players.GetLocalPlayer();
-	////$.Msg( ID, ": ", "Table ", table_name, " changed: '", key, "' = ", data );
+	//$.Msg( ID, ": ", "Table ", table_name, " changed: '", key, "' = ", data );
     var myint = 1;
     if (ID == key)
     {
@@ -178,7 +178,7 @@ function SelectPart(num)
         $("#partapngb"+selectedpart).visible = false;
         selectedpart = null;
     }
-    ////$.Msg("SelectedPart = "+selectedpart);
+    //$.Msg("SelectedPart = "+selectedpart);
 }
 
 function DefaultButtonReady()
@@ -192,7 +192,7 @@ function DefaultButton()
     if (selectedpart != null)
     {
         GameEvents.SendCustomGameEventToServer( "SetDefaultPets", { id: Players.GetLocalPlayer(),part:$("#NewPartNum"+selectedpart).text} );
-        ////$.Msg($("#NewPartNum"+selectedpart).text);
+        //$.Msg($("#NewPartNum"+selectedpart).text);
     }
     else
     {
