@@ -6,7 +6,7 @@
 
 .MyWheel {
     width: 100%;
-    height: 150px;
+    height: 250px;
     horizontal-align: center;
     vertical-align: middle;
 }
@@ -37,13 +37,15 @@
     height: heroPhraseHeight;
 }
 
-.Phrase>Label {
+.Phrase > Label {
     vertical-align: middle;
-    font-size: 26px;
-    color: #FFFFFF;
-    font-size: 26px;
+    font-size: 20px;
+    color: #ffffff; /* Белый цвет */
     font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Тень для улучшения читаемости */
+    letter-spacing: 1px; /* Немного увеличим расстояние между буквами */
 }
+
 
 .Phrase.Selected {
     pre-transform-scale2d: 1.3;
@@ -70,6 +72,7 @@
     animation-delay: 0s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    font-size: 20px;
 }
 
 
@@ -256,7 +259,6 @@
     vertical-align: middle;
     font-size: 26px;
     color: #FFFFFF;
-    font-size: 26px;
     font-weight: bold;
     margin-top: 400px;
 }
@@ -265,36 +267,37 @@
     horizontal-align: center;
     vertical-align: center;
     height: 60px;
-    width: 600px;
+    width: 200px;
 }
 
+
 #Phrase0 {
-    margin-top: -121px;
-    margin-left: 0px;
+    margin-top: -221px;
+    margin-left: 100px; /* 200px - 100px */
 }
 
 #Phrase0>Panel {
-    horizontal-align: center;
+    horizontal-align: left;
 }
 
 #Phrase1 {
-    margin-top: -59px;
-    margin-left: 790px;
+    margin-top: -120px;
+    margin-left: 350px; /* 450px - 100px */
 }
 
 #Phrase2 {
     margin-top: -1px;
-    margin-left: 820px;
+    margin-left: 420px; /* 520px - 100px */
 }
 
 #Phrase3 {
-    margin-top: 115px;
-    margin-left: 790px;
+    margin-top: 120px;
+    margin-left: 350px; /* 450px - 100px */
 }
 
 #Phrase4 {
     margin-top: 221px;
-    margin-left: 0px;
+    margin-left: 150px; /* 250px - 100px */
 }
 
 #Phrase4>Panel {
@@ -303,7 +306,7 @@
 
 #Phrase5 {
     margin-top: 115px;
-    margin-left: -400px;
+    margin-left: -150px; /* -50px - 100px */
 }
 
 #Phrase5>Panel {
@@ -312,7 +315,7 @@
 
 #Phrase6 {
     margin-top: -1px;
-    margin-left: -430px;
+    margin-left: -220px; /* -120px - 100px */
 }
 
 #Phrase6>Panel {
@@ -320,13 +323,14 @@
 }
 
 #Phrase7 {
-    margin-top: -59px;
-    margin-left: -400px;
+    margin-top: -120px;
+    margin-left: -150px; /* -50px - 100px */
 }
 
 #Phrase7>Panel {
     horizontal-align: right;
 }
+
 
 .ForWheel0 {
     transform: rotateZ(0deg) rotateX(0deg) translate3d(0px, 0px, 0px);

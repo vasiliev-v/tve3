@@ -699,9 +699,9 @@ function SetModelStandart(npc)
 		npc:SetModel("models/heroes/lycan/lycan_wolf.vmdl")
 		npc:SetModelScale(1)
 	elseif npc:IsElf() then
-		npc:SetOriginalModel("models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_winter_ancient_hulk.vmdl")
-		npc:SetModel("models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_winter_ancient_hulk.vmdl")
-		npc:SetModelScale(0.5)
+		npc:SetOriginalModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+		npc:SetModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+		npc:SetModelScale(1)
 	end
 end
 
