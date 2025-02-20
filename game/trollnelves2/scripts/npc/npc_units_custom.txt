@@ -8166,11 +8166,10 @@
 	    {
 	        "AttachWearables" // Dark wood set
 	        {
-	            "1" { "ItemDef" "745" }
-	            "2" { "ItemDef" "749" }
-	            "3" { "ItemDef" "750" }
-	            "4" { "ItemDef" "751" }
-	            "5" { "ItemDef" "752" }
+	            "1" { "ItemDef" "749" }
+	            "2" { "ItemDef" "750" }
+	            "3" { "ItemDef" "751" }
+	            "4" { "ItemDef" "752" }
 	        }
 	    }
 

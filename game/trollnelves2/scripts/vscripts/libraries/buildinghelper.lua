@@ -821,6 +821,7 @@ function BuildingHelper:RightClickOrder(event)
 end
 
 function BuildingHelper:OrderFilter(order)
+    -- DebugPrintTable(order)
     local ret = true
     if BuildingHelper.nextFilter then
         ret = BuildingHelper.nextFilter(BuildingHelper.nextContext, order)
@@ -1023,6 +1024,11 @@ function BuildingHelper:OrderFilter(order)
             return false
         end
         SellItem(args)
+        return false
+    end
+
+    if order_type == 42 then -- mark for sell 
+        SendErrorMessage(issuerID, "error_shop_out_of_range")
         return false
     end
     

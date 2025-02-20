@@ -378,6 +378,14 @@ function trollnelves2:OnItemPickedUp(keys)
     --]]
 end
 
+function trollnelves2:OnItemChanged(keys)
+    print('[BAREBONES] OnItemChanged')
+    DeepPrintTable(keys)  
+end
+
+
+
+
 function trollnelves2:OnItemAddedInv(keys)
     print('[BAREBONES] OnItemAddedInv')
     DeepPrintTable(keys)

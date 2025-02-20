@@ -42,6 +42,7 @@ var uiWaitingSchedules = [];
    // newUI.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
 
     newUI.FindChildTraverse("RadarButton").style.visibility = "collapse";
+    newUI.FindChildTraverse("RoshanTimer").style.visibility = "collapse";
 
     //Use 284 if you want to keep 4 ability minimum size, and only use 160 if you want ~2 ability min size
     centerBlock.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "284px";
@@ -50,10 +51,15 @@ var uiWaitingSchedules = [];
     centerBlock.FindChildTraverse("ContentsContainer").GetParent().style.visibility = "collapse";
     centerBlock.FindChildTraverse("AghsStatusContainer").style.visibility = "collapse";
 
+    
 
     newUI.FindChildTraverse("BuffContainer").style.visibility = "visible";
     newUI.FindChildTraverse("BuffContainer").style.marginLeft = "-250px";
     newUI.FindChildTraverse("BuffContainer").style.marginTop = "-75px";
+
+    newUI.FindChildTraverse("inventory_neutral_craft_holder").style.visibility = "collapse";    
+
+    //
 
     //you are not spawning the talent UI, fuck off (Disabling mouseover and onactivate)
     //We also don't want to crash, valve plz
