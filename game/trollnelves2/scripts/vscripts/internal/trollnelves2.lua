@@ -100,6 +100,8 @@ end, self)
   ListenToGameEvent('entity_killed', Dynamic_Wrap(trollnelves2, 'OnEntityKilled'), self)
   ListenToGameEvent('dota_inventory_item_changed', Dynamic_Wrap(trollnelves2, 'OnItemChanged'), self)
 
+  ListenToGameEvent('dota_hero_inventory_item_change', Dynamic_Wrap(trollnelves2, 'OnItemStateChanged'), self)
+
   
   -- ListenToGameEvent('dota_inventory_item_added', Dynamic_Wrap(trollnelves2, 'OnItemAddedInv'), self)
   

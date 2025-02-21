@@ -383,6 +383,13 @@ function trollnelves2:OnItemChanged(keys)
     DeepPrintTable(keys)  
 end
 
+function trollnelves2:OnItemStateChanged(keys)
+    print('[BAREBONES] OnItemStateChanged')
+    DeepPrintTable(keys)  
+end
+
+
+
 
 
 

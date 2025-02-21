@@ -821,7 +821,7 @@ function BuildingHelper:RightClickOrder(event)
 end
 
 function BuildingHelper:OrderFilter(order)
-    -- DebugPrintTable(order)
+    DebugPrintTable(order)
     local ret = true
     if BuildingHelper.nextFilter then
         ret = BuildingHelper.nextFilter(BuildingHelper.nextContext, order)
