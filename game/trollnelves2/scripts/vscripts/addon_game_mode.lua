@@ -977,6 +977,12 @@ PrecacheResource("model", "models/heroes/luna/luna_shield.vmdl", context)
 
 	PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_crystal.vmdl", context) 		
 	
+	PrecacheResource("particle", "particles/bloode_ground_child.vpcf", context) 
+	PrecacheResource("particle", "particles/bloody_ground.vpcf", context) 
+	PrecacheResource("particle", "particles/build_place.vpcf", context) 
+	PrecacheResource("particle", "particles/pulsation_ground.vpcf", context) 
+			
+
 	
 	PrecacheLoad:PrecacheLoad (context)
 	
