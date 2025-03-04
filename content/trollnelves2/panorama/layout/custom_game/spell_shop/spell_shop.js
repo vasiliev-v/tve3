@@ -33,23 +33,6 @@ function InitSpellPanel()
     UpdateBuyButton()
 }
 
-function GetDotaHud()
-{
-	let hPanel = $.GetContextPanel();
-
-	while ( hPanel && hPanel.id !== 'Hud')
-	{
-        hPanel = hPanel.GetParent();
-	}
-
-	if (!hPanel)
-	{
-        throw new Error('Could not find Hud root from panel with id: ' + $.GetContextPanel().id);
-	}
-
-	return hPanel;
-}
-
 function InitSpellList()
 {
     $("#SpellShopSpellsListBody").RemoveAndDeleteChildren()
@@ -61,7 +44,7 @@ function InitSpellList()
     let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
     for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
     {
-        if (game_spells_lib[i] && game_spells_lib[i][5] == active_shop)
+        if (game_spells_lib[i] && game_spells_lib[i][6] == active_shop)
         {
             CreateSpell(game_spells_lib[i])
         }
@@ -72,12 +55,11 @@ function CreateSpell(info)
 {
     let SpellShopSpellPanel = $.CreatePanel("Panel", $("#SpellShopSpellsListBody"), "")
     SpellShopSpellPanel.AddClass("SpellShopSpellPanel")
+
     let SpellShopSpellPanelIcon = $.CreatePanel("Panel", SpellShopSpellPanel, "")
     SpellShopSpellPanelIcon.AddClass("SpellShopSpellPanelIcon")
     SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(info[1], GetPlayerSpellLevel(info[1], true)) + '.png")';
     SpellShopSpellPanelIcon.style.backgroundSize = "100%"
-    let SpellShopSpellBorder = $.CreatePanel("Panel", SpellShopSpellPanel, "")
-    SpellShopSpellBorder.AddClass("SpellShopSpellBorder")
 
     if (PlayerHasSpell(info[1]))
     {
@@ -136,28 +118,84 @@ function UpdatePreviewSpell(panel, info)
 function UpdatePreviewSpellInf(info)
 {
     $("#PreviewSpellInfo").RemoveAndDeleteChildren()
+
+    let SpellShopInfoHeaderLabel = $.CreatePanel("Label", $("#PreviewSpellInfo"), "")
+    SpellShopInfoHeaderLabel.AddClass("SpellShopInfoHeaderLabel")
+    SpellShopInfoHeaderLabel.text = $.Localize("#spell_shop_header_inf")
+
     let SpellShopIconAndButton = $.CreatePanel("Panel", $("#PreviewSpellInfo"), "")
     SpellShopIconAndButton.AddClass("SpellShopIconAndButton")
+
     let SpellShopPreviewIcon = $.CreatePanel("Panel", SpellShopIconAndButton, "")
     SpellShopPreviewIcon.AddClass("SpellShopPreviewIcon")
-    let SpellShopPreviewEffect = $.CreatePanel("Panel", SpellShopPreviewIcon, "")
-    SpellShopPreviewEffect.AddClass("SpellShopPreviewEffect")
+
     let SpellShopSpellPanelIcon = $.CreatePanel("Panel", SpellShopPreviewIcon, "")
     SpellShopSpellPanelIcon.AddClass("SpellShopSpellPanelIcon")
     SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(info[1], GetPlayerSpellLevel(info[1], true)) + '.png")';
     SpellShopSpellPanelIcon.style.backgroundSize = "100%"
-    let SpellShopSpellBorder = $.CreatePanel("Panel", SpellShopPreviewIcon, "")
-    SpellShopSpellBorder.AddClass("SpellShopSpellBorder")
+
     let SpellPreviewPanelNameButton = $.CreatePanel("Panel", SpellShopIconAndButton, "")
     SpellPreviewPanelNameButton.AddClass("SpellPreviewPanelNameButton")
+
     let SpellPreviewPanelNameLabel = $.CreatePanel("Label", SpellPreviewPanelNameButton, "")
     SpellPreviewPanelNameLabel.AddClass("SpellPreviewPanelNameLabel")
     SpellPreviewPanelNameLabel.text = $.Localize("#" + info[1])
+
     let SpellPreviewPanelNameLabelDesc = $.CreatePanel("Label", SpellPreviewPanelNameButton, "")
     SpellPreviewPanelNameLabelDesc.AddClass("SpellPreviewPanelNameLabelDesc")
     SpellPreviewPanelNameLabelDesc.text = $.Localize("#" + info[1] + "_description")
-    let SpellPreviewPanelButtonActivate = $.CreatePanel("Panel", SpellPreviewPanelNameButton, "")
+
+    let SpellBonusesPanel = $.CreatePanel("Panel", $("#PreviewSpellInfo"), "")
+    SpellBonusesPanel.AddClass("SpellBonusesPanel")
+
+    let SpellColumnBonus = $.CreatePanel("Panel", SpellBonusesPanel, "")
+    SpellColumnBonus.AddClass("SpellColumnBonus")
+    SpellColumnBonus.AddClass("SpellColumnBonus_name")
+
+    for (var i = 0; i <= Object.keys(info[4]).length; i++)
+    {
+        if (info[4][i])
+        {
+            let SpellPreviewLevelLabelDesc = $.CreatePanel("Label", SpellColumnBonus, "")
+            SpellPreviewLevelLabelDesc.AddClass("SpellPreviewLevelLabelDesc")
+            SpellPreviewLevelLabelDesc.html = true
+            SpellPreviewLevelLabelDesc.text = $.Localize("#" + info[4][i])
+        }
+    }
+
+    for (var i = 1; i <= 3; i++)
+    {
+        SpellColumnBonus = $.CreatePanel("Panel", SpellBonusesPanel, "SpellColumnBonus_"+i)
+        SpellColumnBonus.AddClass("SpellColumnBonus")
+        SpellColumnBonus.AddClass("SpellColumnBonus_"+i)
+        if (GetPlayerSpellLevel(info[1]) == i)
+        {
+            SpellColumnBonus.AddClass("IsActiveColumn")
+        }
+        let SpellPreviewLevelLabel = $.CreatePanel("Label", SpellColumnBonus, "")
+        SpellPreviewLevelLabel.AddClass("SpellPreviewLevelLabel")
+        SpellPreviewLevelLabel.html = true
+        SpellPreviewLevelLabel.text = $.Localize("#SpellShop_SpellPreviewUpgrade") + " " + i
+    }
+
+    for (var i = 1; i <= Object.keys(info[5]).length; i++)
+    {
+        for (var d = 1; d <= Object.keys(info[5][i]).length; d++)
+        {
+            let SpellColumnBonus_panel = SpellBonusesPanel.FindChildTraverse("SpellColumnBonus_"+d)
+            if (SpellColumnBonus_panel)
+            {
+                let SpellPreviewLevelLabelValue = $.CreatePanel("Label", SpellColumnBonus_panel, "")
+                SpellPreviewLevelLabelValue.AddClass("SpellPreviewLevelLabelValue")
+                SpellPreviewLevelLabelValue.html = true
+                SpellPreviewLevelLabelValue.text = info[5][i][d]
+            }
+        }
+    }
+
+    let SpellPreviewPanelButtonActivate = $.CreatePanel("Panel", $("#PreviewSpellInfo"), "")
     SpellPreviewPanelButtonActivate.AddClass("SpellPreviewPanelButtonActivate")
+
     let SpellPreviewPanelButtonActivateLabel = $.CreatePanel("Label", SpellPreviewPanelButtonActivate, "")
     SpellPreviewPanelButtonActivateLabel.AddClass("SpellPreviewPanelButtonActivateLabel")
 
@@ -182,26 +220,6 @@ function UpdatePreviewSpellInf(info)
         SpellPreviewPanelButtonActivate.AddClass("SpellDisabled")
     }
 
-    for (var i = 0; i <= Object.keys(info[4]).length; i++)
-    {
-        if (info[4][i])
-        {
-            let SpellPreviewLevelLabel = $.CreatePanel("Label", $("#PreviewSpellInfo"), "")
-            SpellPreviewLevelLabel.AddClass("SpellPreviewLevelLabel")
-            SpellPreviewLevelLabel.html = true
-            SpellPreviewLevelLabel.text = $.Localize("#SpellShop_SpellPreviewUpgrade") + " " + i
-            if (GetPlayerSpellLevel(info[1]) < i)
-            {
-                SpellPreviewLevelLabel.text = $.Localize("#SpellShop_SpellPreviewUpgrade") + " " + i + " <font color='red'>(" + $.Localize("#SpellShop_no_buying_spell") + ")</font>"
-            }
-            let SpellPreviewLevelLabelDesc = $.CreatePanel("Label", $("#PreviewSpellInfo"), "")
-            SpellPreviewLevelLabelDesc.AddClass("SpellPreviewLevelLabelDesc")
-            SpellPreviewLevelLabelDesc.html = true
-            SpellPreviewLevelLabelDesc.text = $.Localize("#" + info[4][i])
-
-        }
-    }
-
     player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
     let srok = "";
     if (player_table)
@@ -224,7 +242,6 @@ function UpdatePreviewSpellInf(info)
         SpellSrokPanelNameLabel.AddClass("SpellSrokPanelNameLabel")
         SpellSrokPanelNameLabel.text = $.Localize("#shop_trollchance_date") + srok
     }
-
 }
 
 function SetActivateSpell(panel, info)
@@ -253,11 +270,6 @@ function ActivateSpell(info)
     {
         GameEvents.SendCustomGameEventToServer( "event_set_activate_spell", {spell_name : info[1], modifier_name : info[3]} );
     }
-} 
-
-function FindDotaHudElement(sId)
-{
-	return GetDotaHud().FindChildTraverse(sId);
 }
 
 function OpenSpellShop()
@@ -557,17 +569,28 @@ function SpellDropNotification(data)
 {
     let panel_spell_drop = $.CreatePanel("Panel", $.GetContextPanel(), "")
     panel_spell_drop.AddClass("panel_spell_drop")
-    let panel_spell_drop_label_header = $.CreatePanel("Label", panel_spell_drop, "")
+
+    let panel_spell_drop_bg = $.CreatePanel("Panel", panel_spell_drop, "")
+    panel_spell_drop_bg.AddClass("panel_spell_drop_bg")
+
+    let panel_spell_drop_main = $.CreatePanel("Panel", panel_spell_drop, "")
+    panel_spell_drop_main.AddClass("panel_spell_drop_main")
+
+    let panel_spell_drop_label_header = $.CreatePanel("Label", panel_spell_drop_main, "")
     panel_spell_drop_label_header.AddClass("panel_spell_drop_label_header")
     panel_spell_drop_label_header.text = $.Localize("#SpellShop_DropHeader")
+
     if (data.upgrade)
     {
         panel_spell_drop_label_header.text = $.Localize("#SpellShop_DropHeader_upgrade")
     }
-    let SpellShopSpellPanel = $.CreatePanel("Panel", panel_spell_drop, "")
+
+    let SpellShopSpellPanel = $.CreatePanel("Panel", panel_spell_drop_main, "")
     SpellShopSpellPanel.AddClass("SpellShopSpellPanelDrop")
+
     let SpellShopSpellPanelIcon = $.CreatePanel("Panel", SpellShopSpellPanel, "")
     SpellShopSpellPanelIcon.AddClass("SpellShopSpellPanelIconDrop")
+
     if (data.upgrade)
     {
         SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(data.spell_name, data.upgrade) + '.png")';
@@ -579,17 +602,19 @@ function SpellDropNotification(data)
         SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(data.spell_name) + '.png")';
         SpellShopSpellPanelIcon.style.backgroundSize = "100%"
     }
-    let SpellShopSpellBorder = $.CreatePanel("Panel", SpellShopSpellPanel, "")
-    SpellShopSpellBorder.AddClass("SpellShopSpellBorderDrop")
-    let panel_label_spell_name_drop = $.CreatePanel("Label", panel_spell_drop, "")
+
+    let panel_label_spell_name_drop = $.CreatePanel("Label", panel_spell_drop_main, "")
     panel_label_spell_name_drop.AddClass("panel_label_spell_name_drop")
     panel_label_spell_name_drop.text = $.Localize("#"+data.spell_name)
+
     if (data.upgrade)
     {
         panel_label_spell_name_drop.text = $.Localize("#"+data.spell_name) + " " + data.upgrade
     }
-    let SpellShopButtonDropClose = $.CreatePanel("Panel", panel_spell_drop, "")
+
+    let SpellShopButtonDropClose = $.CreatePanel("Panel", panel_spell_drop_main, "")
     SpellShopButtonDropClose.AddClass("SpellShopButtonDropClose")
+
     let SpellShopButtonDropCloseLabel = $.CreatePanel("Label", SpellShopButtonDropClose, "")
     SpellShopButtonDropCloseLabel.AddClass("SpellShopButtonDropCloseLabel")
     SpellShopButtonDropCloseLabel.text = $.Localize("#SpellShop_DropClose")
@@ -612,7 +637,7 @@ function CheckBuyAllSpells()
     let perkInShop = [];
     for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
     {
-        if (game_spells_lib[i] && game_spells_lib[i][5] == active_shop)
+        if (game_spells_lib[i] && game_spells_lib[i][6] == active_shop)
         {
             counts_spell = counts_spell + 1
             perkInShop[perkInShop.length + 1] = game_spells_lib[i][1]
@@ -629,6 +654,8 @@ function CheckBuyAllSpells()
                 {
                     if(player_table[id][2] < 3 && player_table[id][1] == perkInShop[i])
                     {
+                        //$.Msg(player_table[id][2])
+                        //$.Msg(player_table[id])
                         all_spells_player_has_max_level = false
                     }
                 }

@@ -19,11 +19,11 @@ function CRetardPortal:AddPathCornerPortalIn(entity)
 end
 
 function CRetardPortal:OnPortalTouch(portal, unit)
-    DebugPrint(self.currentTriggerPortalName)
+    --DebugPrint(self.currentTriggerPortalName)
     if unit:HasModifier("modifier_retard_portal_ignore") then
         return
     end
-    DebugPrint(self.arUnitsInPortal[unit])
+    --DebugPrint(self.arUnitsInPortal[unit])
     --if self.arUnitsInPortal[unit] ~= nil then
     --    self.arUnitsInPortal[unit] = nil
    --     return
@@ -38,7 +38,7 @@ function CRetardPortal:OnPortalTouch(portal, unit)
    -- if self.closedPortal[unit] == nil then 
     --    self.closedPortal[unit] = ""
    -- end
-	DebugPrint(wws)
+	--DebugPrint(wws)
 
     local portalOut = Entities:FindByName(nil, wws) --строка ищет как раз таки нашу точку pnt1
     
@@ -53,7 +53,7 @@ function CRetardPortal:OnPortalTouch(portal, unit)
         
         self:CreatePortalParticle(unit)
         --self.closedPortal[unit] = portal:GetName()
-       -- DebugPrint("self.closedPortal[unit] 2222   " .. self.closedPortal[unit])
+       -- --DebugPrint("self.closedPortal[unit] 2222   " .. self.closedPortal[unit])
     end
 end
 

@@ -9,21 +9,21 @@ function Error_debug.SendData(data,callback)
 		return
 	end
 	local encData = json.encode(data)
-	DebugPrint("***********************************************")
-	DebugPrint(Error_debug.server)
-	DebugPrint(encData)
-	DebugPrint("***********************************************")
+	--DebugPrint("***********************************************")
+	--DebugPrint(Error_debug.server)
+	--DebugPrint(encData)
+	--DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		DebugPrint("***********************************************")
-		DebugPrint(res.Body)
-		DebugPrint("Response code: " .. res.StatusCode)
-		DebugPrint("***********************************************")
+		--DebugPrint("***********************************************")
+		--DebugPrint(res.Body)
+		--DebugPrint("Response code: " .. res.StatusCode)
+		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error connecting", 1, 1)
-			DebugPrint("Error connecting")
+			--DebugPrint("Error connecting")
 			return
 		end
 		
@@ -38,7 +38,7 @@ end
 function Error_debug.printTryError(...)
 	local stack = debug.traceback(...)
 	if stack ~= nil then
-	DebugPrint("Error_debug")
+	--DebugPrint("Error_debug")
 	print(stack) 
 	local data = {}
 	data.Log = stack

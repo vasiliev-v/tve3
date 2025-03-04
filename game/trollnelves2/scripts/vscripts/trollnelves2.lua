@@ -4,7 +4,7 @@
 TROLLNELVES2_DEBUG_SPEW = true
 
 if trollnelves2 == nil then
-    DebugPrint('[TROLLNELVES2] creating trollnelves2 game mode')
+    --DebugPrint('[TROLLNELVES2] creating trollnelves2 game mode')
     _G.trollnelves2 = class({})
 end
 
@@ -28,8 +28,9 @@ require('reklama')
 require('chatcommand')
 require('votekick')
 require('drop')
-require('wearables')
-require('SelectPets')
+require('donate_store/wearables')
+require('donate_store/SelectPets')
+require('setup_state_lib')
 require('pets')
 require('flag')
 require('filter')
@@ -38,7 +39,7 @@ require('libraries/worldpanels')
 
 function trollnelves2:PostLoadPrecache()
     Pets:Init()
-    DebugPrint("[BAREBONES] Performing Post-Load precache")
+    --DebugPrint("[BAREBONES] Performing Post-Load precache")
 end
 -- Gets called when a player chooses if he wants to be troll or not
 function OnPlayerTeamChoose(eventSourceIndex, args)
@@ -52,12 +53,12 @@ function trollnelves2:GameSetup()
         for pID = 0, DOTA_MAX_TEAM_PLAYERS do
             if PlayerResource:IsValidPlayerID(pID) and not PlayerResource:IsFakeClient(pID) then
                 --[[
-                GameRules:SendCustomMessage("Nick: " .. PlayerResource:GetPlayerName(pID) .. " pID: " .. pID, 1, 1)
-                GameRules:SendCustomMessage("GetCustomTeamAssignment: " .. PlayerResource:GetCustomTeamAssignment(pID) .. " pID: " .. pID, 1, 1)
-                GameRules:SendCustomMessage("GetLiveSpectatorTeam: " .. PlayerResource:GetLiveSpectatorTeam(pID) .. " pID: " .. pID, 1, 1)
-                GameRules:SendCustomMessage("GetTeam: " .. PlayerResource:GetTeam(pID) .. " pID: " .. pID, 1, 1)
-                GameRules:SendCustomMessage("IsValidTeamPlayer: " .. tostring(PlayerResource:IsValidTeamPlayer(pID))  .. " pID: " .. pID, 1, 1)
-                GameRules:SendCustomMessage("IsValidTeamPlayerID: " .. tostring(PlayerResource:IsValidTeamPlayerID(pID)) .. " pID: " .. pID, 1, 1)
+                    GameRules:SendCustomMessage("Nick: " .. PlayerResource:GetPlayerName(pID) .. " pID: " .. pID, 1, 1)
+                    GameRules:SendCustomMessage("GetCustomTeamAssignment: " .. PlayerResource:GetCustomTeamAssignment(pID) .. " pID: " .. pID, 1, 1)
+                    GameRules:SendCustomMessage("GetLiveSpectatorTeam: " .. PlayerResource:GetLiveSpectatorTeam(pID) .. " pID: " .. pID, 1, 1)
+                    GameRules:SendCustomMessage("GetTeam: " .. PlayerResource:GetTeam(pID) .. " pID: " .. pID, 1, 1)
+                    GameRules:SendCustomMessage("IsValidTeamPlayer: " .. tostring(PlayerResource:IsValidTeamPlayer(pID))  .. " pID: " .. pID, 1, 1)
+                    GameRules:SendCustomMessage("IsValidTeamPlayerID: " .. tostring(PlayerResource:IsValidTeamPlayerID(pID)) .. " pID: " .. pID, 1, 1)
                 ]]
                 PlayerResource:SetCustomTeamAssignment(pID, DOTA_TEAM_GOODGUYS)
                 --PlayerResource:SetSelectedHero(pID, ELF_HERO)
@@ -69,7 +70,6 @@ function trollnelves2:GameSetup()
                     GameRules.scores[pID].elf = 0
                     GameRules.scores[pID].troll = 0
                 end
-        
                 local steam = tostring(PlayerResource:GetSteamID(pID))
                 CustomNetTables:SetTableValue("Shop", tostring(pID), GameRules.PoolTable)
                 Shop.RequestDonate(pID, steam, callback)
@@ -83,17 +83,14 @@ function trollnelves2:GameSetup()
         -- StartReklama()
         Donate:CreateList()
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
-        DebugPrint("count player " .. GameRules.PlayersCount)
-        Timers:CreateTimer(TEAM_CHOICE_TIME, function()
-            if string.match(GetMapName(),"clanwars") then
-                GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_1, 1)
-                GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_2, 1)
-                SelectHeroes2()
-            else
-                SelectHeroes()
-            end
-            GameRules:FinishCustomGameSetup()
-        end)
+        --DebugPrint("count player " .. GameRules.PlayersCount)
+
+        setup_state_lib:SetupStartMapVotes()
+
+        -- Timers:CreateTimer(TEAM_CHOICE_TIME, function()
+        --     SelectHeroes()
+        --     GameRules:FinishCustomGameSetup()
+        -- end)
     end
 end
 
@@ -154,7 +151,7 @@ function NewTroll()
     end
 end
 
-function SelectHeroes()
+function SetRoles()
     local donateTroll = {}
     for pID = 0, DOTA_MAX_TEAM_PLAYERS do
         if PlayerResource:IsValidPlayerID(pID)  then
@@ -162,13 +159,28 @@ function SelectHeroes()
             local playerSelection = GameRules.playerTeamChoices[pID]
             local pointScore = tonumber(GameRules.scores[pID].elf or 0) + tonumber(GameRules.scores[pID].troll or 0)
             local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))["2"]["0"]
+            local party_id = tonumber(tostring(PlayerResource:GetPartyID(pID)))
+            local partyGame = false 
+            if party_id and party_id == 0 then
+                DebugPrint("not  party_id and party_id = 0 ID " .. pID)
+            else 
+                DebugPrint("party" .. pID .. "party_id        " ..  party_id)
+                local pary_chance = RandomInt(0, 100)
+                if pary_chance > 25 then
+                    partyGame = false 
+                end
+            end
+
+            DebugPrint("party2 " .. pID .. "party_id2 " ..  party_id)
+
             if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
-                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > 1 or PoolTable ~= "0") then
+                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > 1 or PoolTable ~= "0") and not partyGame then
                     table.insert(wannabeTrollIDs, pID)
                 elseif GameRules.PlayersCount < MIN_RATING_PLAYER or GameRules:IsCheatMode() then
                     table.insert(wannabeTrollIDs, pID)
                 end
             end
+
             PlayerResource:SetCustomTeamAssignment(pID, DOTA_TEAM_GOODGUYS)
         end
     end
@@ -176,7 +188,7 @@ function SelectHeroes()
     local sumChance = 0
     if #wannabeTrollIDs > 0 then
         if #GameRules.BonusTrollIDs > 0 then
-            DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
+            --DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
             table.sort(GameRules.BonusTrollIDs, mySort)
             for _, bonus in ipairs(GameRules.BonusTrollIDs) do
                 local playerID, chance = unpack(bonus)
@@ -236,11 +248,15 @@ function SelectHeroes()
             end
         end
     end
-    
     if not GameRules.test then
         PlayerResource:SetCustomTeamAssignment(trollPlayerID, DOTA_TEAM_BADGUYS)
-        local test = PlayerResource:SetSelectedHero(trollPlayerID, TROLL_HERO)
+    end
+end
 
+function SelectHeroes()
+    if not GameRules.test then
+        local troll_player_id = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 1)
+        PlayerResource:SetSelectedHero(troll_player_id, TROLL_HERO)
     end
     local elfCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
     for i = 1, elfCount do
@@ -255,7 +271,7 @@ function SelectHeroes()
 end
 
 function trollnelves2:OnHeroInGame(hero)
-    DebugPrint("OnHeroInGame")
+    --DebugPrint("OnHeroInGame")
     if hero:GetUnitName() == "npc_dota_hero_wisp" then
         local abil = hero:FindAbilityByName("dummy_passive")
         abil:SetLevel(abil:GetMaxLevel())
@@ -293,7 +309,7 @@ end
 
 
 function InitializeHero(hero)
-    DebugPrint("Initialize hero")
+    --DebugPrint("Initialize hero")
     if hero:GetUnitName() == "npc_dota_hero_bear"  then
         return
     end
@@ -331,7 +347,7 @@ function InitializeHero(hero)
 end
 
 function InitializeBadHero(hero)
-    DebugPrint("Initialize bad hero")
+    --DebugPrint("Initialize bad hero")
     local playerID = hero:GetPlayerOwnerID()
     local status, nextCall = Error_debug.ErrorCheck(function() 
         hero.hpReg = 0
@@ -345,6 +361,12 @@ function InitializeBadHero(hero)
                 rate = optimalRate > rate and optimalRate or rate
                 local ratedHpReg = fullHpReg * rate
                 hero:SetHealth(hero:GetHealth() + ratedHpReg)
+            end
+            if rate == nil then
+                rate = 1 
+            end
+            if rate == 0 then
+                rate = 1 
             end
             return rate
         end)
@@ -364,7 +386,7 @@ function InitializeBadHero(hero)
 end
 
 function InitializeBuilder(hero)
-    DebugPrint("Initialize builder")
+    --DebugPrint("Initialize builder")
     local playerID = hero:GetPlayerOwnerID()
     hero.food = 0
     hero.wisp = 0
@@ -387,9 +409,8 @@ function InitializeBuilder(hero)
     hero:AddItemByName("item_glyph_ability")
     if string.match(GetMapName(),"clanwars") then
         hero:AddItemByName("item_max_move2")
-    else
-        
-        hero:AddItemByName("item_night_ability")
+    else  
+        --hero:AddItemByName("item_night_ability")
         hero:AddItemByName("item_blink_datadriven")
     end
     hero:AddItemByName("item_stormcrafter_datadriven")
@@ -484,7 +505,7 @@ end
 function InitializeTroll(hero)
     
     local playerID = hero:GetPlayerOwnerID()
-    DebugPrint("Initialize troll, playerID: ", playerID)
+    --DebugPrint("Initialize troll, playerID: ", playerID)
     GameRules.trollHero = hero
     GameRules.trollID = playerID
 
@@ -543,6 +564,22 @@ function InitializeTroll(hero)
         hero:AddNewModifier(hero, nil, "modifier_movespeed_x4", {})
     end
 
+    hero:RemoveAbility("troll_spell_silence_target")
+    hero:RemoveAbility("troll_spell_silence_area")
+    hero:RemoveAbility("troll_spell_stun_target")
+    hero:RemoveAbility("troll_spell_haste")
+    hero:RemoveAbility("troll_spell_ward")
+    hero:RemoveAbility("troll_spell_bkb")
+    hero:RemoveAbility("troll_spell_slow_target")
+    hero:RemoveAbility("troll_spell_slow_area")
+    hero:RemoveAbility("troll_spell_invis")
+    hero:RemoveAbility("troll_spell_evasion")
+    hero:RemoveAbility("troll_spell_atkspeed")
+    hero:RemoveAbility("troll_spell_wolf")
+    hero:RemoveAbility("troll_spell_reveal")
+    hero:RemoveAbility("troll_spell_night_buff")
+    --hero:RemoveAbility("")
+    
     if GameRules.test2 == false then
         hero:RemoveAbility("lone_druid_spirit_bear_datadriven")
     end
@@ -623,207 +660,8 @@ function InitializeTroll(hero)
     --hero:AddItemByName("item_zombie_bag")
 end
 
-function InitializeTroll2(hero)
-    
-    local playerID = hero:GetPlayerOwnerID()
-    DebugPrint("Initialize troll, playerID: ", playerID)
-    GameRules.trollHero2 = hero
-    GameRules.trollID2 = playerID
-    hero.units = {}
-    hero.disabledBuildings = {}
-    hero.buildings = {} -- This keeps the name and quantity of each building
-    hero.buildings["troll2_hut_1"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    hero.buildings["troll2_hut_2"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    hero.buildings["troll2_hut_3"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    hero.buildings["troll2_hut_4"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    hero.buildings["troll2_hut_5"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    hero.buildings["troll2_hut_6"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    hero.buildings["troll_hut_7"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    hero.buildings["troll_hut_8"] = {
-        startedConstructionCount = 0,
-        completedConstructionCount = 0
-    }
-    if string.match(GetMapName(),"clanwars") and GameRules.MapSpeed == 1 then
-        hero:RemoveAbility("special_bonus_cooldown_reduction_50") 
-        hero:RemoveAbility("special_bonus_cooldown_reduction_30")
-        --hero:AddNewModifier(hero, nil, "modifier_movespeed_x2", {})
-    elseif string.match(GetMapName(),"clanwars") and GameRules.MapSpeed == 4 then
-        hero:AddNewModifier(hero, nil, "modifier_movespeed_x4", {})
-    end
-    if GameRules.test2 == false then
-        hero:RemoveAbility("lone_druid_spirit_bear_datadriven")
-    end
-    local units = Entities:FindAllByClassname("npc_dota_creature")
-    for _, unit in pairs(units) do
-        local unit_name = unit:GetUnitName();
-        if string.match(unit_name, "shop2") or
-            string.match(unit_name, "troll2_hut") then
-            unit:SetOwner(hero)
-            unit:SetControllableByPlayer(playerID, true)
-            unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-            unit:AddNewModifier(unit, nil, "modifier_phased", {})
-            if string.match(unit_name, "troll2_hut") then
-                unit.ancestors = {}
-                ModifyStartedConstructionBuildingCount(hero, unit_name, 1)
-                ModifyCompletedConstructionBuildingCount(hero, unit_name, 1)
-                BuildingHelper:AddModifierBuilding(unit)
-                BuildingHelper:BlockGridSquares(GetUnitKV(unit_name, "ConstructionSize"), 0, unit:GetAbsOrigin())
-            end
-        elseif string.match(unit_name, "npc_dota_units_base2") then
-            unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-            unit:AddNewModifier(unit, nil, "modifier_phased", {})
-        end
-    end
-
-    hero:SetStashEnabled(false)
-
-    local units = Entities:FindAllByClassname("npc_dota_creature")
-    for _, unit in pairs(units) do
-        local unit_name = unit:GetUnitName();
-        if string.match(unit_name, "shop2") or
-            string.match(unit_name, "troll2_hut") then
-            unit:SetOwner(hero)
-            unit:SetControllableByPlayer(playerID, true)
-            unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-            unit:AddNewModifier(unit, nil, "modifier_phased", {})
-            if string.match(unit_name, "troll2_hut") then
-                unit.ancestors = {}
-                ModifyStartedConstructionBuildingCount(hero, unit_name, 1)
-                ModifyCompletedConstructionBuildingCount(hero, unit_name, 1)
-                BuildingHelper:AddModifierBuilding(unit)
-                BuildingHelper:BlockGridSquares(GetUnitKV(unit_name, "ConstructionSize"), 0, unit:GetAbsOrigin())
-            end
-        elseif string.match(unit_name, "npc_dota_units_base2") then
-            unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-            unit:AddNewModifier(unit, nil, "modifier_phased", {})
-        end
-    end
-    Timers:CreateTimer(function()
-        local countElf = 0
-        local countAngel = 0
-        if not hero or hero:IsNull() then return end
-        if hero:IsAlive() then
-            local units = FindUnitsInRadius(hero:GetTeamNumber(), hero:GetOrigin() , nil, 900 , DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL  , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false) --range 600 <-1200
-            for _,unit in pairs(units) do
-                if unit ~= nil then
-                    if unit:GetUnitName() == "flag" then
-                        countAngel = 1 --countElf = 1
-                    end
-                    --new
-                    if unit:IsElf() and PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) == 2 then
-                        countElf = countElf + 1
-                    end
-                    --endnew
-                end
-            end
-            if countAngel == 1 then		--new or countElf >= 3
-                if hero:HasModifier("modifier_antiblock") then
-                    hero:RemoveModifierByName("modifier_antiblock")
-                end
-            else
-                if not hero:HasModifier("modifier_antiblock") then
-                    hero:AddNewModifier(hero, nil, "modifier_antiblock", {})
-                end
-            end
-        end
-        return 1
-    end)
-
-    Timers:CreateTimer(30, function()
-        PlayerResource:SetCustomTeamAssignment(playerID, DOTA_TEAM_BADGUYS)
-        PlayerResource:SetCustomTeamAssignment(playerID, DOTA_TEAM_BADGUYS)
-        hero:SetTeam(DOTA_TEAM_BADGUYS)
-        hero:CalculateStatBonus(true)
-        hero.units = {}
-        hero.disabledBuildings = {}
-        hero.buildings = {} -- This keeps the name and quantity of each building
-        hero.buildings["troll2_hut_1"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-        hero.buildings["troll2_hut_2"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-        hero.buildings["troll2_hut_3"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-        hero.buildings["troll2_hut_4"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-        hero.buildings["troll2_hut_5"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-        hero.buildings["troll2_hut_6"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-        hero.buildings["troll_hut_7"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-        hero.buildings["troll_hut_8"] = {
-            startedConstructionCount = 0,
-            completedConstructionCount = 0
-        }
-
-        if GameRules.test2 == false then
-            hero:RemoveAbility("lone_druid_spirit_bear_datadriven")
-        end
-        local units = Entities:FindAllByClassname("npc_dota_creature")
-        for _, unit in pairs(units) do
-            local unit_name = unit:GetUnitName();
-            if string.match(unit_name, "shop2") or
-                string.match(unit_name, "troll2_hut") then
-                unit:SetOwner(hero)
-                unit:SetControllableByPlayer(playerID, true)
-                unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-                unit:AddNewModifier(unit, nil, "modifier_phased", {})
-                if string.match(unit_name, "troll2_hut") then
-                    unit.ancestors = {}
-                    ModifyStartedConstructionBuildingCount(hero, unit_name, 1)
-                    ModifyCompletedConstructionBuildingCount(hero, unit_name, 1)
-                    BuildingHelper:AddModifierBuilding(unit)
-                    BuildingHelper:BlockGridSquares(GetUnitKV(unit_name, "ConstructionSize"), 0, unit:GetAbsOrigin())
-                end
-            elseif string.match(unit_name, "npc_dota_units_base2") then
-                unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-                unit:AddNewModifier(unit, nil, "modifier_phased", {})
-            end
-        end
-    end)
-    local abil2 = hero:FindAbilityByName("troll_antiblock")
-    abil2:EndCooldown()
-    abil2:StartCooldown(999999) 
-    hero:CalculateStatBonus(true)
-end
-
 function InitializeAngel(hero)
-    DebugPrint("Initialize angel")
+    --DebugPrint("Initialize angel")
     hero:AddItemByName("item_blink_datadriven")
     --if not string.match(GetMapName(),"halloween") then 
     --    hero:RemoveAbility("silence_datadriven")
@@ -838,7 +676,7 @@ function trollnelves2:ControlUnitForTroll(hero)
     for _,unit in pairs(units) do
         local unit_name_hut = unit:GetUnitName();
         if unit_name_hut == "troll_hut_6" then --if unit_name_hut == "troll_hut_10" then --if unit_name_hut == "troll_hut_7" then
-            DebugPrint("in2")
+            --DebugPrint("in2")
             checkTrollHutLevel6 = true --checkTrollHutLevel7 = true
         end
     end 
@@ -850,7 +688,7 @@ function trollnelves2:ControlUnitForTroll(hero)
         local unit_name = unit:GetUnitName();
         if string.match(unit_name, "shop") or
             string.match(unit_name, "troll_hut") then
-            DebugPrint("in3")
+            --DebugPrint("in3")
             unit:SetOwner(hero)
             unit:SetControllableByPlayer(playerID, true)
         end
@@ -865,7 +703,7 @@ function trollnelves2:ControlUnitForTroll(hero)
                     if team == DOTA_TEAM_BADGUYS then
                         PlayerResource:SetUnitShareMaskForPlayer(playerID, pID, 2, true)
                         PlayerResource:SetUnitShareMaskForPlayer(GameRules.trollID, pID, 2, false)
-                        DebugPrint("GOOO1!! " .. pID)
+                        --DebugPrint("GOOO1!! " .. pID)
                     end
                 end
             end
@@ -875,8 +713,8 @@ end
 
 function InitializeWolf(hero)
     local playerID = hero:GetPlayerOwnerID()
-    DebugPrint("Initialize wolf, playerID: " .. playerID)
-    -- DebugPrint("GameRules.trollID: " .. GameRules.trollID)
+    --DebugPrint("Initialize wolf, playerID: " .. playerID)
+    -- --DebugPrint("GameRules.trollID: " .. GameRules.trollID)
     local koeff = 1
     if (GameRules:GetGameTime() - GameRules.startTime) <= 600 then
         koeff = 2
@@ -916,19 +754,13 @@ function trollnelves2:PreStart()
             if gameStartTimer == 7 then
                 BuildingHelper:UpdateGrid()
                 LinkModifier:Start()
-                if string.match(GetMapName(),"clanwars") then
-                    FakeHeroElf()
-                end
             end
             if GameRules.trollHero ~= nil then
                 PlayerResource:SetGold(GameRules.trollHero , 0)
             end
-            if GameRules.trollHero2 ~= nil then
-                PlayerResource:SetGold(GameRules.trollHero2 , 0)
-            end
             return 1
             else
-            if GameRules.trollHero or GameRules.trollHero2 or GameRules.test then -- 
+            if GameRules.trollHero or GameRules.test then -- 
                 Notifications:ClearBottomFromAll()
                 Notifications:BottomToAll(
                     {
@@ -941,9 +773,6 @@ function trollnelves2:PreStart()
                     end
                     if GameRules.trollHero then
                         GameRules.trollHero:RemoveModifierByName("modifier_disconnected") 
-                    end
-                    if GameRules.trollHero2 then
-                        GameRules.trollHero2:RemoveModifierByName("modifier_disconnected") 
                     end
                     GameRules.startTime = GameRules:GetGameTime()
                     
@@ -959,37 +788,12 @@ function trollnelves2:PreStart()
                             PlayerResource:NewSelection(playerHero:GetPlayerOwnerID(), PlayerResource:GetSelectedHeroEntity(playerHero:GetPlayerOwnerID()))
                         end
                     end
-
-                    if string.match(GetMapName(),"clanwars") then
-                        elfCount = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_BADGUYS)
-                        for i = 1, elfCount do
-                            local pID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, i)
-                            local playerHero = PlayerResource:GetSelectedHeroEntity(pID)
-                            if playerHero then
-                                playerHero:RemoveModifierByName("modifier_stunned")
-                            end
-                        end
-                    end
                     
                     local trollSpawnTimer = TROLL_SPAWN_TIME
                     local trollHero = GameRules.trollHero
                     if trollHero then
                         trollHero:AddNewModifier(trollHero, nil, "modifier_stunned", {Duration = trollSpawnTimer})
-
-                        if GameRules.MapSpeed == 4 and not string.match(GetMapName(),"clanwars") and not string.match(GetMapName(),"1x1") and not string.match(GetMapName(),"turbo2x") then
-                            PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_X4)
-                        elseif GameRules.MapSpeed == 2 and not string.match(GetMapName(),"clanwars") and not string.match(GetMapName(),"1x1") and not string.match(GetMapName(),"turbo2x") then
-                            PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_X2)
-                        else
-                            PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD)
-                        end
-                        if string.match(GetMapName(),"clanwars") then
-                            if GameRules.MapSpeed >= 4 then
-                                PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_BATTLE + TROLL_STARTING_GOLD_X4)
-                            else
-                                PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_BATTLE)
-                            end
-                        end
+                        PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD)
                         if string.match(GetMapName(),"1x1") then
                             if GameRules.MapSpeed >= 4 then
                                 PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_SOLO + TROLL_STARTING_GOLD_X4)
@@ -1003,18 +807,6 @@ function trollnelves2:PreStart()
                         PlayerResource:SetLumber(trollHero, TROLL_STARTING_LUMBER)
                     end
 
-                    if GameRules.trollHero2 then
-                        GameRules.trollHero2:AddNewModifier(nil, nil, "modifier_stunned", {duration = trollSpawnTimer})
-                        if string.match(GetMapName(),"clanwars") then
-                            if GameRules.MapSpeed >= 4 then
-                                PlayerResource:SetGold(GameRules.trollHero2 , TROLL_STARTING_GOLD_BATTLE + TROLL_STARTING_GOLD_X4)
-                            else
-                                PlayerResource:SetGold(GameRules.trollHero2 , TROLL_STARTING_GOLD_BATTLE)
-                            end
-                        end
-                        PlayerResource:SetLumber(GameRules.trollHero2, TROLL_STARTING_LUMBER)
-                    end
-
                     Timers:CreateTimer(function()
                         if trollSpawnTimer > 0 then
                             Notifications:ClearBottomFromAll()
@@ -1026,16 +818,9 @@ function trollnelves2:PreStart()
                                 })
                                 trollSpawnTimer = trollSpawnTimer - 1
                                 return 1.0
-                            else
+                            elseif GameRules.trollHero then 
                                 local trollHero = GameRules.trollHero
-                                local trollHero2 = GameRules.trollHero
-                                if trollHero then
-                                    trollHero:RemoveModifierByName("modifier_stunned")
-                                end
-                                if trollHero2 then
-                                    trollHero2:RemoveModifierByName("modifier_stunned")
-                                end
-                                
+                                trollHero:RemoveModifierByName("modifier_stunned")    
                             end
                     end)
                     else
@@ -1103,12 +888,7 @@ end
 -- It can be used to pre-initialize any values/tables that will be needed later
 function trollnelves2:Inittrollnelves2()
     trollnelves2 = self
-    DebugPrint('[TROLLNELVES2] Starting to load trollnelves2 trollnelves2...')
     trollnelves2:_Inittrollnelves2()
-    DebugPrint('[TROLLNELVES2] Done loading trollnelves2 trollnelves2!\n\n')
-     --[[  new
-    GameRules:GetGameModeEntity():SetExecuteOrderFilter(trollnelves2.FilterExecuteOrder, self)
-    -- end new]]
 end
 
 function ModifyLumberPrice(amount)
@@ -1185,6 +965,7 @@ end
 function UpdateSpells(unit)
     local playerID = unit:GetPlayerOwnerID()
     local hero = unit
+    local ownerHero = PlayerResource:GetSelectedHeroEntity(playerID)
     for a = 0, unit:GetAbilityCount() - 1 do
         local tempAbility = unit:GetAbilityByIndex(a)
         if tempAbility then
@@ -1194,6 +975,24 @@ function UpdateSpells(unit)
                 local buildingName = abilityKV.UnitName
                 DisableAbilityIfMissingRequirements(playerID, hero, tempAbility,
                 buildingName)
+            end
+        end
+    end
+    if ownerHero then
+        if ownerHero.build_worker then
+            if ownerHero.build_worker:IsAlive() then
+                for a = 0, ownerHero.build_worker:GetAbilityCount() - 1 do
+                    DebugPrint("Done")
+                    local tempAbility = ownerHero.build_worker:GetAbilityByIndex(a)
+                    if tempAbility then
+                        local abilityKV = GetAbilityKV(tempAbility:GetAbilityName());
+                        local bIsBuilding = abilityKV and abilityKV.Building or 0
+                        if bIsBuilding == 1 then
+                            local buildingName = abilityKV.UnitName
+                            DisableAbilityIfMissingRequirements(playerID, hero, tempAbility, buildingName)
+                        end
+                    end
+                end
             end
         end
     end
@@ -1258,17 +1057,23 @@ function DisableAbilityIfMissingRequirements(playerID, hero, abilityHandle, unit
         hero = GameRules.trollHero
     end
     if requirements then
-       -- DebugPrint("unitName: " .. unitName)
+        --DebugPrint("unitName: " .. unitName)
+        --DebugPrintTable(requirements)
         for _, requiredUnitName in ipairs(requirements) do
-        --    DebugPrint("requiredUnitName: " .. requiredUnitName)
-            local requiredBuildingCurrentCount = hero.buildings[requiredUnitName].completedConstructionCount
+        --    --DebugPrint("requiredUnitName: " .. requiredUnitName)
+            local requiredUnit, countUnit = unpack(requiredUnitName)
+            local requiredBuildingCurrentCount = hero.buildings[requiredUnit].completedConstructionCount
             if unitName == "rock_16" or unitName == "rock_17" or unitName == "rock_18" then
-                if requiredUnitName == "flag" then
+                if requiredUnit == "flag" then
                     requiredBuildingCurrentCount = 1
                 end
             end
-            if requiredBuildingCurrentCount < 1 then
-                table.insert(missingRequirements, requiredUnitName)
+            if countUnit == nil then
+                countUnit = 1
+            end
+            if requiredBuildingCurrentCount < countUnit then
+                local missCount = countUnit - requiredBuildingCurrentCount 
+                table.insert(missingRequirements, {requiredUnit, missCount})
                 disableAbility = true
             end
         end
@@ -1312,28 +1117,6 @@ function GetClass(unitName)
     end
 end
 
-
- --[[
-function StopAnimationGlobal(playerID)
-    Timers:CreateTimer(function()
-        --for i = 1, PlayerResourse:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) do
-            --playerid = i
-            local units = Entities:FindAllByClassname("npc_dota_creature")
-            for _, unit in pairs(units) do
-                --playerid = unit:GetPlayerOwnerID()
-                if GameRules.PlayersFPS[event.playerID] == true then
-                    local enemyunits = FindUnitsInRadius(unit:GetTeamNumber() , unit:GetAbsOrigin() , nil , 1200 , DOTA_UNIT_TARGET_TEAM_ENEMY ,  DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false)
-                    if #enemyunits == 0 then
-                    unit:StopAnimation()
-                    end
-                end
-            end
-        --end
-        return 1.0
-    end)
-end
---]]
-
 function FlagCheck(caster)
     local hero = caster
 	local baseID = BuildingHelper:IdBaseArea(hero)
@@ -1351,249 +1134,4 @@ function FlagCheck(caster)
 		end
 	end
 	return false
-end
-
-function SelectHeroes2()
-    local donateTroll = {}
-    for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-        if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) == DOTA_TEAM_GOODGUYS then
-            table.insert(allPlayersIDs, pID)
-            local playerSelection = GameRules.playerTeamChoices[pID]
-            local pointScore = tonumber(GameRules.scores[pID].elf or 0) + tonumber(GameRules.scores[pID].troll or 0)
-            local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))["2"]["0"]
-            if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
-                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > -500 or PoolTable ~= "0") then
-                    table.insert(wannabeTrollIDs, pID)
-                elseif GameRules.PlayersCount < MIN_RATING_PLAYER or GameRules:IsCheatMode() then
-                    table.insert(wannabeTrollIDs, pID)
-                end
-            end
-            PlayerResource:SetCustomTeamAssignment(pID, DOTA_TEAM_GOODGUYS)
-        end
-    end
-    
-    local sumChance = 0
-    if #wannabeTrollIDs > 0 then
-        if #GameRules.BonusTrollIDs > 0 then
-            DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
-            table.sort(GameRules.BonusTrollIDs, mySort)
-            for _, bonus in ipairs(GameRules.BonusTrollIDs) do
-                local playerID, chance = unpack(bonus)
-                for j = 1, #wannabeTrollIDs do
-                    if playerID == wannabeTrollIDs[j] then
-                        table.insert(donateTroll, {playerID, chance})
-                        sumChance = sumChance + tonumber(chance)
-                    end
-                end
-            end
-            if #donateTroll > 1 then
-                table.sort(donateTroll, mySort)
-                sumChance = sumChance/100
-                local roll_chance = RandomFloat(0, 100)
-                local check_chance_max = 0
-                local check_chance_min = 0
-                for _, bonus in ipairs(donateTroll) do
-                    local playerID, chance = unpack(bonus)
-                    check_chance_max = check_chance_max + (tonumber(chance)/sumChance)
-                    if chance == 100 then
-                        trollPlayerID = playerID
-                        break
-                    end
-                    if check_chance_max > roll_chance and check_chance_min <= roll_chance then
-                        trollPlayerID = playerID
-                        break
-                    else 
-                        check_chance_min = check_chance_max  
-                    end
-                end
-            elseif #donateTroll == 1 then 
-                for _, donate in ipairs(donateTroll) do
-                    local playerID, chance = unpack(donate)
-                    trollPlayerID = playerID
-                end
-            end
-        end
-        if #wannabeTrollIDs > 0 and (trollPlayerID == -1 or trollPlayerID == nil) then
-            trollPlayerID = wannabeTrollIDs[math.random(#wannabeTrollIDs)]
-            if PlayerResource:GetConnectionState(trollPlayerID) ~= 2 then
-                for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-                    if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) then
-                        trollPlayerID = pID
-                        break
-                    end
-                end
-            end
-        end
-    else
-        trollPlayerID = allPlayersIDs[math.random(#allPlayersIDs)]
-        if trollPlayerID ~= nil then
-            if PlayerResource:GetConnectionState(trollPlayerID) ~= 2 then
-                for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-                    if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) then
-                        trollPlayerID = pID
-                        break
-                    end
-                end
-            end
-        end
-    end
-    
-    if not GameRules.test and trollPlayerID then
-        PlayerResource:SetCustomTeamAssignment(trollPlayerID, DOTA_TEAM_CUSTOM_1)
-        local test = PlayerResource:SetSelectedHero(trollPlayerID, TROLL_HERO)
-
-    end
-    local elfCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-    for i = 1, elfCount do
-        local pID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
-        PlayerResource:SetSelectedHero(pID, ELF_HERO)
-        if GameRules.colorCounter <= #PLAYER_COLORS then
-            local color = PLAYER_COLORS[GameRules.colorCounter]
-            PlayerResource:SetCustomPlayerColor(pID, color[1], color[2], color[3])
-            GameRules.colorCounter = GameRules.colorCounter + 1
-        end
-    end
-
-
-    local donateTroll = {}
-    allPlayersIDs = {}
-    wannabeTrollIDs = {}
-    trollPlayerID = -1
-    for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-        if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) == DOTA_TEAM_BADGUYS then
-            table.insert(allPlayersIDs, pID)
-            local playerSelection = GameRules.playerTeamChoices[pID]
-            local pointScore = tonumber(GameRules.scores[pID].elf or 0) + tonumber(GameRules.scores[pID].troll or 0)
-            local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))["2"]["0"]
-            if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
-                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > -500 or PoolTable ~= "0") then
-                    table.insert(wannabeTrollIDs, pID)
-                elseif GameRules.PlayersCount < MIN_RATING_PLAYER or GameRules:IsCheatMode() then
-                    table.insert(wannabeTrollIDs, pID)
-                end
-            end
-            PlayerResource:SetCustomTeamAssignment(pID, DOTA_TEAM_BADGUYS)
-        end
-    end
-    
-    local sumChance = 0
-    if #wannabeTrollIDs > 0 then
-        if #GameRules.BonusTrollIDs > 0 then
-            DebugPrint("Count Donate: " .. #GameRules.BonusTrollIDs)
-            table.sort(GameRules.BonusTrollIDs, mySort)
-            for _, bonus in ipairs(GameRules.BonusTrollIDs) do
-                local playerID, chance = unpack(bonus)
-                for j = 1, #wannabeTrollIDs do
-                    if playerID == wannabeTrollIDs[j] then
-                        table.insert(donateTroll, {playerID, chance})
-                        sumChance = sumChance + tonumber(chance)
-                    end
-                end
-            end
-            if #donateTroll > 1 then
-                table.sort(donateTroll, mySort)
-                sumChance = sumChance/100
-                local roll_chance = RandomFloat(0, 100)
-                local check_chance_max = 0
-                local check_chance_min = 0
-                for _, bonus in ipairs(donateTroll) do
-                    local playerID, chance = unpack(bonus)
-                    check_chance_max = check_chance_max + (tonumber(chance)/sumChance)
-                    if chance == 100 then
-                        trollPlayerID = playerID
-                        break
-                    end
-                    if check_chance_max > roll_chance and check_chance_min <= roll_chance then
-                        trollPlayerID = playerID
-                        break
-                    else 
-                        check_chance_min = check_chance_max  
-                    end
-                end
-            elseif #donateTroll == 1 then 
-                for _, donate in ipairs(donateTroll) do
-                    local playerID, chance = unpack(donate)
-                    trollPlayerID = playerID
-                end
-            end
-        end
-        if #wannabeTrollIDs > 0 and (trollPlayerID == -1 or trollPlayerID == nil) then
-            trollPlayerID = wannabeTrollIDs[math.random(#wannabeTrollIDs)]
-            if PlayerResource:GetConnectionState(trollPlayerID) ~= 2 then
-                for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-                    if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) then
-                        trollPlayerID = pID
-                        break
-                    end
-                end
-            end
-        end
-    else
-        trollPlayerID = allPlayersIDs[math.random(#allPlayersIDs)]
-        if trollPlayerID ~= nil then
-            if PlayerResource:GetConnectionState(trollPlayerID) ~= 2 then
-                for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-                    if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) then
-                        trollPlayerID = pID
-                        break
-                    end
-                end
-            end
-        end
-    end
-    
-    if not GameRules.test and trollPlayerID then
-        PlayerResource:SetCustomTeamAssignment(trollPlayerID, DOTA_TEAM_CUSTOM_2)
-        local test = PlayerResource:SetSelectedHero(trollPlayerID, TROLL_HERO)
-
-    end
-    local elfCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
-    for i = 1, elfCount do
-        local pID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, i)
-        PlayerResource:SetSelectedHero(pID, ELF_HERO)
-        if GameRules.colorCounter <= #PLAYER_COLORS then
-            local color = PLAYER_COLORS[GameRules.colorCounter]
-            PlayerResource:SetCustomPlayerColor(pID, color[1], color[2], color[3])
-            GameRules.colorCounter = GameRules.colorCounter + 1
-        end
-    end
-end
-
-function FakeHeroElf()
-    --local hero = CreateUnitByName("npc_dota_hero_omniknight", Vector(0,0,0) , true, nil, nil, DOTA_TEAM_GOODGUYS)
-   --local hero = CreateHeroForPlayer("npc_dota_hero_terrorblade", nil)
-    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 6)
-    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 6)
-    GameRules.shopElfGood = GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_wisp", "BUFF-SHOP-RADIANT", DOTA_TEAM_GOODGUYS, "", true)
-    GameRules.shopElfBad  = GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_wisp", "BUFF-SHOP-DIRE", DOTA_TEAM_BADGUYS, "", true)
-    local units = Entities:FindAllByClassname("npc_dota_creature")
-    for _, unit in pairs(units) do
-        local unit_name = unit:GetUnitName();
-        if string.match(unit_name, "tower_buff_good") then
-            unit:SetControllableByPlayer(GameRules.shopElfGood:GetPlayerOwnerID(), true)
-            unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-            unit:AddNewModifier(unit, nil, "modifier_phased", {})
-            unit:SetMaterialGroup("1")
-        elseif string.match(unit_name, "tower_buff_bad") then
-            unit:SetControllableByPlayer(GameRules.shopElfBad:GetPlayerOwnerID(), true)
-            unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-            unit:AddNewModifier(unit, nil, "modifier_phased", {})
-            unit:SetMaterialGroup("2")
-        end
-    end
-    for pID=0,DOTA_MAX_TEAM_PLAYERS do
-        if PlayerResource:IsValidPlayerID(pID) and GameRules.shopElfGood:GetPlayerID() ~= pID and GameRules.shopElfBad:GetPlayerID() ~= pID then
-            if pID ~= GameRules.trollID and pID ~= GameRules.trollID2 then
-                if PlayerResource:GetTeam(pID) == DOTA_TEAM_GOODGUYS then
-                    PlayerResource:SetUnitShareMaskForPlayer(GameRules.shopElfGood:GetPlayerID(), pID, 2, true)
-                elseif PlayerResource:GetTeam(pID) == DOTA_TEAM_BADGUYS  then
-                    PlayerResource:SetUnitShareMaskForPlayer(GameRules.shopElfBad:GetPlayerID(), pID, 2, true)
-                end
-                
-            end
-        end
-    end 
-    
-   --GameRules:RemoveFakeClient(hero:GetPlayerOwnerID())
-   --UTIL_Remove(hero) 
-end
+end 

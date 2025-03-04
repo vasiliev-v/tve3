@@ -197,131 +197,6 @@ function chatcommand:OnPlayerChat(event)
 		local dropRadius = RandomFloat( 50, 100 )
 		newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
 
-		elseif string.match(event.text,"%D+") == "!doom" and (PlayerResource:GetSteamAccountID(event.playerid) == 201083179 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 337000240 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 183899786 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 155143382
-		or PlayerResource:GetSteamAccountID(event.playerid) == 381067505)
-		then
-        local info = {}
-    	info.PlayerID = event.playerid
-		local id_kick = tonumber(string.match(event.text,"%d+"))
-   		info.hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-		Pets.DeletePet(info)
-		UTIL_Remove(hero)
-		PlayerResource:ReplaceHeroWith(id_kick, "npc_dota_hero_doom_bringer", 0, 0)
-        hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-        PlayerResource:SetCustomTeamAssignment(id_kick, DOTA_TEAM_CUSTOM_1) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-        local pos = Vector(0, -640, 256)
-		FindClearSpaceForUnit(hero, pos, true)
-		hero:AddItemByName("item_dmg_14")
-        hero:AddItemByName("item_armor_13")
-        hero:AddItemByName("item_hp_12")
-        hero:AddItemByName("item_hp_reg_12")
-		hero:AddItemByName("item_dmg_14")
-		hero:CalculateStatBonus(true)
-
-	elseif string.match(event.text,"%D+") == "!lina" and (PlayerResource:GetSteamAccountID(event.playerid) == 201083179 
-	or PlayerResource:GetSteamAccountID(event.playerid) == 337000240 
-	or PlayerResource:GetSteamAccountID(event.playerid) == 183899786 
-	or PlayerResource:GetSteamAccountID(event.playerid) == 155143382
-	or PlayerResource:GetSteamAccountID(event.playerid) == 381067505)
-	then
-	local info = {}
-	info.PlayerID = event.playerid
-	local id_kick = tonumber(string.match(event.text,"%d+"))
-   	info.hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-	Pets.DeletePet(info)
-	UTIL_Remove(hero)
-	PlayerResource:ReplaceHeroWith(id_kick, "npc_dota_hero_lina", 0, 0)
-	hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-	PlayerResource:SetCustomTeamAssignment(id_kick, DOTA_TEAM_CUSTOM_1) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-	local pos = Vector(0, -640, 256)
-	FindClearSpaceForUnit(hero, pos, true)
-	hero:AddItemByName("item_aghanims_shard")
-	hero:CalculateStatBonus(true)
-
-		elseif string.match(event.text,"%D+") == "!phantom" and (PlayerResource:GetSteamAccountID(event.playerid) == 201083179 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 337000240 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 183899786 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 155143382
-		or PlayerResource:GetSteamAccountID(event.playerid) == 381067505)
-		then
-        local info = {}
-    	info.PlayerID = event.playerid
-		local id_kick = tonumber(string.match(event.text,"%d+"))
-		info.hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-		Pets.DeletePet(info)
-		UTIL_Remove(hero)
-		PlayerResource:ReplaceHeroWith(id_kick, "npc_dota_hero_phantom_assassin", 0, 0)
-        hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-        PlayerResource:SetCustomTeamAssignment(id_kick, DOTA_TEAM_CUSTOM_2) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-        local pos = Vector(0, -640, 256)
-		FindClearSpaceForUnit(hero, pos, true)
-		hero:AddItemByName("item_flicker")
-		hero:CalculateStatBonus(true)
-
-		elseif string.match(event.text,"%D+") == "!tide" and (PlayerResource:GetSteamAccountID(event.playerid) == 201083179 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 337000240 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 183899786 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 155143382
-		or PlayerResource:GetSteamAccountID(event.playerid) == 381067505)
-		then
-        local info = {}
-    	info.PlayerID = event.playerid
-		local id_kick = tonumber(string.match(event.text,"%d+"))
-		info.hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-		Pets.DeletePet(info)
-		UTIL_Remove(hero)
-		PlayerResource:ReplaceHeroWith(id_kick, "npc_dota_hero_tidehunter", 0, 0)
-        hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-        PlayerResource:SetCustomTeamAssignment(id_kick, DOTA_TEAM_CUSTOM_3) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-        local pos = Vector(0, -640, 256)
-		FindClearSpaceForUnit(hero, pos, true)
-		hero:CalculateStatBonus(true)
-
-		elseif string.match(event.text,"%D+") == "!pudge" and (PlayerResource:GetSteamAccountID(event.playerid) == 201083179 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 337000240 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 183899786 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 155143382
-		or PlayerResource:GetSteamAccountID(event.playerid) == 381067505)
-		then
-		local info = {}
-		info.PlayerID = event.playerid
-		local id_kick = tonumber(string.match(event.text,"%d+"))
-		info.hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-		Pets.DeletePet(info)
-		UTIL_Remove(hero)
-		PlayerResource:ReplaceHeroWith(id_kick, "npc_dota_hero_pudge", 0, 0)
-		hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-		PlayerResource:SetCustomTeamAssignment(id_kick, DOTA_TEAM_CUSTOM_3) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-		local pos = Vector(0, -640, 256)
-		FindClearSpaceForUnit(hero, pos, true)
-		hero:AddItemByName("item_dmg_13")
-        hero:AddItemByName("item_armor_13")
-        hero:AddItemByName("item_hp_13")
-        hero:AddItemByName("item_hp_reg_12")
-		hero:AddItemByName("item_dmg_13")
-		hero:CalculateStatBonus(true)
-
-		elseif string.match(event.text,"%D+") == "!noboss" and (PlayerResource:GetSteamAccountID(event.playerid) == 201083179 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 337000240 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 183899786 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 155143382
-		or PlayerResource:GetSteamAccountID(event.playerid) == 381067505)
-		then
-        local info = {}
-    	info.PlayerID = event.playerid
-		local id_kick = tonumber(string.match(event.text,"%d+"))
-		info.hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-		Pets.DeletePet(info)
-		UTIL_Remove(hero)
-		PlayerResource:ReplaceHeroWith(id_kick, "npc_dota_hero_dark_willow", 0, 0)
-        hero = PlayerResource:GetSelectedHeroEntity(id_kick)
-        PlayerResource:SetCustomTeamAssignment(id_kick, DOTA_TEAM_GOODGUYS) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-        local pos = Vector(0, -640, 256)
-		FindClearSpaceForUnit(hero, pos, true)
-		hero:CalculateStatBonus(true)
 		--[[
 	elseif event.text == "!test23" then
 		for pID = 0, DOTA_MAX_TEAM_PLAYERS do
@@ -355,7 +230,7 @@ function chatcommand:OnPlayerChat(event)
             local map = mapList[7] -- mapList[RandomInt(1,#mapList)]
             GameRules.MapName = map[1]
             local vector = map[2]
-            DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
+            --DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
             DOTA_SpawnMapAtPosition( GameRules.MapName, Vector(0,0,vector), false, nil,  Dynamic_Wrap( BuildingHelper, "UpdateGrid"), nil )
 		elseif event.text == "!remap" then
 			BuildingHelper.Grid = {} -- Construction grid
@@ -409,7 +284,7 @@ function chatcommand:OnPlayerChat(event)
 	--		for i=1,#hero.units do
 	--			if hero.units[i] and not hero.units[i]:IsNull() then
 	--				local unit = hero.units[i]
-	--				DebugPrint(unit:GetUnitName())
+	--				--DebugPrint(unit:GetUnitName())
 	--				local dataTable = { entityIndex = unit:GetEntityIndex() }
 	--				local player = hero:GetPlayerOwner()
 	--				if player then
@@ -428,7 +303,7 @@ function chatcommand:OnPlayerChat(event)
 	--		for i=1,#hero.units do
 	--			if hero.units[i] and not hero.units[i]:IsNull() then
 	--				local unit = hero.units[i]
-	--				DebugPrint(unit:GetUnitName())
+	--				--DebugPrint(unit:GetUnitName())
 	--				local dataTable = { entityIndex = unit:GetEntityIndex() }
 	--				local player = hero:GetPlayerOwner()
 	--				if player then
@@ -444,9 +319,9 @@ function chatcommand:OnPlayerChat(event)
 	--elseif event.text  ==  "stats"  then
 	--local playerStatsScore = CustomNetTables:GetTableValue("scorestats",tostring(event.playerid)); 
 	--CustomNetTables:SetTableValue("scorestats", tostring(event.playerid), { playerScoreElf = tostring(GameRules.scores[event.playerid].elf), playerScoreTroll = tostring(GameRules.scores[event.playerid].troll) })
-	--DebugPrint(GameRules.scores[event.playerid].elf)
-	--DebugPrint(GameRules.scores[event.playerid].troll)
-	--DebugPrintTable("playerStatsScore   "  ..  playerStatsScore)
+	----DebugPrint(GameRules.scores[event.playerid].elf)
+	----DebugPrint(GameRules.scores[event.playerid].troll)
+	----DebugPrintTable("playerStatsScore   "  ..  playerStatsScore)
 	--elseif event.text == "blink" then 
 	--	hero:ClearInventoryCM()
 	--elseif event.text == "test" then
@@ -460,12 +335,14 @@ function chatcommand:OnPlayerChat(event)
 	--elseif event.text == "get" then
 	--Stats.RequestDataTop10(callback)
 	--local stats = CustomNetTables:GetTableValue( "top10", "test" )
-	--DebugPrint(stats)
-	--DebugPrintTable(stats)
+	----DebugPrint(stats)
+	----DebugPrintTable(stats)
 	--trollnelves2:OnLoadTop(stats.steamID, 1)
 	--elseif event.text == "test_r" then
 	--GameRules:SendCustomMessage("Please do not leave the game.", 1, 1)
 	--Stats.SubmitMatchData(DOTA_TEAM_BADGUYS, callback)
 	--GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
+		elseif event.text  ==  "!money"  then
+			-- PlayerResource:ModifyGold(hero, nil)
 		end
 end

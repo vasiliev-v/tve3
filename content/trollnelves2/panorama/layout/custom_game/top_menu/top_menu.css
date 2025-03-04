@@ -1,0 +1,79 @@
+.TopMenuCustom
+{
+    flow-children: right;
+    vertical-align: top;
+    margin-left: 150px;
+    margin-top: 6px;
+}
+
+.ButtonTopMenu
+{
+    width: 44px;
+    height: 44px;
+    transition-property: brightness;
+    transition-duration: 0.15s;
+    brightness: 0.8;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.ButtonTopMenu:hover
+{
+    brightness: 1.5;
+}
+
+.ButtonStats
+{
+    background-image: url("file://{images}/new_design/top_menu/stats.png");
+    background-size: 32px 32px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.Discord
+{
+    background-image: url("file://{images}/new_design/top_menu/discord.png");
+    background-size: 30px 23px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.ButtonLeaderboards
+{
+    background-image: url("file://{images}/new_design/top_menu/leader.png");
+    background-size: 25px 25px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.ButtonBattlePass
+{
+    background-image: url("file://{images}/new_design/top_menu/pass.png");
+    background-size: 28px 28px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.ButtonRewards
+{
+    background-image: url("file://{images}/new_design/top_menu/rewards.png");
+    background-size: 28px 28px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.ButtonStore
+{
+    background-image: url("file://{images}/new_design/top_menu/store.png");
+    background-size: 25px 25px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.ButtonInfo
+{
+    background-image: url("file://{images}/new_design/top_menu/info.png");
+    background-size: 28px 28px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}

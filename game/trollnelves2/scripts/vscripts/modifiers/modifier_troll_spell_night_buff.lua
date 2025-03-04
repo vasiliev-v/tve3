@@ -44,6 +44,15 @@ function modifier_troll_spell_night_buff:OnRefresh( kv )
 	end
 end
 
+function modifier_troll_spell_night_buff:OnStackCountChanged()
+	if IsServer() then
+		local hero = self:GetParent()
+		local abil = hero:FindAbilityByName("troll_spell_night_buff")
+		local countStack = hero:FindModifierByName("modifier_troll_spell_night_buff"):GetStackCount()
+		abil:SetLevel(countStack)
+	end
+end
+
 
 function modifier_troll_spell_night_buff:GetBonusDayVision()
 	if self:GetStackCount() == 1 then 

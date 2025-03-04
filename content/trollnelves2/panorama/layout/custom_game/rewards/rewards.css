@@ -1,0 +1,170 @@
+.RewardsPanel 
+{
+    width: 1200px;
+    height: 300px;
+    align: center center;
+    flow-children: none;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/rewards/bg.png");
+    opacity: 0;
+}
+
+.RewardsPanel.Open
+{
+    opacity: 1;
+}
+
+.CloseShop 
+{
+    margin-top: 20px;
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/rewards/close.png");
+    ignore-parent-flow: true;
+    horizontal-align: right;   
+    transition-property: transform;
+    transition-duration: 0.2s;
+    ui-scale: 80%;
+    z-index: 10;
+}
+
+.CloseShop:hover
+{
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.RewardsPanelName
+{
+    margin-top: 16px;
+    horizontal-align: center;
+    font-size: 32px;
+    color: #FFFFFF;
+    font-weight: semi-bold;
+}
+
+.RewardsRow
+{
+    horizontal-align: center;
+    width: 100%;
+    height: 100%;
+    flow-children: right;
+}
+
+.Reward
+{
+    width: 170px;
+}
+
+.DayNumber
+{
+    color:rgba(255, 255, 255, 0.25);
+    horizontal-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 74px;
+}
+
+.RewardIcon
+{
+    margin-top: 108px;
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    horizontal-align: center;
+}
+
+.RewardIconImage
+{
+    background-image: url("file://{images}/new_design/rewards/gem_icon.png");
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    align: center center;
+}
+
+.RewardLight
+{
+    background-image: url("file://{images}/new_design/rewards/light.png");
+    background-size: 100%;
+    width: 145px;
+    height: 300px;
+    opacity: 0.6;
+    horizontal-align: center;
+}
+
+.RewardLine
+{
+    margin-top: 108px;
+    width: 2px;
+    height: 135px;
+    background-image: url("file://{images}/new_design/rewards/line.png");
+    background-size: 100%;
+}
+
+.RewardInfoLabel
+{
+    text-align: left;
+    margin-bottom: 45px;
+    margin-left: 90px;
+    text-align: center;
+    horizontal-align: center;
+    vertical-align: center;
+    color: white;
+    font-weight: semi-bold;
+    font-size: 40px;
+    text-shadow: 0px 0px 5px 4 black;
+}
+
+.RewardClaimButton
+{
+    width: 90px;
+    height: 30px;
+    background-color: #4B6834;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    border-radius: 30px;
+    horizontal-align: center;
+    vertical-align: center;
+    margin-top: 155px;
+    transition-property: brightness;
+    transition-duration: 0.2s;
+}
+
+.RewardClaimButtonLabel
+{
+    color: white;
+    font-weight: semi-bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    align: center center;
+}
+
+.Unlocked .RewardClaimButton:hover
+{
+    brightness: 1.4;
+}
+
+.reward_close .RewardClaimButton
+{
+    background-color: #000000;
+    brightness: 0.5;
+}
+
+.reward_close .RewardClaimButtonLabel
+{
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.reward_recieved .RewardClaimButton
+{
+    background-color: #000000;
+}
+
+.reward_close .RewardIcon
+{
+    brightness: 0.5;
+}

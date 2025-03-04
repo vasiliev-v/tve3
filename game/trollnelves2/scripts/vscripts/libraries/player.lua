@@ -34,6 +34,16 @@ function CDOTA_PlayerResource:SetGold(hero,gold)
 			end
 		end
 
+		if hero:HasModifier("modifier_elf_spell_limit_gold")  then
+			if hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 1  then
+				limitGold = 100000 
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 2 then
+				limitGold = 200000
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 3 then
+				limitGold = 500000
+			end
+		end
+
 		if GameRules.MapSpeed >= 4 then
 			gold = math.min(gold, math.floor(2000000 * GameRules.MultiMapSpeed + limitGold))
 		else
@@ -70,11 +80,20 @@ end
 function CDOTA_PlayerResource:SetLumber(hero, lumber)
 	local status, nextCall = Error_debug.ErrorCheck(function() 
 		local playerID = hero:GetPlayerOwnerID()
-		
+		local limitLumber = 0
+		if hero:HasModifier("modifier_elf_spell_limit_lumber")  then
+			if hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 1  then
+				limitLumber = 100000 
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 2 then
+				limitLumber = 200000
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 3 then
+				limitLumber = 500000
+			end
+		end
 		if GameRules.MapSpeed >= 4 then
-			lumber = math.min(lumber, math.floor(2000000 * GameRules.MultiMapSpeed))
+			lumber = math.min(lumber, math.floor(2000000 * GameRules.MultiMapSpeed + limitLumber))
 		else
-			lumber = math.min(lumber, math.floor(1000000 * GameRules.MultiMapSpeed))
+			lumber = math.min(lumber, math.floor(1000000 * GameRules.MultiMapSpeed + limitLumber))
 		end
 		GameRules.lumber[playerID] = lumber
 		CustomGameEventManager:Send_ServerToTeam(hero:GetTeam(), "player_lumber_changed", {

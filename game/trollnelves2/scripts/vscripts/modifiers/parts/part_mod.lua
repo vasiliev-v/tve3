@@ -111,7 +111,7 @@ function part_mod:GetEffectName()
 	"particles/econ/events/fall_2022/player/fall_2022_emblem_effect_player_base.vpcf", -- 82 donate lvl 15
     "particles/econ/items/hoodwink/hoodwink_2022_immortal/hoodwink_2022_immortal_sharpshooter.vpcf",-- 83 donate lvl 16
     "particles/econ/items/hoodwink/hoodwink_2022_immortal/hoodwink_2022_immortal_sharpshooter_blossom.vpcf",-- 84 donate lvl 16
-    "particles/units/heroes/heroes_underlord/au_debut_rift.vpcf", -- 85 youtuber
+    "particles/econ/items/huskar/huskar_2021_immortal/huskar_2021_immortal_burning_spear_debuff.vpcf", -- 85 youtuber
     
     "particles/nightstalker_black_nihility_void_swarm_pnt.vpcf", -- 86 top 2 autumn
 

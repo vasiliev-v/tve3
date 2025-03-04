@@ -3,6 +3,7 @@ require('events_protector')
 require('LinkModifier')
 require('internal/util')
 require('trollnelves2')
+require("setup_state_lib")
 require("libraries/buildinghelper")
 require('settings')
 require("PrecacheLoad")
@@ -20,7 +21,7 @@ function Precache( context )
 		See trollnelves2:PostLoadPrecache() in trollnelves2.lua for more information
 	]]
 	
-	DebugPrint("[TROLLNELVES2] Performing pre-load precache")
+	--DebugPrint("[TROLLNELVES2] Performing pre-load precache")
 	
 	-- Particles can be precached individually or by folder
 	-- It it likely that precaching a single particle system will precache all of its children, but this may not be guaranteed
@@ -930,7 +931,10 @@ PrecacheResource("model", "models/heroes/lanaya/lanaya_bracers_skirt.vmdl", cont
 PrecacheResource("model", "models/heroes/hoodwink/hoodwink_hood.vmdl", context)
 PrecacheResource("model", "models/heroes/luna/luna_shield.vmdl", context)
 
-
+PrecacheResource("particle", "particles/bloode_ground_child.vpcf", context) 
+	PrecacheResource("particle", "particles/bloody_ground.vpcf", context) 
+	PrecacheResource("particle", "particles/build_place.vpcf", context) 
+	PrecacheResource("particle", "particles/pulsation_ground.vpcf", context) 
 
 
 
@@ -974,15 +978,6 @@ PrecacheResource("model", "models/heroes/luna/luna_shield.vmdl", context)
 
 	-- PrecacheResource("soundfile", "soundevents/game_sounds_birzha.vsndevts", context) 
 	PrecacheResource("soundfile", "soundevents/game_sounds_birzha_new.vsndevts", context) 
-
-	PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_crystal.vmdl", context) 		
-	
-	PrecacheResource("particle", "particles/bloode_ground_child.vpcf", context) 
-	PrecacheResource("particle", "particles/bloody_ground.vpcf", context) 
-	PrecacheResource("particle", "particles/build_place.vpcf", context) 
-	PrecacheResource("particle", "particles/pulsation_ground.vpcf", context) 
-			
-
 	
 	PrecacheLoad:PrecacheLoad (context)
 	
@@ -1029,7 +1024,7 @@ function Activate()
 	GameRules.rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetGem = {}
-	GameRules.isTesting = false
+	GameRules.isTesting = true
 	GameRules.server = "https://tve3.us/test/" -- "https://localhost:5001/test/"  -- 
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
@@ -1037,7 +1032,7 @@ function Activate()
 	GameRules.trollID = nil
 	GameRules.trollHero = nil
 	GameRules.trollID2 = nil
-	GameRules.trollHero2 = nil
+
 	GameRules.Bonus = {}
 	GameRules.BonusPercent = 0
 	GameRules.BonusTrollIDs = {}
@@ -1048,7 +1043,7 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = false
+	GameRules.test = false and IsInToolsMode()
 	GameRules.test2 = false
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
@@ -1066,6 +1061,7 @@ function Activate()
 		GameRules.WOLF_START_SPAWN_TIME = 300 -- When the players will be able to choose wolf instead of auto chosen to angels. In seconds.
 	end
 	
+	GameRules:GetGameModeEntity():SetDaynightCycleAdvanceRate(1 * GameRules.MapSpeed)
 
 	GameRules.PoolTable = {}
     GameRules.PoolTable[0] = {} -- валюта
@@ -1100,82 +1096,22 @@ function Activate()
 	GameRules.PoolTable[12][0][0] = {} -- перк
 	
 	GameRules.SkinTower = {}
-	GameRules.SkinTower[0] = {}
-	GameRules.SkinTower[1] = {} 
-	GameRules.SkinTower[2] = {} 
-	GameRules.SkinTower[3] = {} 
-	GameRules.SkinTower[4] = {} 
-	GameRules.SkinTower[5] = {} 
-	GameRules.SkinTower[6] = {} 
-	GameRules.SkinTower[7] = {} 
-	GameRules.SkinTower[8] = {} 
-	GameRules.SkinTower[9] = {} 
-	GameRules.SkinTower[10] = {} 
-	GameRules.SkinTower[11] = {} 
-	GameRules.SkinTower[12] = {} 
-	GameRules.SkinTower[13] = {} 
-	GameRules.SkinTower[14] = {} 
-	GameRules.SkinTower[15] = {} 
-	GameRules.SkinTower[16] = {} 
-	
-	GameRules.SkinTower[0][0] = {}
-    GameRules.SkinTower[1][0] = {}
-	GameRules.SkinTower[2][0] = {} 
-	GameRules.SkinTower[3][0] = {} 
-	GameRules.SkinTower[4][0] = {} 
-	GameRules.SkinTower[5][0] = {} 
-	GameRules.SkinTower[6][0] = {} 
-	GameRules.SkinTower[7][0] = {} 
-	GameRules.SkinTower[8][0] = {} 
-	GameRules.SkinTower[9][0] = {} 
-	GameRules.SkinTower[10][0] = {} 
-	GameRules.SkinTower[11][0] = {} 
-	GameRules.SkinTower[12][0] = {} 
-	GameRules.SkinTower[13][0] = {} 
-	GameRules.SkinTower[14][0] = {} 
-	GameRules.SkinTower[15][0] = {} 
-	GameRules.SkinTower[16][0] = {} 
+    GameRules.SaveDefItem = {}
+
+    for ids=0, 16 do
+        GameRules.SkinTower[ids] = {}
+        GameRules.SkinTower[ids][0] = {}
+
+        GameRules.SaveDefItem[ids] = {}
+        GameRules.SaveDefItem[ids][0] = {}
+
+        CustomNetTables:SetTableValue("Shop_active", tostring(ids), GameRules.SkinTower[ids])
+    end
+
 	GameRules.FakeList = {}
 	GameRules.trollnelves2 = trollnelves2()
 	GameRules.trollnelves2:Inittrollnelves2()
 	GameRules.MapName = ""
-
-	GameRules.SaveDefItem = {}
-	GameRules.SaveDefItem[0] = {}
-	GameRules.SaveDefItem[1] = {} 
-	GameRules.SaveDefItem[2] = {} 
-	GameRules.SaveDefItem[3] = {} 
-	GameRules.SaveDefItem[4] = {} 
-	GameRules.SaveDefItem[5] = {} 
-	GameRules.SaveDefItem[6] = {} 
-	GameRules.SaveDefItem[7] = {} 
-	GameRules.SaveDefItem[8] = {} 
-	GameRules.SaveDefItem[9] = {} 
-	GameRules.SaveDefItem[10] = {} 
-	GameRules.SaveDefItem[11] = {} 
-	GameRules.SaveDefItem[12] = {} 
-	GameRules.SaveDefItem[13] = {} 
-	GameRules.SaveDefItem[14] = {} 
-	GameRules.SaveDefItem[15] = {} 
-	GameRules.SaveDefItem[16] = {} 
-	
-	GameRules.SaveDefItem[0][0] = {}
-    GameRules.SaveDefItem[1][0] = {}
-	GameRules.SaveDefItem[2][0] = {} 
-	GameRules.SaveDefItem[3][0] = {} 
-	GameRules.SaveDefItem[4][0] = {} 
-	GameRules.SaveDefItem[5][0] = {} 
-	GameRules.SaveDefItem[6][0] = {} 
-	GameRules.SaveDefItem[7][0] = {} 
-	GameRules.SaveDefItem[8][0] = {} 
-	GameRules.SaveDefItem[9][0] = {} 
-	GameRules.SaveDefItem[10][0] = {} 
-	GameRules.SaveDefItem[11][0] = {} 
-	GameRules.SaveDefItem[12][0] = {} 
-	GameRules.SaveDefItem[13][0] = {} 
-	GameRules.SaveDefItem[14][0] = {} 
-	GameRules.SaveDefItem[15][0] = {} 
-	GameRules.SaveDefItem[16][0] = {} 
 
 	LinkModifier:Start()
 end

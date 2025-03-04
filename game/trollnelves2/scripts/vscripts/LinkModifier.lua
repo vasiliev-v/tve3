@@ -70,12 +70,42 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_troll_spell_night_buff", "modifiers/modifier_troll_spell_night_buff", LUA_MODIFIER_MOTION_NONE ) 
 	LinkLuaModifier("modifier_troll_spell_ms_max", "modifiers/modifier_troll_spell_ms_max", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_troll_spell_gold_wisp", "modifiers/modifier_troll_spell_gold_wisp", LUA_MODIFIER_MOTION_NONE)
-	
+	LinkLuaModifier("modifier_elf_spell_ms", "modifiers/modifier_elf_spell_ms", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_elf_spell_gold", "modifiers/modifier_elf_spell_gold", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_elf_spell_lumber", "modifiers/modifier_elf_spell_lumber", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_cd_reduce", "modifiers/modifier_elf_spell_cd_reduce", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_cd_worker", "modifiers/modifier_elf_spell_cd_worker", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_worker_spell_cd_reduce", "modifiers/modifier_worker_spell_cd_reduce", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_armor_wall", "modifiers/modifier_elf_spell_armor_wall", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_wall_spell_armor", "modifiers/modifier_wall_spell_armor", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_tower_damage", "modifiers/modifier_elf_spell_tower_damage", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_tower_spell_dmg", "modifiers/modifier_tower_spell_dmg", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_limit_gold", "modifiers/modifier_elf_spell_limit_gold", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_limit_lumber", "modifiers/modifier_elf_spell_limit_lumber", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_true", "modifiers/modifier_elf_spell_true", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_tower_range", "modifiers/modifier_elf_spell_tower_range", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_tower_spell_range", "modifiers/modifier_tower_spell_range", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_blink", "modifiers/modifier_elf_spell_blink", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_damage_gold", "modifiers/modifier_elf_spell_damage_gold", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+
 	
 	
 	--[[
 	Сломано
-	
+	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
 
 	LinkLuaModifier("modifier_troll_spell_", "modifiers/modifier_troll_spell_", LUA_MODIFIER_MOTION_NONE )
 ]]
