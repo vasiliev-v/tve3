@@ -2257,7 +2257,7 @@
         "SpellShop_DescriptionBuy"                  "Вы покупаете случайный навык. После покупки всех навыков, вам выпадают улучшения случайного навыка"
         "SpellShop_Activate"                        "Активировать"
         "SpellShop_Deactivate"                      "Деактивировать"
-        "SpellShop_SpellPreviewUpgrade"             "Уровень улучшения"
+        "SpellShop_SpellPreviewUpgrade"             "LVL"
         "SpellShop_no_buying_spell"                 "Недоступно"
         "SpellShop_DropHeader"                      "Вам выпал навык"
         "SpellShop_DropHeader_upgrade"              "Вам выпало улучшение навыка"

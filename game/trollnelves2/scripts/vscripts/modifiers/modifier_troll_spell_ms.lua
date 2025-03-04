@@ -5,7 +5,7 @@ function modifier_troll_spell_ms:RemoveOnDeath()      return true end
 function modifier_troll_spell_ms:IsHidden()           return false end
 function modifier_troll_spell_ms:IsStackable()        return true end
 function modifier_troll_spell_ms:IsPermanent()        return false end
-function modifier_troll_spell_ms:GetTexture()         return "item_hp_12" end
+function modifier_troll_spell_ms:GetTexture()         return "troll_spell_ms" end
 --------------------------------------------------------------------------------
 function  modifier_troll_spell_ms:DeclareFunctions()
 	local funcs = {
@@ -16,10 +16,10 @@ end
 
 function modifier_troll_spell_ms:GetModifierMoveSpeedBonus_Special_Boots()
 	if self:GetStackCount() == 1 then 
-		return 5
-	elseif self:GetStackCount() == 2  then
-		return 10
-	elseif self:GetStackCount() == 3  then
 		return 15
+	elseif self:GetStackCount() == 2  then
+		return 20
+	elseif self:GetStackCount() == 3  then
+		return 25
 	else return 0 end
 end

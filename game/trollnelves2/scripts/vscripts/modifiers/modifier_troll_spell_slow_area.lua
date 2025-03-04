@@ -36,3 +36,11 @@ function modifier_troll_spell_slow_area:OnRefresh( kv )
 	end
 end
 
+function modifier_troll_spell_slow_area:OnStackCountChanged()
+	if IsServer() then
+		local hero = self:GetParent()
+		local abil = hero:FindAbilityByName("troll_spell_slow_area")
+		local countStack = hero:FindModifierByName("modifier_troll_spell_slow_area"):GetStackCount()
+		abil:SetLevel(countStack)
+	end
+end

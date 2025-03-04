@@ -1,9 +1,3 @@
-.SpellShopMain
-{
-	width: 100%;
-	height: 100%;
-}
-
 .SpellMapPanel
 {
     margin-left:244px;
@@ -82,7 +76,7 @@
     height: 100%;
     background-image: url("file://{images}/custom_game/spell_shop/shop_button.png");
     background-size: 100%;
-    border: 1.5px solid white; /* Толщина и цвет границы */
+    border: 1.5px solid rgba(184, 255, 69, 0.5); /* Толщина и цвет границы */
     border-radius: 50%; /* Закругление границ, чтобы получился круг */
 }
 
@@ -92,7 +86,7 @@
     height: 100%;
     background-image:url("file://{images}/custom_game/spell_shop/shop_button3.png");
 	background-size:100%;
-    border: 1.5px solid white; /* Толщина и цвет границы */
+    border: 1.5px solid rgba(184, 255, 69, 0.5); /* Толщина и цвет границы */
     border-radius: 50%; /* Закругление границ, чтобы получился круг */
 }
 
@@ -102,6 +96,8 @@
     height: 100%;
     background-image:url("file://{images}/custom_game/spell_shop/no_active2.png");
 	background-size:100%;
+    border: 1px solid rgba(184, 255, 69, 0.5); /* Толщина и цвет границы */
+    border-radius: 50%; /* Закругление границ, чтобы получился круг */
 }
 
 .HUDFlipped .ActivatedSpellIcon
@@ -121,25 +117,13 @@
 
 .SpellShopPanel
 {
-    width: 1000px;
-    height: 600px;
-    background-image: url("file://{images}/custom_game/spell_shop/background.png");
-    background-size: 100%;
+    width: 1143px;
+    height: 700px;
     align: center center;
     flow-children: down;
-    transition-property: pre-transform-scale2d;
-    transition-duration: 0.25s;
-    margin-bottom: 50px;
-    transition-property: pre-transform-scale2d;
-    transition-duration: 0.25s;
-    border-top-color: #555555;
-    border-left-color: #494949;
-    border-bottom-color: #333333;
-    border-right-color: #404040;
-    border-style: solid;
-    border-width: 1px;
     transition-property: opacity;
     transition-duration: 0.2s;
+    background-color: rgba(27, 30, 29, 0.9);
 }
 
 .CloseSpellShop
@@ -147,23 +131,24 @@
     opacity: 0;
 }
 
-.SpellShopHeader 
+.CloseSpellShopButton 
 {
-    width: 100%;
-    height: 40px;
-    flow-children: none;
-    border-bottom: 1px solid black;
-    background-image: url("s2r://panorama/images/conduct/ovw-bar-bg_png.vtex");
-    background-size: 100% 150%;
+    ignore-parent-flow: true;
+    width: 22px;
+    height: 22px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/spell_shop/close.png");
+    transition-property: transform;
+    transition-duration: 0.2s;
+    horizontal-align: right;
+    margin-top: 18px;
+    margin-right: 20px;
+    z-index: 5;
 }
 
-.SpellShopHeaderLabel
+.CloseSpellShopButton:hover
 {
-    align: center center;
-    color: white;
-    font-weight: semi-bold;
-    text-transform: uppercase;
-    font-size: 24px;
+    transform: scale3d(1.1,1.1,1.1);
 }
 
 .SpellShopPanelBody
@@ -175,9 +160,16 @@
 
 .SpellShopSpellsList
 {
-    width: 580px;
-    height: 560px;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 721px;
+    height: 1208px;
+    flow-children: down;
+}
+
+.PreviewSpellInfo
+{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.95);
     flow-children: down;
 }
 
@@ -186,81 +178,77 @@
     horizontal-align: center;
     font-weight: semi-bold;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-top: 20px;
     color: white;
+    font-size: 20px;
 }
 
 .SpellShopSpellsListBody
 {
     horizontal-align: center;
-    height: 450px;
+    height: 550px;
+    width: 725px;
+    margin-top: 20px;
     overflow: squish scroll;
     flow-children: right-wrap;
 }
 
 .SpellShopSpellPanel
 {
-    width: 90px;
-    height: 90px;
-    margin: 10px;
-    img-shadow: 2px 2px 8px 5.0 white;
-    background-image: url("file://{images}/custom_game/spell_shop/spell_bg.png");
-    background-size: 100%;
-    opacity-mask: url("file://{images}/custom_game/spell_shop/spell_mask.png");
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+    margin-bottom: 35px;
+    border-radius: 100%;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+}
+
+.SpellShopSpellPanel:hover
+{
+    brightness: 1.2;
 }
 
 .SpellShopSpellPanelIcon
 {
     align: center center;
-    width: 90%;
-    height: 90%;
-    margin-bottom: 20px;
-    opacity-brush: gradient( linear, 0% 60%, 0% 100%, from( #ffffff ), to( #ffffff00 ) );
-
-
-}
-
-.SpellShopSpellBorder
-{
     width: 100%;
     height: 100%;
-    background-image: url("file://{images}/custom_game/spell_shop/border.png");
-    background-size: 100%;
 }
 
 .SpellShopPanelBuy
 {
     width: 100%;
     height: 100%;
-    flow-children: right;
+    flow-children: down;
+    background-color: gradient( linear, 0% 0%, 50% 100%, from( rgba(89, 132, 55, 0.25) ), to( rgba(39, 68, 15, 0.25) ) );
+}
+
+.UnlockPanelBuyButtonDescription
+{
+    margin-top: 10px;
+    color: white;
+    font-size: 14px;
+    margin-left: 20px;
 }
 
 .UnlockPanelBuy
 {
-    flow-children: down;
-    vertical-align: center;
-    margin-left: 30px;
+    flow-children: right;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
 .UnlockPanelBuyButton
 {
-    width: 200px;
-    height: 40px;
-    background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
-    background-size: 100%;
-    box-shadow: fill #002a6644 1px 1px 8px 1px;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+    width: 209px;
+    height: 32px;
+    background-color: #4B6834;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    border-radius: 30px;
+    horizontal-align: center;
+    vertical-align: center;
     transition-property: brightness;
     transition-duration: 0.2s;
-}
-
-.UnlockPanelBuyButtonLabel
-{
-    align: center center;
-    color: white;
-    font-weight: semi-bold;
-    text-transform: uppercase;
-    font-size: 20px;
 }
 
 .UnlockPanelBuyButton:hover
@@ -268,34 +256,28 @@
     brightness: 1.4;
 }
 
-.UnlockPanelBuyButtonDescription
+.UnlockPanelBuyButton Label
 {
-    color: #808995;
     font-weight: semi-bold;
-    font-size: 14px;
-    vertical-align: top;
-    margin-left: 20px;
-    width: 350px;
-}
-
-#VerticalScrollBar
-{
-    width: 2px;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #B8FF45;
+    align: center center;
+    text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
 }
 
 .UnlockPanelBuyButtonCost
 {
+    vertical-align: center;
     horizontal-align: center;
-    margin-top: 5px;
-    height: 50px;
-    margin-bottom: 5px;
     flow-children: right;
+    margin-left: 10px;
 }
 
 .UnlockPanelBuyButtonCostIcon
 {
-    width: 20px;
-    height: 25px;
+    width: 18px;
+    height: 20px;
     background-image: url("file://{images}/custom_game/spell_shop/gem_icon.png");
     background-size: 100%;
     vertical-align: center;
@@ -303,96 +285,71 @@
 
 .UnlockPanelBuyButtonCostLabel
 {
-    color: rgb(27, 194, 216);
+    color: white;
     font-weight: semi-bold;
-    font-size: 20px;
+    font-size: 16px;
     vertical-align: center;
     margin-left: 10px;
 }
 
-.SelectedSpellPrew .SpellShopSpellBorder
+.SpellShopInfoHeaderLabel
 {
-    wash-color: rgb(0, 238, 255);
-}
-
-.PreviewSpellInfo
-{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    flow-children: down;
+    horizontal-align: center;
+    font-weight: semi-bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: white;
+    font-size: 20px;
 }
 
 .SpellShopIconAndButton
 {
     flow-children: right;
     horizontal-align: center;
-    width: 300px;
-    margin-top: 25px;
-    margin-bottom: 50px;
+    margin-top: 20px;
 }
 
 .SpellShopPreviewIcon
 {
-    width: 100px;
-    height: 100px;
-    img-shadow: 2px 2px 8px 5.0 white;
-    background-image: url("file://{images}/custom_game/spell_shop/spell_bg.png");
-    background-size: 100%;
-    opacity-mask: url("file://{images}/custom_game/spell_shop/spell_mask.png");
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 2px solid rgba(184, 255, 69, 0.5);
 }
 
 .SpellPreviewPanelNameButton
 {
-    margin-left: 25px;
-    margin-top: 10px;
+    margin-left: 20px;
+    vertical-align: center;
     flow-children: down;
 }
 
 .SpellPreviewPanelNameLabel
 {
-    color: #879fd2;
+    color: #B8FF45;
     font-weight: semi-bold;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .SpellPreviewPanelNameLabelDesc
 {
     color: #808995;
-    
-    font-size: 15px;
-}
-
-.SpellSrokPanelNameLabel
-{
-    color: #879fd2;
-    font-weight: semi-bold;
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 5px;
+    width: 237px;
 }
-
-
 
 .SpellPreviewPanelButtonActivate
 {
     width: 200px;
-    height: 30px;
-    background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
-    background-size: 100%;
-    box-shadow: fill #002a6644 1px 1px 8px 1px;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+    height: 32px;
+    background-color: #4B6834;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    border-radius: 30px;
+    margin-left: 20px;
+    margin-top: 5px;
     transition-property: brightness;
     transition-duration: 0.2s;
-    margin-top: 30px;
-}
-
-.SpellPreviewPanelButtonActivateLabel
-{
-    align: center center;
-    color: white;
-    font-weight: semi-bold;
-    text-transform: uppercase;
-    font-size: 14px;
 }
 
 .SpellPreviewPanelButtonActivate:hover
@@ -400,52 +357,202 @@
     brightness: 1.4;
 }
 
+.SpellPreviewPanelButtonActivate Label
+{
+    font-weight: semi-bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #B8FF45;
+    align: center center;
+    text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
+}
+
+#VerticalScrollBar
+{
+    width: 2px;
+}
+
+.SpellBonusesPanel
+{
+    margin-left: 20px;
+    margin-top: 5px;
+    flow-children: right;
+}
+
+.SpellColumnBonus
+{
+    flow-children: down;
+}
+
+.SpellColumnBonus_name
+{
+    width: 156px;
+    height: 174px;
+    padding-top: 39px;
+}
+
+.SpellColumnBonus_1
+{
+    width: 72px;
+    height: 174px;
+}
+
+.SpellColumnBonus_2
+{
+    width: 72px;
+    height: 174px;
+}
+
+.SpellColumnBonus_3
+{
+    width: 72px;
+    height: 174px;
+}
+
+.IsActiveColumn
+{
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/spell_shop/bonus_bg.png");
+    background-img-opacity: 0.4;
+}
+
 .SpellPreviewLevelLabel
 {
-    color: #879fd2;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.panel_spell_drop
+{
+    align: center center;
+    transition-property: opacity;
+    transition-duration: 0.1s;
+    flow-children: none;
+}
+
+.panel_spell_drop_bg
+{
+    width: 2408px;
+    height: 1512px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/notif/bg.png");
+    ui-scale: 40%;
+}
+
+.panel_spell_drop_main
+{
+    align: center center;
+    flow-children: down;
+}
+
+.panel_spell_drop_label_header
+{
+    horizontal-align: center;
+    color: white;
     font-weight: semi-bold;
-    font-size: 20px;
-    margin-left: 10px;
+    text-transform: uppercase;
+    font-size: 24px;
 }
 
-.SpellPreviewLevelLabelDesc
+.SpellShopSpellPanelDrop
 {
-    margin-top: 5px;
-    color: #7a7a85;
-    font-size: 15px;
-    margin-left: 10px;
-    margin-bottom: 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    horizontal-align: center;
+    margin-top: 10px;
 }
 
-.CloseSpellShopButton 
+.SpellShopSpellPanelIconDrop
 {
-    width: 20px;
-    height: 20px;
+    align: center center;
+    width: 100%;
+    height: 100%;
+}
+
+.panel_label_spell_name_drop
+{
+    margin-top: 10px;
+    horizontal-align: center;
+    color: white;
+    font-weight: semi-bold;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #B8FF45;
+    text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
+}
+
+.SpellShopButtonDropClose
+{
+    width: 200px;
+    height: 32px;
+    background-color: #4B6834;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    border-radius: 30px;
     vertical-align: center;
-    margin-right: 10px;
-    horizontal-align: right;
-    background-image: url("s2r://panorama/images/control_icons/x_close_grey_psd.vtex");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    transition-property: brightness, wash-color, img-shadow, pre-transform-scale2d;
-    transition-timing-function: ease;
+    transition-property: brightness;
     transition-duration: 0.2s;
-    brightness: 2;
+    horizontal-align: center;
+    margin-top: 20px;
 }
 
-.CloseSpellShopButton:hover 
+.SpellShopButtonDropClose:hover
 {
-    wash-color: #00000094;
+    brightness: 1.4;
 }
 
-.CloseSpellShopButton:Active 
+.SpellShopButtonDropClose Label
 {
-    pre-transform-scale2d: 0.9;
+    font-weight: semi-bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #B8FF45;
+    align: center center;
+    text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
 }
 
 .SpellPreviewPanelButtonDeactivate
 {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #a15a5a ), to( #d6878733 ) );
+    background-color: #683434;
+    border: 2px solid rgba(255, 69, 69, 0.5);
+}
+
+.SpellPreviewPanelButtonDeactivate Label
+{
+    color: #ff4545;
+}
+
+.SpellSrokPanelNameLabel
+{
+    color: #B8FF45;
+    font-weight: semi-bold;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.SpellPreviewLevelLabelDesc
+{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    height: 16px;
+    width: 140px;
+}
+
+.SpellPreviewLevelLabelValue
+{
+    color: white;
+    font-weight: semi-bold;
+    height: 16px;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 12px;
+    margin-bottom: 8px;
 }
 
 .BuyButtonDeactivate
@@ -458,90 +565,12 @@
     saturation: 0;
 }
 
-.panel_spell_drop
+.BuyButtonDeactivate:hover
 {
-    width: 700px;
-    height: 300px;
-    background-color: rgba(0, 0, 0, 0.9);
-    align: center center;
-    transition-property: opacity;
-    transition-duration: 0.1s;
-    border: 1px solid gray;
-    flow-children: down;
+    brightness: 1;
 }
 
-.panel_spell_drop_label_header
+.SpellDisabled:hover
 {
-    horizontal-align: center;
-    margin-top: 10px;
-    color: white;
-    font-weight: semi-bold;
-    text-transform: uppercase;
-    font-size: 24px;
-}
-
-.SpellShopSpellPanelDrop
-{
-    width: 120px;
-    height: 120px;
-    margin: 10px;
-    img-shadow: 2px 2px 8px 5.0 white;
-    background-image: url("file://{images}/custom_game/spell_shop/spell_bg.png");
-    background-size: 100%;
-    opacity-mask: url("file://{images}/custom_game/spell_shop/spell_mask.png");
-    horizontal-align: center;
-}
-
-.SpellShopSpellPanelIconDrop
-{
-    align: center center;
-    width: 90%;
-    height: 90%;
-    margin-bottom: 20px;
-}
-
-.SpellShopSpellBorderDrop
-{
-    width: 100%;
-    height: 100%;
-    background-image: url("file://{images}/custom_game/spell_shop/border.png");
-    background-size: 100%;
-}
-
-.panel_label_spell_name_drop
-{
-    horizontal-align: center;
-    margin-top: -5px;
-    color: white;
-    font-weight: semi-bold;
-    text-transform: uppercase;
-    font-size: 18px;
-}
-
-.SpellShopButtonDropClose
-{
-    width: 150px;
-    height: 40px;
-    horizontal-align: center;
-    background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
-    background-size: 100%;
-    box-shadow: fill #002a6644 1px 1px 8px 1px;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
-    transition-property: brightness;
-    transition-duration: 0.2s;
-    margin-top: 20px;
-}
-
-.SpellShopButtonDropCloseLabel
-{
-    align: center center;
-    color: white;
-    font-weight: semi-bold;
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-.SpellShopButtonDropClose:hover
-{
-    brightness: 1.4;
+    brightness: 1;
 }

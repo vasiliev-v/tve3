@@ -1,0 +1,25 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/layout/custom_game/multiteam_top_scoreboard/multiteam_top_scoreboard.vcss_c" />
+		<include src="s2r://panorama/layout/custom_game/styles/shared_scoreboard_styles.vcss_c" />
+	</styles>
+    <scripts>
+        <include src="s2r://panorama/layout/custom_game/multiteam_top_scoreboard/multiteam_top_scoreboard_player.vjs_c" />
+    </scripts>
+	<Panel hittest="false" class="ScoreboardPlayerWrapper">
+        <Panel class="PlayerSettings">
+            <Panel class="ButtonPlayer MuteButton" onactivate="MutePlayer();" />
+            <Panel class="ButtonPlayer MuteResource" onactivate="SendResource();" />
+        </Panel>
+		<Panel hittest="false" class="ScoreboardPlayer">
+            <Panel class="LineTop" />
+            <Panel class="ElfAvatar" id="ElfAvatar" onactivate="showHero()">
+                <Panel class="ElfGlow" id="ElfGlow" />
+                <Panel class="ElfIcon" />
+                <Panel class="PlayerDead" />
+            </Panel>
+		</Panel>
+        <Label class="PlayerName" id="PlayerName" text="12345" />
+	</Panel>
+</root>

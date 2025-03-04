@@ -4,57 +4,609 @@ game_spells_lib = class({})
 -- 1 - название
 -- 2 - Иконка (ЭТО ДОЛЖНО БЫТЬ ДЕФОЛТНОЕ ОТОБРАЖЕНИЕ БЕЗ УРОВНЯ ПРОКАЧКИ, ЕСЛИ У ИГРОКА ЕСТЬ НАВЫК И УРОВЕНЬ, ТО ДОБАВЛЯЕТСЯ К ИКОНКЕ УЖЕ иконка_1 или иконка_2 и т.д.) (Не забудь что в js не компилятся иконки и их надо будет где-то закомпилить в xml или css)
 -- 3 - Модификатор
--- 4 - Описание улучшений 1-2-3
+-- 4 - Название улучшений 1-2-3
+-- 5 - Цифры улучшение 
 
 game_spells_lib.spells_list =
 {
-    --[[
-    {"spell_1", "spell_1", "modifier_spell_test", {"spell_1_description_level_1", "spell_1_description_level_2", "spell_1_description_level_3"}, "1"},
-    {"spell_2", "spell_1", "modifier_spell_test_2", {"spell_2_description_level_1", "spell_2_description_level_2", "spell_2_description_level_3"}, "1"},
-    {"spell_3", "spell_1", "modifier_spell_test_3", {"spell_3_description_level_1", "spell_3_description_level_2", "spell_3_description_level_3"}, "0"},
-    {"spell_4", "spell_1", "modifier_spell_test_4", {"spell_4_description_level_1", "spell_4_description_level_2", "spell_4_description_level_3"}, "0"},
-    {"spell_5", "spell_1", "modifier_spell_test_5", {"spell_5_description_level_1", "spell_5_description_level_2", "spell_5_description_level_3"}, "1"},
-    --]]
-     --{"troll_spell_block_damage", "troll_spell_block_damage", "modifier_troll_spell_block_damage", {"troll_spell_block_damage_description_level_1", "troll_spell_block_damage_description_level_2", "troll_spell_block_damage_description_level_3"}, "1"},
-    {},
-    {"troll_spell_ms", "troll_spell_ms", "modifier_troll_spell_ms", {"troll_spell_ms_description_level_1", "troll_spell_ms_description_level_2", "troll_spell_ms_description_level_3"}, "1"},
-    {"troll_spell_gold_hit", "troll_spell_gold_hit", "modifier_troll_spell_gold_hit", {"troll_spell_gold_hit_description_level_1", "troll_spell_gold_hit_description_level_2", "troll_spell_gold_hit_description_level_3"}, "1"},
-    {"troll_spell_hp_reg", "troll_spell_hp_reg", "modifier_troll_spell_hp_reg", {"troll_spell_hp_reg_description_level_1", "troll_spell_hp_reg_description_level_2", "troll_spell_hp_reg_description_level_3"}, "1"},
-    {"troll_spell_limit_gold", "troll_spell_limit_gold", "modifier_troll_spell_limit_gold", {"troll_spell_limit_gold_description_level_1", "troll_spell_limit_gold_description_level_2", "troll_spell_limit_gold_description_level_3"}, "1"},
-    {"troll_spell_cd_reduce", "troll_spell_cd_reduce", "modifier_troll_spell_cd_reduce", {"troll_spell_cd_reduce_description_level_1", "troll_spell_cd_reduce_description_level_2", "troll_spell_cd_reduce_description_level_3"}, "1"},
-    {"troll_spell_armor", "troll_spell_armor", "modifier_troll_spell_armor", {"troll_spell_armor_description_level_1", "troll_spell_armor_description_level_2", "troll_spell_armor_description_level_3"}, "1"},
-    {"troll_spell_vision", "troll_spell_vision", "modifier_troll_spell_vision", {"troll_spell_vision_description_level_1", "troll_spell_vision_description_level_2", "troll_spell_vision_description_level_3"}, "1"},
-    {"troll_spell_magic_resist", "troll_spell_magic_resist", "modifier_troll_spell_magic_resist", {"troll_spell_magic_resist_description_level_1", "troll_spell_magic_resist_description_level_2", "troll_spell_magic_resist_description_level_3"}, "1"},
-    {"troll_spell_status_resist", "troll_spell_status_resist", "modifier_troll_spell_status_resist", {"troll_spell_status_resist_description_level_1", "troll_spell_status_resist_description_level_2", "troll_spell_status_resist_description_level_3"}, "1"},
-    {"troll_spell_silence_target", "troll_spell_silence_target", "modifier_troll_spell_silence_target", {"troll_spell_silence_target_description_level_1", "troll_spell_silence_target_description_level_2", "troll_spell_silence_target_description_level_3"}, "1"},
-    {"troll_spell_silence_area", "troll_spell_silence_area", "modifier_troll_spell_silence_area", {"troll_spell_silence_area_description_level_1", "troll_spell_silence_area_description_level_2", "troll_spell_silence_area_description_level_3"}, "1"},
-    {"troll_spell_stun_target", "troll_spell_stun_target", "modifier_troll_spell_stun_target", {"troll_spell_stun_target_description_level_1", "troll_spell_stun_target_description_level_2", "troll_spell_stun_target_description_level_3"}, "1"},
-    {"troll_spell_haste", "troll_spell_haste", "modifier_troll_spell_haste", {"troll_spell_haste_description_level_1", "troll_spell_haste_description_level_2", "troll_spell_haste_description_level_3"}, "1"},
-    {"troll_spell_ward", "troll_spell_ward", "modifier_troll_spell_ward", {"troll_spell_ward_description_level_1", "troll_spell_ward_description_level_2", "troll_spell_ward_description_level_3"}, "1"},
-    {"troll_spell_bkb", "troll_spell_bkb", "modifier_troll_spell_bkb", {"troll_spell_bkb_description_level_1", "troll_spell_bkb_description_level_2", "troll_spell_bkb_description_level_3"}, "1"},
-    {"troll_spell_slow_target", "troll_spell_slow_target", "modifier_troll_spell_slow_target", {"troll_spell_slow_target_description_level_1", "troll_spell_slow_target_description_level_2", "troll_spell_slow_target_description_level_3"}, "1"},
-    {"troll_spell_slow_area", "troll_spell_slow_area", "modifier_troll_spell_slow_area", {"troll_spell_slow_area_description_level_1", "troll_spell_slow_area_description_level_2", "troll_spell_slow_area_description_level_3"}, "1"},
-    {"troll_spell_invis", "troll_spell_invis", "modifier_troll_spell_invis", {"troll_spell_invis_description_level_1", "troll_spell_invis_description_level_2", "troll_spell_invis_description_level_3"}, "1"},
-    {"troll_spell_evasion", "troll_spell_evasion", "modifier_troll_spell_evasion", {"troll_spell_evasion_description_level_1", "troll_spell_evasion_description_level_2", "troll_spell_evasion_description_level_3"}, "1"},
-    {"troll_spell_atkspeed", "troll_spell_atkspeed", "modifier_troll_spell_atkspeed", {"troll_spell_atkspeed_description_level_1", "troll_spell_atkspeed_description_level_2", "troll_spell_atkspeed_description_level_3"}, "1"},
-    {"troll_spell_wolf", "troll_spell_wolf", "modifier_troll_spell_wolf", {"troll_spell_wolf_description_level_1", "troll_spell_wolf_description_level_2", "troll_spell_wolf_description_level_3"}, "1"},
-    {"troll_spell_reveal", "troll_spell_reveal", "modifier_troll_spell_reveal", {"troll_spell_reveal_description_level_1", "troll_spell_reveal_description_level_2", "troll_spell_reveal_description_level_3"}, "1"},
-    {"troll_spell_night_buff", "troll_spell_night_buff", "modifier_troll_spell_night_buff", {"troll_spell_night_buff_description_level_1", "troll_spell_night_buff_description_level_2", "troll_spell_night_buff_description_level_3"}, "1"},
-    {"troll_spell_gold_wisp", "troll_spell_gold_wisp", "modifier_troll_spell_gold_wisp", {"troll_spell_gold_wisp_description_level_1", "troll_spell_gold_wisp_description_level_2", "troll_spell_gold_wisp_description_level_3"}, "1"},
-    
-
-    
-    --[[
-  
- 
-   {"troll_spell_", "troll_spell_", "modifier_troll_spell_", {"troll_spell__description_level_1", "troll_spell__description_level_2", "troll_spell__description_level_3"}, "1"},
-   
-
-]]
+    -----------------------
+    -- Elf spells
+    -----------------------
+    {
+        "elf_spell_ms", 
+        "elf_spell_ms", 
+        "modifier_elf_spell_ms", 
+        {
+            "elf_spell_ms_description_level_1",
+            "elf_spell_ms_description_level_2", 
+            "elf_spell_ms_description_level_3"
+        },
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_gold", 
+        "elf_spell_gold", 
+        "modifier_elf_spell_gold", 
+        {
+            "elf_spell_gold_description_level_1", 
+            "elf_spell_gold_description_level_2", 
+            "elf_spell_gold_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_lumber", 
+        "elf_spell_lumber", 
+        "modifier_elf_spell_lumber", 
+        {
+            "elf_spell_lumber_description_level_1", 
+            "elf_spell_lumber_description_level_2", 
+            "elf_spell_lumber_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_cd_reduce", 
+        "elf_spell_cd_reduce", 
+        "modifier_elf_spell_cd_reduce", 
+        {
+            "elf_spell_cd_reduce_description_level_1", 
+            "elf_spell_cd_reduce_description_level_2", 
+            "elf_spell_cd_reduce_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_cd_worker", 
+        "elf_spell_cd_worker", 
+        "modifier_elf_spell_cd_worker", 
+        {
+            "elf_spell_cd_worker_description_level_1", 
+            "elf_spell_cd_worker_description_level_2", 
+            "elf_spell_cd_worker_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_armor_wall", 
+        "elf_spell_armor_wall", 
+        "modifier_elf_spell_armor_wall", 
+        {
+            "elf_spell_armor_wall_description_level_1", 
+            "elf_spell_armor_wall_description_level_2", 
+            "elf_spell_armor_wall_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_tower_damage", 
+        "elf_spell_tower_damage", 
+        "modifier_elf_spell_tower_damage", 
+        {
+            "elf_spell_tower_damage_description_level_1", 
+            "elf_spell_tower_damage_description_level_2", 
+            "elf_spell_tower_damage_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_limit_gold", 
+        "elf_spell_limit_gold", 
+        "modifier_elf_spell_limit_gold", 
+        {
+            "elf_spell_limit_gold_description_level_1", 
+            "elf_spell_limit_gold_description_level_2", 
+            "elf_spell_limit_gold_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_limit_lumber", 
+        "elf_spell_limit_lumber", 
+        "modifier_elf_spell_limit_lumber", 
+        {
+            "elf_spell_limit_lumber_description_level_1", 
+            "elf_spell_limit_lumber_description_level_2", 
+            "elf_spell_limit_lumber_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_true", 
+        "elf_spell_true", 
+        "modifier_elf_spell_true", 
+        {
+            "elf_spell_true_description_level_1", 
+            "elf_spell_true_description_level_2", 
+            "elf_spell_true_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_tower_range", 
+        "elf_spell_tower_range", 
+        "modifier_elf_spell_tower_range", 
+        {
+            "elf_spell_tower_range_description_level_1", 
+            "elf_spell_tower_range_description_level_2", 
+            "elf_spell_tower_range_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_blink", 
+        "elf_spell_blink", 
+        "modifier_elf_spell_blink", 
+        {
+            "elf_spell_blink_description_level_1", 
+            "elf_spell_blink_description_level_2", 
+            "elf_spell_blink_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    {
+        "elf_spell_damage_gold", 
+        "elf_spell_damage_gold", 
+        "modifier_elf_spell_damage_gold", 
+        {
+            "elf_spell_damage_gold_description_level_1", 
+            "elf_spell_damage_gold_description_level_2", 
+            "elf_spell_damage_gold_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "0"
+    },
+    -----------------------
+    -- Troll spells
+    -----------------------
+    {
+        "troll_spell_ms", 
+        "troll_spell_ms", 
+        "modifier_troll_spell_ms", 
+        {
+            "troll_spell_ms_description_level_1", 
+        },
+        {
+            {15,20,25},
+        },
+        "1",
+    },
+    {
+        "troll_spell_gold_hit", 
+        "troll_spell_gold_hit", 
+        "modifier_troll_spell_gold_hit", 
+        {
+            "troll_spell_gold_hit_description_level_1", 
+            "troll_spell_gold_hit_description_level_2", 
+            "troll_spell_gold_hit_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_hp_reg",
+        "troll_spell_hp_reg", 
+        "modifier_troll_spell_hp_reg", 
+        {
+            "troll_spell_hp_reg_description_level_1", 
+            "troll_spell_hp_reg_description_level_2", 
+            "troll_spell_hp_reg_description_level_3"
+        },
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_limit_gold",
+        "troll_spell_limit_gold", 
+        "modifier_troll_spell_limit_gold", 
+        {
+            "troll_spell_limit_gold_description_level_1", 
+            "troll_spell_limit_gold_description_level_2", 
+            "troll_spell_limit_gold_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_cd_reduce",
+        "troll_spell_cd_reduce", 
+        "modifier_troll_spell_cd_reduce", 
+        {
+            "troll_spell_cd_reduce_description_level_1", 
+            "troll_spell_cd_reduce_description_level_2", 
+            "troll_spell_cd_reduce_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_armor",
+        "troll_spell_armor", 
+        "modifier_troll_spell_armor", 
+        {
+            "troll_spell_armor_description_level_1", 
+            "troll_spell_armor_description_level_2", 
+            "troll_spell_armor_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_vision",
+        "troll_spell_vision", 
+        "modifier_troll_spell_vision", 
+        {
+            "troll_spell_vision_description_level_1", 
+            "troll_spell_vision_description_level_2", 
+            "troll_spell_vision_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_magic_resist",
+        "troll_spell_magic_resist", 
+        "modifier_troll_spell_magic_resist", 
+        {
+            "troll_spell_magic_resist_description_level_1", 
+            "troll_spell_magic_resist_description_level_2", 
+            "troll_spell_magic_resist_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_status_resist",
+        "troll_spell_status_resist", 
+        "modifier_troll_spell_status_resist", 
+        {
+            "troll_spell_status_resist_description_level_1", 
+            "troll_spell_status_resist_description_level_2", 
+            "troll_spell_status_resist_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_silence_target",
+        "troll_spell_silence_target", 
+        "modifier_troll_spell_silence_target", 
+        {
+            "troll_spell_silence_target_description_level_1", 
+            "troll_spell_silence_target_description_level_2", 
+            "troll_spell_silence_target_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_silence_area",
+        "troll_spell_silence_area", 
+        "modifier_troll_spell_silence_area", 
+        {
+            "troll_spell_silence_area_description_level_1", 
+            "troll_spell_silence_area_description_level_2", 
+            "troll_spell_silence_area_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_stun_target",
+        "troll_spell_stun_target", 
+        "modifier_troll_spell_stun_target", 
+        {
+            "troll_spell_stun_target_description_level_1", 
+            "troll_spell_stun_target_description_level_2", 
+            "troll_spell_stun_target_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_haste",
+        "troll_spell_haste", 
+        "modifier_troll_spell_haste", 
+        {
+            "troll_spell_haste_description_level_1", 
+            "troll_spell_haste_description_level_2", 
+            "troll_spell_haste_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_ward",
+        "troll_spell_ward", 
+        "modifier_troll_spell_ward", 
+        {
+            "troll_spell_ward_description_level_1", 
+            "troll_spell_ward_description_level_2", 
+            "troll_spell_ward_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_bkb",
+        "troll_spell_bkb", 
+        "modifier_troll_spell_bkb", 
+        {
+            "troll_spell_bkb_description_level_1", 
+            "troll_spell_bkb_description_level_2", 
+            "troll_spell_bkb_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_slow_target",
+        "troll_spell_slow_target", 
+        "modifier_troll_spell_slow_target", 
+        {
+            "troll_spell_slow_target_description_level_1", 
+            "troll_spell_slow_target_description_level_2", 
+            "troll_spell_slow_target_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_slow_area",
+        "troll_spell_slow_area", 
+        "modifier_troll_spell_slow_area", 
+        {
+            "troll_spell_slow_area_description_level_1", 
+            "troll_spell_slow_area_description_level_2", 
+            "troll_spell_slow_area_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_invis",
+        "troll_spell_invis", 
+        "modifier_troll_spell_invis", 
+        {
+            "troll_spell_invis_description_level_1", 
+            "troll_spell_invis_description_level_2", 
+            "troll_spell_invis_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_evasion",
+        "troll_spell_evasion", 
+        "modifier_troll_spell_evasion", 
+        {
+            "troll_spell_evasion_description_level_1", 
+            "troll_spell_evasion_description_level_2", 
+            "troll_spell_evasion_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_atkspeed",
+        "troll_spell_atkspeed", 
+        "modifier_troll_spell_atkspeed", 
+        {
+            "troll_spell_atkspeed_description_level_1", 
+            "troll_spell_atkspeed_description_level_2", 
+            "troll_spell_atkspeed_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_wolf",
+        "troll_spell_wolf", 
+        "modifier_troll_spell_wolf", 
+        {
+            "troll_spell_wolf_description_level_1", 
+            "troll_spell_wolf_description_level_2", 
+            "troll_spell_wolf_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_reveal",
+        "troll_spell_reveal", 
+        "modifier_troll_spell_reveal", 
+        {
+            "troll_spell_reveal_description_level_1", 
+            "troll_spell_reveal_description_level_2", 
+            "troll_spell_reveal_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_night_buff",
+        "troll_spell_night_buff", 
+        "modifier_troll_spell_night_buff", 
+        {
+            "troll_spell_night_buff_description_level_1", 
+            "troll_spell_night_buff_description_level_2", 
+            "troll_spell_night_buff_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
+    {
+        "troll_spell_gold_wisp",
+        "troll_spell_gold_wisp", 
+        "modifier_troll_spell_gold_wisp", 
+        {
+            "troll_spell_gold_wisp_description_level_1", 
+            "troll_spell_gold_wisp_description_level_2", 
+            "troll_spell_gold_wisp_description_level_3"
+        }, 
+        {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0},
+        },
+        "1"
+    },
 }
 
--- Я пока хуй знает как тебе это переписать, но лучше я сделаю все напримере такого массива, а ты поправишь потом
 
+-- Я пока хуй знает как тебе это переписать, но лучше я сделаю все напримере такого массива, а ты поправишь потом
 game_spells_lib.PLAYER_INFO =
 {
     [0] = 
@@ -65,7 +617,7 @@ game_spells_lib.PLAYER_INFO =
 }
 
 game_spells_lib.current_activated_spell = {}
-game_spells_lib.spells_cost_random = 200
+game_spells_lib.spells_cost_random = 500
 game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
 
 CustomNetTables:SetTableValue("game_spells_lib", "spell_list", game_spells_lib.spells_list)
@@ -79,7 +631,9 @@ function game_spells_lib:event_set_activate_spell(data)
     if data.PlayerID == nil then return end
     local player_id = data.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(player_id)
-    if hero == nil then return end
+    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+        if hero == nil then return end
+    end
     local modifier_name = data.modifier_name
     local spell_name = data.spell_name
 
@@ -95,12 +649,14 @@ function game_spells_lib:event_set_activate_spell(data)
         return
     end
 
-    for _, spell_history in pairs(game_spells_lib.spells_list) do
-        if spell_history[1] == spell_name then
-            if tonumber(spell_history[5]) == 0 and not hero:IsElf() then
-                return
-            elseif tonumber(spell_history[5]) == 1 and not hero:IsTroll()  then
-                return
+    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+        for _, spell_history in pairs(game_spells_lib.spells_list) do
+            if spell_history[1] == spell_name then
+                if tonumber(spell_history[6]) == 0 and not hero:IsElf() then
+                    return
+                elseif tonumber(spell_history[6]) == 1 and not hero:IsTroll()  then
+                    return
+                end
             end
         end
     end
@@ -170,6 +726,7 @@ function game_spells_lib:RemovePlayerSpell(id, spell_name, modifier_name, hero)
     for i=#game_spells_lib.current_activated_spell[id], 1, -1 do
         if game_spells_lib.current_activated_spell[id][i] == spell_name then
             table.remove(game_spells_lib.current_activated_spell[id], i)
+            if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then return end
             hero:RemoveModifierByName(modifier_name)
             break
         end
@@ -181,7 +738,9 @@ function game_spells_lib:AddPlayerSpell(id, spell_name, modifier_name, hero)
         game_spells_lib.current_activated_spell[id] = {}
     end
     table.insert(game_spells_lib.current_activated_spell[id], spell_name)
-    local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {})
+    if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then return end
+    local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {}):SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
+    DebugPrint("lvl " .. game_spells_lib:GetSpellLevel(id, spell_name))
     if spell_mod then
         spell_mod:SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
     end
@@ -193,6 +752,7 @@ function game_spells_lib:RemoveOldSpell(id, hero)
     end
     if game_spells_lib.current_activated_spell[id][1] ~= nil then
         local spell_name = table.remove(game_spells_lib.current_activated_spell[id], 1)
+        if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then return end
         local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
         hero:RemoveModifierByName(modifier_name)
     end
@@ -238,9 +798,10 @@ function game_spells_lib:event_buy_spell(data)
             CustomGameEventManager:Send_ServerToPlayer( player, 'event_spell_shop_drop', {spell_name = drop_info[1], upgrade = drop_info[2]} )
         end
     end
-
-    if drop_info ~= nil then
+    DebugPrintTable(drop_info)
+    if drop_info ~= nil and drop_info[2] < 4 and drop_info[2] > 0 then
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
+        local dataShop = {}
         if drop_info[4] == nil then
             PoolTable["12"][tostring(GetTableLng(PoolTable["12"]))] = drop_info   
         elseif drop_info[2] > 0 and drop_info[2] < 4 then
@@ -248,6 +809,14 @@ function game_spells_lib:event_buy_spell(data)
         end
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
         game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))[12]
+		dataShop.SteamID = tostring(PlayerResource:GetSteamID(player_id))
+		dataShop.Num = tostring(drop_info[1])
+        dataShop.Score = tostring(drop_info[2])
+        dataShop.Nick = "skill"
+        dataShop.Coint = tostring(cost)
+        dataShop.TypeDonate = "gem"
+        dataShop.PlayerID = player_id
+        Shop.GetSkill(dataShop, callback)
     end
 
 end
@@ -271,24 +840,23 @@ function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
     end
     local upgrade_info = {}
     local find_random_to_upgrade = {}
-
     for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
-        DebugPrintTable(game_spells_lib.PLAYER_INFO[player_id][tostring(i)])
-        DebugPrint(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"])
-        if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"]) < 2 then
+        --DebugPrintTable(game_spells_lib.PLAYER_INFO[player_id][tostring(i)])
+        --DebugPrint(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"])
+        if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"]) < 2 then
             for _, spell_history in pairs(game_spells_lib.spells_list) do
-                if spell_history[1] == game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] and tonumber(spell_history[5]) == idPerk then
+                if spell_history[1] == game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] and tonumber(spell_history[6]) == idPerk then
                     table.insert(find_random_to_upgrade, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"])
                 end
             end
         end
     end
-    DebugPrintTable(find_random_to_upgrade)
+    --DebugPrintTable(find_random_to_upgrade)
     if #find_random_to_upgrade <= 0 then
         for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
-            if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"]) < 3 then
+            if tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"]) < 3 then
                 for _, spell_history in pairs(game_spells_lib.spells_list) do
-                    if spell_history[1] == game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] and tonumber(spell_history[5]) == idPerk then
+                    if spell_history[1] == game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] and tonumber(spell_history[6]) == idPerk then
                         table.insert(find_random_to_upgrade, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"])
                     end
                 end
@@ -299,7 +867,7 @@ function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
     if random_upgrade then
         for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
             if game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] == random_upgrade then
-                game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"] = tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["3"])  + 1
+                game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"] = tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"])  + 1
                 table.insert(upgrade_info, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"])
                 table.insert(upgrade_info, game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["2"])
                 table.insert(upgrade_info, 0)
@@ -319,7 +887,7 @@ function game_spells_lib:FindNewSpell(player_id, idPerk)
     end
     local random_spells = {}
     for _, spell_history in pairs(game_spells_lib.spells_list) do
-        if tonumber(spell_history[5]) == idPerk then
+        if tonumber(spell_history[6]) == idPerk then
             table.insert(random_spells, spell_history)
         end
     end

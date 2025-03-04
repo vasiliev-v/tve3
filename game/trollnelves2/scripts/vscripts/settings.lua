@@ -10,7 +10,7 @@ BEAR_HERO = "npc_dota_hero_bear"
 TEAM_CHOICE_TIME = 30
 
 TROLL_SPAWN_TIME = 30
-PRE_GAME_TIME = 40
+PRE_GAME_TIME = 4000000 --40
 
 ANGEL_RESPAWN_TIME = 10
 WOLF_RESPAWN_TIME = 60 --120
@@ -44,7 +44,7 @@ NO_CREATE_WISP = 2400
 BUFF_ENIGMA_TIME = 7200
 MIN_RATING_PLAYER = 10
 MIN_RATING_PLAYER_CW = 10
-PERC_KICK_PLAYER = 0.99
+PERC_KICK_PLAYER = 1
 MIN_PLAYER_KICK = 6 --8
 
 CHANCE_NEW_PERSON = 15 --10
@@ -54,26 +54,27 @@ TIMER_SAVER_HERO = 60
 TIMER_KILL_CW = 181
 
 EVENT_START = false
-CHANCE_DROP_GEM_BARRACKS_3 = 25
-SEASON_MAP = "desert" --"autumn"--"ghosttown" -- name map
-SEASON_ITEM = "item_autumn" --"item_ghosttown"           --  "item_winter_1" item_spring;  item_summer; item_autumn; "item_summer"--
+CHANCE_DROP_GEM_BANK = 75
+CHANCE_DROP_GEM_BARRACKS_3 = 75
+CHANCE_DROP_GOLD_BANK = 1
+CHANCE_DROP_GOLD_BARRACKS_3 = 1
 
 PLAYER_COLORS = {
-    {0, 102, 255}, -- синий
-    {0, 255, 255}, -- голубой
-    {153, 0, 204}, -- фиолетовый
-    {225, 0, 255},  -- фиолетовый
-    {255, 255, 0},
-    {255, 153, 51},
-    {51, 204, 51},
-    {0, 105, 0},
-    {128, 0, 0},
-    {176, 0, 0},
-    {60,20, 74},
-	{139, 69, 19},
-    {0, 0, 255},
-	{0, 0, 128},
-    {0, 0, 0}
+    {0, 102, 255},   -- синий
+    {0, 255, 255},   -- голубой
+    {153, 0, 204},   -- темно-фиолетовый
+    {225, 0, 255},   -- яркий фиолетовый
+    {255, 255, 0},   -- желтый
+    {255, 153, 51},  -- оранжевый
+    {51, 204, 51},   -- яркий зеленый
+    {0, 105, 0},     -- темно-зеленый
+    {128, 0, 0},     -- бордовый
+    {176, 0, 0},     -- темно-красный
+    {60, 20, 74},    -- темно-фиолетово-коричневый
+    {139, 69, 19},   -- коричневый
+    {0, 0, 255},     -- синий
+    {0, 0, 128},     -- темно-синий
+    {0, 0, 0}        -- черный
 }
 
 MAX_LEVEL = 999

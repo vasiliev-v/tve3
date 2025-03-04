@@ -181,12 +181,16 @@ for requirementName, requirementCount in pairs(requirements) do
     allRequirements[requirementName] = requirementCount
     local requirementClass = GetClass(requirementName)
     local requirementLevel = GetUnitKV(requirementName).Level
-    local currentRequirementClassData =
-    allBuildingRequirementClasses[unitName][requirementClass]
+    --DebugPrint("2321321")
+    --DebugPrintTable(GetUnitKV(unitName))
+    --DebugPrintTable(GetUnitKV(unitName).Requirements)
+    --DebugPrint(GetUnitKV(unitName).Requirements[requirementName])
+    local requirementCountNeed = GetUnitKV(unitName).Requirements[requirementName]
+    local currentRequirementClassData = allBuildingRequirementClasses[unitName][requirementClass]
     local currentRequirementClassLevel = currentRequirementClassData and currentRequirementClassData.level or 0
     if requirementLevel > currentRequirementClassLevel then
         allBuildingRequirementClasses[unitName][requirementClass] =
-        {level = requirementLevel, unitName = requirementName}
+        {level = requirementLevel, unitName = requirementName, count = requirementCountNeed}
     end
 end
 end
@@ -237,6 +241,8 @@ function BuildingHelper:ParseKV()
                 
                 if info['Requirements'] then
                     values.requirements = info["Requirements"]
+                    --DebugPrint("values.requirements")
+                    --DebugPrintTable(values.requirements)
                 end
                 if info["StartingBuilding"] == 1 then
                     AddBuildingRequirements(name, info, {},
@@ -335,8 +341,8 @@ function BuildingHelper:ParseKV()
     for unitName, requirementClasses in pairs(allBuildingRequirementClasses) do
         GameRules.buildingRequirements[unitName] = {}
         for requirementClass, requirementClassData in pairs(requirementClasses) do
-            table.insert(GameRules.buildingRequirements[unitName],
-            requirementClassData.unitName)
+            table.insert(GameRules.buildingRequirements[unitName], {requirementClassData.unitName, requirementClassData.count})
+           -- DebugPrintTable(requirementClass)
         end
     end
 end
@@ -344,28 +350,28 @@ end
 function BuildingHelper:OnGameRulesStateChange(keys)
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
-        -- The base terrain GridNav is obtained directly from the vmap
-        -- 1 
-        Timers:CreateTimer(TEAM_CHOICE_TIME-9, function()
-            if string.match(GetMapName(),"classic") then
-                local map = map_system:GetCurrentMapFromVotes()
-                GameRules.MapName = map[1]
-                local vector = map[2]
-                DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
-                DOTA_SpawnMapAtPosition( GameRules.MapName, Vector(0,0,vector), false, nil,  Dynamic_Wrap( BuildingHelper, "UpdateGrid"), nil )
-            elseif string.match(GetMapName(),"1x1")  then
-                local map = map_system:GetCurrentMapFromVotes()
-                GameRules.MapName = map[1]
-                local vector = map[2]
-                DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
-                DOTA_SpawnMapAtPosition( GameRules.MapName, Vector(0,0,vector), false, nil,  Dynamic_Wrap( BuildingHelper, "UpdateGrid"), nil )
-            else
-                GameRules.MapName = GetMapName()
-                BuildingHelper:UpdateGrid()
-            end
-            LinkModifier:Start()
-        end)
+        -- old
     end
+end
+
+function BuildingHelper:UpdateMapStage()
+    if string.match(GetMapName(),"classic") then
+        local map = map_system:GetCurrentMapFromVotes()
+        GameRules.MapName = map[1]
+        local vector = map[2]
+        --DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
+        DOTA_SpawnMapAtPosition( GameRules.MapName, Vector(0,0,vector), false, nil,  Dynamic_Wrap( BuildingHelper, "UpdateGrid"), nil )
+    elseif string.match(GetMapName(),"1x1")  then
+        local map = map_system:GetCurrentMapFromVotes()
+        GameRules.MapName = map[1]
+        local vector = map[2]
+        --DebugPrint("mapname " .. GameRules.MapName .. " " .. vector)
+        DOTA_SpawnMapAtPosition( GameRules.MapName, Vector(0,0,vector), false, nil,  Dynamic_Wrap( BuildingHelper, "UpdateGrid"), nil )
+    else
+        GameRules.MapName = GetMapName()
+        BuildingHelper:UpdateGrid()
+    end
+    LinkModifier:Start()
 end
 
 function BuildingHelper:UpdateGrid()
@@ -821,7 +827,6 @@ function BuildingHelper:RightClickOrder(event)
 end
 
 function BuildingHelper:OrderFilter(order)
-    DebugPrintTable(order)
     local ret = true
     if BuildingHelper.nextFilter then
         ret = BuildingHelper.nextFilter(BuildingHelper.nextContext, order)
@@ -1016,7 +1021,7 @@ function BuildingHelper:OrderFilter(order)
         return false
     end
     local unit = EntIndexToHScript(targetIndex)
- --   DebugPrint("order_type " .. order_type)
+ --   --DebugPrint("order_type " .. order_type)
     if order_type == DOTA_UNIT_ORDER_GIVE_ITEM and (string.match(unit:GetUnitName(), "troll_hut") or string.match(unit:GetUnitName(), "shop")) then
         local args = {itemIndex = abilityIndex}
         if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) then
@@ -1024,11 +1029,6 @@ function BuildingHelper:OrderFilter(order)
             return false
         end
         SellItem(args)
-        return false
-    end
-
-    if order_type == 42 then -- mark for sell 
-        SendErrorMessage(issuerID, "error_shop_out_of_range")
         return false
     end
     
@@ -1323,7 +1323,7 @@ function BuildingHelper:SetupBuildingTable(abilityName, builderHandle)
         fModelRotation = GetUnitKV(unitName).ModelRotation or 0
     end
     buildingTable:SetVal("ModelRotation", fModelRotation)
-    DebugPrint("Super unit name - " .. unitName)
+    --DebugPrint("Super unit name - " .. unitName)
     local requiresrepair = GetUnitKV(unitName).RequiresRepair or 0
     buildingTable:SetVal("RequiresRepair", requiresrepair)
     
@@ -1643,7 +1643,7 @@ function BuildingHelper:StartBuilding(builder)
         local buildingTable = work.buildingTable
         local construction_size = buildingTable:GetVal("ConstructionSize", "number")
         local pathing_size = buildingTable:GetVal("BlockPathingSize", "number")
-        DebugPrint("NEWSTART")
+        --DebugPrint("NEWSTART")
         -- Check gridnav and cancel if invalid
         if not BuildingHelper:ValidPosition(construction_size, location, builder, callbacks) or playersHero.disabledBuildings[building:GetUnitName()]  or builder:HasAbility("build_" .. unitName) == false then
             
@@ -1859,7 +1859,7 @@ function BuildingHelper:StartBuilding(builder)
                                     GameRules:GetGameTime()) / buildTime *
                                     (GetUnitKV(building:GetUnitName(),
                                     "ModelScale") or 1)
-                                    -- DebugPrint(fModelScale)
+                                    -- --DebugPrint(fModelScale)
                                     building:SetModelScale(fModelScale)
                                 end
                                 else
@@ -2752,12 +2752,12 @@ end
 function BuildingHelper:IdBaseArea(location)
     for index, shopTrigger in ipairs(GameRules.base) do
         if shopTrigger:IsTouching(location) then
-      --      DebugPrint("truee")
+      --      --DebugPrint("truee")
       --      if location:GetUnitName() == "npc_dota_units_base2" then
         --        location:ForceKill(true)
         --    end
-      --      DebugPrint(shopTrigger:entindex())
-     --       DebugPrint(index)
+      --      --DebugPrint(shopTrigger:entindex())
+     --       --DebugPrint(index)
             return shopTrigger:entindex()
         end
     end
@@ -2817,8 +2817,8 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
         return false
     end
     
-    --DebugPrint(location)
-   -- DebugPrint(unit:GetAbsOrigin())
+    ----DebugPrint(location)
+   -- --DebugPrint(unit:GetAbsOrigin())
    -- if not BuildingHelper:IsInsideBaseArea(hero, hero, buildingName, false) then 
    --     if buildingName == "flag" then 
    --         SendErrorMessage(playerID, "error_dont_place_flag_out_base")
@@ -2851,7 +2851,7 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
     end
     
     if builder.buildingQueue ~= nil then
-        DebugPrint(#builder.buildingQueue)
+        --DebugPrint(#builder.buildingQueue)
         if string.match(buildingName, "gold_mine") and #builder.buildingQueue > 0 then  
             SendErrorMessage(playerID, "error_limit_queue_wisp")
             return

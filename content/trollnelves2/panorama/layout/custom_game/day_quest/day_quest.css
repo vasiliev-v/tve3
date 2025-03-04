@@ -1,0 +1,240 @@
+.QuestMain
+{
+    width: 100%;
+    height: 100%;
+}
+
+.QuestPanelSwap
+{
+    width: 264px;
+    align: right top;
+    margin-top: 60px;
+    flow-children: right;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transform: translateX( 12.2% );
+}
+
+.Open .QuestPanelSwap
+{
+    transform: translateX( -1% );
+}
+
+.SwapPanel
+{
+    margin-top: 6px;
+    transform: rotateZ(180deg);
+    transition-property: transform;
+    transition-duration: 0.15s;
+}
+
+.SwapPanelIcon
+{
+    align: center center;
+    width: 30px;
+    height: 30px;
+    background-image: url("file://{images}/new_design/day_quest/button.png");
+    background-size: 100%;
+}
+
+.Open .SwapPanel
+{
+    transform: rotateZ(0deg);
+}
+
+.PanelShadow
+{
+    margin-top: 30px;
+    width: 342px;
+    height: 342px;
+    background-image: url("file://{images}/new_design/day_quest/shadow.png");
+    background-size: 100%;
+    ignore-parent-flow: true;
+    horizontal-align: right;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transform: translateX( 15.2% );
+}
+
+.Open .PanelShadow
+{
+    transform: translateX( 0% );
+}
+
+#QuestsPanel
+{
+    flow-children: down;
+}
+
+.QuestPanelInformation
+{
+    height: 40px;
+    margin-left: 10px;
+}
+
+.QuestPanelInformation Label
+{
+    font-weight: bold;
+    font-size: 22px;
+    font-weight: semi-bold;
+    color: white;
+    text-align: center;
+    align: center center;
+}
+
+.DayQuest
+{
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+    flow-children: right;
+}
+
+.QuestIcon
+{
+    height: 64px;
+    width: 64px;
+    margin-left: 2px;
+    border-radius: 100%;
+    border: 2px solid #B8FF45;
+}
+
+.QuestIconClose
+{
+    height: 64px;
+    width: 64px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid gold;
+    background-color: black;
+}
+
+.QuestInfo
+{
+    width: 160px;
+    flow-children: down;
+    vertical-align: center;
+    margin-left: 10px;
+}
+
+.QuestName
+{
+    color: white;
+    font-size: 16px;
+    text-overflow: shrink;
+}
+
+.QuestRewardLabel
+{
+    margin-top: 5px;
+    width: 100%;
+    color: #B8FF45;
+    text-overflow: shrink;
+}
+
+.QuestProgress
+{
+    height: 15px;
+    width: 148px;
+    border-radius: 20px;
+    margin-top: 4px;
+}
+
+.QuestProgressBackground 
+{
+    background-color: rgba(0,0,0,1);
+    width: 100%;
+    height: 100%;
+}
+
+.QuestProgressLine 
+{
+    background-color: rgba(184, 255, 69, 0.5);
+    width: 0%;
+    height: 100%;
+    transition-property: width;
+    transition-duration: 0.25s;
+}
+
+.QuestProgressLabel 
+{
+    color: white;
+    align: center center;
+    font-size: 14px;
+    font-weight: semi-bold;
+}
+
+.LockedQuest .QuestProgress
+{
+    visibility: collapse;
+}
+
+.QuestSucces
+{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(53, 72, 21, 0.7);
+    visibility: collapse;
+}
+
+.QuestSuccesIcon
+{
+    width: 27px;
+    height: 28px;
+    background-image: url("file://{images}/new_design/day_quest/complete.png");
+    background-size: 100%;
+    align: center center;
+    visibility: collapse;
+}
+
+.QuestComplete .QuestSucces
+{
+    visibility: visible;
+}
+
+.QuestComplete .QuestSuccesIcon
+{
+    visibility: visible;
+}
+
+.QuestComplete .QuestIcon
+{
+    border: 2px solid #527915;
+}
+
+.LockedQuest .QuestName
+{
+    text-transform: uppercase;
+}
+
+.QuestLockedBG
+{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    visibility: collapse;
+}
+
+.QuestLockedBGIcon
+{
+    width: 32px;
+    height: 32px;
+    background-image: url("file://{images}/new_design/day_quest/locked.png");
+    background-size: 100%;
+    align: center center;
+    visibility: collapse;
+}
+
+.LockedQuest .QuestLockedBG
+{
+    visibility: visible;
+}
+
+.LockedQuest .QuestLockedBGIcon
+{
+    visibility: visible;
+}
+
+.LockedQuest .QuestIcon
+{
+    border: 2px solid #233802;
+}
