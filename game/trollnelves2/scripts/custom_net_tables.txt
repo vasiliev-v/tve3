@@ -13,6 +13,7 @@
 		"scorestats",
 		"Pets_Tabel",
 		"Shop",
+        "Shop_active",
         "game_spells_lib"
     ]
 } 

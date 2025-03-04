@@ -1,0 +1,16 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/layout/custom_game/rewards/rewards.css" />
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/layout/custom_game/rewards/rewards.js" />
+	</scripts>
+	<Panel hittest="false" style="width:100%;height:100%;">
+		<Panel id="RewardsPanel" class="RewardsPanel">
+			<Panel class="CloseShop" onactivate="ClosePanel();"/>
+			<Label class="RewardsPanelName" text="#troll_rewards_title" />
+			<Panel id="RewardsRow" class="RewardsRow" />
+		</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,106 @@
+.InformationPanel 
+{
+    width: 590px;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 30px;
+    transform: translatex(-50%);
+    opacity: 0;
+    transition: transform 0.1s ease 0.0s, opacity 0.2s ease 0.0s;
+}
+
+.InformationPanel.Open
+{
+    transform: translatey( 0% );
+    opacity: 1;
+}
+
+.CloseButtonPanel
+{
+    horizontal-align: right;
+    margin-top: 66px;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/information/close.png");
+    transition-property: transform;
+    transition-duration: 0.2s;
+}
+
+.CloseButtonPanel:hover
+{
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.HeaderLabel
+{
+    color: white;
+    font-weight: semi-bold;
+    font-size: 40px;
+    margin-top: 127px;
+}
+
+.GuidesPanels
+{
+    width: 100%;
+    flow-children: down;
+    margin-top: 190px;
+}
+
+.info_window
+{
+    width: 100%;
+    flow-children: down;
+    margin-bottom: 15px;
+}
+
+.info_button
+{
+    width: 100%;
+    flow-children: right;
+}
+
+.info_button_label
+{
+    font-size: 24px;
+    font-weight: semi-bold;
+    color: white;
+}
+
+.info_button_arrow
+{
+    width: 13px;
+    height: 6px;
+    vertical-align: center;
+    margin-left: 18px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/information/arrow.png");
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transform: rotateZ(180deg);
+}
+
+.Opened .info_button_arrow
+{
+    transform: rotateZ(0deg);
+}
+
+.info_video_and_description
+{
+    margin-top: 10px;
+    border-left: 2px solid #B8FF45;
+    flow-children: down;
+    visibility: collapse;
+}
+
+.info_description
+{
+    color: white;
+    font-weight: normal;
+    margin-left: 16px;
+}
+
+.Opened .info_video_and_description
+{
+    visibility: visible;
+}

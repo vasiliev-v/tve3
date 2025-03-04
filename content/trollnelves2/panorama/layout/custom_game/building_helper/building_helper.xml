@@ -1,0 +1,8 @@
+<root>
+    <scripts>
+        <include src="file://{resources}/layout/custom_game/building_helper/clicks.js" />
+        <include src="file://{resources}/layout/custom_game/building_helper/building_helper.js" />
+    </scripts>
+    <Panel>
+    </Panel>
+</root>

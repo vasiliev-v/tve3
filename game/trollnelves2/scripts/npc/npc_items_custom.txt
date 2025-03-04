@@ -28,7 +28,7 @@
             "gold_cost" "0"
             "lumber_cost" "2"
             "dur_time" "10"
-            "radius1" "5200"
+            "radius1" "2400"
         }
 		"OnSpellStart"
 		{
@@ -39,6 +39,39 @@
 				"Target"				"POINT"
 				"Duration"				"%dur_time"//"5"
 				"Radius"				"%radius1"
+			}
+			"CreateThinker"
+			{
+				"ModifierName"	"modifier_blood_rite_delay"
+				"Target"		"POINT"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_blood_rite_delay"
+			{
+				"Duration"	"%dur_time"
+				
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"hero_bloodseeker.bloodRite"
+						"Target"		"TARGET"
+					}
+					
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius1 %radius1 %radius1"
+						}
+					}
+				}
 			}
 		}
 	}
@@ -752,6 +785,7 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
+		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -789,6 +823,7 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
+		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -826,6 +861,7 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
+		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -863,6 +899,7 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
+		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -900,6 +937,7 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
+		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -1445,12 +1483,11 @@
 		"ItemPurchasable" 				"0"
 		"ItemSellable"					"0"
 		"AbilityManaCost"				"0"
-		"ItemIsNeutralActiveDrop"				"1"
+		"ItemIsNeutralDrop"				"1"
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"1200"
-		"ItemSellable"				"0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -1818,6 +1855,9 @@
 		"AbilityValues"
         {
             "max_blink_range" "1000"
+			"up1" 			  "1200"
+			"up2" 			  "1400"
+			"up3" 			  "1600"
         }
 
 		"OnSpellStart"
@@ -1828,6 +1868,9 @@
 				"Function"              "ItemBlink"
 				"Target"                "POINT"
 				"MaxBlinkRange"         "%max_blink_range"
+				"MaxBlinkRange1"         "%up1"
+				"MaxBlinkRange2"         "%up2"
+				"MaxBlinkRange3"         "%up3"
 			}
 		}
 	}
@@ -4968,10 +5011,10 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemQuality"                   "component"
 		"ItemStackable"                 "0"
+		"ItemSellable" 					"1"
 		"ItemPermanent"                 "1"
 		"ItemDroppable"					"0"
-		"ItemIsNeutralActiveDrop"	    "1"
-		"ItemSellable"				    "0"
+		"ItemIsNeutralDrop"				"1"
 		"AbilityValues"
         {
             "gold_cost" "0"
@@ -5633,9 +5676,8 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemIsNeutralActiveDrop"				"1"
+		"ItemIsNeutralDrop"				"1"
 		"ItemPurchasable"				"0"
-		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 
@@ -5700,9 +5742,8 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralActiveDrop"				"1"
+		"ItemIsNeutralDrop"				"1"
 		"ItemPurchasable"				"0"
-		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 		
@@ -5747,9 +5788,8 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralActiveDrop"				"1"
+		"ItemIsNeutralDrop"				"1"
 		"ItemPurchasable"				"0"
-		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 		
@@ -5803,9 +5843,8 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralActiveDrop"				"1"
+		"ItemIsNeutralDrop"				"1"
 		"ItemPurchasable"				"0"
-		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 		
@@ -5862,7 +5901,7 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralActiveDrop"				"1"
+		"ItemIsNeutralDrop"				"1"
 		"ItemPurchasable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"

@@ -5,7 +5,7 @@ function modifier_troll_spell_block_damage:RemoveOnDeath()      return true end
 function modifier_troll_spell_block_damage:IsHidden()           return false end
 function modifier_troll_spell_block_damage:IsStackable()        return true end
 function modifier_troll_spell_block_damage:IsPermanent()        return false end
-function modifier_troll_spell_block_damage:GetTexture()         return "item_hp_12" end
+function modifier_troll_spell_block_damage:GetTexture()         return "troll_spell_block_damage" end
 --------------------------------------------------------------------------------
 function  modifier_troll_spell_block_damage:DeclareFunctions()
 	local funcs = {

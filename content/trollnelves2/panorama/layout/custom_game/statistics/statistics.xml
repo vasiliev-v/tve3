@@ -1,0 +1,53 @@
+<root>
+	<scripts>
+        <include src="file://{resources}/layout/custom_game/statistics/data.js" />
+		<include src="file://{resources}/layout/custom_game/statistics/statistics.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/layout/custom_game/statistics/statistics.css" />
+	</styles>
+	<Panel style="width:100%;height:100%;" hittest="false"> 
+		<Panel class="Statistics" id="Statistics">
+			<Panel class="CloseButtonPanel" onactivate="ClosePanel();"/>
+            <Label class="HeaderLabel" text="#Statistics_name" />
+            <Panel class="MainPanel">
+                <Panel class="PanelPlayerStats">
+                    <Panel class="BaseInfo">
+                        <Panel class="PlayerProfile">
+                            <DOTAAvatarImage class="PlayerAvatar" id="PlayerAvatar" steamid="local" />
+                            <Label class="PlayerName" id="PlayerName" text="Unknown" />
+                            <Label class="PlayerID" id="PlayerID" text="(ID: 00000000)" />
+                        </Panel>
+                        <Panel class="BaseStatsColumns">
+                            <Panel class="BaseStatLine">
+                                <Label class="BaseStatsLineName" text="#Playerstats1" />
+                                <Label class="BaseStatsLineValue" id="ReputationRating" text="0" />
+                            </Panel>
+                            <Panel class="BaseStatLine">
+                                <Label class="BaseStatsLineName" text="#Playerstats2" />
+                                <Label class="BaseStatsLineValue" id="ElfRating" text="0" />
+                            </Panel>
+                            <Panel class="BaseStatLine">
+                                <Label class="BaseStatsLineName" text="#Playerstats3" />
+                                <Label class="BaseStatsLineValue" id="TrollRating" text="0" />
+                            </Panel>
+                        </Panel>
+                    </Panel>
+                    <Panel class="LineBorder" />
+                    <Panel class="StatsColumns">
+                        <Panel class="StatsColumnsHeader">
+                            <Label class="StatsColumn_Name" text="#StatsColumn_Name" />
+                            <Label class="StatsColumn_Elf" text="#StatsColumn_Elf" />
+                            <Label class="StatsColumn_Troll" text="#StatsColumn_Troll" />
+                        </Panel>
+                        <Panel class="ColumnsList" id="ColumnsList" />
+                    </Panel>
+                </Panel>
+                <Label class="SettingsName" text="#Stats_Settings" />
+                <Panel class="PanelSettings" id="PanelSettings" />
+                <Label class="SettingsNameAchivment" text="#Stats_Achivement" />
+                <Panel class="PanelAchivement" id="PanelAchivement" />
+            </Panel>
+		</Panel>
+	</Panel>
+</root>

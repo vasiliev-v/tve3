@@ -1,31 +1,35 @@
-map_system = class({})
+if map_system == nil then
+    _G.map_system = class({})
+end
 
 local MAPS_LIST = {}
 
 if string.match(GetMapName(),"1x1")  then
 	MAPS_LIST = 
 	{
-		{"random", 0},
-		{"1x1icepeak", -125}, 
-		{"1x1cursedisland",-127}, 
-		{"1x1cave", -127}
+		{"random", 0, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"1x1icepeak", -125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}, 
+		{"1x1cursedisland",-127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}, 
+		{"1x1cave", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}
 	}
 else
 	MAPS_LIST = 
 	{
-		{"random", 0},
-		-- {"forest", -127},
-		{"summer", -127},
-		{"spring",-127},
-		{"autumn", -127.125},
-		{"ghosttown", -126},
-		{"winter", 1},
-		{"china", -255.125},
-		{"desert", -127},
-		{"jungle", -127}, 
-		{"helheim", -125}
+		{"random", 0, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		-- {"forest", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"summer", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"spring",-127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"autumn", -127.125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"ghosttown", -126, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"winter", 1, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"china", -255.125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"desert", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"jungle", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}, 
+		{"helheim", -125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}
 	}
 end
+
+map_system.MAPS_LIST_G = MAPS_LIST
 
 function map_system:Init()
     map_system.votes_map = {}
@@ -78,7 +82,7 @@ function map_system:SetVotesMap(data)
 
 	table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
 
-	CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", {table_votes})
+	CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", table_votes)
 end
 
 function map_system:GetCurrentMapFromVotes()
@@ -110,6 +114,3 @@ function map_system:GetCurrentMapFromVotes()
 end
 
 map_system:Init()
-
-
-

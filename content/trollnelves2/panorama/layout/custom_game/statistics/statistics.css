@@ -1,0 +1,316 @@
+.Statistics 
+{
+    width: 590px;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 30px;
+    padding-bottom: 10px;
+    transform: translatex(-50%);
+    opacity: 0;
+    transition: transform 0.1s ease 0.0s, opacity 0.2s ease 0.0s;
+}
+
+.Statistics.Open
+{
+    transform: translatey( 0% );
+    opacity: 1;
+}
+
+.CloseButtonPanel
+{
+    horizontal-align: right;
+    margin-top: 66px;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/information/close.png");
+    transition-property: transform;
+    transition-duration: 0.2s;
+}
+
+.CloseButtonPanel:hover
+{
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.HeaderLabel
+{
+    color: white;
+    font-weight: semi-bold;
+    font-size: 40px;
+    margin-top: 127px;
+}
+
+.MainPanel
+{
+    flow-children: down;
+    margin-top: 195px;
+    overflow: squish scroll;
+}
+
+.PanelPlayerStats
+{
+    flow-children: down;
+}
+
+.LineBorder
+{
+    margin-top: 15px;
+    width: 530px;
+    height: 2px;
+    background-color: rgba(184, 255, 69, 0.25);
+    margin-bottom: 20px;
+}
+
+.BaseInfo
+{
+    flow-children: down;
+}
+
+.PlayerProfile
+{
+    flow-children: right;
+}
+
+.PlayerAvatar
+{
+    width: 32px;
+    height: 32px;
+}
+
+.PlayerName
+{
+    font-weight: semi-bold;
+    font-size: 24px;
+    margin-left: 15px;
+    color: #B8FF45;
+}
+
+.PlayerID
+{
+    font-weight: semi-bold;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.BaseStatsColumns
+{
+    flow-children: down;
+    margin-top: 20px;
+}
+
+.BaseStatLine
+{
+    flow-children: right;
+    margin-bottom: 10px;
+}
+
+.BaseStatsLineName
+{
+    font-weight: semi-bold;
+    color: white;
+    font-size: 20px;
+    width: 225px;
+}
+
+.BaseStatsLineValue
+{
+    font-weight: semi-bold;
+    color: white;
+    font-size: 20px;
+}
+
+.StatsColumnsHeader
+{
+    flow-children: right;
+    margin-bottom: 5px;
+}
+
+.StatsColumnsHeader Label
+{
+    color: #B8FF45;
+    font-size: 14px;
+}
+
+.StatsColumn_Name
+{
+    width: 225px;
+}
+
+.StatsColumn_Elf
+{
+    width: 154px;
+}
+
+.StatsColumn_Troll
+{
+    width: 154px;
+}
+
+.StatsColumns
+{
+    flow-children: down;
+}
+
+.ColumnsList
+{
+    flow-children: down;
+}
+
+.ColumnsListLine
+{
+    flow-children: right;
+}
+
+.ColumnsListLine Label
+{
+    color: white;
+    font-size: 16px;
+    font-weight: semi-bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.GrayStyle
+{
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( rgba(0, 0, 0, 0)), color-stop( 0.45, rgba(255, 255, 255, 0.03)), to( #ffffff00));
+}
+
+.SettingsName
+{
+    font-size: 24px;
+    color: #B8FF45;
+    font-weight: semi-bold;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    visibility: collapse;
+}
+
+.PanelSettings
+{
+    flow-children: down;
+    width: 100%;
+    visibility: collapse;
+}
+
+.IsLocal .SettingsName
+{
+    visibility: visible;
+}
+.IsLocal .PanelSettings
+{
+    visibility: visible;
+}
+
+.ButtonSetting
+{
+    flow-children: right;
+    height: 43px;
+    width: 100%;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( rgba(0, 0, 0, 0)), color-stop( 0.45, rgba(255, 255, 255, 0.03)), to( #ffffff00));
+}
+
+.ButtonSettingName
+{
+    color: white;
+    font-weight: semi-bold;
+    font-size: 16px;
+    vertical-align: center;
+    width: 290px;
+}
+
+.SettingsButtonsContainer
+{
+    flow-children: right;
+}
+
+.SettingButton
+{
+    width: 96px;
+    height: 43px;
+    transition-property: background-color;
+    transition-duration: 0.15s;
+}
+
+.SettingButtonLabel
+{
+    align: center center;
+    color: white;
+    font-weight: semi-bold;
+    font-size: 16px;
+    transition-property: color;
+    transition-duration: 0.15s;
+}
+
+.Active .SettingButtonYes
+{
+    background-color: rgba(184, 255, 69, 0.25);
+}
+
+.Deactive .SettingButtonNo
+{
+    background-color: rgba(255, 69, 69, 0.25);
+}
+
+.Active .SettingButtonYes .SettingButtonLabel
+{
+    color: #B8FF45;
+}
+
+.Deactive .SettingButtonNo .SettingButtonLabel
+{
+    color: #FF6D6D;
+}
+
+.SettingsNameAchivment
+{
+    font-size: 24px;
+    color: #B8FF45;
+    font-weight: semi-bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.PanelAchivement
+{
+    flow-children: right-wrap;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.achiviment_panel
+{
+    width: 105px;
+    height: 105px;
+    margin-right: 17px;
+    border: 2px solid #BDFF00;
+    border-radius: 100%;
+    margin-bottom: 20px;
+    saturation: 0;
+    brightness: 0.5;
+}
+
+.active
+{
+    saturation: 1;
+    brightness: 1;
+}
+
+.achiviment_panel_glow
+{
+    width: 100%;
+    height: 100%;
+    background-image: url("file://{images}/new_design/topbar/glow.png");
+    background-size: 100%;
+    wash-color: #B8FF45;
+    opacity: 0.5;
+}
+
+.achiviment_panel_icon
+{
+    width: 100%;
+    height: 100%;
+    align: center center;
+    margin: 2px;
+    border-radius: 100%;
+}

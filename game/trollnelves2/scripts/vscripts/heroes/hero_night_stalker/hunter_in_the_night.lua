@@ -8,7 +8,9 @@ function HunterInTheNight( keys )
 	local modifier = keys.modifier
 
 	if not GameRules:IsDaytime() then
-		ability:ApplyDataDrivenModifier(caster, caster, modifier, {})
+		if ability then
+			ability:ApplyDataDrivenModifier(caster, caster, modifier, {}) 
+		end
 	else
 		if caster:HasModifier(modifier) then caster:RemoveModifierByName(modifier) end
 	end

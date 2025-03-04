@@ -36,3 +36,12 @@ function modifier_troll_spell_evasion:OnRefresh( kv )
 	end
 end
 
+function modifier_troll_spell_evasion:OnStackCountChanged()
+	if IsServer() then
+		local hero = self:GetParent()
+		local abil = hero:FindAbilityByName("troll_spell_evasion")
+		local countStack = hero:FindModifierByName("modifier_troll_spell_evasion"):GetStackCount()
+		abil:SetLevel(countStack)
+	end
+end
+

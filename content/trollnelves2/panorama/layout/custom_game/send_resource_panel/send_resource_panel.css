@@ -1,0 +1,311 @@
+.SendResourceMain
+{
+    horizontal-align: center;
+    opacity: 0;
+}
+
+.SendResourceMain.Open
+{
+    opacity: 1;
+}
+
+.SendResourceBG
+{
+    width: 1567px;
+    height: 369px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/send_resource/bg.png");
+    opacity: 0.5;
+}
+
+.ResourceBody
+{
+    horizontal-align: center;
+    flow-children: down;
+    margin-top: 120px;
+}
+
+.ResourceLabelHeader
+{
+    font-weight: semi-bold;
+    color: white;
+    font-size: 32px;
+    horizontal-align: center;
+}
+
+.PlayersListSwap
+{
+    horizontal-align: center;
+    flow-children: right;
+    margin-top: 20px;
+}
+
+.SendIcon
+{
+    width: 20px;
+    height: 17px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/send_resource/swap_icon.png");
+    vertical-align: center;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.PlayerName
+{
+    vertical-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+.SwapBlocks
+{
+    horizontal-align: center;
+    flow-children: right;
+    margin-top: 20px;
+}
+
+.SwapBlock
+{
+    margin-right: 12.5px;
+    margin-left: 12.5px;
+    flow-children: down;
+}
+
+.IconAndTextEntry
+{
+    flow-children: right;
+}
+
+.IconCoin
+{
+    width: 32px;
+    height: 32px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/send_resource/coin.png");
+}
+
+.IconLumber
+{
+    width: 32px;
+    height: 32px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/send_resource/lumber.png");
+}
+
+.CoinEntryMain
+{
+    flow-children: none;
+    width: 217px;
+    height: 32px;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    border-radius: 50px;
+    margin-left: 14px;
+    background-color: #141414;
+}
+
+.SecondBlock .CoinEntryMain
+{
+    margin-left: 0px;
+    margin-right: 14px;
+}
+
+#CoinEntry
+{
+    width: 100%;
+    horizontal-align: left;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px solid black;
+    vertical-align: center;
+    height: 30px;
+    font-size: 24px;
+    margin-top: -8px;
+    margin-left: 5px;
+}
+
+#LumberEntry
+{
+    width: 100%;
+    horizontal-align: left;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px solid black;
+    vertical-align: center;
+    height: 30px;
+    font-size: 24px;
+    margin-top: -8px;
+    margin-left: 5px;
+}
+
+.SendButtons
+{
+    horizontal-align: center;
+    flow-children: right;
+    margin-top: 20px;
+}
+
+.SendButton
+{
+    width: 170px;
+    height: 32px;
+    background-color: #4B6834;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    border-radius: 30px;
+    vertical-align: center;
+    transition-property: brightness;
+    transition-duration: 0.2s;
+    margin-right: 10px;
+}
+
+.SendButton:hover
+{
+    brightness: 1.4;
+}
+
+.SendButton Label
+{
+    font-weight: semi-bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #B8FF45;
+    align: center center;
+    text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
+}
+
+.SendAllButton
+{
+    width: 170px;
+    height: 32px;
+    background-color: #8E7430;
+    border: 2px solid rgba(255, 247, 45, 0.5);
+    border-radius: 30px;
+    vertical-align: center;
+    transition-property: brightness;
+    transition-duration: 0.2s;
+    margin-left: 10px;
+}
+
+.SendAllButton:hover
+{
+    brightness: 1.4;
+}
+
+.SendAllButton Label
+{
+    font-weight: semi-bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #ffd445;
+    align: center center;
+    text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
+}
+
+.CloseSwap 
+{
+    ignore-parent-flow: true;
+    width: 22px;
+    height: 22px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/spell_shop/close.png");
+    transition-property: transform;
+    transition-duration: 0.2s;
+    horizontal-align: center;
+    margin-top: 100px;
+    margin-left: 400px;
+    z-index: 5;
+}
+
+.CloseSwap:hover
+{
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.SliderPanel
+{
+    width: 217px;
+    horizontal-align: right;
+    margin-top: 20px;
+    flow-children: down;
+}
+
+.SecondBlock .SliderPanel
+{
+    horizontal-align: left;
+}
+
+#SliderTrack
+{
+    height: 10px;
+    width: 100%;
+    border: 0px solid #0f0f11;
+    vertical-align: center;
+    background-color: rgba(0,0,0,0);
+    box-shadow: fill rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    background-image: url("file://{images}/new_design/send_resource/slider.png");
+    background-size: 100% 100%;
+}
+
+Slider.HorizontalSlider #SliderTrack, SlottedSlider.HorizontalSlider #SliderTrack 
+{
+    height: 5px;
+}
+
+#SliderTrackProgress
+{
+    visibility: collapse;
+}
+
+#SliderThumb
+{
+    vertical-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: fill rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    z-index: 2;
+    background-color: #B8FF45;
+}
+
+Slider.HorizontalSlider #SliderThumb, SlottedSlider.HorizontalSlider #SliderThumb 
+{
+    height: 16px;
+    width: 4px;  
+    background-color: #B8FF45;
+    border-radius: 0px;
+}
+
+#SliderThumb:hover
+{
+    brightness: 1.5;
+}
+
+Slider 
+{
+    margin-bottom: 0px;
+}
+
+.ValuesBlock
+{
+    flow-children: none;
+    width: 100%;
+}
+
+.ValuesBlock Label
+{
+    color: white;
+    font-size: 14px;
+}
+
+.value_2
+{
+    horizontal-align: center;
+    margin-right: 65px;
+}
+
+.value_3
+{
+    horizontal-align: center;
+    margin-left: 75px;
+}
+
+.value_4
+{
+    horizontal-align: right;
+}

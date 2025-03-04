@@ -35,6 +35,6 @@ function Feed(keys)
         target:Kill(nil, target)
         end
         else
-        DebugPrint("ELSE")
+        --DebugPrint("ELSE")
     end
 end

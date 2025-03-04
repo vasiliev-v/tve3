@@ -3735,15 +3735,12 @@ The effect is issued for 1 year. Your support helps the game develop."
 		"PlayerInfo10"			"AVG Gold Given: "
 		"PlayerInfo11"			"AVG Lumber Gained: "
 		"PlayerInfo12"			"AVG Lumber Given: "
-		
-		
-		
 
-		"Playerstats1"			"REPUTATION: "
-		"Playerstats2"			"ELF RATING: "
-		"Playerstats3"			"TROLL RATING: "
-		"Playerstats4"			"EVENT ITEM: "
-		"Playerstats5"			"FPS BOOST: "
+		"Playerstats1"			"Reputation"
+		"Playerstats2"			"Elf rating"
+		"Playerstats3"			"Troll rating"
+		"Playerstats4"			"EVENT ITEM"
+		"Playerstats5"			"FPS BOOST"
 		"Playerstats6"			"SOUND WHEEL MUTE: "
 		"Playerstats7"			"BLOCKING SENDING RESOURCES: "
 		"statistics_name"			"PLAYER STATISTICS"
@@ -3998,9 +3995,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_ms"                                   "Movespeed"
         "troll_spell_ms_description"                       "Passive: Increases movespeed"
-        "troll_spell_ms_description_level_1"               "Movespeed +15"
-        "troll_spell_ms_description_level_2"               "Movespeed +20"
-        "troll_spell_ms_description_level_3"               "Movespeed +25"
+        "troll_spell_ms_description_level_1"               "Movespeed"
 		"DOTA_Tooltip_modifier_troll_spell_ms"			   "Passive: Increases movespeed"
 		
 		"troll_spell_gold_hit"                            		 "Gold Hit"

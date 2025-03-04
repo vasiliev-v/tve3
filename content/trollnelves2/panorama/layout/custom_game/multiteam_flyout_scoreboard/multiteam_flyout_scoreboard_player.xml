@@ -1,0 +1,73 @@
+<root>
+    <styles>
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+        <include src="file://{resources}/layout/custom_game/styles/shared_scoreboard_styles.css"/>
+        <include src="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard/multiteam_flyout_scoreboard.css"/>
+    </styles>
+    <scripts>
+        <include src="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard/multiteam_flyout_scoreboard_player.js" />
+    </scripts>
+    <Panel class="PlayerRow">
+        <Panel id="PlayerRowContainer">
+        	<Panel class="TeamInfo ScoreCol_TeamInfo">
+				<Panel id="TeamColor_GradentFromTransparentLeft" />
+			</Panel>
+            <Panel id="PlayerMainInformation" class="ScoreboardPanel" >
+                <Panel id="PlayerOneMainInformation" > 
+                    <Panel onactivate="showHero()" id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+                        <Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect"/>
+                        <Panel class="PlayerDead" />
+                    </Panel>
+                    <Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
+                        <Panel id="PlayerAndHeroName">
+                            <Label id="PlayerName" text="AAAAA"/>
+                        </Panel>
+                    </Panel>
+                </Panel>
+            </Panel>
+            <Panel id="PlayerScoreInformation" class="ScoreboardPanel" >
+                <Panel id="GoldContainer" class="ScoreCol_Gold ScoreboardPanel">
+                    <Label id="PlayerGoldAmount" class="PlayerGoldAmount" text="999"/>
+                </Panel>
+                <Panel id="LumberContainer" class="ScoreCol_Lumber ScoreboardPanel">
+                    <Label id="PlayerLumberAmount" class="PlayerLumberAmount" text="999"/>
+                </Panel>
+                <Panel id="KillsContainer" class="ScoreCol_Kills ScoreboardPanel">
+                    <Label id="Kills" text="999"/>
+                </Panel>
+                <Panel id="DeathsContainer" class="ScoreCol_Deaths ScoreboardPanel">
+                    <Label id="Deaths" text="999"/>
+                </Panel>
+                <Panel id="ElfScoreContainer" class="ScoreCol_ElfScore ScoreboardPanel">
+                    <Label id="ElfScore" text="no"/>
+                </Panel>
+                <Panel id="TrollScoreContainer" class="ScoreCol_TrollScore ScoreboardPanel">
+                    <Label id="TrollScore" text="no"/>
+                </Panel>
+            </Panel>
+            <Panel id="GiveResourcesTable" class="ScoreboardPanel">
+                <Panel id="ResourcePanels">
+                    <Panel class="ResourcePanelSwapOne">
+                        <Panel class="GoldEntryMain">
+                            <Panel class="GoldIconEntry" />
+                            <TextEntry id="GoldEntry" maxchars="7" placeholder=""/>
+                        </Panel>
+                        <Panel class="LumberEntryMain">
+                            <Panel class="LumberIconEntry" />
+                            <TextEntry id="LumberEntry" maxchars="7" placeholder=""/>
+                        </Panel>
+                        <Button class="GiveButton" id="GiveResourcesButton" onactivate="OnGiveResourcesButton()" />
+                        <Button class="GiveButtonAll" id="GiveAllResourcesButton" onactivate="OnGiveAllResourcesButton()">
+                            <Label text="ALL" />
+                        </Button>
+                    </Panel>
+                </Panel>
+                <Panel id="DopPanels">
+                    <Button class="ButtonPlayer ButtonKick" id="VotekickButton" onactivate="OnVoteKickButton()" />
+                    <Button class="ButtonPlayer ButtonFlag" id="FlagButton" onactivate="OnVoteFlagButton()" />
+                    <Button class="ButtonPlayer ButtonMute" id="MuteButton" onactivate="ToggleMute();"/>
+                </Panel>
+			</Panel>
+        </Panel>
+    </Panel>
+</root>

@@ -1,0 +1,100 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/layout/custom_game/vote_hud/vote_hud.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/vote_hud/vote_hud.js" />
+	</scripts>
+	<Panel hittest="false" style="width:100%;height:100%;">
+		<Panel class="GameSetupStages" id="GameSetupStages">
+            <Panel class="SetupStageBG" onactivate=""/>
+            <Label class="StageTimer" id="StageTimer" text="30" />
+            <Panel class="GameInfo" id="GameInfo">
+                <Label class="SettingsLabelHeader" text="Настройки" />
+                <Label class="SettingsLabel" id="SettingsHero" html="true" text="" />
+                <Label class="SettingsLabel" id="SettingsMap" html="true" text="" />
+            </Panel>
+            <Panel class="WindowStage WindowMapStage" id="WindowMapStage">
+                <Label class="WindowStageName" text="Выберите карту" />
+                <Panel class="PlayersCounter" id="WindowStageMapPlayersCounter" />
+                <Panel class="MapsList" id="MapsList" />
+            </Panel>
+            <Panel class="WindowStage WindowRoleStage" id="WindowRoleStage">
+                <Label class="WindowStageName" text="Выберите роль" />
+                <Label class="YourChanceTroll" id="YourChanceTroll" text="" />
+                <Panel class="ChooseRolePanels">
+                    <Panel class="ChooseRolePanel ElfPanel" id="ElfPanel">
+                        <Panel class="RoleButton" onactivate="ChooseTeam('elf')">
+                            <Panel class="RoleAvatar">
+                                <Panel class="RoleGlow" />
+                                <Panel class="RoleIcon" />
+                                <Panel class="RoleBorder" />
+                            </Panel>
+                            <Panel class="RoleNamePanel">
+                                <Label text="Эльф" />
+                            </Panel>
+                        </Panel>
+                        <Label class="RoleDescription" text="Задача эльфов - убить троля или построить что то там. Даже если вы умрете вы сможете выбрать сторону, которой будете помогать" />
+                    </Panel>
+                    <Panel class="ChooseRolePanel TrollPanel" id="TrollPanel">
+                        <Panel class="RoleButton" onactivate="ChooseTeam('troll')">
+                            <Panel class="RoleAvatar">
+                                <Panel class="RoleGlow" />
+                                <Panel class="RoleIcon" />
+                                <Panel class="RoleBorder" />
+                            </Panel>
+                            <Panel class="RoleNamePanel">
+                                <Label text="Тролль" />
+                            </Panel>
+                        </Panel>
+                        <Label class="RoleDescription" text="Тролль охотиться на эльфов и пытается их всех убить, он улучшает свое снаряжение, вы получаете золото за нанесения урона по зданиям эльфов" />
+                    </Panel>
+                </Panel>
+            </Panel>
+            <Panel class="WindowStage WindowPerksStage" id="WindowPerksStage">
+                <Label class="WindowStageName" text="Выберите перки" />
+                <Panel class="PlayerSelectedPerks" id="PlayerSelectedPerks">
+                    
+                </Panel>
+                <Panel class="AllPerksPanel">
+                    <Label class="PerksHeaderLabel" text="Доступные перки" />
+                    <Panel class="PerksBorderLine" />
+                    <Panel class="AllPerksList" id="AllPerksList" />
+                </Panel>
+            </Panel>
+            <Panel class="StagesLines" id="StagesLines">
+                <Panel class="StageLinePanel ActiveStage" id="StageLinePanel_1">
+                    <Panel class="StageNameAndArrow">
+                        <Label class="StageName" text="#stage_1_name" />
+                        <Panel class="ArrowStage" />
+                    </Panel>
+                    <Panel class="StageLine">
+                        <Panel class="StageLineBack" />
+                        <Panel class="StageLineFront" id="StageLineFront_1" />
+                    </Panel>
+                </Panel>
+                <Panel class="StageLinePanel" id="StageLinePanel_2">
+                    <Panel class="StageNameAndArrow">
+                        <Label class="StageName" text="#stage_2_name" />
+                        <Panel class="ArrowStage" />
+                    </Panel>
+                    <Panel class="StageLine">
+                        <Panel class="StageLineBack" />
+                        <Panel class="StageLineFront" id="StageLineFront_2" />
+                    </Panel>
+                </Panel>
+                <Panel class="StageLinePanel" id="StageLinePanel_3">
+                    <Panel class="StageNameAndArrow">
+                        <Label class="StageName" text="#stage_3_name" />
+                        <Panel class="ArrowStage" />
+                    </Panel>
+                    <Panel class="StageLine">
+                        <Panel class="StageLineBack" />
+                        <Panel class="StageLineFront" id="StageLineFront_3" />
+                    </Panel>
+                </Panel>
+            </Panel>
+        </Panel>
+	</Panel>
+</root>

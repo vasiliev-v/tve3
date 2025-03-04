@@ -1,0 +1,36 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/layout/custom_game/resource/resource.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/resource/resource.js" />
+	</scripts>
+	<Panel hittest="false" class='ResourcePanel'>
+		<Panel class="ResourceBG" />
+        <Panel class="ResourceMain">
+            <Panel class="GoldnLumber">
+                <Panel class="ResourcePanels">
+                    <Panel id="GoldIcon" class="GoldIcon" />
+                    <Label id="GoldText" class="GoldText" text="0" html="true"/>
+                    <Panel class="ChangeResourcePanel" id="ChangeResourcePanelFirst">
+                        <Label class="ResourceChangeInfo" id="ResourceChangeInfoGold" html="true" text="0 -> 0" />
+                    </Panel>
+                </Panel>
+            </Panel>
+            <Panel class="CheeseLumberPricePanel" id="CheeseLumberPricePanel">
+                <Panel class="ResourcePanels" id="CheesePanel">
+                    <Panel class="CheeseIcon" />
+                    <Label id="CheeseText" class="CheeseText" text="0/0" html="true"/>
+                </Panel>
+                <Panel class="ResourcePanels" id="LumberPricePanel">
+                    <Panel class="LumberPriceIcon" />
+                    <Label id="LumberText" class="LumberPriceText" text="0" html="true"/>
+                    <Panel class="ChangeResourcePanel" id="ChangeResourcePanelSecond">
+                        <Label class="ResourceChangeInfo" id="ResourceChangeInfoLumber" html="true" text="0 -> 0" />
+                    </Panel>
+                </Panel>
+            </Panel>
+        </Panel>
+	</Panel>
+</root>

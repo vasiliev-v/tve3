@@ -1,0 +1,30 @@
+<root>
+    <styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/layout/custom_game/multiteam_top_scoreboard/multiteam_top_scoreboard.vcss_c" />
+    </styles>
+    <scripts>
+        <include src="s2r://panorama/layout/custom_game/scripts/util.vjs_c" />
+        <include src="s2r://panorama/layout/custom_game/multiteam_top_scoreboard/multiteam_top_scoreboard.vjs_c" />
+    </scripts>
+    <Panel hittest="false" style="width:100%;height:100%;">
+	    <Panel hittest="false" id="TopBarScoreboard">
+            <Panel class="TimerShadow" />
+            <Panel class="GameTimer" id="GameTimer">
+                <Panel class="IconWithTimer">
+                    <Panel class="TimeIcon" id="TimeIcon" />
+                    <Label class="GameTimerLabel" id="GameTimerLabel" text="00:00" />
+                </Panel>
+                <Panel class="TimeOfDayLine">
+                    <Panel class="TimeOfDayLineBack" />
+                    <Panel class="TimeOfDayLineFront" id="TimeOfDayLineFront" />
+                </Panel>
+                <Label class="TimerToNextCycle" id="TimerToNextCycle" text="0:00 до ночи" />
+            </Panel>
+            <Panel hittest="false" class="PlayersPanels">
+                <Panel hittest="false" class="player_list_1" id="player_list_1" />
+                <Panel hittest="false" class="player_list_2" id="player_list_2" />
+            </Panel>
+	    </Panel>
+    </Panel>
+</root>
