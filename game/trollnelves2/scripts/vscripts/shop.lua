@@ -1129,7 +1129,9 @@ end
 
 function Shop:Statistics(table, check, callback)
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(table.id))
-	if table.type == "fps" then
+	return 1
+	--[[
+	if table.type == "fps" and tonumber(table.count) ~= PoolTable["5"]["4"] then
 		if tonumber(table.count) == 1 then
 			GameRules.PlayersFPS[table.PlayerID] = true
 		else
@@ -1141,7 +1143,7 @@ function Shop:Statistics(table, check, callback)
 		if check ~= 1 then
 			SetDefaultStats(table)
 		end
-	elseif table.type == "mute" then
+	elseif table.type == "mute" and tonumber(table.count) ~= PoolTable["5"]["3"] then
 		if tonumber(table.count) == 1 then
 			GameRules.Mute[table.PlayerID] = 1
 			PoolTable["5"]["3"] = 1
@@ -1159,7 +1161,7 @@ function Shop:Statistics(table, check, callback)
 				SetDefaultStats(table)
 			end
 		end	
-	elseif table.type == "block" then
+	elseif table.type == "block" and tonumber(table.count) ~= PoolTable["5"]["5"] then
 		if tonumber(table.count) == 1 then
 			GameRules.Block[table.PlayerID] = true
 			PoolTable["5"]["5"] = 1
@@ -1178,6 +1180,7 @@ function Shop:Statistics(table, check, callback)
 			end
 		end	
 	end
+	--]]
 end
 
 function Shop:SetStats()

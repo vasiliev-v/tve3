@@ -68,7 +68,7 @@ function UpdateTopWins() {
     SteamID.text = String("Friend ID: " + text)
     var count = 4
     if (Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()) == Players.GetLocalPlayer())
-        count = 7
+        count = 4
     for (var i = 1; i <= count;i++)
     {
         let Line = $.CreatePanel("Panel", $("#PlayersColumnElvesRating"), "player_id_"+i);
