@@ -25,13 +25,13 @@ function UpdateTeam( teamId )
     }
     if (Game.IsDayTime())
     {
-        $("#GameTimer").SetHasClass("IsNight", false)
-        $("#TimerToNextCycle").text = TimeUntil.text
+        //$("#GameTimer").SetHasClass("IsNight", false)
+        //$("#TimerToNextCycle").text = TimeUntil.text
     }
     else
     {
-        $("#GameTimer").SetHasClass("IsNight", true)
-        $("#TimerToNextCycle").text = TimeUntil.text
+        //$("#GameTimer").SetHasClass("IsNight", true)
+        //$("#TimerToNextCycle").text = TimeUntil.text
     }
     $("#TimeOfDayLineFront").style.width = (time_to_next_cycle / 300 * 100) + "%"
     $.GetContextPanel().SetHasClass("AltPressed", GameUI.IsAltDown())

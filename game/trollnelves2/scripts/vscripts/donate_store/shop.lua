@@ -38,10 +38,12 @@ function Shop.RequestDonate(pID, steam, callback)
 	end
 
 	local req 
-	if string.match(GetMapName(),"clanwars") then
-		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip2/" .. steam)
-	else
+	if GameRules.MapSpeed == 1 then
 		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip/" .. steam)
+	elseif GameRules.MapSpeed == 2 then 
+		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip2/" .. steam)
+	elseif GameRules.MapSpeed == 3 then
+	req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip3/" .. steam)
 	end
 	
 	if not req then
@@ -49,11 +51,11 @@ function Shop.RequestDonate(pID, steam, callback)
 	end
 
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
-	--DebugPrint("RequestVip ***********************************************" .. GameRules.server )
+	DebugPrint("RequestVip ***********************************************" .. GameRules.server )
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
-			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
-			--DebugPrint(res.Body)
+			DebugPrint("Connection failed! Code: ".. res.StatusCode)
+			DebugPrint(res.Body)
 			return -1
 		end
 		
@@ -1116,6 +1118,11 @@ function Shop:EventBattlePass(table, callback)
 end
 
 function Shop:Statistics(table, check, callback)
+	DebugPrintTable(table)
+	DebugPrint("1")
+	DebugPrint(check)
+	DebugPrint("2")
+
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(table.id))
 	if table.type == "fps" then
 		if tonumber(table.count) == 1 then
@@ -1198,6 +1205,7 @@ end
 function SetDefaultStats(event)
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
+	DebugPrintTable(event)
 	if event.part ~=  nil then
 		data.SteamID = tostring(PlayerResource:GetSteamID(event.PlayerID))
 		data.Num = tostring(event.part)

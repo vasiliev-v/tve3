@@ -82,7 +82,16 @@ var FAKE_LEADERBOARD_LIST =
         games: 100,
     },
 }
-
+var FAKE_PLAYER_LOCAL =
+{
+    top_place: 99999,
+    steamid: "",
+    troll_rating : 0,
+    elves_rating : 0,
+    summary_rating : 0,
+    games: 0,
+}
+/*
 var FAKE_PLAYER_LOCAL =
 {
     top_place: 203,
@@ -92,6 +101,9 @@ var FAKE_PLAYER_LOCAL =
     summary_rating : 13000,
     games: 100,
 }
+*/
+
+
 
 function OpenPanel()
 {
@@ -133,7 +145,10 @@ function InitPlayersRating(sort_id)
 
 function InitLocalPlayer()
 {
-    let local_player_info = [FAKE_PLAYER_LOCAL.steamid, FAKE_PLAYER_LOCAL.summary_rating, FAKE_PLAYER_LOCAL.troll_rating, FAKE_PLAYER_LOCAL.elves_rating, FAKE_PLAYER_LOCAL.games]
+    let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))
+    if (!shop_table) { return }
+    //$.Msg(shop_table)
+    let local_player_info = [FAKE_PLAYER_LOCAL.SteamID, FAKE_PLAYER_LOCAL.Score, FAKE_PLAYER_LOCAL.Troll, FAKE_PLAYER_LOCAL.Elf, FAKE_PLAYER_LOCAL.MatchID]
     CreatePlayer(FAKE_PLAYER_LOCAL["top_place"], local_player_info, true)
 }
 

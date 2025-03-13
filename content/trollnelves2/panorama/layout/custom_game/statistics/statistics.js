@@ -99,7 +99,7 @@ function CreateColumn(col_id, info_elf, info_troll)
 
 function GetStatsValue(id, info)
 {
-    let result = "No"
+    let text = "No"
     if (id == 1 && info != 0 )
         text = info.bonusPercent
     else if (id == 2 && info != 0 )
@@ -125,7 +125,7 @@ function GetStatsValue(id, info)
     else if (id == 12 && info != 0 )
         text = info.lumberGiven
 
-    return result
+    return text
 }
 
 function UpdateInformation()

@@ -23,7 +23,6 @@ require('internal/trollnelves2')
 require('top')
 require('settings')
 require('events')
-require('donate')
 require('reklama')
 require('chatcommand')
 require('votekick')
@@ -76,12 +75,14 @@ function trollnelves2:GameSetup()
             end
         end
         Shop.RequestBP(callback)
-        Stats.RequestDataTop10("1", callback)
-        Stats.RequestDataTop10("2", callback)
-        Stats.RequestDataTop10("3", callback)
-        Stats.RequestDataTop10("7", callback)
+        if GameRules.MapSpeed == 1 then
+            Stats.RequestDataTop10("1", callback)
+        elseif GameRules.MapSpeed == 1 then 
+            Stats.RequestDataTop10("2", callback)
+        elseif GameRules.MapSpeed == 1 then
+            Stats.RequestDataTop10("3", callback)
+        end
         -- StartReklama()
-        Donate:CreateList()
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
         --DebugPrint("count player " .. GameRules.PlayersCount)
 
