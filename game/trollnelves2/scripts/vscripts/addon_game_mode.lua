@@ -1077,6 +1077,7 @@ function Activate()
 	GameRules.PoolTable[10] = {} -- батлпасс
 	GameRules.PoolTable[11] = {} -- реп
 	GameRules.PoolTable[12] = {} -- перк
+	GameRules.PoolTable[13] = {} -- личный рейт
     GameRules.PoolTable[0][0] = {}
     GameRules.PoolTable[1][0] = {}
     GameRules.PoolTable[2][0] = {}

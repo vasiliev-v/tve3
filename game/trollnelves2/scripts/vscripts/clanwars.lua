@@ -1,4 +1,3 @@
-require('top')
 
 Clanwars = Clanwars or {}
 local dedicatedServerKey = GetDedicatedServerKeyV3("1")

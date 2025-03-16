@@ -20,7 +20,6 @@ require('libraries/player')
 require('libraries/entity')
 
 require('internal/trollnelves2')
-require('top')
 require('settings')
 require('events')
 require('reklama')

@@ -54,7 +54,7 @@ var uiWaitingSchedules = [];
 
     newUI.FindChildTraverse("BuffContainer").style.visibility = "visible";
     newUI.FindChildTraverse("BuffContainer").style.marginLeft = "-250px";
-    newUI.FindChildTraverse("BuffContainer").style.marginTop = "-75px";
+    newUI.FindChildTraverse("BuffContainer").style.marginTop = "125px";
 
     newUI.FindChildTraverse("inventory_neutral_craft_holder").style.visibility = "collapse";   
 

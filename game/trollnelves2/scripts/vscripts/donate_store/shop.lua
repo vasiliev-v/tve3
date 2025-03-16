@@ -55,12 +55,12 @@ function Shop.RequestDonate(pID, steam, callback)
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
 			DebugPrint("Connection failed! Code: ".. res.StatusCode)
-			DebugPrint(res.Body)
+			-- DebugPrint(res.Body)
 			return -1
 		end
 		
 		local obj,pos,err = json.decode(res.Body)
-		DeepPrintTable(obj)
+
 		--DebugPrint("***********************************************")
 		local status, nextCall = Error_debug.ErrorCheck(function() 
 			Shop.RequestVip(obj[1], pID, steam, callback)
@@ -83,6 +83,7 @@ function Shop.RequestDonate(pID, steam, callback)
 			Stats.RequestData(obj[16], pID)
 			Stats.RequestRep(obj[17], pID)
 			Shop.RequestSkill(obj[18], pID)
+			Stats.RequestRating(obj[19], pID)
 			--Shop.RequestBP(callback)
 		end)
 		return obj
@@ -93,7 +94,7 @@ end
 function Shop.RequestVip(obj, pID, steam, callback)
 	local parts = {}
 	--DebugPrint("RequestVip ***********************************************" .. GameRules.server )
-	DeepPrintTable(obj)
+	-- DeepPrintTable(obj)
 	--DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["5"]["0"] = PlayerResource:GetSteamAccountID(pID)
@@ -174,7 +175,7 @@ function Shop.RequestSkill(obj, pID, steam, callback)
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	game_spells_lib.PLAYER_INFO[pID] = CustomNetTables:GetTableValue("Shop", tostring(pID))[12]
-	--DebugPrintTable(PoolTable["12"])
+
 	return obj
 end
 
@@ -355,7 +356,6 @@ function Shop.RequestBonusTroll(obj, pID, steam, callback)
 	local tmp = 0
 	--DeepPrintTable(obj)
 	--DebugPrint("***********************************************")
-	--DebugPrintTable(CustomNetTables:GetTableValue("Shop", tostring(pID)))
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["2"]["0"] = "0"
 	PoolTable["2"]["1"] = "none"
@@ -436,7 +436,7 @@ function Shop:BuyShopItem(table, callback)
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
-	DebugPrintTable(table)
+
 	if GameRules.FakeList[table.PlayerID] ~= nil then
 		return
 	end
@@ -1079,12 +1079,14 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 end
 
 function Shop:EventBattlePass(table, callback)
+	DebugPrintTable(table)
+	DebugPrintTable("test!!!!!!!!!!!!!!")
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
     local steam = tostring(PlayerResource:GetSteamID(table.PlayerID))
     table.SteamID = steam
-    table.MatchID = MatchID
+    table.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 	table.playerID = tostring(table.PlayerID)
 	table.Gem = 0
 	table.Gold = 0
@@ -1118,10 +1120,6 @@ function Shop:EventBattlePass(table, callback)
 end
 
 function Shop:Statistics(table, check, callback)
-	DebugPrintTable(table)
-	DebugPrint("1")
-	DebugPrint(check)
-	DebugPrint("2")
 
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(table.id))
 	if table.type == "fps" then
@@ -1205,7 +1203,6 @@ end
 function SetDefaultStats(event)
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
-	DebugPrintTable(event)
 	if event.part ~=  nil then
 		data.SteamID = tostring(PlayerResource:GetSteamID(event.PlayerID))
 		data.Num = tostring(event.part)
