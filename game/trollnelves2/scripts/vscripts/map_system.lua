@@ -7,25 +7,22 @@ local MAPS_LIST = {}
 if string.match(GetMapName(),"1x1")  then
 	MAPS_LIST = 
 	{
-		{"random", 0, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"1x1icepeak", -125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}, 
-		{"1x1cursedisland",-127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}, 
-		{"1x1cave", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}
+		{"random", 			0, 		"s2r://panorama/images/new_design/maps/random.vtex"},
+		{"1x1icepeak", 		-125,	"s2r://panorama/images/new_design/maps/1x1icepeak.vtex"}, 
+		{"1x1cursedisland",	-127, 	"s2r://panorama/images/new_design/maps/1x1cursedisland.vtex"}, 
+		{"1x1cave", 		-127,	"s2r://panorama/images/new_design/maps/1x1cave.vtex"}
 	}
 else
 	MAPS_LIST = 
 	{
-		{"random", 0, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		-- {"forest", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"summer", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"spring",-127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"autumn", -127.125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"ghosttown", -126, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"winter", 1, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"china", -255.125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"desert", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"jungle", -127, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}, 
-		{"helheim", -125, "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"}
+		{"random", 		0, 		"s2r://panorama/images/new_design/maps/random.vtex"},
+		{"atlantida", 	-127, 	"s2r://panorama/images/new_design/maps/atlantida.png"},
+		{"bloodville",	-127, 	"s2r://panorama/images/new_design/maps/bloodville.vtex"},
+		{"garden", 		-127, 	"s2r://panorama/images/new_design/maps/garden.vtex"},
+		{"gorge",		-127, 	"s2r://panorama/images/new_design/maps/gorge.vtex"},
+		{"mines", 		-127, 	"s2r://panorama/images/new_design/maps/mines.vtex"},
+		{"north", 		-127, 	"s2r://panorama/images/new_design/maps/north.vtex"},
+		{"okinawa", 	-127,	"s2r://panorama/images/new_design/maps/okinawa.vtex"}
 	}
 end
 

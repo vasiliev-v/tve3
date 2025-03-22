@@ -36,6 +36,12 @@ function Shop.RequestDonate(pID, steam, callback)
 		CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 		return -1 
 	end
+	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
+	for id=1, #game_spells_lib.spells_list do
+		PoolTable["12"][tostring(id)] = {game_spells_lib.spells_list[id][1], 1, 0}	
+	end
+	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
+	game_spells_lib.PLAYER_INFO[pID] = CustomNetTables:GetTableValue("Shop", tostring(pID))[12]
 
 	local req 
 	if GameRules.MapSpeed == 1 then
@@ -43,7 +49,7 @@ function Shop.RequestDonate(pID, steam, callback)
 	elseif GameRules.MapSpeed == 2 then 
 		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip2/" .. steam)
 	elseif GameRules.MapSpeed == 3 then
-	req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip3/" .. steam)
+	    req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip3/" .. steam)
 	end
 	
 	if not req then
@@ -84,6 +90,7 @@ function Shop.RequestDonate(pID, steam, callback)
 			Stats.RequestRep(obj[17], pID)
 			Shop.RequestSkill(obj[18], pID)
 			Stats.RequestRating(obj[19], pID)
+			Shop.RequestBPget(obj[20], pID)
 			--Shop.RequestBP(callback)
 		end)
 		return obj
@@ -1117,6 +1124,20 @@ function Shop:EventBattlePass(table, callback)
 		end
 		
 	end)
+end
+
+function Shop.RequestBPget(obj, pID, steam, callback)
+	local parts = {}
+	--DebugPrint("RequestVip ***********************************************" .. GameRules.server )
+	-- DeepPrintTable(obj)
+	--DebugPrint("***********************************************")
+	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
+	for id=1,#obj do
+		PoolTable["14"][tostring(obj[id].num)] = tostring(obj[id].num)
+	end
+	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
+	return obj
+
 end
 
 function Shop:Statistics(table, check, callback)
