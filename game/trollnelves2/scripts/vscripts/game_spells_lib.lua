@@ -18,12 +18,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_ms", 
         {
             "elf_spell_ms_description_level_1",
-            "elf_spell_ms_description_level_2", 
-            "elf_spell_ms_description_level_3"
         },
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -34,12 +30,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_gold", 
         {
             "elf_spell_gold_description_level_1", 
-            "elf_spell_gold_description_level_2", 
-            "elf_spell_gold_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -50,12 +42,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_lumber", 
         {
             "elf_spell_lumber_description_level_1", 
-            "elf_spell_lumber_description_level_2", 
-            "elf_spell_lumber_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -66,12 +54,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_cd_reduce", 
         {
             "elf_spell_cd_reduce_description_level_1", 
-            "elf_spell_cd_reduce_description_level_2", 
-            "elf_spell_cd_reduce_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -82,12 +66,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_cd_worker", 
         {
             "elf_spell_cd_worker_description_level_1", 
-            "elf_spell_cd_worker_description_level_2", 
-            "elf_spell_cd_worker_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -98,12 +78,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_armor_wall", 
         {
             "elf_spell_armor_wall_description_level_1", 
-            "elf_spell_armor_wall_description_level_2", 
-            "elf_spell_armor_wall_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -114,12 +90,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_tower_damage", 
         {
             "elf_spell_tower_damage_description_level_1", 
-            "elf_spell_tower_damage_description_level_2", 
-            "elf_spell_tower_damage_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -130,12 +102,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_limit_gold", 
         {
             "elf_spell_limit_gold_description_level_1", 
-            "elf_spell_limit_gold_description_level_2", 
-            "elf_spell_limit_gold_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -146,12 +114,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_limit_lumber", 
         {
             "elf_spell_limit_lumber_description_level_1", 
-            "elf_spell_limit_lumber_description_level_2", 
-            "elf_spell_limit_lumber_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -162,12 +126,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_true", 
         {
             "elf_spell_true_description_level_1", 
-            "elf_spell_true_description_level_2", 
-            "elf_spell_true_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -178,12 +138,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_tower_range", 
         {
             "elf_spell_tower_range_description_level_1", 
-            "elf_spell_tower_range_description_level_2", 
-            "elf_spell_tower_range_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -194,12 +150,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_blink", 
         {
             "elf_spell_blink_description_level_1", 
-            "elf_spell_blink_description_level_2", 
-            "elf_spell_blink_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -210,12 +162,8 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_damage_gold", 
         {
             "elf_spell_damage_gold_description_level_1", 
-            "elf_spell_damage_gold_description_level_2", 
-            "elf_spell_damage_gold_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "0"
@@ -241,12 +189,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_gold_hit", 
         {
             "troll_spell_gold_hit_description_level_1", 
-            "troll_spell_gold_hit_description_level_2", 
-            "troll_spell_gold_hit_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -257,12 +201,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_hp_reg", 
         {
             "troll_spell_hp_reg_description_level_1", 
-            "troll_spell_hp_reg_description_level_2", 
-            "troll_spell_hp_reg_description_level_3"
         },
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -273,12 +213,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_limit_gold", 
         {
             "troll_spell_limit_gold_description_level_1", 
-            "troll_spell_limit_gold_description_level_2", 
-            "troll_spell_limit_gold_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -289,12 +225,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_cd_reduce", 
         {
             "troll_spell_cd_reduce_description_level_1", 
-            "troll_spell_cd_reduce_description_level_2", 
-            "troll_spell_cd_reduce_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -305,12 +237,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_armor", 
         {
             "troll_spell_armor_description_level_1", 
-            "troll_spell_armor_description_level_2", 
-            "troll_spell_armor_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -321,12 +249,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_vision", 
         {
             "troll_spell_vision_description_level_1", 
-            "troll_spell_vision_description_level_2", 
-            "troll_spell_vision_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -337,12 +261,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_magic_resist", 
         {
             "troll_spell_magic_resist_description_level_1", 
-            "troll_spell_magic_resist_description_level_2", 
-            "troll_spell_magic_resist_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -353,12 +273,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_status_resist", 
         {
             "troll_spell_status_resist_description_level_1", 
-            "troll_spell_status_resist_description_level_2", 
-            "troll_spell_status_resist_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -369,12 +285,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_silence_target", 
         {
             "troll_spell_silence_target_description_level_1", 
-            "troll_spell_silence_target_description_level_2", 
-            "troll_spell_silence_target_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -385,12 +297,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_silence_area", 
         {
             "troll_spell_silence_area_description_level_1", 
-            "troll_spell_silence_area_description_level_2", 
-            "troll_spell_silence_area_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -401,12 +309,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_stun_target", 
         {
             "troll_spell_stun_target_description_level_1", 
-            "troll_spell_stun_target_description_level_2", 
-            "troll_spell_stun_target_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -417,12 +321,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_haste", 
         {
             "troll_spell_haste_description_level_1", 
-            "troll_spell_haste_description_level_2", 
-            "troll_spell_haste_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -433,12 +333,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_ward", 
         {
             "troll_spell_ward_description_level_1", 
-            "troll_spell_ward_description_level_2", 
-            "troll_spell_ward_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -449,12 +345,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_bkb", 
         {
             "troll_spell_bkb_description_level_1", 
-            "troll_spell_bkb_description_level_2", 
-            "troll_spell_bkb_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -465,12 +357,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_slow_target", 
         {
             "troll_spell_slow_target_description_level_1", 
-            "troll_spell_slow_target_description_level_2", 
-            "troll_spell_slow_target_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -481,12 +369,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_slow_area", 
         {
             "troll_spell_slow_area_description_level_1", 
-            "troll_spell_slow_area_description_level_2", 
-            "troll_spell_slow_area_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -497,12 +381,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_invis", 
         {
             "troll_spell_invis_description_level_1", 
-            "troll_spell_invis_description_level_2", 
-            "troll_spell_invis_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -513,12 +393,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_evasion", 
         {
             "troll_spell_evasion_description_level_1", 
-            "troll_spell_evasion_description_level_2", 
-            "troll_spell_evasion_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -529,12 +405,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_atkspeed", 
         {
             "troll_spell_atkspeed_description_level_1", 
-            "troll_spell_atkspeed_description_level_2", 
-            "troll_spell_atkspeed_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -545,12 +417,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_wolf", 
         {
             "troll_spell_wolf_description_level_1", 
-            "troll_spell_wolf_description_level_2", 
-            "troll_spell_wolf_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -561,12 +429,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_reveal", 
         {
             "troll_spell_reveal_description_level_1", 
-            "troll_spell_reveal_description_level_2", 
-            "troll_spell_reveal_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -577,12 +441,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_night_buff", 
         {
             "troll_spell_night_buff_description_level_1", 
-            "troll_spell_night_buff_description_level_2", 
-            "troll_spell_night_buff_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"
@@ -593,12 +453,8 @@ game_spells_lib.spells_list =
         "modifier_troll_spell_gold_wisp", 
         {
             "troll_spell_gold_wisp_description_level_1", 
-            "troll_spell_gold_wisp_description_level_2", 
-            "troll_spell_gold_wisp_description_level_3"
         }, 
         {
-            {0,0,0},
-            {0,0,0},
             {0,0,0},
         },
         "1"

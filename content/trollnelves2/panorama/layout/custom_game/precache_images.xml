@@ -1,6 +1,18 @@
 <root>
     <Panel hittest="false">
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/random.png" />
 	    <Image style="opacity:0;" src="file://{images}/new_design/maps/atlantida.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/bloodville.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/garden.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/gorge.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/mines.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/north.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/okinawa.png" />
+	    
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/random1x1.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1icepeak.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1cursedisland.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1cave.png" />
 	    
     </Panel>
 </root>
