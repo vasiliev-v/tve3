@@ -82,8 +82,9 @@ function UpdateWispValue() {
 function OnPlayerLumberPriceChanged(args) 
 {
     var lumberPrice = args.lumberPrice;
+    var lumberSell = args.lumberSell;
     $("#ResourceChangeInfoGold").text = "<font color='#FFD74B'>" + lumberPrice + "</font> -> " + "<font color='#23BD33'>10</font>"
-    $("#ResourceChangeInfoLumber").text = "<font color='#23BD33'>10</font>" + " -> <font color='#FFD74B'>" + lumberPrice + "</font>"
+    $("#ResourceChangeInfoLumber").text = "<font color='#23BD33'>10</font>" + " -> <font color='#FFD74B'>" + lumberSell + "</font>"
 }
 
 
