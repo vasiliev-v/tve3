@@ -532,53 +532,56 @@ function ExchangeLumber(event)
 		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 		local amount = event.Amount
 		local price = 0
+		local priceSell = 0
 		local increasePrice = 0
-		for a = 10, math.abs(amount), 10 do
+		local increasePriceSell = 0
+		for a = 10,math.abs(amount),10 do
 			price = price + GameRules.lumberPrice + increasePrice
 			if amount > 0 then
 				increasePrice = increasePrice + 5
-			else
+				else
 				if GameRules.lumberPrice + increasePrice - 5 > 10 then
 					increasePrice = increasePrice - 5
 				end
-				GameRules.lumberSell = GameRules.lumberSell - 10 -- Уменьшаем цену продажи на 10 за итерацию
 			end
 		end
-		
-		-- Покупка дерева
+	--	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
+--			SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
+	--		return false
+	--	end
+		--Buy wood
 		if amount > 0 then
 			if price > PlayerResource:GetGold(playerID) then
 				SendErrorMessage(playerID, "error_not_enough_gold")
 				return false
-			else
-				PlayerResource:ModifyGold(hero, -price, true)
-				PlayerResource:ModifyLumber(hero, amount, true)
-		
-				GameRules.lumberPrice = GameRules.lumberPrice + increasePrice
-				GameRules.lumberSell = GameRules.lumberPrice - 10 -- Обновляем цену продажи
-		
-				PopupGoldGain(caster, math.floor(price), false)
-				PopupLumber(caster, math.floor(amount), true)
+				else
+				PlayerResource:ModifyGold(hero,-price,true)
+				PlayerResource:ModifyLumber(hero,amount,true)
+				
+				ModifyLumberPrice(increasePrice)
+				PopupGoldGain(caster,math.floor(price),false)
+				PopupLumber(caster,math.floor(amount),true)
 			end
-		-- Продажа дерева
+			--Sell wood
 		else
+			DebugPrint("------------ ")
+			DebugPrint("price " .. price)
+			DebugPrint("increasePrice " .. increasePrice)
+			DebugPrint("priceSell " .. priceSell)
+			DebugPrint("amount " .. amount)
+			priceSell = price + increasePrice + ((amount/10) * 10) 
 			amount = -amount
-			price = GameRules.lumberSell + increasePrice -- Используем цену продажи
-		
 			if amount > PlayerResource:GetLumber(playerID) then
 				SendErrorMessage(playerID, "error_not_enough_lumber")
 				return false
-			else
-				PlayerResource:ModifyGold(hero, price, true)
-				PlayerResource:ModifyLumber(hero, -amount, true)
-		
-				GameRules.lumberPrice = GameRules.lumberPrice + increasePrice
-				GameRules.lumberSell = GameRules.lumberPrice - 10 -- Цена продажи обновляется на основе покупки
-		
-				PopupGoldGain(caster, math.floor(price), true)
-				PopupLumber(caster, math.floor(amount), false)
+				else
+				PlayerResource:ModifyGold(hero,priceSell,true)
+				PlayerResource:ModifyLumber(hero,-amount,true)
+				ModifyLumberPrice(increasePrice)
+				PopupGoldGain(caster,math.floor(priceSell),true)
+				PopupLumber(caster,math.floor(amount),false)
 			end
-		end		
+		end
 	end
 end
 
@@ -1533,7 +1536,7 @@ function ItemBlink(keys)
 	FindClearSpaceForUnit(keys.caster, target_point, false)
 	
 	
-	Timers:CreateTimer(0.1,function()
+	Timers:CreateTimer(0.3,function()
 		if keys.caster then
 			ParticleManager:CreateParticle("particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf", PATTACH_ABSORIGIN, keys.caster)
 		end

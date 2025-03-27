@@ -990,7 +990,7 @@ end
 function Activate()
 	GameRules.MapSpeed = tonumber(string.match(GetMapName(),"%d+")) or 1
 	GameRules.lumberPrice = STARTING_LUMBER_PRICE
-	GameRules.lumberSell = STARTING_LUMBER_PRICE-10
+	GameRules.lumberSell = STARTING_LUMBER_PRICE - 10
 	GameRules.maxFood = STARTING_MAX_FOOD
 	GameRules.maxWisp = STARTING_MAX_WISP
 	GameRules.maxMine = STARTING_MAX_MINE
