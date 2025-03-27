@@ -990,6 +990,7 @@ end
 function Activate()
 	GameRules.MapSpeed = tonumber(string.match(GetMapName(),"%d+")) or 1
 	GameRules.lumberPrice = STARTING_LUMBER_PRICE
+	GameRules.lumberSell = STARTING_LUMBER_PRICE-10
 	GameRules.maxFood = STARTING_MAX_FOOD
 	GameRules.maxWisp = STARTING_MAX_WISP
 	GameRules.maxMine = STARTING_MAX_MINE
@@ -1043,8 +1044,8 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = false and IsInToolsMode()
-	GameRules.test2 = false
+	GameRules.test = true
+	GameRules.test2 = true
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
 	GameRules.MultiMapSpeed = 1

@@ -1,6 +1,7 @@
 Stats = Stats or {}
 local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA" --GetDedicatedServerKeyV3("1")
 local checkResult = {}
+local countCheckShop = 0 
 
 function Stats.SubmitMatchData(winner,callback)
 	if GameRules.startTime == nil then
@@ -324,8 +325,15 @@ function Stats.RequestDataTop10(mapSpd, callback)
 
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
-			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
+			DebugPrint("Connection failed! Code: ".. res.StatusCode)
 			--DebugPrint(res.Body)
+			if countCheckShop <= 3 then
+				DebugPrint("RECONNECT RATING!!!!!!!")
+				Timers:CreateTimer(60, function() 
+					countCheckShop = countCheckShop + 1
+					Stats.RequestDataTop10(mapSpd, callback)
+			    end)
+			end
 			return -1
 		end
 		

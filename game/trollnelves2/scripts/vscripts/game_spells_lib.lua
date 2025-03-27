@@ -20,7 +20,7 @@ game_spells_lib.spells_list =
             "elf_spell_ms_description_level_1_shop",
         },
         {
-            {0,0,0},
+            {2,5,10},
         },
         "0"
     },
@@ -30,9 +30,11 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_gold", 
         {
             "elf_spell_gold_description_level_1_shop", 
+            "elf_spell_gold_description_level_2_shop", 
         }, 
         {
-            {0,0,0},
+            {10,15,20},
+            {"-20","-10",0},
         },
         "0"
     },
@@ -42,9 +44,11 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_lumber", 
         {
             "elf_spell_lumber_description_level_1_shop", 
+            "elf_spell_lumber_description_level_2_shop", 
         }, 
         {
-            {0,0,0},
+            {2,2,2},
+            {"-30","-20","-10"},
         },
         "0"
     },
@@ -56,7 +60,7 @@ game_spells_lib.spells_list =
             "elf_spell_cd_reduce_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {"-4%","-8%","-16%"},
         },
         "0"
     },
@@ -68,7 +72,7 @@ game_spells_lib.spells_list =
             "elf_spell_cd_worker_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {"-30%","-50%","-75%"},
         },
         "0"
     },
@@ -80,7 +84,7 @@ game_spells_lib.spells_list =
             "elf_spell_armor_wall_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {"10% + 1","15% + 1","20% + 1"},
         },
         "0"
     },
@@ -92,7 +96,7 @@ game_spells_lib.spells_list =
             "elf_spell_tower_damage_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {"10% + 1","15% + 1","20% + 1"},
         },
         "0"
     },
@@ -104,7 +108,7 @@ game_spells_lib.spells_list =
             "elf_spell_limit_gold_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {"200k","400k","600k"},
         },
         "0"
     },
@@ -116,7 +120,7 @@ game_spells_lib.spells_list =
             "elf_spell_limit_lumber_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {"200k","400k","600k"},
         },
         "0"
     },
@@ -128,7 +132,7 @@ game_spells_lib.spells_list =
             "elf_spell_true_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {200, 400, 600},   
         },
         "0"
     },
@@ -140,7 +144,7 @@ game_spells_lib.spells_list =
             "elf_spell_tower_range_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {32,64,128},
         },
         "0"
     },
@@ -152,7 +156,7 @@ game_spells_lib.spells_list =
             "elf_spell_blink_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {"+200","+400","+600"},
         },
         "0"
     },
@@ -162,6 +166,24 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_damage_gold", 
         {
             "elf_spell_damage_gold_description_level_1_shop", 
+            "elf_spell_damage_gold_description_level_2_shop", 
+            "elf_spell_damage_gold_description_level_3_shop", 
+            "elf_spell_damage_gold_description_level_4_shop", 
+        }, 
+        {
+            {"4%","8%","15%"},
+            {"30 min","30 min","30 min"},
+            {"15 min","15 min","15 min"},
+            {"5 min","5 min","5 min"},
+        },
+        "0"
+    },
+    {
+        "elf_spell_invis", 
+        "elf_spell_invis", 
+        "modifier_elf_spell_invis", 
+        {
+            "elf_spell_invis_description_level_1_shop", 
         }, 
         {
             {0,0,0},
@@ -554,7 +576,7 @@ function game_spells_lib:event_set_activate_spell(data)
     if not havePerk then
         return
     end
-    DebugPrint("GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP")
+    
     if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
         for _, spell_history in pairs(game_spells_lib.spells_list) do
             if spell_history[1] == spell_name then
@@ -566,16 +588,14 @@ function game_spells_lib:event_set_activate_spell(data)
             end
         end
     end
-    DebugPrint("GOOOOOOOO")
+    
     -- Создание таблицы активных навыков у игрока с айди
     if game_spells_lib.current_activated_spell[player_id] == nil then
         game_spells_lib.current_activated_spell[player_id] = {}
     end
-    if GameRules.startTime == nil then
-		GameRules.startTime = 1
-	end
+
     -- нельзя использовать после опредленного времени
-    if (math.floor(GameRules:GetGameTime() - GameRules.startTime) / 60) >= game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE then
+    if (GameRules:GetGameTime() / 60) >= game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE then
 		return
 	end
 
@@ -810,4 +830,25 @@ function game_spells_lib:FindNewSpell(player_id, idPerk)
         return random_spells[RandomInt(1, #random_spells)][1]
     end
     return nil
+end
+
+
+function game_spells_lib:SetSpellPlayers()
+    local pplc = PlayerResource:GetPlayerCount()
+	for id=0,pplc-1 do
+        if game_spells_lib.current_activated_spell[id] ~= nil then
+            for _, spell_name in pairs(game_spells_lib.current_activated_spell[id]) do
+                local hero = PlayerResource:GetSelectedHeroEntity(id)
+                if hero == nil then 
+                    return 
+                end
+                local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
+                local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {}):SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
+                DebugPrint("lvl " .. game_spells_lib:GetSpellLevel(id, spell_name))
+                if spell_mod then
+                    spell_mod:SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
+                end
+            end
+        end
+    end
 end

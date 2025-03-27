@@ -4117,6 +4117,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_stun_target_description_level_3"               "Duration: 4<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_stun_target"			 "Active: Target Stun"
 
+		"troll_spell_stun_target_description_level_1_shop"               "Duration"
+        "troll_spell_stun_target_description_level_2_shop"               "Cooldown"
+
 		"troll_spell_stun_target_description_level_1"               "Duration"
         "troll_spell_stun_target_description_level_2"               "Cooldown"
 
@@ -4295,104 +4298,298 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"troll_spell_gold_wisp_description_level_1_shop"               "Radius"
 		"troll_spell_gold_wisp_description_level_2_shop"               "Movespeed"	
         "troll_spell_gold_wisp_description_level_3_shop"               "Duration"		
+
+
+
+        // ELFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+		"elf_spell_ms"                            		 "Movespeed"
+        "elf_spell_ms_description"                       "Passive: Increases movespeed"
+        "elf_spell_ms_description_level_1"               "Movespeed: 2"
+        "elf_spell_ms_description_level_2"               "Movespeed: 5"
+        "elf_spell_ms_description_level_3"               "Movespeed: 10"
+		"DOTA_Tooltip_modifier_elf_spell_ms"			 "Passive: Increases movespeed"
+		"elf_spell_ms_description_level_1_shop"               "Movespeed"
+	
+		
+		"elf_spell_gold"                            		 "Starting Gold"
+        "elf_spell_gold_description"                       "Passive: Increases starting gold and decreases movespeed"
+        "elf_spell_gold_description_level_1"               "Gold: 10<br>Movespeed: -20"
+        "elf_spell_gold_description_level_2"               "Gold: 15<br>Movespeed: -10"
+        "elf_spell_gold_description_level_3"               "Gold: 20<br>"
+		"DOTA_Tooltip_modifier_elf_spell_gold"			 "Passive: Increases starting gold and decreases movespeed"
+		"elf_spell_gold_description_level_1_shop"               "Gold"
+		"elf_spell_gold_description_level_2_shop"               "Movespeed"
+				
+		"elf_spell_lumber"                            		 "Starting Lumber"
+        "elf_spell_lumber_description"                       "Passive: Increases the starting lumber and decreases movespeed"
+        "elf_spell_lumber_description_level_1"               "Lumber: 2<br>Movespeed: -30"
+        "elf_spell_lumber_description_level_2"               "Lumber: 2<br>Movespeed: -20"
+        "elf_spell_lumber_description_level_3"               "Lumber: 2<br>Movespeed: -10"
+		"DOTA_Tooltip_modifier_elf_spell_lumber"			 "Passive: Increases the starting lumber and decreases movespeed"
+		"elf_spell_lumber_description_level_1_shop"               "Lumber"
+		"elf_spell_lumber_description_level_2_shop"               "Movespeed"
+				
+		"elf_spell_cd_reduce"                            		 "CD Reduces"
+        "elf_spell_cd_reduce_description"                       "Passive: Reduces item cooldown"
+        "elf_spell_cd_reduce_description_level_1"               "Cooldown: -4%"
+        "elf_spell_cd_reduce_description_level_2"               "Cooldown: -8%"
+        "elf_spell_cd_reduce_description_level_3"               "Cooldown: -16%"
+		"DOTA_Tooltip_modifier_elf_spell_cd_reduce"			 "Passive: Reduces item cooldown"
+		"elf_spell_cd_reduce_description_level_1_shop"               "Cooldown"
+				
+		"elf_spell_cd_worker"                            		 "Worker spell CD"
+        "elf_spell_cd_worker_description"                       "Passive: Reduces the cooldown of workers skills"
+        "elf_spell_cd_worker_description_level_1"               "Cooldown: -30%"
+        "elf_spell_cd_worker_description_level_2"               "Cooldown: -50%"
+        "elf_spell_cd_worker_description_level_3"               "Cooldown: -75%"
+		"DOTA_Tooltip_modifier_elf_spell_cd_worker"			 "Passive: Reduces the cooldown of workers skills"
+		"elf_spell_cd_worker_description_level_1_shop"               "Cooldown"
+				
+		"elf_spell_armor_wall"                            		 "Wall Armor"
+        "elf_spell_armor_wall_description"                       "Passive: Increases armor on walls"
+        "elf_spell_armor_wall_description_level_1"               "Armor: 10% + 1"
+        "elf_spell_armor_wall_description_level_2"               "Armor: 15% + 1"
+        "elf_spell_armor_wall_description_level_3"               "Armor: 20% + 1"
+		"DOTA_Tooltip_modifier_elf_spell_armor_wall"			 "Passive: Increases armor on walls"
+		"elf_spell_armor_wall_description_level_1_shop"               "Armor"
+				
+		"elf_spell_tower_damage"                            		 "Tower Damage"
+        "elf_spell_tower_damage_description"                       "Passive: Increases damage to towers"
+        "elf_spell_tower_damage_description_level_1"               "Damage: 10% + 1"
+        "elf_spell_tower_damage_description_level_2"               "Damage: 15% + 1"
+        "elf_spell_tower_damage_description_level_3"               "Damage: 20% + 1"
+		"DOTA_Tooltip_modifier_elf_spell_tower_damage"			 "Passive: Increases damage to towers"
+		"elf_spell_tower_damage_description_level_1_shop"               "Damage"
+				
+		"elf_spell_limit_gold"                            		 "Gold Limit"
+        "elf_spell_limit_gold_description"                       "Passive: Increases the maximum gold limit"
+        "elf_spell_limit_gold_description_level_1"               "Gold Limit: 200k"
+        "elf_spell_limit_gold_description_level_2"               "Gold Limit: 400k"
+        "elf_spell_limit_gold_description_level_3"               "Gold Limit: 600k"
+		"DOTA_Tooltip_modifier_elf_spell_limit_gold"			 "Passive: Increases the maximum gold limit"
+		"elf_spell_limit_gold_description_level_1_shop"               "Gold Limit"
+				
+		"elf_spell_limit_lumber"                            		 "Lumber Limit"
+        "elf_spell_limit_lumber_description"                       "Passive: Increases the maximum lumber limit"
+        "elf_spell_limit_lumber_description_level_1"               "Lumber Limit: 200k"
+        "elf_spell_limit_lumber_description_level_2"               "Lumber Limit: 200k"
+        "elf_spell_limit_lumber_description_level_3"               "Lumber Limit: 200k"
+		"DOTA_Tooltip_modifier_elf_spell_limit_lumber"			 "Passive: Increases the maximum lumber limit"
+		"elf_spell_limit_lumber_description_level_1_shop"               "Lumber Limit"
+				
+		"elf_spell_true"                            		 "True Sight"
+        "elf_spell_true_description"                       "Passive: Reveals invisible units"
+        "elf_spell_true_description_level_1"               "Radius: 200"
+        "elf_spell_true_description_level_2"               "Radius: 400"
+        "elf_spell_true_description_level_3"               "Radius: 600"
+		"DOTA_Tooltip_modifier_elf_spell_true"			 "Passive: Reveals invisible units"
+		"elf_spell_true_description_level_1_shop"               "Radius"
+				
+		"elf_spell_tower_range"                            		 "Tower Range"
+        "elf_spell_tower_range_description"                       "Passive: Increases the attack range of towers"
+        "elf_spell_tower_range_description_level_1"               "Attack Range: 32"
+        "elf_spell_tower_range_description_level_2"               "Attack Range: 64"
+        "elf_spell_tower_range_description_level_3"               "Attack Range: 128"
+		"DOTA_Tooltip_modifier_elf_spell_tower_range"			 "Passive: Increases the attack range of towers"
+		"elf_spell_tower_range_description_level_1_shop"               "Attack Range"
+				
+		"elf_spell_blink"                            		 "Blink Range"
+        "elf_spell_blink_description"                       "Passive: Increases the blink range"
+        "elf_spell_blink_description_level_1"               "Radius: +200"
+        "elf_spell_blink_description_level_2"               "Radius: +400"
+        "elf_spell_blink_description_level_3"               "Radius: +600"
+		"DOTA_Tooltip_modifier_elf_spell_blink"			 "Passive: Increases the blink range"
+		"elf_spell_blink_description_level_1_shop"               "Radius"
+				
+		"elf_spell_damage_gold"                            		 "Hit Tower gold"
+        "elf_spell_damage_gold_description"                       "Passive: Grants gold per hit to the troll from the damage dealt"
+        "elf_spell_damage_gold_description_level_1"               "Damage/Gold: 4%<br>X1 - 30 min<br>X2 - 15 min<br>X4 - 5 min"
+        "elf_spell_damage_gold_description_level_2"               "Damage/Gold: 8%<br>X1 - 30 min<br>X2 - 15 min<br>X4 - 5 min"
+        "elf_spell_damage_gold_description_level_3"               "Damage/Gold: 15%<br>X1 - 30 min<br>X2 - 15 min<br>X4 - 5 min"
+		"DOTA_Tooltip_modifier_elf_spell_damage_gold"			 "Passive: Grants gold per hit to the troll from the damage dealt"
+		"elf_spell_damage_gold_description_level_1_shop"               "Damage/Gold"
+		"elf_spell_damage_gold_description_level_2_shop"               "Max Time X1"
+		"elf_spell_damage_gold_description_level_3_shop"               "Max Time X2"
+		"elf_spell_damage_gold_description_level_4_shop"               "Max Time X4"
+				
+		""                            		 ""
+        "_description"                       "Passive: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Passive: "
+		"_description_level_1_shop"               ""
+
+
+
+
+
+
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
 		
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+		
+
 
 
 

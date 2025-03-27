@@ -533,48 +533,52 @@ function ExchangeLumber(event)
 		local amount = event.Amount
 		local price = 0
 		local increasePrice = 0
-		for a = 10,math.abs(amount),10 do
+		for a = 10, math.abs(amount), 10 do
 			price = price + GameRules.lumberPrice + increasePrice
 			if amount > 0 then
 				increasePrice = increasePrice + 5
-				else
+			else
 				if GameRules.lumberPrice + increasePrice - 5 > 10 then
 					increasePrice = increasePrice - 5
 				end
+				GameRules.lumberSell = GameRules.lumberSell - 10 -- Уменьшаем цену продажи на 10 за итерацию
 			end
 		end
-	--	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
---			SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
-	--		return false
-	--	end
-		--Buy wood
+		
+		-- Покупка дерева
 		if amount > 0 then
 			if price > PlayerResource:GetGold(playerID) then
 				SendErrorMessage(playerID, "error_not_enough_gold")
 				return false
-				else
-				PlayerResource:ModifyGold(hero,-price,true)
-				PlayerResource:ModifyLumber(hero,amount,true)
-				
-				ModifyLumberPrice(increasePrice)
-				PopupGoldGain(caster,math.floor(price),false)
-				PopupLumber(caster,math.floor(amount),true)
-			end
-			--Sell wood
 			else
+				PlayerResource:ModifyGold(hero, -price, true)
+				PlayerResource:ModifyLumber(hero, amount, true)
+		
+				GameRules.lumberPrice = GameRules.lumberPrice + increasePrice
+				GameRules.lumberSell = GameRules.lumberPrice - 10 -- Обновляем цену продажи
+		
+				PopupGoldGain(caster, math.floor(price), false)
+				PopupLumber(caster, math.floor(amount), true)
+			end
+		-- Продажа дерева
+		else
 			amount = -amount
-			price = price + increasePrice
+			price = GameRules.lumberSell + increasePrice -- Используем цену продажи
+		
 			if amount > PlayerResource:GetLumber(playerID) then
 				SendErrorMessage(playerID, "error_not_enough_lumber")
 				return false
-				else
-				PlayerResource:ModifyGold(hero,price,true)
-				PlayerResource:ModifyLumber(hero,-amount,true)
-				ModifyLumberPrice(increasePrice)
-				PopupGoldGain(caster,math.floor(price),true)
-				PopupLumber(caster,math.floor(amount),false)
+			else
+				PlayerResource:ModifyGold(hero, price, true)
+				PlayerResource:ModifyLumber(hero, -amount, true)
+		
+				GameRules.lumberPrice = GameRules.lumberPrice + increasePrice
+				GameRules.lumberSell = GameRules.lumberPrice - 10 -- Цена продажи обновляется на основе покупки
+		
+				PopupGoldGain(caster, math.floor(price), true)
+				PopupLumber(caster, math.floor(amount), false)
 			end
-		end
+		end		
 	end
 end
 

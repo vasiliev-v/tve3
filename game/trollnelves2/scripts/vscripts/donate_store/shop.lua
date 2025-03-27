@@ -10,6 +10,8 @@ local lastSpray = {}
 local lastSounds = {}
 local chanceCheck = {} 			
 
+local countCheckShop = 0
+
 function Shop.RequestDonate(pID, steam, callback)
 	if GameRules:IsCheatMode() and not GameRules.isTesting then
 		local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
@@ -36,6 +38,7 @@ function Shop.RequestDonate(pID, steam, callback)
 		CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 		return -1 
 	end
+	
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	for id=1, #game_spells_lib.spells_list do
 		PoolTable["12"][tostring(id)] = {game_spells_lib.spells_list[id][1], 1, 0}	
@@ -62,6 +65,13 @@ function Shop.RequestDonate(pID, steam, callback)
 		if res.StatusCode ~= 200 then
 			DebugPrint("Connection failed! Code: ".. res.StatusCode)
 			-- DebugPrint(res.Body)
+			if countCheckShop <= 3 then
+				DebugPrint("RECONNECT!!!!!!!")
+				Timers:CreateTimer(60, function() 
+					countCheckShop = countCheckShop + 1
+					Shop.RequestDonate(pID, steam, callback)	
+			    end)
+			end
 			return -1
 		end
 		
