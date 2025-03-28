@@ -101,6 +101,7 @@ function Shop.RequestDonate(pID, steam, callback)
 			Shop.RequestSkill(obj[18], pID)
 			Stats.RequestRating(obj[19], pID)
 			Shop.RequestBPget(obj[20], pID)
+			Shop.RequestAchivements(obj[21], pID)
 			--Shop.RequestBP(callback)
 		end)
 		return obj
@@ -1150,6 +1151,20 @@ function Shop.RequestBPget(obj, pID, steam, callback)
 
 end
 
+
+function Shop.RequestAchivements(obj, pID, steam, callback)
+
+	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
+	DebugPrint("RequestAchivements")
+	DebugPrintTable(obj)
+	for id=1,#obj do
+		PoolTable["15"][tostring(obj[id].num)] = tostring(obj[id].count)
+	end
+	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
+
+	return obj
+end
+
 function Shop:Statistics(table, check, callback)
 
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(table.id))
@@ -1261,3 +1276,4 @@ function Shop.RequestBan(obj, pID, steam, callback)
 	end
 	return obj
 end
+

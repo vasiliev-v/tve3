@@ -15,4 +15,24 @@ var DATA_ACHIVEMENTS_LIST =
         icon : "file://{images}/new_player_intro/01-navigation.psd",
         description_localize : "achivement_nice",
     },
+    4 :
+    {
+        icon : "file://{images}/new_player_intro/01-navigation.psd",
+        description_localize : "achivement_nice",
+    },
+    5 :
+    {
+        icon : "file://{images}/new_player_intro/01-navigation.psd",
+        description_localize : "achivement_nice",
+    },
+    6 :
+    {
+        icon : "file://{images}/new_player_intro/01-navigation.psd",
+        description_localize : "achivement_nice",
+    },
+    7 :
+    {
+        icon : "file://{images}/new_player_intro/01-navigation.psd",
+        description_localize : "achivement_nice",
+    },
 }

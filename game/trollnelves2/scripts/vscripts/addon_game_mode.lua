@@ -1080,6 +1080,7 @@ function Activate()
 	GameRules.PoolTable[12] = {} -- перк
 	GameRules.PoolTable[13] = {} -- личный рейт
 	GameRules.PoolTable[14] = {} -- полученные предметы в БП 
+	GameRules.PoolTable[15] = {} -- достижения 
     GameRules.PoolTable[0][0] = {}
     GameRules.PoolTable[1][0] = {}
     GameRules.PoolTable[2][0] = {}

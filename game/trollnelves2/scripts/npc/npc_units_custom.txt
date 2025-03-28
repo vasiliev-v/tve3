@@ -224,8 +224,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 
 		// Movement
 		//----------------------------------------------------------------
@@ -308,8 +308,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 
 		// Movement
 		//----------------------------------------------------------------
@@ -397,8 +397,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					""		// Experience earn.
-		"BountyGoldMin"				""		// Gold earned min.
-		"BountyGoldMax"				""		// Gold earned max.
+		"BountyGoldMin"				"1"		// Gold earned min.
+		"BountyGoldMax"				"1"		// Gold earned max.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -479,8 +479,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"		// Experience earn.
-		"BountyGoldMin"				"0"		// Gold earned min.
-		"BountyGoldMax"				"0"		// Gold earned max.
+		"BountyGoldMin"				"1"		// Gold earned min.
+		"BountyGoldMax"				"1"		// Gold earned max.
 
 		// Movement
 		//----------------------------------------------------------------
@@ -580,8 +580,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"		// Experience earn.
-		"BountyGoldMin"				"0"		// Gold earned min.
-		"BountyGoldMax"				"0"		// Gold earned max.
+		"BountyGoldMin"				"1"		// Gold earned min.
+		"BountyGoldMax"				"1"		// Gold earned max.
 
 			// Status
 		//----------------------------------------------------------------
@@ -661,8 +661,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"		// Experience earn.
-		"BountyGoldMin"				"0"			// Gold earned min.
-		"BountyGoldMax"				"0"			// Gold earned max.
+		"BountyGoldMin"				"1"			// Gold earned min.
+		"BountyGoldMax"				"1"			// Gold earned max.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -813,8 +813,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -904,8 +904,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -986,8 +986,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -1082,8 +1082,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -1164,8 +1164,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -1320,8 +1320,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"			// Experience earn.
-		"BountyGoldMin"				"0"			// Gold earned min.
-		"BountyGoldMax"				"0"			// Gold earned max.
+		"BountyGoldMin"				"1"			// Gold earned min.
+		"BountyGoldMax"				"1"			// Gold earned max.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -1778,8 +1778,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"			// Experience earn.
-		"BountyGoldMin"				"0"			// Gold earned min.
-		"BountyGoldMax"				"0"			// Gold earned max.
+		"BountyGoldMin"				"1"			// Gold earned min.
+		"BountyGoldMax"				"1"			// Gold earned max.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -1875,8 +1875,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP" "0" // Experience earn.
-		"BountyGoldMin" "0" // Gold earned min.
-		"BountyGoldMax" "0" // Gold earned max.
+		"BountyGoldMin" "1" // Gold earned min.
+		"BountyGoldMax" "1" // Gold earned max.
 		// Bounds
 		//----------------------------------------------------------------
 		"BoundsHullName" "DOTA_HULL_SIZE_SMALL" // Hull type used for navigation/locomotion.
@@ -1970,8 +1970,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"			// Experience earn.
-		"BountyGoldMin"				"0"			// Gold earned min.
-		"BountyGoldMax"				"0"			// Gold earned max.
+		"BountyGoldMin"				"1"			// Gold earned min.
+		"BountyGoldMax"				"1"			// Gold earned max.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -2029,8 +2029,8 @@
 		"AttackAcquisitionRange"	"0"
 		"AttackRange"				"0"
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 		"RingRadius"				"50"
 		"HealthBarOffset"			"250"
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
@@ -11026,8 +11026,8 @@
 		"AttributeAgilityGain"    "0"                   // Agility bonus per level.
 
 		"BountyXP"          "0"                 // Experience earn.
-		"BountyGoldMin"       "0"                   // Gold earned min.
-		"BountyGoldMax"       "0"                   // Gold earned max.
+		"BountyGoldMin"       "1"                   // Gold earned min.
+		"BountyGoldMax"       "1"                   // Gold earned max.
 
 		"BoundsHullName"      "DOTA_HULL_SIZE_HERO"
 		"RingRadius"        	"70"
@@ -11111,8 +11111,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11216,8 +11216,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11322,8 +11322,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11429,8 +11429,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11531,8 +11531,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11635,8 +11635,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11736,8 +11736,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11841,8 +11841,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -11946,8 +11946,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12052,8 +12052,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12148,8 +12148,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 		"WispCost"                              "1"
 		// Bounds
 		//----------------------------------------------------------------
@@ -12224,8 +12224,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12301,8 +12301,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12378,8 +12378,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12455,8 +12455,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12532,8 +12532,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12608,8 +12608,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12684,8 +12684,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12760,8 +12760,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12836,8 +12836,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12912,8 +12912,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -12988,8 +12988,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -13065,8 +13065,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -13142,8 +13142,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -13219,8 +13219,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -13309,8 +13309,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16228,8 +16228,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16327,8 +16327,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16423,8 +16423,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16521,8 +16521,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16627,8 +16627,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16737,8 +16737,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16843,8 +16843,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -16950,8 +16950,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -17059,8 +17059,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -17607,8 +17607,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -17761,8 +17761,8 @@
 
   		// Bounty
   		//----------------------------------------------------------------
-  		"BountyGoldMin"                         "0.0"
-  		"BountyGoldMax"                         "0.0"
+  		"BountyGoldMin"                         "1"
+  		"BountyGoldMax"                         "1"
 
   		// Bounds
   		//----------------------------------------------------------------
@@ -17850,8 +17850,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -17944,8 +17944,8 @@
   		"Ability3" 					""
   		"Ability4" 					""
   		// Bounty
-  		"BountyGoldMin"                         "0.0"
-  		"BountyGoldMax"                         "0.0"
+  		"BountyGoldMin"                         "1"
+  		"BountyGoldMax"                         "1"
   		// Bounds
   		"BoundsHullName"                        "DOTA_HULL_SIZE_SMALL"
   		"RingRadius"                            "48"
@@ -18006,8 +18006,8 @@
   		"Ability3" 					""
   		"Ability4" 					""
   		// Bounty
-  		"BountyGoldMin"                         "0.0"
-  		"BountyGoldMax"                         "0.0"
+  		"BountyGoldMin"                         "1"
+  		"BountyGoldMax"                         "1"
   		// Bounds
   		"BoundsHullName"                        "DOTA_HULL_SIZE_SMALL"
   		"RingRadius"                            "48"
@@ -18069,8 +18069,8 @@
   		"Ability3" 					""
   		"Ability4" 					""
   		// Bounty
-  		"BountyGoldMin"                         "0.0"
-  		"BountyGoldMax"                         "0.0"
+  		"BountyGoldMin"                         "1"
+  		"BountyGoldMax"                         "1"
   		// Bounds
   		"BoundsHullName"                        "DOTA_HULL_SIZE_SMALL"
   		"RingRadius"                            "48"
@@ -18143,8 +18143,8 @@
 
   		// Bounty
   		//----------------------------------------------------------------
-  		"BountyGoldMin"                         "0.0"
-  		"BountyGoldMax"                         "0.0"
+  		"BountyGoldMin"                         "1"
+  		"BountyGoldMax"                         "1"
 
   		// Bounds
   		//----------------------------------------------------------------
@@ -18322,8 +18322,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 
 		// Movement
 		//----------------------------------------------------------------
@@ -18420,8 +18420,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 
 		// Movement
 		//----------------------------------------------------------------
@@ -18502,8 +18502,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 
 		// Movement
 		//----------------------------------------------------------------
@@ -18582,8 +18582,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 
 		// Movement
 		//----------------------------------------------------------------
@@ -18662,8 +18662,8 @@
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
+		"BountyGoldMin"				"1"
+		"BountyGoldMax"				"1"
 
 		// Movement
 		//----------------------------------------------------------------
@@ -18968,8 +18968,8 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyGoldMin"                         "0.0"
-		"BountyGoldMax"                         "0.0"
+		"BountyGoldMin"                         "1"
+		"BountyGoldMax"                         "1"
 
 		// Bounds
 		//----------------------------------------------------------------
