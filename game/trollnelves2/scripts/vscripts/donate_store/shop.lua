@@ -353,10 +353,10 @@ function Shop.RequestBPBonus(obj, pID, steam, callback)
 	--DeepPrintTable(obj)
 	--DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
-	PoolTable["10"]["0"] = "none"
+	PoolTable["15"]["0"] = "none"
 	if #obj > 0 then
 		if obj[1].srok ~= nil then
-			PoolTable["10"]["0"] = obj[1].srok
+			PoolTable["15"]["0"] = obj[1].srok
 			--[[ 
 			if GameRules.BonusGem[pID] ~= nil then
 				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + 0.5

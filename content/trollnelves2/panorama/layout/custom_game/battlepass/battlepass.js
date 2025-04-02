@@ -5,7 +5,9 @@ function OpenPanel()
 {
     player_bp_info[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[7];
 	player_bp_info[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[14];
-	//$.Msg(player_bp_info)	
+	//Куплен батллпасс. 
+	player_bp_info[2] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
+	$.Msg(player_bp_info[2])	
     if (!BP_INIT)
     {
         BP_INIT = true
@@ -238,6 +240,7 @@ function CreateDonateReward(reward_level, lvl)
 			RewardPanelDonate.AddClass("PanelLockOn");
 			PanelLock.SetPanelEvent("onactivate", function() {} );
 		}
+		
 		if (lvl >= reward_level) 
         {
 			if (reward_no_recieve) 
@@ -253,6 +256,7 @@ function CreateDonateReward(reward_level, lvl)
         {
 			BpLockedText.text = $.Localize( "#battleshop_locked" )
 		}
+
 	} 
     else 
     {

@@ -9,9 +9,9 @@ function ToggleInfo()
 // Айди квеста, название, иконка, награда, максимальное количество для выполнения, УНИКАЛЬНЫЙ ЛИ КВЕСТ 0-обычный, 1-батллпасс
 var quest_information_table = 
 [
-	["1", "quest_kill_troll", "quest_kill_troll", "quest_kill_troll_reward", "5",  "0"],
-	["2", "quest_kill_troll", "quest_kill_troll", "quest_kill_troll_reward", "5",  "1"],
-	["3", "quest_kill_troll", "quest_kill_troll", "quest_kill_troll_reward", "5",  "1"],
+	["1", "quest_kill_troll", "spell_1_1", "quest_kill_troll_reward", "5",  "0"],
+	["2", "quest_kill_troll", "spell_1_2", "quest_kill_troll_reward", "5",  "1"],
+	["3", "quest_kill_troll", "spell_1_3", "quest_kill_troll_reward", "5",  "1"],
 ]
 
 // Массив игрока, передать надо бы
@@ -26,15 +26,18 @@ var player_table =
 	]
 ]
 
+
+
 function CreateQuests()
 {
 	let has_battlepass = false
 	quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
-	player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10]; 
+	player_table[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10]; 
+	player_table[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
 	// есть ли батлл пасс у игрока
 	if (player_table) 
     {
-		if (player_table[0] != "none")
+		if (player_table[0][0] != "none")
 		{
 			has_battlepass = true
 		} 
@@ -63,7 +66,7 @@ function CreateQuest(quest_player_table, has_battlepass)
 
     if (player_table)
     {
-        for (var i = 1; i <= Object.keys(player_table[1]).length; i++) 
+        for (var i = 1; i <= Object.keys(player_table[1][1]).length; i++) 
         {
             if (player_table[1][i][1] == quest_player_table[1])
             {

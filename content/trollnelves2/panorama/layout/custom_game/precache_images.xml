@@ -13,6 +13,7 @@
 	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1icepeak.png" />
 	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1cursedisland.png" />
 	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1cave.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/battlepass.png" />
 	    
     </Panel>
 </root>

@@ -85,10 +85,10 @@
                         <Panel class="MenuButtonGlow" />
                         <Label text="#shop_particles" />
                     </Panel>
-					<Panel class="ItemsCategoryButton" onactivate="SwitchShopTab('GemDonateItems', 'GemButton');" id="GemButton">
+					<!--<Panel class="ItemsCategoryButton" onactivate="SwitchShopTab('GemDonateItems', 'GemButton');" id="GemButton">
                         <Panel class="MenuButtonGlow" />
                         <Label text="#shop_gem" />
-                    </Panel>
+                    </Panel>-->
 					<Panel class="ItemsCategoryButton" onactivate="SwitchShopTab('SubscribeDonateItems', 'SubscribeButton');" id="SubscribeButton">
                         <Panel class="MenuButtonGlow" />
                         <Label text="#shop_subscribe" />
@@ -113,10 +113,10 @@
                         <Panel class="MenuButtonGlow" />
                         <Label text="#shop_sounds" />
                     </Panel>
-					<Panel class="ItemsCategoryButton" onactivate="SwitchShopTab('SpraysonateItems', 'SpraysButton');" id="SpraysButton">
+					<!--<Panel class="ItemsCategoryButton" onactivate="SwitchShopTab('SpraysonateItems', 'SpraysButton');" id="SpraysButton">
                         <Panel class="MenuButtonGlow" />
                         <Label text="#shop_sprays" />
-                    </Panel>
+                    </Panel>-->
 				</Panel>
 				<Panel id="AllDonateItems" class="ItemsPanel"/>
 			</Panel>

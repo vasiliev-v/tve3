@@ -1081,6 +1081,7 @@ function Activate()
 	GameRules.PoolTable[13] = {} -- личный рейт
 	GameRules.PoolTable[14] = {} -- полученные предметы в БП 
 	GameRules.PoolTable[15] = {} -- достижения 
+	GameRules.PoolTable[16] = {} -- купленый батлпасс 
     GameRules.PoolTable[0][0] = {}
     GameRules.PoolTable[1][0] = {}
     GameRules.PoolTable[2][0] = {}
