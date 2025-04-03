@@ -1084,10 +1084,11 @@ function Shop.RequestBP(callback)
 end
 
 function Shop.RequestBPplayer(obj, pID, steam, callback)
-	--DebugPrint("************RequestBPplayer***********************")
+	DebugPrint("************RequestBPplayer***********************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["10"]["1"] = {}
 	if #obj > 0 then
+		DebugPrintTable(obj)
 		for id=1,#obj do
 			PoolTable["10"]["1"][id] = {obj[id].idQuest, obj[id].count }
 		end
@@ -1097,8 +1098,8 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 end
 
 function Shop:EventBattlePass(table, callback)
-	DebugPrintTable(table)
-	DebugPrintTable("test!!!!!!!!!!!!!!")
+	-- DebugPrintTable(table)
+	-- DebugPrintTable("test!!!!!!!!!!!!!!")
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
