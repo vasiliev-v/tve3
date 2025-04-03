@@ -1,7 +1,7 @@
 "AddonInfo"
 {
   "TeamCount" "5"
-  "maps"      "classic classic2x classic4x 1x1" // turbo2x  clanwars 1x1_cave harbour 1x1cursedisland 1x1icepeak
+  "maps"      "classic classic2x classic4x 1x1" // turbo2x  clanwars 1x1_cave harbour 1x1cursedisland 1x1icepeak 
   "IsPlayable"  "1"
   //"turbo2x"
   //{

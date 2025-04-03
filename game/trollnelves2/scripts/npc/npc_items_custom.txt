@@ -1483,11 +1483,12 @@
 		"ItemPurchasable" 				"0"
 		"ItemSellable"					"0"
 		"AbilityManaCost"				"0"
-		"ItemIsNeutralDrop"				"1"
+		"ItemIsNeutralActiveDrop"				"1"
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"1200"
+		"ItemSellable"				"0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -5011,10 +5012,10 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemQuality"                   "component"
 		"ItemStackable"                 "0"
-		"ItemSellable" 					"1"
 		"ItemPermanent"                 "1"
 		"ItemDroppable"					"0"
-		"ItemIsNeutralDrop"				"1"
+		"ItemIsNeutralActiveDrop"	    "1"
+		"ItemSellable"				    "0"
 		"AbilityValues"
         {
             "gold_cost" "0"
@@ -5676,8 +5677,9 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemIsNeutralDrop"				"1"
+		"ItemIsNeutralActiveDrop"				"1"
 		"ItemPurchasable"				"0"
+		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 
@@ -5742,8 +5744,9 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralDrop"				"1"
+		"ItemIsNeutralActiveDrop"				"1"
 		"ItemPurchasable"				"0"
+		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 		
@@ -5788,8 +5791,9 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralDrop"				"1"
+		"ItemIsNeutralActiveDrop"				"1"
 		"ItemPurchasable"				"0"
+		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 		
@@ -5843,8 +5847,9 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralDrop"				"1"
+		"ItemIsNeutralActiveDrop"				"1"
 		"ItemPurchasable"				"0"
+		"ItemSellable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"
 		
@@ -5901,7 +5906,7 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"0"
-		"ItemIsNeutralDrop"				"1"
+		"ItemIsNeutralActiveDrop"				"1"
 		"ItemPurchasable"				"0"
 
 		"Model"							"models/props_gameplay/neutral_box.vmdl"

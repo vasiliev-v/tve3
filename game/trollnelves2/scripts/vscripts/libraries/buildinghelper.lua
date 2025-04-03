@@ -1031,6 +1031,11 @@ function BuildingHelper:OrderFilter(order)
         SellItem(args)
         return false
     end
+
+    if order_type == 42 then -- mark for sell 
+        SendErrorMessage(issuerID, "error_shop_out_of_range")
+        return false
+    end
     
     return ret
 end
