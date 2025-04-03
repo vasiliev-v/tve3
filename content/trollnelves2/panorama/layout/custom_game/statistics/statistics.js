@@ -99,7 +99,7 @@ function CreateColumn(col_id, info_elf, info_troll)
 
 function GetStatsValue(id, info)
 {
-    let result = "No"
+    let text = "No"
     if (id == 1 && info != 0 )
         text = info.bonusPercent
     else if (id == 2 && info != 0 )
@@ -125,7 +125,7 @@ function GetStatsValue(id, info)
     else if (id == 12 && info != 0 )
         text = info.lumberGiven
 
-    return result
+    return text
 }
 
 function UpdateInformation()
@@ -240,9 +240,10 @@ function UpdateButtonSetting(settings_info, player_table, button_name)
 function UpdateAchivements()
 {
     $("#PanelAchivement").RemoveAndDeleteChildren()
-    let player_fake_achivements = [1,2] // Сначала создаю ачивки которые есть у игрока, а потом все остальные
     let player_has_alp = {}
-    for (achivement_id of player_fake_achivements)
+    player_achivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[15]
+
+    for (var achivement_id in player_achivements)
     {
         player_has_alp[achivement_id] = true
         CreateAchivementPanel(achivement_id, true)

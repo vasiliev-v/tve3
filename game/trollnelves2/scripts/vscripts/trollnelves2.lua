@@ -20,10 +20,8 @@ require('libraries/player')
 require('libraries/entity')
 
 require('internal/trollnelves2')
-require('top')
 require('settings')
 require('events')
-require('donate')
 require('reklama')
 require('chatcommand')
 require('votekick')
@@ -76,12 +74,14 @@ function trollnelves2:GameSetup()
             end
         end
         Shop.RequestBP(callback)
-        Stats.RequestDataTop10("1", callback)
-        Stats.RequestDataTop10("2", callback)
-        Stats.RequestDataTop10("3", callback)
-        Stats.RequestDataTop10("7", callback)
+        if GameRules.MapSpeed == 1 then
+            Stats.RequestDataTop10("1", callback)
+        elseif GameRules.MapSpeed == 1 then 
+            Stats.RequestDataTop10("2", callback)
+        elseif GameRules.MapSpeed == 1 then
+            Stats.RequestDataTop10("3", callback)
+        end
         -- StartReklama()
-        Donate:CreateList()
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
         --DebugPrint("count player " .. GameRules.PlayersCount)
 
@@ -846,6 +846,7 @@ function trollnelves2:PreStart()
             Shop:SetStats() 
             wearables:SetSkin() 
             SelectPets:SetPets()
+            game_spells_lib:SetSpellPlayers()
         end)
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
         GameRules:SendCustomMessage("<font color='#00FFFF '> Number of players: " .. GameRules.PlayersCount .. "</font>" ,  0, 0)
@@ -894,13 +895,16 @@ end
 function ModifyLumberPrice(amount)
     amount = string.match(amount, "[-]?%d+") or 0
     GameRules.lumberPrice = math.max(GameRules.lumberPrice + amount, MINIMUM_LUMBER_PRICE)
+    GameRules.lumberSell = math.max(GameRules.lumberPrice - 15, MINIMUM_LUMBER_PRICE)
     CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_GOODGUYS,
         "player_lumber_price_changed", {
-            lumberPrice = GameRules.lumberPrice
+            lumberPrice = GameRules.lumberPrice,
+            lumberSell = GameRules.lumberSell
         })
     CustomGameEventManager:Send_ServerToTeam(DOTA_TEAM_BADGUYS,
         "player_lumber_price_changed", {
-            lumberPrice = GameRules.lumberPrice
+            lumberPrice = GameRules.lumberPrice,
+            lumberSell = GameRules.lumberSell
         })
 end
 

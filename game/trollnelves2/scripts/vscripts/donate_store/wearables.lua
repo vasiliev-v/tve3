@@ -710,10 +710,9 @@ function SetModelStandart(npc)
 		npc:SetModelScale(1)
         GameRules.SkinTower[npc:GetPlayerOwnerID()]["wolf"] = nil
 	elseif npc:IsElf() then
-		npc:SetOriginalModel("models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_winter_ancient_hulk.vmdl")
-		npc:SetModel("models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_winter_ancient_hulk.vmdl")
-		npc:SetModelScale(0.5)
-        GameRules.SkinTower[npc:GetPlayerOwnerID()]["skin"] = nil
+		npc:SetOriginalModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+		npc:SetModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+		npc:SetModelScale(1)
 	end
 end
 

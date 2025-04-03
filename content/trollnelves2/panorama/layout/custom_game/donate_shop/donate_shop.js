@@ -365,10 +365,10 @@ function ReCreateItemsStoreList(tab)
     {
         items_list_table = Items_effects
     }
-    if (tab == "GemDonateItems")
-    {
-        items_list_table = Items_gem
-    }
+ //    if (tab == "GemDonateItems")
+ //    {
+ //        items_list_table = Items_gem
+  //   }
     if (tab == "SubscribeDonateItems")
     {
         items_list_table = Items_subscribe
@@ -393,10 +393,10 @@ function ReCreateItemsStoreList(tab)
     {
         items_list_table = Items_sounds
     }
-    if (tab == "SpraysonateItems")
-    {
-        items_list_table = Items_sprays
-    }
+ //   if (tab == "SpraysonateItems")
+ //    {
+//         items_list_table = Items_sprays
+ //    }
     for (let i = 0; i <= Object.keys(items_list_table).length; i++) 
     {
         if (items_list_table[i])

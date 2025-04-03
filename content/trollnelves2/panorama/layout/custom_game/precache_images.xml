@@ -1,39 +1,19 @@
 <root>
     <Panel hittest="false">
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/background.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/border.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/gem_icon.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/no_active.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/shop_button3.png" /> 
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_bg.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_mask.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/spell_1.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/spell_1_1.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/spell_1_2.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/spell_1_3.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_ms.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_gold_hit.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_hp_reg.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_limit_gold.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_cd_reduce.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_armor.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_vision.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_magic_resist.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_status_resist.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_silence_target.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_silence_area.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_stun_target.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_haste.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_ward.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_bkb.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_slow_target.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_slow_area.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_invis.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_evasion.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_atkspeed.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_wolf.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_reveal.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_night_buff.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_gold_wisp.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/random.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/atlantida.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/bloodville.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/garden.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/gorge.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/mines.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/north.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/okinawa.png" />
+	    
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/random1x1.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1icepeak.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1cursedisland.png" />
+	    <Image style="opacity:0;" src="file://{images}/new_design/maps/1x1cave.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/battlepass.png" />
+	    
     </Panel>
 </root>

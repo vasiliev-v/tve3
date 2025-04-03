@@ -9,9 +9,7 @@ function ToggleInfo()
 // Айди квеста, название, иконка, награда, максимальное количество для выполнения, УНИКАЛЬНЫЙ ЛИ КВЕСТ 0-обычный, 1-батллпасс
 var quest_information_table = 
 [
-	["1", "quest_kill_troll", "quest_kill_troll", "quest_kill_troll_reward", "5",  "0"],
-	["2", "quest_kill_troll", "quest_kill_troll", "quest_kill_troll_reward", "5",  "1"],
-	["3", "quest_kill_troll", "quest_kill_troll", "quest_kill_troll_reward", "5",  "1"],
+	
 ]
 
 // Массив игрока, передать надо бы
@@ -20,21 +18,22 @@ var player_table =
 [
 	0,
 	[
-		["1", "1"],
-		["2", "2"],
-		["3", "3"],
+	
 	]
 ]
+
+
 
 function CreateQuests()
 {
 	let has_battlepass = false
 	quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
-	player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10]; 
+	player_table[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10];  
+	player_table[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
 	// есть ли батлл пасс у игрока
 	if (player_table) 
     {
-		if (player_table[0] != "none")
+		if (player_table[0][0] != "none")
 		{
 			has_battlepass = true
 		} 
@@ -43,9 +42,10 @@ function CreateQuests()
 			has_battlepass = false
 		}
 	}
+	$.Msg(player_table[1] )
 	if (quest_information_table) 
-	{ 
-		for (var i = 1; i <= 3; i++) 
+	{  
+		for (var i = 1; i <= Object.keys(quest_information_table).length; i++) 
         {
 			CreateQuest(quest_information_table[i], has_battlepass) // Создаем квесты игрока
 		}
@@ -60,18 +60,19 @@ function CreateQuest(quest_player_table, has_battlepass)
 		return
 	}
     let is_locked_quest_battlepass = false
-
-    if (player_table)
-    {
-        for (var i = 1; i <= Object.keys(player_table[1]).length; i++) 
+	
+    if (player_table[1][1])
+    {  
+        for (var i = 1; i <= Object.keys(player_table[1][1]).length; i++) 
         {
-            if (player_table[1][i][1] == quest_player_table[1])
+            if (player_table[1][1][i][1] == quest_player_table[1])
             {
-                quest_table = player_table[1][i]
+                quest_table = player_table[1][1][i]; 
+				break;
             }
         }
     }
-	 
+	
 	if (quest_player_table[6] == "1")
 	{
 		if (!has_battlepass)
@@ -82,7 +83,7 @@ function CreateQuest(quest_player_table, has_battlepass)
 
 	if (quest_table == null) 
     {
-		quest_table = ["0",quest_player_table[1] ,"0"]
+		return
 	}
 
 	let DayQuest = $.CreatePanel("Panel", $("#QuestsPanel"), "quest_id_" + quest_player_table[0]);
@@ -164,7 +165,8 @@ function UpdateQuest(data)
 	let quest_id = data.quest_id
 	let current = data.current
 	let quest_table = null
-	//quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
+	player_table[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10]; 
+	player_table[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
 	for (var i = 1; i < quest_information_table.length; i++) {
 		if (Number(quest_information_table[i][0]) == Number(quest_id))
 		{

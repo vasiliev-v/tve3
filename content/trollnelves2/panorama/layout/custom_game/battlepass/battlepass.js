@@ -1,25 +1,18 @@
 var BP_INIT = false
 var player_bp_info = [0,[]]
 
-// Опыт, забранные награды
-var player_table = 
-[
-	[0,0],
-	[""],
-	[0, "none"],
-	[0, "none"],
-	// Массив ID СУНДУКА / КОЛИЧЕСТВО
-	[]
-]
-
 function OpenPanel()
 {
-    player_bp_info = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[7];
+    player_bp_info[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[7];
+	player_bp_info[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[14];
+	//Куплен батллпасс. 
+	player_bp_info[2] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
+	$.Msg(player_bp_info[2])	
     if (!BP_INIT)
     {
         BP_INIT = true
         InitLevel()
-        InitDonateRewards()
+        InitDonateRewards()	
     }
     $("#BattlePassPanel").SetHasClass("Open", !$("#BattlePassPanel").BHasClass("Open"))
 }
@@ -33,14 +26,14 @@ function InitLevel()
 {
 	if (player_bp_info) 
     {
-		let level = GetLevelPlayer(player_bp_info[0])
-		let get_current_exp = GetExpPlayer(player_bp_info[0])
+		let level = GetLevelPlayer(player_bp_info[0][0])
+		let get_current_exp = GetExpPlayer(player_bp_info[0][0])
 		$("#LevelText").text = $.Localize("#" + "battlepass_level") + ":" + " " + level
 		let width = 0
 		if (exp_battlepass[level+1]) 
         {
 			$("#ExpText").text = "Experience " + get_current_exp + " / " + exp_battlepass[level+1]
-			if (player_bp_info[0] > 0) 
+			if (player_bp_info[0][0] > 0) 
             {
 				width = (100 * get_current_exp ) / exp_battlepass[level+1]
 			}
@@ -48,7 +41,7 @@ function InitLevel()
         else 
         {
 			$("#ExpText").text = "Experience " + exp_battlepass[level] + " / " + exp_battlepass[level]
-			if (player_bp_info[0] > 0) 
+			if (player_bp_info[0][0] > 0) 
             {
 				width = (100 * exp_battlepass[level] ) / exp_battlepass[level]
 			}
@@ -62,7 +55,7 @@ function InitDonateRewards()
 	let level = 0
 	if (player_bp_info) 
     {
-		level = GetLevelPlayer(player_bp_info[0])
+		level = GetLevelPlayer(player_bp_info[0][0])
 	}
 	for (var i = 1; i < exp_battlepass.length; i++) 
     {
@@ -94,7 +87,7 @@ function CreateFreeReward(reward_level, lvl)
 		if (free_rewards[i][0] == reward_level) 
         {
 			create_reward_check = true
-			reward_id = free_rewards[i][1]
+			reward_id = free_rewards[i][4]
 			reward_num = i
 		}
 	}
@@ -134,7 +127,7 @@ function CreateFreeReward(reward_level, lvl)
 			if (reward_no_recieve) 
             {
                 RewardPanelFree.AddClass("Unlocked")
-				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, free_rewards[reward_num][2], RewardPanelFree) } );
+				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, free_rewards[reward_num][2], RewardPanelFree, free_rewards[reward_num][4]) } );
 			} 
             else 
             {
@@ -170,14 +163,14 @@ function CreateFreeReward(reward_level, lvl)
 	}
 }
 
-function GiveReward(id, panel, type, rew_panel) 
+function GiveReward(id, panel, type, rew_panel, idItem) 
 {
 	panel.SetPanelEvent("onactivate", function() {} );
 	rew_panel.AddClass("PanelGives");
     rew_panel.RemoveClass("Unlocked")
 	panel.FindChildTraverse("BpLockedText").text = $.Localize("#" + "battlepass_gives")
 	// Здесь нужно отправить в луа проверку на получение шмотки  id - айди шмотки
-	GameEvents.SendCustomGameEventToServer( "EventBattlePass", {PlayerID: Players.GetLocalPlayer(), Num: id, Nick: type} ); // отправляешь ивент 
+	GameEvents.SendCustomGameEventToServer( "EventBattlePass", {PlayerID: Players.GetLocalPlayer(), Num: id, Nick: type, Type: idItem }); // отправляешь ивент 
 }
 
 function CreateDonateReward(reward_level, lvl) 
@@ -192,13 +185,15 @@ function CreateDonateReward(reward_level, lvl)
 		if (donate_rewards[i][0] == reward_level) 
         {
 			create_reward_check = true
-			reward_id = donate_rewards[i][1]
+			reward_id = donate_rewards[i][4]
 			reward_num = i
 		}
 	}
 
 	for ( var reward_inventory in player_bp_info[1]  )
     {
+		//$.Msg(player_bp_info[1][reward_inventory] + "        " + reward_id)
+
     	if (player_bp_info[1][reward_inventory] == reward_id) 
         {
     		reward_no_recieve = false
@@ -233,7 +228,7 @@ function CreateDonateReward(reward_level, lvl)
 			if (reward_no_recieve) 
             {
                 RewardPanelDonate.AddClass("Unlocked")
-				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, donate_rewards[reward_num][2], RewardPanelDonate) } );
+				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, donate_rewards[reward_num][2], RewardPanelDonate, donate_rewards[reward_num][4]) } );
 			} 
             else 
             {
@@ -245,6 +240,7 @@ function CreateDonateReward(reward_level, lvl)
 			RewardPanelDonate.AddClass("PanelLockOn");
 			PanelLock.SetPanelEvent("onactivate", function() {} );
 		}
+		
 		if (lvl >= reward_level) 
         {
 			if (reward_no_recieve) 
@@ -260,6 +256,7 @@ function CreateDonateReward(reward_level, lvl)
         {
 			BpLockedText.text = $.Localize( "#battleshop_locked" )
 		}
+
 	} 
     else 
     {

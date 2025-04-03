@@ -128,7 +128,6 @@ end, self)
   CustomGameEventManager:RegisterListener("SetDefaultSkin", Dynamic_Wrap(wearables, 'SetDefaultSkin'))
   CustomGameEventManager:RegisterListener("SetDefaultSkinTower", Dynamic_Wrap(wearables, 'SetDefaultSkinTower'))
   CustomGameEventManager:RegisterListener("SetDefaultSkinWisp", Dynamic_Wrap(wearables, 'SetDefaultSkinWisp'))
-  CustomGameEventManager:RegisterListener("UpdateTops", Dynamic_Wrap(top, 'UpdateTops'))
   
   CustomGameEventManager:RegisterListener("SelectPets", Dynamic_Wrap(SelectPets, 'SelectPets'))
   CustomGameEventManager:RegisterListener("OpenChestAnimation", Dynamic_Wrap(Shop, 'OpenChestAnimation'))

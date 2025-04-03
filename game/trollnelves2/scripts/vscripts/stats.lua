@@ -1,8 +1,7 @@
-require('top')
-
 Stats = Stats or {}
 local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA" --GetDedicatedServerKeyV3("1")
 local checkResult = {}
+local countCheckShop = 0 
 
 function Stats.SubmitMatchData(winner,callback)
 	if GameRules.startTime == nil then
@@ -311,36 +310,66 @@ function Stats.RequestRep(obj, pId, callback)
 	return obj
 end
 
-function Stats.RequestDataTop10(idTop, callback)
+function Stats.RequestDataTop10(mapSpd, callback)
 
 	if GameRules:IsCheatMode() and not GameRules.isTesting then
 		return -1 
 	end
 
-	local req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "all/" .. idTop)
+	local req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "all/" .. mapSpd)
 	if not req then
 		return
 	end
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	--DebugPrint("***********************************************")
+
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
-			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
+			DebugPrint("Connection failed! Code: ".. res.StatusCode)
 			--DebugPrint(res.Body)
+			if countCheckShop <= 3 then
+				DebugPrint("RECONNECT RATING!!!!!!!")
+				Timers:CreateTimer(60, function() 
+					countCheckShop = countCheckShop + 1
+					Stats.RequestDataTop10(mapSpd, callback)
+			    end)
+			end
 			return -1
 		end
 		
 		local obj,pos,err = json.decode(res.Body)
 		--DeepPrintTable(obj)
 		--DebugPrint("***********************************************")
-		top:OnLoadTop(obj,idTop)
+		local obj,pos,err = json.decode(res.Body)
+		local ratingTable = {}
+		if #obj > 0 then
+			for id=1,#obj do
+				ratingTable[id] = {obj[id].steamID, obj[id].elf, obj[id].troll, obj[id].score, obj[id].matchID}
+			end
+		end
+		CustomNetTables:SetTableValue("Shop", "top10", ratingTable)	
+		
 		---CustomNetTables:SetTableValue("stats", tostring( pId ), { steamID = obj.steamID, score = obj.score })
 		return obj
 		
 	end)
 end
 
-
+function Stats.RequestRating(obj, pId, callback)
+	-- DebugPrint("***********RequestRating*************************")
+	
+	GameRules.rep[pId] = 0
+	GameRules.GetRep[pId] = 0
+	--DebugPrintTable(obj)
+	local nick = tostring(PlayerResource:GetPlayerName(pId))
+	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pId))
+	PoolTable["13"] = {}
+	if #obj > 0 then
+		PoolTable["13"] = {obj[1].rank,obj[1].steamID, obj[1].elf, obj[1].troll, obj[1].score, obj[1].matchID}
+	end
+	CustomNetTables:SetTableValue("Shop", tostring(pId), PoolTable)
+	return obj
+end
 
 --[[
 	function Stats.RequestXp(pId, callback)

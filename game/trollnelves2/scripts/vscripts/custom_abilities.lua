@@ -532,7 +532,9 @@ function ExchangeLumber(event)
 		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 		local amount = event.Amount
 		local price = 0
+		local priceSell = 0
 		local increasePrice = 0
+		local increasePriceSell = 0
 		for a = 10,math.abs(amount),10 do
 			price = price + GameRules.lumberPrice + increasePrice
 			if amount > 0 then
@@ -561,17 +563,22 @@ function ExchangeLumber(event)
 				PopupLumber(caster,math.floor(amount),true)
 			end
 			--Sell wood
-			else
+		else
+			DebugPrint("------------ ")
+			DebugPrint("price " .. price)
+			DebugPrint("increasePrice " .. increasePrice)
+			DebugPrint("priceSell " .. priceSell)
+			DebugPrint("amount " .. amount)
+			priceSell = price + increasePrice + ((amount/10) * 10) 
 			amount = -amount
-			price = price + increasePrice
 			if amount > PlayerResource:GetLumber(playerID) then
 				SendErrorMessage(playerID, "error_not_enough_lumber")
 				return false
 				else
-				PlayerResource:ModifyGold(hero,price,true)
+				PlayerResource:ModifyGold(hero,priceSell,true)
 				PlayerResource:ModifyLumber(hero,-amount,true)
 				ModifyLumberPrice(increasePrice)
-				PopupGoldGain(caster,math.floor(price),true)
+				PopupGoldGain(caster,math.floor(priceSell),true)
 				PopupLumber(caster,math.floor(amount),false)
 			end
 		end
@@ -1529,7 +1536,7 @@ function ItemBlink(keys)
 	FindClearSpaceForUnit(keys.caster, target_point, false)
 	
 	
-	Timers:CreateTimer(0.1,function()
+	Timers:CreateTimer(0.3,function()
 		if keys.caster then
 			ParticleManager:CreateParticle("particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf", PATTACH_ABSORIGIN, keys.caster)
 		end

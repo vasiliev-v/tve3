@@ -3955,7 +3955,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "SpellShop_DescriptionBuy"                  "You buy a random skill. After purchasing all the skills, you will receive random skill upgrades"
         "SpellShop_Activate"                        "Activate"
         "SpellShop_Deactivate"                      "Deactivate"
-        "SpellShop_SpellPreviewUpgrade"             "Improvement level"
+        "SpellShop_SpellPreviewUpgrade"             "Level"
         "SpellShop_no_buying_spell"                 "Not available"
         "SpellShop_DropHeader"                      "You got a skill"
         "SpellShop_DropHeader_upgrade"              "You got a skill upgrade"
@@ -3997,12 +3997,18 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_ms_description"                       "Passive: Increases movespeed"
         "troll_spell_ms_description_level_1"               "Movespeed"
 		"DOTA_Tooltip_modifier_troll_spell_ms"			   "Passive: Increases movespeed"
+		"troll_spell_ms_description_level_1_shop"               "Movespeed"
 		
 		"troll_spell_gold_hit"                            		 "Gold Hit"
         "troll_spell_gold_hit_description"                       "Active: Adds gold to hit."
         "troll_spell_gold_hit_description_level_1"               "+1 Gold * Map Speed<br>Incoming damage: +400%<br>Duration: 5<br>CD: 150"
-        "troll_spell_gold_hit_description_level_2"               "+2 Gold  * Map Speed<br>Incoming damage: +400%<br>Duration: 10<br>CD: 100"
-        "troll_spell_gold_hit_description_level_3"               "+3 Gold  * Map Speed<br>Incoming damage: +400%<br>Duration: 15<br>CD: 60"
+        "troll_spell_gold_hit_description_level_2"               "+2 Gold * Map Speed<br>Incoming damage: +400%<br>Duration: 10<br>CD: 100"
+        "troll_spell_gold_hit_description_level_3"               "+3 Gold * Map Speed<br>Incoming damage: +400%<br>Duration: 15<br>CD: 60"
+
+		"troll_spell_gold_hit_description_level_1_shop"               "Gold * Map Speed"
+        "troll_spell_gold_hit_description_level_2_shop"               "Incoming damage"
+        "troll_spell_gold_hit_description_level_3_shop"               "Duration"
+		"troll_spell_gold_hit_description_level_4_shop"               "Cooldown"
 		"DOTA_Tooltip_modifier_troll_spell_gold_hit"			 "Active: Adds gold to hit."
 
 
@@ -4019,6 +4025,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_hp_reg_description_level_2"               "Regeneration +4"
         "troll_spell_hp_reg_description_level_3"               "Regeneration +8"
 		"DOTA_Tooltip_modifier_troll_spell_hp_reg"			   "Passive: Increases the speed of regeneration."
+
+		"troll_spell_hp_reg_description_level_1_shop"               "Regeneration"
 				
 		"troll_spell_limit_gold"                            	   "Gold Limit"
         "troll_spell_limit_gold_description"                       "Passive: Increases gold limit"
@@ -4026,6 +4034,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_limit_gold_description_level_2"               "Gold Limit +300k"
         "troll_spell_limit_gold_description_level_3"               "Gold Limit +400k"
 		"DOTA_Tooltip_modifier_troll_spell_limit_gold"			 "Passive: Increases gold limit"
+
+		"troll_spell_limit_gold_description_level_1_shop"               "Gold Limit"
 				
 		"troll_spell_cd_reduce"                            		 "CD Reduce"
         "troll_spell_cd_reduce_description"                       "Passive: Reduces ability cooldown"
@@ -4033,6 +4043,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_cd_reduce_description_level_2"               "Cooldown -15%"
         "troll_spell_cd_reduce_description_level_3"               "Cooldown -20%"
 		"DOTA_Tooltip_modifier_troll_spell_cd_reduce"			  "Passive: Reduces ability cooldown"
+
+		"troll_spell_cd_reduce_description_level_1_shop"               "Cooldown"
 				
 		"troll_spell_armor"                            		  "Armor"
         "troll_spell_armor_description"                       "Passive: Increases armor"
@@ -4040,6 +4052,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_armor_description_level_2"               "Armor +4"
         "troll_spell_armor_description_level_3"               "Armor +8"
 		"DOTA_Tooltip_modifier_troll_spell_armor"			  "Passive: Increases armor"
+
+		"troll_spell_armor_description_level_1_shop"               "Armor"
 				
 		"troll_spell_vision"                            		 "Vision"
         "troll_spell_vision_description"                       "Passive: Increases visibility range"
@@ -4047,6 +4061,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_vision_description_level_2"               "Vision Range +225"
         "troll_spell_vision_description_level_3"               "Vision Range +300"
 		"DOTA_Tooltip_modifier_troll_spell_vision"			 "Passive: Increases visibility range"
+
+		"troll_spell_vision_description_level_1_shop"               "Vision Range"
 				
 		"troll_spell_magic_resist"                            		 "Magic Resist"
         "troll_spell_magic_resist_description"                       "Passive: Increases Magic Resist"
@@ -4054,6 +4070,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_magic_resist_description_level_2"               "Magic Resist +15%"
         "troll_spell_magic_resist_description_level_3"               "Magic Resist +20%"
 		"DOTA_Tooltip_modifier_troll_spell_magic_resist"			 "Passive: Increases Magic Resist"
+
+		"troll_spell_magic_resist_description_level_1_shop"           "Magic Resist"
 				
 		"troll_spell_status_resist"                            		 "Status Resist"
         "troll_spell_status_resist_description"                       "Passive: Increases Status Resist"
@@ -4061,6 +4079,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_status_resist_description_level_2"               "Status Resist +15%"
         "troll_spell_status_resist_description_level_3"               "Status Resist +20%"
 		"DOTA_Tooltip_modifier_troll_spell_status_resist"			 "Passive: Increases Status Resist"
+
+		"troll_spell_status_resist_description_level_1_shop"           "Status Resist"
 				
 		"troll_spell_silence_target"                            	   "Target Silence"
         "troll_spell_silence_target_description"                       "Active: Target Silence"
@@ -4068,6 +4088,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_silence_target_description_level_2"               "Duration: 16<br>CD: 200"
         "troll_spell_silence_target_description_level_3"               "Duration: 24<br>CD: 150"
 		"DOTA_Tooltip_modifier_troll_spell_silence_target"			   "Active: Target Silence"
+
+		"troll_spell_silence_target_description_level_1_shop"               "Duration"
+        "troll_spell_silence_target_description_level_2_shop"               "Cooldown"
 
 		"DOTA_Tooltip_ability_troll_spell_silence_target"                                                "Target Silence"
 		"DOTA_Tooltip_ability_troll_spell_silence_target_Description"                                     "Target Silence"
@@ -4080,6 +4103,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_silence_area_description_level_3"               "Duration: 12<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_silence_area"			 "Active: Global Silence"
 
+		"troll_spell_silence_area_description_level_1_shop"               "Duration"
+        "troll_spell_silence_area_description_level_2_shop"               "Cooldown"
+
 		"DOTA_Tooltip_ability_troll_spell_silence_area"                                                "Global Silince"
 		"DOTA_Tooltip_ability_troll_spell_silence_area_Description"                                     "Global Silence"
 		"DOTA_Tooltip_ability_troll_spell_silence_area_tooltip_duration"                 "DURATION: "
@@ -4091,6 +4117,12 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_stun_target_description_level_3"               "Duration: 4<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_stun_target"			 "Active: Target Stun"
 
+		"troll_spell_stun_target_description_level_1_shop"               "Duration"
+        "troll_spell_stun_target_description_level_2_shop"               "Cooldown"
+
+		"troll_spell_stun_target_description_level_1"               "Duration"
+        "troll_spell_stun_target_description_level_2"               "Cooldown"
+
 		"DOTA_Tooltip_ability_troll_spell_stun_target"                                                "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_Description"                                     "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_bolt_stun_duration"                 "DURATION: "
@@ -4101,6 +4133,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_haste_description_level_2"               "Duration: 15<br>CD: 250<br>Evasion: 4%"
         "troll_spell_haste_description_level_3"               "Duration: 30<br>CD: 200<br>Evasion: 8%"
 		"DOTA_Tooltip_modifier_troll_spell_haste"			 "Active: Increases movespeed"
+
+		"troll_spell_haste_description_level_1_shop"               "Duration"
+        "troll_spell_haste_description_level_2_shop"               "Evasion"
 
 		"DOTA_Tooltip_ability_troll_spell_haste"                                                "Haste"
 		"DOTA_Tooltip_ability_troll_spell_haste_Description"                                     "Increases movespeed"
@@ -4115,6 +4150,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_ward_description_level_3"               "Duration: 180<br>CD: 60"
 		"DOTA_Tooltip_modifier_troll_spell_ward"			 "Active: Creates a Ward that provides vision"
 
+		"troll_spell_ward_description_level_1_shop"               "Duration"
+        "troll_spell_ward_description_level_2_shop"               "Cooldown"
+
 		"DOTA_Tooltip_ability_troll_spell_ward"                                                "Ward"
 		"DOTA_Tooltip_ability_troll_spell_ward_Description"                                     "Creates a Ward that provides vision"
 		"DOTA_Tooltip_ability_troll_spell_ward_duration"                 "DURATION: "
@@ -4125,6 +4163,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_bkb_description_level_2"               "Duration: 2<br>CD: 250"
         "troll_spell_bkb_description_level_3"               "Duration: 3<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_bkb"			 "Active: Immunity to magic"
+
+		"troll_spell_bkb_description_level_1_shop"               "Duration"
+        "troll_spell_bkb_description_level_2_shop"               "Cooldown"
 
 		"DOTA_Tooltip_ability_troll_spell_bkb"                                                "BKB"
 		"DOTA_Tooltip_ability_troll_spell_bkb_Description"                                     "Immunity to magic"
@@ -4137,6 +4178,10 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_slow_target_description_level_3"               "MS: -100<br>Duration: 20<br>CD: 60"
 		"DOTA_Tooltip_modifier_troll_spell_slow_target"			 "Active: Slows the MS of the selected target"
 
+		"troll_spell_slow_target_description_level_1_shop"               "Movespeed"
+        "troll_spell_slow_target_description_level_2_shop"               "Duration"
+        "troll_spell_slow_target_description_level_3_shop"               "Cooldown"
+
 		"DOTA_Tooltip_ability_troll_spell_slow_target"                                                "Target Slow"
 		"DOTA_Tooltip_ability_troll_spell_slow_target_Description"                                     "Slows the MS of the selected target"
 		"DOTA_Tooltip_ability_troll_spell_slow_target_duration"                 "DURATION: "
@@ -4148,6 +4193,11 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_slow_area_description_level_2"               "MS: -60<br>Miss chance: 20%<br>Duration: 5<br>CD: 250"
         "troll_spell_slow_area_description_level_3"               "MS: -70<br>Miss chance: 30%<br>Duration: 10<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_slow_area"			 "Active: Slows MS in an area"
+
+		"troll_spell_slow_area_description_level_1_shop"               "Movespeed"
+        "troll_spell_slow_area_description_level_2_shop"               "Miss chance"
+        "troll_spell_slow_area_description_level_3_shop"               "Duration"
+		"troll_spell_slow_area_description_level_4_shop"               "Cooldown"
 
 		"DOTA_Tooltip_ability_troll_spell_slow_area"                                                "Area Slow"
 		"DOTA_Tooltip_ability_troll_spell_slow_area_Description"                                     "Slows MS in an area"
@@ -4162,6 +4212,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_invis_description_level_3"               "Duration: 60<br>CD: 60"
 		"DOTA_Tooltip_modifier_troll_spell_invis"			 "Active: Gives invisibility"
 
+		"troll_spell_invis_description_level_1_shop"               "Duration"
+        "troll_spell_invis_description_level_2_shop"               "Cooldown"
+
 		"DOTA_Tooltip_ability_troll_spell_invis"                                                "Invis"
 		"DOTA_Tooltip_ability_troll_spell_invis_Description"                                     "Gives invisibility"
 		"DOTA_Tooltip_ability_troll_spell_invis_duration"                 "DURATION: "
@@ -4173,6 +4226,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_evasion_description_level_3"               "Duration: 5<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_evasion"			 "Active: Gives 100% evasion"
 
+		"troll_spell_evasion_description_level_1_shop"           "Duration"
+        "troll_spell_evasion_description_level_2_shop"           "Cooldown"
+
 		"DOTA_Tooltip_ability_troll_spell_evasion"                                                "Evasion"
 		"DOTA_Tooltip_ability_troll_spell_evasion_Description"                                     "Gives 100% evasion"
 		"DOTA_Tooltip_ability_troll_spell_evasion_duration"                 "DURATION: "
@@ -4183,6 +4239,10 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_atkspeed_description_level_2"               "Incoming damage: +200%<br>Duration: 3<br>CD: 250"
         "troll_spell_atkspeed_description_level_3"               "Incoming damage: +200%<br>Duration: 5<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_atkspeed"			 "Active: Gives Attack Speed"
+
+		"troll_spell_atkspeed_description_level_1_shop"               "Incoming damage"
+        "troll_spell_atkspeed_description_level_2_shop"               "Duration"
+        "troll_spell_atkspeed_description_level_3_shop"               "Cooldown"
 
 		"DOTA_Tooltip_ability_troll_spell_atkspeed"                                                "Attack Speed"
 		"DOTA_Tooltip_ability_troll_spell_atkspeed_Description"                                     "Gives Attack Speed"
@@ -4197,6 +4257,10 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_wolf_description_level_3"               "HP: 200<br>MS:380<br>CD: 60"
 		"DOTA_Tooltip_modifier_troll_spell_wolf"			 "Active: Creates a wolf"
 
+		"troll_spell_wolf_description_level_1_shop"               "HP"
+        "troll_spell_wolf_description_level_2_shop"               "Movespeed"
+        "troll_spell_wolf_description_level_3_shop"               "Cooldown"
+
 		"DOTA_Tooltip_ability_troll_spell_wolf"                                                "Mini wolf"
 		"DOTA_Tooltip_ability_troll_spell_wolf_Description"                                     "Creates a wolf"
 		"DOTA_Tooltip_ability_troll_spell_wolf_bear_hp"                 "HP: "
@@ -4208,118 +4272,324 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "troll_spell_reveal_description_level_2"               "Reveal +2"
         "troll_spell_reveal_description_level_3"               "Reveal +3"
 		"DOTA_Tooltip_modifier_troll_spell_reveal"			 "Passive: Adds an additional Reveal"
+
+		"troll_spell_reveal_description_level_1_shop"               "Reveal"
 				
 		"troll_spell_night_buff"                            	"Night Buff"
         "troll_spell_night_buff_description"                    "Passive: Increases stats at night"
-        "troll_spell_night_buff_description_level_1"            ""
-        "troll_spell_night_buff_description_level_2"            ""
-        "troll_spell_night_buff_description_level_3"            ""
+        "troll_spell_night_buff_description_level_1"            "MS: 20<br>AtackSpeed: 20<br>Evasion: 1"
+        "troll_spell_night_buff_description_level_2"            "MS: 40<br>AtackSpeed: 40<br>Evasion: 2"
+        "troll_spell_night_buff_description_level_3"            "MS: 50<br>AtackSpeed: 60<br>Evasion: 3"
+
+		"troll_spell_night_buff_description_level_1_shop"            "Movespeed"
+        "troll_spell_night_buff_description_level_2_shop"            "AtackSpeed"
+        "troll_spell_night_buff_description_level_3_shop"            "Evasion"
+
+
 		"DOTA_Tooltip_modifier_troll_spell_night_buff"			"Passive: Increases stats at night"
 				
 		"troll_spell_gold_wisp"                            		 "Anti block"
         "troll_spell_gold_wisp_description"                       "Passive: Splash attack on Gold Wisp and Workers 1-3 lvl. Increases movespeed when attacking."
-        "troll_spell_gold_wisp_description_level_1"               "Radius: 128<br>Duration: 5"
-        "troll_spell_gold_wisp_description_level_2"               "Radius: 160<br>Duration: 10"
-        "troll_spell_gold_wisp_description_level_3"               "Radius: 192<br>Duration: 25"
+        "troll_spell_gold_wisp_description_level_1"               "Radius: 128<br>Movespeed: MAX<br>Duration: 5"
+        "troll_spell_gold_wisp_description_level_2"               "Radius: 160<br>Movespeed: MAX<br>Duration: 10"
+        "troll_spell_gold_wisp_description_level_3"               "Radius: 192<br>Movespeed: MAX<br>Duration: 25"
 		"DOTA_Tooltip_modifier_troll_spell_gold_wisp"			 "Passive: Splash attack on Gold Wisp and Workers 1-3 lvl. Increases movespeed when attacking."
+		
+		"troll_spell_gold_wisp_description_level_1_shop"               "Radius"
+		"troll_spell_gold_wisp_description_level_2_shop"               "Movespeed"	
+        "troll_spell_gold_wisp_description_level_3_shop"               "Duration"		
+
+
+
+        // ELFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+		"elf_spell_ms"                            		 "Movespeed"
+        "elf_spell_ms_description"                       "Passive: Increases movespeed"
+        "elf_spell_ms_description_level_1"               "Movespeed: 2"
+        "elf_spell_ms_description_level_2"               "Movespeed: 5"
+        "elf_spell_ms_description_level_3"               "Movespeed: 10"
+		"DOTA_Tooltip_modifier_elf_spell_ms"			 "Passive: Increases movespeed"
+		"elf_spell_ms_description_level_1_shop"               "Movespeed"
+	
+		
+		"elf_spell_gold"                            		 "Starting Gold"
+        "elf_spell_gold_description"                       "Passive: Increases starting gold and decreases movespeed"
+        "elf_spell_gold_description_level_1"               "Gold: 10<br>Movespeed: -20"
+        "elf_spell_gold_description_level_2"               "Gold: 15<br>Movespeed: -10"
+        "elf_spell_gold_description_level_3"               "Gold: 20<br>"
+		"DOTA_Tooltip_modifier_elf_spell_gold"			 "Passive: Increases starting gold and decreases movespeed"
+		"elf_spell_gold_description_level_1_shop"               "Gold"
+		"elf_spell_gold_description_level_2_shop"               "Movespeed"
+				
+		"elf_spell_lumber"                            		 "Starting Lumber"
+        "elf_spell_lumber_description"                       "Passive: Increases the starting lumber and decreases movespeed"
+        "elf_spell_lumber_description_level_1"               "Lumber: 2<br>Movespeed: -30"
+        "elf_spell_lumber_description_level_2"               "Lumber: 2<br>Movespeed: -20"
+        "elf_spell_lumber_description_level_3"               "Lumber: 2<br>Movespeed: -10"
+		"DOTA_Tooltip_modifier_elf_spell_lumber"			 "Passive: Increases the starting lumber and decreases movespeed"
+		"elf_spell_lumber_description_level_1_shop"               "Lumber"
+		"elf_spell_lumber_description_level_2_shop"               "Movespeed"
+				
+		"elf_spell_cd_reduce"                            		 "CD Reduces"
+        "elf_spell_cd_reduce_description"                       "Passive: Reduces item cooldown"
+        "elf_spell_cd_reduce_description_level_1"               "Cooldown: -4%"
+        "elf_spell_cd_reduce_description_level_2"               "Cooldown: -8%"
+        "elf_spell_cd_reduce_description_level_3"               "Cooldown: -16%"
+		"DOTA_Tooltip_modifier_elf_spell_cd_reduce"			 "Passive: Reduces item cooldown"
+		"elf_spell_cd_reduce_description_level_1_shop"               "Cooldown"
+				
+		"elf_spell_cd_worker"                            		 "Worker spell CD"
+        "elf_spell_cd_worker_description"                       "Passive: Reduces the cooldown of workers skills"
+        "elf_spell_cd_worker_description_level_1"               "Cooldown: -30%"
+        "elf_spell_cd_worker_description_level_2"               "Cooldown: -50%"
+        "elf_spell_cd_worker_description_level_3"               "Cooldown: -75%"
+		"DOTA_Tooltip_modifier_elf_spell_cd_worker"			 "Passive: Reduces the cooldown of workers skills"
+		"elf_spell_cd_worker_description_level_1_shop"               "Cooldown"
+				
+		"elf_spell_armor_wall"                            		 "Wall Armor"
+        "elf_spell_armor_wall_description"                       "Passive: Increases armor on walls"
+        "elf_spell_armor_wall_description_level_1"               "Armor: 10% + 1"
+        "elf_spell_armor_wall_description_level_2"               "Armor: 15% + 1"
+        "elf_spell_armor_wall_description_level_3"               "Armor: 20% + 1"
+		"DOTA_Tooltip_modifier_elf_spell_armor_wall"			 "Passive: Increases armor on walls"
+		"elf_spell_armor_wall_description_level_1_shop"               "Armor"
+				
+		"elf_spell_tower_damage"                            		 "Tower Damage"
+        "elf_spell_tower_damage_description"                       "Passive: Increases damage to towers"
+        "elf_spell_tower_damage_description_level_1"               "Damage: 10% + 1"
+        "elf_spell_tower_damage_description_level_2"               "Damage: 15% + 1"
+        "elf_spell_tower_damage_description_level_3"               "Damage: 20% + 1"
+		"DOTA_Tooltip_modifier_elf_spell_tower_damage"			 "Passive: Increases damage to towers"
+		"elf_spell_tower_damage_description_level_1_shop"               "Damage"
+				
+		"elf_spell_limit_gold"                            		 "Gold Limit"
+        "elf_spell_limit_gold_description"                       "Passive: Increases the maximum gold limit"
+        "elf_spell_limit_gold_description_level_1"               "Gold Limit: 200k"
+        "elf_spell_limit_gold_description_level_2"               "Gold Limit: 400k"
+        "elf_spell_limit_gold_description_level_3"               "Gold Limit: 600k"
+		"DOTA_Tooltip_modifier_elf_spell_limit_gold"			 "Passive: Increases the maximum gold limit"
+		"elf_spell_limit_gold_description_level_1_shop"               "Gold Limit"
+				
+		"elf_spell_limit_lumber"                            		 "Lumber Limit"
+        "elf_spell_limit_lumber_description"                       "Passive: Increases the maximum lumber limit"
+        "elf_spell_limit_lumber_description_level_1"               "Lumber Limit: 200k"
+        "elf_spell_limit_lumber_description_level_2"               "Lumber Limit: 200k"
+        "elf_spell_limit_lumber_description_level_3"               "Lumber Limit: 200k"
+		"DOTA_Tooltip_modifier_elf_spell_limit_lumber"			 "Passive: Increases the maximum lumber limit"
+		"elf_spell_limit_lumber_description_level_1_shop"               "Lumber Limit"
+				
+		"elf_spell_true"                            		 "True Sight"
+        "elf_spell_true_description"                       "Passive: Reveals invisible units"
+        "elf_spell_true_description_level_1"               "Radius: 200"
+        "elf_spell_true_description_level_2"               "Radius: 400"
+        "elf_spell_true_description_level_3"               "Radius: 600"
+		"DOTA_Tooltip_modifier_elf_spell_true"			 "Passive: Reveals invisible units"
+		"elf_spell_true_description_level_1_shop"               "Radius"
+				
+		"elf_spell_tower_range"                            		 "Tower Range"
+        "elf_spell_tower_range_description"                       "Passive: Increases the attack range of towers"
+        "elf_spell_tower_range_description_level_1"               "Attack Range: 32"
+        "elf_spell_tower_range_description_level_2"               "Attack Range: 64"
+        "elf_spell_tower_range_description_level_3"               "Attack Range: 128"
+		"DOTA_Tooltip_modifier_elf_spell_tower_range"			 "Passive: Increases the attack range of towers"
+		"elf_spell_tower_range_description_level_1_shop"               "Attack Range"
+				
+		"elf_spell_blink"                            		 "Blink Range"
+        "elf_spell_blink_description"                       "Passive: Increases the blink range"
+        "elf_spell_blink_description_level_1"               "Radius: +200"
+        "elf_spell_blink_description_level_2"               "Radius: +400"
+        "elf_spell_blink_description_level_3"               "Radius: +600"
+		"DOTA_Tooltip_modifier_elf_spell_blink"			 "Passive: Increases the blink range"
+		"elf_spell_blink_description_level_1_shop"               "Radius"
+				
+		"elf_spell_damage_gold"                            		 "Hit Tower gold"
+        "elf_spell_damage_gold_description"                       "Passive: Grants gold per hit to the troll from the damage dealt"
+        "elf_spell_damage_gold_description_level_1"               "Damage/Gold: 4%<br>X1 - 30 min<br>X2 - 15 min<br>X4 - 5 min"
+        "elf_spell_damage_gold_description_level_2"               "Damage/Gold: 8%<br>X1 - 30 min<br>X2 - 15 min<br>X4 - 5 min"
+        "elf_spell_damage_gold_description_level_3"               "Damage/Gold: 15%<br>X1 - 30 min<br>X2 - 15 min<br>X4 - 5 min"
+		"DOTA_Tooltip_modifier_elf_spell_damage_gold"			 "Passive: Grants gold per hit to the troll from the damage dealt"
+		"elf_spell_damage_gold_description_level_1_shop"               "Damage/Gold"
+		"elf_spell_damage_gold_description_level_2_shop"               "Max Time X1"
+		"elf_spell_damage_gold_description_level_3_shop"               "Max Time X2"
+		"elf_spell_damage_gold_description_level_4_shop"               "Max Time X4"
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Passive: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Passive: "
+		"_description_level_1_shop"               ""
+
+
+
+
+
+
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
-				
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+		
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
 				
 		""                            		 ""
-        "_description"                       ""
+        "_description"                       "Active: "
         "_description_level_1"               ""
         "_description_level_2"               ""
         "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+				
+		""                            		 ""
+        "_description"                       "Active: "
+        "_description_level_1"               ""
+        "_description_level_2"               ""
+        "_description_level_3"               ""
+		"DOTA_Tooltip_modifier_"			 "Active: "
+		"_description_level_1_shop"               ""
+
+		
+
 
 
 
