@@ -1089,7 +1089,7 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 	PoolTable["10"]["1"] = {}
 	if #obj > 0 then
 		for id=1,#obj do
-			PoolTable["10"]["1"][id] = {obj[id].matchID, obj[id].score, obj[id].typeDonate }
+			PoolTable["10"]["1"][id] = {obj[id].idQuest, obj[id].count }
 		end
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)			

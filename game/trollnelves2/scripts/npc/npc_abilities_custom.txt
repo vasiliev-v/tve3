@@ -7862,7 +7862,7 @@
 		"AbilityValues"
         {
             "radius1" "2400"
-            "duration" "15"
+            "duration" "9999"
             "maximum_charges" "2"
             "charge_replenish_time" "60.0"
             "charge_replenish_time2" "30.0"
@@ -7915,14 +7915,14 @@
 					
 					"AttachEffect"
 					{
-						"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-						"ControlPoints"
-						{
-							"00" "0 0 0"
-							"01" "%radius1 %radius1 %radius1"
-						}
+						//"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
+						//"EffectAttachType"	"follow_origin"
+						//"Target"			"TARGET"
+						//"ControlPoints"
+						//{
+						//	"00" "0 0 0"
+						//	"01" "%radius1 %radius1 %radius1"
+						//}
 					}
 				}
 			}
@@ -17753,4 +17753,54 @@
 			}
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 }
