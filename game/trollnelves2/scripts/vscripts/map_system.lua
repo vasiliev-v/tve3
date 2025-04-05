@@ -7,10 +7,10 @@ local MAPS_LIST = {}
 if string.match(GetMapName(),"1x1")  then
 	MAPS_LIST = 
 	{
-		{"random", 			0, 		"s2r://panorama/images/new_design/maps/random1x1.png"},
-		{"1x1icepeak", 		-125,	"s2r://panorama/images/new_design/maps/1x1icepeak.png"}, 
-		{"1x1cursedisland",	-127, 	"s2r://panorama/images/new_design/maps/1x1cursedisland.png"}, 
-		{"1x1cave", 		-127,	"s2r://panorama/images/new_design/maps/1x1cave.png"}
+		{"random", 			0, 		"s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"1x1amazon", 		-125,	"s2r://panorama/images/new_design/maps/1x1amazon.png"}, 
+		{"1x1fjord",	    -125, 	"s2r://panorama/images/new_design/maps/1x1fjord.png"}, 
+		{"1x1tokyo", 		-125,	"s2r://panorama/images/new_design/maps/1x1tokyo.png"}
 	}
 else
 	MAPS_LIST = 

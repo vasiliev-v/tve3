@@ -1159,7 +1159,7 @@ function Shop.RequestAchivements(obj, pID, steam, callback)
 	DebugPrint("RequestAchivements")
 	DebugPrintTable(obj)
 	for id=1,#obj do
-		PoolTable["15"][tostring(obj[id].num)] = tostring(obj[id].count)
+		PoolTable["17"][tostring(obj[id].num)] = tostring(obj[id].count)
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 

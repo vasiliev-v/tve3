@@ -1024,9 +1024,9 @@ function Activate()
 	GameRules.scores = {}
 	GameRules.rep = {}
 	GameRules.GetRep = {}
-	GameRules.GetGem = {}
+	GameRules.GetGem = {} 
 	GameRules.isTesting = true
-	GameRules.server =  "https://tve4.eu/test/"  -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
+	GameRules.server =  "https://tve4.eu/test/"  -- ""https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
 	GameRules.types = {}
@@ -1080,8 +1080,9 @@ function Activate()
 	GameRules.PoolTable[12] = {} -- перк
 	GameRules.PoolTable[13] = {} -- личный рейт
 	GameRules.PoolTable[14] = {} -- полученные предметы в БП 
-	GameRules.PoolTable[15] = {} -- достижения 
+	GameRules.PoolTable[15] = {} -- задания  
 	GameRules.PoolTable[16] = {} -- купленый батлпасс 
+	GameRules.PoolTable[17] = {} -- достижения  
     GameRules.PoolTable[0][0] = {}
     GameRules.PoolTable[1][0] = {}
     GameRules.PoolTable[2][0] = {}

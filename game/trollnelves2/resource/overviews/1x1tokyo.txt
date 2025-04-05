@@ -1,0 +1,8 @@
+1x1tokyo
+{
+	material materials/overviews/1x1tokyo.vmat
+	pos_x -4247
+	pos_y 960
+	scale 8.388
+}
+

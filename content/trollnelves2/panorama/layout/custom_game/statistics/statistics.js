@@ -241,7 +241,7 @@ function UpdateAchivements()
 {
     $("#PanelAchivement").RemoveAndDeleteChildren()
     let player_has_alp = {}
-    player_achivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[15]
+    player_achivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[17]
 
     for (var achivement_id in player_achivements)
     {

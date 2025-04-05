@@ -1,0 +1,8 @@
+1x1fjord
+{
+	material materials/overviews/1x1fjord.vmat
+	pos_x -6016
+	pos_y 3408
+	scale 10.875
+}
+
