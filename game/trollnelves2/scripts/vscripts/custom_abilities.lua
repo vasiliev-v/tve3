@@ -1636,6 +1636,16 @@ function CheckNightInvis(keys)
 	end
 end
 
+function CheckNightInvisElf(keys)
+	local caster = keys.caster
+	local id = caster:GetPlayerID()
+	DebugPrint("dsdasdasdas")
+	if Pets.playerPets[id] then
+		DebugPrint("dsdasdasdas")
+		Pets.playerPets[id]:AddNewModifier(Pets.playerPets[id], self, "modifier_invisible", {Duration = keys.Duration})
+	end
+end
+
 function HealBuilding(event)
 	local caster = event.caster
 	local target = event.target

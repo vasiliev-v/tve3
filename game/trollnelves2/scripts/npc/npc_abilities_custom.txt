@@ -17634,7 +17634,7 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"    		"true_sight"
+		"AbilityTextureName"    		"elf_spell_true"
 		"MaxLevel"						"3"
 
 		"OnCreated"{
@@ -17706,62 +17706,181 @@
 	}
 	
 	"elf_spell_invis"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
-		"AbilityTextureName"			"treant_natures_guise"
-		"MaxLevel"						"3"
-		"AbilityChannelTime"			"1"
-		
-		"AbilityValues"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"AbilityTextureName"			"elf_spell_invis"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"350 300 300"
+	"AbilityCastPoint"				"0"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+
+	"AbilityValues"
         {
-            "duration" "15 30 60"
+            "duration"					"15.0 30.0 60.0"
+			"fade_time"					"1.0 0.8 0.6"
+			"move_speed_bonus_pct"		"0 0 0 0"
         }
-		
-		"OnChannelSucceeded"{
-			"ApplyModifier"{
-				"Target"             "CASTER"
-				"ModifierName"        "modifier_stand_invis"
+
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"EffectName"		"particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
+			"EffectAttachType"	"attach_origin"
+			"Target"			"CASTER"
+		}
+
+		"FireSound"
+		{
+			"Target"		"CASTER"
+			"EffectName"	"Hero_Clinkz.WindWalk"
+		}
+
+		"ApplyModifier"
+		{
+			"Target"		"CASTER"
+			"ModifierName"	"modifier_wind_walk_fade"
+			"Duration"		"%fade_time"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_wind_walk_fade"
+		{
+			"IsHidden"			"1"
+			"EffectName"		"particles/generic_hero_status/status_invisibility_start.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+			"OnDestroy"
+			{
+				"ApplyModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_wind_walk"
+					"Duration"		"%duration"
+				}
+				"ApplyModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_invisible"
+					"Duration"		"%duration"
+				}
 			}
 		}
-		"Modifiers"{
-			"modifier_stand_invis"{
-				"ThinkInterval"			"0.5"
-				"OnCreated"{
-					"Duration"      "%duration"
-					"ApplyModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_invisible"
-					}
+
+		"modifier_wind_walk"
+		{
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_wind_walk"
 				}
-				"OnOrder"{
-					"RemoveModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_invisible"
-					}					
-					"RemoveModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_stand_invis"
-					}
+				"RemoveModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_invisible"
 				}
-				"OnDestroy"{
-					"RemoveModifier"{
-						"Target"			"CASTER"
-						"ModifierName"		"modifier_invisible"
+			}
+
+			"OnAbilityExecuted"
+			{
+				"RemoveModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_wind_walk"
+				}
+				"RemoveModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_invisible"
+				}
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED" 
+			}
+
+			"Properties"
+			{
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus_pct" 
+			}
+
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
 					}
+					"ModifierName"	"modifier_invisible"
 				}
 			}
 		}
 	}
+}
 
+"elf_spell_smoke"
+{
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/elf_spell_smoke/elf_spell_smoke_lua"
+		"AbilityTextureName"			"elf_spell_smoke"
+		"MaxLevel"						"3"
 
+		"precache"
+		{
+			"particle"	"particles/items2_fx/smoke_of_deceit.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.4"
 
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"350 300 300"
 
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
 
-
-
+			"AbilityValues"
+        {
+            "duration"					"15.0 30.0 60.0"
+			"radius"					"600 900 1200"
+			"duration_scepter"			"8.0 9.0 10.0"
+        }
+}
 
 
 

@@ -186,7 +186,23 @@ game_spells_lib.spells_list =
             "elf_spell_invis_description_level_1_shop", 
         }, 
         {
-            {0,0,0},
+            {15.0, 30.0, 60.0},
+            {350, 300, 300},
+            {1.0, 0.8, 0.6},
+        },
+        "0"
+    },
+    {
+        "elf_spell_smoke", 
+        "elf_spell_smoke", 
+        "modifier_elf_spell_smoke", 
+        {
+            "elf_spell_smoke_description_level_1_shop", 
+        }, 
+        {
+            {15.0, 30.0, 60.0},
+            {350, 300, 250},
+            {1.0, 0.8, 0.6},
         },
         "0"
     },
