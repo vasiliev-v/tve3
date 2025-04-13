@@ -84,7 +84,9 @@ end
 
 function trollnelves2:OnPlayerReconnect(event)
     local playerID = event.PlayerID
-
+    if GameRules.KickList[playerID] ~= nil then
+        SendToServerConsole("kick " .. PlayerResource:GetPlayerName(playerID))
+    end
     if GameRules.disconnectedHeroSelects[playerID] then
         Timers:CreateTimer(0, function()
             if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then

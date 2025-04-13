@@ -184,6 +184,7 @@ function VoteKick(eventSourceIndex, event)
 						end
 					end
 				end
+				SendToServerConsole("kick " .. PlayerResource:GetPlayerName(event.playerID1))
 				CheckWolfInTeam(hero)
 			end
 			votes[ event.playerID1 ] = 0

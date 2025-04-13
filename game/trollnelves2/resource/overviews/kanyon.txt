@@ -1,0 +1,8 @@
+kanyon
+{
+	material materials/overviews/kanyon.vmat
+	pos_x -8173
+	pos_y 8496
+	scale 16.856
+}
+

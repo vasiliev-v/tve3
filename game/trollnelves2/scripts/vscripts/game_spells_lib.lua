@@ -184,11 +184,13 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_invis", 
         {
             "elf_spell_invis_description_level_1_shop", 
+            "elf_spell_invis_description_level_2_shop", 
+            "elf_spell_invis_description_level_3_shop", 
         }, 
         {
             {15.0, 30.0, 60.0},
             {350, 300, 300},
-            {1.0, 0.8, 0.6},
+            {"1.0", "0.8", "0.6"},
         },
         "0"
     },
@@ -198,11 +200,134 @@ game_spells_lib.spells_list =
         "modifier_elf_spell_smoke", 
         {
             "elf_spell_smoke_description_level_1_shop", 
+            "elf_spell_smoke_description_level_2_shop", 
+            "elf_spell_smoke_description_level_3_shop", 
+            "elf_spell_smoke_description_level_4_shop", 
         }, 
         {
-            {15.0, 30.0, 60.0},
-            {350, 300, 250},
-            {1.0, 0.8, 0.6},
+            {15, 30, 60},
+            {30, 45, 95},
+            {600, 900, 1200},
+            {350, 300, 300},
+            
+        },
+        "0"
+    },
+    {
+        "elf_spell_haste",
+        "elf_spell_haste", 
+        "modifier_elf_spell_haste", 
+        {
+            "elf_spell_haste_description_level_1_shop", 
+            "elf_spell_haste_description_level_2_shop", 
+            "elf_spell_haste_description_level_3_shop", 
+        }, 
+        {
+            {10, 20 ,50},
+            {10, 20, 50},
+            {350, 300, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_evasion",
+        "elf_spell_evasion", 
+        "modifier_elf_spell_evasion", 
+        {
+            "elf_spell_evasion_description_level_1_shop", 
+            "elf_spell_evasion_description_level_2_shop", 
+            "elf_spell_evasion_description_level_3_shop", 
+        }, 
+        {
+            {3, 6 ,10},
+            {50, 80, 100},
+            {350, 300, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_target_buff",
+        "elf_spell_target_buff", 
+        "modifier_elf_spell_target_buff", 
+        {
+            "elf_spell_target_buff_description_level_1_shop", 
+            "elf_spell_target_buff_description_level_2_shop", 
+            "elf_spell_target_buff_description_level_3_shop", 
+        }, 
+        {
+            {3, 6 ,10},
+            {50, 80, 100},
+            {350, 300, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_target_damage",
+        "elf_spell_target_damage", 
+        "modifier_elf_spell_target_damage", 
+        {
+            "elf_spell_target_buff_description_level_1_shop", 
+            "elf_spell_target_buff_description_level_2_shop", 
+            "elf_spell_target_buff_description_level_3_shop", 
+        }, 
+        {
+            {4, 5 , 6},
+            {10, 20, 30},
+            {350, 300, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_teleport",
+        "elf_spell_teleport", 
+        "modifier_elf_spell_teleport", 
+        {
+            "elf_spell_teleport_description_level_1_shop", 
+        }, 
+        {
+            {500, 400, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_stun_target",
+        "elf_spell_stun_target", 
+        "modifier_elf_spell_stun_target", 
+        {
+            "elf_spell_stun_target_description_level_1_shop", 
+            "elf_spell_stun_target_description_level_2_shop", 
+        }, 
+        {
+            {1, 1.5, 2},
+            {350, 300, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_stun_target",
+        "elf_spell_stun_target", 
+        "modifier_elf_spell_stun_target", 
+        {
+            "elf_spell_stun_target_description_level_1_shop", 
+            "elf_spell_stun_target_description_level_2_shop", 
+        }, 
+        {
+            {1, 1.5, 2},
+            {350, 300, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_heal",
+        "elf_spell_heal", 
+        "modifier_elf_spell_heal", 
+        {
+            "elf_spell_heal_description_level_1_shop", 
+            "elf_spell_heal_description_level_2_shop", 
+        }, 
+        {
+            {1, 1.5, 2},
+            {350, 300, 300},
         },
         "0"
     },

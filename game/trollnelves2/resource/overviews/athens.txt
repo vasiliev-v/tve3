@@ -1,0 +1,8 @@
+athens
+{
+	material materials/overviews/athens.vmat
+	pos_x -8054
+	pos_y 8374
+	scale 16.856
+}
+

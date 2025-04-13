@@ -10,12 +10,7 @@ function elf_spell_smoke:OnSpellStart()
 	local buffDuration = self:GetSpecialValueFor("duration")
 	local radius = self:GetSpecialValueFor("radius")
 	local targets = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
-
-	if caster:HasScepter() then
-		buffDuration = self:GetSpecialValueFor("duration_scepter")
-		radius = FIND_UNITS_EVERYWHERE
-		targets = DOTA_UNIT_TARGET_ALL
-	end
+	local buffDurationCreep = self:GetSpecialValueFor("duration_creep")
 
 	-- Find Units in Radius
 	local allies = FindUnitsInRadius(
@@ -32,18 +27,33 @@ function elf_spell_smoke:OnSpellStart()
 
 	for _,ally in pairs(allies) do
 		-- Add modifier
-		ally:AddNewModifier(
-			caster, -- player source
-			self, -- ability source
-			"modifier_smoke_of_deceit", -- modifier name
-			{ duration = buffDuration } -- kv
+		if ally:IsHero() then
+			ally:AddNewModifier(
+				caster, -- player source
+				self, -- ability source
+				"modifier_smoke_of_deceit", -- modifier name
+				{ duration = buffDuration } -- kv
+			)
+	    else
+			ally:AddNewModifier(
+				caster, -- player source
+				self, -- ability source
+				"modifier_smoke_of_deceit", -- modifier name
+				{ duration = buffDurationCreep } -- kv
+			)
+		end
+		local effect_cast = ParticleManager:CreateParticle( "particles/items2_fx/smoke_of_deceit.vpcf", PATTACH_ABSORIGIN_FOLLOW, ally )
+		ParticleManager:SetParticleControlEnt(
+			effect_cast,
+			5,
+			ally,
+			PATTACH_POINT_FOLLOW,
+			"attach_hitloc",
+			ally:GetOrigin(), -- unknown
+			true -- unknown, true
 		)
-		ally:AddNewModifier(
-			caster, -- player source
-			self, -- ability source
-			"modifier_smoke_of_deceit", -- modifier name
-			{ duration = buffDuration } -- kv
-		)
+	
+		ParticleManager:ReleaseParticleIndex( effect_cast )
 	end
 
 	-- Play Effects

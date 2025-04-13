@@ -7,21 +7,24 @@ local MAPS_LIST = {}
 if string.match(GetMapName(),"1x1")  then
 	MAPS_LIST = 
 	{
-		{"random", 			0, 		"s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
-		{"1x1amazon", 		-125,	"s2r://panorama/images/new_design/maps/1x1amazon.png"}, 
-		{"1x1fjord",	    -125, 	"s2r://panorama/images/new_design/maps/1x1fjord.png"}, 
-		{"1x1tokyo", 		-125,	"s2r://panorama/images/new_design/maps/1x1tokyo.png"}
+		{"random", 			   0, 	"s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"1x1amazon", 		-127,	"s2r://panorama/images/new_design/maps/1x1amazon.png"}, 
+		{"1x1fjord",	    -127, 	"s2r://panorama/images/new_design/maps/1x1fjord.png"}, 
+		{"1x1tokyo", 		-127,	"s2r://panorama/images/new_design/maps/1x1tokyo.png"}
 	}
 else
 	MAPS_LIST = 
 	{
-		{"random", 		0, 		"s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
+		{"random", 		   0,   "s2r://panorama/images/new_player_intro/01-basics_tutorial_psd.vtex"},
 		{"atlantida", 	-127, 	"s2r://panorama/images/new_design/maps/atlantida.png"},
+		{"athens", 	    -127, 	"s2r://panorama/images/new_design/maps/athens.png"},
 		{"bloodville",	-127, 	"s2r://panorama/images/new_design/maps/bloodville.png"},
 		{"garden", 		-127, 	"s2r://panorama/images/new_design/maps/garden.png"},
 		{"gorge",		-127, 	"s2r://panorama/images/new_design/maps/gorge.png"},
+		{"kanyon", 		-127, 	"s2r://panorama/images/new_design/maps/kanyon.png"},
 		{"mines", 		-127, 	"s2r://panorama/images/new_design/maps/mines.png"},
 		{"north", 		-127, 	"s2r://panorama/images/new_design/maps/north.png"},
+		{"oasis", 		-127,	"s2r://panorama/images/new_design/maps/oasis.png"},
 		{"okinawa", 	-127,	"s2r://panorama/images/new_design/maps/okinawa.png"}
 	}
 end

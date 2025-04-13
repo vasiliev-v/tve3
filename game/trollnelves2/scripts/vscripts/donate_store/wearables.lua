@@ -220,9 +220,8 @@ function wearables:SetDefaultPart(event)
 		if GameRules.SaveDefItem[event.PlayerID][1] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][1] = 1
-		elseif  GameRules.SaveDefItem[event.PlayerID][1] < 4 then
+		elseif  GameRules.SaveDefItem[event.PlayerID][1] < 100 then
 			Shop.GetVip(data, callback)
-			GameRules.SaveDefItem[event.PlayerID][1] = GameRules.SaveDefItem[event.PlayerID][1] + 1
 		end
 	end
 end	
@@ -239,7 +238,7 @@ function wearables:SetDefaultSkin(event)
 			if GameRules.SaveDefItem[event.PlayerID][2] == nil then
 				Shop.GetVip(data, callback)
 				GameRules.SaveDefItem[event.PlayerID][2] = 1
-			elseif  GameRules.SaveDefItem[event.PlayerID][2] < 4 then
+			elseif  GameRules.SaveDefItem[event.PlayerID][2] < 100 then
 				Shop.GetVip(data, callback)
 				GameRules.SaveDefItem[event.PlayerID][2] = GameRules.SaveDefItem[event.PlayerID][2] + 1
 			end
@@ -248,7 +247,7 @@ function wearables:SetDefaultSkin(event)
 			if GameRules.SaveDefItem[event.PlayerID][3] == nil then
 				Shop.GetVip(data, callback)
 				GameRules.SaveDefItem[event.PlayerID][3] = 1
-			elseif  GameRules.SaveDefItem[event.PlayerID][3] < 4 then
+			elseif  GameRules.SaveDefItem[event.PlayerID][3] < 100 then
 				Shop.GetVip(data, callback)
 				GameRules.SaveDefItem[event.PlayerID][3] = GameRules.SaveDefItem[event.PlayerID][3] + 1
 			end
@@ -257,7 +256,7 @@ function wearables:SetDefaultSkin(event)
 			if GameRules.SaveDefItem[event.PlayerID][4] == nil then
 				Shop.GetVip(data, callback)
 				GameRules.SaveDefItem[event.PlayerID][4] = 1
-			elseif  GameRules.SaveDefItem[event.PlayerID][4] < 4 then
+			elseif  GameRules.SaveDefItem[event.PlayerID][4] < 100 then
 				Shop.GetVip(data, callback)
 				GameRules.SaveDefItem[event.PlayerID][4] = GameRules.SaveDefItem[event.PlayerID][4] + 1
 			end	
@@ -276,7 +275,7 @@ function wearables:SetDefaultSkinTower(event)
 		if GameRules.SaveDefItem[event.PlayerID][5] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][5] = 1
-		elseif  GameRules.SaveDefItem[event.PlayerID][5] < 30 then
+		elseif  GameRules.SaveDefItem[event.PlayerID][5] < 100 then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][5] = GameRules.SaveDefItem[event.PlayerID][5] + 1
 		end	
@@ -294,7 +293,7 @@ function wearables:SetDefaultSkinWisp(event)
 		if GameRules.SaveDefItem[event.PlayerID][10] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][10] = 1
-		elseif  GameRules.SaveDefItem[event.PlayerID][10] < 4 then
+		elseif  GameRules.SaveDefItem[event.PlayerID][10] < 100 then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][10] = GameRules.SaveDefItem[event.PlayerID][10] + 1
 		end	

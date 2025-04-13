@@ -22,18 +22,18 @@
     brightness: 1.5;
 }
 
-.ButtonStats
+.ButtonStore
 {
-    background-image: url("file://{images}/new_design/top_menu/stats.png");
-    background-size: 32px 32px;
+    background-image: url("file://{images}/new_design/top_menu/store.png");
+    background-size: 25px 25px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 
-.Discord
+.ButtonStats
 {
-    background-image: url("file://{images}/new_design/top_menu/discord.png");
-    background-size: 30px 23px;
+    background-image: url("file://{images}/new_design/top_menu/stats.png");
+    background-size: 32px 32px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -45,7 +45,6 @@
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
-
 .ButtonBattlePass
 {
     background-image: url("file://{images}/new_design/top_menu/pass.png");
@@ -62,10 +61,11 @@
     background-repeat: no-repeat;
 }
 
-.ButtonStore
+
+.Discord
 {
-    background-image: url("file://{images}/new_design/top_menu/store.png");
-    background-size: 25px 25px;
+    background-image: url("file://{images}/new_design/top_menu/discord.png");
+    background-size: 30px 23px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }

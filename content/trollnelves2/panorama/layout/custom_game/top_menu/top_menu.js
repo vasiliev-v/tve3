@@ -1,12 +1,13 @@
 var TOP_MENU_BUTTONS =
 [
-    ["Discord", DiscordOpen],
+    
     ["ButtonStats", StatsClick],
     ["ButtonLeaderboards", LeaderboardsClick],
+    ["ButtonStore", StoreClick],
     ["ButtonBattlePass", BattlePassClick],
     ["ButtonRewards", RewardsClick],
-    ["ButtonStore", StoreClick],
     ["ButtonInfo", InfoClick],
+    ["Discord", DiscordOpen],
 ]
 
 function Init()

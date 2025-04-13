@@ -344,5 +344,14 @@ function chatcommand:OnPlayerChat(event)
 	--GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
 		elseif event.text  ==  "!money"  then
 			-- PlayerResource:ModifyGold(hero, nil)
+
+		elseif event.text == "!test1213" and PlayerResource:GetSteamAccountID(event.playerid) == 201083179  then
+			GameRules:SendCustomMessage(GetDedicatedServerKeyV3("1"), 1, 1)
+
+
+
+
+
+			
 		end
 end

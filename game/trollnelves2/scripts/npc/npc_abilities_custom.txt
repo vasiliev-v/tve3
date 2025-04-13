@@ -17877,15 +17877,617 @@
 			"AbilityValues"
         {
             "duration"					"15.0 30.0 60.0"
+			"duration_creep"			"8.0 9.0 10.0"
 			"radius"					"600 900 1200"
-			"duration_scepter"			"8.0 9.0 10.0"
+			
         }
 }
 
 
+	"elf_spell_haste"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"elf_spell_haste"
+		"MaxLevel"						"3"
+		"AbilityCooldown"				"350 300 300"
+		
+		"precache"
+		{
+			"soundfile"                 "soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+			"particle"                  "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_focusfire_v2.vpcf"
+		}
+
+		"AbilityValues"
+        {
+            "duration" "10 20 50"
+            "speed" "10 20 50"
+        }
+		
+		"OnSpellStart"{
+			"ApplyModifier"{
+				"ModifierName"			"modifier_elf_spell_haste_bonus_ms"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"{
+			"modifier_elf_spell_haste_bonus_ms"{
+				"Duration"				"%duration"
+				 
+				"EffectName"            "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
+				"EffectAttachType"      "follow_origin"
+				
+				"Properties"{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%speed"
+				}
+			}
+		}
+	}
+
+	"elf_spell_evasion"
+	{
+	// General
+	"BaseClass"				        "ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"			"elf_spell_evasion"
+
+	// Precache
+	"precache"
+	{
+	}
+	
+	// Casting
+	"AbilityCastPoint"				"1.5 1 0.5"
+
+	// Time		
+	"AbilityCastRange"				"600"//"400"
+	"AbilityCooldown"				"350 300 300"
+
+	// Special
+	"AbilityValues"
+        {
+            "duration" "3 6 10"
+            "speed" "2000"
+            "bonus_evasion" "50 80 100"
+        }
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Chen.PenitenceCast"
+			"Target" 		"CASTER"
+		}
+
+		"TrackingProjectile"
+		{
+			"Target"           	"TARGET"
+			"EffectName"		""
+			"Dodgeable"			"0"
+			"ProvidesVision"	"0"
+			"MoveSpeed"        	"%speed"
+			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+		
+		"FireSound"
+		{
+			"EffectName"	"Hero_Chen.PenitenceImpact"
+			"Target" 		"TARGET"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_chen/chen_penitence.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "TARGET"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elf_spell_evasion_datadriven"
+			"Target" 		"TARGET"
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_elf_spell_evasion_datadriven"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+	
+			"EffectName"		"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT" "%bonus_evasion"
+			}
+		}
+	}
+	}
 
 
+	"elf_spell_target_buff"
+	{
+	// General
+	"BaseClass"				        "ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"			"elf_spell_target_buff"
 
+	// Precache
+	"precache"
+	{
+	}
+	
+	// Casting
+	"AbilityCastPoint"				"1.5 1 0.5"
+
+	// Time		
+	"AbilityCastRange"				"600"//"400"
+	"AbilityCooldown"				"120 100 60"
+
+	// Special
+	"AbilityValues"
+        {
+            "duration"     "6 8 12"
+            "bonus_ms"     "5 10 20"
+			"attack_speed" "60 80 120"
+			"damage"       "5 10 20"
+			"speed"        "2000"
+        }
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Chen.PenitenceCast"
+			"Target" 		"CASTER"
+		}
+
+		"TrackingProjectile"
+		{
+			"Target"           	"TARGET"
+			"EffectName"		""
+			"Dodgeable"			"0"
+			"ProvidesVision"	"0"
+			"MoveSpeed"        	"%speed"
+			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+		
+		"FireSound"
+		{
+			"EffectName"	"Hero_Chen.PenitenceImpact"
+			"Target" 		"TARGET"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_chen/chen_penitence.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "TARGET"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elf_spell_evasion_datadriven"
+			"Target" 		"TARGET"
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_elf_spell_evasion_datadriven"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+	
+			"EffectName"		"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_ms"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%damage"
+			}
+		}
+	}
+	}
+
+
+"elf_spell_target_damage"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"elf_spell_target_damage"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
+		"particle"			"particles/units/heroes/hero_chen/chen_penitence.vpcf"
+		"particle"			"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
+	}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.2"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"600"//"400"
+	"AbilityCooldown"				"350 300 300"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityValues"
+        {
+            "duration" "4 8 15"
+            "speed" "2000"
+            "bonus_damage_taken" "10 20 30"
+        }
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Chen.PenitenceCast"
+			"Target" 		"CASTER"
+		}
+
+		"TrackingProjectile"
+		{
+			"Target"           	"TARGET"
+			"EffectName"		""
+			"Dodgeable"			"0"
+			"ProvidesVision"	"0"
+			"MoveSpeed"        	"%speed"
+			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+		
+		"FireSound"
+		{
+			"EffectName"	"Hero_Chen.PenitenceImpact"
+			"Target" 		"TARGET"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_chen/chen_penitence.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "TARGET"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elf_spell_target_damage_datadriven"
+			"Target" 		"TARGET"
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_elf_spell_target_damage_datadriven"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+	
+			"EffectName"		"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "%bonus_damage_taken"
+			}
+		}
+	}
+}
+
+
+"elf_spell_teleport"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"		"elf_spell_teleport"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0" // ?? global
+	"AbilityCastPoint"				"3"
+	"AbilityCooldown"				"900 600 300"
+
+	"AbilityValues"
+    {
+
+    }
+
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_furion/furion_teleport_end.vpcf"
+		"particle"  "particles/units/heroes/hero_furion/furion_teleport_end_team.vpcf"
+		"particle"  "particles/units/heroes/hero_furion/furion_teleport.vpcf"
+		"particle"  "particles/units/heroes/hero_furion/furion_teleport_e.vpcf"	//Endcap if canceled
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+	}
+
+	"OnAbilityPhaseStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_teleportation"
+			"Target" 		"CASTER"
+			"Duration"		"3"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Furion.Teleport_Grow"
+			"Target" 		"CASTER"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/hero_furion/teleportation.lua"
+			"Function"		"CreateTeleportParticles"
+			"Target"		"POINT"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Furion.Teleport_Disappear"
+			"Target" 		"CASTER"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/hero_furion/teleportation.lua"
+			"Function"		"Teleport"
+			"Target"		"POINT"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Furion.Teleport_Appear"
+			"Target" 		"CASTER"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_teleportation"
+		{
+			"IsHidden"			"0"
+	
+			"EffectName"		"particles/units/heroes/hero_furion/furion_teleport.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+			"OnOrder"
+			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Furion.Teleport_Disappear"
+					"Target" 		"CASTER"
+				}
+
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/hero_furion/teleportation.lua"
+					"Function"		"EndTeleport"
+				}
+
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_teleportation"
+					"Target" 		"CASTER"
+				}
+			}
+		}
+	}
+}
+
+"elf_spell_stun_target"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName"			"elf_spell_stun_target"
+		"MaxLevel"						"3"
+
+		"precache"
+		{
+			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"          "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+			"particle"          "particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+			"particle"          "particles/generic_gameplay/generic_stunned.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"              "600"
+		"AbilityCastPoint"              "0"
+
+		// Time     
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"               "350 300 300"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"               "0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+        {
+            "bolt_speed" "2000"
+            "bolt_stun_duration" "1 1.5 2"
+            "vision_radius" "2000"
+        }
+
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"            "TARGET"
+				"EffectName"        "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast.vpcf"
+				"Dodgeable"         "1"
+				"ProvidesVision"    "1"
+				"VisionRadius"      "%vision_radius"
+				"MoveSpeed"         "%bolt_speed"
+				"SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+
+			"FireSound"
+			{
+				"EffectName"        "Hero_Sven.StormBolt"
+				"Target"            "CASTER"
+			}
+			
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"FireSound"
+			{
+				"EffectName"        "Hero_Sven.StormBoltImpact"
+				"Target"            "TARGET"
+			}
+
+			"FireEffect"
+			{
+				"EffectName"    "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast_explosion.vpcf"
+				"EffectAttachType"  "attach_origin"
+				"Target"        "TARGET"
+				"ControlPointEntities"
+				{
+					"TARGET"    "attach_origin"
+					"TARGET"    "attach_origin"
+					"TARGET"    "attach_origin"
+					"TARGET"    "attach_origin" //CP3 has a child explosion origin
+				}
+			}
+
+			"ApplyModifier"
+			{
+				"ModifierName"  "modifier_storm_bolt_datadriven"
+				"Target"        "TARGET"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_storm_bolt_datadriven"
+			{
+				"Duration"      "%bolt_stun_duration"
+				"IsDebuff"      "1"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+				"EffectName"    "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"  "follow_overhead"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}	
+	}
+
+	"elf_spell_heal"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName"			"elf_spell_heal"
+		"MaxLevel"						"3"
+		"AbilityCooldown"				"120 80 60"
+		"AbilityManaCost"				"0"
+		
+		"precache"
+		{
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+
+		}
+		"AbilityValues"
+        {
+            "heal" "1000 2000 3000"
+            "percent" "50 75 100"
+        }
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"    "Hero_Omniknight.Purification"
+				"Target"        "TARGET"
+			}
+
+			"FireEffect"
+			{
+				"Target"            "TARGET"
+				"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"ControlPoints"
+				{
+					"00"    "0 0 0"
+					"01"    "180 180 180"
+				}
+			}
+			
+			"FireEffect"
+			{
+				"Target"            "TARGET"
+				"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+			"RunScript"{
+				"ScriptFile"			"custom_abilities.lua"
+				"Function"				"HealBuilding"
+				"FixedHeal"				"%heal"
+				"PercentageHeal"		"%percent"
+			}
+		}
+	}
 
 
 

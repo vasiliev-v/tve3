@@ -69,7 +69,7 @@ function SelectPets:SetDefaultPets(event)
 		if GameRules.SaveDefItem[event.PlayerID][6] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][6] = 1
-		elseif GameRules.SaveDefItem[event.PlayerID][6] < 4 then
+		elseif GameRules.SaveDefItem[event.PlayerID][6] < 100 then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][6] = GameRules.SaveDefItem[event.PlayerID][6] + 1
 		end

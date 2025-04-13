@@ -4,7 +4,7 @@ end
 
 require("donate_store/shop_data")
 
-local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA" --GetDedicatedServerKeyV3("1")
+local dedicatedServerKey = GetDedicatedServerKeyV3("1")
 local MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 local lastSpray = {}
 local lastSounds = {}
@@ -1255,15 +1255,34 @@ function SetDefaultStats(event)
 		data.Num = tostring(event.part)
 		data.TypeDonate = tostring(1)
 		data.Type = event.type
+
+		if GameRules.SaveDefItem[event.PlayerID][6] == nil then
+			Shop.GetVip(data, callback)
+			GameRules.SaveDefItem[event.PlayerID][6] = 1
+		elseif GameRules.SaveDefItem[event.PlayerID][6] < 100 then
+			Shop.GetVip(data, callback)
+			GameRules.SaveDefItem[event.PlayerID][6] = GameRules.SaveDefItem[event.PlayerID][6] + 1
+		end
+
+
 		if data.Type == "fps" and GameRules.SaveDefItem[event.PlayerID][7] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][7] = 1
+		elseif data.Type == "fps" and GameRules.SaveDefItem[event.PlayerID][7] < 30  then 
+			Shop.GetVip(data, callback)
+			GameRules.SaveDefItem[event.PlayerID][7] = GameRules.SaveDefItem[event.PlayerID][7] + 1
 		elseif data.Type == "mute" and GameRules.SaveDefItem[event.PlayerID][8] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][8] = 1
+		elseif data.Type == "mute" and GameRules.SaveDefItem[event.PlayerID][8] < 30  then 
+			Shop.GetVip(data, callback)
+			GameRules.SaveDefItem[event.PlayerID][8] = GameRules.SaveDefItem[event.PlayerID][8] + 1
 		elseif data.Type == "block" and GameRules.SaveDefItem[event.PlayerID][9] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][9] = 1
+		elseif data.Type == "block" and GameRules.SaveDefItem[event.PlayerID][9] < 30  then 
+			Shop.GetVip(data, callback)
+			GameRules.SaveDefItem[event.PlayerID][9] = GameRules.SaveDefItem[event.PlayerID][9] + 1
 		end	
 	end
 end		
