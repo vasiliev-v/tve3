@@ -189,11 +189,13 @@ game_spells_lib.spells_list =
         }, 
         {
             {15.0, 30.0, 60.0},
-            {350, 300, 300},
             {"1.0", "0.8", "0.6"},
+            {350, 300, 300},
+            
         },
         "0"
     },
+    --[[
     {
         "elf_spell_smoke", 
         "elf_spell_smoke", 
@@ -213,6 +215,7 @@ game_spells_lib.spells_list =
         },
         "0"
     },
+    --]]
     {
         "elf_spell_haste",
         "elf_spell_haste", 
@@ -239,8 +242,8 @@ game_spells_lib.spells_list =
             "elf_spell_evasion_description_level_3_shop", 
         }, 
         {
+            {"50%", "80%", "100%"},
             {3, 6 ,10},
-            {50, 80, 100},
             {350, 300, 300},
         },
         "0"
@@ -253,11 +256,13 @@ game_spells_lib.spells_list =
             "elf_spell_target_buff_description_level_1_shop", 
             "elf_spell_target_buff_description_level_2_shop", 
             "elf_spell_target_buff_description_level_3_shop", 
+            "elf_spell_target_buff_description_level_4_shop", 
         }, 
         {
-            {3, 6 ,10},
-            {50, 80, 100},
-            {350, 300, 300},
+            {5, 10, 20},
+            {60, 80, 120},
+            {6, 8 ,12},
+            {120, 100, 60},
         },
         "0"
     },
@@ -266,13 +271,13 @@ game_spells_lib.spells_list =
         "elf_spell_target_damage", 
         "modifier_elf_spell_target_damage", 
         {
-            "elf_spell_target_buff_description_level_1_shop", 
-            "elf_spell_target_buff_description_level_2_shop", 
-            "elf_spell_target_buff_description_level_3_shop", 
+            "elf_spell_target_damage_description_level_1_shop", 
+            "elf_spell_target_damage_description_level_2_shop", 
+            "elf_spell_target_damage_description_level_3_shop", 
         }, 
         {
+            {"10%", "20%", "30%"},
             {4, 5 , 6},
-            {10, 20, 30},
             {350, 300, 300},
         },
         "0"
@@ -304,30 +309,33 @@ game_spells_lib.spells_list =
         "0"
     },
     {
-        "elf_spell_stun_target",
-        "elf_spell_stun_target", 
-        "modifier_elf_spell_stun_target", 
-        {
-            "elf_spell_stun_target_description_level_1_shop", 
-            "elf_spell_stun_target_description_level_2_shop", 
-        }, 
-        {
-            {1, 1.5, 2},
-            {350, 300, 300},
-        },
-        "0"
-    },
-    {
         "elf_spell_heal",
         "elf_spell_heal", 
         "modifier_elf_spell_heal", 
         {
             "elf_spell_heal_description_level_1_shop", 
             "elf_spell_heal_description_level_2_shop", 
+            "elf_spell_heal_description_level_3_shop", 
+            
         }, 
         {
-            {1, 1.5, 2},
+            {1000, 2000, 3000},
+            {"50%", "75%", "100%"},
             {350, 300, 300},
+        },
+        "0"
+    },
+    {
+        "elf_spell_reveal",
+        "elf_spell_reveal", 
+        "modifier_elf_spell_reveal", 
+        {
+            "elf_spell_reveal_description_level_1_shop", 
+            "elf_spell_reveal_description_level_2_shop", 
+        }, 
+        {
+            {30, 45, 60},
+            {200, 150, 150},
         },
         "0"
     },

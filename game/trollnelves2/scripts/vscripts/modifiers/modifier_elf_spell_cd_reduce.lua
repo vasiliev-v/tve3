@@ -5,7 +5,7 @@ function modifier_elf_spell_cd_reduce:RemoveOnDeath()      return true end
 function modifier_elf_spell_cd_reduce:IsHidden()           return false end
 function modifier_elf_spell_cd_reduce:IsStackable()        return true end
 function modifier_elf_spell_cd_reduce:IsPermanent()        return false end
-function modifier_elf_spell_cd_reduce:GetTexture()         return "troll_spell_cd_reduce" end
+function modifier_elf_spell_cd_reduce:GetTexture()         return "elf_spell_cd_reduce" end
 --------------------------------------------------------------------------------
 function  modifier_elf_spell_cd_reduce:DeclareFunctions()
 	local funcs = {

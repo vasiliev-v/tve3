@@ -192,17 +192,21 @@ function trollnelves2:DamageFilter( kv )
     local team = heroAttacker:GetTeamNumber()
     local OwnHeroAtacker = PlayerResource:GetSelectedHeroEntity(heroAttacker:GetPlayerOwnerID())
     local OwnHeroKilled = PlayerResource:GetSelectedHeroEntity(heroKilled:GetPlayerOwnerID())
-  
+    if OwnHeroAtacker == nil or OwnHeroKilled == nil then
+      return true
+    end
+
     if string.match(heroKilled:GetUnitName(), "wisp") and team == DOTA_TEAM_BADGUYS then
       kv.damage = 10
     end
 
-    if string.match(GetMapName(),"clanwars") then
-      if OwnHeroAtacker and OwnHeroKilled then
-        if OwnHeroAtacker:IsElf() and OwnHeroKilled:IsElf() and OwnHeroAtacker ~= OwnHeroKilled then
-          kv.damage = 0
-        end
+    if OwnHeroAtacker and OwnHeroKilled then
+      if OwnHeroAtacker:IsElf() and OwnHeroKilled:IsElf() and OwnHeroAtacker ~= OwnHeroKilled then
+        kv.damage = 0
       end
+      if OwnHeroKilled == DOTA_TEAM_BADGUYS then
+        return true
+      end 
     end
 
     if OwnHeroAtacker:HasModifier("modifier_elf_spell_damage_gold") and 

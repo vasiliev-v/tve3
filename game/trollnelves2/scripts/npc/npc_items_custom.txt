@@ -1850,6 +1850,13 @@
 		"ItemDroppable"					"0"
 		"ItemPurchasable" 				"0"
 		
+		"precache"
+		{
+			"particle"	"particles/econ/events/fall_2021/blink_dagger_fall_2021_start.vpcf"
+			"particle"	"particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf"
+			
+	
+		}
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------

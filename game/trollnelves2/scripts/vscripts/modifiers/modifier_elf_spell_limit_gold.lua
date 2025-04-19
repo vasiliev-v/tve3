@@ -5,4 +5,4 @@ function modifier_elf_spell_limit_gold:RemoveOnDeath()      return true end
 function modifier_elf_spell_limit_gold:IsHidden()           return false end
 function modifier_elf_spell_limit_gold:IsStackable()        return true end
 function modifier_elf_spell_limit_gold:IsPermanent()        return false end
-function modifier_elf_spell_limit_gold:GetTexture()         return "troll_spell_limit_gold" end
+function modifier_elf_spell_limit_gold:GetTexture()         return "elf_spell_limit_gold" end

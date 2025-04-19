@@ -47,12 +47,21 @@ function OnPlayerTeamChoose(eventSourceIndex, args)
 end
 
 function trollnelves2:GameSetup()
-    local goGame = false
     for pID = 0, DOTA_MAX_TEAM_PLAYERS do
         if  PlayerResource:GetSteamAccountID(pID) == 201083179  or  
             PlayerResource:GetSteamAccountID(pID) == 453925557  or  
             PlayerResource:GetSteamAccountID(pID) == 1733805276 or  
-            PlayerResource:GetSteamAccountID(pID) == 1028671831   
+            PlayerResource:GetSteamAccountID(pID) == 1028671831 or 
+            PlayerResource:GetSteamAccountID(pID) == 183899786 or 
+            PlayerResource:GetSteamAccountID(pID) == 381067505 or 
+            PlayerResource:GetSteamAccountID(pID) == 235445269 or 
+            PlayerResource:GetSteamAccountID(pID) == 1065787538 or 
+            
+
+            --- Сингапур
+            PlayerResource:GetSteamAccountID(pID) == 379678577  
+            
+            
         then
             goGame = true
         end
@@ -492,20 +501,15 @@ end
 
 function GoldForElf()
     Timers:CreateTimer(function()
-        for pID=0,DOTA_MAX_TEAM_PLAYERS do
-            if PlayerResource:IsValidPlayerID(pID) then
-                local hero = PlayerResource:GetSelectedHeroEntity(pID)
-                if hero then
-                    if hero:IsElf() then
-                        if hero.goldPerSecond == nil then
-                            hero.goldPerSecond = 0 
-                        end
-                        if hero.lumberPerSecond == nil then
-                            hero.lumberPerSecond = 0
-                        end 
-                        if GameRules.gold[pID] == nil then
-                            GameRules.gold[pID] = 0 
-                        end
+        local status, nextCall = Error_debug.ErrorCheck(function()
+            for pID = 0, DOTA_MAX_TEAM_PLAYERS - 1 do
+                if PlayerResource:IsValidPlayerID(pID) then
+                    local hero = PlayerResource:GetSelectedHeroEntity(pID)
+                    if hero and hero.IsElf and hero:IsElf() then
+                        hero.goldPerSecond = hero.goldPerSecond or 0
+                        hero.lumberPerSecond = hero.lumberPerSecond or 0
+                        GameRules.gold[pID] = GameRules.gold[pID] or 0
+
                         if hero.goldPerSecond then 
                             PlayerResource:ModifyGold(hero, hero.goldPerSecond)
                         end
@@ -515,11 +519,11 @@ function GoldForElf()
                     end
                 end
             end
-        end
-        return 1
+        end)
+
+        return 1  
     end)
 end
-
 function InitializeTroll(hero)
     
     local playerID = hero:GetPlayerOwnerID()

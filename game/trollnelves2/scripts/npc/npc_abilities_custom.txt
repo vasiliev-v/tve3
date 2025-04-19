@@ -103,7 +103,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"						"3"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -175,7 +175,6 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
@@ -362,7 +361,6 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"2"
 		"AbilitySound"					"Hero_ShadowShaman.SerpentWard"
 		"AbilityTextureName"            "warlock_golem_permanent_immolation"
@@ -1148,7 +1146,6 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"5516"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -2055,7 +2052,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"axe_counter_helix"
 	"AOERadius"						"%radius"
 
@@ -2365,7 +2361,6 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	"AbilityTextureName"			"clinkz_searing_arrows"
 
@@ -2452,7 +2447,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"FightRecapLevel"				"2"
 	"AbilityTextureName"			"dazzle_weave"
 	"AOERadius"						"%radius"
@@ -3366,7 +3360,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"OnCastbar"					"0"
 	"AbilityTextureName"			"nevermore_dark_lord"
 	
@@ -3417,7 +3410,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"OnCastbar"					"0"
 	"AbilityTextureName"			"nevermore_dark_lord"
 	
@@ -3466,7 +3458,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
 	"AbilityTextureName"			"sven_great_cleave"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 	// Precache
@@ -3512,7 +3504,6 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 	"AbilityTextureName"            "luna_moon_glaive"
 	"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -3560,7 +3551,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 
 	"OnProjectileHitUnit"
 	{
@@ -3609,7 +3599,6 @@
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"templar_assassin_psi_blades"
 	
 	"precache"
@@ -3793,7 +3782,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"phantom_assassin_coup_de_grace"
 
 	// Precache
@@ -3891,7 +3879,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"ursa_fury_swipes"	
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
@@ -4187,7 +4174,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"clinkz_searing_arrows"	
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
@@ -7861,8 +7847,8 @@
 
 		"AbilityValues"
         {
-            "radius1" "9999999"
-            "duration" "9999"
+            "radius1" "2400"
+            "duration" "15"
             "maximum_charges" "2"
             "charge_replenish_time" "60.0"
             "charge_replenish_time2" "30.0"
@@ -7890,6 +7876,11 @@
 				"ModifierName"	"modifier_blood_rite_delay"
 				"Target"		"POINT"
 			}
+			"FireSound"
+			{
+				"EffectName"    "Hero_Silencer.Curse.Cast"
+				"Target"        "CASTER"
+			}
 		}
 		
 		"Modifiers"
@@ -7915,14 +7906,14 @@
 					
 					"AttachEffect"
 					{
-						//"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
-						//"EffectAttachType"	"follow_origin"
-						//"Target"			"TARGET"
-						//"ControlPoints"
-						//{
-						//	"00" "0 0 0"
-						//	"01" "%radius1 %radius1 %radius1"
-						//}
+						"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius1 %radius1 %radius1"
+						}
 					}
 				}
 			}
@@ -11809,13 +11800,14 @@
 			"modifier_fervor_stack_datadriven"{
 				"IsBuff"		"1"
 				"IsPurgable"	"0"
-				
+				"Duration"			"%duration"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed" 
 				}
 			}
 			"modifier_fervor_target"{
+				"IsDebuff"		"1"
 				"IsPurgable"	"0"
 				"Duration"		"%duration"
 			}
@@ -11895,7 +11887,7 @@
 
 		"AbilityValues"
         {
-			"crit_chance"  "5"
+			"chance"       "10"
             "attack_speed" "-10"
 			"movespeed"    "-2"
             "duration"     "4"
@@ -13783,7 +13775,7 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
 
 		// Ability Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -14151,7 +14143,6 @@
 		"ID"					"5144"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		
 		// Special
@@ -14368,7 +14359,6 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"vengefulspirit_wave_of_terror"
 
 	// Precache
@@ -15037,7 +15027,6 @@
 		"ID"					"5075"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				"1"
 		"AbilitySound"					"Hero_Pudge.AttackHookExtend"
 		
@@ -15682,7 +15671,6 @@
 		"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"FightRecapLevel"				"2"
@@ -16322,7 +16310,7 @@
 		"ID"							"5355"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
 		"AbilitySound"					"Hero_Spirit_Breaker.GreaterBash"
 
@@ -16692,7 +16680,7 @@
             "lumber_cost" "262144"
             "count" "30"
         }
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	 
 		"AbilityChannelTime"		"0.01"
 		"OnSpellStart"{
@@ -17014,6 +17002,12 @@
 				"ModifierName"			"modifier_troll_spell_haste_bonus_ms"
 				"Target"				"CASTER"
 			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Windrun.Windrun"
+				"Target" 		"CASTER"
+			}
+
 		}
 		"Modifiers"{
 			"modifier_troll_spell_haste_bonus_ms"{
@@ -17042,6 +17036,12 @@
 		"AbilityCooldown"				"60"
 		"AbilityCastRange"				"900"	
 		"MaxLevel"						"3"
+		"precache"
+		{
+			"soundfile"        "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+			"model"            "models/items/shadowshaman/serpent_ward/shaman_charmer_of_firesnake_ability/shaman_charmer_of_firesnake_ability.vmdl"
+		}
+
 		"AbilityValues"
         {
             "duration" "60 120 180"
@@ -17056,12 +17056,17 @@
 				"Function"              "OnSpellStart"
 				"SizeModel"				"1"
 			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_ShadowShaman.SerpentWard"
+				"Target" 		"CASTER"
+			}
 		}	
 	}
 
 	"troll_spell_bkb"{
 		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED | DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE"
 		"AbilityTextureName"            "troll_spell_bkb"
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -17079,6 +17084,18 @@
 				"ModifierName"			"modifier_troll_spell_bkb_datadriven"
 				"Target"				"CASTER"
 			}
+			"FireSound"
+			{
+				"EffectName"	"DOTA_Item.BlackKingBar.Activate"
+				"Target" 		"CASTER"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"	"items\PurgeEffectBKB.lua"
+				"Function"		"Purge"
+			}	
+			
 		}	
 		"Modifiers"
 		{
@@ -17087,6 +17104,10 @@
 				"Duration"      "%duration"
 				"EffectName"    "particles/items_fx/black_king_bar_avatar.vpcf"
 				"EffectAttachType"  "follow_origin"
+
+				"Passive"           "0"
+                "IsHidden"          "0"
+                "IsDebuff"          "0"
 
 				"States"
 				{
@@ -17107,7 +17128,7 @@
 
 		"precache"
 		{
-			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
 			"particle"          "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
 			"particle"          "particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
 			"particle"          "particles/generic_gameplay/generic_stunned.vpcf"
@@ -17140,13 +17161,18 @@
 				"ModifierName"			"modifier_troll_spell_slow_target_datadriven"
 				"Target"				"TARGET"
 			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Lina.DragonSlave"
+				"Target" 		"CASTER"
+			}
 		}	
 		"Modifiers"
 		{
 			"modifier_troll_spell_slow_target_datadriven"
 			{
 				"Duration"      "%duration"
-				"EffectName"    "particles/econ/events/ti8/shivas_guard_ti8_slow.vpcf"
+				"EffectName"    "particles/econ/items/broodmother/bm_fall20_witches_grasp/bm_fall20_witches_grasp_spiderling_ambient_candle_fire.vpcf"
 				"EffectAttachType"  "follow_origin"
 				"IsDebuff"      "1"
 				"Properties"{
@@ -17337,6 +17363,12 @@
 		"AbilityManaCost"               "0"
 		"AbilityCooldown"				"300 250 200"
 		"MaxLevel"						"3"
+
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"	
+		}
+
 		"AbilityValues"
         {
             "duration" "2 3 5"
@@ -17348,6 +17380,11 @@
 			"ApplyModifier"{
 				"ModifierName"			"modifier_troll_spell_atkspeed_datadriven"
 				"Target"				"CASTER"
+			}
+			 "FireSound"
+			{
+				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Cast" 
+				"Target"		"CASTER"
 			}
 		}	
 		"Modifiers"
@@ -17651,7 +17688,7 @@
 		
 		"AbilityValues"
         {
-            "radius" "200 400 600"
+            "radius_true" "200 400 600"
         }
 
 		"Modifiers"
@@ -17668,8 +17705,8 @@
 					{
 						"Target"
 						{
-							"Center"  	"TARGET"
-							"Radius" 	"%radius"
+							"Center"  	"CASTER"
+							"Radius" 	"%radius_true"
 							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types" 	"DOTA_UNIT_TARGET_ALL"
 						}
@@ -17861,7 +17898,7 @@
 
 		// Ability Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600"
+		"AbilityCastRange"				"600 900 1200"
 		"AbilityCastPoint"				"0.4"
 
 		// Ability Resource
@@ -17893,8 +17930,8 @@
 		
 		"precache"
 		{
-			"soundfile"                 "soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
-			"particle"                  "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_focusfire_v2.vpcf"
+			"soundfile"                 "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+			"particle"                  "particles/units/heroes/hero_weaver/weaver_shukuchi.vpcf"
 		}
 
 		"AbilityValues"
@@ -17904,6 +17941,11 @@
         }
 		
 		"OnSpellStart"{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Weaver.Shukuchi"
+				"Target" 		"CASTER"
+			}
 			"ApplyModifier"{
 				"ModifierName"			"modifier_elf_spell_haste_bonus_ms"
 				"Target"				"CASTER"
@@ -17913,7 +17955,7 @@
 			"modifier_elf_spell_haste_bonus_ms"{
 				"Duration"				"%duration"
 				 
-				"EffectName"            "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
+				"EffectName"            "particles/units/heroes/hero_weaver/weaver_shukuchi.vpcf"
 				"EffectAttachType"      "follow_origin"
 				
 				"Properties"{
@@ -17935,10 +17977,13 @@
 	// Precache
 	"precache"
 	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		"particle"	"particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
+		"particle"	"particles/units/heroes/hero_windrunner/windrunner_windrun_slow.vpcf"
 	}
 	
 	// Casting
-	"AbilityCastPoint"				"1.5 1 0.5"
+	"AbilityCastPoint"				"1 0.5 0.3"
 
 	// Time		
 	"AbilityCastRange"				"600"//"400"
@@ -17956,7 +18001,7 @@
 	{
 		"FireSound"
 		{
-			"EffectName"	"Hero_Chen.PenitenceCast"
+			"EffectName"	"Hero_Windrun.Windrun"
 			"Target" 		"CASTER"
 		}
 
@@ -17977,13 +18022,13 @@
 		
 		"FireSound"
 		{
-			"EffectName"	"Hero_Chen.PenitenceImpact"
+			"EffectName"	"Ability.Windrun"
 			"Target" 		"TARGET"
 		}
 
 		"FireEffect"
 		{
-			"EffectName"        "particles/units/heroes/hero_chen/chen_penitence.vpcf"
+			"EffectName"        "particles/units/heroes/hero_windrunner/windrunner_windrun_slow.vpcf"
 			"EffectAttachType"  "follow_origin"
 			"Target"            "TARGET"
 		}
@@ -18004,7 +18049,7 @@
 			"IsHidden"			"0"
 			"IsDebuff"			"0"
 	
-			"EffectName"		"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
+			"EffectName"		"particles/units/heroes/hero_windrunner/windrunner_windrun_invis.vpcf"
 			"EffectAttachType"	"follow_origin"
 	
 			"Properties"
@@ -18028,6 +18073,8 @@
 	// Precache
 	"precache"
 	{
+		"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
 	}
 	
 	// Casting
@@ -18040,20 +18087,20 @@
 	// Special
 	"AbilityValues"
         {
-            "duration"     "6 8 12"
             "bonus_ms"     "5 10 20"
 			"attack_speed" "60 80 120"
 			"damage"       "5 10 20"
+			"duration"     "6 8 12"
 			"speed"        "2000"
         }
 
 	"OnSpellStart"
 	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Chen.PenitenceCast"
-			"Target" 		"CASTER"
-		}
+	//	"FireSound"
+	//	{
+	//		"EffectName"	"Hero_LegionCommander.Overwhelming.Location"
+	//		"Target" 		"CASTER"
+    //		}
 
 		"TrackingProjectile"
 		{
@@ -18072,16 +18119,16 @@
 		
 		"FireSound"
 		{
-			"EffectName"	"Hero_Chen.PenitenceImpact"
+			"EffectName"	"Hero_LegionCommander.PressTheAttack"
 			"Target" 		"TARGET"
 		}
 
-		"FireEffect"
-		{
-			"EffectName"        "particles/units/heroes/hero_chen/chen_penitence.vpcf"
-			"EffectAttachType"  "follow_origin"
-			"Target"            "TARGET"
-		}
+    //	"FireEffect"
+	//	{
+	//		"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+	//		"EffectAttachType"  "follow_origin"
+	//		"Target"            "TARGET"
+	//	}
 
 		"ApplyModifier"
 		{
@@ -18099,14 +18146,14 @@
 			"IsHidden"			"0"
 			"IsDebuff"			"0"
 	
-			"EffectName"		"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
+			"EffectName"		"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
 			"EffectAttachType"	"follow_origin"
 	
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_ms"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%damage"
+			   //"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%damage"
 			}
 		}
 	}
@@ -18128,9 +18175,8 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"precache"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
-		"particle"			"particles/units/heroes/hero_chen/chen_penitence.vpcf"
-		"particle"			"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
+		"soundfile"	        "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		"particle"			"particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
 	}
 	
 	// Casting
@@ -18146,18 +18192,18 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
+			"bonus_damage_taken" "10 20 30"
             "duration" "4 8 15"
             "speed" "2000"
-            "bonus_damage_taken" "10 20 30"
         }
 
 	"OnSpellStart"
 	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Chen.PenitenceCast"
-			"Target" 		"CASTER"
-		}
+	//	"FireSound"
+	//	{
+	//		"EffectName"	"Hero_Chen.PenitenceCast"
+	//		"Target" 		"CASTER"
+	//	}
 
 		"TrackingProjectile"
 		{
@@ -18176,16 +18222,16 @@
 		
 		"FireSound"
 		{
-			"EffectName"	"Hero_Chen.PenitenceImpact"
+			"EffectName"	"Hero_Axe.Battle_Hunger"
 			"Target" 		"TARGET"
 		}
 
-		"FireEffect"
-		{
-			"EffectName"        "particles/units/heroes/hero_chen/chen_penitence.vpcf"
-			"EffectAttachType"  "follow_origin"
-			"Target"            "TARGET"
-		}
+	//	"FireEffect"
+	//	{
+	//		"EffectName"        "particles/units/heroes/hero_chen/chen_penitence.vpcf"
+	//		"EffectAttachType"  "follow_origin"
+	//		"Target"            "TARGET"
+	//	}
 
 		"ApplyModifier"
 		{
@@ -18203,8 +18249,8 @@
 			"IsHidden"			"0"
 			"IsDebuff"			"1"
 	
-			"EffectName"		"particles/units/heroes/hero_chen/chen_penitence_debuff.vpcf"
-			"EffectAttachType"	"follow_origin"
+			"EffectName"		"particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+			"EffectAttachType"	"follow_overhead"
 	
 			"Properties"
 			{
@@ -18229,7 +18275,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"0" // ?? global
 	"AbilityCastPoint"				"3"
-	"AbilityCooldown"				"900 600 300"
+	"AbilityCooldown"				"500 400 300"
 
 	"AbilityValues"
     {
@@ -18366,7 +18412,7 @@
 			"TrackingProjectile"
 			{
 				"Target"            "TARGET"
-				"EffectName"        "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast.vpcf"
+				"EffectName"        "particles/units/heroes/hero_skeletonking/skeletonking_hellfireblast.vpcf"
 				"Dodgeable"         "1"
 				"ProvidesVision"    "1"
 				"VisionRadius"      "%vision_radius"
@@ -18392,7 +18438,7 @@
 
 			"FireEffect"
 			{
-				"EffectName"    "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast_explosion.vpcf"
+				"EffectName"    "particles/units/heroes/hero_skeletonking/skeletonking_hellfireblast_explosion.vpcf"
 				"EffectAttachType"  "attach_origin"
 				"Target"        "TARGET"
 				"ControlPointEntities"
@@ -18437,7 +18483,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"			"elf_spell_heal"
 		"MaxLevel"						"3"
-		"AbilityCooldown"				"120 80 60"
+		"AbilityCooldown"				"300 250 250"
 		"AbilityManaCost"				"0"
 		
 		"precache"
@@ -18489,16 +18535,86 @@
 		}
 	}
 
+		
+"elf_spell_reveal"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY "
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"elf_spell_reveal"
+	"MaxLevel"						"3"
+	"AbilityCooldown"				"200 150 150"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"999999"
 
+	"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			"particle"	"particles/units/heroes/hero_silencer/silencer_curse.vpcf"
+			"particle"	"particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
+			"particle"	"particles/econ/items/batrider/batrider_ti8_immortal_mount/batrider_ti8_immortal_firefly.vpcf"
+		}
 
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityValues"
+        {
+			"duration"		  "30 45 60"
 
+            "presence_radius" "999999"
+        }
 
+	"OnSpellStart"{
+			"ApplyModifier"{
+				"ModifierName"			"modifier_elf_spell_reveal_anti"
+				"Target"				"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"    "Hero_Silencer.Curse.Cast"
+				"Target"        "CASTER"
+			}
+		}
 
+	"Modifiers"
+	{
+		"modifier_elf_spell_reveal_anti"
+		{
+			"Passive"			"1"
+			"IsHidden"			"0"
+			"Duration"				"%duration"
+	
+			"Aura"          	"modifier_elf_spell_reveal_anti_aura"
+			"Aura_Radius"   	"%presence_radius"
+			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"    	"DOTA_UNIT_TARGET_ALL" //mechanic?
+			"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE" //immune?
+			"States"
+			{
+				"MODIFIER_STATE_PROVIDES_VISION" "MODIFIER_STATE_VALUE_ENABLED" 
+			}
+		}
 
+		"modifier_elf_spell_reveal_anti_aura"
+		{
+			"Duration"				"%duration"
+			"IsHidden"			"0" //hidden?
+			"IsDebuff"			"1"
 
-
-
-
+			"EffectName"    "particles/econ/items/batrider/batrider_ti8_immortal_mount/batrider_ti8_immortal_firefly.vpcf"
+			"EffectAttachType"  "follow_overhead"
+			"States"
+			{
+				"MODIFIER_STATE_PROVIDES_VISION" "MODIFIER_STATE_VALUE_ENABLED" 
+			}
+		}
+	}
+}
 
 
 

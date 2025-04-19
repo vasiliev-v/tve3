@@ -96,10 +96,12 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_teleport", "modifiers/modifier_elf_spell_teleport", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_elf_spell_stun_target", "modifiers/modifier_elf_spell_stun_target", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_elf_spell_heal", "modifiers/modifier_elf_spell_heal", LUA_MODIFIER_MOTION_NONE )	
-	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
-	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
-	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
-	LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	LinkLuaModifier("modifier_elf_spell_reveal", "modifiers/modifier_elf_spell_reveal", LUA_MODIFIER_MOTION_NONE )	
+
+
+	--LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	--LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
+	--LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
 
 	
 	

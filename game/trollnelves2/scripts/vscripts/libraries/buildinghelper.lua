@@ -1662,7 +1662,7 @@ function BuildingHelper:StartBuilding(builder)
             -- Building canceled, refund resources
             work.refund = true
             BuildingHelper:ClearWork(work)
-            callbacks.onConstructionCancelled(work)
+            ---callbacks.onConstructionCancelled(work)
             return
         end
         

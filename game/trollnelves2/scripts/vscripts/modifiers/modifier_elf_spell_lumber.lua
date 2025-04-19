@@ -5,7 +5,7 @@ function modifier_elf_spell_lumber:RemoveOnDeath()      return true end
 function modifier_elf_spell_lumber:IsHidden()           return false end
 function modifier_elf_spell_lumber:IsStackable()        return true end
 function modifier_elf_spell_lumber:IsPermanent()        return false end
-function modifier_elf_spell_lumber:GetTexture()         return "troll_spell_ms" end
+function modifier_elf_spell_lumber:GetTexture()         return "elf_spell_lumber" end
 --------------------------------------------------------------------------------
 function  modifier_elf_spell_lumber:DeclareFunctions()
 	local funcs = {

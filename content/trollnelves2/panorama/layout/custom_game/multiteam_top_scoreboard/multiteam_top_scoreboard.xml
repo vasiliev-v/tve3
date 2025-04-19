@@ -19,7 +19,10 @@
                     <Panel class="TimeOfDayLineBack" />
                     <Panel class="TimeOfDayLineFront" id="TimeOfDayLineFront" />
                 </Panel>
-                <!--<Label class="TimerToNextCycle" id="TimerToNextCycle" text="0:00 до ночи" /> -->
+                <Label class="TimerToNextCycle" id="TimerToNextCycle" text="0:00 до ночи" /> 
+                <!--
+                
+                -->
             </Panel>
             <Panel hittest="false" class="PlayersPanels">
                 <Panel hittest="false" class="player_list_1" id="player_list_1" />

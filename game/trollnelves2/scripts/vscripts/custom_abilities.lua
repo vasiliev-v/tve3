@@ -1535,7 +1535,6 @@ function ItemBlink(keys)
 	keys.caster:SetAbsOrigin(target_point)
 	FindClearSpaceForUnit(keys.caster, target_point, false)
 	
-	
 	Timers:CreateTimer(0.3,function()
 		if keys.caster then
 			ParticleManager:CreateParticle("particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf", PATTACH_ABSORIGIN, keys.caster)

@@ -1464,12 +1464,23 @@
 
 		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven"                  "Buff/Debuff"
 		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven_Description"      "Buff/Debuff: Atack speed +600 and Disclosure of visibility."
+
+		"DOTA_Tooltip_modifier_troll_warlord_attack_speed"									"Buff: Increased attack speed"
+		"DOTA_Tooltip_modifier_troll_warlord_anti"											"Buff: Increased attack speed"
 		
-		"DOTA_Tooltip_modifier_troll_warlord_attack_presence"							  "Buff/Debuff"
-		"DOTA_Tooltip_modifier_troll_warlord_attack_presence_Description"				  "Buff/Debuff: Atack speed +600 and Disclosure of visibility."
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed"                  "Buff Troll"
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_Description"      "Buff: Increased attack speed"
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_ATTACKSPEED_BONUS"                  "ATTACK SPEED: "
+
+		"DOTA_Tooltip_ability_troll_warlord_attack_presence_speed"                  "Buff"
+		"DOTA_Tooltip_ability_troll_warlord_attack_presence_speed_Description"      "Buff: Increased attack speed"
+		"DOTA_Tooltip_ability_troll_warlord_attack_presence_speed_ATTACKSPEED_BONUS"                  "ATTACK SPEED: "
 		
-		"DOTA_Tooltip_modifier_troll_warlord_attack_speed"									"Buff/Debuff: Atack speed +600 and Disclosure of visibility."
-		"DOTA_Tooltip_modifier_troll_warlord_anti"											"Buff/Debuff: Atack speed +600 and Disclosure of visibility."
+		"DOTA_Tooltip_modifier_troll_warlord_attack_presence_speed"							  "Buff"
+		"DOTA_Tooltip_modifier_troll_warlord_attack_presence_speed_Description"				  "Buff: Increased attack speed"
+		
+
+		
 		
 
 		"DOTA_Tooltip_ability_heartstopper_aura_datadriven"                  	 "End Game"
@@ -4096,7 +4107,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_silence_target_Description"                                     "Target Silence"
 		"DOTA_Tooltip_ability_troll_spell_silence_target_time_dur"                 "DURATION: "
 		
-		"troll_spell_silence_area"                            		 "Global Silince"
+		"troll_spell_silence_area"                            		 "Global Silence"
         "troll_spell_silence_area_description"                       "Active: Global Silence"
         "troll_spell_silence_area_description_level_1"               "Duration: 5<br>CD: 300"
         "troll_spell_silence_area_description_level_2"               "Duration: 8<br>CD: 250"
@@ -4106,7 +4117,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"troll_spell_silence_area_description_level_1_shop"               "Duration"
         "troll_spell_silence_area_description_level_2_shop"               "Cooldown"
 
-		"DOTA_Tooltip_ability_troll_spell_silence_area"                                                "Global Silince"
+		"DOTA_Tooltip_ability_troll_spell_silence_area"                                                "Global Silence"
 		"DOTA_Tooltip_ability_troll_spell_silence_area_Description"                                     "Global Silence"
 		"DOTA_Tooltip_ability_troll_spell_silence_area_tooltip_duration"                 "DURATION: "
 				
@@ -4413,171 +4424,155 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"elf_spell_damage_gold_description_level_3_shop"               "Max Time X2"
 		"elf_spell_damage_gold_description_level_4_shop"               "Max Time X4"
 				
-		""                            		 ""
-        "_description"                       "Passive: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Passive: "
-		"_description_level_1_shop"               ""
+		"elf_spell_invis"                            		 "Invisible"
+        "elf_spell_invis_description"                       "Active: Grants the hero invisibility"
+        "elf_spell_invis_description_level_1"               "Duration: 15<br>Cast: 1<br>Cooldown: 350"
+        "elf_spell_invis_description_level_2"               "Duration: 30<br>Cast: 0.8<br>Cooldown: 300"
+        "elf_spell_invis_description_level_3"               "Duration: 60<br>Cast: 0.6<br>Cooldown: 300"
+		"DOTA_Tooltip_modifier_elf_spell_invis"			 "Active: Grants the hero invisibility"
+		"elf_spell_invis_description_level_1_shop"               "Duration"
+		"elf_spell_invis_description_level_2_shop"               "Cast"
+		"elf_spell_invis_description_level_3_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_invis"                     "Invisible"
+		"DOTA_Tooltip_ability_elf_spell_invis_Description"         "Grants the hero invisibility"
+		"DOTA_Tooltip_ability_elf_spell_invis_duration"            "Duration: "
+		"DOTA_Tooltip_ability_elf_spell_invis_fade_time"           "Cast: "	
+			
 
-
-
-
-
-
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
+		"elf_spell_smoke"                            		 "Smoke"
+        "elf_spell_smoke_description"                       "Active: Casts a smoke screen"
+        "elf_spell_smoke_description_level_1"               "Duration hero: 15<br>Duration creep: 30<br> Radius: 600<br>Cooldown: 350"
+        "elf_spell_smoke_description_level_2"               "Duration hero: 30<br>Duration creep: 45<br> Radius: 900<br>Cooldown: 300"
+        "elf_spell_smoke_description_level_3"               "Duration hero: 60<br>Duration creep: 95<br> Radius: 1200<br>Cooldown: 300"
+		"DOTA_Tooltip_modifier_elf_spell_smoke"			 "Active: Casts a smoke screen"
+		"elf_spell_smoke_description_level_1_shop"               "Duration hero"
+		"elf_spell_smoke_description_level_2_shop"               "Duration creep"
+		"elf_spell_smoke_description_level_3_shop"               "Radius"
+		"elf_spell_smoke_description_level_4_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_smoke"                     "Smoke"
+		"DOTA_Tooltip_ability_elf_spell_smoke_Description"         "Casts a smoke screen"
+		"DOTA_Tooltip_ability_elf_spell_smoke_duration"       "Duration hero: "
+		"DOTA_Tooltip_ability_elf_spell_smoke_duration_creep" "Duration creep: "
+		"DOTA_Tooltip_ability_elf_spell_smoke_radius"         "Radius: "
 		
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
+		
+		
+		"elf_spell_haste"                            		 "Haste"
+        "elf_spell_haste_description"                       "Active: Increases movespeed"
+        "elf_spell_haste_description_level_1"               "Movespeed: 10<br>Duration: 10<br>Cooldown: 350"
+        "elf_spell_haste_description_level_2"               "Movespeed: 20<br>Duration: 20<br>Cooldown: 300"
+        "elf_spell_haste_description_level_3"               "Movespeed: 50<br>Duration: 50<br>Cooldown: 300"
+		"DOTA_Tooltip_modifier_elf_spell_haste"			 "Active: Increases movespeed"
+		"elf_spell_haste_description_level_1_shop"               "Movespeed"
+		"elf_spell_haste_description_level_2_shop"               "Duration"
+		"elf_spell_haste_description_level_3_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_haste"                     "Haste"
+		"DOTA_Tooltip_ability_elf_spell_haste_Description"         "Increases movespeed"
+		"DOTA_Tooltip_ability_elf_spell_haste_duration"       "Duration: "
+		"DOTA_Tooltip_ability_elf_spell_haste_speed"          "Movespeed: "
+		
+				
+		"elf_spell_evasion"                            		 "Evasion"
+        "elf_spell_evasion_description"                       "Active: Increases the selected target's evasion"
+        "elf_spell_evasion_description_level_1"               "Evasion: 50%<br>Duration: 3<br>Cooldown: 350"
+        "elf_spell_evasion_description_level_2"               "Evasion: 80%<br>Duration: 6<br>Cooldown: 300"
+        "elf_spell_evasion_description_level_3"               "Evasion: 100%<br>Duration: 10<br>Cooldown: 300"
+		"DOTA_Tooltip_modifierelf_spell_evasion_"			 "Active: Increases the selected target's evasion"
+		"elf_spell_evasion_description_level_1_shop"               "Evasion"
+		"elf_spell_evasion_description_level_2_shop"               "Duration"
+		"elf_spell_evasion_description_level_3_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_evasion"                     "Evasion"
+		"DOTA_Tooltip_ability_elf_spell_evasion_Description"         "Increases the selected target's evasion"
+		"DOTA_Tooltip_ability_elf_spell_evasion_duration"       "Duration: "
+		"DOTA_Tooltip_ability_elf_spell_evasion_bonus_evasion"       "Evasion: "
+		
+				
+		"elf_spell_target_buff"                            		 "Target Buff"
+        "elf_spell_target_buff_description"                       "Active: Improves the stats of heroes or buildings"
+        "elf_spell_target_buff_description_level_1"               "Movespeed: 5<br>Attack Speed: 60<br>Duration: 6<br>Cooldown: 120"
+        "elf_spell_target_buff_description_level_2"               "Movespeed: 10<br>Attack Speed: 80<br>Duration: 8<br>Cooldown: 100"
+        "elf_spell_target_buff_description_level_3"               "Movespeed: 20<br>Attack Speed: 120<br>Duration: 12<br>Cooldown: 60"
+		"DOTA_Tooltip_modifier_elf_spell_target_buff"			 "Active: Improves the stats of heroes or buildings"
+		"elf_spell_target_buff_description_level_1_shop"          "Movespeed"
+		"elf_spell_target_buff_description_level_2_shop"          "Attack Speed"
+		"elf_spell_target_buff_description_level_3_shop"          "Duration"
+		"elf_spell_target_buff_description_level_4_shop"          "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_target_buff"                     "Target Buff"
+		"DOTA_Tooltip_ability_elf_spell_target_buff_Description"         "Improves the stats of heroes or buildings"
+		"DOTA_Tooltip_ability_elf_spell_target_buff_duration"       "Duration: "
+		"DOTA_Tooltip_ability_elf_spell_target_buff_bonus_ms"       "Movespeed: "
+		"DOTA_Tooltip_ability_elf_spell_target_buff_attack_speed"       "Attack Speed: "
 
 				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
+		"elf_spell_target_damage"                            		 "Curse"
+        "elf_spell_target_damage_description"                       "Active: Increases incoming damage to the target"
+        "elf_spell_target_damage_description_level_1"               "Incoming damage: 10%<br>Duration: 4<br> Cooldown: 350"
+        "elf_spell_target_damage_description_level_2"               "Incoming damage: 20%<br>Duration: 5<br> Cooldown: 300"
+        "elf_spell_target_damage_description_level_3"               "Incoming damage: 30%<br>Duration: 6<br> Cooldown: 300"
+		"DOTA_Tooltip_modifier_elf_spell_target_damage"			 "Active: Increases incoming damage to the target"
+		"elf_spell_target_damage_description_level_1_shop"               "Incoming damage"
+		"elf_spell_target_damage_description_level_2_shop"               "Duration"
+		"elf_spell_target_damage_description_level_3_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_target_damage"                     "Curse"
+		"DOTA_Tooltip_ability_elf_spell_target_damage_Description"         "Increases incoming damage to the target"
+		"DOTA_Tooltip_ability_elf_spell_target_damage_duration"       "Duration: "
+		"DOTA_Tooltip_ability_elf_spell_target_damage_bonus_damage_taken"       "Incoming damage: "
+		
+				
+		"elf_spell_teleport"                            		 "Global Teleport"
+        "elf_spell_teleport_description"                       "Active: Allows you to teleport to allied heroes"
+        "elf_spell_teleport_description_level_1"               "Duration: 500"
+        "elf_spell_teleport_description_level_2"               "Duration: 400"
+        "elf_spell_teleport_description_level_3"               "Duration: 300"
+		"DOTA_Tooltip_modifier_elf_spell_teleport"			 "Active: Allows you to teleport to allied heroes"
+		"elf_spell_teleport_description_level_1_shop"               "Duration"
+		"DOTA_Tooltip_ability_elf_spell_teleport"                     "Global Teleport"
+		"DOTA_Tooltip_ability_elf_spell_teleport_Description"         "Allows you to teleport to allied heroes"
+		"DOTA_Tooltip_ability_elf_spell_teleport_duration"       "Duration: "
 
 				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
+		"elf_spell_stun_target"                            		 "Target Stun"
+        "elf_spell_stun_target_description"                       "Active: Stunned hero"
+        "elf_spell_stun_target_description_level_1"               "Duration: 1<br>Cooldown: 350"
+        "elf_spell_stun_target_description_level_2"               "Duration: 1.5<br>Cooldown: 300"
+        "elf_spell_stun_target_description_level_3"               "Duration: 2<br>Cooldown: 300"
+		"DOTA_Tooltip_modifier_elf_spell_stun_target"			 "Active: Stunned hero"
+		"elf_spell_stun_target_description_level_1_shop"               "Duration"
+		"elf_spell_stun_target_description_level_2_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_stun_target"                     "Target Stun"
+		"DOTA_Tooltip_ability_elf_spell_stun_target_Description"         "Stunned hero"
+		"DOTA_Tooltip_ability_elf_spell_stun_target_bolt_stun_duration"       "Duration: "
+		
+
 
 				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
+		"elf_spell_heal"                            		 "Global Repairs"
+        "elf_spell_heal_description"                       "Active: Repairs the building"
+        "elf_spell_heal_description_level_1"               "Minimum: 1000<br>Maximum: 50%<br>Cooldown: 350"
+        "elf_spell_heal_description_level_2"               "Minimum: 2000<br>Maximum: 75%<br>Cooldown: 350"
+        "elf_spell_heal_description_level_3"               "Minimum: 3000<br>Maximum: 100%<br>Cooldown: 300"
+		"DOTA_Tooltip_modifier_elf_spell_heal"			 "Active: Repairs the building"
+		"elf_spell_heal_description_level_1_shop"               "Minimum"
+		"elf_spell_heal_description_level_2_shop"               "Maximum"
+		"elf_spell_heal_description_level_3_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_heal"                     "Global Repairs"
+		"DOTA_Tooltip_ability_elf_spell_heal_Description"         "Repairs the building"
+		"DOTA_Tooltip_ability_elf_spell_heal_duration"       "Duration: "
+		"DOTA_Tooltip_ability_elf_spell_heal_heal"       "Minimum: "
+		"DOTA_Tooltip_ability_elf_spell_heal_percent"       "Maximum: %"
+		
 				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
-
-				
-		""                            		 ""
-        "_description"                       "Active: "
-        "_description_level_1"               ""
-        "_description_level_2"               ""
-        "_description_level_3"               ""
-		"DOTA_Tooltip_modifier_"			 "Active: "
-		"_description_level_1_shop"               ""
+		"elf_spell_reveal"                            		 "Global Reveal"
+        "elf_spell_reveal_description"                       "Active: Reveals all enemy heroes on the map"
+        "elf_spell_reveal_description_level_1"               "Duration: 30<br>Cooldown: 200"
+        "elf_spell_reveal_description_level_2"               "Duration: 45<br>Cooldown: 150"
+        "elf_spell_reveal_description_level_3"               "Duration: 60<br>Cooldown: 150"
+		"DOTA_Tooltip_modifier_elf_spell_reveal"			 "Active: Reveals all enemy heroes on the map"
+		"elf_spell_reveal_description_level_1_shop"               "Duration"
+		"elf_spell_reveal_description_level_2_shop"               "Cooldown"
+		"DOTA_Tooltip_ability_elf_spell_reveal"                     "Global Reveal"
+		"DOTA_Tooltip_ability_elf_spell_reveal_Description"         "Reveals all enemy heroes on the map"
+		"DOTA_Tooltip_ability_elf_spell_reveal_duration"       "Duration: "
 
 				
 		""                            		 ""
@@ -4589,8 +4584,6 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"_description_level_1_shop"               ""
 
 		
-
-
 
 
 

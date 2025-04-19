@@ -5,5 +5,5 @@ function modifier_elf_spell_armor_wall:RemoveOnDeath()      return true end
 function modifier_elf_spell_armor_wall:IsHidden()           return false end
 function modifier_elf_spell_armor_wall:IsStackable()        return true end
 function modifier_elf_spell_armor_wall:IsPermanent()        return false end
-function modifier_elf_spell_armor_wall:GetTexture()         return "troll_spell_cd_reduce" end
+function modifier_elf_spell_armor_wall:GetTexture()         return "elf_spell_armor_wall" end
 --------------------------------------------------------------------------------

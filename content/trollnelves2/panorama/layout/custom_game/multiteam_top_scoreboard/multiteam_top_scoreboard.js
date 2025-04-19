@@ -19,19 +19,21 @@ function UpdateTeam( teamId )
     $("#GameTimerLabel").text = ConvertTimeMinutes(Math.floor(Game.GetDOTATime( false, false )))
     let TimeUntil = FindDotaHudElement("TimeUntil")
     let time_to_next_cycle = 0
+    $("#TimerToNextCycle").style.visibility = "collapse"
     if (TimeUntil)
     {
         time_to_next_cycle = timeToSeconds(TimeUntil.text)
     }
     if (Game.IsDayTime())
     {
-        //$("#GameTimer").SetHasClass("IsNight", false)
-        //$("#TimerToNextCycle").text = TimeUntil.text
+        $("#GameTimer").SetHasClass("IsNight", false)
+        $("#TimerToNextCycle").text = TimeUntil.text
+        
     }
     else
     {
-        //$("#GameTimer").SetHasClass("IsNight", true)
-        //$("#TimerToNextCycle").text = TimeUntil.text
+        $("#GameTimer").SetHasClass("IsNight", true)
+        $("#TimerToNextCycle").text = TimeUntil.text
     }
     $("#TimeOfDayLineFront").style.width = (time_to_next_cycle / 300 * 100) + "%"
     $.GetContextPanel().SetHasClass("AltPressed", GameUI.IsAltDown())

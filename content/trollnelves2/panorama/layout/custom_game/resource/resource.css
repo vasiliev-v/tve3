@@ -54,7 +54,7 @@
 {
     color: #FFD74B;
     font-weight: semi-bold;
-    font-size: 16px;
+    font-size: 17px;
     text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
     vertical-align: center;
     margin-left: 5px;
@@ -88,7 +88,7 @@
 {
     color: #DCDCDC;
     font-weight: semi-bold;
-    font-size: 16px;
+    font-size: 17px;
     text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
     vertical-align: center;
     margin-left: 5px;
@@ -98,7 +98,7 @@
 {
     color: #23BD33;
     font-weight: semi-bold;
-    font-size: 16px;
+    font-size: 17px;
     text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
     vertical-align: center;
     margin-left: 5px;
@@ -127,7 +127,7 @@
 .ResourceChangeInfo
 {
     color: white;
-    font-size: 12px;
+    font-size: 14px;
     align: center center;
     font-weight: semi-bold;
     text-overflow: shrink;

@@ -5,7 +5,7 @@ function modifier_elf_spell_gold:RemoveOnDeath()      return true end
 function modifier_elf_spell_gold:IsHidden()           return false end
 function modifier_elf_spell_gold:IsStackable()        return true end
 function modifier_elf_spell_gold:IsPermanent()        return false end
-function modifier_elf_spell_gold:GetTexture()         return "troll_spell_ms" end
+function modifier_elf_spell_gold:GetTexture()         return "elf_spell_gold" end
 --------------------------------------------------------------------------------
 function  modifier_elf_spell_gold:DeclareFunctions()
 	local funcs = {

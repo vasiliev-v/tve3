@@ -381,11 +381,12 @@ Shop.DonateList =
 	{"17", "gold", "99999999", "pet_17", "pet_17", false, 8},
 	{"30", "gold", "99999999", "pet_30", "pet_30", false, 8},
 	
-	{"201", "gold", "150", "chance75", "subscribe_1", true, 7},
-	{"202", "gold", "500", "chance50", "subscribe_2", true, 7},
-	{"203", "gold", "1000", "chance25", "subscribe_3", true, 7},
-	{"204", "gold", "150", "bonus10", "subscribe_4", true, 7},
 	{"205", "gold", "1500", "battlepass", "subscribe_5", true, 7},
+	{"203", "gold", "1000", "chance75", "subscribe_3", true, 7},
+	{"202", "gold", "500", "chance50", "subscribe_2", true, 7},
+	{"201", "gold", "150", "chance25", "subscribe_1", true, 7},
+	{"204", "gold", "150", "bonus10", "subscribe_4", true, 7},
+	
 	
 	{"111", "gold", "150", "particle_11", "particle_11", false, 7}, 
 	{"112", "gold", "75", "particle_12", "particle_12", false, 2}, 
@@ -685,7 +686,7 @@ for _, item_info in pairs(Shop.DonateList) do
     if string.find(item_info[5], "chest_") then
         table.insert(items_data_table["category_items_chests"], item_info)
     end
-    if string.find(item_info[5], "skin_") then
+    if string.find(item_info[5], "skin_") and not string.find(item_info[5], "skin_wisp_") then
         table.insert(items_data_table["category_items_skins_players"], item_info)
     end
     if string.find(item_info[5], "tower_") or string.find(item_info[5], "true_sight_tower") or string.find(item_info[5], "high_true_sight_tower") or string.find(item_info[5], "flag") then
