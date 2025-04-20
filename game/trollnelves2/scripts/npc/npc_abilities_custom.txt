@@ -11789,6 +11789,7 @@
 						"ScriptFile"	"custom_abilities.lua"
 						"Function"		"TowerAttackSpeed"
 						"modifier"		"modifier_fervor_stack_datadriven"
+						"duration" 		"%duration"
 					}
 					"ApplyModifier"{
 						"ModifierName"	"modifier_fervor_target"

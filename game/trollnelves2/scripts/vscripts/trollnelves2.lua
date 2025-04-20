@@ -47,6 +47,7 @@ function OnPlayerTeamChoose(eventSourceIndex, args)
 end
 
 function trollnelves2:GameSetup()
+    goGame = false
     for pID = 0, DOTA_MAX_TEAM_PLAYERS do
         if  PlayerResource:GetSteamAccountID(pID) == 201083179  or  
             PlayerResource:GetSteamAccountID(pID) == 453925557  or  
