@@ -1,5 +1,7 @@
 ProtectedCustomEvents = ProtectedCustomEvents or {}
 
+GameRules.MapSpeed = tonumber(string.match(GetMapName(),"%d+")) or 1
+
 -- This library inject auth token(unique for each connection) into every custom event to autentificate events sended from server
 -- Clients reject events that doesn't contain that token and thus prevent cheats that use GameEvents.SendCustomGameEventToClient
 -- Token sends to server by client after connection on UI initialization phase

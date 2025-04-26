@@ -17,11 +17,11 @@ end
 function  modifier_tower_spell_range:GetModifierAttackRangeBonus()
     local percent = 0
     if self:GetStackCount() == 1 then 
-		percent = 32
+		percent = 10
 	elseif self:GetStackCount() == 2  then
-		percent = 64
+		percent = 20
 	elseif self:GetStackCount() == 3  then
-		percent = 128
+		percent = 40
 	end
 	return percent 
 end

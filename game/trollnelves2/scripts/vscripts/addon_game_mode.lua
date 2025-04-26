@@ -964,7 +964,6 @@ end
 
 -- Create the game mode when we activate
 function Activate()
-	GameRules.MapSpeed = tonumber(string.match(GetMapName(),"%d+")) or 1
 	GameRules.lumberPrice = STARTING_LUMBER_PRICE
 	GameRules.lumberSell = STARTING_LUMBER_PRICE - 10
 	GameRules.maxFood = STARTING_MAX_FOOD
@@ -1001,7 +1000,7 @@ function Activate()
 	GameRules.rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetGem = {} 
-	GameRules.isTesting = true
+	GameRules.isTesting = false
 	GameRules.server =  "https://tve4.eu/test/"  -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}

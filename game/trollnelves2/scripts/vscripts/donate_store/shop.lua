@@ -4,7 +4,7 @@ end
 
 require("donate_store/shop_data")
 
-local dedicatedServerKey = GetDedicatedServerKeyV3("1")
+local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA"--GetDedicatedServerKeyV3("1")
 local MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 local lastSpray = {}
 local lastSounds = {}

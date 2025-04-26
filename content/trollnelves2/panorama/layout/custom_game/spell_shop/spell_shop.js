@@ -69,6 +69,11 @@ function CreateSpell(info)
     {
         SpellShopSpellPanelIcon.SetHasClass("SpellDisabled", true)
     }
+    // Отключаем перк, если он не доступен в этом режиме. 
+    if (info[7] != "1")
+    {
+        SpellShopSpellPanelIcon.SetHasClass("SpellDisabled", true)
+    }
 
     SetActiveSpellPreview(SpellShopSpellPanel, info)
 }
@@ -201,7 +206,7 @@ function UpdatePreviewSpellInf(info)
 
     var hero = Players.GetPlayerSelectedHero(Players.GetLocalPlayer());
 
-    if (PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")))
+    if (PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")) && info[7] == "1")
     {
         if (IsSpellActivate(info[1]))
         {
@@ -441,7 +446,10 @@ function UpdateVisualSelectedSpells()
                     {
                         panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(active_table[player_id][i], GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id)) + '.png")';
                         panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundSize = "100%"
-                        SetShowText(panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i), active_table[player_id][i] + "_description_level_" + GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id), active_table[player_id][i], GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id))
+                        SetShowText(panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i), 
+                                    GetSpellName(active_table[player_id][i]) + "_description_level_" + GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id), 
+                                    active_table[player_id][i],
+                                    GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id))
                     }
                 }
                 else
@@ -487,6 +495,18 @@ function GetSpellTexture(spell_name, any_level)
         if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
         {
             return game_spells_lib[i][2] //+ "_" + any_level
+        }
+    }
+}
+
+function GetSpellName(spell_name)
+{
+    let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
+    for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
+    {
+        if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
+        {
+            return game_spells_lib[i][3] //+ "_" + any_level
         }
     }
 }

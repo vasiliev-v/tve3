@@ -53,15 +53,15 @@ function trollnelves2:GameSetup()
             PlayerResource:GetSteamAccountID(pID) == 453925557  or  
             PlayerResource:GetSteamAccountID(pID) == 1733805276 or  
             PlayerResource:GetSteamAccountID(pID) == 1028671831 or 
-            PlayerResource:GetSteamAccountID(pID) == 183899786 or 
-            PlayerResource:GetSteamAccountID(pID) == 381067505 or 
-            PlayerResource:GetSteamAccountID(pID) == 235445269 or 
+            PlayerResource:GetSteamAccountID(pID) == 183899786  or 
+            PlayerResource:GetSteamAccountID(pID) == 381067505  or 
+            PlayerResource:GetSteamAccountID(pID) == 235445269  or 
             PlayerResource:GetSteamAccountID(pID) == 1065787538 or 
             
 
             --- Сингапур
-            PlayerResource:GetSteamAccountID(pID) == 379678577  
-            
+            PlayerResource:GetSteamAccountID(pID) == 379678577 or
+            PlayerResource:GetSteamAccountID(pID) == 175389622    -- super shy
             
         then
             goGame = true

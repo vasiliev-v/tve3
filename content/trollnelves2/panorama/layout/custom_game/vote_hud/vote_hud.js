@@ -265,7 +265,7 @@ function InitSpellList()
     }
     for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
     {
-        if (game_spells_lib[i] && game_spells_lib[i][6] == active_shop)
+        if (game_spells_lib[i] && game_spells_lib[i][6] == active_shop && game_spells_lib[i][7] == "1")
         {
             CreateSpell(game_spells_lib[i], $("#AllPerksList"), true)
         }
@@ -279,7 +279,6 @@ function CreateSpell(info, parent, active)
     {
         panel_id = info[1]
     }
-
     let player_id = Players.GetLocalPlayer()
     
     let PerkPanel = $.CreatePanel("Panel", parent, panel_id);
@@ -300,7 +299,7 @@ function CreateSpell(info, parent, active)
         PerkPanelNumber.AddClass("PerkPanelNumber");
         PerkPanelNumber.text = "2"
 
-        SetShowText(PerkPanel, info[1] + "_description_level_" + GetSelectedPlayerSpellLevel(info[1], player_id), info[1], GetSelectedPlayerSpellLevel(info[1], player_id))
+        SetShowText(PerkPanel, info[3] + "_description_level_" + GetSelectedPlayerSpellLevel(info[1], player_id), info[1], GetSelectedPlayerSpellLevel(info[1], player_id))
     }
 } 
 

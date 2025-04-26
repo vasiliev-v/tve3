@@ -17,11 +17,11 @@ end
 function  modifier_wall_spell_armor:GetModifierPhysicalArmorBonus()
     local percent = 1
     if self:GetStackCount() == 1 then 
-		percent = 0.10
+		percent = 0.04
 	elseif self:GetStackCount() == 2  then
-		percent = 0.15
+		percent = 0.08
 	elseif self:GetStackCount() == 3  then
-		percent = 0.20
+		percent = 0.12
 	end
-	return self:GetParent():GetPhysicalArmorBaseValue() * percent + 1
+	return self:GetParent():GetPhysicalArmorBaseValue() * percent
 end
