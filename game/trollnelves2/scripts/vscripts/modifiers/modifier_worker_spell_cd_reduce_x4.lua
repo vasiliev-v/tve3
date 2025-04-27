@@ -16,10 +16,10 @@ end
 
 function modifier_worker_spell_cd_reduce_x4:GetModifierPercentageCooldown()
 	if self:GetStackCount() == 1 then 
-		return 30
+		return 10
 	elseif self:GetStackCount() == 2  then
-		return 50
+		return 20 
 	elseif self:GetStackCount() == 3  then
-		return 75
+		return 25
 	else return 0 end
 end

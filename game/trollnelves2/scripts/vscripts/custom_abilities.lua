@@ -688,6 +688,15 @@ function SpawnUnitOnChannelSucceeded(event)
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
 					end
 				end
+				if hero:HasModifier("modifier_elf_spell_cd_worker_x4")  then
+					if hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(3) 
+					end
+				end
 			end
 			if string.match(unit_name,"worker_builder") then
 				unit.units = {}
@@ -1525,6 +1534,15 @@ function ItemBlink(keys)
 		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 2 then
 			keys.MaxBlinkRange = keys.MaxBlinkRange2
 		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 3 then
+			keys.MaxBlinkRange = keys.MaxBlinkRange3
+		end
+	end
+	if keys.caster:HasModifier("modifier_elf_spell_blink_x4")  then
+		if keys.caster:FindModifierByName("modifier_elf_spell_blink_x4"):GetStackCount() == 1  then
+			keys.MaxBlinkRange = keys.MaxBlinkRange1 
+		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink_x4"):GetStackCount() == 2 then
+			keys.MaxBlinkRange = keys.MaxBlinkRange2
+		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink_x4"):GetStackCount() == 3 then
 			keys.MaxBlinkRange = keys.MaxBlinkRange3
 		end
 	end

@@ -789,7 +789,7 @@ else -- X4
                 "elf_spell_cd_reduce_description_level_1_shop_x4", 
             }, 
             {
-                {"-5%","-7.5%","-10%"},
+                {"-5%","-7%","-10%"},
             },
             "0",
             "1"
@@ -802,7 +802,7 @@ else -- X4
                 "elf_spell_cd_worker_description_level_1_shop_x4", 
             }, 
             {
-                {"-30%","-50%","-75%"},
+                {"-10%","-20%","-25%"},
             },
             "0",
             "1"
@@ -841,7 +841,7 @@ else -- X4
                 "elf_spell_limit_gold_description_level_1_shop_x4", 
             }, 
             {
-                {"200k","400k","600k"},
+                {"200k","350k","500k"},
             },
             "0",
             "1"
@@ -854,7 +854,7 @@ else -- X4
                 "elf_spell_limit_lumber_description_level_1_shop_x4", 
             }, 
             {
-                {"200k","400k","600k"},
+                {"200k","350k","500k"},
             },
             "0",
             "1"
@@ -967,9 +967,9 @@ else -- X4
                 "elf_spell_haste_description_level_3_shop_x4", 
             }, 
             {
-                {10, 20 ,50},
-                {10, 20, 50},
-                {350, 300, 300},
+                {50, 50 ,"MAX"},
+                {5, 6, 7},
+                {300, 240, 180},
             },
             "0",
             "1"
@@ -1145,7 +1145,7 @@ else -- X4
                 "troll_spell_limit_gold_description_level_1_shop_x4", 
             }, 
             {
-                {'+201k','+350k','+500k'},
+                {'+200k','+350k','+500k'},
             },
             "1",
             "1"
@@ -1158,7 +1158,7 @@ else -- X4
                 "troll_spell_cd_reduce_description_level_1_shop_x4", 
             }, 
             {
-                {'-10%','-15%','-20%'},
+                {'-7%','-10%','-15%'},
             },
             "1",
             "1"
@@ -1224,7 +1224,7 @@ else -- X4
                 "troll_spell_silence_target_description_level_2_shop_x4", 
             }, 
             {
-                {10,16,24},
+                {7,8,9},
                 {250,200,150},
             },
             "1",
@@ -1254,7 +1254,7 @@ else -- X4
                 "troll_spell_stun_target_description_level_2_shop_x4", 
             }, 
             {
-                {1,2,4},
+                {1,2,3},
                 {300,250,200},
             },
             "1",
@@ -1300,7 +1300,7 @@ else -- X4
             }, 
             {
                 {1,2,3},
-                {300,250,200},
+                {300,240,180},
             },
             "1",
             "1"
@@ -1401,7 +1401,7 @@ else -- X4
             {
                 {50,100,200},
                 {300,340,380},
-                {300,150,60},
+                {180,120,60},
             },
             "1",
             "1"

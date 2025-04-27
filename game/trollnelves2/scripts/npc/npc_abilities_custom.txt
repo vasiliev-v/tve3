@@ -16908,7 +16908,7 @@
 		"AbilityValues"
         {
             "bolt_speed" "2000"
-            "bolt_stun_duration" "1 4 8"
+            "bolt_stun_duration" "1 2 4"
             "vision_radius" "2000"
         }
 
@@ -17075,7 +17075,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"              "0.0"
 		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"300 150 60"
+		"AbilityCooldown"				"300 250 200"
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
@@ -18271,7 +18271,7 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"		"elf_spell_teleport"
 
 	// Stats
@@ -18636,7 +18636,7 @@
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
-            "time_dur" "10 16 24"
+            "time_dur" "7 8 24"
         }
 		"OnSpellStart"
 		{
@@ -18707,7 +18707,7 @@
 		"AbilityValues"
         {
             "bolt_speed" "2000"
-            "bolt_stun_duration" "1 4 8"
+            "bolt_stun_duration" "1 2 3"
             "vision_radius" "2000"
         }
 
@@ -18874,7 +18874,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"              "0.0"
 		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"300 150 60"
+		"AbilityCooldown"				"300 240 180"
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
@@ -19258,7 +19258,7 @@
 	"MaxLevel"						"3"
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"300 150 60"
+	"AbilityCooldown"				"180 120 60"
 
 
 	// Special
@@ -19728,7 +19728,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"elf_spell_haste"
 		"MaxLevel"						"3"
-		"AbilityCooldown"				"350 300 300"
+		"AbilityCooldown"				"300 240 180"
 		
 		"precache"
 		{
@@ -19738,8 +19738,8 @@
 
 		"AbilityValues"
         {
-            "duration" "10 20 50"
-            "speed" "10 20 50"
+            "duration" "5 6 7"
+            "speed" "50 50 999"
         }
 		
 		"OnSpellStart"{
@@ -20070,7 +20070,7 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"		"elf_spell_teleport"
 
 	// Stats
