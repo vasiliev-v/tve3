@@ -51,7 +51,7 @@ Shop.ITEM_RECOMMEND_IDS =
 
 Shop.DonateList = 
 {
-	{"523", "gold", "100", "chest_23", "chest_23"  },
+	-- {"523", "gold", "100", "chest_23", "chest_23"  },
 	{"501", "gold", "50", "chest_1", "chest_1"},
 	{"503", "gold", "50", "chest_3", "chest_3" },
 	{"516", "gold", "50", "chest_16", "chest_16" },

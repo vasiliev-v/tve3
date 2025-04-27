@@ -1,7 +1,6 @@
 if wearables == nil then
     _G.wearables = class({})
 end
-local dedicatedServerKey = GetDedicatedServerKeyV3("1")
 
 defaultpart = {}
 

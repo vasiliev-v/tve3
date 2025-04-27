@@ -5,7 +5,7 @@ function modifier_troll_spell_gold_wisp_x4:RemoveOnDeath()      return true end
 function modifier_troll_spell_gold_wisp_x4:IsHidden()           return false end
 function modifier_troll_spell_gold_wisp_x4:IsStackable()        return true end
 function modifier_troll_spell_gold_wisp_x4:IsPermanent()        return false end
-function modifier_troll_spell_gold_wisp_x4:GetTexture()         return "troll_spell_gold_wisp_x4" end
+function modifier_troll_spell_gold_wisp_x4:GetTexture()         return "troll_spell_gold_wisp" end
 --------------------------------------------------------------------------------
 
 function modifier_troll_spell_gold_wisp_x4:OnCreated( kv )

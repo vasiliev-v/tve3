@@ -104,9 +104,9 @@ function trollnelves2:GameSetup()
         Shop.RequestBP(callback)
         if GameRules.MapSpeed == 1 then
             Stats.RequestDataTop10("1", callback)
-        elseif GameRules.MapSpeed == 1 then 
+        elseif GameRules.MapSpeed == 2 then 
             Stats.RequestDataTop10("2", callback)
-        elseif GameRules.MapSpeed == 1 then
+        elseif GameRules.MapSpeed == 4 then
             Stats.RequestDataTop10("3", callback)
         end
         -- StartReklama()

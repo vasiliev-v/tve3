@@ -1000,7 +1000,7 @@ function Activate()
 	GameRules.rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetGem = {} 
-	GameRules.isTesting = false
+	GameRules.isTesting = true
 	GameRules.server =  "https://tve4.eu/test/"  -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
