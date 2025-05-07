@@ -20,6 +20,6 @@ function modifier_elf_spell_ms_x4:GetModifierMoveSpeedBonus_Special_Boots()
 	elseif self:GetStackCount() == 2  then
 		return 10
 	elseif self:GetStackCount() == 3  then
-		return 20
+		return 15
 	else return 0 end
 end

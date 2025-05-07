@@ -57,6 +57,7 @@ function InitDonateRewards()
     {
 		level = GetLevelPlayer(player_bp_info[0][0])
 	}
+	 
 	for (var i = 1; i < exp_battlepass.length; i++) 
     {
 		CreateLevels(i)
@@ -87,7 +88,7 @@ function CreateFreeReward(reward_level, lvl)
 		if (free_rewards[i][0] == reward_level) 
         {
 			create_reward_check = true
-			reward_id = free_rewards[i][4]
+			reward_id = free_rewards[i][1]
 			reward_num = i
 		}
 	}
@@ -127,7 +128,7 @@ function CreateFreeReward(reward_level, lvl)
 			if (reward_no_recieve) 
             {
                 RewardPanelFree.AddClass("Unlocked")
-				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, free_rewards[reward_num][2], RewardPanelFree, free_rewards[reward_num][4]) } );
+				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, free_rewards[reward_num][2], RewardPanelFree, free_rewards[reward_num][4], donate_rewards[reward_num][3]) } );
 			} 
             else 
             {
@@ -163,14 +164,18 @@ function CreateFreeReward(reward_level, lvl)
 	}
 }
 
-function GiveReward(id, panel, type, rew_panel, idItem) 
+function GiveReward(id, panel, type, rew_panel, idItem, countItem) 
 {
+	$.Msg(id)
+	$.Msg(type)
+	$.Msg(idItem)
+	
 	panel.SetPanelEvent("onactivate", function() {} );
 	rew_panel.AddClass("PanelGives");
     rew_panel.RemoveClass("Unlocked")
 	panel.FindChildTraverse("BpLockedText").text = $.Localize("#" + "battlepass_gives")
 	// Здесь нужно отправить в луа проверку на получение шмотки  id - айди шмотки
-	GameEvents.SendCustomGameEventToServer( "EventBattlePass", {PlayerID: Players.GetLocalPlayer(), Num: id, Nick: type, Type: idItem }); // отправляешь ивент 
+	GameEvents.SendCustomGameEventToServer( "EventBattlePass", {PlayerID: Players.GetLocalPlayer(), Num: id, Nick: type, Type: idItem, Coun: countItem }); // отправляешь ивент 
 }
 
 function CreateDonateReward(reward_level, lvl) 
@@ -185,7 +190,7 @@ function CreateDonateReward(reward_level, lvl)
 		if (donate_rewards[i][0] == reward_level) 
         {
 			create_reward_check = true
-			reward_id = donate_rewards[i][4]
+			reward_id = donate_rewards[i][1]
 			reward_num = i
 		}
 	}
@@ -228,7 +233,7 @@ function CreateDonateReward(reward_level, lvl)
 			if (reward_no_recieve) 
             {
                 RewardPanelDonate.AddClass("Unlocked")
-				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, donate_rewards[reward_num][2], RewardPanelDonate, donate_rewards[reward_num][4]) } );
+				PanelLock.SetPanelEvent("onactivate", function() { GiveReward(reward_id, PanelLock, donate_rewards[reward_num][2], RewardPanelDonate, donate_rewards[reward_num][4],donate_rewards[reward_num][3]) } );
 			} 
             else 
             {

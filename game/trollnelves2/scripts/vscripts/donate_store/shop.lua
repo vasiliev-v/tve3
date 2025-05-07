@@ -4,7 +4,7 @@ end
 
 require("donate_store/shop_data")
 
-local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA" -- GetDedicatedServerKeyV3("1")
+local dedicatedServerKey = "TESTSESADASASDASDQ412EDFDSFQ124132421ESR1241234WQSA" -- GetDedicatedServerKeyV3("1")
 local MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 local lastSpray = {}
 local lastSounds = {}
@@ -164,7 +164,7 @@ end
 function Shop.RequestSkin(obj, pID, steam, callback)
 	
 	--DebugPrint("RequestSkin ***********************************************" .. GameRules.server )
-	DeepPrintTable(obj)
+	--DeepPrintTable(obj)
 	--DebugPrint("***********************************************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 
@@ -290,7 +290,7 @@ end
 
 function Shop.RequestVipDefaults(obj, pID, steam, callback)
 	--DebugPrint("***************RequestVipDefaults********************")
-	DeepPrintTable(obj)
+	--DeepPrintTable(obj)
 	--DebugPrint("RequestVipDefaults ***********************************************")
 	if #obj > 0 then
 		for id=1,#obj do
@@ -305,7 +305,7 @@ end
 
 function Shop.RequestSkinDefaults(obj, pID, steam, callback)
 	--DebugPrint("***********RequestSkinDefaults**********************")
-	DeepPrintTable(obj)
+	--DeepPrintTable(obj)
 	--DebugPrint("RequestSkinDefaults ***********************************************")
 	if #obj > 0 then
 		if obj[1].num ~= nil then
@@ -317,7 +317,7 @@ end
 
 function Shop.RequestPetsDefaults(obj, pID, steam, callback)
 	--DebugPrint("*************RequestPetsDefaults****************")
-	DeepPrintTable(obj)
+	--DeepPrintTable(obj)
 	--DebugPrint("RequestPetsDefaults ***********************************************")
 	if #obj > 0 then
 		if obj[1].num ~= nil then
@@ -1088,7 +1088,7 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	PoolTable["10"]["1"] = {}
 	if #obj > 0 then
-		DebugPrintTable(obj)
+	--	DebugPrintTable(obj)
 		for id=1,#obj do
 			PoolTable["10"]["1"][id] = {obj[id].idQuest, obj[id].count }
 		end
@@ -1098,8 +1098,8 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 end
 
 function Shop:EventBattlePass(table, callback)
-	-- DebugPrintTable(table)
-	-- DebugPrintTable("test!!!!!!!!!!!!!!")
+	DebugPrintTable(table)
+	DebugPrintTable("test!!!!!!!!!!!!!!")
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -1157,7 +1157,7 @@ function Shop.RequestAchivements(obj, pID, steam, callback)
 
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	DebugPrint("RequestAchivements")
-	DebugPrintTable(obj)
+	--DebugPrintTable(obj)
 	for id=1,#obj do
 		PoolTable["17"][tostring(obj[id].num)] = tostring(obj[id].count)
 	end

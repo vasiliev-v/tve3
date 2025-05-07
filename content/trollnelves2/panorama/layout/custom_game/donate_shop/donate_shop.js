@@ -587,7 +587,7 @@ function CreateItemCurrencyPreview(panel, currency, count, chance)
 	let Chest_in_item = $.CreatePanel("Panel", panel, "item_" + currency);
 	Chest_in_item.AddClass("Chest_in_item_preview");
 
-	CreateItemChance(Chest_in_item, $.Localize("#" + "shop_chance") + " " + chance + "%<br>" + $.Localize("#" + "shop_currency_count") + " " + $.Localize("#" + "shop_currency_count_from") + " " + count[1] + " " + $.Localize("#shop_currency_count_to") + " " + count[2])
+	//CreateItemChance(Chest_in_item, $.Localize("#" + "shop_chance") + " " + chance + "%<br>" + $.Localize("#" + "shop_currency_count") + " " + $.Localize("#" + "shop_currency_count_from") + " " + count[1] + " " + $.Localize("#shop_currency_count_to") + " " + count[2])
 
 	let ItemImage = $.CreatePanel("Panel", Chest_in_item, "");
 	ItemImage.AddClass("ItemChestImage_preview");
@@ -615,7 +615,7 @@ function CreateItemInChestPreview(panel, table, i, table_chest)
 				let Chest_in_item = $.CreatePanel("Panel", panel, "item_" + item_chest_info[1]);
 				Chest_in_item.AddClass("Chest_in_item_preview");
 
-				CreateItemChance(Chest_in_item, $.Localize("#" + "shop_chance") + " " + item_chest_info[2] + "%")
+				//CreateItemChance(Chest_in_item, $.Localize("#" + "shop_chance") + " " + item_chest_info[2] + "%")
 
 				let ItemImage = $.CreatePanel("Panel", Chest_in_item, "");
 				ItemImage.AddClass("ItemChestImage_preview");

@@ -836,8 +836,9 @@ function BuildingHelper:OrderFilter(order)
     
     local issuerID = order.issuer_player_id_const
     
+    --if not issuerID then return true end
     if issuerID == -1 then return true end
-    
+
     local queue = order.queue == 1
     local order_type = order.order_type
     local units = order.units
@@ -1013,22 +1014,36 @@ function BuildingHelper:OrderFilter(order)
     end
     if order_type == DOTA_UNIT_ORDER_SELL_ITEM then
         local args = {itemIndex = abilityIndex}
-        if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) then
+        local item = EntIndexToHScript(order.entindex_ability)
+        local item_name = item:GetAbilityName()
+
+        local player = unit:GetPlayerOwner()
+        local pID = player:GetPlayerID()
+
+        local bSellCondition = unit:CanSellItems() and item:IsSellable()
+
+        if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) or not bSellCondition then
             SendErrorMessage(issuerID, "error_shop_out_of_range")
             return false
         end
-        SellItem(args)
+        SellItem(unit, item)
         return false
     end
     local unit = EntIndexToHScript(targetIndex)
  --   --DebugPrint("order_type " .. order_type)
     if order_type == DOTA_UNIT_ORDER_GIVE_ITEM and (string.match(unit:GetUnitName(), "troll_hut") or string.match(unit:GetUnitName(), "shop")) then
-        local args = {itemIndex = abilityIndex}
-        if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) then
+        local item = EntIndexToHScript(order.entindex_ability)
+        local item_name = item:GetAbilityName()
+
+        local player = unit:GetPlayerOwner()
+        local pID = player:GetPlayerID()
+
+        local bSellCondition = unit:CanSellItems() and item:IsSellable()
+        if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) or not bSellCondition  then
             SendErrorMessage(issuerID, "error_shop_out_of_range")
             return false
         end
-        SellItem(args)
+        SellItem(unit, item)
         return false
     end
 
@@ -2163,7 +2178,9 @@ function BuildingHelper:StartRepair(builder, target)
                         if IsCustomBuilding(target) and target.callbacks and
                             target.callbacks.onConstructionCompleted then
                             target.constructionCompleted = true
+                            if work then
                             work.refund = false
+                            end
                             function target:IsUnderConstruction()
                                 return false
                             end

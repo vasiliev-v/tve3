@@ -1,5 +1,5 @@
 Stats = Stats or {}
-local dedicatedServerKey = "D516B112AACCFBIBIBI2F406F8572FE5152BEA" --GetDedicatedServerKeyV3("1")
+local dedicatedServerKey = "TESTSESADASASDASDQ412EDFDSFQ124132421ESR1241234WQSA" --GetDedicatedServerKeyV3("1")
 local checkResult = {}
 local countCheckShop = 0 
 

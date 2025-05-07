@@ -19490,7 +19490,7 @@
 		
 		"AbilityValues"
         {
-            "radius_true" "200 400 600"
+            "radius_true" "200 300 400"
         }
 
 		"Modifiers"
@@ -19794,9 +19794,9 @@
 	// Special
 	"AbilityValues"
         {
-            "duration" "3 5 7"
+            "duration" "2 3 6"
             "speed" "2000"
-            "bonus_evasion" "50 60 75"
+            "bonus_evasion" "30 45 60"
         }
 
 	"OnSpellStart"
@@ -19994,7 +19994,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-			"bonus_damage_taken" "10 20 30"
+			"bonus_damage_taken" "8 10 15"
             "duration" "4 8 15"
             "speed" "2000"
         }

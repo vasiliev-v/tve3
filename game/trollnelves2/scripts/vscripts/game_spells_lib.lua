@@ -21,8 +21,10 @@ if GameRules.MapSpeed ~= 4 then
             "modifier_elf_spell_ms", 
             {
                 "elf_spell_ms_description_level_1_shop",
+                "elf_spell_ms_description_level_2_shop",
             },
             {
+                {2,5,10},
                 {2,5,10},
             },
             "0",
@@ -744,9 +746,11 @@ else -- X4
             "modifier_elf_spell_ms_x4", 
             {
                 "elf_spell_ms_description_level_1_shop_x4",
+                "elf_spell_ms_description_level_2_shop_x4",
             },
             {
-                {5,10,20},
+                {5,10,15},
+                {5,10,15},
             },
             "0",
             "1"
@@ -867,7 +871,7 @@ else -- X4
                 "elf_spell_true_description_level_1_shop_x4", 
             }, 
             {
-                {200, 400, 600},   
+                {200, 300, 400},   
             },
             "0",
             "1"
@@ -984,8 +988,8 @@ else -- X4
                 "elf_spell_evasion_description_level_3_shop_x4", 
             }, 
             {
-                {"50%", "60%", "75%"},
-                {3, 5 ,7},
+                {"30%", "45%", "60%"},
+                {2, 3 ,6},
                 {350, 300, 300},
             },
             "0",
@@ -1020,7 +1024,7 @@ else -- X4
                 "elf_spell_target_damage_description_level_3_shop_x4", 
             }, 
             {
-                {"10%", "20%", "30%"},
+                {"8%", "10%", "15%"},
                 {4, 5 , 6},
                 {350, 300, 300},
             },
@@ -1672,14 +1676,16 @@ function game_spells_lib:event_buy_spell(data)
         end
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
         game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))[12]
-		dataShop.SteamID = tostring(PlayerResource:GetSteamID(player_id))
-		dataShop.Num = tostring(drop_info[1])
-        dataShop.Score = tostring(drop_info[2])
-        dataShop.Nick = "skill"
-        dataShop.Coint = tostring(cost)
-        dataShop.TypeDonate = "gem"
-        dataShop.PlayerID = player_id
-        Shop.GetSkill(dataShop, callback)
+        if not GameRules:IsCheatMode() then
+            dataShop.SteamID = tostring(PlayerResource:GetSteamID(player_id))
+            dataShop.Num = tostring(drop_info[1])
+            dataShop.Score = tostring(drop_info[2])
+            dataShop.Nick = "skill"
+            dataShop.Coint = tostring(cost)
+            dataShop.TypeDonate = "gem"
+            dataShop.PlayerID = player_id
+            Shop.GetSkill(dataShop, callback)
+        end
     end
 
 end

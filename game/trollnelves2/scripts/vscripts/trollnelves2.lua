@@ -49,19 +49,16 @@ end
 function trollnelves2:GameSetup()
     goGame = false
     for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-        if  PlayerResource:GetSteamAccountID(pID) == 201083179  or  
-            PlayerResource:GetSteamAccountID(pID) == 453925557  or  
-            PlayerResource:GetSteamAccountID(pID) == 1733805276 or  
-            PlayerResource:GetSteamAccountID(pID) == 1028671831 or 
+        if  PlayerResource:GetSteamAccountID(pID) == 201083179  or  -- я 
+            PlayerResource:GetSteamAccountID(pID) == 453925557  or  -- Alma
             PlayerResource:GetSteamAccountID(pID) == 183899786  or 
             PlayerResource:GetSteamAccountID(pID) == 381067505  or 
-            PlayerResource:GetSteamAccountID(pID) == 235445269  or 
-            PlayerResource:GetSteamAccountID(pID) == 1065787538 or 
-            
 
             --- Сингапур
             PlayerResource:GetSteamAccountID(pID) == 379678577 or
-            PlayerResource:GetSteamAccountID(pID) == 175389622    -- super shy
+            PlayerResource:GetSteamAccountID(pID) == 175389622 or   -- super shy
+
+            PlayerResource:GetSteamAccountID(pID) == 1551531770      -- sniper
             
         then
             goGame = true
@@ -967,16 +964,18 @@ function GetModifiedName(orgName)
     end
 end
 
-function SellItem(args)
-    local item = EntIndexToHScript(args.itemIndex)
+function SellItem(unit, item)
+    
     if item then
         if not item:IsSellable() then
             SendErrorMessage(issuerID, "error_item_not_sellable")
         end
         local gold_cost = item:GetSpecialValueFor("gold_cost")
         local lumber_cost = item:GetSpecialValueFor("lumber_cost")
-        local hero = item:GetCaster()
-        if hero:IsElf() and not item:CanSellItems() then
+        local playerID = unit:GetPlayerOwnerID()
+        local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+        if hero:IsElf() or not hero:CanSellItems() then
             return
         end
         UTIL_Remove(item)
