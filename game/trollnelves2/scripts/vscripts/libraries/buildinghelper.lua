@@ -704,7 +704,7 @@ function BuildingHelper:BuildCommand(args)
     if playerID ~= builder:GetPlayerOwnerID() then
         return
     end
-    
+
     -- Filter all the selected builders
     for k, entIndex in pairs(entityList) do
         local unit = EntIndexToHScript(entIndex)
@@ -1035,7 +1035,6 @@ function BuildingHelper:OrderFilter(order)
         return false
     end
     local unit = EntIndexToHScript(targetIndex)
- --   --DebugPrint("order_type " .. order_type)
     if order_type == DOTA_UNIT_ORDER_GIVE_ITEM and (string.match(unit:GetUnitName(), "troll_hut") or string.match(unit:GetUnitName(), "shop")) then
         local item = EntIndexToHScript(order.entindex_ability)
         if not item then
