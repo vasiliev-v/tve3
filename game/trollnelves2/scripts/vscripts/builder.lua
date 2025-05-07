@@ -472,311 +472,9 @@ function UpgradeBuilding( event )
         abil:SetLevel(abil:GetMaxLevel())
         GameRules.MultiMapSpeed = 2
     end
-    local p
-    local p12 = nil
 
     if GameRules.SkinTower[playerID] ~= nil then
-        if GameRules.SkinTower[playerID][newBuildingName] == "1001" then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/venomancer/venomancer_hydra_switch_color_arms/venomancer_hydra_switch_color_arms.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/venomancer/venomancer_hydra_switch_color_shoulder/venomancer_hydra_switch_color_shoulder.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/venomancer/venomancer_hydra_switch_color_head/venomancer_hydra_switch_color_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/venomancer/venomancer_hydra_switch_color_tail/venomancer_hydra_switch_color_tail.vmdl") 
-        elseif GameRules.SkinTower[playerID][newBuildingName] == "1002" then     
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/viper/king_viper_head/king_viper_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/viper/king_viper_back/king_viper_back.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/viper/king_viper_tail/viper_king_viper_tail.vmdl")
-        elseif GameRules.SkinTower[playerID][newBuildingName] == "1003" then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/drow/drow_ti9_immortal_weapon/drow_ti9_immortal_weapon.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/drow/mask_of_madness/mask_of_madness.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/drow/frostfeather_huntress_shoulder/frostfeather_huntress_shoulder.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/drow/frostfeather_huntress_misc/frostfeather_huntress_misc.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/drow/ti6_immortal_cape/mesh/drow_ti6_immortal_cape.vmdl")        
-            wearables:AttachWearable(newBuilding, "models/items/drow/frostfeather_huntress_arms/frostfeather_huntress_arms.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/drow/frostfeather_huntress_legs/frostfeather_huntress_legs.vmdl") 
-            p12 = ParticleManager:CreateParticle("particles/econ/items/drow/drow_ti6_gold/drow_ti6_ambient_gold.vpcf", 1, newBuilding)
-            ParticleManager:SetParticleControlEnt(p12, 1, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1004" then
-            --wearables:RemoveWearables(newBuilding)
-            -- wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_weapon/ti6_windranger_weapon.vmdl")
-            --wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_offhand/ti6_windranger_offhand.vmdl")
-            -- wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_head/ti6_windranger_head.vmdl")
-            --wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_back/ti6_windranger_back.vmdl")
-            --wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_shoulder/ti6_windranger_shoulder.vmdl")
-            --local p = ParticleManager:CreateParticle("particles/econ/items/windrunner/windrunner_battleranger/windrunner_battleranger_bowstring_ambient.vpcf", 0, newBuilding)
-            --ParticleManager:SetParticleControlEnt(p, 0, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            -- p = ParticleManager:CreateParticle("particles/econ/items/windrunner/windrunner_battleranger/windrunner_battleranger_bow_ambient.vpcf", 1, newBuilding)
-            -- ParticleManager:SetParticleControlEnt(p, 1, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            --p = ParticleManager:CreateParticle("particles/units/heroes/hero_windrunner/windrunner_bowstring.vpcf", 3, newBuilding)
-            --ParticleManager:SetParticleControlEnt(p, 3, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/windrunner/windrunner_arcana/wr_arcana_cape.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/windrunner/windrunner_arcana/wr_arcana_quiver.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/windrunner/windrunner_arcana/wr_arcana_shoulder.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/windrunner/windrunner_arcana/wr_arcana_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/windrunner/windrunner_arcana/wr_arcana_weapon.vmdl")
-            --local p = ParticleManager:CreateParticle("particles/econ/items/windrunner/windrunner_battleranger/windrunner_battleranger_bowstring_ambient.vpcf", 0, newBuilding)
-            --ParticleManager:SetParticleControlEnt(p, 0, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            --  p = ParticleManager:CreateParticle("particles/econ/items/windrunner/windranger_arcana/windranger_arcana_bow_ambient.vpcf", 1, newBuilding)
-            --  ParticleManager:SetParticleControlEnt(p, 1, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            --p = ParticleManager:CreateParticle("particles/econ/items/windrunner/windranger_arcana/windranger_arcana_bowstring_ambient.vpcf", 3, newBuilding)
-            --ParticleManager:SetParticleControlEnt(p, 3, newBuilding, PATTACH_POINT_FOLLOW, "attach_hook",  newBuilding:GetAbsOrigin(), true)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1005" then
-                wearables:RemoveWearables(newBuilding)
-                wearables:AttachWearable(newBuilding, "models/items/ancient_apparition/ancient_apparition_frozen_evil_head/ancient_apparition_frozen_evil_head.vmdl")--"models/items/ancient_apparition/extremely_cold_shackles_tail/extremely_cold_shackles_tail.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/ancient_apparition/ancient_apparition_frozen_evil_arms/ancient_apparition_frozen_evil_arms.vmdl")--"models/items/ancient_apparition/extremely_cold_shackles_shoulder/extremely_cold_shackles_shoulder.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/ancient_apparition/ancient_apparition_frozen_evil_shoulder/ancient_apparition_frozen_evil_shoulder.vmdl")--"models/items/ancient_apparition/extremely_cold_shackles_head/extremely_cold_shackles_head.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/ancient_apparition/ancient_apparition_frozen_evil_tail/ancient_apparition_frozen_evil_tail.vmdl")--"models/items/ancient_apparition/extremely_cold_shackles_arms/extremely_cold_shackles_arms.vmdl")    
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1006" then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/vengefulspirit/fallenprincess_legs/fallenprincess_legs.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/vengefulspirit/fallenprincess_weapon/fallenprincess_weapon.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/vengefulspirit/vs_ti8_immortal_shoulder/vs_ti8_immortal_shoulder.vmdl")
-            
-            p = ParticleManager:CreateParticle("particles/econ/items/vengeful/vs_ti8_immortal_shoulder/vs_ti8_immortal_shoulder_crimson_ambient.vpcf", 1, newBuilding)
-            ParticleManager:SetParticleControlEnt(p, 1, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1007"  then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/shadow_fiend/arms_deso/arms_deso.vmdl")
-            wearables:AttachWearable(newBuilding, "models/heroes/shadow_fiend/head_arcana.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/nevermore/sf_souls_tyrant_shoulder/sf_souls_tyrant_shoulder.vmdl")              
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1008" or (newBuildingName == "tower_15_2" and GameRules.SkinTower[playerID]["tower_15_1"] == "1008") then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/nevermore/ferrum_chiroptera_head/ferrum_chiroptera_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/nevermore/ferrum_chiroptera_shoulder/ferrum_chiroptera_shoulder.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/nevermore/ferrum_chiroptera_arms/ferrum_chiroptera_arms.vmdl")
-            local p = ParticleManager:CreateParticle("particles/units/heroes/hero_nevermore/shadow_fiend_ambient_eyes.vpcf", 1, newBuilding)
-            ParticleManager:SetParticleControlEnt(p, 1, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            p = ParticleManager:CreateParticle("particles/econ/items/shadow_fiend/sf_ferrum/shadow_fiend_ferrum_head_ambient.vpcf", 2, newBuilding)
-            ParticleManager:SetParticleControlEnt(p, 2, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true)
-            p = ParticleManager:CreateParticle("particles/econ/items/shadow_fiend/sf_ferrum/shadow_fiend_ferrum_shoulder_ambient.vpcf", 3, newBuilding)
-            ParticleManager:SetParticleControlEnt(p, 3, newBuilding, PATTACH_POINT_FOLLOW, "attach_hook",  newBuilding:GetAbsOrigin(), true)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1009"  then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/lanaya/raiment_of_the_violet_archives_shoulder/raiment_of_the_violet_archives_shoulder.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/lanaya/raiment_of_the_violet_archives_armor/raiment_of_the_violet_archives_armor.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/lanaya/raiment_of_the_violet_archives_head_hood/raiment_of_the_violet_archives_head_hood.vmdl")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1010"  then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/luna/luna_ti7_set_head/luna_ti7_set_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/luna/luna_ti7_set_mount/luna_ti7_set_mount.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/luna/luna_ti7_set_shoulder/luna_ti7_set_shoulder.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/luna/luna_ti7_set_weapon/luna_ti7_set_weapon.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/luna/luna_ti7_set_offhand/luna_ti7_set_offhand.vmdl")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1011"  then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/medusa/dotaplus_medusa_weapon/dotaplus_medusa_weapon.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/medusa/daughters_of_hydrophiinae/daughters_of_hydrophiinae.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/medusa/medusa_ti10_immortal_tail/medusa_ti10_immortal_tail.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/medusa/dotaplas_medusa_head/dotaplas_medusa_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/medusa/dotaplus_medusa_arms/dotaplus_medusa_arms.vmdl")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1012" or (newBuildingName == "tower_19_1" and GameRules.SkinTower[playerID]["tower_19"] == "1012") or (newBuildingName == "tower_19_2" and GameRules.SkinTower[playerID]["tower_19"] == "1012")  then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/enigma/tentacular_conqueror_armor/tentacular_conqueror_armor.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/enigma/tentacular_conqueror_arms/tentacular_conqueror_arms.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/enigma/tentacular_conqueror_head/tentacular_conqueror_head.vmdl")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1013" then
-            wearables:RemoveWearables(newBuilding)
-            wearables:AttachWearable(newBuilding, "models/items/sniper/witch_hunter_set_weapon/witch_hunter_set_weapon.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/sniper/witch_hunter_set_shoulder/witch_hunter_set_shoulder.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/sniper/witch_hunter_set_arms/witch_hunter_set_arms.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/sniper/witch_hunter_set_head/witch_hunter_set_head.vmdl")
-            wearables:AttachWearable(newBuilding, "models/items/sniper/witch_hunter_set_back/witch_hunter_set_back.vmdl")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1014" then
-            wearables:RemoveWearables(newBuilding) 
-            UpdateModel(newBuilding, "models/items/wards/frozen_formation/frozen_formation.vmdl", 1)    
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1015" then
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/sylph_ward/sylph_ward.vmdl", 1)    
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1016"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/watcher_below_ward/watcher_below_ward.vmdl", 1)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1017"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/megagreevil_ward/megagreevil_ward.vmdl", 1)    
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1018"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/dire_ward_eye/dire_ward_eye.vmdl", 1)   
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1019"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/chinese_ward/chinese_ward.vmdl", 1)  
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1020"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/stonebound_ward/stonebound_ward.vmdl", 1)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1021"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/monty_ward/monty_ward.vmdl", 1)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1022"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/wards/gazing_idol_ward/gazing_idol_ward.vmdl", 1)  
-            
-            
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1023"  then
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/throe/throe_flying.vmdl", 1)    
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1024"  then
-            wearables:RemoveWearables(newBuilding) 
-            UpdateModel(newBuilding, "models/items/courier/shagbark/shagbark_flying.vmdl", 1)    
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1025"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/courier_mvp_redkita/courier_mvp_redkita_flying.vmdl", 1)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1026"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/defense4_dire/defense4_dire_flying.vmdl", 1)    
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1027" then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/mlg_wraith_courier/mlg_wraith_courier.vmdl", 1)   
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1028"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/mei_nei_rabbit/mei_nei_rabbit_flying.vmdl", 1)  
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1029"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/mango_the_courier/mango_the_courier_flying.vmdl", 1)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1030"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier_flying.vmdl", 1)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1031"  then 
-            wearables:RemoveWearables(newBuilding)
-            UpdateModel(newBuilding, "models/items/courier/bookwyrm/bookwyrm_flying.vmdl", 1)  
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1032"  then
-                wearables:RemoveWearables(newBuilding)
-                if p12 ~= nil then
-                    ParticleManager:DestroyParticle(p12, false)  
-                end
-                wearables:AttachWearable(newBuilding, "models/items/drow/wandering_ranger_head/wandering_ranger_head.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/drow/wandering_ranger_back/wandering_ranger_back.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/drow/wandering_ranger_arms/wandering_ranger_arms.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/drow/wandering_ranger_weapon/wandering_ranger_weapon.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/drow/wandering_ranger_shoulder/wandering_ranger_shoulder.vmdl")        
-                wearables:AttachWearable(newBuilding, "models/items/drow/wandering_ranger_misc/wandering_ranger_misc.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/drow/wandering_ranger_legs/wandering_ranger_legs.vmdl")
-                newBuilding.BountyWeapon = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/items/drow/wandering_ranger_weapon/wandering_ranger_weapon.vmdl"})
-                newBuilding.BountyWeapon:FollowEntity(newBuilding, true)
-                p = ParticleManager:CreateParticle("particles/econ/items/drow/drow_2022_cc/drow_2022_cc_weapon.vpcf", PATTACH_ABSORIGIN_FOLLOW, newBuilding.BountyWeapon)
-                ParticleManager:SetParticleControlEnt(p, 1, newBuilding, PATTACH_POINT_FOLLOW, nil, newBuilding:GetOrigin(), true) 
-                p = ParticleManager:CreateParticle("particles/econ/items/drow/drow_2022_cc/drow_2022_cc_quiver.vpcf", 2, newBuilding)
-                ParticleManager:SetParticleControlEnt(p, 2, newBuilding, PATTACH_POINT_FOLLOW, "follow_origin", newBuilding:GetAbsOrigin(), true) 
-        
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1033"  then
-                wearables:RemoveWearables(newBuilding)
-                wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_back/ti6_windranger_back.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_head/ti6_windranger_head.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_offhand/ti6_windranger_offhand.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_shoulder/ti6_windranger_shoulder.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/windrunner/ti6_windranger_weapon/ti6_windranger_weapon.vmdl")
-                --   newBuilding.BountyWeapon = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/items/windrunner/ti6_windranger_weapon/ti6_windranger_weapon.vmdl"})
-            --    newBuilding.BountyWeapon:FollowEntity(newBuilding, true)
-                --  p = ParticleManager:CreateParticle("particles/econ/items/windrunner/windrunner_battleranger/windrunner_battleranger_bowstring_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, newBuilding.BountyWeapon)
-                --  ParticleManager:SetParticleControlEnt(p, 1, newBuilding, PATTACH_POINT_FOLLOW, nil, newBuilding:GetOrigin(), true)
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1034"  then
-                wearables:RemoveWearables(newBuilding)
-                wearables:AttachWearable(newBuilding, "models/items/hoodwink/hood_2021_blossom_weapon/hood_2021_blossom_weapon.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/hoodwink/hood_2021_blossom_armor/hood_2021_blossom_armor.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/hoodwink/hood_2021_blossom_tail/hood_2021_blossom_tail.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/hoodwink/hood_2021_blossom_back/hood_2021_blossom_back.vmdl")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1035"   then
-                wearables:RemoveWearables(newBuilding)
-                wearables:AttachWearable(newBuilding, "models/items/clinkz/degraded_soul_hunter_weapon/degraded_soul_hunter_weapon.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/clinkz/degraded_soul_hunter_shoulder/degraded_soul_hunter_shoulder.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/clinkz/degraded_soul_hunter_head/degraded_soul_hunter_head.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/clinkz/degraded_soul_hunter_gloves/degraded_soul_hunter_gloves.vmdl")
-                wearables:AttachWearable(newBuilding, "models/items/clinkz/degraded_soul_hunter_back/degraded_soul_hunter_back.vmdl")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1036"  then 
-                wearables:RemoveWearables(newBuilding)
-                UpdateModel(newBuilding, "models/flag_2.vmdl", 0.5)  
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1037"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/arcticwatchtower/arcticwatchtower.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1038"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/atlas_burden_ward/atlas_burden_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1039"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/augurys_guardian/augurys_guardian.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1040"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/chicken_hut_ward/chicken_hut_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1041"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/bane_ward/bane_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1042"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/echo_bat_ward/echo_bat_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1043"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/enchantedvision_ward/enchantedvision_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1044"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/esl_one_jagged_vision/esl_one_jagged_vision.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1045"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/esl_wardchest_radling_ward/esl_wardchest_radling_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1046"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/esl_wardchest_franglerfish/esl_wardchest_franglerfish.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1047"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/esl_wardchest_jungleworm/esl_wardchest_jungleworm.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1048"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/esl_wardchest_toadstool/esl_wardchest_toadstool.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1049"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1050"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/ti8_snail_ward/ti8_snail_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1051"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/frostivus_2023_ward/frostivus_2023_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1052"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/jakiro_pyrexae_ward/jakiro_pyrexae_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1053"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/hand_2021_ward/hand_2021_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1054"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/knightstatue_ward/knightstatue_ward.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1055"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/lich_black_pool_watcher/lich_black_pool_watcher.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1056"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/revtel_jester_obs/revtel_jester_obs.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1057"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/the_monkey_sentinel/the_monkey_sentinel.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            elseif GameRules.SkinTower[playerID][newBuildingName] == "1058"  then 
-                wearables:RemoveWearables(newBuilding) 
-                UpdateModel(newBuilding, "models/items/wards/warding_guise/warding_guise.vmdl", 1)
-                --building:SetMaterialGroup("1")
-            end
+        ApplyTowerSkin(playerID, newBuildingName, newBuilding)
     end
 
     if newBuildingName == "bank" and (not CheckBank and not string.match(GetMapName(),"clanwars")) then
@@ -889,3 +587,40 @@ function UpgradeBuilding( event )
     end)
 end
 
+function ApplyTowerSkin(playerID, towerName, towerEnt)
+    local skins = GameRules.SkinTower[playerID]
+    if not skins then return end
+
+    -- учитываем спец-кейс tower_15_2
+    local skinID = skins[towerName] or (towerName == "tower_15_2" and skins["tower_15_1"])
+    local cfg = Wearables.skinConfigs[skinID]
+    if not cfg then return end
+
+    -- убираем старые носимые
+    wearables:RemoveWearables(towerEnt)
+
+    -- attach или update
+    if cfg.attachments then
+        for _, mdl in ipairs(cfg.attachments) do
+            wearables:AttachWearable(towerEnt, mdl)
+        end
+    end
+    if cfg.updateModel then
+        UpdateModel(towerEnt, cfg.updateModel.model, cfg.updateModel.scale)
+    end
+
+    -- частицы
+    if cfg.particles then
+        for _, p in ipairs(cfg.particles) do
+            local ent = ParticleManager:CreateParticle(p.path, p.attachType, towerEnt)
+            ParticleManager:SetParticleControlEnt(
+                ent, p.cp, towerEnt, p.attachType, p.attachName or "", towerEnt:GetAbsOrigin(), true
+            )
+        end
+    end
+
+    -- кастомная логика (1032)
+    if cfg.custom then
+        cfg.custom(towerEnt)
+    end
+end

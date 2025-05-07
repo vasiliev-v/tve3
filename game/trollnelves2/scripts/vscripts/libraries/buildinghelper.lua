@@ -865,7 +865,7 @@ function BuildingHelper:OrderFilter(order)
         return true
         
         -- Stop and Hold
-        elseif order_type == DOTA_UNIT_ORDER_STOP or order_type ==
+    elseif order_type == DOTA_UNIT_ORDER_STOP or order_type ==
         DOTA_UNIT_ORDER_HOLD_POSITION then
         for n, unit_index in pairs(units) do
             local unit = EntIndexToHScript(unit_index)
@@ -1013,15 +1013,20 @@ function BuildingHelper:OrderFilter(order)
         return false
     end
     if order_type == DOTA_UNIT_ORDER_SELL_ITEM then
-        local args = {itemIndex = abilityIndex}
         local item = EntIndexToHScript(order.entindex_ability)
+        if not item then
+            return false
+        end
+        local owner = item:GetOwner()
+        if not owner or owner:GetPlayerOwnerID() ~= issuerID then
+            return false
+        end
         local item_name = item:GetAbilityName()
 
         local player = unit:GetPlayerOwner()
         local pID = player:GetPlayerID()
 
         local bSellCondition = unit:CanSellItems() and item:IsSellable()
-
         if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) or not bSellCondition then
             SendErrorMessage(issuerID, "error_shop_out_of_range")
             return false
@@ -1033,13 +1038,20 @@ function BuildingHelper:OrderFilter(order)
  --   --DebugPrint("order_type " .. order_type)
     if order_type == DOTA_UNIT_ORDER_GIVE_ITEM and (string.match(unit:GetUnitName(), "troll_hut") or string.match(unit:GetUnitName(), "shop")) then
         local item = EntIndexToHScript(order.entindex_ability)
+        if not item then
+            return false
+        end
+        local owner = item:GetOwner()
+        if not owner or owner:GetPlayerOwnerID() ~= issuerID then
+            return false
+        end
         local item_name = item:GetAbilityName()
 
         local player = unit:GetPlayerOwner()
         local pID = player:GetPlayerID()
 
         local bSellCondition = unit:CanSellItems() and item:IsSellable()
-        if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) or not bSellCondition  then
+        if not IsInsideShopArea(PlayerResource:GetSelectedHeroEntity(issuerID)) or not bSellCondition then
             SendErrorMessage(issuerID, "error_shop_out_of_range")
             return false
         end
