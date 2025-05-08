@@ -549,6 +549,9 @@ Shop.DonateList =
 	{"180", "gold", "99999999", "particle_80", "particle_80", false, 8},  
 	{"185", "gold", "99999999", "particle_85", "particle_85", false, 8},  
 
+
+	{"2001", "gold", "500", "label_1", "label_1", false, 7}, 
+
 	
 	--{"203", "gem", "20000", "chance75", "subscribe_3", true, 6},
 	--{"202", "gem", "15000", "chance50", "subscribe_2", true, 5},
@@ -676,6 +679,7 @@ local items_data_table =
     ["category_items_skins_towers"] = {},
     ["category_items_skin_wisps"] = {},
     ["category_items_sounds"] = {},
+	["category_items_label"] = {},
    -- ["category_items_sprays"] = {},
     ["category_items_recommended"] = {},
 }
@@ -707,6 +711,9 @@ for _, item_info in pairs(Shop.DonateList) do
     end
     if string.find(item_info[5], "sounds_") then
         table.insert(items_data_table["category_items_sounds"], item_info)
+    end
+	if string.find(item_info[5], "label_") then
+        table.insert(items_data_table["category_items_label"], item_info)
     end
  --   if string.find(item_info[5], "spray_") then
 --        table.insert(items_data_table["category_items_sprays"], item_info)

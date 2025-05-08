@@ -50,7 +50,7 @@ function Build( event )
             return false
         end
 
-        if mine_cost ~= nil then
+        if  hero.mine ~= nil then
             if mine_cost ~= 0 then
                 if hero.mine >= GameRules.maxMine  then
                     SendErrorMessage(playerID, "error_not_enough_mine")
@@ -593,7 +593,7 @@ function ApplyTowerSkin(playerID, towerName, towerEnt)
 
     -- учитываем спец-кейс tower_15_2
     local skinID = skins[towerName] or (towerName == "tower_15_2" and skins["tower_15_1"])
-    local cfg = Wearables.skinConfigs[skinID]
+    local cfg = Wearables.TowerSkinConfigs[skinID]
     if not cfg then return end
 
     -- убираем старые носимые

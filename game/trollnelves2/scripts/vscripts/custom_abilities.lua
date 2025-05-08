@@ -2,6 +2,7 @@ require('libraries/util')
 require('libraries/entity')
 require('trollnelves2')
 require('donate_store/wearables')
+require("donate_store/wearables_data")
 require('error_debug')
 
 --Ability for tents to give gold
@@ -737,119 +738,42 @@ function SpawnUnitOnChannelSucceeded(event)
 end
 
 function UpdateSkinWisp(unit_name, unit)
-	local playerID = unit:GetPlayerOwnerID()
-	local name = "wisp"
-	if GameRules.SkinTower[playerID]["wisp"] ~= nil then
-		if string.match(unit_name,"%a+") == "wisp" and unit_name ~= "gold_wisp" then
-			if GameRules.SkinTower[playerID][name] == "1201" then
-				if string.match(GameRules.MapName, "winter") then
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1.2)    
-				elseif string.match(GameRules.MapName, "spring") then
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/serpent_warbler/serpent_warbler_flying.vmdl", 1.1)    
-				elseif string.match(GameRules.MapName, "autumn") or string.match(GameRules.MapName,"halloween") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/little_fraid_the_courier_of_simons_retribution/little_fraid_the_courier_of_simons_retribution_flying.vmdl", 1.2)    
-				elseif string.match(GameRules.MapName,"desert") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/ig_dragon/ig_dragon_flying.vmdl", 1.2)    
-				elseif string.match(GameRules.MapName, "helheim") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/dc_demon/dc_demon_flying.vmdl", 1.2)
-				elseif string.match(GameRules.MapName,"china") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/green_jade_dragon/green_jade_dragon_flying.vmdl", 1.4) 
-				elseif string.match(GameRules.MapName,"jungle") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/deathbringer/deathbringer_flying.vmdl", 1.4)
-				elseif string.match(GameRules.MapName,"ghosttown") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/echo_wisp/echo_wisp_flying.vmdl", 1.3) 
-				elseif string.match(GameRules.MapName,"summer") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", 1.3) 
-				end
-			elseif GameRules.SkinTower[playerID][name] == "1202" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1.2)    
-			elseif GameRules.SkinTower[playerID][name] == "1203" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/serpent_warbler/serpent_warbler_flying.vmdl", 1.1)    
-			elseif GameRules.SkinTower[playerID][name] == "1204" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/little_fraid_the_courier_of_simons_retribution/little_fraid_the_courier_of_simons_retribution_flying.vmdl", 1.2)
-			elseif GameRules.SkinTower[playerID][name] == "1205" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/ig_dragon/ig_dragon_flying.vmdl", 1.2)
-			elseif GameRules.SkinTower[playerID][name] == "1206" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/dc_demon/dc_demon_flying.vmdl", 1.2)
-			elseif GameRules.SkinTower[playerID][name] == "1207" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/green_jade_dragon/green_jade_dragon_flying.vmdl", 1.4) 
-			elseif GameRules.SkinTower[playerID][name] == "1208" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/deathbringer/deathbringer_flying.vmdl", 1.4)
-			elseif GameRules.SkinTower[playerID][name] == "1209" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/echo_wisp/echo_wisp_flying.vmdl", 1.3)
-			elseif GameRules.SkinTower[playerID][name] == "1210" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1211" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/venoling/venoling_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1212" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/trapjaw/trapjaw_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1213" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/smeevil_mammoth/smeevil_mammoth_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1214" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/smeevil/smeevil_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1215" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/seekling/seekling.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1216" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/minipudge/minipudge.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1217" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/mega_greevil_courier/mega_greevil_courier_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1218" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/frog/frog_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1219" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/drodo/drodo_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1220" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/doom_demihero_courier/doom_demihero_courier.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1221" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_winter18_flying.vmdl", 1)
-			elseif GameRules.SkinTower[playerID][name] == "1222" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_ti9_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1223" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_ti10_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1224" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_ti10_dire_flying.vmdl", 1)  
-			elseif GameRules.SkinTower[playerID][name] == "1225" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1) 
-				unit:SetMaterialGroup("1")
-			elseif GameRules.SkinTower[playerID][name] == "1226" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1) 
-				unit:SetMaterialGroup("2")
-			end	
-		end	
-	end
+    if not unit then return end
+    local playerID = unit:GetPlayerOwnerID()
+    local skinID   = GameRules.SkinTower[playerID] and GameRules.SkinTower[playerID]["wisp"]
+    if not skinID then return end
+
+    if unit_name:match("%a+") ~= "wisp" or unit_name == "gold_wisp" then
+        return
+    end
+
+    local cfg = Wearables.wispSkinConfig[skinID]
+    if not cfg then return end
+
+    wearables:RemoveWearables(unit)
+
+    local model = cfg.model
+    local scale = cfg.scale or 1
+
+    if cfg.mapModels then
+        local map = GameRules.MapName:lower()
+        for key, m in pairs(cfg.mapModels) do
+            if map:find(key) then
+                model = m.model
+                scale = m.scale or scale
+                break
+            end
+        end
+    end
+
+    if model then
+        UpdateModel(unit, model, scale)
+    end
+
+    -- 6) Материал-группа, если есть
+    if cfg.materialGroup then
+        unit:SetMaterialGroup(tostring(cfg.materialGroup))
+    end
 end
 
 function SpawnUnitOnChannelInterrupted(event)

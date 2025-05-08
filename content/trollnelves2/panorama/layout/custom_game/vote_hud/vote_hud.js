@@ -6,6 +6,7 @@ var ACTIVATED_STAGE_ROLE = false
 var ACTIVATED_STAGE_PERKS = false
 var OLD_SCREEN_STAGE = null
 var SPELLS_TEXTURE = {}
+var UPDATED_CHANCE_TROLL = {}
 var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
 var players_activated_spells = CustomNetTables.GetTableValue("game_spells_lib", "spell_active")
 var game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
@@ -220,7 +221,9 @@ function InitStageSelectedRole()
     $("#WindowRoleStage").style.opacity = "1"
     OLD_SCREEN_STAGE = $("#WindowRoleStage")
     let player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer());
-    if (player_table)
+    $.Msg("player_table[2][0]")
+    $.Msg(player_table[2][0])
+    if (player_table && Object.keys(player_table[2][0]).length > 0)
     {
         $("#YourChanceTroll").text = $.Localize( "#shop_trollchance" ) + player_table[2][0] + "%"
     }
@@ -450,6 +453,20 @@ function GetSelectedPlayerSpellLevel(spell_name, id)
     }
     return 0
 }
+
+GameEvents.SubscribeProtected( "troll_elves_update_chance", UpdateChanceForTroll );
+
+function UpdateChanceForTroll()
+{
+    if (UPDATED_CHANCE_TROLL[Players.GetLocalPlayer()] != null ) { return }
+    UPDATED_CHANCE_TROLL[Players.GetLocalPlayer()] = true
+    let player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer());
+    if (player_table && Object.keys(player_table[2][0]).length > 0)
+    {
+        $("#YourChanceTroll").text = $.Localize( "#shop_trollchance" ) + player_table[2][0] + "%"
+    }
+}
+
 
 (function () {
 	Game.AutoAssignPlayersToTeams();

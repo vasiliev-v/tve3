@@ -104,8 +104,8 @@ Wearables.elfModels = {
 }
 local p
 local p12 = nil
-Wearables.skinConfigs = {}
-Wearables.skinConfigs = {
+Wearables.TowerSkinConfigs = {}
+Wearables.TowerSkinConfigs = {
     ["1001"] = { -- Venomancer Hydra
         attachments = {
             "models/items/venomancer/venomancer_hydra_switch_color_arms/venomancer_hydra_switch_color_arms.vmdl",
@@ -302,7 +302,88 @@ Wearables.skinConfigs = {
     ["1053"] = { updateModel = { model = "models/items/wards/hand_2021_ward/hand_2021_ward.vmdl", scale = 1 } },
     ["1054"] = { updateModel = { model = "models/items/wards/knightstatue_ward/knightstatue_ward.vmdl", scale = 1 } },
     ["1055"] = { updateModel = { model = "models/items/wards/lich_black_pool_watcher/lich_black_pool_watcher.vmdl", scale = 1 } },
-    ["1056"] = { updateModel = { model = "models/items/wards	revtel_jester_obs/revtel_jester_obs.vmdl", scale = 1 } },
-    ["1057"] = { updateModel = { model = "models/items/wards	the_monkey_sentinel/the_monkey_sentinel.vmdl", scale = 1 } },
+    ["1056"] = { updateModel = { model = "models/items/wards/revtel_jester_obs/revtel_jester_obs.vmdl", scale = 1 } },
+    ["1057"] = { updateModel = { model = "models/items/wards/the_monkey_sentinel/the_monkey_sentinel.vmdl", scale = 1 } },
     ["1058"] = { updateModel = { model = "models/items/wards/warding_guise/warding_guise.vmdl", scale = 1 } },
+}
+
+Wearables.wispSkinConfig = {}
+Wearables.wispSkinConfig = {
+    ["1201"] = { -- зависит от карты
+        mapModels = {
+            north      = { model = "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", scale = 1.2 },
+            okinawa    = { model = "models/items/courier/serpent_warbler/serpent_warbler_flying.vmdl", scale = 1.1 },
+            garden     = { model = "models/items/courier/little_fraid_the_courier_of_simons_retribution/little_fraid_the_courier_of_simons_retribution_flying.vmdl", scale = 1.2 },
+            oasis      = { model = "models/items/courier/ig_dragon/ig_dragon_flying.vmdl", scale = 1.2 },
+            mines      = { model = "models/items/courier/dc_demon/dc_demon_flying.vmdl", scale = 1.2 },
+            athens     = { model = "models/items/courier/green_jade_dragon/green_jade_dragon_flying.vmdl", scale = 1.4 },
+            bloodville = { model = "models/items/courier/deathbringer/deathbringer_flying.vmdl", scale = 1.4 },
+            atlantida  = { model = "models/items/courier/echo_wisp/echo_wisp_flying.vmdl", scale = 1.3 },
+            kanyon     = { model = "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", scale = 1.3 },
+            gorge      = { model = "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", scale = 1.3 },
+        
+        },
+    },
+    ["1202"] = { model = "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl",        scale = 1.2 },
+    ["1203"] = { model = "models/items/courier/serpent_warbler/serpent_warbler_flying.vmdl",          scale = 1.1 },
+    ["1204"] = { model = "models/items/courier/little_fraid_the_courier_of_simons_retribution/little_fraid_the_courier_of_simons_retribution_flying.vmdl", scale = 1.2 },
+    ["1205"] = { model = "models/items/courier/ig_dragon/ig_dragon_flying.vmdl",                  scale = 1.2 },
+    ["1206"] = { model = "models/items/courier/dc_demon/dc_demon_flying.vmdl",                    scale = 1.2 },
+    ["1207"] = { model = "models/items/courier/green_jade_dragon/green_jade_dragon_flying.vmdl",    scale = 1.4 },
+    ["1208"] = { model = "models/items/courier/deathbringer/deathbringer_flying.vmdl",            scale = 1.4 },
+    ["1209"] = { model = "models/items/courier/echo_wisp/echo_wisp_flying.vmdl",                  scale = 1.3 },
+    ["1210"] = { model = "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", scale = 1.3 },
+    ["1211"] = { model = "models/courier/venoling/venoling_flying.vmdl",                          scale = 1.0 },
+    ["1212"] = { model = "models/courier/trapjaw/trapjaw_flying.vmdl",                            scale = 1.0 },
+    ["1213"] = { model = "models/courier/smeevil_mammoth/smeevil_mammoth_flying.vmdl",            scale = 1.0 },
+    ["1214"] = { model = "models/courier/smeevil/smeevil_flying.vmdl",                            scale = 1.0 },
+    ["1215"] = { model = "models/courier/seekling/seekling.vmdl",                                 scale = 1.3 },
+    ["1216"] = { model = "models/courier/minipudge/minipudge.vmdl",                               scale = 1.3 },
+    ["1217"] = { model = "models/courier/mega_greevil_courier/mega_greevil_courier_flying.vmdl",  scale = 1.0 },
+    ["1218"] = { model = "models/courier/frog/frog_flying.vmdl",                                  scale = 1.0 },
+    ["1219"] = { model = "models/courier/drodo/drodo_flying.vmdl",                                scale = 1.0 },
+    ["1220"] = { model = "models/courier/doom_demihero_courier/doom_demihero_courier.vmdl",      scale = 1.3 },
+    ["1221"] = { model = "models/courier/baby_rosh/babyroshan_winter18_flying.vmdl",               scale = 1.0 },
+    ["1222"] = { model = "models/courier/baby_rosh/babyroshan_ti9_flying.vmdl",                  scale = 1.0 },
+    ["1223"] = { model = "models/courier/baby_rosh/babyroshan_ti10_flying.vmdl",                 scale = 1.0 },
+    ["1224"] = { model = "models/courier/baby_rosh/babyroshan_ti10_dire_flying.vmdl",            scale = 1.0 },
+    ["1225"] = { model = "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl",     scale = 1.0, materialGroup = 1 },
+    ["1226"] = { model = "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl",     scale = 1.0, materialGroup = 2 },
+}
+
+
+Wearables.EffectConfig = {
+    ["21"] = { label = "#top1autumn",      color = {250, 179,   0} },
+    ["25"] = { label = "#top3autumn",      color = {250, 179,   0} },
+    ["5" ] = { label = "#top10autumn",     color = { 24, 181,  29} },
+    ["4" ] = { label = "#tester1",         color = {  0, 217,   7} },
+    ["8" ] = { label = "#moder",           color = {250,   0,   0} },
+    ["7" ] = { label = "#dev",             color = {200,   0, 250} },
+    ["37"] = { label = "#top1winter",      color = { 95,  89, 255} },
+    ["49"] = { label = "#top2winter",      color = { 95,  89, 255} },
+    ["50"] = { label = "#top3winter",      color = { 95,  89, 255} },
+    ["38"] = { label = "#top1spring",      color = { 24, 181,  29} },
+    ["39"] = { label = "#top2spring",      color = { 24, 181,  29} },
+    ["40"] = { label = "#top3spring",      color = { 24, 181,  29} },
+    ["41"] = { label = "#top1summer",      color = {255, 229,  31} },
+    ["42"] = { label = "#top2summer",      color = {255, 229,  31} },
+    ["43"] = { label = "#top3summer",      color = {255, 229,  31} },
+    ["45"] = { label = "#top1-3patreon",   color = { 36, 233, 255} },
+    ["52"] = { label = "#top2event",       color = { 70, 130, 180} },
+    ["53"] = { label = "#top1event",       color = { 70, 130, 180} },
+    ["54"] = { label = "#top3event",       color = { 70, 130, 180} },
+    ["55"] = { label = "#top1battle",      color = {205,  92,  92} },
+    ["56"] = { label = "#top2battle",      color = {205,  92,  92} },
+    ["57"] = { label = "#top3battle",      color = {205,  92,  92} },
+    ["76"] = { label = "#top1x1",          color = { 24, 181,  29} },
+    ["77"] = { label = "#top2x1",          color = { 24, 181,  29} },
+    ["78"] = { label = "#top3x1",          color = { 24, 181,  29} },
+    ["79"] = { label = "#trainer",         color = {154, 205,  50} },
+    ["80"] = { label = "#troll10k",        color = {243, 134, 134} },
+    ["85"] = { label = "#youtuber",        color = {243, 161,  97} },
+    ["86"] = { label = "#top2autumn",      color = {250, 179,   0} },
+    ["87"] = { label = "#top1cwwinter",    color = { 95,  89, 255} },
+    ["88"] = { label = "#top1cwspring",    color = { 24, 181,  29} },
+    ["89"] = { label = "#top1cwasummer",   color = {255, 229,  31} },
+    ["90"] = { label = "#top1cwautumn",    color = {250, 179,   0} },
 }
