@@ -391,12 +391,12 @@ function Shop.RequestBonusTroll(obj, pID, steam, callback)
 			]]
 			
 			if chanceCheck[pID] == nil and GameRules:GetGameTime() and GameRules:GetGameTime() < 60 then
-				GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " your chance is increased by " .. obj[1].chance .. "%. Roll: ".. roll_chance .. " </font>" ,  0, 0)
+		---		GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " your chance is increased by " .. obj[1].chance .. "%. Roll: ".. roll_chance .. " </font>" ,  0, 0)
 				CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "troll_elves_update_chance", {})
 			end 
 			if roll_chance <= tonumber(obj[1].chance) and PlayerResource:GetConnectionState(pID) == 2 then
 				if chanceCheck[pID] == nil and GameRules:GetGameTime() and GameRules:GetGameTime() < 60 then
-					GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " you're in luck!" .. "</font>" ,  0, 0)
+	--				GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " you're in luck!" .. "</font>" ,  0, 0)
 				end 
 				table.insert(GameRules.BonusTrollIDs, {pID, obj[1].chance})
 			end	

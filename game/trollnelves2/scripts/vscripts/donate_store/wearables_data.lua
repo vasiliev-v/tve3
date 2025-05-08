@@ -320,7 +320,7 @@ Wearables.wispSkinConfig = {
             bloodville = { model = "models/items/courier/deathbringer/deathbringer_flying.vmdl", scale = 1.4 },
             atlantida  = { model = "models/items/courier/echo_wisp/echo_wisp_flying.vmdl", scale = 1.3 },
             kanyon     = { model = "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", scale = 1.3 },
-            gorge      = { model = "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", scale = 1.3 },
+            gorge      = { model = "models/courier/trapjaw/trapjaw_flying.vmdl", scale = 1 },
         
         },
     },

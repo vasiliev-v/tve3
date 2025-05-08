@@ -758,7 +758,7 @@ function UpdateSkinWisp(unit_name, unit)
     if cfg.mapModels then
         local map = GameRules.MapName:lower()
         for key, m in pairs(cfg.mapModels) do
-            if map:find(key) then
+            if string.match(map,key) then
                 model = m.model
                 scale = m.scale or scale
                 break
