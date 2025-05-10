@@ -71,6 +71,8 @@
 	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_gold_wisp.png" />
 
 
+		<Image style="opacity:0;" src="file://{images}/custom_game/rewards/icons/reward_gems.png" />
+
 	    
     </Panel>
 </root>

@@ -1457,9 +1457,9 @@ function BuildingHelper:UpgradeBuilding(building, newName)
     
     local buildTime = GetUnitKV(newName, "BuildTime") or 3
     BuildingHelper:print(newName)
-    if GameRules.MapSpeed == 4 and newName ~= "tower_19" and newName ~= "tower_19_1" and newName ~= "tower_19_2" and not string.match(newName,"rock") then
-        buildTime = buildTime/2
-    end
+    --if GameRules.MapSpeed == 4 and newName ~= "tower_19" and newName ~= "tower_19_1" and newName ~= "tower_19_2" and not string.match(newName,"rock") then
+    --    buildTime = buildTime/2
+    --end
     
     local bScale = GetUnitKV(newName, "Scale") or 0
     local fTimeBuildingCompleted = GameRules:GetGameTime() + buildTime

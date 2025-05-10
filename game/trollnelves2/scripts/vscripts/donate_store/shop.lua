@@ -206,6 +206,7 @@ function Shop.GetSkill(data,callback)
 	if not req then
 		return
 	end
+
 	local encData = json.encode(data)
 	--DebugPrint("**********get skill*********************")
 	--DebugPrint(GameRules.server)
@@ -1049,6 +1050,7 @@ function Shop.RequestXP(obj, pID, steam, callback)
 	--DebugPrint("*****RequestXP**********************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	local tmp = {}
+	PoolTable["7"]["0"] = "0"
 	if #obj > 0 then
 		PoolTable["7"]["0"] = tostring(obj[1].gold)
 	end
@@ -1099,35 +1101,96 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 end
 
 function Shop:EventBattlePass(table, callback)
-	DebugPrintTable(table)
-	DebugPrintTable("test!!!!!!!!!!!!!!")
+	--DebugPrintTable(table)
+	--DebugPrint("test!!!!!!!!!!!!!!")
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
+	local player_bp_info = {}
+	player_bp_info[1] = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))["7"] -- exp
+	player_bp_info[2] = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))["14"]  -- get
+	player_bp_info[3] = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))["15"] -- prem bp 
+
+    --DebugPrint("player_bp_info1")
+	--DebugPrintTable(player_bp_info[1])
+	--DebugPrint("player_bp_info2")
+	--DebugPrintTable(player_bp_info[2])
+	--DebugPrint("player_bp_info3")
+	--DebugPrintTable(player_bp_info[3])
+	--DebugPrint("player_bp_infoend")
+
+	local check = nil
+
+	if not table.Type or (tonumber(table.Type) < 1000 and not player_bp_info[3]) then
+		return
+	end
+
+	if player_bp_info[2][table.Type] ~= nil  then
+		return
+	end
+	if not player_bp_info[1]["0"] or player_bp_info[1]["0"] == 0 then
+		return
+	end
+	if tonumber(table.Type) >= 1000 then
+		for _, reward in pairs(Shop.free_rewards) do
+			if reward[5] == table.Type then
+				DebugPrint(tonumber(reward[1]) * 1000)
+				if tonumber(player_bp_info[1]["0"]) < tonumber(reward[1]) * 1000  then
+					return
+				end
+				table.Nick = reward[3]
+				table.Gold = "0"
+				table.Gem  = "0"
+				table.Num = reward[2]
+				if reward[2] == "999999" then
+					table.Count = tostring(reward[4])
+				end
+				check = true
+			end
+		end
+	elseif tonumber(table.Type) < 1000 then
+		for _, reward in pairs(Shop.donate_rewards ) do
+			if reward[5] == table.Type then
+				DebugPrint(tonumber(reward[1]) * 1000)
+				if tonumber(player_bp_info[1]["0"]) < tonumber(reward[1]) * 1000 then
+					return
+				end
+				table.Nick = reward[3]
+				table.Gold = "0"
+				table.Gem  = "0"
+				table.Num = reward[2]
+				if reward[2] == "999999" then
+					table.Count	= tostring(reward[4])
+				end
+				check = true
+			end
+		end
+	end
+
+	if check == nil then
+		return
+	end
+
     local steam = tostring(PlayerResource:GetSteamID(table.PlayerID))
     table.SteamID = steam
     table.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 	table.playerID = tostring(table.PlayerID)
-	table.Gem = 0
-	table.Gold = 0
-	--table.Count 
-	-- table.type
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "battlepass/")
 	local encData = json.encode(table)
 	--DebugPrint("***********************************************")
 	--DebugPrint(GameRules.server)
 	--DebugPrint(encData)
 	--DebugPrint("***********************************************")
-	
+
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			GameRules:SendCustomMessage("Error take rewards.. Code: " .. res.StatusCode, 1, 1)
+			GameRules:SendCustomMessage("Error take rewards BP.. Code: " .. res.StatusCode, 1, 1)
 			--DebugPrint("Error take rewards.")
 		end
 		Shop.RequestDonate(tonumber(table.playerID), steam, callback)

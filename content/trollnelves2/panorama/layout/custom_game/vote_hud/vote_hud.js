@@ -221,8 +221,6 @@ function InitStageSelectedRole()
     $("#WindowRoleStage").style.opacity = "1"
     OLD_SCREEN_STAGE = $("#WindowRoleStage")
     let player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer());
-    $.Msg("player_table[2][0]")
-    $.Msg(player_table[2][0])
     if (player_table && Object.keys(player_table[2][0]).length > 0)
     {
         $("#YourChanceTroll").text = $.Localize( "#shop_trollchance" ) + player_table[2][0] + "%"

@@ -50,7 +50,7 @@ function Build( event )
             return false
         end
 
-        if  hero.mine ~= nil then
+        if  mine_cost ~= nil then
             if mine_cost ~= 0 then
                 if hero.mine >= GameRules.maxMine  then
                     SendErrorMessage(playerID, "error_not_enough_mine")
@@ -354,9 +354,9 @@ function UpgradeBuilding( event )
             return false
         end
     end
-    if GameRules.MapSpeed == 4 and NewBuildingName ~= "tower_19" and NewBuildingName ~= "tower_19_1" and NewBuildingName ~= "tower_19_2" and not string.match(NewBuildingName,"rock") then
-        buildTime = buildTime/2
-    end
+    --if GameRules.MapSpeed == 4 and NewBuildingName ~= "tower_19" and NewBuildingName ~= "tower_19_1" and NewBuildingName ~= "tower_19_2" and not string.match(NewBuildingName,"rock") then
+    --    buildTime = buildTime/2
+    --end
     
     local gold_cost
     local lumber_cost

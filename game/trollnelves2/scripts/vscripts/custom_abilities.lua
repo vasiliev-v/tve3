@@ -493,11 +493,11 @@ function KillWispOnAttack (event)
 	caster.attackTarget = target:GetEntityIndex()
 	target.attackers = target.attackers or {}
 	target.attackers[caster:GetEntityIndex()] = true
-	if target:GetUnitName() == 'gold_wisp' or target:GetUnitName() == 'worker_1' or target:GetUnitName() == 'worker_2' or target:GetUnitName() == 'worker_3' then
+	if target:GetUnitName() == 'gold_wisp' then
 		local units = Entities:FindAllByClassname("npc_dota_creature")
 		units = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin() , nil, 192 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 		for _, unit in pairs(units) do
-			if unit:GetUnitName() == 'gold_wisp' or unit:GetUnitName() == 'worker_1' or unit:GetUnitName() == 'worker_2' or unit:GetUnitName() == 'worker_3'  then
+			if unit:GetUnitName() == 'gold_wisp'  then
 				ApplyDamage({victim = unit, attacker = caster, damage = 1, damage_type = DAMAGE_TYPE_PHYSICAL })
 			end
 		end	
@@ -513,11 +513,11 @@ function KillWispOnAttackTroll (event)
 	caster.attackTarget = target:GetEntityIndex()
 	target.attackers = target.attackers or {}
 	target.attackers[caster:GetEntityIndex()] = true
-	if target:GetUnitName() == 'gold_wisp' or string.match(target:GetUnitName(),"%a+") == "gold_mine" or target:GetUnitName() == 'gold_wisp' or target:GetUnitName() == 'worker_1' or target:GetUnitName() == 'worker_2' or target:GetUnitName() == 'worker_3' then
+	if target:GetUnitName() == 'gold_wisp'  then
 		local units = Entities:FindAllByClassname("npc_dota_creature")
 		units = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin() , nil, radius , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 		for _, unit in pairs(units) do
-			if unit:GetUnitName() == 'gold_wisp' or string.match(target:GetUnitName(),"%a+") == "gold_mine" or unit:GetUnitName() == 'worker_1' or unit:GetUnitName() == 'worker_2' or unit:GetUnitName() == 'worker_3'  then
+			if unit:GetUnitName() == 'gold_wisp'  then
 				ApplyDamage({victim = unit, attacker = caster, damage = dmg, damage_type = DAMAGE_TYPE_PHYSICAL })
 				PlayerResource:ModifyGold(caster,dmg,true)
 			end
@@ -546,10 +546,10 @@ function ExchangeLumber(event)
 				end
 			end
 		end
-	--	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
---			SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
-	--		return false
-	--	end
+	 	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
+ 			SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
+	 		return false
+	 	end
 		--Buy wood
 		if amount > 0 then
 			if price > PlayerResource:GetGold(playerID) then
@@ -603,11 +603,11 @@ function SpawnUnitOnSpellStart(event)
 		PlayerResource:ModifyFood(hero,food)
 		PlayerResource:ModifyWisp(hero,wisp)
 		PlayerResource:ModifyWispMine(hero,mine_cost)
-	--	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
-	--		SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
-	--		caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
-	--		return false
-	--	end
+	 	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
+	 		SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
+	 		caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
+	 		return false
+	    end
 		if PlayerResource:GetGold(playerID) < 0 then
 			SendErrorMessage(playerID, "error_not_enough_gold")
 			caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
