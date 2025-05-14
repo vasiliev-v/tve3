@@ -137,7 +137,7 @@ function UpdateMapSelectorPlayers(data)
                 if (votes > 0)
                 {
                     all_votes = all_votes + votes
-                    ChooseMapButtonVotesCounter.text = votes + " " + $.Localize("#votes")
+                    ChooseMapButtonVotesCounter.text = $.Localize("#votes") + " " + votes 
                 }
             }
         }
@@ -206,7 +206,7 @@ function troll_elves_phase_time(data)
     if (map)
     {
         $("#GameInfo").style.opacity = "1"
-        $("#SettingsMap").text = $.Localize("#is_current_map") + " " + map
+        $("#SettingsMap").text = $.Localize("#is_current_map") + " " + map.toUpperCase()
         $("#SettingsMap").visible = true
     }
 }

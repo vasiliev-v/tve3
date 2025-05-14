@@ -428,10 +428,10 @@ function BuyCurrencyPanelActive()
 	let column_2 = $.CreatePanel("Panel", columns, "column_2");
 	column_2.AddClass("column_donate");
 
-	$.CreatePanel("Label", column_1, "PatreonButton", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_1});`, text: "Patreon", class:"link_button" });
-	$.CreatePanel("Label", column_1, "Paypal", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_2});`, text: "PayPal", class:"link_button" });
-	$.CreatePanel("Label", column_2, "Discord", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_4});`, text: "TvE Shop", class:"link_button" });
-	$.CreatePanel("Label", column_2, "DonateStream", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_3});`, text: "DonStream", class:"link_button" });
+	$.CreatePanel("Label", column_1, "Discord", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_4});`, text: "TvE Shop", class:"link_button" });
+    $.CreatePanel("Label", column_2, "Paypal", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_2});`, text: "PayPal", class:"link_button" });
+	//$.CreatePanel("Label", column_1, "PatreonButton", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_1});`, text: "Patreon", class:"link_button" });
+    //$.CreatePanel("Label", column_2, "DonateStream", { onactivate: `ExternalBrowserGoToURL(${button_donate_link_3});`, text: "DonStream", class:"link_button" });
 }
 
 function CloseItemInfo()

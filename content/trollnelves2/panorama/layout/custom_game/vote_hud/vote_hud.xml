@@ -11,17 +11,17 @@
             <Panel class="SetupStageBG" onactivate=""/>
             <Label class="StageTimer" id="StageTimer" text="30" />
             <Panel class="GameInfo" id="GameInfo">
-                <Label class="SettingsLabelHeader" text="Настройки" />
+                <Label class="SettingsLabelHeader" text="#settings_game" />
                 <Label class="SettingsLabel" id="SettingsHero" html="true" text="" />
                 <Label class="SettingsLabel" id="SettingsMap" html="true" text="" />
             </Panel>
             <Panel class="WindowStage WindowMapStage" id="WindowMapStage">
-                <Label class="WindowStageName" text="Выберите карту" />
+                <Label class="WindowStageName" text="#ChooseMapInGame" />
                 <Panel class="PlayersCounter" id="WindowStageMapPlayersCounter" />
                 <Panel class="MapsList" id="MapsList" />
             </Panel>
             <Panel class="WindowStage WindowRoleStage" id="WindowRoleStage">
-                <Label class="WindowStageName" text="Выберите роль" />
+                <Label class="WindowStageName" text="#select_roll" />
                 <Label class="YourChanceTroll" id="YourChanceTroll" text="" />
                 <Panel class="ChooseRolePanels">
                     <Panel class="ChooseRolePanel ElfPanel" id="ElfPanel">
@@ -32,10 +32,10 @@
                                 <Panel class="RoleBorder" />
                             </Panel>
                             <Panel class="RoleNamePanel">
-                                <Label text="Эльф" />
+                                <Label text="#npc_dota_hero_treant" />
                             </Panel>
                         </Panel>
-                        <Label class="RoleDescription" text="Задача эльфов - убить троля или построить что то там. Даже если вы умрете вы сможете выбрать сторону, которой будете помогать" />
+                        <Label class="RoleDescription" text="#guide_elf" />
                     </Panel>
                     <Panel class="ChooseRolePanel TrollPanel" id="TrollPanel">
                         <Panel class="RoleButton" onactivate="ChooseTeam('troll')">
@@ -45,20 +45,20 @@
                                 <Panel class="RoleBorder" />
                             </Panel>
                             <Panel class="RoleNamePanel">
-                                <Label text="Тролль" />
+                                <Label text="#npc_dota_hero_troll_warlord" />
                             </Panel>
                         </Panel>
-                        <Label class="RoleDescription" text="Тролль охотиться на эльфов и пытается их всех убить, он улучшает свое снаряжение, вы получаете золото за нанесения урона по зданиям эльфов" />
+                        <Label class="RoleDescription" text="#guide_troll" />
                     </Panel>
                 </Panel>
             </Panel>
             <Panel class="WindowStage WindowPerksStage" id="WindowPerksStage">
-                <Label class="WindowStageName" text="Выберите перки" />
+                <Label class="WindowStageName" text="#select_aspect" />
                 <Panel class="PlayerSelectedPerks" id="PlayerSelectedPerks">
                     
                 </Panel>
                 <Panel class="AllPerksPanel">
-                    <Label class="PerksHeaderLabel" text="Доступные перки" />
+                    <Label class="PerksHeaderLabel" text="#available_aspects" />
                     <Panel class="PerksBorderLine" />
                     <Panel class="AllPerksList" id="AllPerksList" />
                 </Panel>

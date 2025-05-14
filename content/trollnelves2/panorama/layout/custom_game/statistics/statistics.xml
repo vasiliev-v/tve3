@@ -37,8 +37,8 @@
                     <Panel class="StatsColumns">
                         <Panel class="StatsColumnsHeader">
                             <Label class="StatsColumn_Name" text="#StatsColumn_Name" />
-                            <Label class="StatsColumn_Elf" text="#StatsColumn_Elf" />
-                            <Label class="StatsColumn_Troll" text="#StatsColumn_Troll" />
+                            <Label class="StatsColumn_Elf" text="#npc_dota_hero_treant" />
+                            <Label class="StatsColumn_Troll" text="#npc_dota_hero_troll_warlord" />
                         </Panel>
                         <Panel class="ColumnsList" id="ColumnsList" />
                     </Panel>

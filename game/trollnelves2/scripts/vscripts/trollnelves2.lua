@@ -98,7 +98,7 @@ function trollnelves2:GameSetup()
                 Shop.RequestDonate(pID, steam, callback)
             end
         end
-        Shop.RequestBP(callback)
+        Shop.RequestBpDay(callback)
         if GameRules.MapSpeed == 1 then
             Stats.RequestDataTop10("1", callback)
         elseif GameRules.MapSpeed == 2 then 

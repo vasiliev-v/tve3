@@ -276,8 +276,8 @@
 
 .UnlockPanelBuyButtonCostIcon
 {
-    width: 18px;
-    height: 20px;
+    width: 25px;
+    height: 27px;
     background-image: url("file://{images}/custom_game/spell_shop/gem_icon.png");
     background-size: 100%;
     vertical-align: center;
@@ -287,7 +287,7 @@
 {
     color: white;
     font-weight: semi-bold;
-    font-size: 16px;
+    font-size: 20px;
     vertical-align: center;
     margin-left: 10px;
 }

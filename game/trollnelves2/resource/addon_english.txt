@@ -3963,7 +3963,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"SpellShop_Name"                            "Skill Store"
         "SpellShop_ChooseSpell"                     "Select your desired skill"
         "SpellShop_Buy"                             "Buy"
-        "SpellShop_DescriptionBuy"                  "You buy a random skill. After purchasing all the skills, you will receive random skill upgrades"
+        "SpellShop_DescriptionBuy"                  "You purchase aspects one by one. After upgrading all aspects to level 2, you begin upgrading them to level 3."
         "SpellShop_Activate"                        "Activate"
         "SpellShop_Deactivate"                      "Deactivate"
         "SpellShop_SpellPreviewUpgrade"             "Level"
@@ -3971,37 +3971,6 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "SpellShop_DropHeader"                      "You got a skill"
         "SpellShop_DropHeader_upgrade"              "You got a skill upgrade"
         "SpellShop_DropClose"                       "Accept"
-
-        // Навыки
-        "spell_1"                                   "Навык Эльф"
-        "spell_1_description"                       "Получает дополнительный урон"
-        "spell_1_description_level_1"               "Получаете +1 урон"
-        "spell_1_description_level_2"               "Получаете +2 урона"
-        "spell_1_description_level_3"               "Получаете +3 урона"
-
-        "spell_2"                                   "Навык Троль"
-        "spell_2_description"                       "Получает дополнительный урон"
-        "spell_2_description_level_1"               "Получаете +1 урон"
-        "spell_2_description_level_2"               "Получаете +2 урона"
-        "spell_2_description_level_3"               "Получаете +3 урона"
-
-        "spell_3"                                   "Навык Мем"
-        "spell_3_description"                       "Получает дополнительный урон"
-        "spell_3_description_level_1"               "Получаете +1 урон"
-        "spell_3_description_level_2"               "Получаете +2 урона"
-        "spell_3_description_level_3"               "Получаете +3 урона"
-
-        "spell_4"                                   "Навык Кек"
-        "spell_4_description"                       "Получает дополнительный урон"
-        "spell_4_description_level_1"               "Получаете +1 урон"
-        "spell_4_description_level_2"               "Получаете +2 урона"
-        "spell_4_description_level_3"               "Получаете +3 урона"
-
-        "spell_5"                                   "Навык Лол"
-        "spell_5_description"                       "Получает дополнительный урон"
-        "spell_5_description_level_1"               "Получаете +1 урон"
-        "spell_5_description_level_2"               "Получаете +2 урона"
-        "spell_5_description_level_3"               "Получаете +3 урона"
 		
 		// x1-x2 
 		"troll_spell_ms"                                   "Movespeed"
@@ -5047,6 +5016,101 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_elf_spell_reveal_x4"                     "Global Reveal"
 		"DOTA_Tooltip_ability_elf_spell_reveal_x4_Description"         "Reveals all enemy heroes on the map"
 		"DOTA_Tooltip_ability_elf_spell_reveal_x4_duration"       "Duration: "
+
+		"quest_150"                         "+150 XP BP"
+
+		"quest_1"                        "Win as an Elf with the 'Movespeed' aspect after 20 min without any deaths"
+		"quest_2"                        "Win as an Elf with the 'Starting Gold' aspect after 20 min without any deaths"
+		"quest_3"                        "Win as an Elf with the 'Starting Lumber' aspect after 20 min without any deaths"
+		"quest_4"                        "Win as an Elf with the 'CD Reduces' aspect after 20 min without any deaths"
+		"quest_5"                        "Win as an Elf with the 'Worker spell CD' aspect after 20 min without any deaths"
+		"quest_6"                        "Win as an Elf with the 'Wall Armor' aspect after 20 min without any deaths"
+		"quest_7"                        "Win as an Elf with the 'Tower Damage' aspect after 20 min without any deaths"
+		"quest_8"                        "Win as an Elf with the 'Gold Limit' aspect after 20 min without any deaths"
+		"quest_9"                        "Win as an Elf with the 'Lumber Limit' aspect after 20 min without any deaths"
+		"quest_10"                       "Win as an Elf with the 'True Sight' aspect after 20 min without any deaths"
+		"quest_11"                       "Win as an Elf with the 'Tower Range' aspect after 20 min without any deaths"
+		"quest_12"                       "Win as an Elf with the 'Blink Range' aspect after 20 min without any deaths" 
+		"quest_13"                       "Win as an Elf with the 'Hit Tower gold' aspect after 20 min without any deaths"
+		"quest_14"                       "Win as an Elf with the 'Invisible' aspect after 20 min without any deaths"
+		"quest_15"                       "Win as an Elf with the 'Haste' aspect after 20 min without any deaths"
+		"quest_16"                       "Win as an Elf with the 'Evasion' aspect after 20 min without any deaths"
+		"quest_17"                       "Win as an Elf with the 'Target Buff' aspect after 20 min without any deaths"
+		"quest_18"                       "Win as an Elf with the 'Curse' aspect after 20 min without any deaths"
+		"quest_19"                       "Win as an Elf with the 'Global Teleport' aspect after 20 min without any deaths"
+		"quest_20"                       "Win as an Elf with the 'Target Stun' aspect after 20 min without any deaths"
+		"quest_21"                       "Win as an Elf with the 'Global Repairs' aspect after 20 min without any deaths"
+		"quest_22"                       "Win as an Elf with the 'Global Reveal' aspect after 20 min without any deaths"
+
+		"quest_1001"                     "Win as an Troll with the 'Movespeed' aspect after 20 min"
+		"quest_1002"                     "Win as an Troll with the 'Gold Hit' aspect after 20 min"
+		"quest_1003"                     "Win as an Troll with the 'HP Regen' aspect after 20 min"
+		"quest_1004"                     "Win as an Troll with the 'Gold Limit' aspect after 20 min"
+		"quest_1005"                     "Win as an Troll with the 'CD Reduce' aspect after 20 min"
+		"quest_1006"                     "Win as an Troll with the 'Armor' aspect after 20 min"
+		"quest_1007"                     "Win as an Troll with the 'Vision' aspect after 20 min"
+		"quest_1008"                     "Win as an Troll with the 'Magic Resist' aspect after 20 min"
+		"quest_1009"                     "Win as an Troll with the 'Status Resist' aspect after 20 min"
+		"quest_1010"                     "Win as an Troll with the 'Target Silence' aspect after 20 min"
+		"quest_1011"                     "Win as an Troll with the 'Global Silence' aspect after 20 min"
+		"quest_1012"                     "Win as an Troll with the 'Target Stun' aspect after 20 min"
+		"quest_1013"                     "Win as an Troll with the 'Haste' aspect after 20 min"
+		"quest_1014"                     "Win as an Troll with the 'Ward' aspect after 20 min"
+		"quest_1015"                     "Win as an Troll with the 'BKB' aspect after 20 min"
+		"quest_1016"                     "Win as an Troll with the 'Target Slow' aspect after 20 min"
+		"quest_1017"                     "Win as an Troll with the 'Area Slow' aspect after 20 min"
+		"quest_1018"                     "Win as an Troll with the 'Invis' aspect after 20 min"
+		"quest_1019"                     "Win as an Troll with the 'Evasion' aspect after 20 min"
+		"quest_1020"                     "Win as an Troll with the 'Attack Speed' aspect after 20 min"
+		"quest_1021"                     "Win as an Troll with the 'Mini wolf' aspect after 20 min"
+		"quest_1022"                     "Win as an Troll with the 'Additional Reveal' aspect after 20 min"
+		"quest_1023"                     "Win as an Troll with the 'Night Buff' aspect after 20 min"
+		"quest_1024"                     "Win as an Troll with the 'Anti block' aspect after 20 min"
+
+		"quest_2001"                     "Win as the Elf on the ATLANTIDA map after 20 minutes without any deaths"
+		"quest_2002"                     "Win as the Elf on the ATHENS map after 20 minutes without any deaths"
+		"quest_2003"                     "Win as the Elf on the BLOODVILLE map after 20 minutes without any deaths"
+		"quest_2004"                     "Win as the Elf on the GARDEN map after 20 minutes without any deaths"
+		"quest_2005"                     "Win as the Elf on the GORGE map after 20 minutes without any deaths"
+		"quest_2006"                     "Win as the Elf on the KANYON map after 20 minutes without any deaths"
+		"quest_2007"                     "Win as the Elf on the MINES map after 20 minutes without any deaths"
+		"quest_2008"                     "Win as the Elf on the NORTH map after 20 minutes without any deaths"
+		"quest_2009"                     "Win as the Elf on the OASIS map after 20 minutes without any deaths"
+		"quest_2010"                     "Win as the Elf on the OKINAWA map after 20 minutes without any deaths"
+		"quest_2011"                     "Win as the Troll on the ATLANTIDA map after 20 minutes"
+		"quest_2012"                     "Win as the Troll on the ATHENS map after 20 minutes"
+		"quest_2013"                     "Win as the Troll on the BLOODVILLE map after 20 minutes"
+		"quest_2014"                     "Win as the Troll on the GARDEN map after 20 minutes"
+		"quest_2015"                     "Win as the Troll on the GORGE map after 20 minutes"
+		"quest_2016"                     "Win as the Troll on the KANYON map after 20 minutes"
+		"quest_2017"                     "Win as the Troll on the MINES map after 20 minutes"
+		"quest_2018"                     "Win as the Troll on the NORTH map after 20 minutes"
+		"quest_2019"                     "Win as the Troll on the OASIS map after 20 minutes"
+		"quest_2020"                     "Win as the Troll on the OKINAWA map after 20 minutes"
+
+		
+
+		"settings_game"                      "Game settings"
+		"select_roll"                        "Select a role"
+		"guide_elf"                      "The Elves objective is to kill the Troll or build the Enigma."
+		"guide_troll"                      "The Troll must kill all the Elves. You earn rewards by damaging Elf buildings and use them to upgrade your equipment."
+		"select_aspect"                      "Select an aspect"
+		"available_aspects"                      "Available aspects"
+		"stage_1_name"                      "Map selection"
+		"stage_2_name"                      "Role selection"
+		"stage_3_name"                      "Aspect selection"
+		"is_current_map"                      "Map selected:"
+		"votes"                      "Votes:"
+		"you_play_elf_role"                      "You are playing as the Elf"
+		"you_play_troll_role"                      "You are playing as the Troll"
+		"spell_shop_header_inf"                      "Aspect stats"
+		"StatsColumn_Name"                      "Description"
+		"Stats_Settings"                      "Player Settings"
+		"Stats_Achivement"                            		 "Achievements"
+		""                            		 ""
+		""                            		 ""
+		""                            		 ""
+
 				
 		""                            		 ""
         "_description"                       "Active: "
@@ -5056,89 +5120,6 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_modifier_"			 "Active: "
 		"_description_level_1_shop"               ""
 
-		
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				
-		"elf_tips1"																		"<br><br><b>Elf Tips</b>
-		<br>·You can build tent at the very start of the game near the troll base while you go search for a base. That way you will have a head start, just don't finish building it otherwise you won't be able to destroy it since the troll will be nearby. 
-		<br>·Build your rock in the middle of the steps
-		"
-		"elf_tips2"																		"·You can use glyph on yourself to troll the troll for 10seconds
-					<br>·Good towers early on can scare the troll away for good and give you time to dig dem gold mines. 2 towers are enough at the beginning!  Just upgrade it! 
-					<br>·Don't foget to use your abilities! It's better to start with Root since it has a lower cooldown than Glyph. 
-					<br>·Use glyph not only to save yourself from the desperate situation but to also prevent troll from farming
-					<br>·Find a friend that will co-operate with you and build duo base. You will be two times as strong. 
-					<br>·Right click the repair ability for an autocast repair, it will repair the closest building to you that has a health deficit! "
-		"elf_tips3"																	"·Share your resources. If you have extra resources share them! Teamwork is needed in this game so the troll doesn't get farmed too fast! "
-		
-		"troll_tips"																		"<b>Troll/Wolf Tips</b>
-					<br>·Make sure you don't die. If you die even once it's game over! 
-					<br>·Every attack gives you gold depending on how much damage you did
-					<br>·Buy items to become stronger! 
-					<br>·You should replace items by selling them and buying better ones
-					<br>·Always use your 1st skill (Reveal) to avoid wasting time finding Elves!. 
-					<br>·Try to find enemies which do not have a lot of strong towers so it is easier to farm up
-					<br>·Don't forget to upgrade your hut! Not only it will help you in a bad time, but it's also really good if you have wolves on your team. 
-					<br>·You can use teleport and invis together. That way you will be able to teleport while being invisible. 
-					<br>·Have fun trolling these small elves. 
-					"
-		"angel_tips"																		"<br><br><b>Angel Tips</b>
-		<br/>·Donate gold to those who really need it, like the Elf who got attacked by the Troll at the beginning.. 
-		<br/>·Don't let the Troll kill you! You've got lots of gold in your hands.                            
-		<br/>·Always empty your pocket!  Give gold to players because the troll can steal it!               
-        <br/>·You can assist players under attack by healing their wall or stunning the troll.             
-        <br/>·RUN RUN RUN When the troll/wolf comes! 
-		"
-		
 	}
 }
