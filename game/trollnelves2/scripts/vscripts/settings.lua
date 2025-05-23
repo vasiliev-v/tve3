@@ -86,3 +86,6 @@ for i = 2, MAX_LEVEL do
     XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + 100
 end
 
+
+
+dedicatedServerKey = "TESTSESADASASDASDQ412EDFDSFQ124132421ESR12412SA" -- GetDedicatedServerKeyV3("1")

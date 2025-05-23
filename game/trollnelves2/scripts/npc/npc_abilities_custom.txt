@@ -8388,6 +8388,121 @@
 			}
 		}
 	}
+	"train_worker_1_2"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_1"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_1_2"
+		"AbilityValues"
+        {
+            "gold_cost" "32"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_1_3"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_1"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_1_3"
+		"AbilityValues"
+        {
+            "gold_cost" "32"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+	"train_worker_1_4"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_1"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_1_4"
+		"AbilityValues"
+        {
+            "gold_cost" "32"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_2_0"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_2"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_2"
+		"AbilityValues"
+        {
+            "gold_cost" "64"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
 	"train_worker_2"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -8397,9 +8512,9 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "256"
+            "gold_cost" "192"
             "lumber_cost" "0"
-            "food_cost" "2"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
@@ -8430,6 +8545,123 @@
 			}
 		}
 	}
+
+	"train_worker_2_2"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_2"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_2_2"
+		"AbilityValues"
+        {
+            "gold_cost" "64"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_2_3"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_2"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_2_3"
+		"AbilityValues"
+        {
+            "gold_cost" "64"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_2_4"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_2"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_2_4"
+		"AbilityValues"
+        {
+            "gold_cost" "64"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_3_0"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_3"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_3"
+		"AbilityValues"
+        {
+            "gold_cost" "128"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
 	"train_worker_3"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -8439,16 +8671,16 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "1024"
+            "gold_cost" "512"
             "lumber_cost" "0"
-            "food_cost" "4"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"12"//"10"
+		"AbilityChannelTime"		"16"//"10"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -8472,6 +8704,123 @@
 			}
 		}
 	}
+
+	"train_worker_3_2"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_3"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_3_2"
+		"AbilityValues"
+        {
+            "gold_cost" "128"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+	 
+	"train_worker_3_3"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_3"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_3_3"
+		"AbilityValues"
+        {
+            "gold_cost" "128"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_3_4"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_3"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_3_4"
+		"AbilityValues"
+        {
+            "gold_cost" "128"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_4_0"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_4"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_4"
+		"AbilityValues"
+        {
+            "gold_cost" "256"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
 	"train_worker_4"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -8481,16 +8830,16 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "4096"
+            "gold_cost" "1500"
             "lumber_cost" "0"
-            "food_cost" "5"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"24"//"20"
+		"AbilityChannelTime"		"32"//"20"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -8514,6 +8863,122 @@
 			}
 		}
 	}
+	"train_worker_4_2"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_4"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_4_2"
+		"AbilityValues"
+        {
+            "gold_cost" "256"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_4_3"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_4"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_4_3"
+		"AbilityValues"
+        {
+            "gold_cost" "256"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_4_4"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_4"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_4_4"
+		"AbilityValues"
+        {
+            "gold_cost" "256"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_5_0"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_5"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_5"
+		"AbilityValues"
+        {
+            "gold_cost" "512"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
 	"train_worker_5"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -8523,16 +8988,16 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "16384"
+            "gold_cost" "3000"
             "lumber_cost" "0"
-            "food_cost" "10"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"32"
+		"AbilityChannelTime"		"48"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -8556,6 +9021,94 @@
 			}
 		}
 	}
+
+	"train_worker_5_2"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_5"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_5_2"
+		"AbilityValues"
+        {
+            "gold_cost" "512"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_5_3"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_5"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_5_3"
+		"AbilityValues"
+        {
+            "gold_cost" "512"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
+	"train_worker_5_4"{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"train_worker_5"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"MaxLevel"						"1"
+		"UnitName"						"worker_5_4"
+		"AbilityValues"
+        {
+            "gold_cost" "512"
+            "lumber_cost" "0"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "UpgradeWorkers"
+			}
+
+		}
+	}
+
 	"train_worker_6"
 	{
 		"BaseClass"					"ability_datadriven"

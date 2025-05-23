@@ -1,5 +1,4 @@
 Error_debug = Error_debug or {}
-local dedicatedServerKey = GetDedicatedServerKeyV3("1")
 
 Error_debug.server = "https://tve4.eu/debug/" -- "https://localhost:5001/test/" --
 
@@ -22,7 +21,7 @@ function Error_debug.SendData(data,callback)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			GameRules:SendCustomMessage("Error connecting", 1, 1)
+			GameRules:SendCustomMessage("Error connecting Error_debug.SendData", 1, 1)
 			--DebugPrint("Error connecting")
 			return
 		end

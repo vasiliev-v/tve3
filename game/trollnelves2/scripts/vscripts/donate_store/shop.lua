@@ -4,7 +4,6 @@ end
 
 require("donate_store/shop_data")
 
-local dedicatedServerKey = "TESTSESADASASDASDQ412EDFDSFQ124132421ESR1241234WQSA" -- GetDedicatedServerKeyV3("1")
 local MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 local lastSpray = {}
 local lastSounds = {}
@@ -1081,7 +1080,7 @@ function Shop.RequestBpDay(callback)
 		if #obj > 0 then
 			for id=1,#obj do
 				PoolTable[obj[id].idQuest] = {id=obj[id].idQuest, name=obj[id].name, icon=obj[id].icon, reward=obj[id].reward, count=obj[id].count, 
-				donate=obj[id].typeDonate, type=obj[id].team, team=obj[id].map, description=obj[id].log }
+				donate=obj[id].typeDonate, type=obj[id].type, team=obj[id].team, map=obj[id].map, description=obj[id].log }
 			end
 		end
 		CustomNetTables:SetTableValue("Shop", "bpday", PoolTable)		
@@ -1372,34 +1371,41 @@ function Shop.CheckDayQuest(pId)
 	local hero = PlayerResource:GetSelectedHeroEntity(pId)
 	if not hero or PlayerResource:GetDeaths(pId) > 0 then return end
 	if GameRules:GetGameTime() - GameRules.startTime <= MIN_TIME_FOR_QUEST then return end
-
 	local bp_data = CustomNetTables:GetTableValue("Shop", "bpday")
 	if not bp_data then return end
-
-	local player_table = CustomNetTables:GetTableValue("Shop", tostring(pId))
+	local player_table = CustomNetTables:GetTableValue("Shop", tostring(pId))["10"]
+	local player_bp_info = CustomNetTables:GetTableValue("Shop", tostring(pId))["15"]
 	if not player_table then return end
-
-	local data = {
-		SteamID = tostring(PlayerResource:GetSteamID(pId)),
-		MatchID = tostring(GameRules:Script_GetMatchID() or 0)
-	}
+	if PlayerResource:GetConnectionState(pId) ~= 2 then
+		return
+	end
 
 	for i = 1, 3 do
 		local quest_data = player_table["1"] and player_table["1"][tostring(i)]
 		if not quest_data or not quest_data["1"] then goto continue end
-
 		local quest_id = quest_data["1"]
 		local quest = bp_data[quest_id]
+		
 		if not quest then goto continue end
+
+		DebugPrintTable(quest)
+		DebugPrintTable(player_bp_info)
+		if (not player_bp_info or not player_bp_info["0"] or player_bp_info["0"] == "none") and quest.donate == 1 then
+			return
+		end
+
+		local data = {}
+		data.KeyId = tostring(quest_data["3"])
+		data.IdQuest = tostring(quest_data["1"])
+		data.SteamID = tostring(PlayerResource:GetSteamID(pId))
+		data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 
 		if isQuestCompleted(quest, pId) then
 			local progress = quest_data["2"] or 0
-			if progress + 1 == quest.count then
+			if tonumber(progress) + 1 == tonumber(quest.count) then
 				Shop.GetXpBattlepass(pId, callback)
 				Shop.GetDayDone(data, callback)
-			elseif progress + 1 < quest.count then
-				data.keyId = quest_data["3"]
-				data.idQuest = quest_data["3"]
+			elseif tonumber(progress) + 1 < tonumber(quest.count) then
 				Shop.GetDayDone(data, callback)
 			end
 		end
@@ -1411,19 +1417,17 @@ end
 function isQuestCompleted(q, pId)
 	local hero = PlayerResource:GetSelectedHeroEntity(pId)
 	if not hero then return false end
-
-	if q.type and q.type ~= PlayerResource:GetTeam(pId) then
+	if q.team and q.team ~= tostring(PlayerResource:GetTeam(pId)) then
 		return false
 	end
-
-	if q.team and q.team ~= "" then
+	DebugPrint("12")
+	if q.map and q.map ~= "" then
 		local map = GameRules.MapName:lower()
-		if map ~= q.team then
-			return false
+		if string.match(map,q.map) then
+			return true
 		end
 	end
-
-	if hero:HasModifier(q.description) or hero:HasModifier(q.description .. "_x4") then
+	if hero:HasModifier("modifier_" .. q.icon) or hero:HasModifier("modifier_" .. q.icon .. "_x4") then
 		return true
 	end
 
@@ -1449,7 +1453,7 @@ function Shop.GetXpBattlepass(playerID,callback)
 	local encData = json.encode(data)
 	--DebugPrint("**********get skill*********************")
 	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
+	DebugPrint(encData)
 	--DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
@@ -1475,25 +1479,22 @@ function Shop.GetDayDone(data,callback)
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
-	data.SteamID = tostring(PlayerResource:GetSteamID(playerID))
-    data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
-
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "dayquest/")
 	if not req then
 		return
 	end
-
+	data.Time = ""
 	local encData = json.encode(data)
-	--DebugPrint("**********get skill*********************")
+	DebugPrint("**********Shop.GetDayDone*********************")
 	--DebugPrint(GameRules.server)
-	--DebugPrint(encData)
+	DebugPrint(encData)
 	--DebugPrint("***********************************************")
 	
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
 		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
+		DebugPrint(res.Body)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then

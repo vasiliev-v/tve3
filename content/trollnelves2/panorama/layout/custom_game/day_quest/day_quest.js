@@ -47,6 +47,7 @@ function CreateQuests()
 	}
 	if (quest_information_table) 
 	{
+		$.Msg(quest_information_table)
 		const sortedQuests = Object.values(quest_information_table).sort((a, b) => {
 			if (a.type < b.type) return -1;
 			if (a.type > b.type) return  1;
@@ -157,7 +158,7 @@ function CreateQuest(quest_player_table, has_battlepass)
 	let QuestSuccesIcon = $.CreatePanel("Panel", QuestIcon, "QuestSuccesIcon");
 	QuestSuccesIcon.AddClass("QuestSuccesIcon");
 
-	if (Number(quest_table[2]) >= Number(quest_player_table[5]))
+	if (Number(quest_table[2]) >= Number(quest_player_table.count))
 	{
 		DayQuest.AddClass("QuestComplete");
 	}

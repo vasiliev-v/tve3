@@ -2043,3 +2043,75 @@ function SkillOnChannelInterrupted(event)
 		PlayerResource:ModifyLumber(hero,lumber_cost,true)
 	end
 end
+
+function UpgradeWorkers(event)
+	if IsServer() then
+		local caster = event.caster
+		local point = caster:GetAbsOrigin()
+		local pID = caster:GetPlayerOwnerID()
+		local hero = PlayerResource:GetSelectedHeroEntity(pID)
+		local ability = event.ability
+		local unit_name = GetAbilityKV(ability:GetAbilityName()).UnitName
+		local casterAbility = caster:FindAbilityByName("gather_lumber")
+
+
+		local gold_cost = ability:GetSpecialValueFor("gold_cost")
+		local lumber_cost = ability:GetSpecialValueFor("lumber_cost")
+		local food = ability:GetSpecialValueFor("food_cost")
+		local wisp = ability:GetSpecialValueFor("wisp_cost")
+		if PlayerResource:GetGold(pID) < gold_cost then
+            SendErrorMessage(pID, "error_not_enough_gold")
+            return false
+        end
+        if PlayerResource:GetLumber(pID) < lumber_cost then
+            SendErrorMessage(pID, "error_not_enough_lumber")
+            return false
+        end
+		if hero.food > GameRules.maxFood and food ~= 0 then
+			SendErrorMessage(pID, "error_not_enough_food")
+			return false
+		end
+		if hero.wisp > GameRules.maxWisp and wisp ~= 0 then
+			SendErrorMessage(pID, "error_not_enough_wisp")
+			return false
+		end
+		--caster:ForceKill(true) --This will call RemoveBuilding
+		caster:Kill(nil, caster)
+		Timers:CreateTimer(10,function()
+			UTIL_Remove(caster)
+		end)
+		PlayerResource:ModifyGold(hero,-gold_cost)
+		PlayerResource:ModifyLumber(hero,-lumber_cost)
+		PlayerResource:ModifyFood(hero,food)
+		PlayerResource:ModifyWisp(hero,wisp)
+		local unit = CreateUnitByName(unit_name, point , true, nil, nil, hero:GetTeamNumber())
+		unit:SetOwner(hero)
+		unit:SetControllableByPlayer(pID, true)
+		PlayerResource:NewSelection(pID, unit)
+		Timers:CreateTimer(0.3,function() 
+			local targetAbility = unit:FindAbilityByName("repair")
+			if targetAbility ~= nil then
+				targetAbility:ToggleAutoCast()
+				if hero:HasModifier("modifier_elf_spell_cd_worker")  then
+					if hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
+					end
+				end
+				if hero:HasModifier("modifier_elf_spell_cd_worker_x4")  then
+					if hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(3) 
+					end
+				end
+			end
+		end)
+		table.insert(hero.units,unit)
+	end
+end

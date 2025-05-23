@@ -330,7 +330,8 @@ function BuildingHelper:ParseKV()
                 CustomNetTables:SetTableValue("abilities", name, {
                     gold_cost = info['AbilityValues']['gold_cost'],
                     lumber_cost = info['AbilityValues']['lumber_cost'],
-                    food_cost = info['AbilityValues']['food_cost']
+                    food_cost = info['AbilityValues']['food_cost'],
+                    speed = info["RepairSpeed"]
                 })
                 elseif info["RepairSpeed"] then
                 CustomNetTables:SetTableValue("abilities", name,
@@ -2626,7 +2627,7 @@ function BuildingHelper:ValidPosition(size, location, unit, callbacks)
         end
     end
     if BuildingHelper:EnemyIsInsideBuildingArea(hero:GetAbsOrigin(), location,size) and buildingName ~= "tent" and
-        (GameRules:GetGameTime() - GameRules.startTime > (1200 / GameRules.MapSpeed)) then -- остальное
+        (GameRules:GetGameTime() - GameRules.startTime > (2400 / GameRules.MapSpeed)) then -- остальное
         local baseIndex = BuildingHelper:IdBaseArea(unit)
         if baseIndex ~= nil and GameRules.PlayersBase[playerID] ~= nil then
             if baseIndex == GameRules.PlayersBase[playerID] then

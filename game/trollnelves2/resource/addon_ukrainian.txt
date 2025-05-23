@@ -1925,7 +1925,7 @@
 		"team_choice_yes"                                                                   "Да"
 		"team_choice_no"                                                                    "Нет"
 		"error_not_spam_votekick"															"Голосування можна проводити один раз на 1 хвилину!"
-		"error_construction_for_yourself"													"Ви не можете будувати зверху Ельфа після 10 (x2) та 20 (x1) хвилини!"
+		"error_construction_for_yourself"													"Ви не можете будувати зверху Ельфа після 20 (x2) та 40 (x1) хвилини!"
 		"error_need_buy_hut_7"																"Вам потрібно покращити Troll Hut до 7 рівня!"
 		"error_not_upgrade_tower19_x4"														"Ви не можете побудувати Enigma х4."
 		"error_not_destroy_building"														"Власник не залишив гру. Дочекайтеся повного виходу із гри. "
