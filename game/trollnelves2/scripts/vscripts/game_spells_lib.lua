@@ -16,6 +16,49 @@ if GameRules.MapSpeed ~= 4 then
         -- Elf spells
         -----------------------
         {
+            "elf_spell_limit_gold", 
+            "elf_spell_limit_gold", 
+            "modifier_elf_spell_limit_gold", 
+            {
+                "elf_spell_limit_gold_description_level_1_shop", 
+            }, 
+            {
+                {"200k","400k","600k"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_limit_lumber", 
+            "elf_spell_limit_lumber", 
+            "modifier_elf_spell_limit_lumber", 
+            {
+                "elf_spell_limit_lumber_description_level_1_shop", 
+            }, 
+            {
+                {"200k","400k","600k"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_damage_gold", 
+            "elf_spell_damage_gold", 
+            "modifier_elf_spell_damage_gold", 
+            {
+                "elf_spell_damage_gold_description_level_1_shop", 
+                "elf_spell_damage_gold_description_level_2_shop", 
+                "elf_spell_damage_gold_description_level_3_shop",
+            }, 
+            {
+                {"4%","8%","15%"},
+                {"30 min","30 min","30 min"},
+                {"15 min","15 min","15 min"},
+            },
+            "0",
+            "1"
+        },
+        {
             "elf_spell_ms", 
             "elf_spell_ms", 
             "modifier_elf_spell_ms", 
@@ -31,57 +74,14 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
-            "elf_spell_gold", 
-            "elf_spell_gold", 
-            "modifier_elf_spell_gold", 
+            "elf_spell_tower_range", 
+            "elf_spell_tower_range", 
+            "modifier_elf_spell_tower_range", 
             {
-                "elf_spell_gold_description_level_1_shop", 
-                "elf_spell_gold_description_level_2_shop", 
+                "elf_spell_tower_range_description_level_1_shop", 
             }, 
             {
-                {10,15,20},
-                {"-20","-10",0},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_lumber", 
-            "elf_spell_lumber", 
-            "modifier_elf_spell_lumber", 
-            {
-                "elf_spell_lumber_description_level_1_shop", 
-                "elf_spell_lumber_description_level_2_shop", 
-            }, 
-            {
-                {2,2,2},
-                {"-30","-20","-10"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_cd_reduce", 
-            "elf_spell_cd_reduce", 
-            "modifier_elf_spell_cd_reduce", 
-            {
-                "elf_spell_cd_reduce_description_level_1_shop", 
-            }, 
-            {
-                {"-4%","-8%","-16%"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_cd_worker", 
-            "elf_spell_cd_worker", 
-            "modifier_elf_spell_cd_worker", 
-            {
-                "elf_spell_cd_worker_description_level_1_shop", 
-            }, 
-            {
-                {"-30%","-50%","-75%"},
+                {10,20,40},
             },
             "0",
             "1"
@@ -113,53 +113,16 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
-            "elf_spell_limit_gold", 
-            "elf_spell_limit_gold", 
-            "modifier_elf_spell_limit_gold", 
+            "elf_spell_lumber", 
+            "elf_spell_lumber", 
+            "modifier_elf_spell_lumber", 
             {
-                "elf_spell_limit_gold_description_level_1_shop", 
+                "elf_spell_lumber_description_level_1_shop", 
+                "elf_spell_lumber_description_level_2_shop", 
             }, 
             {
-                {"200k","400k","600k"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_limit_lumber", 
-            "elf_spell_limit_lumber", 
-            "modifier_elf_spell_limit_lumber", 
-            {
-                "elf_spell_limit_lumber_description_level_1_shop", 
-            }, 
-            {
-                {"200k","400k","600k"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_true", 
-            "elf_spell_true", 
-            "modifier_elf_spell_true", 
-            {
-                "elf_spell_true_description_level_1_shop", 
-            }, 
-            {
-                {200, 400, 600},   
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_tower_range", 
-            "elf_spell_tower_range", 
-            "modifier_elf_spell_tower_range", 
-            {
-                "elf_spell_tower_range_description_level_1_shop", 
-            }, 
-            {
-                {10,20,40},
+                {2,5,9},
+                {"-20","-10","0"},
             },
             "0",
             "1"
@@ -173,25 +136,6 @@ if GameRules.MapSpeed ~= 4 then
             }, 
             {
                 {"+200","+400","+600"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_damage_gold", 
-            "elf_spell_damage_gold", 
-            "modifier_elf_spell_damage_gold", 
-            {
-                "elf_spell_damage_gold_description_level_1_shop", 
-                "elf_spell_damage_gold_description_level_2_shop", 
-                "elf_spell_damage_gold_description_level_3_shop", 
-                "elf_spell_damage_gold_description_level_4_shop", 
-            }, 
-            {
-                {"4%","8%","15%"},
-                {"30 min","30 min","30 min"},
-                {"15 min","15 min","15 min"},
-                {"5 min","5 min","5 min"},
             },
             "0",
             "1"
@@ -214,28 +158,6 @@ if GameRules.MapSpeed ~= 4 then
             "0",
             "1"
         },
-        --[[
-        {
-            "elf_spell_smoke", 
-            "elf_spell_smoke", 
-            "modifier_elf_spell_smoke", 
-            {
-                "elf_spell_smoke_description_level_1_shop", 
-                "elf_spell_smoke_description_level_2_shop", 
-                "elf_spell_smoke_description_level_3_shop", 
-                "elf_spell_smoke_description_level_4_shop", 
-            }, 
-            {
-                {15, 30, 60},
-                {30, 45, 95},
-                {600, 900, 1200},
-                {350, 300, 300},
-                
-            },
-            "0",
-            "1"
-        },
-        --]]
         {
             "elf_spell_haste",
             "elf_spell_haste", 
@@ -271,6 +193,34 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
+            "elf_spell_cd_reduce", 
+            "elf_spell_cd_reduce", 
+            "modifier_elf_spell_cd_reduce", 
+            {
+                "elf_spell_cd_reduce_description_level_1_shop", 
+            }, 
+            {
+                {"-4%","-8%","-16%"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_gold", 
+            "elf_spell_gold", 
+            "modifier_elf_spell_gold", 
+            {
+                "elf_spell_gold_description_level_1_shop", 
+                "elf_spell_gold_description_level_2_shop", 
+            }, 
+            {
+                {10,15,20},
+                {"-20","-10",0},
+            },
+            "0",
+            "1"
+        },
+        {
             "elf_spell_target_buff",
             "elf_spell_target_buff", 
             "modifier_elf_spell_target_buff", 
@@ -285,6 +235,34 @@ if GameRules.MapSpeed ~= 4 then
                 {60, 80, 120},
                 {6, 8 ,12},
                 {120, 100, 60},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_stun_target",
+            "elf_spell_stun_target", 
+            "modifier_elf_spell_stun_target", 
+            {
+                "elf_spell_stun_target_description_level_1_shop", 
+                "elf_spell_stun_target_description_level_2_shop", 
+            }, 
+            {
+                {1, 1.5, 2},
+                {350, 300, 300},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_teleport",
+            "elf_spell_teleport", 
+            "modifier_elf_spell_teleport", 
+            {
+                "elf_spell_teleport_description_level_1_shop", 
+            }, 
+            {
+                {500, 400, 300},
             },
             "0",
             "1"
@@ -307,29 +285,42 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
-            "elf_spell_teleport",
-            "elf_spell_teleport", 
-            "modifier_elf_spell_teleport", 
+            "elf_spell_cd_worker", 
+            "elf_spell_cd_worker", 
+            "modifier_elf_spell_cd_worker", 
             {
-                "elf_spell_teleport_description_level_1_shop", 
+                "elf_spell_cd_worker_description_level_1_shop", 
             }, 
             {
-                {500, 400, 300},
+                {"-30%","-50%","-75%"},
             },
             "0",
             "1"
         },
         {
-            "elf_spell_stun_target",
-            "elf_spell_stun_target", 
-            "modifier_elf_spell_stun_target", 
+            "elf_spell_true", 
+            "elf_spell_true", 
+            "modifier_elf_spell_true", 
             {
-                "elf_spell_stun_target_description_level_1_shop", 
-                "elf_spell_stun_target_description_level_2_shop", 
+                "elf_spell_true_description_level_1_shop", 
             }, 
             {
-                {1, 1.5, 2},
-                {350, 300, 300},
+                {50, 100, 200},   
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_reveal",
+            "elf_spell_reveal", 
+            "modifier_elf_spell_reveal", 
+            {
+                "elf_spell_reveal_description_level_1_shop", 
+                "elf_spell_reveal_description_level_2_shop", 
+            }, 
+            {
+                {30, 45, 60},
+                {200, 150, 150},
             },
             "0",
             "1"
@@ -352,21 +343,40 @@ if GameRules.MapSpeed ~= 4 then
             "0",
             "1"
         },
+
+
+
+
+        --[[
         {
-            "elf_spell_reveal",
-            "elf_spell_reveal", 
-            "modifier_elf_spell_reveal", 
+            "elf_spell_smoke", 
+            "elf_spell_smoke", 
+            "modifier_elf_spell_smoke", 
             {
-                "elf_spell_reveal_description_level_1_shop", 
-                "elf_spell_reveal_description_level_2_shop", 
+                "elf_spell_smoke_description_level_1_shop", 
+                "elf_spell_smoke_description_level_2_shop", 
+                "elf_spell_smoke_description_level_3_shop", 
+                "elf_spell_smoke_description_level_4_shop", 
             }, 
             {
-                {30, 45, 60},
-                {200, 150, 150},
+                {15, 30, 60},
+                {30, 45, 95},
+                {600, 900, 1200},
+                {350, 300, 300},
+                
             },
             "0",
             "1"
         },
+        --]]
+
+
+
+
+
+
+
+
         -----------------------
         -- Troll spells
         -----------------------
@@ -779,8 +789,8 @@ else -- X4
                 "elf_spell_lumber_description_level_2_shop_x4", 
             }, 
             {
-                {2,2,2},
-                {"-30","-20","-10"},
+                {2,5,9},
+                {"-20","-10","0"},
             },
             "0",
             "1"
@@ -871,7 +881,7 @@ else -- X4
                 "elf_spell_true_description_level_1_shop_x4", 
             }, 
             {
-                {200, 300, 400},   
+                {50, 100, 200},   
             },
             "0",
             "1"
@@ -909,13 +919,9 @@ else -- X4
             {
                 "elf_spell_damage_gold_description_level_1_shop_x4", 
                 "elf_spell_damage_gold_description_level_2_shop_x4", 
-                "elf_spell_damage_gold_description_level_3_shop_x4", 
-                "elf_spell_damage_gold_description_level_3_shop_x4", 
             }, 
             {
                 {"4%","8%","15%"},
-                {"30 min","30 min","30 min"},
-                {"15 min","15 min","15 min"},
                 {"5 min","5 min","5 min"},
             },
             "0",

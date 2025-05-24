@@ -436,7 +436,7 @@
 		"DOTA_Tooltip_ability_upgrade_to_tower_11_1_Description"                            "Поліпшіть свою вежу, щоб захистити себе від Троля!<br>Пошкодження: 256000"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_12"                                        "Upgrade To Tower 12 lvl 1"
-		"DOTA_Tooltip_ability_upgrade_to_tower_12_Description"                            "Поліпшіть свою вежу, щоб захистити себе від Троля!<br>Пошкодження: 81920"
+		"DOTA_Tooltip_ability_upgrade_to_tower_12_Description"                            "Поліпшіть свою вежу, щоб захистити себе від Троля!<br>Пошкодження: 20480"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_12_1"                                        "Upgrade To Tower 12 lvl 2"
 		"DOTA_Tooltip_ability_upgrade_to_tower_12_Description"                            "Поліпшіть свою вежу, щоб захистити себе від Троля!<br>Пошкодження: 256000"

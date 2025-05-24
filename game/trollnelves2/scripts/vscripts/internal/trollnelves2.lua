@@ -214,6 +214,12 @@ function trollnelves2:DamageFilter( kv )
     (GameRules.MapSpeed == 2 and  GameRules:GetGameTime() - GameRules.startTime <= 900) or 
     (GameRules.MapSpeed == 3 and  GameRules:GetGameTime() - GameRules.startTime <= 300))
     then
+      if OwnHeroAtacker == OwnHeroKilled then
+        return true
+      end
+      if heroAttacker:GetTeamNumber() == heroKilled:GetTeamNumber() then
+        return
+      end
       if getGold[heroAttacker:GetPlayerOwnerID()] == nil then
         getGold[heroAttacker:GetPlayerOwnerID()] = 0
       end

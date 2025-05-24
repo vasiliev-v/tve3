@@ -16,11 +16,11 @@ end
 
 function modifier_elf_spell_lumber:GetModifierMoveSpeedBonus_Constant()
 	if self:GetStackCount() == 1 then 
-		return -30
-	elseif self:GetStackCount() == 2  then
 		return -20
-	elseif self:GetStackCount() == 3  then
+	elseif self:GetStackCount() == 2  then
 		return -10
+	elseif self:GetStackCount() == 3  then
+		return 0
 	else return 0 end
 end
 
@@ -39,5 +39,17 @@ function modifier_elf_spell_lumber:OnDestroy( kv )
 	if IsServer() then
 		local hero = self:GetParent()
 		
+	end
+end
+
+function modifier_elf_spell_lumber:OnStackCountChanged()
+	if IsServer() then
+		local hero = self:GetParent()
+		local countStack = hero:FindModifierByName("modifier_elf_spell_lumber"):GetStackCount()
+		if countStack == 2 then
+			PlayerResource:ModifyLumber(hero,3,true)
+		elseif countStack == 3 then
+			PlayerResource:ModifyLumber(hero,6,true)
+		end
 	end
 end

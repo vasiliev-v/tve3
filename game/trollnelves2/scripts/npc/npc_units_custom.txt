@@ -6940,8 +6940,8 @@
 		"SoundSet"					"Hero_Drow_Ranger"
 
 
-		"AttackDamageMin"			"40960"		// Damage range min.
-		"AttackDamageMax"			"40960"		// Damage range max.
+		"AttackDamageMin"			"20480"		// Damage range min.
+		"AttackDamageMax"			"20480"		// Damage range max.
 	    "ArmorPhysical"             "16"//"32"//"40"
 		"StatusHealth"              "45000"
 	    "StatusHealthRegen"         "0"

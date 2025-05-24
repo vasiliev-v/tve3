@@ -518,7 +518,7 @@
 		"DOTA_Tooltip_ability_upgrade_to_tower_11_1_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 256000"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_12"                                        "Upgrade To Tower 12 lvl 1"
-		"DOTA_Tooltip_ability_upgrade_to_tower_12_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 163840"
+		"DOTA_Tooltip_ability_upgrade_to_tower_12_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 20480"
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_12_1"                                        "Upgrade To Tower 12 lvl 2"
 		"DOTA_Tooltip_ability_upgrade_to_tower_12_1_Description"                            "Улучшите свою башню, чтобы защитить себя от Тролля!<br>Урон: 256000"

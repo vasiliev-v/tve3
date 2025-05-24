@@ -9120,7 +9120,7 @@
         {
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "food_cost" "20"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
@@ -9162,7 +9162,7 @@
         {
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "food_cost" "20"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
@@ -9204,7 +9204,7 @@
         {
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "food_cost" "20"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
@@ -9246,7 +9246,7 @@
         {
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "food_cost" "20"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
@@ -9288,7 +9288,7 @@
         {
             "gold_cost" "65536"
             "lumber_cost" "512"
-            "food_cost" "20"
+            "food_cost" "1"
             "unit_count" "1"
             "wisp_cost" "0"
         }
@@ -18244,7 +18244,7 @@
 		
 		"AbilityValues"
         {
-            "radius_true" "200 400 600"
+            "radius_true" "50 100 200"
         }
 
 		"Modifiers"
@@ -20043,7 +20043,7 @@
 		
 		"AbilityValues"
         {
-            "radius_true" "200 300 400"
+            "radius_true" "50 100 200"
         }
 
 		"Modifiers"
