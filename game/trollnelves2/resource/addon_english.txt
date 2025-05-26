@@ -4890,13 +4890,13 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_evasion_x4_description_level_1"               "Duration: 2<br>CD: 300"
         "modifier_troll_spell_evasion_x4_description_level_2"               "Duration: 3<br>CD: 250"
         "modifier_troll_spell_evasion_x4_description_level_3"               "Duration: 5<br>CD: 200"
-		"DOTA_Tooltip_modifier_troll_spell_evasion_x4"			 "Active: Gives 100% evasion"
+		"DOTA_Tooltip_modifier_troll_spell_evasion_x4"			 "Active: Gives 80% evasion"
 
 		"troll_spell_evasion_description_level_1_shop_x4"           "Duration"
         "troll_spell_evasion_description_level_2_shop_x4"           "Cooldown"
 
 		"DOTA_Tooltip_ability_troll_spell_evasion_x4"                                                "Evasion"
-		"DOTA_Tooltip_ability_troll_spell_evasion_x4_Description"                                     "Gives 100% evasion"
+		"DOTA_Tooltip_ability_troll_spell_evasion_x4_Description"                                     "Gives 80% evasion"
 		"DOTA_Tooltip_ability_troll_spell_evasion_x4_duration"                 "DURATION: "
 				
         "modifier_troll_spell_atkspeed_x4_description_level_1"               "Incoming damage: +200%<br>Duration: 2<br>CD: 300"

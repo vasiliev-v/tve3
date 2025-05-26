@@ -19189,7 +19189,7 @@
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
-            "time_dur" "7 8 24"
+            "time_dur" "7 8 9"
         }
 		"OnSpellStart"
 		{
@@ -19684,7 +19684,7 @@
 		"AbilityValues"
         {
             "duration" "2 3 5"
-			"eva"		"100"
+			"eva"		"80"
         }
 		"OnSpellStart"
 		{
