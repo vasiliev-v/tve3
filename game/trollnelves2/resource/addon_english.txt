@@ -4433,6 +4433,15 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
         // ELF x1-x2 
 
+		"elf_spell_solo_player"                            		 "Loner"
+        "elf_spell_solo_player_description"                       "Passive: Allows you to select 2 additional aspects. Disables all command actions."
+        "modifier_elf_spell_solo_player_description_level_1"               "Additional aspect: 2<br>Movespeed: 2"
+        "modifier_elf_spell_solo_player_description_level_2"               "Additional aspect: 2<br>Movespeed: 5"
+        "modifier_elf_spell_solo_player_description_level_3"               "Additional aspect: 2<br>Movespeed: 10"
+		"DOTA_Tooltip_modifier_elf_spell_solo_player"			 "Passive: Allows you to select 2 additional aspects. Disables all command actions."
+		"elf_spell_solo_player_description_level_1_shop"               "Additional aspect"
+		"elf_spell_solo_player_description_level_2_shop"               "Movespeed"
+
 		"elf_spell_ms"                            		 "Movespeed"
         "elf_spell_ms_description"                       "Passive: Increases movespeed"
         "modifier_elf_spell_ms_description_level_1"               "Movespeed: 2<br>Unit MS: 2"
@@ -4958,6 +4967,13 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 
         // ELF x444444444444444
+        "modifier_elf_spell_solo_player_x4_description_level_1"               "Additional aspect: 2<br>Movespeed: 2"
+        "modifier_elf_spell_solo_player_x4_description_level_2"               "Additional aspect: 2<br>Movespeed: 5"
+        "modifier_elf_spell_solo_player_x4_description_level_3"               "Additional aspect: 2<br>Movespeed: 10"
+		"DOTA_Tooltip_modifier_elf_spell_solo_player_x4"			 "Passive: Allows you to select 2 additional aspects. Disables all command actions."
+		"elf_spell_solo_player_description_level_1_shop_x4"               "Additional aspect"
+		"elf_spell_solo_player_description_level_2_shop_x4"               "Movespeed"
+
         "modifier_elf_spell_ms_x4_description_level_1"               "Movespeed: 5<br>Unit MS: 5"
         "modifier_elf_spell_ms_x4_description_level_2"               "Movespeed: 10<br>Unit MS: 10"
         "modifier_elf_spell_ms_x4_description_level_3"               "Movespeed: 15<br>Unit MS: 15"
@@ -5254,6 +5270,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"troll_quest_title"                  "Daily Quests"
 		"quest_locked"                          "Not available"
 		"quest_locked_buy_battlepass"          "Available in the BattlePass" 
+
+		"error_cant_take_aspect"			"You can't change aspect"
+		"error_not_send_flag_block"			"The player has disabled flag transmission"
 
 				
 		""                            		 ""

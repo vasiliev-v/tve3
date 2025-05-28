@@ -276,14 +276,20 @@ function InitSpellList()
 function CreateSpell(info, parent, active)
 {
     let panel_id = ""
-    if (active)
+    if (active && info && info[1])
     {
         panel_id = info[1]
     }
-    let player_id = Players.GetLocalPlayer()
-    
+
     let PerkPanel = $.CreatePanel("Panel", parent, panel_id);
     PerkPanel.AddClass("PerkPanel");
+
+    if (!info || !info[1]) {
+        // Пустая ячейка
+        return;
+    }
+
+    let player_id = Players.GetLocalPlayer()
 
     let PerkImage = $.CreatePanel("Panel", PerkPanel, "");
     PerkImage.AddClass("PerkImage");
@@ -302,55 +308,100 @@ function CreateSpell(info, parent, active)
 
         SetShowText(PerkPanel, info[3] + "_description_level_" + GetSelectedPlayerSpellLevel(info[1], player_id), info[1], GetSelectedPlayerSpellLevel(info[1], player_id))
     }
-} 
+}
+function UpdateCurrentSpells() {
+    const container = $("#PlayerSelectedPerks");
+    container.RemoveAndDeleteChildren();
 
-function UpdateCurrentSpells()
-{
-    $("#PlayerSelectedPerks").RemoveAndDeleteChildren()
-    player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
-    let active_table = players_activated_spells
-    let player_id = Players.GetLocalPlayer()
-    for (let i = 1; i <= 3; i++)
-    {
-        let spell_info = {}
-        if (active_table)
-        {
-            if (active_table[player_id])
-            {
-                if (active_table[player_id][i] && active_table[player_id][i] != "")
-                {
-                    spell_info = GetSpellInformation(active_table[player_id][i])
-                }
+    const playerId = Players.GetLocalPlayer();
+    const activeTable = players_activated_spells[playerId] || {};
+    const maxAllowed = GetMaxAllowedPerksForLocalPlayer();
+    let rendered = 0;
+
+    // сначала рисуем все занятые слоты
+    for (let slot = 1; slot <= 3; slot++) {
+        const spellName = activeTable[slot];
+        if (spellName && spellName !== "") {
+            if (rendered >= maxAllowed) break;
+            const info = GetSpellInformation(spellName);
+            if (info) {
+                CreateSpell(info, container, true);
+                rendered++;
             }
         }
-        CreateSpell(spell_info, $("#PlayerSelectedPerks"))
+    }
+
+    // затем добираем пустыми
+    RenderEmptyCells(container, maxAllowed - rendered);
+}
+
+
+
+function UpdateListSelected() {
+    const player_id = Players.GetLocalPlayer();
+    const active_table = players_activated_spells?.[player_id] || {};
+    const max_allowed = GetMaxAllowedPerksForLocalPlayer();
+
+    const valid_spells = [];
+
+    // Собираем только допустимые (первые N) перки
+    for (let i = 1; i <= 3; i++) {
+        if (active_table[i] && active_table[i] !== "") {
+            valid_spells.push(active_table[i]);
+            if (valid_spells.length >= max_allowed) break;
+        }
+    }
+
+    for (const panel of $("#AllPerksList").Children()) {
+        const spell_name = panel.id;
+        const is_active = Object.values(active_table).includes(spell_name);
+        const is_valid = valid_spells.includes(spell_name);
+
+        const label = panel.FindChildTraverse("PerkPanelNumber");
+        if (label) {
+            const index = Object.entries(active_table).find(([_, name]) => name === spell_name)?.[0];
+            label.text = index || "";
+        }
+
+        panel.SetHasClass("ActivePerk", !!(is_active && is_valid));
+        panel.ClearPanelEvent("onactivate");
+
+        if (is_active && is_valid) {
+            // Разрешаем отключить активный допустимый перк
+            panel.RemoveClass("DisabledChoose");
+            panel.SetPanelEvent("onactivate", () => {
+                GameEvents.SendCustomGameEventToServer("event_set_activate_spell", {
+                    spell_name: spell_name,
+                    modifier_name: panel.GetAttributeString("modifier", "")
+                });
+
+            });
+        } else if (is_active && !is_valid) {
+            // Запрещаем клик по переполненному
+            panel.AddClass("DisabledChoose");
+            panel.SetPanelEvent("onactivate", () => {
+
+            });
+        } else if (!is_active && valid_spells.length >= max_allowed) {
+            // Запрещаем новый выбор
+            panel.AddClass("DisabledChoose");
+            panel.SetPanelEvent("onactivate", () => {
+
+            });
+        } else {
+            // Разрешаем выбор нового
+            panel.RemoveClass("DisabledChoose");
+            panel.SetPanelEvent("onactivate", () => {
+                GameEvents.SendCustomGameEventToServer("event_set_activate_spell", {
+                    spell_name: spell_name,
+                    modifier_name: panel.GetAttributeString("modifier", "")
+                });
+
+            });
+        }
     }
 }
 
-function UpdateListSelected()
-{
-    let active_table = players_activated_spells
-    let player_id = Players.GetLocalPlayer()
-    for (let child of $("#AllPerksList").Children())
-    {
-        if (active_table && active_table[player_id]) 
-        {
-            if (child.id == active_table[player_id][1] || child.id == active_table[player_id][2] || child.id == active_table[player_id][3])
-            {
-                let PerkPanelNumber = child.FindChildTraverse("PerkPanelNumber")
-                if (PerkPanelNumber)
-                {
-                    PerkPanelNumber.text = (child.id == active_table[player_id][1] ? "1" : (child.id == active_table[player_id][2] ? "2" : "3"))
-                }
-                child.SetHasClass("ActivePerk", true)
-            }
-            else
-            {
-                child.SetHasClass("ActivePerk", false)
-            } 
-        }
-    }
-}
 
 function GetSpellInformation(spell_name)
 {
@@ -465,6 +516,48 @@ function UpdateChanceForTroll()
     }
 }
 
+function GetMaxAllowedPerksForLocalPlayer()
+{
+    const id = Players.GetLocalPlayer();
+    const team = Players.GetTeam(id);
+
+    if (team === 3) return 3;
+
+    const active = players_activated_spells?.[id];
+    if (!active) return 1;
+
+    for (let i = 1; i <= 3; i++) {
+        if (active[i] === "elf_spell_solo_player") {
+            return 3;
+        }
+    }
+
+    return 1;
+}
+
+function GetActivatedPerksCount()
+{
+    const id = Players.GetLocalPlayer();
+    const active = players_activated_spells?.[id];
+    if (!active) return 0;
+
+    let count = 0;
+    for (let i = 1; i <= 3; i++) {
+        if (active[i] && active[i] !== "") count++;
+    }
+
+    return count;
+}
+
+function RenderEmptyCells(parent, count) {
+    for (let i = 0; i < count; i++) {
+        // Передаём undefined, чтобы Panorama сам сгенерировал уникальный id
+        let emptyPanel = $.CreatePanel("Panel", parent, undefined);
+        emptyPanel.AddClass("PerkPanel");
+        // при необходимости можно добавить дополнительные классы для пустых слотов:
+        // emptyPanel.AddClass("PerkPanel--empty");
+    }
+}
 
 (function () {
 	Game.AutoAssignPlayersToTeams();

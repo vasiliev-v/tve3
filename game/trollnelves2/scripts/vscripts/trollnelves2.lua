@@ -130,8 +130,9 @@ local allPlayersIDs = {}
 local wannabeTrollIDs = {}
 local takeNew = 1
 local trollPlayerID = -1
-
+local countAttempts = 0
 function NewTroll()
+    Timers:CreateTimer(1, function()
     if takeNew ~= 1 then
         return
     end
@@ -167,6 +168,10 @@ function NewTroll()
         GameRules:SendCustomMessage("newTrollPlayerID: " .. newTrollPlayerID, 1, 1)
         GameRules:SendCustomMessage("trollPlayerID: " .. trollPlayerID, 1, 1)
         local hero = PlayerResource:GetSelectedHeroEntity(newTrollPlayerID)
+        if not hero and countAttempts < 4 then
+            countAttempts = countAttempts + 1 
+            return
+        end
         PlayerResource:ReplaceHeroWith(newTrollPlayerID, TROLL_HERO, 0, 0)
         UTIL_Remove(hero)
         hero = PlayerResource:GetSelectedHeroEntity(newTrollPlayerID)
@@ -174,6 +179,7 @@ function NewTroll()
         hero:SetTeam(DOTA_TEAM_BADGUYS)
         InitializeBadHero(hero)
     end
+    end)
 end
 
 function SetRoles()
@@ -859,9 +865,16 @@ function trollnelves2:PreStart()
             end
         end
     end)
-    
+    GetAllItems()
+end
+
+
+function GetAllItems()
     if IsServer() then
         Timers:CreateTimer(25, function() 
+            if not PlayerResource:GetSelectedHeroEntity(1) then
+                return 10
+            end
             wearables:SetPart() 
             Shop:SetStats() 
             wearables:SetSkin() 
@@ -872,8 +885,6 @@ function trollnelves2:PreStart()
         GameRules:SendCustomMessage("<font color='#00FFFF '> Number of players: " .. GameRules.PlayersCount .. "</font>" ,  0, 0)
     end 
 end
-
-
 
 
 

@@ -4,9 +4,9 @@ end
 
 function setup_state_lib:SetupStartMapVotes()
     local THIS_STAGE_TIMER = 30
-    if IsInToolsMode() then
-        THIS_STAGE_TIMER = 10
-    end
+    --if IsInToolsMode() then
+    --    THIS_STAGE_TIMER = 10
+    --end
     local TIMER_STAGE = THIS_STAGE_TIMER + 1
     local TIMER_STAGE_MAX = THIS_STAGE_TIMER
     CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})
@@ -48,9 +48,9 @@ end
 
 function setup_state_lib:SetupStartSelectPerks()
     local THIS_STAGE_TIMER = 30
-    if IsInToolsMode() then
-        THIS_STAGE_TIMER = 10
-    end
+    --if IsInToolsMode() then
+    --    THIS_STAGE_TIMER = 10
+    --end
     local TIMER_STAGE = THIS_STAGE_TIMER + 1
     local TIMER_STAGE_MAX = THIS_STAGE_TIMER
     CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})

@@ -12,6 +12,14 @@ function FlagStart(eventSourceIndex, event)
 			SendErrorMessage(event.PlayerID, "You cannot send the Flag in ClanWars mode.")
 			return 
 		end 
+		if hero:HasModifier("modifier_elf_spell_solo_player") or hero:HasModifier("modifier_elf_spell_solo_player_x4") then
+			SendErrorMessage(event.PlayerID, "error_not_send_flag_block")
+			return   
+        end
+		if casterHero:HasModifier("modifier_elf_spell_solo_player") or casterHero:HasModifier("modifier_elf_spell_solo_player_x4") then
+			SendErrorMessage(event.PlayerID, "error_not_send_flag_block")
+			return   
+        end
 		if casterHero:IsElf() and hero:IsElf() and PlayerResource:GetConnectionState(event.target) == 2 
 		    and GameRules.PlayersBase[event.PlayerID] ~= nil and GameRules.countFlag[event.PlayerID] == nil
 			-- and (GameRules:GetGameTime() - GameRules.startTime < 120  or  (lastFlagTime[event.target] == nil or lastFlagTime[event.target] + 240 < GameRules:GetGameTime()) )

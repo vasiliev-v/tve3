@@ -20,7 +20,7 @@
 		<Image style="opacity:0;" src="file://{images}/new_design/maps/kanyon.png" />
 		<Image style="opacity:0;" src="file://{images}/new_design/maps/oasis.png" />
 		
-
+		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_solo_player.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_ms.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_gold.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_lumber.png" />
@@ -69,6 +69,8 @@
 	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_reveal.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_night_buff.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_gold_wisp.png" />
+
+		
 
 
 		<Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/elf_spell_ms.png" />

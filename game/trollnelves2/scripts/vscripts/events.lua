@@ -779,6 +779,20 @@ function GiveResources(eventSourceIndex, event)
             PlayerResource:GetSelectedHeroEntity(casterID):GetTeam() then
             local hero = PlayerResource:GetSelectedHeroEntity(targetID)
             local casterHero = PlayerResource:GetSelectedHeroEntity(casterID)
+
+            if not hero or not casterHero then
+                return
+            end
+
+            if hero:HasModifier("modifier_elf_spell_solo_player") or hero:HasModifier("modifier_elf_spell_solo_player_x4") then
+                SendErrorMessage(event.casterID, "error_not_send_money_block")
+                return   
+            end
+            if casterHero:HasModifier("modifier_elf_spell_solo_player") or hero:HasModifier("modifier_elf_spell_solo_player_x4") then
+                SendErrorMessage(event.casterID, "error_not_send_money_block")
+                return     
+            end
+
             if gold and lumber then
                 if PlayerResource:GetGold(casterID) < gold or
                     PlayerResource:GetLumber(casterID) < lumber then

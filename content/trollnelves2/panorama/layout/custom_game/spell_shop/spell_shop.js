@@ -215,7 +215,9 @@ function UpdatePreviewSpellInf(info)
         }
         else
         {
-            SpellPreviewPanelButtonActivateLabel.text = $.Localize("#SpellShop_Activate")
+            //SpellPreviewPanelButtonActivateLabel.text = $.Localize("#SpellShop_Activate")
+            SpellPreviewPanelButtonActivateLabel.text = $.Localize("#SpellShop_no_buying_spell")
+            SpellPreviewPanelButtonActivate.AddClass("SpellDisabled")
         }
         SetActivateSpell(SpellPreviewPanelButtonActivate, info)
     }

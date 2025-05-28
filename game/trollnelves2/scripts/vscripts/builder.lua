@@ -251,7 +251,7 @@ function Build( event )
 
         if hero:HasModifier("modifier_elf_spell_armor_wall_x4") and string.match(building_name,"rock") then
             if hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 1  then
-                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armorx4", {}):SetStackCount(1) 
+                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor_x4", {}):SetStackCount(1) 
             elseif hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 2 then
                 unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor_x4", {}):SetStackCount(2) 
             elseif hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 3 then
