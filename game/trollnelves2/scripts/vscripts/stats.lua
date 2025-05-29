@@ -94,6 +94,13 @@ function Stats.SubmitMatchData(winner,callback)
 				data.LumberGained = tostring(PlayerResource:GetLumberGained(pID)/1000 or 0)
 				data.LumberGiven = tostring(PlayerResource:GetLumberGiven(pID)/1000 or 0)
 				data.Kill = tostring(PlayerResource:GetKills(pID) or 0)
+				-- 
+				data.PartyId = tostring(PlayerResource:GetPartyID(pID) or 0)
+				data.Color = tostring(PLAYER_COLORS[pID] or 0)
+				data.DamageGiven = tostring(PlayerResource:GetDamageGiven(pID) or 0)
+				data.DamageTake = tostring(PlayerResource:GetDamageTake(pID) or 0)
+				-- время смерти, рейтинг от 1 мин игры, 
+
 				if PlayerResource:GetConnectionState(pID) ~= 2 then
 					data.Death = tostring(PlayerResource:GetDeaths(pID) + 1 or 0)
 				else

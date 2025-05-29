@@ -189,24 +189,26 @@ function trollnelves2:DamageFilter( kv )
   if kv.entindex_attacker_const ~= nil then
     local heroAttacker = EntIndexToHScript(kv.entindex_attacker_const)
     local heroKilled = EntIndexToHScript(kv.entindex_victim_const)
-    local team = heroAttacker:GetTeamNumber()
-    local OwnHeroAtacker = PlayerResource:GetSelectedHeroEntity(heroAttacker:GetPlayerOwnerID())
-    local OwnHeroKilled = PlayerResource:GetSelectedHeroEntity(heroKilled:GetPlayerOwnerID())
+    local team       = heroAttacker:GetTeamNumber()
+    local teamKilled = heroKilled:GetTeamNumber()
+    local heroAttackerID = heroAttacker:GetPlayerOwnerID()
+    local heroKilledID = heroKilled:GetPlayerOwnerID()
+    local OwnHeroAtacker = PlayerResource:GetSelectedHeroEntity(heroAttackerID)
+    local OwnHeroKilled = PlayerResource:GetSelectedHeroEntity(heroKilledID)
+
     if OwnHeroAtacker == nil or OwnHeroKilled == nil then
       return true
     end
 
+
+    if team ~= teamKilled then
+      PlayerResource:ModifyDamageGiven(heroAttackerID, kv.damage)
+      PlayerResource:ModifyDamageTake(heroKilledID, kv.damage)
+    end
+  
+
     if string.match(heroKilled:GetUnitName(), "wisp") and team == DOTA_TEAM_BADGUYS then
       kv.damage = 10
-    end
-
-    if OwnHeroAtacker and OwnHeroKilled then
-      if OwnHeroAtacker:IsElf() and OwnHeroKilled:IsElf() and OwnHeroAtacker ~= OwnHeroKilled then
-        kv.damage = 0
-      end
-      if OwnHeroKilled == DOTA_TEAM_BADGUYS then
-        return true
-      end 
     end
 
     if OwnHeroAtacker:HasModifier("modifier_elf_spell_damage_gold") and 
@@ -220,20 +222,20 @@ function trollnelves2:DamageFilter( kv )
       if heroAttacker:GetTeamNumber() == heroKilled:GetTeamNumber() then
         return
       end
-      if getGold[heroAttacker:GetPlayerOwnerID()] == nil then
-        getGold[heroAttacker:GetPlayerOwnerID()] = 0
+      if getGold[heroAttackerID] == nil then
+        getGold[heroAttackerID] = 0
       end
 			if OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 1  then
-				getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] + kv.damage * 0.04
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.04
 			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 2 then
-				getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] + kv.damage * 0.08 
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.08 
 			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 3 then
-				getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] + kv.damage * 0.15
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.15
 			end
-      local goldToGive = math.floor(getGold[heroAttacker:GetPlayerOwnerID()])
+      local goldToGive = math.floor(getGold[heroAttackerID])
       if goldToGive >= 1 then
         PlayerResource:ModifyGold(OwnHeroAtacker, goldToGive, true)
-        getGold[heroAttacker:GetPlayerOwnerID()] = getGold[heroAttacker:GetPlayerOwnerID()] - goldToGive
+        getGold[heroAttackerID] = getGold[heroAttackerID] - goldToGive
       end
 		end
 

@@ -88,4 +88,4 @@ end
 
 
 
-dedicatedServerKey = GetDedicatedServerKeyV3("1")
+dedicatedServerKey = "TESTSESADASASDASDQ412EDFDSFQ124132421ESR12412SA" --GetDedicatedServerKeyV3("1")

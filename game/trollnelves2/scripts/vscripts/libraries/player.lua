@@ -169,6 +169,28 @@ function CDOTA_PlayerResource:GetGoldGiven(pID)
 	return GameRules.goldGiven[pID] or 0
 end
 
+function CDOTA_PlayerResource:ModifyDamageGiven(pID, amount)
+	GameRules.damageGiven[pID] = PlayerResource:GetDamageGiven(pID) + amount
+end
+
+function CDOTA_PlayerResource:GetDamageGiven(pID)
+	if GameRules.damageGiven[pID] == nil then
+		GameRules.damageGiven[pID] = 0
+	end
+	return GameRules.damageGiven[pID] or 0
+end
+
+function CDOTA_PlayerResource:ModifyDamageTake(pID, amount)
+	GameRules.damageTake[pID] = PlayerResource:GetDamageTake(pID) + amount
+end
+
+function CDOTA_PlayerResource:GetDamageTake(pID)
+	if GameRules.damageTake[pID] == nil then
+		GameRules.damageTake[pID] = 0
+	end
+	return GameRules.damageTake[pID] or 0
+end
+
 
 
 function CDOTA_PlayerResource:ModifyLumberGained(pID,amount)
