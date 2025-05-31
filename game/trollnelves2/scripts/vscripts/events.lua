@@ -445,6 +445,7 @@ function trollnelves2:OnEntityKilled(keys)
 
             GameRules.countFlag[killedPlayerID] = nil
             GameRules.PlayersBase[killedPlayerID] = nil
+            GameRules.deathTime[killedPlayerID] = tonumber(GameRules:GetGameTime() - GameRules.startTime)/60 or 0
 
             bounty = ElfKilled(killed)
             if string.match(GetMapName(),"clanwars") then

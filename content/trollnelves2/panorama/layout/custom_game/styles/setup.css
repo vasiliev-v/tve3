@@ -11,3 +11,12 @@
 	background-image: url("file://{images}/custom_game/lumber_icon32.png");
     background-image: url("file://{images}/custom_game/cheese_icon32.png");
 }
+
+#GameSetupStages {
+    z-index: -1;    /* чат по умолчанию на уровне 0 */
+}
+
+/* Поднимаем стандартный чат поверх всего */
+DOTAChat#HudChat {
+    z-index: 1;     /* выше, чем у Vote HUD */
+}

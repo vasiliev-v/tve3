@@ -133,8 +133,10 @@ function UpdateInformation()
     let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))
     if (!shop_table) { return }
     let player_table = shop_table[5];
-    let rating_elf = shop_table[8][0];
-    let rating_troll = shop_table[9][0];
+    $.Msg(shop_table[13])  
+
+    let rating_elf = shop_table[13][4];
+    let rating_troll = shop_table[13][5];
     let player_rep = shop_table[10];
 
     let PlayerAvatar = $("#PlayerAvatar")
@@ -150,10 +152,10 @@ function UpdateInformation()
     ReputationRating.text = String(player_rep[0] || 0)
 
     let ElfRating = $("#ElfRating")
-    ElfRating.text = String(rating_elf.score || 0)
+    ElfRating.text = String(rating_elf|| 0)
 
     let TrollRating = $("#TrollRating")
-    TrollRating.text = String(rating_troll.score || 0)
+    TrollRating.text = String(rating_troll || 0)
 }
 
 function SettingsButtonUpdater(update)

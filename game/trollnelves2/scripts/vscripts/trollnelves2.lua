@@ -872,7 +872,7 @@ end
 function GetAllItems()
     if IsServer() then
         Timers:CreateTimer(25, function() 
-            if not PlayerResource:GetSelectedHeroEntity(1) then
+            if not PlayerResource:GetSelectedHeroEntity(0) then
                 return 10
             end
             wearables:SetPart() 

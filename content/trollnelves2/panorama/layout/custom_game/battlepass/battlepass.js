@@ -12,6 +12,8 @@ function OpenPanel() {
 		InitLevel()
 		InitDonateRewards()
 	}
+    else
+        InitLevel()
 	$("#BattlePassPanel").SetHasClass("Open", !$("#BattlePassPanel").BHasClass("Open"))
 }
 

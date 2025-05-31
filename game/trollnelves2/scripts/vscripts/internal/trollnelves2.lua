@@ -201,7 +201,11 @@ function trollnelves2:DamageFilter( kv )
     end
 
 
-    if team ~= teamKilled then
+    if team ~= teamKilled and 
+      PlayerResource:IsValidPlayerID(heroAttackerID) and not PlayerResource:IsFakeClient(heroAttackerID) and 
+      PlayerResource:IsValidPlayerID(heroKilledID) and not PlayerResource:IsFakeClient(heroKilledID) then
+
+        
       PlayerResource:ModifyDamageGiven(heroAttackerID, kv.damage)
       PlayerResource:ModifyDamageTake(heroKilledID, kv.damage)
     end

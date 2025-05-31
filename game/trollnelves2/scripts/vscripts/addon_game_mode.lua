@@ -997,13 +997,14 @@ function Activate()
 	GameRules.goldGiven = {}
 	GameRules.lumberGiven = {}
 	GameRules.damageGiven = {}
-	GameRules.damegeTake = {}
+	GameRules.damageTake = {}
+	GameRules.deathTime = {}
 	GameRules.scores = {}
 	GameRules.rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetGem = {} 
 	GameRules.isTesting = true
-	GameRules.server =  "https://localhost:7133/test/"   -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
+	GameRules.server =  "https://localhost:7133/test/"  -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
 	GameRules.types = {}

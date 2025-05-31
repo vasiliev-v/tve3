@@ -12,6 +12,9 @@ local chanceCheck = {}
 local countCheckShop = 0
 
 function Shop.RequestDonate(pID, steam, callback)
+	if not PlayerResource:IsValidPlayerID(pID) or PlayerResource:IsFakeClient(pID) then 
+		return
+	end
 	if GameRules:IsCheatMode() and not GameRules.isTesting then
 		local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 		PoolTable["5"]["0"] = PlayerResource:GetSteamAccountID(pID)
@@ -495,7 +498,7 @@ function Shop:BuyShopItem(table, callback)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			GameRules:SendCustomMessage("Error during purchase. Code: " .. res.StatusCode, 1, 1)
+			GameRules:SendCustomMessage("Error during BuyShopItem. Code: " .. res.StatusCode, 1, 1)
 			--DebugPrint("Error during purchase.")
 		else
 			if GameRules:IsCheatMode() then 
@@ -1039,12 +1042,12 @@ function Shop:EventRewards(table, callback)
 			GameRules:SendCustomMessage("Error take rewards.. Code: " .. res.StatusCode, 1, 1)
 			--DebugPrint("Error take rewards.")
 		end
-		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
+		
 		if callback then
 			local obj,pos,err = json.decode(res.Body)
 			callback(obj)
 		end
-		
+		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
 	end)
 end
 
@@ -1100,8 +1103,9 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 		end
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)		
-	
-	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "troll_quest_update_after", {})
+	Timers:CreateTimer(5, function() 
+		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "troll_quest_update_after", {})
+	end)
 	return obj
 end
 
@@ -1388,8 +1392,6 @@ function Shop.CheckDayQuest(pId)
 		
 		if not quest then goto continue end
 
-		DebugPrintTable(quest)
-		DebugPrintTable(player_bp_info)
 		if (not player_bp_info or not player_bp_info["0"] or player_bp_info["0"] == "none") and quest.donate == 1 then
 			return
 		end
@@ -1420,7 +1422,7 @@ function isQuestCompleted(q, pId)
 	if q.team and q.team ~= tostring(PlayerResource:GetTeam(pId)) then
 		return false
 	end
-	DebugPrint("12")
+
 	if q.map and q.map ~= "" then
 		local map = GameRules.MapName:lower()
 		if string.match(map,q.map) then
@@ -1466,7 +1468,7 @@ function Shop.GetXpBattlepass(playerID,callback)
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Error connecting GET GEM")
 		end
-		
+		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
 		if callback then
 			local obj,pos,err = json.decode(res.Body)
 			callback(obj)

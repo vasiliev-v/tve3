@@ -4,6 +4,7 @@
     </styles>
     <Panel class="AddonLoadingRoot">
         <Panel id="CustomBg" />
+		<!--
   	    <Panel id = "LoadingTextContainer">
 		    <Label id = "LoadingText" text = "#loading_text" html = "true"/>
 	    </Panel> 
@@ -15,5 +16,6 @@
 			    <Panel id="Arrow" />
 		    </Button> 
 	    </Panel>
+		-->
     </Panel>
 </root>

@@ -1536,9 +1536,11 @@ function game_spells_lib:event_set_activate_spell(data)
     if data.PlayerID == nil then return end
     local player_id = data.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(player_id)
+    
     if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
         if hero == nil then return end
     end
+
     local modifier_name = data.modifier_name
     local spell_name = data.spell_name
     local player_team = PlayerResource:GetTeam(player_id)
@@ -1573,7 +1575,7 @@ function game_spells_lib:event_set_activate_spell(data)
     --if (GameRules:GetGameTime() / 60) >= game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE then
     --    return
     --end
-    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP and not GameRules:IsCheatMode() then
         SendErrorMessage(player_id, "error_cant_take_aspect")
         return
     end
@@ -1586,7 +1588,7 @@ function game_spells_lib:event_set_activate_spell(data)
     else
         -- Определяем лимит
         local max_allowed = 1
-        if was_solo_before or is_solo_now or player_team == 3 then
+        if was_solo_before or is_solo_now or player_team == 3 or GameRules:IsCheatMode() then
             max_allowed = 3
         end
 
