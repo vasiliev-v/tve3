@@ -920,7 +920,14 @@ PrecacheResource("particle", "particles/bloode_ground_child.vpcf", context)
 	-- PrecacheResource("soundfile", "soundevents/game_sounds_birzha.vsndevts", context) 
 	PrecacheResource("soundfile", "soundevents/game_sounds_birzha_new.vsndevts", context) 
 
+    PrecacheModel("models/heroes/lycan/lycan_fur.vmdl", context)
+    PrecacheModel("models/heroes/lycan/lycan_armor.vmdl", context)
+    PrecacheModel("models/heroes/lycan/lycan_blades.vmdl", context)
+    PrecacheModel("models/heroes/lycan/lycan_belt.vmdl", context)
+    PrecacheModel("models/heroes/lycan/lycan_head.vmdl", context)
 
+    PrecacheResource("particle", "particles/units/heroes/hero_lycan/lycan_feral_impulse.vpcf", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts", context)
 
 	PrecacheWearableModels(context)
 

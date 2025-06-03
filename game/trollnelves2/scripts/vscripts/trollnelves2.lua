@@ -457,7 +457,7 @@ function InitializeBuilder(hero)
 
     Timers:CreateTimer(function()
         local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-        if hero:IsNull() then return 1 end
+        if not hero or hero:IsNull() then return 1 end
         if hero:IsAngel() or hero:IsWolf() then
             return
         end

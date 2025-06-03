@@ -68,14 +68,20 @@ function mod_system:GetCurrentModFromVotes()
 		table.insert( table_votes, { map_id = tonumber(map_id), votes = votes, percent = percent  } )
 	end
 
-	if table_votes[1] == nil then
-		return true
-	end
+	--if table_votes[1] == nil then
+	--	return true
+	--end
 	--if table_votes[1].percent >= 3333 then
 	--	return false
 	--else
-		return true
+	--	return true
 	--end
+
+	if GameRules.MapSpeed == 2 then
+		return false
+	else
+		return true
+	end
 end
 
 mod_system:Init()

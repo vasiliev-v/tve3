@@ -27,8 +27,7 @@ function VotekickStart(eventSourceIndex, event)
 		if ctrHeroID:IsAngel() then
 			return 
 		end 
-		if (tonumber(GameRules.scores[event.target].elf)   + tonumber(GameRules.scores[event.target].troll)  >= -499) or
-		   (tonumber(GameRules.scores[event.PlayerID].elf) + tonumber(GameRules.scores[event.PlayerID].troll) < -499) then
+		if tonumber(GameRules.GetRep[event.target]) > -50 or tonumber(GameRules.GetRep[event.PlayerID]) <= 0  then
 			SendErrorMessage(event.PlayerID, "error_not_kick_normal")
         	return 
 		end
@@ -117,7 +116,7 @@ function VoteKick(eventSourceIndex, event)
 		PlayerResource:SetGold(hero, 0)
     	PlayerResource:SetLumber(hero, 0)
 		local i = 1
-		local roll_chance = RandomFloat(0, 100)
+		local roll_chance = RandomFloat(1, 100)
 		if roll_chance <= CHANCE_NEW_PERSON then
 			i = 2
 		end
@@ -154,8 +153,8 @@ function VoteKick(eventSourceIndex, event)
 		votes[ event.playerID1 ] = votes[ event.playerID1 ] + 3
 	end
 	local disKick = 0
-	if tonumber(GameRules.scores[event.playerID1].elf) + tonumber(GameRules.scores[event.playerID1].troll) <= -500 then
-		disKick = math.floor((tonumber(GameRules.scores[event.playerID1].elf) + tonumber(GameRules.scores[event.playerID1].troll))/500) * 0.1
+	if tonumber(GameRules.GetRep[event.playerID1]) <= -50 then
+		disKick = math.floor(tonumber(GameRules.GetRep[event.playerID1])/50) * 0.1
 	end
 	if event.vote == 1 then
 		local text = "Vote: " .. votes[ event.playerID1 ] .. "; Count Player: " .. countVote[event.playerID1] .. "; Percent: " .. votes[ event.playerID1 ]/countVote[event.playerID1] .. "; Need perc.: " .. PERC_KICK_PLAYER + disKick .. "; Min player: 6" 

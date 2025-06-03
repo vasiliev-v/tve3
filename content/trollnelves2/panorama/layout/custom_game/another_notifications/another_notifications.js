@@ -20,14 +20,14 @@ function ShowFlagOptions(data)
 GameEvents.SubscribeProtected("show_helper_options", ShowHelperOptions); // old useless
 function ShowHelperOptions(data)
 {
-
+    let text = "<b> Do you want to be a Wolf? </b>"
     let yes_function = function()
     {
-        
+        GameEvents.SendCustomGameEventToServer( "choose_help_side", { team: 3});
     }
     let no_function = function()
     {
-        
+        GameEvents.SendCustomGameEventToServer( "choose_help_side", { team: 2});
     }
     CreatePanelNotificationWithButtons(text, yes_function, no_function)
 }

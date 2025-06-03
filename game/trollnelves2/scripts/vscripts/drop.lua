@@ -89,10 +89,6 @@ function drop:RollItemDrop(unit)
 			local item_name = items[1] -- название предмета
 			local roll_chance = RandomFloat(0, 100)
 			
-			if string.match(GetMapName(),"ghosttown") then --new --"halloween"
-				chance = 100
-			end
-			
 			if units then 
 				for _,current_name in pairs(units) do
 					if current_name == unit_name then
@@ -115,7 +111,7 @@ function drop:RollItemDrop(unit)
 					local randTime = RandomInt( 30, 240 )
 					Timers:CreateTimer(randTime, function()
 				--		if string.match(GetMapName(),SEASON_MAP)  then
-							RandomDropLoot()
+							RandomDropLoot(item_name)
 				--		--	RandomDropLoot()
 				--		else
 				--			RandomDropLoot()
@@ -153,7 +149,7 @@ function KillLoot( item, drop )
 	UTIL_Remove( drop )
 end
 
-function RandomDropLoot()
+function RandomDropLoot(item_name)
 	local spawnPoint = Vector(-320,-320,256)
 	local dropRadius = RandomFloat( 2600, 7800 )
 	local randRadius = spawnPoint + RandomVector( dropRadius )
@@ -168,7 +164,7 @@ function RandomDropLoot()
 		end
 	end
 
-	local newItem = CreateItem( SEASON_ITEM, nil, nil )
+	local newItem = CreateItem( item_name, nil, nil )
 	local drop = CreateItemOnPositionForLaunch( randRadius, newItem )
 	newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, randRadius )
 

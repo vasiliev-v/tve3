@@ -494,6 +494,7 @@ Shop.DonateList =
 	{"1036", "gold", "300", "tower_flag_1", "flag", false, 7}, 
 
 	-- NEW 
+	--[[
 	{"1059", "gold", "1000", "2_tower_11", "tower_11", false, 7},
 	{"1060", "gold", "1000", "3_tower_11", "tower_11", false, 7},
 	{"1061", "gold", "1000", "4_tower_11", "tower_11", false, 7},
@@ -535,7 +536,7 @@ Shop.DonateList =
 	{"1097", "gold", "1000", "2_tower_19", "tower_19", false, 7},
 	{"1098", "gold", "1000", "3_tower_19", "tower_19", false, 7},
 	-- END NEW 
-
+    --]]
 	{"1037", "gold", "300", "sight_tower_10", "true_sight_tower", false, 7}, 
 	{"1038", "gold", "300", "sight_tower_11", "true_sight_tower", false, 7}, 
 	{"1039", "gold", "300", "sight_tower_12", "true_sight_tower", false, 7}, 

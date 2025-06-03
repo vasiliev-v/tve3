@@ -150,7 +150,7 @@ function Stats.SubmitMatchData(winner,callback)
 						if not hero:IsTroll() then
 							data.Team = tostring(2)
 						end
-						data.Rep = -4
+						data.Rep = -6
 					end 
 						
 					if PlayerResource:GetConnectionState(pID) ~= 2 and hero:IsTroll() and PlayerResource:GetTeam(pID) == winner then
