@@ -305,6 +305,573 @@ Wearables.TowerSkinConfigs = {
     ["1056"] = { updateModel = { model = "models/items/wards/revtel_jester_obs/revtel_jester_obs.vmdl", scale = 1 } },
     ["1057"] = { updateModel = { model = "models/items/wards/the_monkey_sentinel/the_monkey_sentinel.vmdl", scale = 1 } },
     ["1058"] = { updateModel = { model = "models/items/wards/warding_guise/warding_guise.vmdl", scale = 1 } },
+    ---
+
+    ["1059"] = { -- Verdant Predator
+    attachments = {
+        "models/items/venomancer/ti8_venomancer_chomper_arms/ti8_venomancer_chomper_arms.vmdl",
+        "models/items/venomancer/ti8_venomancer_chomper_head/ti8_venomancer_chomper_head.vmdl",
+        "models/items/venomancer/ti8_venomancer_chomper_shoulder/ti8_venomancer_chomper_shoulder.vmdl",
+        "models/items/venomancer/ti8_venomancer_chomper_tail/ti8_venomancer_chomper_tail.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/venomancer/veno_chomper/veno_chomper_spitter_mouth_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/venomancer/veno_chomper/veno_chomper_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/venomancer/veno_ti8_chomper/veno_ti8_chomper_shoulder_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/venomancer/veno_ti8_chomper/veno_ti8_chomper_tail_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+    },
+
+    ["1060"] = { -- Fatal Bloom
+    attachments = {
+        "models/items/venomancer/poison_touch_shoulder/poison_touch_shoulder.vmdl",
+        "models/items/venomancer/poison_touch_tail/poison_touch_tail.vmdl",
+        "models/items/venomancer/poison_touch_head/poison_touch_head.vmdl",
+        "models/items/venomancer/poison_touch_arms/poison_touch_arms.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/venomancer/poison_touch_shoulder/venon_ambient_poison_touch_shoulder.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+    ["1061"] = { -- Mechamancer
+    attachments = {
+        "models/items/venomancer/mechamancer/mechamancer_arms.vmdl",
+        "models/items/venomancer/mechamancer/mechamancer_tail.vmdl",
+        "models/items/venomancer/mechamancer/mechamancer_shoulders.vmdl",
+        "models/items/venomancer/mechamancer/mechamancer_head.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/venomancer/mechamancer/mechamancer_arms_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/venomancer/mechamancer/mechamancer_tail_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/venomancer/mechamancer/mechamancer_shoulders_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/venomancer/mechamancer/mechamancer_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1062"] = { -- Sight of the Kha-Ren Faithful
+    attachments = {
+        "models/items/drow/drow_runic_archer_back/drow_runic_archer_back.vmdl",
+        "models/items/drow/drow_runic_archer_arms/drow_runic_archer_arms.vmdl",
+        "models/items/drow/drow_runic_archer_head/drow_runic_archer_head.vmdl",
+        "models/items/drow/drow_runic_archer_legs/drow_runic_archer_legs.vmdl",
+        "models/items/drow/drow_runic_archer_weapon/drow_runic_archer_weapon.vmdl",
+        "models/items/drow/drow_runic_archer_misc/drow_runic_archer_misc.vmdl",
+        "models/items/drow/drow_runic_archer_shoulder/drow_runic_archer_shoulder.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/drow/drow_runic/drow_runic_weapon.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_runic/drow_runic_misc.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1063"] = { -- Glimmer of the Sacred Hunt
+    attachments = {
+        "models/items/drow/ti9_cache_drow_goddess_of_woods_arms/ti9_cache_drow_goddess_of_woods_arms.vmdl",
+        "models/items/drow/ti9_cache_drow_goddess_of_woodsback/ti9_cache_drow_goddess_of_woodsback.vmdl",
+        "models/items/drow/ti9_cache_drow_goddess_of_woods_head/ti9_cache_drow_goddess_of_woods_head.vmdl",
+        "models/items/drow/ti9_cache_drow_goddess_of_woods_legs/ti9_cache_drow_goddess_of_woods_legs.vmdl",
+        "models/items/drow/ti9_cache_drow_goddess_of_woods_misc/ti9_cache_drow_goddess_of_woods_misc.vmdl",
+        "models/items/drow/ti9_cache_drow_goddess_of_woods_shoulder/ti9_cache_drow_goddess_of_woods_shoulder.vmdl",
+        "models/items/drow/ti9_cache_drow_goddess_of_woods_weapon/ti9_cache_drow_goddess_of_woods_weapon.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/drow/drow_ti9_cache/drow_ti9_cache_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_ti9_cache/drow_ti9_cache_shoulder_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/units/heroes/hero_drow/drow_bowstring.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_ti9_cache/drow_ti9_cache_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+["1064"] = { -- Dread Retribution Bundle
+    attachments = {
+        "models/items/drow/drow_arcana/drow_arcana_weapon.vmdl",
+        "models/items/drow/drow_arcana/drow_arcana_head.vmdl",
+        "models/items/drow/drow_arcana/drow_arcana_shoulder.vmdl",
+        "models/items/drow/drow_arcana/drow_arcana_quiver.vmdl",
+        "models/items/drow/drow_arcana/drow_arcana_legs.vmdl",
+        "models/items/drow/drow_arcana/drow_arcana_back.vmdl",
+        "models/items/drow/drow_arcana/drow_arcana_arms.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_ambient_v2.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_footsteps.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_weapon_v2_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_v2_footsteps.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_loadout_v2.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_ambient_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/drow/drow_arcana/drow_arcana_arm_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1065"] = { -- Frostglade Familiar
+    attachments = {
+        "models/items/drow/secret_witch_weapon/secret_witch_weapon.vmdl",
+        "models/items/drow/secret_witch_shoulder/secret_witch_shoulder.vmdl",
+        "models/items/drow/secret_witch_misc/secret_witch_misc.vmdl",
+        "models/items/drow/secret_witch_legs/secret_witch_legs.vmdl",
+        "models/items/drow/secret_witch_head/secret_witch_head.vmdl",
+        "models/items/drow/secret_witch_back/secret_witch_back.vmdl",
+        "models/items/drow/secret_witch_arms/secret_witch_arms.vmdl",
+    },
+    particles = {
+        { path = "particles/units/heroes/hero_drow/drow_bowstring.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1066"] = { -- Black Ice Constellation Bundle
+    attachments = {
+        "models/items/drow/aghsbp_2021_drow_weapon/aghsbp_2021_drow_weapon.vmdl",
+        "models/items/drow/aghsbp_2021_drow_misc/aghsbp_2021_drow_misc.vmdl",
+        "models/items/drow/aghsbp_2021_drow_back/aghsbp_2021_drow_back.vmdl",
+        "models/items/drow/aghsbp_2021_drow_leg/aghsbp_2021_drow_leg.vmdl",
+        "models/items/drow/aghsbp_2021_drow_arms/aghsbp_2021_drow_arms.vmdl",
+        "models/items/drow/aghsbp_2021_drow_shoulders/aghsbp_2021_drow_shoulders.vmdl",
+        "models/items/drow/aghsbp_2021_drow_head/aghsbp_2021_drow_head.vmdl",
+    },
+    particles = {
+        { path = "particles/units/heroes/hero_drow/drow_bowstring.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1067"] = { -- Oaths of the Dragonborn
+    attachments = {
+        "models/items/drow/vestment_of_the_dragonborn_maiden_head_01/vestment_of_the_dragonborn_maiden_head_01.vmdl",
+        "models/items/drow/vestment_of_the_dragonborn_maiden_wing_back_/vestment_of_the_dragonborn_maiden_wing_back_.vmdl",
+        "models/items/drow/vestment_of_the_dragonborn_maiden_legs/vestment_of_the_dragonborn_maiden_legs.vmdl",
+        "models/items/drow/vestment_of_the_dragonborn_maiden_quiver/vestment_of_the_dragonborn_maiden_quiver.vmdl",
+        "models/items/drow/vestment_of_the_dragonborn_maiden_bow/vestment_of_the_dragonborn_maiden_bow.vmdl",
+        "models/items/drow/vestment_of_the_dragonborn_maiden_shoulders/vestment_of_the_dragonborn_maiden_shoulders.vmdl",
+        "models/items/drow/vestment_of_the_dragonborn_maiden_arms/vestment_of_the_dragonborn_maiden_arms.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/drow/ti10_dragonborn/drow_dragonborn_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/units/heroes/hero_drow/drow_bowstring.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1068"] = { -- Sunken Snapper
+    attachments = {
+        "models/items/viper/mutant_nether_turtle_back/mutant_nether_turtle_back.vmdl",
+        "models/items/viper/mutant_nether_turtle_tail/mutant_nether_turtle_tail.vmdl",
+        "models/items/viper/mutant_nether_turtle_head/mutant_nether_turtle_head.vmdl",
+    },
+},
+
+["1069"] = { -- Toll of the Netherblight
+    attachments = {
+        "models/items/viper/symbiotic_dreadwyrm_tail/symbiotic_dreadwyrm_tail.vmdl",
+        "models/items/viper/symbiotic_dreadwyrm_head/symbiotic_dreadwyrm_head.vmdl",
+        "models/items/viper/symbiotic_dreadwyrm_back/symbiotic_dreadwyrm_back.vmdl",
+    },
+},
+
+["1070"] = { -- Secrets of the Frost Singularity
+    attachments = {
+        "models/items/ancient_apparition/frost_djin_arms/frost_djin_arms.vmdl",
+        "models/items/ancient_apparition/frost_djin_head/frost_djin_head.vmdl",
+        "models/items/ancient_apparition/frost_djin_shoulder/frost_djin_shoulder.vmdl",
+        "models/items/ancient_apparition/frost_djin_tail/frost_djin_tail.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/ancient_apparition/aa_frost_djin/aa_frost_djin_arms_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/ancient_apparition/aa_frost_djin/aa_frost_djin_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/ancient_apparition/aa_frost_djin/aa_frost_djin_tail_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1071"] = { -- Apocalypse Unbound
+    attachments = {
+        "models/items/ancient_apparition/extremely_cold_shackles_arms/extremely_cold_shackles_arms.vmdl",
+        "models/items/ancient_apparition/extremely_cold_shackles_head/extremely_cold_shackles_head.vmdl",
+        "models/items/ancient_apparition/extremely_cold_shackles_shoulder/extremely_cold_shackles_shoulder.vmdl",
+        "models/items/ancient_apparition/extremely_cold_shackles_tail/extremely_cold_shackles_tail.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/ancient_apparition/aa_cold_shackles/aa_cold_shackles_arms/aa_cold_shackles_arms.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/ancient_apparition/aa_cold_shackles/aa_cold_shackles_head/aa_cold_shackles_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/ancient_apparition/aa_cold_shackles/aa_cold_shackles_shoulder/aa_cold_shackles_shoulder.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/ancient_apparition/aa_cold_shackles/aa_cold_shackles_tail/aa_cold_shackles_tail.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1072"] = { -- Unchained Entropy
+    attachments = {
+        "models/items/ancient_apparition/unchained_entitys_facade/unchained_entitys_facade.vmdl",
+        "models/items/ancient_apparition/unchained_entitys_heart/unchained_entitys_heart.vmdl",
+        "models/items/ancient_apparition/unchained_entity_pauldrons/unchained_entity_pauldrons.vmdl",
+        "models/items/ancient_apparition/unchained_entity_claws/unchained_entity_claws.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/ancient_apparition/aa_2024_unchained_entitys/aa_2024_unchained_entitys_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1073"] = { -- Silent Wight
+    attachments = {
+        "models/items/ancient_apparition/mr_frostys_arms/mr_frostys_arms.vmdl",
+        "models/items/ancient_apparition/mr_frostys_evil_scarf/mr_frostys_evil_scarf.vmdl",
+        "models/items/ancient_apparition/mr_frostys_evil_hood/mr_frostys_evil_hood.vmdl",
+        "models/items/ancient_apparition/mr_frostys_tail/mr_frostys_tail.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/ancient_apparition/aa_frostivus/aa_frostivus_arms_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/ancient_apparition/aa_frostivus/aa_frostivus_scarf_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/ancient_apparition/aa_frostivus/aa_frostivus_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1074"] = { -- Flowersong Tempest
+    attachments = {
+        "models/items/windrunner/orchid_flowersong_weapon/orchid_flowersong_weapon.vmdl",
+        "models/items/windrunner/orchid_flowersong_shoulder/orchid_flowersong_shoulder.vmdl",
+        "models/items/windrunner/orchid_flowersong_offhand/orchid_flowersong_offhand.vmdl",
+        "models/items/windrunner/orchid_flowersong_head/orchid_flowersong_head.vmdl",
+        "models/items/windrunner/orchid_flowersong_headalt/orchid_flowersong_headalt.vmdl",
+        "models/items/windrunner/orchid_flowersong_back/orchid_flowersong_back.vmdl",
+    },
+    particles = {
+        { path = "particles/units/heroes/hero_windrunner/windrunner_bowstring.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+
+["1075"] = { -- Contessa's Creed
+    attachments = {
+        "models/items/vengefulspirit/dark_arts_countess_head/dark_arts_countess_head.vmdl",
+        "models/items/vengefulspirit/dark_arts_countess_shoulder/dark_arts_countess_shoulder.vmdl",
+        "models/items/vengefulspirit/dark_arts_countess_legs/dark_arts_countess_legs.vmdl",
+        "models/items/vengefulspirit/dark_arts_countess_weapon/dark_arts_countess_weapon.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/vengeful/vs_fall20_dark_arts/vs_fall20_dark_arts_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/vengeful/vs_fall20_dark_arts/vs_fall20_dark_arts_shoulder_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/vengeful/vs_fall20_dark_arts/vs_fall20_dark_arts_legs_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/vengeful/vs_fall20_dark_arts/vs_fall20_dark_arts_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1076"] = { -- Crownfall: The Resurrection of Shen
+    attachments = {
+        "models/items/vengefulspirit/vengeful_spirit_arcana/vengeful_spirit_arcana_legs_refit.vmdl",
+        "models/items/vengefulspirit/vengeful_spirit_arcana/vengeful_spirit_arcana_head_refit.vmdl",
+        "models/items/vengefulspirit/vengeful_spirit_arcana/vengeful_spirit_arcana_weapon.vmdl",
+        "models/items/vengefulspirit/vengeful_spirit_arcana/vengeful_spirit_arcana_shoulders.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/vengeful/vengeful_arcana/vengeful_arcana_ambient_head_crown.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/vengeful/vengeful_arcana/vengeful_arcana_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/vengeful/vengeful_arcana/vengeful_arcana_ambient_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/vengeful/vengeful_arcana/vengeful_arcana_ambient_v2_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/vengeful/vengeful_arcana/vengeful_arcana_ambient_wings_v3.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1077"] = { -- Murder of Souls
+    attachments = {
+        "models/items/nevermore/nevermores_shade_shoulder/nevermores_shade_shoulder.vmdl",
+        "models/items/nevermore/nevermores_shade_head/nevermores_shade_head.vmdl",
+        "models/items/nevermore/nevermores_shade_arms/nevermores_shade_arms.vmdl",
+    },
+    particles = {
+        { path = "particles/units/heroes/hero_nevermore/shadow_fiend_ambient_eyes.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1078"] = { -- Souls Tyrant
+    attachments = {
+        "models/items/nevermore/sf_souls_tyrant_shoulder/sf_souls_tyrant_shoulder.vmdl",
+        "models/items/nevermore/sf_souls_tyrant_arms/sf_souls_tyrant_arms.vmdl",
+        "models/items/nevermore/sf_souls_tyrant_head/sf_souls_tyrant_head.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/shadow_fiend/sf_souls_tyrant/sf_souls_tyrant_shoulder_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/shadow_fiend/sf_souls_tyrant/sf_souls_tyrant_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1079"] = { -- Twilight Effigy
+    attachments = {
+        "models/items/nevermore/harvest_effigy_arms/harvest_effigy_arms.vmdl",
+        "models/items/nevermore/harvest_effigy_head/harvest_effigy_head.vmdl",
+        "models/items/nevermore/harvest_effigy_shoulder/harvest_effigy_shoulder.vmdl",
+    },
+    particles = {
+        { path = "particles/units/heroes/hero_nevermore/shadow_fiend_ambient_eyes.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1080"] = { -- Soul Corpulence
+    attachments = {
+        "models/items/nevermore/sf_immortal_flame_arms/sf_immortal_flame_arms.vmdl",
+        "models/items/nevermore/sf_immortal_flame_head/sf_immortal_flame_head.vmdl",
+        "models/items/nevermore/sf_immortal_flame_shoulder/sf_immortal_flame_shoulder.vmdl",
+    },
+    particles = {
+        { path = "particles/units/heroes/hero_nevermore/shadow_fiend_ambient_eyes.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1081"] = { -- Steward of the Forbidden Chamber
+    attachments = {
+        "models/items/lanaya/ta_royal_squire_head/ta_royal_squire_head.vmdl",
+        "models/items/lanaya/ta_royal_squire_shoulder/ta_royal_squire_shoulder.vmdl",
+        "models/items/lanaya/ta_royal_squire_armor/ta_royal_squire_armor.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/templar_assassin/ta_ti10_royal_squire_head/ta_ti10_royal_squire_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/templar_assassin/ta_ti10_royal_squire_shoulder/ta_ti10_royal_squire_shoulder_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/templar_assassin/ta_ti10_royal_squire_armor/ta_ti10_royal_squire_armor_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1082"] = { -- Psionic Constrictor
+    attachments = {
+        "models/items/lanaya/armor_of_sting/armor_of_sting.vmdl",
+        "models/items/lanaya/snake_sting/snake_sting.vmdl",
+        "models/items/lanaya/hair_of_sting/hair_of_sting.vmdl",
+    },
+},
+
+["1083"] = { -- Darkblade Adept
+    attachments = {
+        "models/items/lanaya/templar_assasin_false_devotion_weapon/templar_assasin_false_devotion_weapon.vmdl",
+        "models/items/lanaya/templar_assasin_false_devotion_shoulder/templar_assasin_false_devotion_shoulder.vmdl",
+        "models/items/lanaya/templar_assasin_false_devotion_head/templar_assasin_false_devotion_head.vmdl",
+        "models/items/lanaya/templar_assasin_false_devotion_armor/templar_assasin_false_devotion_armor.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/templar_assassin/ta_2024_crownfall_cc/ta_cc_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/templar_assassin/ta_2024_crownfall_cc/ta_cc_shoulder_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/templar_assassin/ta_2024_crownfall_cc/ta_cc_shoulder_ambient_behind_glows.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1084"] = { -- Spirit of the Sacred Grove
+    attachments = {
+        "models/items/mirana/mirana_spirit_of_the_sacred_grove_arms/mirana_spirit_of_the_sacred_grove_arms.vmdl",
+        "models/items/mirana/mirana_spirit_of_the_sacred_grove_back/mirana_spirit_of_the_sacred_grove_back.vmdl",
+        "models/items/mirana/mirana_spirit_of_the_sacred_grove_head/mirana_spirit_of_the_sacred_grove_head.vmdl",
+        "models/items/mirana/mirana_spirit_of_the_sacred_grove_misc/mirana_spirit_of_the_sacred_grove_misc.vmdl",
+        "models/items/mirana/mirana_spirit_of_the_sacred_grove_mount/mirana_spirit_of_the_sacred_grove_mount.vmdl",
+        "models/items/mirana/mirana_spirit_of_the_sacred_grove_shoulder/mirana_spirit_of_the_sacred_grove_shoulder.vmdl",
+        "models/items/mirana/mirana_spirit_of_the_sacred_grove_weapon/mirana_spirit_of_the_sacred_grove_weapon.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/mirana/mirana_ti10_cache/mirana_ti10_cache_back_leaves.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/mirana/mirana_ti10_cache/mirana_ti10_cache_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/mirana/mirana_ti10_cache/mirana_ti10_cache_quiver.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/mirana/mirana_ti10_cache/mirana_ti10_cache_mount.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/mirana/mirana_ti10_cache/mirana_ti10_cache_shoulder.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/mirana/mirana_ti10_cache/mirana_ti10_cache_weapon.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1085"] = { -- Scorn of the Winged Sentinel
+    attachments = {
+        "models/items/luna/essence_of_the_dark_moon_shoulder/essence_of_the_dark_moon_shoulder.vmdl",
+        "models/items/luna/essence_of_the_dark_moon_weapon/essence_of_the_dark_moon_weapon.vmdl",
+        "models/items/luna/essence_of_the_dark_moon_head/essence_of_the_dark_moon_head.vmdl",
+        "models/items/luna/essence_of_the_dark_moon_mount/essence_of_the_dark_moon_mount.vmdl",
+        "models/items/luna/essence_of_the_dark_moon_off_hand/essence_of_the_dark_moon_off_hand.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/luna/luna_fall20/luna_fall20_shoulders.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/luna_fall20/luna_fall20_weapon.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/luna_fall20/luna_fall20_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/luna_fall20/luna_fall20_mount.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/luna_fall20/luna_fall20_off_hand.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1086"] = { -- Seeker of the Crescent Wheel
+    attachments = {
+        "models/items/luna/sets_servant_head/sets_servant_head.vmdl",
+        "models/items/luna/sets_servant_mount/sets_servant_mount.vmdl",
+        "models/items/luna/sets_servant_shoulder/sets_servant_shoulder.vmdl",
+        "models/items/luna/sets_servant_off_hand/sets_servant_off_hand.vmdl",
+        "models/items/luna/sets_servant_weapon/sets_servant_weapon.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/luna/luna_sets_servant/luna_sets_servant_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/luna_sets_servant/luna_sets_servant_mount_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/luna_sets_servant/luna_sets_servant_off_hand_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/luna_sets_servant/luna_sets_servant_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1087"] = { -- Bloodmoon Stalker
+    attachments = {
+        "models/items/luna/servant_of_the_blood_moon_mount/servant_of_the_blood_moon_mount.vmdl",
+        "models/items/luna/servant_of_the_blood_moon_shoulders/servant_of_the_blood_moon_shoulders.vmdl",
+        "models/items/luna/servant_of_the_blood_moon_offhand/servant_of_the_blood_moon_offhand.vmdl",
+        "models/items/luna/servant_of_the_blood_moon_head/servant_of_the_blood_moon_head.vmdl",
+        "models/items/luna/servant_of_the_blood_moon_crescent_glaive/servant_of_the_blood_moon_crescent_glaive.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/luna/servant_blood/servant_blood_mount_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/luna/servant_blood/servant_blood_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1088"] = { -- Madness of the Amaranth Orb
+    attachments = {
+        "models/items/luna/scourge_of_the_sacred_grove_head/scourge_of_the_sacred_grove_head.vmdl",
+        "models/items/luna/scourge_of_the_sacred_grove_shoulder/scourge_of_the_sacred_grove_shoulder.vmdl",
+        "models/items/luna/scourge_of_the_sacred_grove_mount/scourge_of_the_sacred_grove_mount.vmdl",
+        "models/items/luna/scourge_of_the_sacred_grove_off_hand/scourge_of_the_sacred_grove_off_hand.vmdl",
+        "models/items/luna/scourge_of_the_sacred_grove_weapon/scourge_of_the_sacred_grove_weapon.vmdl",
+    },
+},
+
+
+["1089"] = { -- Havoc of the Hydra's Scorn
+    attachments = {
+        "models/items/medusa/medusa_gorgona_weapon/medusa_gorgona_weapon.vmdl",
+        "models/items/medusa/medusa_gorgona_tail/medusa_gorgona_tail.vmdl",
+        "models/items/medusa/medusa_gorgona_arms/medusa_gorgona_arms.vmdl",
+        "models/items/medusa/medusa_gorgona_armor/medusa_gorgona_armor.vmdl",
+        "models/items/medusa/medusa_gorgona_head/medusa_gorgona_head.vmdl",
+    },
+},
+
+["1090"] = { -- Convalescing Empress
+    attachments = {
+        "models/items/medusa/medusa_the_goddess_nuwa_arms/medusa_the_goddess_nuwa_arms.vmdl",
+        "models/items/medusa/medusa_the_goddess_nuwa_tail/medusa_the_goddess_nuwa_tail.vmdl",
+        "models/items/medusa/medusa_the_goddess_nuwa_armor/medusa_the_goddess_nuwa_armor.vmdl",
+        "models/items/medusa/medusa_the_goddess_nuwa_head/medusa_the_goddess_nuwa_head.vmdl",
+        "models/items/medusa/medusa_the_goddess_nuwa_weapon/medusa_the_goddess_nuwa_weapon.vmdl",
+    },
+},
+
+["1091"] = { -- Death Adder
+    attachments = {
+        "models/items/medusa/medusa_calavera/medusa_calavera_bow.vmdl",
+        "models/items/medusa/medusa_calavera/medusa_calavera_tail.vmdl",
+        "models/items/medusa/medusa_calavera/medusa_calavera_arm.vmdl",
+        "models/items/medusa/medusa_calavera/medusa_calavera_shoulders.vmdl",
+        "models/items/medusa/medusa_calavera/medusa_calavera_head.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/medusa/medusa_calavera/medusa_calavera_ambient_weapon.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/medusa/medusa_calavera/medusa_calavera_ambient_shoulder.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/medusa/medusa_calavera/medusa_calavera_ambient_head.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1092"] = { -- Tomo'kan Footsoldier
+    attachments = {
+        "models/items/hoodwink/hoodwink_tribal_elves_weapon/hoodwink_tribal_elves_weapon.vmdl",
+        "models/items/hoodwink/hoodwink_tribal_elves_tail/hoodwink_tribal_elves_tail.vmdl",
+        "models/items/hoodwink/hoodwink_tribal_elves_back/hoodwink_tribal_elves_back.vmdl",
+        "models/items/hoodwink/hoodwink_tribal_elves_armor/hoodwink_tribal_elves_armor.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/hoodwink/hoodwink_2023_cc/hoodwink_2023_cc_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/hoodwink/hoodwink_2023_cc/hoodwink_2023_cc_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1093"] = { -- Shadowleaf Insurgent
+    attachments = {
+        "models/items/hoodwink/hoodwink_shadow_ronin_weapon/hoodwink_shadow_ronin_weapon.vmdl",
+        "models/items/hoodwink/hoodwink_shadow_ronin_tail/hoodwink_shadow_ronin_tail.vmdl",
+        "models/items/hoodwink/hoodwink_shadow_ronin_back/hoodwink_shadow_ronin_back.vmdl",
+        "models/items/hoodwink/hoodwink_shadow_ronin_armor/hoodwink_shadow_ronin_armor.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/hoodwink/hoodwink_2022_ronin_weapon/hoodwink_2022_ronin_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/hoodwink/hoodwink_2022_ronin_back/hoodwink_2022_ronin_back_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1094"] = { -- Bilge Rat Buccaneer
+    attachments = {
+        "models/items/hoodwink/captain_squyarrrl_armor/captain_squyarrrl_armor.vmdl",
+        "models/items/hoodwink/captain_squyarrrl_back/captain_squyarrrl_back.vmdl",
+        "models/items/hoodwink/captain_squyarrrl_tail/captain_squyarrrl_tail.vmdl",
+        "models/items/hoodwink/captain_squyarrrl_weapon/captain_squyarrrl_weapon.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/hoodwink/captain_squyarrrl/captain_squyarrrl_weapon_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1095"] = { -- Withering Pain
+    attachments = {
+        "models/items/clinkz/clinkz_the_faith_of_avengers_back/clinkz_the_faith_of_avengers_back.vmdl",
+        "models/items/clinkz/clinkz_the_faith_of_avengers_gloves/clinkz_the_faith_of_avengers_gloves.vmdl",
+        "models/items/clinkz/clinkz_the_faith_of_avengers_head/clinkz_the_faith_of_avengers_head.vmdl",
+        "models/items/clinkz/clinkz_the_faith_of_avengers_shoulder/clinkz_the_faith_of_avengers_shoulder.vmdl",
+        "models/items/clinkz/clinkz_the_faith_of_avengers_weapon/clinkz_the_faith_of_avengers_weapon.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/clinkz/clinkz_the_faith_of_the_avengers/clinkz_the_faith_of_the_avengers_back_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/clinkz/clinkz_the_faith_of_the_avengers/clinkz_the_faith_of_the_avengers_helmet_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/clinkz/clinkz_the_faith_of_the_avengers/clinkz_the_faith_of_the_avengers_bow_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1096"] = { -- Urushin Huntsman
+    attachments = {
+        "models/items/clinkz/ti6_clinkz_weapon/ti6_clinkz_weapon.vmdl",
+        "models/items/clinkz/ti6_clinkz_gloves/ti6_clinkz_gloves.vmdl",
+        "models/items/clinkz/ti6_clinkz_head/ti6_clinkz_head.vmdl",
+        "models/items/clinkz/ti6_clinkz_back/ti6_clinkz_back.vmdl",
+        "models/items/clinkz/ti6_clinkz_shoulder/ti6_clinkz_shoulder.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/clinkz/ti6_quest/clinkz_ti6_quest_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1097"] = { -- Evolution of the Infinite
+    attachments = {
+        "models/items/enigma/enigma_seer_of_infinity_space_arms/enigma_seer_of_infinity_space_arms.vmdl",
+        "models/items/enigma/enigma_seer_of_infinity_space_armor/enigma_seer_of_infinity_space_armor.vmdl",
+        "models/items/enigma/enigma_seer_of_infinity_space_head/enigma_seer_of_infinity_space_head.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/enigma/ti10_seer_of_infinity_elbows/ti10_seer_of_infinity_elbows.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/enigma/ti10_seer_of_infinity_armor/ti10_enigma_seer_of_infinity_armor.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+["1098"] = { -- The Arts of Mortal Deception
+    attachments = {
+        "models/items/enigma/ti9_cache_enigma_lord_of_luminaries_armor/ti9_cache_enigma_lord_of_luminaries_armor.vmdl",
+        "models/items/enigma/ti9_cache_enigma_lord_of_luminaries_arms/ti9_cache_enigma_lord_of_luminaries_arms.vmdl",
+        "models/items/enigma/ti9_cache_enigma_lord_of_luminaries_head/ti9_cache_enigma_lord_of_luminaries_head.vmdl",
+    },
+    particles = {
+        { path = "particles/econ/items/enigma/ti9_cache_enigma_lord_armor/ti9_cache_enigma_lord_armor_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+        { path = "particles/econ/items/enigma/ti9_cache_enigma_lord_head/ti9_cache_enigma_lord_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
+    },
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 Wearables.wispSkinConfig = {}
