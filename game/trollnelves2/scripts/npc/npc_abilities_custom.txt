@@ -8839,7 +8839,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"32"//"20"
+		"AbilityChannelTime"		"24"//"20"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -8997,7 +8997,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"48"
+		"AbilityChannelTime"		"32"
 		"OnSpellStart"{
 			"RunScript"
 			{

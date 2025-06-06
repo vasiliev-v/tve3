@@ -534,6 +534,8 @@
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/tower_19.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/tower_flag_1.png" />
 
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/sounds.png" /> 
+
 	    
     </Panel>
 </root>

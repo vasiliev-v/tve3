@@ -421,7 +421,7 @@ if GameRules.MapSpeed ~= 4 then
             }, 
             {
                 {1,2,3},
-                {400,400,400},
+                {"400%","400%","400%"},
                 {5,10,15},
                 {150,100,60},
             },
@@ -992,7 +992,7 @@ else -- X4
                 "elf_spell_target_buff_description_level_1_shop_x4", 
                 "elf_spell_target_buff_description_level_2_shop_x4", 
                 "elf_spell_target_buff_description_level_3_shop_x4", 
-                "elf_spell_target_buff_description_level_3_shop_x4", 
+                "elf_spell_target_buff_description_level_4_shop_x4", 
             }, 
             {
                 {5, 10, 20},
@@ -1162,7 +1162,7 @@ else -- X4
             }, 
             {
                 {1,2,3},
-                {400,400,400},
+                {"400%","400%","400%"},
                 {5,10,15},
                 {150,100,60},
             },

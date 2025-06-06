@@ -978,11 +978,11 @@ function Activate()
 	GameRules.damageTake = {}
 	GameRules.deathTime = {}
 	GameRules.scores = {}
-	GameRules.rep = {}
+	GameRules.Rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetGem = {} 
 	GameRules.isTesting = true
-	GameRules.server =  "https://localhost:7133/test/"  -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
+	GameRules.server =  "https://tve4.eu/test/"  -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
 	GameRules.types = {}
@@ -1056,8 +1056,7 @@ function Activate()
 	GameRules.PoolTable[11][0] = {} -- реп
 	GameRules.PoolTable[12][0] = {} -- перк
 	GameRules.PoolTable[12][0][0] = {} -- перк
-	GameRules.PoolTable[14][0] = {} -- полученные предметы в БП 
-	
+	GameRules.PoolTable[14][0] = {} -- полученные предметы в БП   
 	GameRules.SkinTower = {}
     GameRules.SaveDefItem = {}
 

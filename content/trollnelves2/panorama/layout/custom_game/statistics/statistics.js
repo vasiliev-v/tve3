@@ -243,11 +243,15 @@ function UpdateAchivements()
 {
     $("#PanelAchivement").RemoveAndDeleteChildren()
     let player_has_alp = {}
-    player_achivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[17]
+    player_achivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[17] || {};
 
+    if (!player_achivements || Object.keys(player_achivements).length === 0) {
+        return;
+    } 
+    $.Msg(player_achivements)
     for (var achivement_id in player_achivements)
     {
-        player_has_alp[achivement_id] = true
+        player_has_alp[achivement_id] = true 
         CreateAchivementPanel(achivement_id, true)
     }
     for (tbl_id in DATA_ACHIVEMENTS_LIST)

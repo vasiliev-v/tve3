@@ -27,7 +27,7 @@ function VotekickStart(eventSourceIndex, event)
 		if ctrHeroID:IsAngel() then
 			return 
 		end 
-		if tonumber(GameRules.GetRep[event.target]) > -50 or tonumber(GameRules.GetRep[event.PlayerID]) <= 0  then
+		if tonumber(GameRules.Rep[event.target]) > -50 or tonumber(GameRules.Rep[event.PlayerID]) <= 0  then
 			SendErrorMessage(event.PlayerID, "error_not_kick_normal")
         	return 
 		end
@@ -153,8 +153,8 @@ function VoteKick(eventSourceIndex, event)
 		votes[ event.playerID1 ] = votes[ event.playerID1 ] + 3
 	end
 	local disKick = 0
-	if tonumber(GameRules.GetRep[event.playerID1]) <= -50 then
-		disKick = math.floor(tonumber(GameRules.GetRep[event.playerID1])/50) * 0.1
+	if tonumber(GameRules.Rep[event.playerID1]) <= -50 then
+		disKick = math.floor(tonumber(GameRules.Rep[event.playerID1])/50) * 0.1
 	end
 	if event.vote == 1 then
 		local text = "Vote: " .. votes[ event.playerID1 ] .. "; Count Player: " .. countVote[event.playerID1] .. "; Percent: " .. votes[ event.playerID1 ]/countVote[event.playerID1] .. "; Need perc.: " .. PERC_KICK_PLAYER + disKick .. "; Min player: 6" 

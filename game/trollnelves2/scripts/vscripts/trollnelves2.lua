@@ -188,7 +188,7 @@ function SetRoles()
         if PlayerResource:IsValidPlayerID(pID)  then
             table.insert(allPlayersIDs, pID)
             local playerSelection = GameRules.playerTeamChoices[pID]
-            local pointScore = tonumber(GameRules.scores[pID].elf or 0) + tonumber(GameRules.scores[pID].troll or 0)
+            local repScore = tonumber(GameRules.Rep[pID] or 0) 
             local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))["2"]["0"]
             local party_id = tonumber(tostring(PlayerResource:GetPartyID(pID)))
             local partyGame = false 
@@ -197,7 +197,7 @@ function SetRoles()
             else 
                 DebugPrint("party" .. pID .. "party_id        " ..  party_id)
                 local pary_chance = RandomInt(0, 100)
-                if pary_chance > 25 then
+                if pary_chance > 10 then
                     partyGame = false 
                 end
             end
@@ -205,7 +205,7 @@ function SetRoles()
             DebugPrint("party2 " .. pID .. "party_id2 " ..  party_id)
 
             if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
-                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (pointScore > 1 or PoolTable ~= "0") and not partyGame then
+                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (repScore > 1 or PoolTable ~= "0") and not partyGame then
                     table.insert(wannabeTrollIDs, pID)
                 elseif GameRules.PlayersCount < MIN_RATING_PLAYER or GameRules:IsCheatMode() then
                     table.insert(wannabeTrollIDs, pID)

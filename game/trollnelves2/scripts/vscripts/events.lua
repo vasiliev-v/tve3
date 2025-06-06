@@ -702,19 +702,19 @@ function ElfKilled(killed)
     if GameRules.Bonus[killedID] == nil then
         GameRules.Bonus[killedID] = 0
     end
-    if GameRules.rep[killedID] == nil then
-        GameRules.rep[killedID] = 0
+    if GameRules.GetRep[killedID] == nil then
+        GameRules.GetRep[killedID] = 0
     end
     
     if GameRules:GetGameTime() - GameRules.startTime < 300 then
         GameRules.Bonus[killedID] = GameRules.Bonus[killedID] - 150/GameRules.MapSpeed
-        GameRules.rep[killedID] = GameRules.rep[killedID] - 8/GameRules.MapSpeed
+        GameRules.GetRep[killedID] = GameRules.GetRep[killedID] - 8/GameRules.MapSpeed
     elseif GameRules:GetGameTime() - GameRules.startTime >= 300 and GameRules:GetGameTime() - GameRules.startTime <  600 then -- 5-10 min
         GameRules.Bonus[killedID] = GameRules.Bonus[killedID] - 80/GameRules.MapSpeed
-        GameRules.rep[killedID] = GameRules.rep[killedID] - 4/GameRules.MapSpeed
+        GameRules.GetRep[killedID] = GameRules.GetRep[killedID] - 4/GameRules.MapSpeed
     elseif GameRules:GetGameTime() - GameRules.startTime >= 600 and GameRules:GetGameTime() - GameRules.startTime < 1200 then -- 10-19min
         GameRules.Bonus[killedID] = GameRules.Bonus[killedID] - 20/GameRules.MapSpeed 
-        GameRules.rep[killedID] = GameRules.rep[killedID] - 1
+        GameRules.GetRep[killedID] = GameRules.GetRep[killedID] - 1
     elseif GameRules:GetGameTime() - GameRules.startTime >= 1200 and GameRules:GetGameTime() - GameRules.startTime <  1500 then -- 20-25 min
         GameRules.Bonus[killedID] = GameRules.Bonus[killedID] + 2	
     elseif GameRules:GetGameTime() - GameRules.startTime >= 1500 and GameRules:GetGameTime() - GameRules.startTime <  2400 then -- 25-40 min
@@ -932,8 +932,10 @@ function ChooseHelpSide(eventSourceIndex, event)
     end)
     hero:SetTimeUntilRespawn(timer)
     Timers:CreateTimer(timer, function()
-        PlayerResource:ReplaceHeroWith(playerID, newHeroName, 0, 0)
         UTIL_Remove(hero)
+        DebugPrint(newHeroName)
+        PlayerResource:ReplaceHeroWith(playerID, newHeroName, 0, 0)
+
         hero = PlayerResource:GetSelectedHeroEntity(playerID)
         PlayerResource:SetCustomTeamAssignment(playerID, team) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
         FindClearSpaceForUnit(hero, pos, true)

@@ -1231,6 +1231,7 @@ function Shop.RequestAchivements(obj, pID, steam, callback)
 
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	DebugPrint("RequestAchivements")
+
 	--DebugPrintTable(obj)
 	for id=1,#obj do
 		PoolTable["17"][tostring(obj[id].num)] = tostring(obj[id].count)

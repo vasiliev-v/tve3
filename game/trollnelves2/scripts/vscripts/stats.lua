@@ -5,6 +5,7 @@ local checkResult = {}
 local countCheckShop = 0 
 
 function Stats.SubmitMatchData(winner,callback)
+	local status, nextCall = Error_debug.ErrorCheck(function() 
 	if GameRules.startTime == nil then
 		GameRules.startTime = 1
 	end
@@ -31,8 +32,12 @@ function Stats.SubmitMatchData(winner,callback)
 
 			end
 
-			if GameRules.rep[pID] == nil then
-				GameRules.rep[pID] = 0
+			if GameRules.GetRep[pID] == nil then
+        		GameRules.GetRep[pID] = 0
+    		end
+
+			if GameRules.Rep[pID] == nil then
+				GameRules.Rep[pID] = 0
 			end
 			--DebugPrint("pID " .. pID )
 			if GameRules.Bonus[pID] == nil then
@@ -97,11 +102,12 @@ function Stats.SubmitMatchData(winner,callback)
 				data.Kill = tostring(PlayerResource:GetKills(pID) or 0)
 				-- 
 				data.PartyId = tostring(PlayerResource:GetPartyID(pID) or 0)
-				data.Color = tostring(PLAYER_COLORS[pID] or 0)
+				data.Color = tostring(pID)
 				data.DamageGiven = tostring(PlayerResource:GetDamageGiven(pID) or 0)
 				data.DamageTake = tostring(PlayerResource:GetDamageTake(pID) or 0)
 				data.DeathTime = tostring(GameRules.deathTime[pID] or 0)
 
+				
 				if PlayerResource:GetConnectionState(pID) ~= 2 then
 					data.Death = tostring(PlayerResource:GetDeaths(pID) + 1 or 0)
 				else
@@ -195,35 +201,39 @@ function Stats.SubmitMatchData(winner,callback)
 			--	local text = tostring(PlayerResource:GetPlayerName(pID)) .. " got " .. data.Score
 				GameRules.Score[pID] = data.Score
 			--	GameRules:SendCustomMessage(text, 1, 1)
-				if GameRules.GetRep[pID] ~= nil then
-					if tonumber(GameRules.GetRep[pID]) >= 10000 then
-						data.Rep = 0 
-					elseif tonumber(GameRules.GetRep[pID]) + data.Rep > 10000  then
-						data.Rep = 10000 - tonumber(GameRules.GetRep[pID])
-					end
-				end
+
 				if tonumber(data.Score) > 10 or tonumber(data.Score) < 0 then
-					data.Rep = tostring(data.Rep)
+					data.Rep = tostring(data.Rep) + GameRules.GetRep[pID]
 				else
 					data.Rep = tostring(0)
 				end
 
+				if GameRules.Rep[pID] ~= nil then
+					if tonumber(GameRules.Rep[pID]) >= 10000 then
+						data.Rep = 0 
+					elseif tonumber(GameRules.Rep[pID]) + data.Rep > 10000  then
+						data.Rep = 10000 - tonumber(GameRules.Rep[pID])
+					end
+				end
+				data.Rep = tostring(data.Rep)
 				if data.Gem > 0 then
 					data.EndGame = 1
 					data.Gem = math.floor(data.Gem * GameRules.BonusGem[pID])
 					GameRules.GetGem[pID] = data.Gem
 				end
-				--local status, nextCall = Error_debug.ErrorCheck(function() 
+				if data.SteamID ~= "0" then
 					Shop.CheckDayQuest(pID)
-				--end)
-				Stats.SendData(data,callback)
+					Stats.SendData(data,callback)
+				end
+				
 			end 
 		end
 	end
-	::continue::
 	Timers:CreateTimer(10, function() 
 		GameRules:SetGameWinner(winner)
 		SetResourceValues()
+	end)
+	::continue::
 	end)
 end
 
@@ -295,9 +305,7 @@ function Stats.RequestData(obj, pId, callback)
 --	Timers:CreateTimer(TEAM_CHOICE_TIME+10, function()
 --	GameRules:SendCustomMessage("<font color='#00FF80'>" ..  message ..  "</font>", pId, 0)
 --	end)
-	if GameRules.scores[pId].elf + GameRules.scores[pId].troll <= -7000 then
-		GameRules.FakeList[pId] = 1
-	end
+
 	CustomNetTables:SetTableValue("Shop", tostring(pId), PoolTable)
 	CustomNetTables:SetTableValue("scorestats", tostring(pId), { playerScoreElf = tostring(GameRules.scores[pId].elf), playerScoreTroll = tostring(GameRules.scores[pId].troll) })
 	return obj
@@ -306,7 +314,7 @@ end
 function Stats.RequestRep(obj, pId, callback)
 	--DebugPrint("***********RequestRep*************************")
 	
-	GameRules.rep[pId] = 0
+	GameRules.Rep[pId] = 0
 	GameRules.GetRep[pId] = 0
 	--DebugPrintTable(obj)
 	local nick = tostring(PlayerResource:GetPlayerName(pId))
@@ -316,8 +324,11 @@ function Stats.RequestRep(obj, pId, callback)
 		if obj[1].gold ~= nil and #obj == 1 then
 			PoolTable["10"]["0"] = obj[1].gold 
 			--DebugPrint("obj[1].gold " .. obj[1].gold )
-			GameRules.GetRep[pId] = obj[1].gold 
+			GameRules.Rep[pId] = obj[1].gold 
 		end
+	end
+	if tonumber(GameRules.Rep[pId]) <= -500 then
+		GameRules.FakeList[pId] = 1
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pId), PoolTable)
 	return obj
@@ -371,8 +382,6 @@ end
 function Stats.RequestRating(obj, pId, callback)
 	-- DebugPrint("***********RequestRating*************************")
 	
-	GameRules.rep[pId] = 0
-	GameRules.GetRep[pId] = 0
 	--DebugPrintTable(obj)
 	local nick = tostring(PlayerResource:GetPlayerName(pId))
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pId))

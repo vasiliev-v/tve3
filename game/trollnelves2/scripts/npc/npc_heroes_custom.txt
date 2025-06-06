@@ -318,18 +318,6 @@
 
 		"VisionDaytimeRange"    "1200"                  // Range of vision at night time.
 		"VisionNighttimeRange"    "1600"                  // Range of vision at night time.
-		"DisableWearables"               "0"		
-		"Creature"
-	    {
-	        "AttachWearables" // Arsenal of the Demonic Vessel
-	        {
-	            "1" { "ItemDef" "6412" } // Клинок Blade of the Demonic Vessel
-	            "2" { "ItemDef" "6408" } // Плащ Cloak of the Demonic Vessel
-	            "3" { "ItemDef" "6409" } // Голова Hood of the Demonic Vessel
-	            "4" { "ItemDef" "6411" } // Плечи Prey of the Demonic Vessel
-				"5"	{ "ItemDef" "6410" } // Конь Warhorse of the Demonic Vessel
-	        }
-	    }
 		"DisableClumpingBehavior"  "1" 	//Отключает слипание при попадании в чужую модельку
 		"Facets"
 		{
@@ -338,12 +326,12 @@
 
 
 	}
-	"npc_dota_hero_crystal_maiden_custom" //"npc_dota_hero_enigma "
+	"npc_dota_hero_crystal_maiden" //"npc_dota_hero_enigma "
 	{
 		"override_hero"     "npc_dota_hero_crystal_maiden" //"npc_dota_hero_enigma "
 		"SoundSet"			"Hero_Crystal_Maiden" //"Hero_Enigma "
 		"Model"				"models/heroes/crystal_maiden/crystal_maiden.vmdl"//"models/heroes/enigma/enigma.vmdl"
-		"AbilityLayout"     "4"
+		"AbilityLayout"     "16"
 		"Ability1" 			""
 		"Ability2" 			"cm_haste"
 		"Ability3" 			"steal_gold"
@@ -360,9 +348,7 @@
 		"Ability14"   	    "plus_high_five" //пятюня тест
 		"Ability15"   	    "attribute_antibonuses"
 		"Ability16"   	    "antiblock"
-		"Facets"
-		{
-		}
+
 
 		"ArmorPhysical"       "0"                 // Physical protection.
 		"MagicalResistance"       "0"                 // Magical protection (percentage).
@@ -400,6 +386,13 @@
 		"VisionDaytimeRange"    "1400"    //1800              // Range of vision at night time.
 		"VisionNighttimeRange"    "1200"   //1800               // Range of vision at night time.
 		"DisableClumpingBehavior"  "1" 	//Отключает слипание при попадании в чужую модельку
+		"DisableWearables"               "0"	
+		"Facets"
+		{
+			
+		}
+
+
 
 	}
 
