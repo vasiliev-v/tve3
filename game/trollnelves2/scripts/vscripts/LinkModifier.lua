@@ -45,6 +45,7 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_spell_test_5", "modifiers/modifier_spell_test_5", LUA_MODIFIER_MOTION_NONE )
 
 	-- X1
+	LinkLuaModifier("modifier_elf_spell_solo_player", "modifiers/modifier_elf_spell_solo_player", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_troll_spell_ms", "modifiers/modifier_troll_spell_ms", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_troll_spell_gold_hit", "modifiers/modifier_troll_spell_gold_hit", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_troll_spell_hp_reg", "modifiers/modifier_troll_spell_hp_reg", LUA_MODIFIER_MOTION_NONE )
@@ -100,6 +101,7 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_reveal", "modifiers/modifier_elf_spell_reveal", LUA_MODIFIER_MOTION_NONE )	
 
 	-- X4
+	LinkLuaModifier("modifier_elf_spell_solo_player_x4", "modifiers/modifier_elf_spell_solo_player_x4", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_ms_x4", "modifiers/modifier_troll_spell_ms_x4", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_troll_spell_gold_hit_x4", "modifiers/modifier_troll_spell_gold_hit_x4", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_troll_spell_hp_reg_x4", "modifiers/modifier_troll_spell_hp_reg_x4", LUA_MODIFIER_MOTION_NONE )

@@ -1,247 +1,262 @@
 var favourites = new Array();
 var nowrings = 8;
-var rings = new Array(
-    new Array(//0 start
-        new Array("#favourites","#BirzhaPass_sound_1","#BirzhaPass_sound_2","#BirzhaPass_sound_3","#BirzhaPass_next_wheel","#BirzhaPass_sprays_3","#BirzhaPass_sprays_2","#BirzhaPass_sprays_1"),
-        new Array(false,false,false,false,false,false,false,false),
-        new Array(7,1,2,3,8,6,5,4)
-    ),
-
-    new Array(//1 Sound list 1 RUS
-        new Array("#sounds_1","#sounds_2","#sounds_3","#sounds_4","#sounds_5","#sounds_6","#sounds_7","#sounds_8"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(801,802,803,804,805,806,807,808)
-    ),
-    new Array(//2 Sound list 2 ENG
-        new Array("#sounds_9","#sounds_10","#sounds_11","#sounds_12", "#sounds_13","#sounds_14","#sounds_15","#sounds_16"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(809,810,811,812,813,814,815,816)
-    ),
-    new Array(//3 Sound list 3 RUS
-        new Array("#sounds_17","#sounds_18","#sounds_19","#sounds_20","#sounds_21","#sounds_22","#sounds_23","#sounds_24"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(817,818,819,820,821,822,823,824)
-    ),
-
-    new Array(//4 Sprays list 1
-        new Array("#spray_1","#spray_2","#spray_3","#spray_4","#spray_5","#spray_6","#spray_7","#spray_8"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(701,702,703,704,705,706,707,708)
-    ),
-    new Array(//5 Sprays list 2
-        new Array("#spray_9","#spray_10","#spray_11","#spray_12","#spray_13","#spray_14","#spray_15","#spray_16"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(709,710,711,712,713,714,715,716)
-    ),
-    new Array(//6 Sprays list 3
-        new Array("#spray_17","#spray_18","#spray_19","#spray_20","#spray_21","#spray_22","#spray_23","#spray_24"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(717,718,719,720,721,722,723,724)
-    ),
-    
-
-    new Array(//7 Favourites
-        new Array("#favoriteWhat","","","","","","",""),
-        new Array(false,false,false,false,false,false,false,false),
-        new Array(0,0,0,0,0,0,0,0)
-    ),
-
-    new Array(//8 New Wheel
-        new Array("#BirzhaPass_sound_4","#BirzhaPass_sound_5","#BirzhaPass_sound_6","#BirzhaPass_sound_7","Back","#BirzhaPass_sound_8","#BirzhaPass_sound_9","#BirzhaPass_sound_10"),
-        new Array(false,false,false,false,false,false,false,false),
-        new Array(9,10,12,13,0,14,15,16)
-    ),
-    
-    
-    new Array(//9 Sound list 4 
-        new Array("#sounds_25","#sounds_26","#sounds_27","#sounds_28","#sounds_33","#sounds_34","#sounds_36", "#sounds_38"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(825,826,827,828,833,834,836,838)
-    ),
-    new Array(//10 Sound list 5
-        new Array("#sounds_43","#sounds_44","#sounds_45","#sounds_46","#sounds_47","#sounds_48","#sounds_49","#sounds_50"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(843,844,845,846,847,848,849,850)
-    ),
-    new Array(//11
-        new Array("","","","","","","",""),
-        new Array(false,false,false,false,false,false,false,false),
-        new Array(0,0,0,0,0,0,0,0)
-    ),
-    new Array(//12 Sound list 5
-        new Array("#sounds_51","#sounds_52","#sounds_53","#sounds_54","#sounds_55","#sounds_56","#sounds_57","#sounds_58"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(851,852,853,854,855,856,857,858) 
-    ),
-    new Array(//13 Sound list 5
-        new Array("#sounds_59","#sounds_60","#sounds_61","#sounds_62","#sounds_63","#sounds_64","#sounds_65","#sounds_66"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(859,860,861,862,863,864,865,866) 
-    ),
-    new Array(//14 Sound list 5
-        new Array("#sounds_67","#sounds_68","#sounds_69","#sounds_70","#sounds_71","#sounds_72","#sounds_73","#sounds_74"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(867,868,869,870,871,872,873,874) 
-    ),
-    new Array(//15 Sound list 5
-        new Array("#sounds_75","#sounds_76","#sounds_77","#sounds_78","#sounds_79","#sounds_80","#sounds_81","#sounds_82"),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(875,876,877,878,879,880,881,882) 
-    ),
-    new Array(//16 Sound list 5
-        new Array("#sounds_83","#sounds_84","#sounds_85","#sounds_86","#sounds_87","","",""),
-        new Array(true,true,true,true,true,true,true,true),
-        new Array(883,884,885,886,887,0,0,0) 
-    ),
-    
-);
+var selected_sound_current = undefined;
 var nowselect = 0;
+var default_button = null
 
-function StartWheel() {
+let Items_sounds = 
+[
+    [801, "sounds_1"],
+    [802, "sounds_2"],
+    [803, "sounds_3"],
+    [804, "sounds_4"],
+    [805, "sounds_5"],
+    [806, "sounds_6"],
+    [807, "sounds_7"],
+    [808, "sounds_8"],
+    [809, "sounds_9"],
+    [810, "sounds_10"],
+    [811, "sounds_11"],
+    [812, "sounds_12"],
+    [813, "sounds_13"],
+    [814, "sounds_14"],
+    [815, "sounds_15"],
+    [816, "sounds_16"],
+    [817, "sounds_17"],
+    [818, "sounds_18"],
+    [819, "sounds_19"],
+    [820, "sounds_20"],
+    [821, "sounds_21"],
+    [822, "sounds_22"],
+    [823, "sounds_23"],
+    [824, "sounds_24"],
+    [825, "sounds_25"],
+    [826, "sounds_26"],
+    [827, "sounds_27"],
+    [828, "sounds_28"],
+    [833, "sounds_33"],
+    [834, "sounds_34"],
+    [836, "sounds_36"],
+    [838, "sounds_38"],
+    [843, "sounds_43"],
+    [844, "sounds_44"],
+    [845, "sounds_45"],
+    [846, "sounds_46"],
+    [847, "sounds_47"],
+    [848, "sounds_48"],
+    [849, "sounds_49"],
+    [850, "sounds_50"],
+    [851, "sounds_51"],
+    [852, "sounds_52"],
+    [853, "sounds_53"],
+    [854, "sounds_54"],
+    [855, "sounds_55"],
+    [856, "sounds_56"],
+    [857, "sounds_57"],
+    [858, "sounds_58"],
+    [859, "sounds_59"],
+    [860, "sounds_60"],
+    [861, "sounds_61"],
+    [862, "sounds_62"],
+    [863, "sounds_63"],
+    [864, "sounds_64"],
+    [865, "sounds_65"],
+    [866, "sounds_66"],
+    [867, "sounds_67"],
+    [868, "sounds_68"],
+    [869, "sounds_69"],
+    [870, "sounds_70"],
+    [871, "sounds_71"],
+    [872, "sounds_72"],
+    [873, "sounds_73"],
+    [874, "sounds_74"],
+    [875, "sounds_75"],
+    [876, "sounds_76"],
+    [877, "sounds_77"],
+    [878, "sounds_78"],
+    [879, "sounds_79"],
+    [880, "sounds_80"],
+    [881, "sounds_81"],
+    [882, "sounds_82"],
+    [883, "sounds_83"],
+    [884, "sounds_84"],
+    [885, "sounds_85"],
+    [886, "sounds_86"],
+    [887, "sounds_87"],
+]
+
+var itemTypes = [Items_sounds];
+var rings = 
+[
+    [
+        [],
+        [],
+        [],
+    ],
+]
+
+for (var itemType_find of itemTypes) 
+{
+    for (var item_find of itemType_find) 
+    {
+        let current_ring = rings[rings.length - 1]
+        if (current_ring[0].length < 8)
+        {
+            current_ring[0].push($.Localize("#"+item_find[1]))
+            current_ring[1].push(true)
+            current_ring[2].push(Number(item_find[0]))
+        }
+        else
+        {
+            rings.push([[$.Localize("#"+item_find[1])],[true],[Number(item_find[0])]])
+        }
+    }
+}
+
+if (rings[rings.length - 1].length < 8)
+{
+    for ( var i = 0; i <= 9-rings[rings.length - 1].length; i++ )
+    {
+        rings[rings.length - 1][0].push("")
+        rings[rings.length - 1][1].push(false)
+        rings[rings.length - 1][2].push(0)
+    }
+}
+
+function StartWheel() 
+{
+    selected_sound_current = undefined;
     $("#Wheel").visible = true;
     $("#Bubble").visible = true;
     $("#PhrasesContainer").visible = true;
+    $("#ChangeWheelButtons").visible = true;
+    $("#ChangeWheelButtonLabel").text = (nowselect + 1) + " / " + rings.length 
+    $("#PhrasesContainer").RemoveAndDeleteChildren();
+
+    for ( var i = 0; i < 8; i++ )
+    {
+        $.CreatePanel(`Button`, $("#PhrasesContainer"), `Phrase${i}`, {
+            class: `MyPhrases`,
+            onmouseover: `OnMouseOver(${i})`,
+            onmouseout: `OnMouseOut(${i})`,
+        });
+        $("#Phrase"+i).BLoadLayoutSnippet("Phrase");
+        $("#Phrase"+i).GetChild(0).GetChild(0).visible = rings[0][1][i];
+        var phase_deactive = false
+
+        
+        if (rings[nowselect][1][i] == false)
+            {
+            $("#Phrase"+i).style.visibility = "collapse"
+        } else {
+            $("#Phrase"+i).style.visibility = "visible"
+        }
+
+        $("#Phrase"+i).GetChild(0).GetChild(0).text = $.Localize(rings[nowselect][0][i]);
+
+        if (phase_deactive) {   
+            var blocked = $.CreatePanel("Panel", $("#Phrase"+i).GetChild(0), "" );
+            blocked.AddClass("BlockChatWheel");
+            $("#Phrase"+i).GetChild(0).style.washColor = "red"
+        }
+    }
+}
+
+function LeftButton()
+{
+    if (nowselect - 1 < 0)
+    {
+        nowselect = rings.length - 1
+    } else {
+        nowselect = nowselect - 1
+    }
+    $("#ChangeWheelButtonLabel").text = (nowselect + 1) + " / " + rings.length
+    $("#PhrasesContainer").RemoveAndDeleteChildren();
+    for ( var i = 0; i < 8; i++ )
+    {
+        let properities_for_panel = {
+            class: `MyPhrases`,
+            onmouseover: `OnMouseOver(${i})`,
+            onmouseout: `OnMouseOut(${i})`,
+        };
+
+        $.CreatePanel(`Button`, $("#PhrasesContainer"), `Phrase${i}`, properities_for_panel);
+        $("#Phrase"+i).BLoadLayoutSnippet("Phrase");
+        var phase_deactive = false
+
+
+            if (rings[nowselect][1][i] == false)
+            {
+            $("#Phrase"+i).style.visibility = "collapse"
+            } else {
+            $("#Phrase"+i).style.visibility = "visible"
+            }
+
+        $("#Phrase"+i).GetChild(0).GetChild(0).text = $.Localize(rings[nowselect][0][i]);
+
+        if (phase_deactive) {   
+            var blocked = $.CreatePanel("Panel", $("#Phrase"+i).GetChild(0), "" );
+            blocked.AddClass("BlockChatWheel");
+            $("#Phrase"+i).GetChild(0).style.washColor = "red"
+        }
+    }
+}
+
+function RightButton()
+{
+    if (nowselect + 1 > (rings.length - 1))
+    {
+        nowselect = 0
+    } else {
+        nowselect = nowselect + 1
+    }
+    $("#ChangeWheelButtonLabel").text = (nowselect + 1) + " / " + rings.length
+    $("#PhrasesContainer").RemoveAndDeleteChildren();
+    for ( var i = 0; i < 8; i++ )
+    {
+        let properities_for_panel = {
+            class: `MyPhrases`,
+            onmouseover: `OnMouseOver(${i})`,
+            onmouseout: `OnMouseOut(${i})`,
+        };
+
+        $.CreatePanel(`Button`, $("#PhrasesContainer"), `Phrase${i}`, properities_for_panel);
+        $("#Phrase"+i).BLoadLayoutSnippet("Phrase");
+        var phase_deactive = false
+
+
+            if (rings[nowselect][1][i] == false)
+            {
+            $("#Phrase"+i).style.visibility = "collapse"
+            } else {
+            $("#Phrase"+i).style.visibility = "visible"
+            }
+
+        $("#Phrase"+i).GetChild(0).GetChild(0).text = $.Localize(rings[nowselect][0][i]);
+
+        if (phase_deactive) {   
+            var blocked = $.CreatePanel("Panel", $("#Phrase"+i).GetChild(0), "" );
+            blocked.AddClass("BlockChatWheel");
+            $("#Phrase"+i).GetChild(0).style.washColor = "red"
+        }
+    }
 }
 
 function StopWheel() {
     $("#Wheel").visible = false;
     $("#Bubble").visible = false;
     $("#PhrasesContainer").visible = false;
-    if (nowselect != 0)
+    $("#ChangeWheelButtons").visible = false;
+    var newnum = rings[nowselect][2][selected_sound_current];
+    if (rings[nowselect][1][selected_sound_current])
     {
-        $("#PhrasesContainer").RemoveAndDeleteChildren();
-        for ( var i = 0; i < 8; i++ )
-        {
-            $.CreatePanel(`Button`, $("#PhrasesContainer"), `Phrase${i}`, {
-                class: `MyPhrases`,
-                onmouseactivate: `OnSelect(${i})`,
-                onmouseover: `OnMouseOver(${i})`,
-                onmouseout: `OnMouseOut(${i})`, 
-            });
-            $("#Phrase"+i).BLoadLayoutSnippet("Phrase");
-            $("#Phrase"+i).GetChild(0).GetChild(0).visible = rings[0][1][i];
-            $("#Phrase"+i).GetChild(0).GetChild(1).text = $.Localize(rings[0][0][i]);
-        }
-        nowselect = 0;
+        GameEvents.SendCustomGameEventToServer("SelectVO", {num: Number(newnum)});
     }
-}
-
-function OnSelect(num) {
-    var newnum = rings[nowselect][2][num];
-    if (rings[nowselect][1][num])
-    {
-        GameEvents.SendCustomGameEventToServer("SelectVO", {num: newnum});
-    }
-    else
-    {
-        $("#PhrasesContainer").RemoveAndDeleteChildren();
-        for ( var i = 0; i < 8; i++ )
-        {
-            let properities_for_panel = {
-                class: `MyPhrases`,
-                onmouseactivate: `OnSelect(${i})`,
-                onmouseover: `OnMouseOver(${i})`,
-                onmouseout: `OnMouseOut(${i})`,
-            };
-
-            if (rings[newnum][1][i]) {
-                properities_for_panel.oncontextmenu = `AddOnFavourites(${i})`;
-            }
-
-            $.CreatePanel(`Button`, $("#PhrasesContainer"), `Phrase${i}`, properities_for_panel);
-            $("#Phrase"+i).BLoadLayoutSnippet("Phrase");
-            $("#Phrase"+i).GetChild(0).GetChild(0).visible = rings[newnum][1][i];
-
-            //var plyData = CustomNetTables.GetTableValue("birzhainfo", Players.GetLocalPlayer());
-
-             var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer());
-             var player_table_js = []
-            
-             for (var d = 701; d < 899; d++) {
-                 player_table_js.push(player_table[1][d])
-             }
-            
-             var phase_deactive = true
-            
-             for ( var item of player_table_js )
-             {
-                 if (item == rings[newnum][2][i]) {
-                     phase_deactive = false
-                     break
-                 }
-             }
-
-            $("#Phrase"+i).GetChild(0).GetChild(1).text = $.Localize(rings[newnum][0][i]);
-
-            if (phase_deactive && rings[newnum][2][i] != 0 && rings[newnum][2][i] != 7 && rings[newnum][2][i] != 1 && rings[newnum][2][i] != 2 && rings[newnum][2][i] != 3 && rings[newnum][2][i] != 8 && rings[newnum][2][i] != 6 && rings[newnum][2][i] != 5 && rings[newnum][2][i] != 4 && rings[newnum][2][i] != 9 && rings[newnum][2][i] != 10 && rings[newnum][2][i] != 11 && rings[newnum][2][i] != 12 && rings[newnum][2][i] != 13 && rings[newnum][2][i] != 14 && rings[newnum][2][i] != 15 && rings[newnum][2][i] != 16) {   
-                $("#Phrase"+i).GetChild(0).GetChild(1).style.textDecoration = "line-through"
-            }
-        }
-        nowselect = newnum;
-    }
-}
-
-function AddOnFavourites(num) {
-    if (nowselect != 8)
-    {
-        favourites.unshift(rings[nowselect][2][num]);
-        if (favourites.length > 8)
-            favourites[8] = null;
-        favourites = favourites.filter(function (el) {
-            return el != null;
-        });
-        Game.EmitSound( "ui.crafting_gem_create" )
-        UpdateFavourites();
-    }
-    else
-    {
-        favourites[num] = null;
-        favourites = favourites.filter(function (el) {
-            return el != null;
-        });
-        UpdateFavourites();
-        nowselect = 0;
-        OnSelect(2);
-    }
-}
-
-function UpdateFavourites() {
-    var msg = new Array();
-    var numsb = new Array();
-    var numsi = new Array();
-    for ( var i = 0; i < 8; i++ )
-    {
-        if (favourites[i])
-        {
-            msg[i] = FindLabelByNum(favourites[i]);
-            numsi[i] = favourites[i];
-            numsb[i] = true;
-        }
-        else
-        {
-            msg[i] = "";
-            numsi[i] = 0;
-            numsb[i] = false;
-        }
-    }
-    rings[7] = new Array(msg,numsb,numsi);
-}
-
-function FindLabelByNum(num) {
-    for (var key in rings) {
-        var element = rings[key];
-        for ( var i = 0; i < 8; i++ )
-        {
-            if (element[1][i] == true && element[2][i] == num)
-            {
-                return element[0][i];
-            }
-        }
-    }
+    selected_sound_current = undefined;
 }
 
 function OnMouseOver(num) {
-    ////$.Msg(num);
+    selected_sound_current = num;
     $( "#WheelPointer" ).RemoveClass( "Hidden" );
     $( "#Arrow" ).RemoveClass( "Hidden" );
     for ( var i = 0; i < 8; i++ )
@@ -253,31 +268,114 @@ function OnMouseOver(num) {
 }
 
 function OnMouseOut(num) {
+    selected_sound_current = undefined;
     $( "#WheelPointer" ).AddClass( "Hidden" );
     $( "#Arrow" ).AddClass( "Hidden" );
 }
 
+const english_language_button = 
+{
+    "q" : "й",
+    "w" : "ц",
+    "e" : "у",
+    "r" : "к",
+    "t" : "е",
+    "y" : "н",
+    "u" : "г",
+    "i" : "ш",
+    "o" : "щ",
+    "p" : "з",
+    "a" : "ф",
+    "s" : "ы",
+    "d" : "в",
+    "f" : "а",
+    "g" : "п",
+    "h" : "р",
+    "j" : "о",
+    "k" : "л",
+    "l" : "д",
+    "z" : "я",
+    "x" : "ч",
+    "c" : "с",
+    "v" : "м",
+    "b" : "и",
+    "n" : "т",
+    "m" : "ь",
+}
+
+const russian_language_button = 
+{
+    "й" : "q",
+    "ц" : "w",
+    "у" : "e",
+    "к" : "r",
+    "е" : "t",
+    "н" : "y",
+    "г" : "u",
+    "ш" : "i",
+    "щ" : "o",
+    "з" : "p",
+    "ф" : "a",
+    "ы" : "s",
+    "в" : "d",
+    "а" : "f",
+    "п" : "g",
+    "р" : "h",
+    "о" : "j",
+    "л" : "k",
+    "д" : "l",
+    "я" : "z",
+    "ч" : "x",
+    "с" : "c",
+    "м" : "v",
+    "и" : "b",
+    "т" : "n",
+    "ь" : "m",
+}
+ 
+function SetKeyBindChatWheel()
+{
+    let original_keybind = "L".toLowerCase()
+    if (default_button != original_keybind ) 
+    {
+        if (original_keybind == "")
+        {
+            original_keybind = "L"
+        }
+        original_keybind = original_keybind.toLowerCase()
+        if (russian_language_button[original_keybind])
+        {
+            original_keybind = russian_language_button[original_keybind]
+        }
+        CreateKeyBind(original_keybind)
+        if (english_language_button[original_keybind])
+        {
+            CreateKeyBind(english_language_button[original_keybind])  
+        }
+        default_button = original_keybind
+        GameUI.CustomUIConfig().button_with_wheel = original_keybind.toUpperCase()
+    } 
+    $.Schedule( 1, SetKeyBindChatWheel );
+}
+
+function CreateKeyBind(key_name)
+{
+    const name_bind = "WheelButton" + Math.floor(Math.random() * 99999999);
+    Game.AddCommand("+" + name_bind, StartWheel, "", 0);
+    Game.AddCommand("-" + name_bind, StopWheel, "", 0);
+    Game.CreateCustomKeyBind(key_name, "+" + name_bind);
+} 
+
+function GetGameKeybind(command) 
+{
+    return Game.GetKeybindForCommand(command);
+}
+
 (function() {
 	GameUI.CustomUIConfig().chatWheelLoaded = true;
-
-    for ( var i = 0; i < 8; i++ )
-    {
-        $.CreatePanel(`Button`, $("#PhrasesContainer"), `Phrase${i}`, {
-            class: `MyPhrases`,
-            onmouseactivate: `OnSelect(${i})`,
-            onmouseover: `OnMouseOver(${i})`,
-            onmouseout: `OnMouseOut(${i})`,
-        });
-        $("#Phrase"+i).BLoadLayoutSnippet("Phrase");
-        $("#Phrase"+i).GetChild(0).GetChild(0).visible = rings[0][1][i];
-        $("#Phrase"+i).GetChild(0).GetChild(1).text = $.Localize(rings[0][0][i]);
-    }
-    const cmd_name = "WheelButton" + Math.floor(Math.random() * 99999999);
-	Game.AddCommand("+" + cmd_name, StartWheel, "", 0);
-	Game.AddCommand("-" + cmd_name, StopWheel, "", 0);
-	Game.CreateCustomKeyBind("L", "+" + cmd_name);
-
+    SetKeyBindChatWheel()
     $("#Wheel").visible = false;
     $("#Bubble").visible = false;
     $("#PhrasesContainer").visible = false;
+    $("#ChangeWheelButtons").visible = false;
 })();

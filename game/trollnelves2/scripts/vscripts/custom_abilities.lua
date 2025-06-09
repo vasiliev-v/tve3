@@ -2,6 +2,7 @@ require('libraries/util')
 require('libraries/entity')
 require('trollnelves2')
 require('donate_store/wearables')
+require("donate_store/wearables_data")
 require('error_debug')
 
 --Ability for tents to give gold
@@ -492,11 +493,11 @@ function KillWispOnAttack (event)
 	caster.attackTarget = target:GetEntityIndex()
 	target.attackers = target.attackers or {}
 	target.attackers[caster:GetEntityIndex()] = true
-	if target:GetUnitName() == 'gold_wisp' or target:GetUnitName() == 'worker_1' or target:GetUnitName() == 'worker_2' or target:GetUnitName() == 'worker_3' then
+	if target:GetUnitName() == 'gold_wisp' then
 		local units = Entities:FindAllByClassname("npc_dota_creature")
 		units = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin() , nil, 192 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 		for _, unit in pairs(units) do
-			if unit:GetUnitName() == 'gold_wisp' or unit:GetUnitName() == 'worker_1' or unit:GetUnitName() == 'worker_2' or unit:GetUnitName() == 'worker_3'  then
+			if unit:GetUnitName() == 'gold_wisp'  then
 				ApplyDamage({victim = unit, attacker = caster, damage = 1, damage_type = DAMAGE_TYPE_PHYSICAL })
 			end
 		end	
@@ -512,11 +513,11 @@ function KillWispOnAttackTroll (event)
 	caster.attackTarget = target:GetEntityIndex()
 	target.attackers = target.attackers or {}
 	target.attackers[caster:GetEntityIndex()] = true
-	if target:GetUnitName() == 'gold_wisp' or string.match(target:GetUnitName(),"%a+") == "gold_mine" or target:GetUnitName() == 'gold_wisp' or target:GetUnitName() == 'worker_1' or target:GetUnitName() == 'worker_2' or target:GetUnitName() == 'worker_3' then
+	if target:GetUnitName() == 'gold_wisp'  then
 		local units = Entities:FindAllByClassname("npc_dota_creature")
 		units = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin() , nil, radius , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 		for _, unit in pairs(units) do
-			if unit:GetUnitName() == 'gold_wisp' or string.match(target:GetUnitName(),"%a+") == "gold_mine" or unit:GetUnitName() == 'worker_1' or unit:GetUnitName() == 'worker_2' or unit:GetUnitName() == 'worker_3'  then
+			if unit:GetUnitName() == 'gold_wisp'  then
 				ApplyDamage({victim = unit, attacker = caster, damage = dmg, damage_type = DAMAGE_TYPE_PHYSICAL })
 				PlayerResource:ModifyGold(caster,dmg,true)
 			end
@@ -545,10 +546,10 @@ function ExchangeLumber(event)
 				end
 			end
 		end
-	--	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
---			SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
-	--		return false
-	--	end
+	 	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
+ 			SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
+	 		return false
+	 	end
 		--Buy wood
 		if amount > 0 then
 			if price > PlayerResource:GetGold(playerID) then
@@ -602,11 +603,11 @@ function SpawnUnitOnSpellStart(event)
 		PlayerResource:ModifyFood(hero,food)
 		PlayerResource:ModifyWisp(hero,wisp)
 		PlayerResource:ModifyWispMine(hero,mine_cost)
-	--	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
-	--		SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
-	--		caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
-	--		return false
-	--	end
+	 	if PlayerResource:GetConnectionState(hero:GetPlayerOwnerID()) ~= 2 and GameRules.PlayersBase[caster:GetPlayerOwnerID()] ~= GameRules.PlayersBase[playerID] then
+	 		SendErrorMessage(caster:GetPlayerOwnerID(), "error_not_your_hero")
+	 		caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
+	 		return false
+	    end
 		if PlayerResource:GetGold(playerID) < 0 then
 			SendErrorMessage(playerID, "error_not_enough_gold")
 			caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
@@ -737,119 +738,42 @@ function SpawnUnitOnChannelSucceeded(event)
 end
 
 function UpdateSkinWisp(unit_name, unit)
-	local playerID = unit:GetPlayerOwnerID()
-	local name = "wisp"
-	if GameRules.SkinTower[playerID]["wisp"] ~= nil then
-		if string.match(unit_name,"%a+") == "wisp" and unit_name ~= "gold_wisp" then
-			if GameRules.SkinTower[playerID][name] == "1201" then
-				if string.match(GameRules.MapName, "winter") then
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1.2)    
-				elseif string.match(GameRules.MapName, "spring") then
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/serpent_warbler/serpent_warbler_flying.vmdl", 1.1)    
-				elseif string.match(GameRules.MapName, "autumn") or string.match(GameRules.MapName,"halloween") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/little_fraid_the_courier_of_simons_retribution/little_fraid_the_courier_of_simons_retribution_flying.vmdl", 1.2)    
-				elseif string.match(GameRules.MapName,"desert") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/ig_dragon/ig_dragon_flying.vmdl", 1.2)    
-				elseif string.match(GameRules.MapName, "helheim") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/dc_demon/dc_demon_flying.vmdl", 1.2)
-				elseif string.match(GameRules.MapName,"china") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/green_jade_dragon/green_jade_dragon_flying.vmdl", 1.4) 
-				elseif string.match(GameRules.MapName,"jungle") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/deathbringer/deathbringer_flying.vmdl", 1.4)
-				elseif string.match(GameRules.MapName,"ghosttown") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/echo_wisp/echo_wisp_flying.vmdl", 1.3) 
-				elseif string.match(GameRules.MapName,"summer") then 
-					wearables:RemoveWearables(unit)
-					UpdateModel(unit, "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", 1.3) 
-				end
-			elseif GameRules.SkinTower[playerID][name] == "1202" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1.2)    
-			elseif GameRules.SkinTower[playerID][name] == "1203" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/serpent_warbler/serpent_warbler_flying.vmdl", 1.1)    
-			elseif GameRules.SkinTower[playerID][name] == "1204" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/little_fraid_the_courier_of_simons_retribution/little_fraid_the_courier_of_simons_retribution_flying.vmdl", 1.2)
-			elseif GameRules.SkinTower[playerID][name] == "1205" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/ig_dragon/ig_dragon_flying.vmdl", 1.2)
-			elseif GameRules.SkinTower[playerID][name] == "1206" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/dc_demon/dc_demon_flying.vmdl", 1.2)
-			elseif GameRules.SkinTower[playerID][name] == "1207" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/green_jade_dragon/green_jade_dragon_flying.vmdl", 1.4) 
-			elseif GameRules.SkinTower[playerID][name] == "1208" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/deathbringer/deathbringer_flying.vmdl", 1.4)
-			elseif GameRules.SkinTower[playerID][name] == "1209" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/echo_wisp/echo_wisp_flying.vmdl", 1.3)
-			elseif GameRules.SkinTower[playerID][name] == "1210" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/items/courier/blazing_hatchling_the_fortune_bringer_courier/blazing_hatchling_the_fortune_bringer_courier.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1211" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/venoling/venoling_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1212" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/trapjaw/trapjaw_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1213" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/smeevil_mammoth/smeevil_mammoth_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1214" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/smeevil/smeevil_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1215" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/seekling/seekling.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1216" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/minipudge/minipudge.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1217" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/mega_greevil_courier/mega_greevil_courier_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1218" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/frog/frog_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1219" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/drodo/drodo_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1220" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/doom_demihero_courier/doom_demihero_courier.vmdl", 1.3) 
-			elseif GameRules.SkinTower[playerID][name] == "1221" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_winter18_flying.vmdl", 1)
-			elseif GameRules.SkinTower[playerID][name] == "1222" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_ti9_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1223" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_ti10_flying.vmdl", 1) 
-			elseif GameRules.SkinTower[playerID][name] == "1224" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_rosh/babyroshan_ti10_dire_flying.vmdl", 1)  
-			elseif GameRules.SkinTower[playerID][name] == "1225" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1) 
-				unit:SetMaterialGroup("1")
-			elseif GameRules.SkinTower[playerID][name] == "1226" then
-				wearables:RemoveWearables(unit)
-				UpdateModel(unit, "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl", 1) 
-				unit:SetMaterialGroup("2")
-			end	
-		end	
-	end
+    if not unit then return end
+    local playerID = unit:GetPlayerOwnerID()
+    local skinID   = GameRules.SkinTower[playerID] and GameRules.SkinTower[playerID]["wisp"]
+    if not skinID then return end
+
+    if unit_name:match("%a+") ~= "wisp" or unit_name == "gold_wisp" then
+        return
+    end
+
+    local cfg = Wearables.wispSkinConfig[skinID]
+    if not cfg then return end
+
+    wearables:RemoveWearables(unit)
+
+    local model = cfg.model
+    local scale = cfg.scale or 1
+
+    if cfg.mapModels then
+        local map = GameRules.MapName:lower()
+        for key, m in pairs(cfg.mapModels) do
+            if string.match(map,key) then
+                model = m.model
+                scale = m.scale or scale
+                break
+            end
+        end
+    end
+
+    if model then
+        UpdateModel(unit, model, scale)
+    end
+
+    -- 6) Материал-группа, если есть
+    if cfg.materialGroup then
+        unit:SetMaterialGroup(tostring(cfg.materialGroup))
+    end
 end
 
 function SpawnUnitOnChannelInterrupted(event)
@@ -2117,5 +2041,77 @@ function SkillOnChannelInterrupted(event)
 		local lumber_cost = ability:GetSpecialValueFor("lumber_cost")
 		PlayerResource:ModifyGold(hero,gold_cost,true)
 		PlayerResource:ModifyLumber(hero,lumber_cost,true)
+	end
+end
+
+function UpgradeWorkers(event)
+	if IsServer() then
+		local caster = event.caster
+		local point = caster:GetAbsOrigin()
+		local pID = caster:GetPlayerOwnerID()
+		local hero = PlayerResource:GetSelectedHeroEntity(pID)
+		local ability = event.ability
+		local unit_name = GetAbilityKV(ability:GetAbilityName()).UnitName
+		local casterAbility = caster:FindAbilityByName("gather_lumber")
+
+
+		local gold_cost = ability:GetSpecialValueFor("gold_cost")
+		local lumber_cost = ability:GetSpecialValueFor("lumber_cost")
+		local food = ability:GetSpecialValueFor("food_cost")
+		local wisp = ability:GetSpecialValueFor("wisp_cost")
+		if PlayerResource:GetGold(pID) < gold_cost then
+            SendErrorMessage(pID, "error_not_enough_gold")
+            return false
+        end
+        if PlayerResource:GetLumber(pID) < lumber_cost then
+            SendErrorMessage(pID, "error_not_enough_lumber")
+            return false
+        end
+		if hero.food > GameRules.maxFood and food ~= 0 then
+			SendErrorMessage(pID, "error_not_enough_food")
+			return false
+		end
+		if hero.wisp > GameRules.maxWisp and wisp ~= 0 then
+			SendErrorMessage(pID, "error_not_enough_wisp")
+			return false
+		end
+		--caster:ForceKill(true) --This will call RemoveBuilding
+		caster:Kill(nil, caster)
+		Timers:CreateTimer(10,function()
+			UTIL_Remove(caster)
+		end)
+		PlayerResource:ModifyGold(hero,-gold_cost)
+		PlayerResource:ModifyLumber(hero,-lumber_cost)
+		PlayerResource:ModifyFood(hero,food)
+		PlayerResource:ModifyWisp(hero,wisp)
+		local unit = CreateUnitByName(unit_name, point , true, nil, nil, hero:GetTeamNumber())
+		unit:SetOwner(hero)
+		unit:SetControllableByPlayer(pID, true)
+		PlayerResource:NewSelection(pID, unit)
+		Timers:CreateTimer(0.3,function() 
+			local targetAbility = unit:FindAbilityByName("repair")
+			if targetAbility ~= nil then
+				targetAbility:ToggleAutoCast()
+				if hero:HasModifier("modifier_elf_spell_cd_worker")  then
+					if hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
+					end
+				end
+				if hero:HasModifier("modifier_elf_spell_cd_worker_x4")  then
+					if hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(3) 
+					end
+				end
+			end
+		end)
+		table.insert(hero.units,unit)
 	end
 end

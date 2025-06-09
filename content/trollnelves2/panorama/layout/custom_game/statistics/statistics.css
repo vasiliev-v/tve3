@@ -129,7 +129,7 @@
 .StatsColumnsHeader Label
 {
     color: #B8FF45;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .StatsColumn_Name
@@ -283,11 +283,17 @@
     width: 105px;
     height: 105px;
     margin-right: 17px;
-    border: 2px solid #BDFF00;
-    border-radius: 100%;
     margin-bottom: 20px;
     saturation: 0;
     brightness: 0.5;
+}
+
+.achiviment_panel_body
+{
+    width: 105px;
+    height: 105px;
+    border: 2px solid #BDFF00;
+    border-radius: 100%;
 }
 
 .active
@@ -313,4 +319,35 @@
     align: center center;
     margin: 2px;
     border-radius: 100%;
+}
+
+.achiviment_panel_counter
+{
+    width: 32px;
+    height: 32px;
+    border: 2px solid #FFC23F;
+    border-radius: 100%;
+    z-index: 5;
+    horizontal-align: right;
+    background-color: #63461C;
+}
+
+.achiviment_panel_counter_glow
+{
+    width: 100%;
+    height: 100%;
+    background-image: url("file://{images}/new_design/topbar/glow.png");
+    background-size: 100%;
+    wash-color: #C39C37;
+    opacity: 0.8;
+}
+
+.achiviment_panel_counter_label
+{
+    text-align: center;
+    width: 100%;
+    font-weight: semi-bold;
+    color: white;
+    font-size: 20px;
+    vertical-align: center;
 }

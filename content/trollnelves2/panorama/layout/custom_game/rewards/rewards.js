@@ -3,13 +3,13 @@ var multiplier = 1 // Множитель награды за каждую нед
 // Название кстати то что будет в addon_russia - "gems" "Гемов"
 var rewards = 
 [
-	["1", "reward_gems", 20, "reward_gems", "1"],
-	["2", "reward_gems", 25, "reward_gems", "1"],
-	["3", "reward_gems", 30, "reward_gems", "1"],
-	["4", "reward_gems", 35, "reward_gems", "1"],
-	["5", "reward_gems", 40, "reward_gems", "1"],
-	["6", "reward_gems", 45, "reward_gems", "1"],
-	["7", "reward_gems", 55, "reward_gems", "1"], 
+	["1", "reward_gems", "25", "reward_gems", "1"],
+	["2", "reward_gems", "50", "reward_gems", "1"],
+	["3", "reward_gems", "75", "reward_gems", "1"],
+	["4", "reward_gems", "100", "reward_gems", "1"],
+	["5", "reward_gems", "150", "reward_gems", "1"],
+	["6", "reward_gems", "300", "reward_gems", "1"],
+	["7", "reward_gems", "600", "reward_gems", "1"], 
 ]
 
 var player_table = 
@@ -68,10 +68,10 @@ function CreateReward(day, reward_day, reward_table, week)
 	RewardInfoLabel.AddClass("RewardInfoLabel");
     
 	let reward_info = reward_table[2]
-	if ( week > 0 ) // reward_coins
-	{
-		reward_info = (multiplier * (week+1)) * reward_table[2]
-	}
+	//if ( week > 0 ) // reward_coins
+	//{
+	//	reward_info = (multiplier * (week+1)) * reward_table[2]
+	//}
 	RewardInfoLabel.text = reward_info
 
 	if (reward_day == 1) {
@@ -144,4 +144,4 @@ function RecieveReward(claim_panel, reward_panel, type_reward, reward_count)
 	GameEvents.SendCustomGameEventToServer( "EventRewards", {id: Players.GetLocalPlayer(), count: reward_count, type: type_reward} ); // отправляешь ивент 
 }
 
-GameUI.CustomUIConfig().OpenRewardsGlobal = OpenPanel
+GameUI.CustomUIConfig().OpenRewardsGlobal = OpenPanel  

@@ -10,6 +10,7 @@ require("PrecacheLoad")
 require("map_system")
 require("mod_system")
 require('PseudoRandom')
+require('donate_store/wearables_data') 
 
 function Precache( context )
 	PrecacheResource("particle","particles/buildinghelper/square_overlay.vpcf", context)
@@ -913,48 +914,18 @@ PrecacheResource("particle", "particles/bloode_ground_child.vpcf", context)
 	PrecacheResource("particle", "particles/pulsation_ground.vpcf", context) 
 
 
-
-
-
-
---	PrecacheResource("model", "models/heroes/death_prophet/death_prophet.vmdl", context)
---	PrecacheResource("model", "models/items/death_prophet/drowned_siren_head/drowned_siren_head.vmdl", context)
-  --  PrecacheResource("model", "models/items/death_prophet/drowned_siren_drowned_siren_skirt/drowned_siren_drowned_siren_skirt.vmdl", context)
-  --  PrecacheResource("model", "models/items/death_prophet/drowned_siren_armor/drowned_siren_armor.vmdl", context)
-   -- PrecacheResource("model", "models/items/death_prophet/exorcism/drowned_siren_drowned_siren_crowned_fish/drowned_siren_drowned_siren_crowned_fish.vmdl", context)
-  --  PrecacheResource("model", "models/items/death_prophet/drowned_siren_misc/drowned_siren_misc.vmdl", context)
-	
---	PrecacheResource("model", "models/heroes/life_stealer/life_stealer.vmdl", context)
-	--PrecacheResource("model", "models/items/lifestealer/bloody_ripper_belt/bloody_ripper_belt.vmdl", context)
-  --  PrecacheResource("model", "models/items/lifestealer/promo_bloody_ripper_back/promo_bloody_ripper_back.vmdl", context)
-   -- PrecacheResource("model", "models/items/lifestealer/bloody_ripper_arms/bloody_ripper_arms.vmdl", context)       
-   -- PrecacheResource("model", "models/items/lifestealer/bloody_ripper_head/bloody_ripper_head.vmdl", context)  
-	
- --  PrecacheResource("model", "models/items/wraith_king/arcana/wraith_king_arcana_weapon.vmdl", context)
-  --  PrecacheResource("model", "models/items/wraith_king/arcana/wraith_king_arcana_arms.vmdl", context)
-  --  PrecacheResource("model", "models/items/wraith_king/arcana/wraith_king_arcana_shoulder.vmdl", context)
-  --  PrecacheResource("model", "models/items/wraith_king/arcana/wraith_king_arcana_armor.vmdl", context)
-   -- PrecacheResource("model", "models/items/wraith_king/arcana/wraith_king_arcana_back.vmdl", context)
-    --PrecacheResource("model", "models/items/wraith_king/arcana/wraith_king_arcana_head.vmdl", context)	
-	
-	--PrecacheResource("model", "models/heroes/pudge/pudge.vmdl", context)
-	--PrecacheResource("model", "models/items/pudge/blackdeath_offhand/blackdeath_offhand.vmdl", context)
-   -- PrecacheResource("model", "models/items/pudge/blackdeath_belt/blackdeath_belt.vmdl", context)
-    --PrecacheResource("model", "models/items/pudge/blackdeath_head/blackdeath_head.vmdl", context)
-    --PrecacheResource("model", "models/items/pudge/blackdeath_back/blackdeath_back.vmdl", context)
-   -- PrecacheResource("model", "models/items/pudge/blackdeath_weapon/blackdeath_weapon.vmdl", context)
-   -- PrecacheResource("model", "models/items/pudge/blackdeath_shoulder/blackdeath_shoulder.vmdl", context)
-	--PrecacheResource("model", "models/items/pudge/blackdeath_arms/blackdeath_arms.vmdl", context)
-	
-	--PrecacheResource("model", "models/items/wraith_king/wk_ti8_creep/wk_ti8_creep.vmdl", context)
-	-- End Halloween
-	
 	PrecacheResource("soundfile","soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts",context)
     PrecacheResource("soundfile","soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts",context)
 
 	-- PrecacheResource("soundfile", "soundevents/game_sounds_birzha.vsndevts", context) 
 	PrecacheResource("soundfile", "soundevents/game_sounds_birzha_new.vsndevts", context) 
-	
+
+
+
+	PrecacheWearableModels(context)
+
+
+
 	PrecacheLoad:PrecacheLoad (context)
 	
 	GameRules.pc = context
@@ -996,12 +967,15 @@ function Activate()
 	GameRules.lumberGained = {}
 	GameRules.goldGiven = {}
 	GameRules.lumberGiven = {}
+	GameRules.damageGiven = {}
+	GameRules.damageTake = {}
+	GameRules.deathTime = {}
 	GameRules.scores = {}
 	GameRules.rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetGem = {} 
 	GameRules.isTesting = true
-	GameRules.server =  "https://localhost:7133/test/"   -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
+	GameRules.server =  "https://tve4.eu/test/" -- "https://localhost:7133/test/"  -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
 	GameRules.types = {}
@@ -1020,7 +994,7 @@ function Activate()
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
 	GameRules.test = true
-	GameRules.test2 = false
+	GameRules.test2 = true
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
 	GameRules.MultiMapSpeed = 1
@@ -1096,4 +1070,59 @@ function Activate()
 	GameRules.MapName = ""
 
 	LinkModifier:Start()
+end
+
+
+function PrecacheWearableModels(context)
+    -- 1) Прекешируем все .vmdl из wolfModels, bearModels и elfModels
+    for _, info in pairs(Wearables.wolfModels or {}) do
+        PrecacheModel(info.model, context)
+    end
+    for _, info in pairs(Wearables.bearModels or {}) do
+        PrecacheModel(info.model, context)
+    end
+    for _, info in pairs(Wearables.elfModels or {}) do
+        PrecacheModel(info.model, context)
+    end
+
+    -- 2) Прекешируем всё из TowerSkinConfigs:
+    for _, cfg in pairs(Wearables.TowerSkinConfigs or {}) do
+        -- 2.1) Если есть attachments (массив путей к .vmdl)
+        if cfg.attachments then
+            for _, modelPath in ipairs(cfg.attachments) do
+                PrecacheModel(modelPath, context)
+            end
+        end
+
+        -- 2.2) Если есть поле updateModel (одна модель .vmdl)
+        if cfg.updateModel and cfg.updateModel.model then
+            PrecacheModel(cfg.updateModel.model, context)
+        end
+
+        -- 2.3) Если есть частицы (particles) — «прекешируем» их через PrecacheResource
+        if cfg.particles then
+            for _, particleInfo in ipairs(cfg.particles) do
+                if particleInfo.path then
+                    PrecacheResource("particle", particleInfo.path, context)
+                end
+            end
+        end
+    end
+
+    -- 3) Прекешируем всё из wispSkinConfig:
+    for _, entry in pairs(Wearables.wispSkinConfig or {}) do
+        -- 3.1) Если есть простое поле model
+        if entry.model then
+            PrecacheModel(entry.model, context)
+        end
+
+        -- 3.2) Если есть вложенная таблица mapModels
+        if entry.mapModels then
+            for _, mapInfo in pairs(entry.mapModels) do
+                if mapInfo.model then
+                    PrecacheModel(mapInfo.model, context)
+                end
+            end
+        end
+    end
 end

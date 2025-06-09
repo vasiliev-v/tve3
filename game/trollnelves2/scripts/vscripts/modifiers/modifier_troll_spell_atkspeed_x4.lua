@@ -30,7 +30,7 @@ end
 function modifier_troll_spell_atkspeed_x4:OnRefresh( kv )
 	if IsServer() then
 		local hero = self:GetParent()
-		local abil = hero:FindAbilityByName("troll_spell_haste")
+		local abil = hero:FindAbilityByName("troll_spell_atkspeed_x4")
 		local countStack = hero:FindModifierByName("modifier_troll_spell_atkspeed_x4"):GetStackCount()
 		abil:SetLevel(countStack)
 	end
@@ -39,7 +39,7 @@ end
 function modifier_troll_spell_atkspeed_x4:OnStackCountChanged()
 	if IsServer() then
 		local hero = self:GetParent()
-		local abil = hero:FindAbilityByName("troll_spell_haste")
+		local abil = hero:FindAbilityByName("troll_spell_atkspeed_x4")
 		local countStack = hero:FindModifierByName("modifier_troll_spell_atkspeed_x4"):GetStackCount()
 		abil:SetLevel(countStack)
 	end

@@ -109,6 +109,15 @@ function CDOTA_PlayerResource:SetLumber(hero, lumber)
 				limitLumber = 500000
 			end
 		end
+		if hero:HasModifier("modifier_elf_spell_limit_lumber_x4")  then
+			if hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 1  then
+				limitLumber = 100000 
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 2 then
+				limitLumber = 200000
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 3 then
+				limitLumber = 500000
+			end
+		end
 		if GameRules.MapSpeed >= 4 then
 			lumber = math.min(lumber, math.floor(2000000 * GameRules.MultiMapSpeed + limitLumber))
 		else
@@ -167,6 +176,29 @@ function CDOTA_PlayerResource:GetGoldGiven(pID)
 		GameRules.goldGiven[pID] = 0
 	end
 	return GameRules.goldGiven[pID] or 0
+end
+
+function CDOTA_PlayerResource:ModifyDamageGiven(pID, amount)
+	GameRules.damageGiven[pID] = PlayerResource:GetDamageGiven(pID) + amount
+end
+
+function CDOTA_PlayerResource:GetDamageGiven(pID)
+	if GameRules.damageGiven[pID] == nil then
+		GameRules.damageGiven[pID] = 0
+	end
+	return GameRules.damageGiven[pID] or 0
+end
+
+function CDOTA_PlayerResource:ModifyDamageTake(pID, amount)
+	DebugPrint(amount)
+	GameRules.damageTake[pID] = PlayerResource:GetDamageTake(pID) + amount
+end
+
+function CDOTA_PlayerResource:GetDamageTake(pID)
+	if GameRules.damageTake[pID] == nil then
+		GameRules.damageTake[pID] = 0
+	end
+	return GameRules.damageTake[pID] or 0
 end
 
 

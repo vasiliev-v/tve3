@@ -50,7 +50,7 @@ function Build( event )
             return false
         end
 
-        if mine_cost ~= nil then
+        if  mine_cost ~= nil then
             if mine_cost ~= 0 then
                 if hero.mine >= GameRules.maxMine  then
                     SendErrorMessage(playerID, "error_not_enough_mine")
@@ -219,6 +219,7 @@ function Build( event )
                 UpdateModel(unit, "models/flag_2.vmdl", 0.5)  
             end
         end
+        
         if hero:HasModifier("modifier_elf_spell_armor_wall") and string.match(building_name,"rock") then
             if hero:FindModifierByName("modifier_elf_spell_armor_wall"):GetStackCount() == 1  then
                 unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor", {}):SetStackCount(1) 
@@ -245,6 +246,35 @@ function Build( event )
                 unit:AddNewModifier(unit, unit, "modifier_tower_spell_range", {}):SetStackCount(2) 
             elseif hero:FindModifierByName("modifier_elf_spell_tower_range"):GetStackCount() == 3 then
                 unit:AddNewModifier(unit, unit, "modifier_tower_spell_range", {}):SetStackCount(3) 
+            end
+        end
+
+        if hero:HasModifier("modifier_elf_spell_armor_wall_x4") and string.match(building_name,"rock") then
+            if hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 1  then
+                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor_x4", {}):SetStackCount(1) 
+            elseif hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 2 then
+                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor_x4", {}):SetStackCount(2) 
+            elseif hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 3 then
+                unit:AddNewModifier(unit, unit, "modifier_wall_spell_armor_x4", {}):SetStackCount(3) 
+            end
+        end
+        if hero:HasModifier("modifier_elf_spell_tower_damage_x4") and string.match(building_name,"tower") then
+            if hero:FindModifierByName("modifier_elf_spell_tower_damage_x4"):GetStackCount() == 1  then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_dmg_x4", {}):SetStackCount(1) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_damage_x4"):GetStackCount() == 2 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_dmg_x4", {}):SetStackCount(2) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_damage_x4"):GetStackCount() == 3 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_dmg_x4", {}):SetStackCount(3) 
+            end
+        end
+
+        if hero:HasModifier("modifier_elf_spell_tower_range_x4") and string.match(building_name,"tower") then
+            if hero:FindModifierByName("modifier_elf_spell_tower_range_x4"):GetStackCount() == 1  then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_range_x4", {}):SetStackCount(1) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_range_x4"):GetStackCount() == 2 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_range_x4", {}):SetStackCount(2) 
+            elseif hero:FindModifierByName("modifier_elf_spell_tower_range_x4"):GetStackCount() == 3 then
+                unit:AddNewModifier(unit, unit, "modifier_tower_spell_range_x4", {}):SetStackCount(3) 
             end
         end
 
@@ -354,9 +384,9 @@ function UpgradeBuilding( event )
             return false
         end
     end
-    if GameRules.MapSpeed == 4 and NewBuildingName ~= "tower_19" and NewBuildingName ~= "tower_19_1" and NewBuildingName ~= "tower_19_2" and not string.match(NewBuildingName,"rock") then
-        buildTime = buildTime/2
-    end
+    --if GameRules.MapSpeed == 4 and NewBuildingName ~= "tower_19" and NewBuildingName ~= "tower_19_1" and NewBuildingName ~= "tower_19_2" and not string.match(NewBuildingName,"rock") then
+    --    buildTime = buildTime/2
+    --end
     
     local gold_cost
     local lumber_cost
@@ -555,6 +585,35 @@ function UpgradeBuilding( event )
         end
     end
 
+    if hero:HasModifier("modifier_elf_spell_armor_wall_x4") and string.match(newBuildingName,"rock") then
+        if hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 1  then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_wall_spell_armor_x4", {}):SetStackCount(1) 
+        elseif hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 2 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_wall_spell_armor_x4", {}):SetStackCount(2) 
+        elseif hero:FindModifierByName("modifier_elf_spell_armor_wall_x4"):GetStackCount() == 3 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_wall_spell_armor_x4", {}):SetStackCount(3) 
+        end
+    end
+    if hero:HasModifier("modifier_elf_spell_tower_damage_x4") and string.match(newBuildingName,"tower") then
+        if hero:FindModifierByName("modifier_elf_spell_tower_damage_x4"):GetStackCount() == 1  then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_dmg_x4", {}):SetStackCount(1) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_damage_x4"):GetStackCount() == 2 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_dmg_x4", {}):SetStackCount(2) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_damage_x4"):GetStackCount() == 3 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_dmg_x4", {}):SetStackCount(3) 
+        end
+    end
+
+    if hero:HasModifier("modifier_elf_spell_tower_range_x4") and string.match(newBuildingName,"tower") then
+        if hero:FindModifierByName("modifier_elf_spell_tower_range_x4"):GetStackCount() == 1  then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_range_x4", {}):SetStackCount(1) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_range_x4"):GetStackCount() == 2 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_range_x4", {}):SetStackCount(2) 
+        elseif hero:FindModifierByName("modifier_elf_spell_tower_range_x4"):GetStackCount() == 3 then
+            newBuilding:AddNewModifier(newBuilding, newBuilding, "modifier_tower_spell_range_x4", {}):SetStackCount(3) 
+        end
+    end
+
     Timers:CreateTimer(buildTime,function()
         if newBuilding:IsNull() or not newBuilding:IsAlive() then
             return
@@ -593,7 +652,7 @@ function ApplyTowerSkin(playerID, towerName, towerEnt)
 
     -- учитываем спец-кейс tower_15_2
     local skinID = skins[towerName] or (towerName == "tower_15_2" and skins["tower_15_1"])
-    local cfg = Wearables.skinConfigs[skinID]
+    local cfg = Wearables.TowerSkinConfigs[skinID]
     if not cfg then return end
 
     -- убираем старые носимые

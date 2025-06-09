@@ -24,11 +24,13 @@
 	    <CustomUIElement type="GameSetup"			layoutfile="file://{resources}/layout/custom_game/vote_hud/vote_hud.xml" />
 	    <CustomUIElement type="GameSetup"			layoutfile="file://{resources}/layout/custom_game/team_select/team_select.xml" />
 	    <CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/spell_shop/spell_shop.xml" />
-	    <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/donate_shop/donate_shop.xml" />
 	    <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/battlepass/battlepass.xml" />
+	    <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/donate_shop/donate_shop.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/rewards/rewards.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/day_quest/day_quest.xml" />
+        <CustomUIElement type="GameSetup"			layoutfile="file://{resources}/layout/custom_game/day_quest/day_quest.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/top_menu/top_menu.xml" />
+        <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/high_five/high_five.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/dota_hud_chat_wheel/dota_hud_chat_wheel.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/send_resource_panel/send_resource_panel.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/precache_images.xml" />

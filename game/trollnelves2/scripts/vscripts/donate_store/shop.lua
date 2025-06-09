@@ -4,7 +4,6 @@ end
 
 require("donate_store/shop_data")
 
-local dedicatedServerKey = "TESTSESADASASDASDQ412EDFDSFQ124132421ESR1241234WQSA" -- GetDedicatedServerKeyV3("1")
 local MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 local lastSpray = {}
 local lastSounds = {}
@@ -13,6 +12,9 @@ local chanceCheck = {}
 local countCheckShop = 0
 
 function Shop.RequestDonate(pID, steam, callback)
+	if not PlayerResource:IsValidPlayerID(pID) or PlayerResource:IsFakeClient(pID) then 
+		return
+	end
 	if GameRules:IsCheatMode() and not GameRules.isTesting then
 		local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 		PoolTable["5"]["0"] = PlayerResource:GetSteamAccountID(pID)
@@ -206,6 +208,7 @@ function Shop.GetSkill(data,callback)
 	if not req then
 		return
 	end
+
 	local encData = json.encode(data)
 	--DebugPrint("**********get skill*********************")
 	--DebugPrint(GameRules.server)
@@ -391,18 +394,22 @@ function Shop.RequestBonusTroll(obj, pID, steam, callback)
 			]]
 			
 			if chanceCheck[pID] == nil and GameRules:GetGameTime() and GameRules:GetGameTime() < 60 then
-				GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " your chance is increased by " .. obj[1].chance .. "%. Roll: ".. roll_chance .. " </font>" ,  0, 0)
+		---		GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " your chance is increased by " .. obj[1].chance .. "%. Roll: ".. roll_chance .. " </font>" ,  0, 0)
 			end 
 			if roll_chance <= tonumber(obj[1].chance) and PlayerResource:GetConnectionState(pID) == 2 then
 				if chanceCheck[pID] == nil and GameRules:GetGameTime() and GameRules:GetGameTime() < 60 then
-					GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " you're in luck!" .. "</font>" ,  0, 0)
+	--				GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " you're in luck!" .. "</font>" ,  0, 0)
 				end 
 				table.insert(GameRules.BonusTrollIDs, {pID, obj[1].chance})
 			end	
 			chanceCheck[pID] = 1
 		end
 	end
-	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)					
+	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)			
+	
+	if GameRules:GetGameTime() and GameRules:GetGameTime() < 60 then
+		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "troll_elves_update_chance", {})
+	end 
 end
 
 function Shop.RequestPets(obj, pID, steam, callback)
@@ -491,7 +498,7 @@ function Shop:BuyShopItem(table, callback)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			GameRules:SendCustomMessage("Error during purchase. Code: " .. res.StatusCode, 1, 1)
+			GameRules:SendCustomMessage("Error during BuyShopItem. Code: " .. res.StatusCode, 1, 1)
 			--DebugPrint("Error during purchase.")
 		else
 			if GameRules:IsCheatMode() then 
@@ -1035,12 +1042,12 @@ function Shop:EventRewards(table, callback)
 			GameRules:SendCustomMessage("Error take rewards.. Code: " .. res.StatusCode, 1, 1)
 			--DebugPrint("Error take rewards.")
 		end
-		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
+		
 		if callback then
 			local obj,pos,err = json.decode(res.Body)
 			callback(obj)
 		end
-		
+		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
 	end)
 end
 
@@ -1048,6 +1055,7 @@ function Shop.RequestXP(obj, pID, steam, callback)
 	--DebugPrint("*****RequestXP**********************")
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
 	local tmp = {}
+	PoolTable["7"]["0"] = "0"
 	if #obj > 0 then
 		PoolTable["7"]["0"] = tostring(obj[1].gold)
 	end
@@ -1056,13 +1064,13 @@ function Shop.RequestXP(obj, pID, steam, callback)
 	return obj
 end
 
-function Shop.RequestBP(callback)
+function Shop.RequestBpDay(callback)
 	local req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "bpday")
 	if not req then
 		return
 	end
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
-	--DebugPrint("***********RequestBP*********************")
+	DebugPrint("***********RequestBP*********************")
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
@@ -1074,7 +1082,8 @@ function Shop.RequestBP(callback)
 		local PoolTable = {}
 		if #obj > 0 then
 			for id=1,#obj do
-				PoolTable[id] = {obj[id].matchID, obj[id].nick, obj[id].type, obj[id].log, obj[id].score, obj[id].typeDonate }
+				PoolTable[obj[id].idQuest] = {id=obj[id].idQuest, name=obj[id].name, icon=obj[id].icon, reward=obj[id].reward, count=obj[id].count, 
+				donate=obj[id].typeDonate, type=obj[id].type, team=obj[id].team, map=obj[id].map, description=obj[id].log }
 			end
 		end
 		CustomNetTables:SetTableValue("Shop", "bpday", PoolTable)		
@@ -1090,43 +1099,108 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 	if #obj > 0 then
 	--	DebugPrintTable(obj)
 		for id=1,#obj do
-			PoolTable["10"]["1"][id] = {obj[id].idQuest, obj[id].count }
+			PoolTable["10"]["1"][id] = {obj[id].idQuest, obj[id].count, obj[id].keyId }
 		end
 	end
-	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)			
+	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)		
+	Timers:CreateTimer(5, function() 
+		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "troll_quest_update_after", {})
+	end)
 	return obj
 end
 
 function Shop:EventBattlePass(table, callback)
-	DebugPrintTable(table)
-	DebugPrintTable("test!!!!!!!!!!!!!!")
+	--DebugPrintTable(table)
+	--DebugPrint("test!!!!!!!!!!!!!!")
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
+	local player_bp_info = {}
+	player_bp_info[1] = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))["7"] -- exp
+	player_bp_info[2] = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))["14"]  -- get
+	player_bp_info[3] = CustomNetTables:GetTableValue("Shop", tostring(table.PlayerID))["15"] -- prem bp 
+
+    --DebugPrint("player_bp_info1")
+	--DebugPrintTable(player_bp_info[1])
+	--DebugPrint("player_bp_info2")
+	--DebugPrintTable(player_bp_info[2])
+	--DebugPrint("player_bp_info3")
+	--DebugPrintTable(player_bp_info[3])
+	--DebugPrint("player_bp_infoend")
+
+	local check = nil
+
+	if not table.Type or 
+	  (tonumber(table.Type) < 1000 and not player_bp_info[3] or  not player_bp_info[3]["0"] or player_bp_info[3]["0"] == "none" ) then
+		return
+	end
+
+	if player_bp_info[2][table.Type] ~= nil  then
+		return
+	end
+	if not player_bp_info[1] or not player_bp_info[1]["0"] or player_bp_info[1]["0"] == 0 then
+		return
+	end
+	if tonumber(table.Type) >= 1000 then
+		for _, reward in pairs(Shop.free_rewards) do
+			if reward[5] == table.Type then
+				DebugPrint(tonumber(reward[1]) * 1000)
+				if tonumber(player_bp_info[1]["0"]) < tonumber(reward[1]) * 1000  then
+					return
+				end
+				table.Nick = reward[3]
+				table.Gold = "0"
+				table.Gem  = "0"
+				table.Num = reward[2]
+				if reward[2] == "999999" then
+					table.Count = tostring(reward[4])
+				end
+				check = true
+			end
+		end
+	elseif tonumber(table.Type) < 1000 then
+		for _, reward in pairs(Shop.donate_rewards ) do
+			if reward[5] == table.Type then
+				DebugPrint(tonumber(reward[1]) * 1000)
+				if tonumber(player_bp_info[1]["0"]) < tonumber(reward[1]) * 1000 then
+					return
+				end
+				table.Nick = reward[3]
+				table.Gold = "0"
+				table.Gem  = "0"
+				table.Num = reward[2]
+				if reward[2] == "999999" then
+					table.Count	= tostring(reward[4])
+				end
+				check = true
+			end
+		end
+	end
+
+	if check == nil then
+		return
+	end
+
     local steam = tostring(PlayerResource:GetSteamID(table.PlayerID))
     table.SteamID = steam
     table.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 	table.playerID = tostring(table.PlayerID)
-	table.Gem = 0
-	table.Gold = 0
-	--table.Count 
-	-- table.type
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "battlepass/")
 	local encData = json.encode(table)
 	--DebugPrint("***********************************************")
 	--DebugPrint(GameRules.server)
 	--DebugPrint(encData)
 	--DebugPrint("***********************************************")
-	
+
 	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
 	req:SetHTTPRequestRawPostBody("application/json", encData)
 	req:Send(function(res)
-		--DebugPrint("***********************************************")
-		--DebugPrint(res.Body)
+		DebugPrint("***********************************************")
+		DebugPrint(res.Body)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			GameRules:SendCustomMessage("Error take rewards.. Code: " .. res.StatusCode, 1, 1)
+			GameRules:SendCustomMessage("Error take rewards BP.. Code: " .. res.StatusCode, 1, 1)
 			--DebugPrint("Error take rewards.")
 		end
 		Shop.RequestDonate(tonumber(table.playerID), steam, callback)
@@ -1297,3 +1371,142 @@ function Shop.RequestBan(obj, pID, steam, callback)
 	return obj
 end
 
+function Shop.CheckDayQuest(pId)
+	local hero = PlayerResource:GetSelectedHeroEntity(pId)
+	if not hero or PlayerResource:GetDeaths(pId) > 0 then return end
+	if GameRules:GetGameTime() - GameRules.startTime <= MIN_TIME_FOR_QUEST then return end
+	local bp_data = CustomNetTables:GetTableValue("Shop", "bpday")
+	if not bp_data then return end
+	local player_table = CustomNetTables:GetTableValue("Shop", tostring(pId))["10"]
+	local player_bp_info = CustomNetTables:GetTableValue("Shop", tostring(pId))["15"]
+	if not player_table then return end
+	if PlayerResource:GetConnectionState(pId) ~= 2 then
+		return
+	end
+
+	for i = 1, 3 do
+		local quest_data = player_table["1"] and player_table["1"][tostring(i)]
+		if not quest_data or not quest_data["1"] then goto continue end
+		local quest_id = quest_data["1"]
+		local quest = bp_data[quest_id]
+		
+		if not quest then goto continue end
+
+		if (not player_bp_info or not player_bp_info["0"] or player_bp_info["0"] == "none") and quest.donate == 1 then
+			return
+		end
+
+		local data = {}
+		data.KeyId = tostring(quest_data["3"])
+		data.IdQuest = tostring(quest_data["1"])
+		data.SteamID = tostring(PlayerResource:GetSteamID(pId))
+		data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
+
+		if isQuestCompleted(quest, pId) then
+			local progress = quest_data["2"] or 0
+			if tonumber(progress) + 1 == tonumber(quest.count) then
+				Shop.GetXpBattlepass(pId, callback)
+				Shop.GetDayDone(data, callback)
+			elseif tonumber(progress) + 1 < tonumber(quest.count) then
+				Shop.GetDayDone(data, callback)
+			end
+		end
+
+		::continue::
+	end
+end
+
+function isQuestCompleted(q, pId)
+	local hero = PlayerResource:GetSelectedHeroEntity(pId)
+	if not hero then return false end
+	if q.team and q.team ~= tostring(PlayerResource:GetTeam(pId)) then
+		return false
+	end
+
+	if q.map and q.map ~= "" then
+		local map = GameRules.MapName:lower()
+		if string.match(map,q.map) then
+			return true
+		end
+	end
+	if hero:HasModifier("modifier_" .. q.icon) or hero:HasModifier("modifier_" .. q.icon .. "_x4") then
+		return true
+	end
+
+	return false
+end
+
+function Shop.GetXpBattlepass(playerID,callback)
+	if not GameRules.isTesting  then
+		if GameRules:IsCheatMode() then return end
+	end
+	local data = {}
+	data.Time = ""
+	data.Srok = "0"
+	data.SteamID = tostring(PlayerResource:GetSteamID(playerID))
+    data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
+	data.Gold = "150"
+
+	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "postxp/")
+	if not req then
+		return
+	end
+
+	local encData = json.encode(data)
+	--DebugPrint("**********get skill*********************")
+	--DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	--DebugPrint("***********************************************")
+	
+	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
+	req:SetHTTPRequestRawPostBody("application/json", encData)
+	req:Send(function(res)
+		--DebugPrint("***********************************************")
+		--DebugPrint(res.Body)
+		--DebugPrint("Response code: " .. res.StatusCode)
+		--DebugPrint("***********************************************")
+		if res.StatusCode ~= 200 then
+			--DebugPrint("Error connecting GET GEM")
+		end
+		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
+		if callback then
+			local obj,pos,err = json.decode(res.Body)
+			callback(obj)
+		end
+		
+	end)
+end	
+
+function Shop.GetDayDone(data,callback)
+	if not GameRules.isTesting  then
+		if GameRules:IsCheatMode() then return end
+	end
+	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "dayquest/")
+	if not req then
+		return
+	end
+	data.Time = ""
+	local encData = json.encode(data)
+	DebugPrint("**********Shop.GetDayDone*********************")
+	--DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	--DebugPrint("***********************************************")
+	
+	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
+	req:SetHTTPRequestRawPostBody("application/json", encData)
+	req:Send(function(res)
+		--DebugPrint("***********************************************")
+		DebugPrint(res.Body)
+		--DebugPrint("Response code: " .. res.StatusCode)
+		--DebugPrint("***********************************************")
+		if res.StatusCode ~= 200 then
+			--DebugPrint("Error connecting GET GEM")
+		end
+		
+		if callback then
+			local obj,pos,err = json.decode(res.Body)
+			callback(obj)
+		end
+		
+	end)
+end	

@@ -1,5 +1,6 @@
+require('error_debug')
 Stats = Stats or {}
-local dedicatedServerKey = "TESTSESADASASDASDQ412EDFDSFQ124132421ESR1241234WQSA" --GetDedicatedServerKeyV3("1")
+
 local checkResult = {}
 local countCheckShop = 0 
 
@@ -14,13 +15,9 @@ function Stats.SubmitMatchData(winner,callback)
 			return 
 		end
 	end
+
 	local data = {}
 	local koeff =  string.match(GetMapName(),"%d+") or 1
-	if koeff == 4 then
-		koeff = 2
-	else 
-		koeff = 1
-	end
 	local debuffPoint = 0
 	local sign = 1 
 	
@@ -98,7 +95,18 @@ function Stats.SubmitMatchData(winner,callback)
 				data.LumberGained = tostring(PlayerResource:GetLumberGained(pID)/1000 or 0)
 				data.LumberGiven = tostring(PlayerResource:GetLumberGiven(pID)/1000 or 0)
 				data.Kill = tostring(PlayerResource:GetKills(pID) or 0)
-				data.Death = tostring(PlayerResource:GetDeaths(pID) or 0)
+				-- 
+				data.PartyId = tostring(PlayerResource:GetPartyID(pID) or 0)
+				data.Color = tostring(PLAYER_COLORS[pID] or 0)
+				data.DamageGiven = tostring(PlayerResource:GetDamageGiven(pID) or 0)
+				data.DamageTake = tostring(PlayerResource:GetDamageTake(pID) or 0)
+				data.DeathTime = tostring(GameRules.deathTime[pID] or 0)
+
+				if PlayerResource:GetConnectionState(pID) ~= 2 then
+					data.Death = tostring(PlayerResource:GetDeaths(pID) + 1 or 0)
+				else
+					data.Death = tostring(PlayerResource:GetDeaths(pID) or 0)
+				end
 				data.Nick = "error-nick"
 				if PlayerResource:GetPlayerName(pID) then
 					data.Nick = tostring(PlayerResource:GetPlayerName(pID))
@@ -118,6 +126,9 @@ function Stats.SubmitMatchData(winner,callback)
 				data.Score = 0
 				data.Rep = 0
 				if hero then
+					if PlayerResource:GetConnectionState(pID) ~= 2 then
+						hero:IncrementDeaths(pID)
+					end
 					data.Type = tostring(PlayerResource:GetType(pID) or "null")
 					if PlayerResource:GetTeam(pID) == winner and PlayerResource:GetDeaths(pID) == 0  then
 						if hero:IsTroll() then
@@ -139,7 +150,7 @@ function Stats.SubmitMatchData(winner,callback)
 						if not hero:IsTroll() then
 							data.Team = tostring(2)
 						end
-						data.Rep = -2
+						data.Rep = -4
 					end 
 						
 					if PlayerResource:GetConnectionState(pID) ~= 2 and hero:IsTroll() and PlayerResource:GetTeam(pID) == winner then
@@ -154,7 +165,7 @@ function Stats.SubmitMatchData(winner,callback)
 							data.Score = tostring(math.floor(-100 + GameRules.Bonus[pID] + tonumber(data.GetScoreBonus)))
 							data.Team = tostring(2)
 							data.Type = data.Type .. " LEAVE"
-							data.Rep = -10 + GameRules.rep[pID]
+							data.Rep = -20
 						end
 					end
 
@@ -177,7 +188,7 @@ function Stats.SubmitMatchData(winner,callback)
 					data.Type = "ELF KICK"
 					data.Score = tostring(-100)
 					data.Team = tostring(2)
-					data.Rep = -20 + GameRules.rep[pID]
+					data.Rep = -20 
 				end
 				data.Key = dedicatedServerKey
 				data.BonusPercent = tostring(GameRules.BonusPercent)
@@ -202,13 +213,15 @@ function Stats.SubmitMatchData(winner,callback)
 					data.Gem = math.floor(data.Gem * GameRules.BonusGem[pID])
 					GameRules.GetGem[pID] = data.Gem
 				end
-				
+				--local status, nextCall = Error_debug.ErrorCheck(function() 
+					Shop.CheckDayQuest(pID)
+				--end)
 				Stats.SendData(data,callback)
 			end 
 		end
 	end
 	::continue::
-	Timers:CreateTimer(5, function() 
+	Timers:CreateTimer(10, function() 
 		GameRules:SetGameWinner(winner)
 		SetResourceValues()
 	end)
@@ -232,7 +245,7 @@ function Stats.SendData(data,callback)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			GameRules:SendCustomMessage("Error connecting", 1, 1)
+			GameRules:SendCustomMessage("Error connecting Stats.SendData", 1, 1)
 			--DebugPrint("Error connecting")
 		end
 		

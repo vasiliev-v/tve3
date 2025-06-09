@@ -16,98 +16,16 @@ if GameRules.MapSpeed ~= 4 then
         -- Elf spells
         -----------------------
         {
-            "elf_spell_ms", 
-            "elf_spell_ms", 
-            "modifier_elf_spell_ms", 
+            "elf_spell_solo_player", 
+            "elf_spell_solo_player", 
+            "modifier_elf_spell_solo_player", 
             {
-                "elf_spell_ms_description_level_1_shop",
-                "elf_spell_ms_description_level_2_shop",
-            },
-            {
-                {2,5,10},
-                {2,5,10},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_gold", 
-            "elf_spell_gold", 
-            "modifier_elf_spell_gold", 
-            {
-                "elf_spell_gold_description_level_1_shop", 
-                "elf_spell_gold_description_level_2_shop", 
+                "elf_spell_solo_player_description_level_1_shop", 
+                "elf_spell_solo_player_description_level_2_shop", 
             }, 
             {
-                {10,15,20},
-                {"-20","-10",0},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_lumber", 
-            "elf_spell_lumber", 
-            "modifier_elf_spell_lumber", 
-            {
-                "elf_spell_lumber_description_level_1_shop", 
-                "elf_spell_lumber_description_level_2_shop", 
-            }, 
-            {
-                {2,2,2},
-                {"-30","-20","-10"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_cd_reduce", 
-            "elf_spell_cd_reduce", 
-            "modifier_elf_spell_cd_reduce", 
-            {
-                "elf_spell_cd_reduce_description_level_1_shop", 
-            }, 
-            {
-                {"-4%","-8%","-16%"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_cd_worker", 
-            "elf_spell_cd_worker", 
-            "modifier_elf_spell_cd_worker", 
-            {
-                "elf_spell_cd_worker_description_level_1_shop", 
-            }, 
-            {
-                {"-30%","-50%","-75%"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_armor_wall", 
-            "elf_spell_armor_wall", 
-            "modifier_elf_spell_armor_wall", 
-            {
-                "elf_spell_armor_wall_description_level_1_shop", 
-            }, 
-            {
-                {"4%","8%","12%"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_tower_damage", 
-            "elf_spell_tower_damage", 
-            "modifier_elf_spell_tower_damage", 
-            {
-                "elf_spell_tower_damage_description_level_1_shop", 
-            }, 
-            {
-                {"4%","8%","12%"},
+                {"2","2","2"},
+                {"2","5","10"},
             },
             "0",
             "1"
@@ -139,14 +57,33 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
-            "elf_spell_true", 
-            "elf_spell_true", 
-            "modifier_elf_spell_true", 
+            "elf_spell_damage_gold", 
+            "elf_spell_damage_gold", 
+            "modifier_elf_spell_damage_gold", 
             {
-                "elf_spell_true_description_level_1_shop", 
+                "elf_spell_damage_gold_description_level_1_shop", 
+                "elf_spell_damage_gold_description_level_2_shop", 
+                "elf_spell_damage_gold_description_level_3_shop",
             }, 
             {
-                {200, 400, 600},   
+                {"4%","8%","15%"},
+                {"30 min","30 min","30 min"},
+                {"15 min","15 min","15 min"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_ms", 
+            "elf_spell_ms", 
+            "modifier_elf_spell_ms", 
+            {
+                "elf_spell_ms_description_level_1_shop",
+                "elf_spell_ms_description_level_2_shop",
+            },
+            {
+                {2,5,10},
+                {2,5,10},
             },
             "0",
             "1"
@@ -165,6 +102,47 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
+            "elf_spell_armor_wall", 
+            "elf_spell_armor_wall", 
+            "modifier_elf_spell_armor_wall", 
+            {
+                "elf_spell_armor_wall_description_level_1_shop", 
+            }, 
+            {
+                {"4%","8%","12%"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_tower_damage", 
+            "elf_spell_tower_damage", 
+            "modifier_elf_spell_tower_damage", 
+            {
+                "elf_spell_tower_damage_description_level_1_shop", 
+            }, 
+            {
+                {"4%","8%","12%"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_lumber", 
+            "elf_spell_lumber", 
+            "modifier_elf_spell_lumber", 
+            {
+                "elf_spell_lumber_description_level_1_shop", 
+                "elf_spell_lumber_description_level_2_shop", 
+            }, 
+            {
+                {2,5,9},
+                {"-20","-10","0"},
+            },
+            "0",
+            "1"
+        },
+        {
             "elf_spell_blink", 
             "elf_spell_blink", 
             "modifier_elf_spell_blink", 
@@ -173,25 +151,6 @@ if GameRules.MapSpeed ~= 4 then
             }, 
             {
                 {"+200","+400","+600"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_damage_gold", 
-            "elf_spell_damage_gold", 
-            "modifier_elf_spell_damage_gold", 
-            {
-                "elf_spell_damage_gold_description_level_1_shop", 
-                "elf_spell_damage_gold_description_level_2_shop", 
-                "elf_spell_damage_gold_description_level_3_shop", 
-                "elf_spell_damage_gold_description_level_4_shop", 
-            }, 
-            {
-                {"4%","8%","15%"},
-                {"30 min","30 min","30 min"},
-                {"15 min","15 min","15 min"},
-                {"5 min","5 min","5 min"},
             },
             "0",
             "1"
@@ -214,28 +173,6 @@ if GameRules.MapSpeed ~= 4 then
             "0",
             "1"
         },
-        --[[
-        {
-            "elf_spell_smoke", 
-            "elf_spell_smoke", 
-            "modifier_elf_spell_smoke", 
-            {
-                "elf_spell_smoke_description_level_1_shop", 
-                "elf_spell_smoke_description_level_2_shop", 
-                "elf_spell_smoke_description_level_3_shop", 
-                "elf_spell_smoke_description_level_4_shop", 
-            }, 
-            {
-                {15, 30, 60},
-                {30, 45, 95},
-                {600, 900, 1200},
-                {350, 300, 300},
-                
-            },
-            "0",
-            "1"
-        },
-        --]]
         {
             "elf_spell_haste",
             "elf_spell_haste", 
@@ -271,6 +208,34 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
+            "elf_spell_cd_reduce", 
+            "elf_spell_cd_reduce", 
+            "modifier_elf_spell_cd_reduce", 
+            {
+                "elf_spell_cd_reduce_description_level_1_shop", 
+            }, 
+            {
+                {"-4%","-8%","-16%"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_gold", 
+            "elf_spell_gold", 
+            "modifier_elf_spell_gold", 
+            {
+                "elf_spell_gold_description_level_1_shop", 
+                "elf_spell_gold_description_level_2_shop", 
+            }, 
+            {
+                {10,15,20},
+                {"-20","-10",0},
+            },
+            "0",
+            "1"
+        },
+        {
             "elf_spell_target_buff",
             "elf_spell_target_buff", 
             "modifier_elf_spell_target_buff", 
@@ -285,6 +250,34 @@ if GameRules.MapSpeed ~= 4 then
                 {60, 80, 120},
                 {6, 8 ,12},
                 {120, 100, 60},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_stun_target",
+            "elf_spell_stun_target", 
+            "modifier_elf_spell_stun_target", 
+            {
+                "elf_spell_stun_target_description_level_1_shop", 
+                "elf_spell_stun_target_description_level_2_shop", 
+            }, 
+            {
+                {1, 1.5, 2},
+                {350, 300, 300},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_teleport",
+            "elf_spell_teleport", 
+            "modifier_elf_spell_teleport", 
+            {
+                "elf_spell_teleport_description_level_1_shop", 
+            }, 
+            {
+                {500, 400, 300},
             },
             "0",
             "1"
@@ -307,29 +300,42 @@ if GameRules.MapSpeed ~= 4 then
             "1"
         },
         {
-            "elf_spell_teleport",
-            "elf_spell_teleport", 
-            "modifier_elf_spell_teleport", 
+            "elf_spell_cd_worker", 
+            "elf_spell_cd_worker", 
+            "modifier_elf_spell_cd_worker", 
             {
-                "elf_spell_teleport_description_level_1_shop", 
+                "elf_spell_cd_worker_description_level_1_shop", 
             }, 
             {
-                {500, 400, 300},
+                {"-30%","-50%","-75%"},
             },
             "0",
             "1"
         },
         {
-            "elf_spell_stun_target",
-            "elf_spell_stun_target", 
-            "modifier_elf_spell_stun_target", 
+            "elf_spell_true", 
+            "elf_spell_true", 
+            "modifier_elf_spell_true", 
             {
-                "elf_spell_stun_target_description_level_1_shop", 
-                "elf_spell_stun_target_description_level_2_shop", 
+                "elf_spell_true_description_level_1_shop", 
             }, 
             {
-                {1, 1.5, 2},
-                {350, 300, 300},
+                {50, 100, 200},   
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_reveal",
+            "elf_spell_reveal", 
+            "modifier_elf_spell_reveal", 
+            {
+                "elf_spell_reveal_description_level_1_shop", 
+                "elf_spell_reveal_description_level_2_shop", 
+            }, 
+            {
+                {30, 45, 60},
+                {200, 150, 150},
             },
             "0",
             "1"
@@ -352,21 +358,40 @@ if GameRules.MapSpeed ~= 4 then
             "0",
             "1"
         },
+
+
+
+
+        --[[
         {
-            "elf_spell_reveal",
-            "elf_spell_reveal", 
-            "modifier_elf_spell_reveal", 
+            "elf_spell_smoke", 
+            "elf_spell_smoke", 
+            "modifier_elf_spell_smoke", 
             {
-                "elf_spell_reveal_description_level_1_shop", 
-                "elf_spell_reveal_description_level_2_shop", 
+                "elf_spell_smoke_description_level_1_shop", 
+                "elf_spell_smoke_description_level_2_shop", 
+                "elf_spell_smoke_description_level_3_shop", 
+                "elf_spell_smoke_description_level_4_shop", 
             }, 
             {
-                {30, 45, 60},
-                {200, 150, 150},
+                {15, 30, 60},
+                {30, 45, 95},
+                {600, 900, 1200},
+                {350, 300, 300},
+                
             },
             "0",
             "1"
         },
+        --]]
+
+
+
+
+
+
+
+
         -----------------------
         -- Troll spells
         -----------------------
@@ -741,98 +766,16 @@ else -- X4
         -- Elf spells
         -----------------------
         {
-            "elf_spell_ms", 
-            "elf_spell_ms", 
-            "modifier_elf_spell_ms_x4", 
+            "elf_spell_solo_player", 
+            "elf_spell_solo_player", 
+            "modifier_elf_spell_solo_player", 
             {
-                "elf_spell_ms_description_level_1_shop_x4",
-                "elf_spell_ms_description_level_2_shop_x4",
-            },
-            {
-                {5,10,15},
-                {5,10,15},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_gold", 
-            "elf_spell_gold", 
-            "modifier_elf_spell_gold_x4", 
-            {
-                "elf_spell_gold_description_level_1_shop_x4", 
-                "elf_spell_gold_description_level_2_shop_x4", 
+                "elf_spell_solo_player_description_level_1_shop", 
+                "elf_spell_solo_player_description_level_2_shop", 
             }, 
             {
-                {10,15,20},
-                {"-20","-10",0},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_lumber", 
-            "elf_spell_lumber", 
-            "modifier_elf_spell_lumber_x4", 
-            {
-                "elf_spell_lumber_description_level_1_shop_x4", 
-                "elf_spell_lumber_description_level_2_shop_x4", 
-            }, 
-            {
-                {2,2,2},
-                {"-30","-20","-10"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_cd_reduce", 
-            "elf_spell_cd_reduce", 
-            "modifier_elf_spell_cd_reduce_x4", 
-            {
-                "elf_spell_cd_reduce_description_level_1_shop_x4", 
-            }, 
-            {
-                {"-5%","-7%","-10%"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_cd_worker", 
-            "elf_spell_cd_worker", 
-            "modifier_elf_spell_cd_worker_x4", 
-            {
-                "elf_spell_cd_worker_description_level_1_shop_x4", 
-            }, 
-            {
-                {"-10%","-20%","-25%"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_armor_wall", 
-            "elf_spell_armor_wall", 
-            "modifier_elf_spell_armor_wall_x4", 
-            {
-                "elf_spell_armor_wall_description_level_1_shop_x4", 
-            }, 
-            {
-                {"4%","8%","12%"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_tower_damage", 
-            "elf_spell_tower_damage", 
-            "modifier_elf_spell_tower_damage_x4", 
-            {
-                "elf_spell_tower_damage_description_level_1_shop_x4", 
-            }, 
-            {
-                {"4%","8%","12%"},
+                {"2","2","2"},
+                {"2","5","10"},
             },
             "0",
             "1"
@@ -864,14 +807,31 @@ else -- X4
             "1"
         },
         {
-            "elf_spell_true", 
-            "elf_spell_true", 
-            "modifier_elf_spell_true_x4", 
+            "elf_spell_damage_gold", 
+            "elf_spell_damage_gold", 
+            "modifier_elf_spell_damage_gold_x4", 
             {
-                "elf_spell_true_description_level_1_shop_x4", 
+                "elf_spell_damage_gold_description_level_1_shop_x4", 
+                "elf_spell_damage_gold_description_level_2_shop_x4", 
             }, 
             {
-                {200, 300, 400},   
+                {"4%","8%","15%"},
+                {"5 min","5 min","5 min"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_ms", 
+            "elf_spell_ms", 
+            "modifier_elf_spell_ms_x4", 
+            {
+                "elf_spell_ms_description_level_1_shop_x4",
+                "elf_spell_ms_description_level_2_shop_x4",
+            },
+            {
+                {5,10,15},
+                {5,10,15},
             },
             "0",
             "1"
@@ -890,6 +850,48 @@ else -- X4
             "1"
         },
         {
+            "elf_spell_armor_wall", 
+            "elf_spell_armor_wall", 
+            "modifier_elf_spell_armor_wall_x4", 
+            {
+                "elf_spell_armor_wall_description_level_1_shop_x4", 
+            }, 
+            {
+                {"4%","8%","12%"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_tower_damage", 
+            "elf_spell_tower_damage", 
+            "modifier_elf_spell_tower_damage_x4", 
+            {
+                "elf_spell_tower_damage_description_level_1_shop_x4", 
+            }, 
+            {
+                {"4%","8%","12%"},
+            },
+            "0",
+            "1"
+        },
+
+        {
+            "elf_spell_lumber", 
+            "elf_spell_lumber", 
+            "modifier_elf_spell_lumber_x4", 
+            {
+                "elf_spell_lumber_description_level_1_shop_x4", 
+                "elf_spell_lumber_description_level_2_shop_x4", 
+            }, 
+            {
+                {2,5,9},
+                {"-20","-10","0"},
+            },
+            "0",
+            "1"
+        },
+        {
             "elf_spell_blink", 
             "elf_spell_blink", 
             "modifier_elf_spell_blink_x4", 
@@ -898,25 +900,6 @@ else -- X4
             }, 
             {
                 {"+200","+400","+600"},
-            },
-            "0",
-            "1"
-        },
-        {
-            "elf_spell_damage_gold", 
-            "elf_spell_damage_gold", 
-            "modifier_elf_spell_damage_gold_x4", 
-            {
-                "elf_spell_damage_gold_description_level_1_shop_x4", 
-                "elf_spell_damage_gold_description_level_2_shop_x4", 
-                "elf_spell_damage_gold_description_level_3_shop_x4", 
-                "elf_spell_damage_gold_description_level_3_shop_x4", 
-            }, 
-            {
-                {"4%","8%","15%"},
-                {"30 min","30 min","30 min"},
-                {"15 min","15 min","15 min"},
-                {"5 min","5 min","5 min"},
             },
             "0",
             "1"
@@ -939,28 +922,6 @@ else -- X4
             "0",
             "1"
         },
-        --[[
-        {
-            "elf_spell_smoke", 
-            "elf_spell_smoke", 
-            "modifier_elf_spell_smoke_x4", 
-            {
-                "elf_spell_smoke_description_level_1_shop_x4", 
-                "elf_spell_smoke_description_level_2_shop_x4", 
-                "elf_spell_smoke_description_level_3_shop_x4", 
-                "elf_spell_smoke_description_level_3_shop_x4", 
-            }, 
-            {
-                {15, 30, 60},
-                {30, 45, 95},
-                {600, 900, 1200},
-                {350, 300, 300},
-                
-            },
-            "0",
-            "1"
-        },
-        --]]
         {
             "elf_spell_haste",
             "elf_spell_haste", 
@@ -996,6 +957,34 @@ else -- X4
             "1"
         },
         {
+            "elf_spell_cd_reduce", 
+            "elf_spell_cd_reduce", 
+            "modifier_elf_spell_cd_reduce_x4", 
+            {
+                "elf_spell_cd_reduce_description_level_1_shop_x4", 
+            }, 
+            {
+                {"-5%","-7%","-10%"},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_gold", 
+            "elf_spell_gold", 
+            "modifier_elf_spell_gold_x4", 
+            {
+                "elf_spell_gold_description_level_1_shop_x4", 
+                "elf_spell_gold_description_level_2_shop_x4", 
+            }, 
+            {
+                {10,15,20},
+                {"-20","-10",0},
+            },
+            "0",
+            "1"
+        },
+        {
             "elf_spell_target_buff",
             "elf_spell_target_buff", 
             "modifier_elf_spell_target_buff_x4", 
@@ -1010,6 +999,34 @@ else -- X4
                 {60, 80, 120},
                 {6, 8 ,12},
                 {120, 100, 60},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_stun_target",
+            "elf_spell_stun_target", 
+            "modifier_elf_spell_stun_target_x4", 
+            {
+                "elf_spell_stun_target_description_level_1_shop_x4", 
+                "elf_spell_stun_target_description_level_2_shop_x4", 
+            }, 
+            {
+                {1, 1.5, 2},
+                {350, 300, 300},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_teleport",
+            "elf_spell_teleport", 
+            "modifier_elf_spell_teleport_x4", 
+            {
+                "elf_spell_teleport_description_level_1_shop_x4", 
+            }, 
+            {
+                {500, 400, 300},
             },
             "0",
             "1"
@@ -1032,29 +1049,42 @@ else -- X4
             "1"
         },
         {
-            "elf_spell_teleport",
-            "elf_spell_teleport", 
-            "modifier_elf_spell_teleport_x4", 
+            "elf_spell_cd_worker", 
+            "elf_spell_cd_worker", 
+            "modifier_elf_spell_cd_worker_x4", 
             {
-                "elf_spell_teleport_description_level_1_shop_x4", 
+                "elf_spell_cd_worker_description_level_1_shop_x4", 
             }, 
             {
-                {500, 400, 300},
+                {"-10%","-20%","-25%"},
             },
             "0",
             "1"
         },
         {
-            "elf_spell_stun_target",
-            "elf_spell_stun_target", 
-            "modifier_elf_spell_stun_target_x4", 
+            "elf_spell_reveal",
+            "elf_spell_reveal", 
+            "modifier_elf_spell_reveal_x4", 
             {
-                "elf_spell_stun_target_description_level_1_shop_x4", 
-                "elf_spell_stun_target_description_level_2_shop_x4", 
+                "elf_spell_reveal_description_level_1_shop_x4", 
+                "elf_spell_reveal_description_level_2_shop_x4", 
             }, 
             {
-                {1, 1.5, 2},
-                {350, 300, 300},
+                {30, 45, 60},
+                {200, 150, 150},
+            },
+            "0",
+            "1"
+        },
+        {
+            "elf_spell_true", 
+            "elf_spell_true", 
+            "modifier_elf_spell_true_x4", 
+            {
+                "elf_spell_true_description_level_1_shop_x4", 
+            }, 
+            {
+                {50, 100, 200},   
             },
             "0",
             "1"
@@ -1077,21 +1107,32 @@ else -- X4
             "0",
             "1"
         },
+
+
+       --[[
         {
-            "elf_spell_reveal",
-            "elf_spell_reveal", 
-            "modifier_elf_spell_reveal_x4", 
+            "elf_spell_smoke", 
+            "elf_spell_smoke", 
+            "modifier_elf_spell_smoke_x4", 
             {
-                "elf_spell_reveal_description_level_1_shop_x4", 
-                "elf_spell_reveal_description_level_2_shop_x4", 
+                "elf_spell_smoke_description_level_1_shop_x4", 
+                "elf_spell_smoke_description_level_2_shop_x4", 
+                "elf_spell_smoke_description_level_3_shop_x4", 
+                "elf_spell_smoke_description_level_3_shop_x4", 
             }, 
             {
-                {30, 45, 60},
-                {200, 150, 150},
+                {15, 30, 60},
+                {30, 45, 95},
+                {600, 900, 1200},
+                {350, 300, 300},
+                
             },
             "0",
             "1"
         },
+        --]]
+
+
         -----------------------
         -- Troll spells  X4
         -----------------------
@@ -1116,7 +1157,7 @@ else -- X4
                 "troll_spell_gold_hit_description_level_1_shop_x4", 
                 "troll_spell_gold_hit_description_level_2_shop_x4", 
                 "troll_spell_gold_hit_description_level_3_shop_x4", 
-                "troll_spell_gold_hit_description_level_3_shop_x4",
+                "troll_spell_gold_hit_description_level_4_shop_x4",
                 
             }, 
             {
@@ -1477,10 +1518,12 @@ game_spells_lib.PLAYER_INFO =
 
 game_spells_lib.current_activated_spell = {}
 game_spells_lib.spells_cost_random = 500
+game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 1
 if GameRules:IsCheatMode() then
     game_spells_lib.spells_cost_random = -2
+    --game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
 end
-game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
+
 
 CustomNetTables:SetTableValue("game_spells_lib", "spell_list", game_spells_lib.spells_list)
 CustomNetTables:SetTableValue("game_spells_lib", "spell_cost", {cost = game_spells_lib.spells_cost_random})
@@ -1493,66 +1536,82 @@ function game_spells_lib:event_set_activate_spell(data)
     if data.PlayerID == nil then return end
     local player_id = data.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(player_id)
+    
     if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
         if hero == nil then return end
     end
+
     local modifier_name = data.modifier_name
     local spell_name = data.spell_name
-    local havePerk = false
+    local player_team = PlayerResource:GetTeam(player_id)
+    -- Проверка, есть ли навык у игрока вообще
     game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
+    local havePerk = false
     for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
         if spell_name == game_spells_lib.PLAYER_INFO[player_id][tostring(i)][tostring(1)] then
             havePerk = true
             break
         end
     end
-    if not havePerk then
-        return
-    end
-    
+    if not havePerk then return end
+
+    -- Проверки на сторону и активность перка
     if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
         for _, spell_history in pairs(game_spells_lib.spells_list) do
             if spell_history[1] == spell_name then
-                if tonumber(spell_history[6]) == 0 and not hero:IsElf() then
-                    return
-                elseif tonumber(spell_history[6]) == 1 and not hero:IsTroll()  then
-                    return
-                end
-            end
-        end
-        for _, spell_history in pairs(game_spells_lib.spells_list) do
-            if spell_history[1] == spell_name then
-                if tonumber(spell_history[7]) ~= 1 then
-                    return
-                end
+                if tonumber(spell_history[6]) == 0 and player_team ~= 2 and not hero:IsElf() then return end
+                if tonumber(spell_history[6]) == 1 and player_team ~= 3 and not hero:IsTroll() then return end
+                if tonumber(spell_history[7]) ~= 1 then return end
             end
         end
     end
-    -- Создание таблицы активных навыков у игрока с айди
+
+    -- Создание таблицы, если нет
     if game_spells_lib.current_activated_spell[player_id] == nil then
         game_spells_lib.current_activated_spell[player_id] = {}
     end
 
-    -- нельзя использовать после опредленного времени
-    if (GameRules:GetGameTime() / 60) >= game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE then
-		return
-	end
+    -- Проверка времени
+    --if (GameRules:GetGameTime() / 60) >= game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE then
+    --    return
+    --end
+    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP and not GameRules:IsCheatMode() then
+        SendErrorMessage(player_id, "error_cant_take_aspect")
+        return
+    end
+    local was_solo_before = game_spells_lib:HasSoloPerk(player_id)
+    local is_solo_now = (spell_name == "elf_spell_solo_player")
 
-    -- Находим есть ли у игрока этот навык, если есть то удаляет, если нет то добавляем
+    -- Если уже активен, то снимаем
     if game_spells_lib:FindCurrentSpellPlayer(player_id, spell_name) then
         game_spells_lib:RemovePlayerSpell(player_id, spell_name, modifier_name, hero)
     else
-        -- Если у игрока больше 3 активных навыков, то надо удалить самый старый включенный навык
-        if #game_spells_lib.current_activated_spell[player_id] >= 3 then
+        -- Определяем лимит
+        local max_allowed = 1
+        if was_solo_before or is_solo_now or player_team == 3 or GameRules:IsCheatMode() then
+            max_allowed = 3
+        end
+
+        -- Удаляем старый, если превышает лимит
+        if #game_spells_lib.current_activated_spell[player_id] >= max_allowed then
             game_spells_lib:RemoveOldSpell(player_id, hero)
         end
-        -- Добавление навыка
+
+        -- Добавляем новый
         game_spells_lib:AddPlayerSpell(player_id, spell_name, modifier_name, hero)
     end
 
-    -- Обновление визуала активных навыков
-    CustomNetTables:SetTableValue("game_spells_lib", "spell_active", game_spells_lib.current_activated_spell)
+    -- Обновляем отображение
+    local result = {}
+    for pid, list in pairs(game_spells_lib.current_activated_spell) do
+        result[tostring(pid)] = {}
+        for i = 1, #list do
+            result[tostring(pid)][tostring(i)] = list[i]
+        end
+    end
+    CustomNetTables:SetTableValue("game_spells_lib", "spell_active", result)
 end
+
 
 function game_spells_lib:GetSpellLevel(player_id, spell_name)
     game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
@@ -1588,16 +1647,33 @@ function game_spells_lib:RemovePlayerSpell(id, spell_name, modifier_name, hero)
     if game_spells_lib.current_activated_spell[id] == nil then
         game_spells_lib.current_activated_spell[id] = {}
     end
-    for i=#game_spells_lib.current_activated_spell[id], 1, -1 do
+
+    local was_solo = false
+    -- удаляем сам спелл
+    for i = #game_spells_lib.current_activated_spell[id], 1, -1 do
         if game_spells_lib.current_activated_spell[id][i] == spell_name then
             table.remove(game_spells_lib.current_activated_spell[id], i)
-            if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then return end
-            DebugPrint("modifier_name " .. modifier_name)
-            hero:RemoveModifierByName(modifier_name)
+            if spell_name == "elf_spell_solo_player" then
+                was_solo = true
+            end
+            if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+                hero:RemoveModifierByName(modifier_name)
+            end
             break
         end
     end
+
+    -- если это solo и игрок не на BADGUYS (тролях), то оставляем только один последний перк
+    local player_team = PlayerResource:GetTeam(id)
+    if was_solo and player_team ~= DOTA_TEAM_BADGUYS then
+        local last = game_spells_lib.current_activated_spell[id][#game_spells_lib.current_activated_spell[id]]
+        game_spells_lib.current_activated_spell[id] = {}
+        if last ~= nil then
+            table.insert(game_spells_lib.current_activated_spell[id], last)
+        end
+    end
 end
+
 
 function game_spells_lib:AddPlayerSpell(id, spell_name, modifier_name, hero)
     if game_spells_lib.current_activated_spell[id] == nil then
@@ -1707,6 +1783,7 @@ function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
     if game_spells_lib.PLAYER_INFO[player_id] == nil then
         return
     end
+    
     local upgrade_info = {}
     local find_random_to_upgrade = {}
     for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
@@ -1784,20 +1861,112 @@ end
 
 function game_spells_lib:SetSpellPlayers()
     local pplc = PlayerResource:GetPlayerCount()
-	for id=0,pplc-1 do
-        if game_spells_lib.current_activated_spell[id] ~= nil then
-            for _, spell_name in pairs(game_spells_lib.current_activated_spell[id]) do
-                local hero = PlayerResource:GetSelectedHeroEntity(id)
-                if hero == nil then 
-                    return 
+    for id = 0, pplc - 1 do
+        local team = PlayerResource:GetTeam(id)
+        local active = game_spells_lib.current_activated_spell[id] or {}
+        -- GOOD GUYS: DOTA_TEAM_GOODGUYS
+        if team == DOTA_TEAM_GOODGUYS then
+            if #active == 0 then
+                -- нет перков: даём 1 случайный, но не elf_spell_solo_player
+                local candidates = {}
+                for _, info in ipairs(self.spells_list) do
+                    local spell_name = info[1]
+                    local allowed_team = info[6]     -- "0" — good guys
+                    local enabled      = info[7] == "1"
+                    DebugPrint(spell_name)
+                    if allowed_team == "0" and enabled and spell_name ~= "elf_spell_solo_player" then
+                        table.insert(candidates, spell_name)
+                    end
                 end
-                local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
-                local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {}):SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
-                DebugPrint("lvl " .. game_spells_lib:GetSpellLevel(id, spell_name))
-                if spell_mod then
-                    spell_mod:SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
+                if #candidates > 0 then
+                    active[1] = candidates[RandomInt(1, #candidates)]
+                end
+            else
+                -- есть перки, но нет solo-перка: добавляем последний в списке
+                local has_solo = false
+                for _, name in ipairs(active) do
+                    if name == "elf_spell_solo_player" then has_solo = true break end
+                end
+                if not has_solo and #active > 0 then
+                -- запоминаем последнюю запись
+                local last_selected = active[#active]
+                    -- очищаем текущий список active
+                    for i = #active, 1, -1 do
+                        table.remove(active, i)
+                    end
+                -- сохраняем только последний выбранный перк
+                table.insert(active, last_selected)
+                end
+            end
+        -- BAD GUYS: DOTA_TEAM_BADGUYS
+        elseif team == DOTA_TEAM_BADGUYS then
+            if #active == 0 then
+                -- нет перков: даём 3 случайных для bad guys
+                local candidates = {}
+                for _, info in ipairs(self.spells_list) do
+                    local spell_name  = info[1]
+                    local allowed_team = info[6]   -- "1" — bad guys
+                    local enabled      = info[7] == "1"
+                    if allowed_team == "1" and enabled then
+                        table.insert(candidates, spell_name)
+                    end
+                end
+                -- выбираем без повторов
+                local picked = {}
+                while #picked < 3 and #candidates > 0 do
+                    local idx = RandomInt(1, #candidates)
+                    table.insert(picked, candidates[idx])
+                    table.remove(candidates, idx)
+                end
+                for i, name in ipairs(picked) do
+                    active[i] = name
+                end
+            end
+        end
+
+        -- Сохраняем обновлённый список, если он был пустым или мы его дополнили
+        game_spells_lib.current_activated_spell[id] = active
+        DebugPrint("#active  " .. #active )
+        -- Наконец, выдаём перки герою
+        if #active > 0 then
+            local hero = PlayerResource:GetSelectedHeroEntity(id)
+            if hero then
+                DebugPrint("2")
+                for _, spell_name in ipairs(active) do
+                    DebugPrint(spell_name)
+                    local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
+                    local level = game_spells_lib:GetSpellLevel(id, spell_name)
+                    local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
+                    if mod then
+                        DebugPrint("mod")
+                        mod:SetStackCount(level)
+                    end
                 end
             end
         end
     end
+
+    -- Обновляем отображение
+    local result = {}
+    for pid, list in pairs(game_spells_lib.current_activated_spell) do
+        result[tostring(pid)] = {}
+        for i = 1, #list do
+            result[tostring(pid)][tostring(i)] = list[i]
+        end
+    end
+    CustomNetTables:SetTableValue("game_spells_lib", "spell_active", result)
+
+end
+
+
+function game_spells_lib:HasSoloPerk(id)
+    if game_spells_lib.current_activated_spell[id] == nil then
+        return false
+    end
+    for _, s in pairs(game_spells_lib.current_activated_spell[id]) do
+        if s == "elf_spell_solo_player" then
+            return true
+        end
+    end
+    return false
 end

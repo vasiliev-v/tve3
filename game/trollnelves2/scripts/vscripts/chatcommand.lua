@@ -344,7 +344,22 @@ function chatcommand:OnPlayerChat(event)
 	--GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
 		elseif event.text  ==  "!money"  then
 			-- PlayerResource:ModifyGold(hero, nil)
+			local player_table = {}
+			local PoolTable = {}
+			player_table[1] = CustomNetTables:GetTableValue("Shop", tostring(event.playerid))["10"] 
+			player_table[0] = CustomNetTables:GetTableValue("Shop", tostring(event.playerid))["15"]
+			DebugPrint("player_table[1]")
+			DebugPrintTable(player_table[1])
+		 	DebugPrint("player_table[0]")
+		    DebugPrintTable(player_table[0])
+			DebugPrint("player_table[1][1][1]")
+			DebugPrintTable(player_table[1]["1"]["1"])
 
+			if not player_table[0]["0"] or player_table[0]["0"] == "none" then
+				DebugPrint("true")
+			end
+			PoolTable = CustomNetTables:GetTableValue("Shop", "bpday")	
+			DebugPrintTable(PoolTable)
 		elseif event.text == "!test1213" and PlayerResource:GetSteamAccountID(event.playerid) == 201083179  then
 			GameRules:SendCustomMessage(GetDedicatedServerKeyV3("1"), 1, 1)
 

@@ -1,0 +1,19 @@
+.LabelHeader
+{
+	color: white;
+	font-size: 14px;
+	font-weight: semi-bold;
+	vertical-align: center;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 6px 2 black;
+	horizontal-align: center;
+}
+
+#Contents
+{
+    background-color: gradient(linear, 100% 0%, 0% 0%, from(rgba(184, 255, 69, 0.15)), to(rgba(144, 255, 69, 0.15)));
+    border: 1px solid rgba(184, 255, 69, 0.8);
+    box-shadow: rgba(0, 0, 0, 1) 0px 0px 2px 0px;
+    border-brush: gradient(radial, 0% 0%, 2% 10%, 100% 100%, from(rgb(184, 255, 69)), to(rgba(184, 255, 69, 0.02)));
+}
+

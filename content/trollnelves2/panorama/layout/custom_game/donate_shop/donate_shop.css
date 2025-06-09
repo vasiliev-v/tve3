@@ -147,6 +147,7 @@
     border-radius: 100px;
     border: 2px solid rgba(184, 255, 69, 0.5);
     vertical-align: center;
+    margin-right: 15px;
 }
 
 #BonusRate:hover .BonusRateIcon 
@@ -162,6 +163,31 @@
     height: 60%;
     align: center center;
     background-size: 100%;
+    transition-duration: 0.25s;
+    transition-property: pre-transform-scale2d;
+}
+
+#BattlePassButton 
+{
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    border: 2px solid rgba(184, 255, 69, 0.5);
+    vertical-align: center;
+}
+
+#BattlePassButton:hover .BattlePassButtonIcon 
+{
+    pre-transform-scale2d: 1.15;
+}
+
+.BattlePassButtonIcon 
+{
+    background-image: url("s2r://panorama/images/new_design/battlepass/pay_bg_png.vtex");
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    align: center center;
     transition-duration: 0.25s;
     transition-property: pre-transform-scale2d;
 }
@@ -188,6 +214,7 @@
 .DonateShopTopCurrency 
 {
     vertical-align: center;
+    margin-left: 198px;
     flow-children: right;
 }
 
@@ -283,35 +310,6 @@
 .SecondCurrency .GoldText 
 {
     color: gradient( linear, 0% 0%, 100% 100%, from( #D196FF  ), to( #694092 ) );
-}
-
-.BattlePassButton
-{
-    width: 133px;
-    height: 32px;
-    background-color: rgba(184, 255, 69, 0.2);
-    border: 2px solid rgba(184, 255, 69, 0.6);
-    border-radius: 100px;
-    vertical-align: center;
-    margin-left: 40px;
-    margin-right: 65px;
-    box-shadow: hollow 0px 0px 4px 0px #b8ff451a;
-    transition-property: background-color;
-    transition-duration: 0.2s;
-}
-
-.BattlePassButton:hover
-{
-    background-color: rgba(184, 255, 69, 0.3);
-}
-
-.BattlePassButton Label
-{
-    font-weight: semi-bold;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: rgba(184, 255, 69, 0.75);
-    align: center center;
 }
 
 .BattlePassGlow
@@ -428,6 +426,13 @@
     border-radius: 100px;
     border: 2px solid rgba(184, 255, 69, 0.5);
     background-color: #141414;
+}
+
+.SoundItem .ItemImage
+{
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .BuyItemPanel 
@@ -1095,7 +1100,12 @@
 {
     background-color: #360f0f;
     border-radius: 20px;
-    border: 2px solid rgba(184, 255, 69, 0.5);
+    border: 2px solid rgba(201, 9, 9, 0.884);
+}
+
+.DeactivateItem .ItemImage
+{
+    border: 2px solid rgb(180, 1, 1);
 }
 
 .RecomItem.DeactivateItem:hover .BuyItemPanel 

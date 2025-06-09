@@ -1,4 +1,7 @@
-GameEvents.SubscribeProtected( 'troll_quest_update', UpdateQuest ); // Обновить квест ( quest_id -- Айди квеста у игрока, current -- Новое значение в этом квесте )
+var UPDATED_QUEST_DAY = {}
+
+
+//GameEvents.SubscribeProtected( 'troll_quest_update', UpdateQuest ); // Обновить квест ( quest_id -- Айди квеста у игрока, current -- Новое значение в этом квесте )
 
 function ToggleInfo()
 {
@@ -42,14 +45,22 @@ function CreateQuests()
 			has_battlepass = false
 		}
 	}
-	$.Msg(player_table[1] )
 	if (quest_information_table) 
-	{  
-		for (var i = 1; i <= Object.keys(quest_information_table).length; i++) 
-        {
-			CreateQuest(quest_information_table[i], has_battlepass) // Создаем квесты игрока
+	{
+		$.Msg(quest_information_table)
+		const sortedQuests = Object.values(quest_information_table).sort((a, b) => {
+			if (a.type < b.type) return -1;
+			if (a.type > b.type) return  1;
+			return 0;
+		});
+		if (sortedQuests) 
+		{  
+			Object.keys(sortedQuests).forEach(key => {
+				CreateQuest(sortedQuests[key], has_battlepass); 
+			});
 		}
 	}
+
 }
 
 function CreateQuest(quest_player_table, has_battlepass)
@@ -65,15 +76,15 @@ function CreateQuest(quest_player_table, has_battlepass)
     {  
         for (var i = 1; i <= Object.keys(player_table[1][1]).length; i++) 
         {
-            if (player_table[1][1][i][1] == quest_player_table[1])
+            if (player_table[1][1][i][1] == quest_player_table.id)
             {
                 quest_table = player_table[1][1][i]; 
 				break;
             }
-        }
+        } 
     }
-	
-	if (quest_player_table[6] == "1")
+
+	if (quest_player_table.donate == "1")
 	{
 		if (!has_battlepass)
 		{
@@ -86,7 +97,7 @@ function CreateQuest(quest_player_table, has_battlepass)
 		return
 	}
 
-	let DayQuest = $.CreatePanel("Panel", $("#QuestsPanel"), "quest_id_" + quest_player_table[0]);
+	let DayQuest = $.CreatePanel("Panel", $("#QuestsPanel"), "quest_id_" + quest_player_table.id);
 	DayQuest.AddClass("DayQuest");
     if (is_locked_quest_battlepass)
     {
@@ -95,8 +106,6 @@ function CreateQuest(quest_player_table, has_battlepass)
 
 	let QuestIcon = $.CreatePanel("Panel", DayQuest, "");
 	QuestIcon.AddClass("QuestIcon");
-	QuestIcon.style.backgroundImage = 'url("file://{images}/custom_game/quest/icons/' + quest_player_table[2] + '.png")';
-	QuestIcon.style.backgroundSize = "100%"
 
 	// Инфа о квесте 
 	let QuestInfo = $.CreatePanel("Panel", DayQuest, "");
@@ -111,7 +120,9 @@ function CreateQuest(quest_player_table, has_battlepass)
     }
     else
     {
-        QuestName.text = $.Localize("#" + quest_player_table[1]) // название задания
+        QuestName.text = $.Localize("#" + quest_player_table.name) // название задания
+		QuestIcon.style.backgroundImage = 'url("file://{images}/custom_game/quest/icons/' + quest_player_table.icon + '.png")';
+	 	QuestIcon.style.backgroundSize = "100%"
     }
 
 	let QuestProgress = $.CreatePanel("Panel", QuestInfo, "");
@@ -123,12 +134,12 @@ function CreateQuest(quest_player_table, has_battlepass)
 	let QuestProgressLine = $.CreatePanel("Panel", QuestProgress, "QuestProgressLine");
 	QuestProgressLine.AddClass("QuestProgressLine");
 
-	let percentage = ((quest_player_table[5]-quest_table[2])*100)/quest_player_table[5]
+	let percentage = ((quest_player_table.count-quest_table[2])*100)/quest_player_table.count
 	QuestProgressLine.style['width'] = (100 - percentage) +'%';
 
 	let QuestProgressLabel = $.CreatePanel("Label", QuestProgress, "QuestProgressLabel");
 	QuestProgressLabel.AddClass("QuestProgressLabel");
-	QuestProgressLabel.text = quest_table[2] + " / " + quest_player_table[5]  // Прогресс квеста
+	QuestProgressLabel.text = quest_table[2] + " / " + quest_player_table.count  // Прогресс квеста
 
 	let QuestRewardLabel = $.CreatePanel("Label", QuestInfo, "");
 	QuestRewardLabel.AddClass("QuestRewardLabel");
@@ -138,7 +149,7 @@ function CreateQuest(quest_player_table, has_battlepass)
     }
     else
     {
-	    QuestRewardLabel.text = $.Localize("#" + quest_player_table[4]) // Награда квеста
+	    QuestRewardLabel.text = $.Localize("#" + quest_player_table.reward) // Награда квеста
     }
 
 	let QuestSucces = $.CreatePanel("Panel", QuestIcon, "");
@@ -147,7 +158,7 @@ function CreateQuest(quest_player_table, has_battlepass)
 	let QuestSuccesIcon = $.CreatePanel("Panel", QuestIcon, "QuestSuccesIcon");
 	QuestSuccesIcon.AddClass("QuestSuccesIcon");
 
-	if (Number(quest_table[2]) >= Number(quest_player_table[5]))
+	if (Number(quest_table[2]) >= Number(quest_player_table.count))
 	{
 		DayQuest.AddClass("QuestComplete");
 	}
@@ -197,7 +208,20 @@ function UpdateQuest(data)
         {
             quest_panel.AddClass("QuestComplete");
         }
-	}
+	} 
+}
+
+
+GameEvents.SubscribeProtected( "troll_quest_update_after", UpdateQuestAfter );
+
+function UpdateQuestAfter()
+{
+    if (UPDATED_QUEST_DAY[Players.GetLocalPlayer()] != null ) { return }
+    UPDATED_QUEST_DAY[Players.GetLocalPlayer()] = true
+	var questsPanel = $("#QuestsPanel");
+    questsPanel.RemoveAndDeleteChildren();
+    CreateQuests();
+	//UpdateQuest()
 }
 
 CreateQuests()

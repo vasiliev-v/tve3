@@ -133,8 +133,10 @@ function UpdateInformation()
     let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))
     if (!shop_table) { return }
     let player_table = shop_table[5];
-    let rating_elf = shop_table[8][0];
-    let rating_troll = shop_table[9][0];
+    $.Msg(shop_table[13])  
+
+    let rating_elf = shop_table[13][4];
+    let rating_troll = shop_table[13][5];
     let player_rep = shop_table[10];
 
     let PlayerAvatar = $("#PlayerAvatar")
@@ -150,10 +152,10 @@ function UpdateInformation()
     ReputationRating.text = String(player_rep[0] || 0)
 
     let ElfRating = $("#ElfRating")
-    ElfRating.text = String(rating_elf.score || 0)
+    ElfRating.text = String(rating_elf|| 0)
 
     let TrollRating = $("#TrollRating")
-    TrollRating.text = String(rating_troll.score || 0)
+    TrollRating.text = String(rating_troll || 0)
 }
 
 function SettingsButtonUpdater(update)
@@ -242,7 +244,6 @@ function UpdateAchivements()
     $("#PanelAchivement").RemoveAndDeleteChildren()
     let player_has_alp = {}
     player_achivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[17]
-
     for (var achivement_id in player_achivements)
     {
         player_has_alp[achivement_id] = true
@@ -263,18 +264,37 @@ function CreateAchivementPanel(achivement_id, active)
 
     let achiviment_panel = $.CreatePanel("Panel", $("#PanelAchivement"), "")
     achiviment_panel.AddClass("achiviment_panel")
+
+    let achiviment_panel_body = $.CreatePanel("Panel", achiviment_panel, "")
+    achiviment_panel_body.AddClass("achiviment_panel_body")
+
     if (active)
     {
         achiviment_panel.AddClass("active")
     }
-
-    let achiviment_panel_glow = $.CreatePanel("Panel", achiviment_panel, "")
+    
+    let achiviment_panel_glow = $.CreatePanel("Panel", achiviment_panel_body, "")
     achiviment_panel_glow.AddClass("achiviment_panel_glow")
 
-    let achiviment_panel_icon = $.CreatePanel("Panel", achiviment_panel, "")
+    let achiviment_panel_icon = $.CreatePanel("Panel", achiviment_panel_body, "")
     achiviment_panel_icon.AddClass("achiviment_panel_icon")
     achiviment_panel_icon.style.backgroundImage = "url('"+achivement_data.icon+"')"
     achiviment_panel_icon.style.backgroundSize = "100%"
+    
+    let achiviment_panel_counter = $.CreatePanel("Panel", achiviment_panel, "")
+    achiviment_panel_counter.AddClass("achiviment_panel_counter")
+
+    let achiviment_panel_counter_glow = $.CreatePanel("Panel", achiviment_panel_counter, "")
+    achiviment_panel_counter_glow.AddClass("achiviment_panel_counter_glow")
+
+    let achiviment_panel_counter_label = $.CreatePanel("Label", achiviment_panel_counter, "")
+    achiviment_panel_counter_label.AddClass("achiviment_panel_counter_label")
+    achiviment_panel_counter_label.text = "0" // Передать значение сюды
+
+    if (!achivement_data.is_allow_counter) // тут я пока хз как будет записываться значение, можно добавить что оно меньше или равно нулю то тоже скрывать
+    {
+        achiviment_panel_counter.visible = false
+    }
 
     achiviment_panel.SetPanelEvent('onmouseover', function() 
     {

@@ -223,14 +223,21 @@ function UpdateAbilityTooltips() {
                     var requirementKeys = Object.keys(requirementsObject);
                     var reqText = "";
                     ////$.Msg(requirementsObject)
-                    var repair = (abilityName && (abilityName.indexOf("repair") > -1 || abilityName.indexOf("train") > -1)) && (CustomNetTables.GetTableValue("abilities", Entities.GetUnitName(selectedUnit)) || abilityName && CustomNetTables.GetTableValue("abilities", abilityName.substr(6)));
+                    var repair = null;
+
+                    if (abilityName && (abilityName.indexOf("repair") > -1 || abilityName.indexOf("train") > -1)) {
+                        repair = CustomNetTables.GetTableValue("abilities", abilityName.substr(6)) || 
+                                CustomNetTables.GetTableValue("abilities", Entities.GetUnitName(selectedUnit));
+                    }
+
                     var repair_speed = repair && repair.speed || 0;
-                    if (repair_speed > 0 )
-                    {
-                        tooltipManager.FindChildTraverse('AbilityExtraDescription').style.visibility = repair_speed > 0 ? "visible" : "collapse";
-                        tooltipManager.FindChildTraverse('AbilityExtraDescription').style.color = "#A52A2A";
-                        tooltipManager.FindChildTraverse('AbilityExtraDescription').style.fontSize = '18px';
-                        tooltipManager.FindChildTraverse('AbilityExtraDescription').text = "Repair speed: " + repair_speed || "";
+
+                    if (repair_speed > 0) {
+                        const desc = tooltipManager.FindChildTraverse('AbilityExtraDescription');
+                        desc.style.visibility = "visible";
+                        desc.style.color = "#A52A2A";
+                        desc.style.fontSize = '18px';
+                        desc.text = "Repair speed: " + repair_speed;
                     }
                     
                     var gold_gain = upgradedUnitName.length > 0 && CustomNetTables.GetTableValue("buildings", upgradedUnitName) && CustomNetTables.GetTableValue("buildings", upgradedUnitName).gold_gain || 0;

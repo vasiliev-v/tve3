@@ -1,6 +1,5 @@
 
 Clanwars = Clanwars or {}
-local dedicatedServerKey = GetDedicatedServerKeyV3("1")
 local checkResult = {}
 
 function Clanwars.SubmitMatchData(winner,callback)
@@ -143,7 +142,7 @@ function Clanwars.SendData(data,callback)
 		--DebugPrint("Response code: " .. res.StatusCode)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
-			GameRules:SendCustomMessage("Error connecting", 1, 1)
+			GameRules:SendCustomMessage("Error connecting Clanwars.SendData", 1, 1)
 			--DebugPrint("Error connecting")
 		end
 		

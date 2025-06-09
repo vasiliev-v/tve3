@@ -18,17 +18,14 @@
                 <Label id="ExpText" class="ExpText" text="Experience 0 / 0" />
             </Panel>
             <Panel id="BattlePass_Rewards" class="BattlePass_Rewards">
-				<Panel id="Levels" class="Levels" />
-				<Panel id="BattlePass_Free" class="BattlePass_Free" />
-				<Panel id="BattlePass_Donate" class="BattlePass_Donate" />
-                <Panel id="BattlePass_Effects" class="BattlePass_Effects" />
+
 			</Panel>
             <Panel class="RewardsInfo">
                 <Label class="RewardsTypes" text="Types" />
                 <Panel class="RewardsTypesImage Free" />
                 <Panel class="ButtonWitTypes">
                     <Panel class="RewardsTypesImage Pay" />
-                    <Panel class="ButtonBuyPass" onactivate="">
+                    <Panel class="ButtonBuyPass" id="ButtonBuyPass" onactivate="PurchaseOpenNotif();">
                         <Label text="Purchase" />
                     </Panel>
                 </Panel>
