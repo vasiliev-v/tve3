@@ -88,7 +88,7 @@ function Stats.SubmitMatchData(winner,callback)
 		for pID=0,DOTA_MAX_TEAM_PLAYERS do
 			if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) ~= 5 then
 				data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
-				data.Gem = GameRules.BonusGem[pID]
+				data.XpBP = GameRules.BonusGem[pID]
 				data.Team = tostring(PlayerResource:GetTeam(pID))
 				--data.duration = GameRules:GetGameTime() - GameRules.startTime
 				data.Map = GameRules.MapName
@@ -183,12 +183,12 @@ function Stats.SubmitMatchData(winner,callback)
 						end
 						data.Type = "NEWBIE"
 					end
-					if tonumber(data.Score) >= 0 then
+					if tonumber(data.Score) >= 30 then
 						data.Score = tostring(math.floor(tonumber(data.Score) *  (1 + GameRules.BonusPercent)))
-						data.Gem = tonumber(data.Score)/2 + 1
+						data.XpBP = tonumber(data.Score)/10 + 1
 					else 
 						data.Score = tostring(math.floor(tonumber(data.Score) *  (1 - GameRules.BonusPercent)))
-						data.Gem = tonumber(1)
+						data.XpBP = tonumber(0)
 					end
 				else
 					data.Type = "ELF KICK"
@@ -216,10 +216,10 @@ function Stats.SubmitMatchData(winner,callback)
 					end
 				end
 				data.Rep = tostring(data.Rep)
-				if data.Gem > 0 then
+				if data.XpBP > 0 then
 					data.EndGame = 1
-					data.Gem = math.floor(data.Gem * GameRules.BonusGem[pID])
-					GameRules.GetGem[pID] = data.Gem
+					data.XpBP = math.floor(data.XpBP * GameRules.BonusGem[pID])
+					GameRules.GetXpBP[pID] = data.XpBP
 				end
 				if data.SteamID ~= "0" then
 					Shop.CheckDayQuest(pID)

@@ -779,13 +779,13 @@
 		
 
 		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven"                  "Buff Troll"
-		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Максимальная скорость атаки. +6131 armor. Нет КД у скиллов. +1000 Regenaration."
+		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Максимальная скорость атаки. +6131 armor. +1000 Regenaration."
 
 		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven"                  "Buff Troll"
-		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven_Description"      "Buff Troll: Максимальная скорость атаки. +6131 armor. Нет КД у скиллов. +1000 Regenaration."
+		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven_Description"      "Buff Troll: Максимальная скорость атаки. +6131 armor. +1000 Regenaration."
 		
 		"DOTA_Tooltip_modifier_troll_warlord_presence"							  "Buff Troll"
-		"DOTA_Tooltip_modifier_troll_warlord_presence_Description"				  "Buff Troll: Максимальная скорость атаки. +6131 armor. Нет КД у скиллов. +1000 Regenaration."
+		"DOTA_Tooltip_modifier_troll_warlord_presence_Description"				  "Buff Troll: Максимальная скорость атаки. +6131 armor. +1000 Regenaration."
 		
 		"DOTA_Tooltip_modifier_weave_friendly_datadriven"							"Shadow Wave"
 		"DOTA_Tooltip_modifier_weave_friendly_datadriven_Description"				"+%armor_per_second% защиты в секунду для союзников. -%negative_armor_per_second% защиты для врагов."
@@ -2110,7 +2110,8 @@
 		"error_limit_queue"																	"Превышен лимит очереди построек. Максимум 15 построек. "
 		"error_limit_queue_wisp"															"Превышен лимит очереди построек."
 		"error_take_normal_builder"															"У юнита нет этой способности!<br>Выберите нужного юнита!"
-		"error_not_kick_normal"																"Вы не можете выгнать игрока, у которого PTS больше -499"
+		"error_not_kick_normal"																"Вы не можете выгнать игрока, у которого PTS больше -50"
+		"error_not_kick_normal2"															"У вас низкая репутация для кика"
 		"error_not_send_money_block"														"Игрок отключил передачу ресурсов."
 
 		"trigs1"																			"Золота много не бывает!"

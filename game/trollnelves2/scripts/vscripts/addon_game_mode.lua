@@ -980,7 +980,7 @@ function Activate()
 	GameRules.scores = {}
 	GameRules.Rep = {}
 	GameRules.GetRep = {}
-	GameRules.GetGem = {} 
+	GameRules.GetXpBP = {} 
 	GameRules.isTesting = true
 	GameRules.server =  "https://tve4.eu/test/"  -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
@@ -1000,8 +1000,8 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = true
-	GameRules.test2 = true
+	GameRules.test = false
+	GameRules.test2 = false
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
 	GameRules.MultiMapSpeed = 1

@@ -52,7 +52,7 @@ function Clanwars.SubmitMatchData(winner,callback)
 		for pID=0,DOTA_MAX_TEAM_PLAYERS do
 			if PlayerResource:IsValidPlayerID(pID) and not PlayerResource:IsFakeClient(pID) and PlayerResource:GetTeam(pID) ~= 5 then
 				data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
-				data.Gem = 10
+				data.XpBP = 10
 				data.Team = tostring(PlayerResource:GetTeam(pID))
 				--data.duration = GameRules:GetGameTime() - GameRules.startTime
 				data.Map = GetMapName()
@@ -94,10 +94,10 @@ function Clanwars.SubmitMatchData(winner,callback)
 
 				if tonumber(data.Score) >= 0 then
 					data.Score = tostring(math.floor(tonumber(data.Score) *  (1 + GameRules.BonusPercent)))
-					data.Gem = tonumber(data.Score)/2
+					data.XpBP = tonumber(data.Score)/2
 				else 
 					-- data.Score = tostring(math.floor(tonumber(data.Score) *  (1 - GameRules.BonusPercent)))
-					data.Gem = tonumber(1)
+					data.XpBP = tonumber(1)
 				end
 				data.Key = dedicatedServerKey
 				data.BonusPercent = GameRules.BonusPercent
@@ -105,14 +105,14 @@ function Clanwars.SubmitMatchData(winner,callback)
 				GameRules.Score[pID] = data.Score
 				GameRules:SendCustomMessage(text, 1, 1)
 				Clanwars.SendData(data,callback)
-				if data.Gem > 0 then
+				if data.XpBP > 0 then
 					data.EndGame = 1
 					if GameRules.BonusGem[pID] == nil then
 						GameRules.BonusGem[pID] = 1
 					end
-					data.Gem = math.floor(data.Gem * GameRules.BonusGem[pID])
+					data.XpBP = math.floor(data.XpBP * GameRules.BonusGem[pID])
 					Shop.GetGem(data)
-					GameRules.GetGem[pID] = data.Gem
+					GameRules.GetXpBP[pID] = data.XpBP
 				end
 			end 
 		end

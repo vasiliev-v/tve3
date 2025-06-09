@@ -18506,7 +18506,7 @@
   		// General
   		//----------------------------------------------------------------
   		"BaseClass"                             "npc_dota_creature"
-		"HasInventory" 				"1" 
+		"HasInventory" 				"0" 
   		"Model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		"precache"
   		{
@@ -18568,7 +18568,7 @@
   		// General
   		//----------------------------------------------------------------
   		"BaseClass"                             "npc_dota_creature"
-		"HasInventory" 				"1" 
+		"HasInventory" 				"0" 
   		"Model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		"precache"
   		{
@@ -18631,7 +18631,7 @@
   		// General
   		//----------------------------------------------------------------
   		"BaseClass"                             "npc_dota_creature"
-		"HasInventory" 				"1" 
+		"HasInventory" 				"0" 
   		"Model"                                 "models/heroes/lycan/lycan_wolf.vmdl"
   		"precache"
   		{

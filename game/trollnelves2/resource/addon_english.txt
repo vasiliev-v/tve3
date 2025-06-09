@@ -1431,7 +1431,7 @@
 
 
 		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven"                  "Buff Troll"
-		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Max attack speed. +6131 armor. No cooldown skill. +1000 Regenaration."
+		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Max attack speed. +6131 armor. +1000 Regenaration."
 		
 		"DOTA_Tooltip_ability_skeleton_king_hellfire_blast_datadriven"                  "Wraithfire Blast"
 		"DOTA_Tooltip_ability_skeleton_king_hellfire_blast_datadriven_Description"      "Stun 1 sec. Reduce movespeed by -20 for 4 sec. Added to celebrate Halloween 2020."
@@ -1443,10 +1443,10 @@
 		"DOTA_Tooltip_ability_silence_datadriven_Description"      "Prevents enemies in the target area from casting abilities for 3 seconds. Added to celebrate Halloween 2020."
 
 		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven"                  "Buff Troll"
-		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven_Description"      "Buff Troll: Max attack speed. +6131 armor. No cooldown skill. +1000 Regenaration."
+		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven_Description"      "Buff Troll: Max attack speed. +6131 armor. +1000 Regenaration."
 		
 		"DOTA_Tooltip_modifier_troll_warlord_presence"							  "Buff Troll"
-		"DOTA_Tooltip_modifier_troll_warlord_presence_Description"				  "Buff Troll: Max attack speed. +6131 armor. No cooldown skill. +1000 Regenaration."
+		"DOTA_Tooltip_modifier_troll_warlord_presence_Description"				  "Buff Troll: Max attack speed. +6131 armor. +1000 Regenaration."
 		
 		"DOTA_Tooltip_modifier_weave_friendly_datadriven"							"Shadow Wave"
 		"DOTA_Tooltip_modifier_weave_friendly_datadriven_Description"				"+%armor_per_second% defense per second for allies. -%negative_armor_per_second% defense for enemies."
@@ -3830,7 +3830,9 @@ The effect is issued for 1 year. Your support helps the game develop."
 		"error_limit_queue"																	"Building queue limit exceeded. Maximum 20 buildings."
 		"error_limit_queue_wisp"															"Building queue limit exceeded."
 		"error_take_normal_builder"															"The unit does not have this ability!<br>Choose the unit you want!"
-		"error_not_kick_normal"																"You can't kick a player who has a PTS greater than -499"
+		"error_not_kick_normal"																"You can't kick a player who has a reputation greater than -50"
+		"error_not_kick_normal2"															"You have low reputation for kick"
+		
 		"error_not_send_money_block"														"The player has disabled resource transfer."
 
 		"trigs1"																			"There is never too much gold!"
@@ -4259,13 +4261,14 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 				
 		"troll_spell_haste"                            		 "Haste"
         "troll_spell_haste_description"                       "Active: Increases movespeed"
-        "modifier_troll_spell_haste_description_level_1"               "Duration: 5<br>CD: 300<br>Evasion: 2%"
-        "modifier_troll_spell_haste_description_level_2"               "Duration: 15<br>CD: 250<br>Evasion: 4%"
-        "modifier_troll_spell_haste_description_level_3"               "Duration: 30<br>CD: 200<br>Evasion: 8%"
+        "modifier_troll_spell_haste_description_level_1"               "Duration: 5<br>CD: 300<br>Evasion: 2%<br>Movespeed: 1000"
+        "modifier_troll_spell_haste_description_level_2"               "Duration: 15<br>CD: 250<br>Evasion: 4%<br>Movespeed: 1000"
+        "modifier_troll_spell_haste_description_level_3"               "Duration: 30<br>CD: 200<br>Evasion: 8%<br>Movespeed: 1000"
 		"DOTA_Tooltip_modifier_troll_spell_haste"			 "Active: Increases movespeed"
 
 		"troll_spell_haste_description_level_1_shop"               "Duration"
         "troll_spell_haste_description_level_2_shop"               "Evasion"
+		"troll_spell_haste_description_level_2_shop"               "Movespeed"
 
 		"DOTA_Tooltip_ability_troll_spell_haste"                                                "Haste"
 		"DOTA_Tooltip_ability_troll_spell_haste_Description"                                     "Increases movespeed"
@@ -4520,9 +4523,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 				
 		"elf_spell_true"                            		 "True Sight"
         "elf_spell_true_description"                       "Passive: Reveals invisible units"
-        "modifier_elf_spell_true_description_level_1"               "Radius: 50"
-        "modifier_elf_spell_true_description_level_2"               "Radius: 100"
-        "modifier_elf_spell_true_description_level_3"               "Radius: 200"
+        "modifier_elf_spell_true_description_level_1"               "Radius: 200"
+        "modifier_elf_spell_true_description_level_2"               "Radius: 400"
+        "modifier_elf_spell_true_description_level_3"               "Radius: 600"
 		"DOTA_Tooltip_modifier_elf_spell_true"			 "Passive: Reveals invisible units"
 		"elf_spell_true_description_level_1_shop"               "Radius"
 				
@@ -4816,13 +4819,14 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_Description"                                     "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_bolt_stun_duration"                 "DURATION: "
 				
-        "modifier_troll_spell_haste_x4_description_level_1"               "Duration: 5<br>CD: 300<br>Evasion: 2%"
-        "modifier_troll_spell_haste_x4_description_level_2"               "Duration: 15<br>CD: 250<br>Evasion: 4%"
-        "modifier_troll_spell_haste_x4_description_level_3"               "Duration: 30<br>CD: 200<br>Evasion: 8%"
+        "modifier_troll_spell_haste_x4_description_level_1"               "Duration: 5<br>CD: 300<br>Evasion: 2%<br>Movespeed: 1000"
+        "modifier_troll_spell_haste_x4_description_level_2"               "Duration: 15<br>CD: 250<br>Evasion: 4%<br>Movespeed: 1000"
+        "modifier_troll_spell_haste_x4_description_level_3"               "Duration: 30<br>CD: 200<br>Evasion: 8%<br>Movespeed: 1000"
 		"DOTA_Tooltip_modifier_troll_spell_haste_x4"			 "Active: Increases movespeed"
 
 		"troll_spell_haste_description_level_1_shop_x4"               "Duration"
         "troll_spell_haste_description_level_2_shop_x4"               "Evasion"
+		"troll_spell_haste_description_level_3_shop_x4"               "Movespeed"
 
 		"DOTA_Tooltip_ability_troll_spell_haste_x4"                                                "Haste"
 		"DOTA_Tooltip_ability_troll_spell_haste_x4_Description"                                     "Increases movespeed"
@@ -5031,9 +5035,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_modifier_elf_spell_limit_lumber_x4"			 "Passive: Increases the maximum lumber limit"
 		"elf_spell_limit_lumber_description_level_1_shop_x4"               "Lumber Limit"
 				
-        "modifier_elf_spell_true_x4_description_level_1"               "Radius: 50"
-        "modifier_elf_spell_true_x4_description_level_2"               "Radius: 100"
-        "modifier_elf_spell_true_x4_description_level_3"               "Radius: 200"
+        "modifier_elf_spell_true_x4_description_level_1"               "Radius: 200"
+        "modifier_elf_spell_true_x4_description_level_2"               "Radius: 400"
+        "modifier_elf_spell_true_x4_description_level_3"               "Radius: 600"
 		"DOTA_Tooltip_modifier_elf_spell_true_x4"			 "Passive: Reveals invisible units"
 		"elf_spell_true_description_level_1_shop_x4"               "Radius"
 

@@ -644,13 +644,13 @@
 		"DOTA_Tooltip_modifier_convert_gold_Description"			"Автоматичне переведення золота в дерево під час атаки."
 
 		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven"                  "Buff Troll"
-		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Максимальна швидкість атаки. +6131 armor. Немає КД у скіллів. +1000 Regenaration."
+		"DOTA_Tooltip_ability_troll_warlord_battle_trance_datadriven_Description"      "Buff Troll: Максимальна швидкість атаки. +6131 armor. +1000 Regenaration."
 
 		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven"                  "Buff Troll"
-		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven_Description"      "Buff Troll: Максимальна швидкість атаки. +6131 armor. Немає КД у скіллів. +1000 Regenaration."
+		"DOTA_Tooltip_ability_troll_warlord_presence_datadriven_Description"      "Buff Troll: Максимальна швидкість атаки. +6131 armor. +1000 Regenaration."
 		
 		"DOTA_Tooltip_modifier_troll_warlord_presence"							  "Buff Troll"
-		"DOTA_Tooltip_modifier_troll_warlord_presence_Description"				  "Buff Troll: Максимальна швидкість атаки. +6131 armor. Немає КД у скіллів. +1000 Regenaration."
+		"DOTA_Tooltip_modifier_troll_warlord_presence_Description"				  "Buff Troll: Максимальна швидкість атаки. +6131 armor. +1000 Regenaration."
 		
 		"DOTA_Tooltip_modifier_weave_friendly_datadriven"							"Shadow Wave"
 		"DOTA_Tooltip_modifier_weave_friendly_datadriven_Description"				"+1 захисту на секунду для союзників. -50 захисту для ворогів Триває 20 секунд."

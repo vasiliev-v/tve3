@@ -86,7 +86,7 @@ function trollnelves2:GameSetup()
                 PlayerResource:SetCustomTeamAssignment(pID, DOTA_TEAM_GOODGUYS)
                 --PlayerResource:SetSelectedHero(pID, ELF_HERO)
                 GameRules.Score[pID] = 0
-                GameRules.GetGem[pID] = 0
+                GameRules.GetXpBP[pID] = 0
                 GameRules.PlayersFPS[pID] = false
                 if GameRules.scores[pID] == nil then
                     GameRules.scores[pID] = {elf = 0, troll = 0}
@@ -955,7 +955,7 @@ function SetResourceValues()
                     lumberGiven = PlayerResource:GetLumberGiven(pID),
                     timePassed = GameRules:GetGameTime() - GameRules.startTime,
                     PlayerChangeScore = GameRules.Score[pID],
-                    GetGem = GameRules.GetGem[pID]
+                    GetGem = GameRules.GetXpBP[pID]
                 })
         end
     end
