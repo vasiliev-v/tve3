@@ -224,6 +224,10 @@ function Shop.GetSkill(data,callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Error connecting GET GEM")
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 		end
 		
 		if callback then
@@ -278,6 +282,10 @@ function Shop.GetVip(data,callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Error connecting GET VIP")
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 		end
 		
 		if callback then
@@ -499,6 +507,10 @@ function Shop:BuyShopItem(table, callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error during BuyShopItem. Code: " .. res.StatusCode, 1, 1)
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 			--DebugPrint("Error during purchase.")
 		else
 			if GameRules:IsCheatMode() then 
@@ -539,6 +551,10 @@ function Shop:BuyOpenChests(table, callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error during purchase. Code: " .. res.StatusCode, 1, 1)
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 			--DebugPrint("Error during purchase.")
 		else
 			if GameRules:IsCheatMode() then 
@@ -579,6 +595,10 @@ function Shop.GetGem(data,callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Error connecting GET GEM")
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 		end
 		if data.EndGame == nil then
 			Shop.RequestDonate(tonumber(data.playerID), data.SteamID, callback)
@@ -1040,6 +1060,10 @@ function Shop:EventRewards(table, callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error take rewards.. Code: " .. res.StatusCode, 1, 1)
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 			--DebugPrint("Error take rewards.")
 		end
 		
@@ -1075,6 +1099,10 @@ function Shop.RequestBpDay(callback)
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Connection failed! Code: ".. res.StatusCode)
 			--DebugPrint(res.Body)
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 			return -1
 		end
 		
@@ -1201,6 +1229,10 @@ function Shop:EventBattlePass(table, callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			GameRules:SendCustomMessage("Error take rewards BP.. Code: " .. res.StatusCode, 1, 1)
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 			--DebugPrint("Error take rewards.")
 		end
 		Shop.RequestDonate(tonumber(table.playerID), steam, callback)
@@ -1468,6 +1500,10 @@ function Shop.GetXpBattlepass(playerID,callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Error connecting GET GEM")
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 		end
 		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
 		if callback then
@@ -1502,6 +1538,10 @@ function Shop.GetDayDone(data,callback)
 		--DebugPrint("***********************************************")
 		if res.StatusCode ~= 200 then
 			--DebugPrint("Error connecting GET GEM")
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
 		end
 		
 		if callback then

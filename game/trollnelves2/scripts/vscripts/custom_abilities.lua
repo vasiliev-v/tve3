@@ -227,6 +227,10 @@ function shrapnel_start_charge( keys )
 	-- create timer to restore stack
 	Timers:CreateTimer( function()
 		-- Restore charge
+		if not caster then
+			return 0.5
+		end
+
 		local CD = caster:GetCooldownReduction()
 		if caster:GetUnitName() == "npc_dota_hero_bear" then
 			CD = PlayerResource:GetSelectedHeroEntity(caster:GetPlayerOwnerID()):GetCooldownReduction()
