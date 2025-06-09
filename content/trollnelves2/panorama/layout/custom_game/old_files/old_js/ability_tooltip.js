@@ -37,14 +37,6 @@ function setupTooltip() {
         reqText = reqText + "<br>Requirements:";
     }
     for (var requirementKey of requirementKeys) {
-        $.Msg(Object.keys(upgradedUnitName))
-        $.Msg("------")
-        $.Msg(requirementsObject)
-        $.Msg("------")
-        $.Msg(requirementKey)
-        $.Msg("------")
-        $.Msg(OrequirementKeys)
-        $.Msg("!!!!!!") 
         reqText = reqText + "<br>" + $.Localize("#" + requirementsObject[requirementKey]);
         //if (requirementsObject)  
 

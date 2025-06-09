@@ -6,7 +6,11 @@ function OpenPanel() {
 	player_bp_info[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[14];
 	//Куплен батллпасс. 
 	player_bp_info[2] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
- 
+
+    // Есть ли у игрока бп, скрытие кнопки
+    let ButtonBuyPass = $("#ButtonBuyPass")
+    ButtonBuyPass.style.opacity = (player_bp_info[2][0] == null || player_bp_info[2][0] == "none") ? 1 : 0
+   
 	if (!BP_INIT) {
 		BP_INIT = true
 		InitLevel()
@@ -16,6 +20,8 @@ function OpenPanel() {
         InitLevel()
 	$("#BattlePassPanel").SetHasClass("Open", !$("#BattlePassPanel").BHasClass("Open"))
 }
+
+
 
 function ClosePanel() {
 	$("#BattlePassPanel").SetHasClass("Open", false)
@@ -55,24 +61,43 @@ function InitDonateRewards() {
 
     // итерируем по всем уровням, пока есть запись в exp_battlepass
     let i = 1;
-    while (exp_battlepass[String(i)] !== undefined) {
-        CreateLevels(i, lvl);
-        CreateFreeReward(i, lvl);
-        CreateDonateReward(i, lvl);
-        CreateVisualLight(i);
+    while (exp_battlepass[String(i)] !== undefined) 
+    {
+        CreateLevelBlock(i, lvl);
         i++;
     }
 }
-function CreateLevels(reward_level, lvl) {
-	let LevelPanelCenter = $.CreatePanel("Panel", $("#Levels"), "LevelPanelCenter" + reward_level);
-	LevelPanelCenter.AddClass("LevelPanel");
 
-	let LevelTextPanel = $.CreatePanel("Label", LevelPanelCenter, "LevelTextPanel");
+function CreateLevelBlock(i, lvl)
+{
+    let BattlePass_Rewards = $("#BattlePass_Rewards")
+
+    // Теперь это будет фулл панель где мы все засунем
+    let level_block = $.CreatePanel("Panel", BattlePass_Rewards, "LevelBlock" + i);
+    level_block.AddClass("level_block_main")
+
+    // Текст уровня
+    let LevelPanel = $.CreatePanel("Panel", level_block, "LevelPanel");
+    LevelPanel.AddClass("LevelPanel");
+
+    let LevelTextPanel = $.CreatePanel("Label", LevelPanel, "LevelTextPanel");
 	LevelTextPanel.AddClass("LevelTextPanel");
-	LevelTextPanel.text = $.Localize("#battlepass_level") + " " + reward_level
+	LevelTextPanel.text = $.Localize("#battlepass_level") + " " + i
+
+    CreateFreeReward(level_block, i, lvl)
+    CreateDonateReward(level_block, i, lvl)
+    
+    let color = visual_level_light[i]
+	if (color && color != "") 
+    {
+		let RewardLight = $.CreatePanel("Panel", level_block, "");
+		RewardLight.AddClass("RewardLight");
+		RewardLight.style.washColor = color
+	}
 }
 
-function CreateFreeReward(reward_level, lvl) {
+
+function CreateFreeReward(parent, reward_level, lvl) {
     // Ищем запись в free_rewards по ключам
     let create_reward_check = false;
     let reward_id            = 0;
@@ -99,7 +124,7 @@ function CreateFreeReward(reward_level, lvl) {
 
     // Если нет записи — рисуем пустую панель
     if (!create_reward_check) {
-        const emptyPanel = $.CreatePanel("Panel", $("#BattlePass_Free"), "RewardPanelFree" + reward_level);
+        const emptyPanel = $.CreatePanel("Panel", parent, "RewardPanelFree" + reward_level);
         emptyPanel.AddClass("RewardPaneClear");
         return;
     }
@@ -111,7 +136,7 @@ function CreateFreeReward(reward_level, lvl) {
     const donateIcon = (donate_rewards[String(reward_level)] || {})["3"]; // для GiveReward
 
     // Создаём панель награды
-    const RewardPanelFree = $.CreatePanel("Panel", $("#BattlePass_Free"), "RewardPanelFree" + reward_level);
+    const RewardPanelFree = $.CreatePanel("Panel", parent, "RewardPanelFree" + reward_level);
     RewardPanelFree.AddClass("RewardPanelFree");
 
     // Иконка
@@ -166,7 +191,7 @@ function GiveReward(id, panel, rew_panel) {
 	GameEvents.SendCustomGameEventToServer("EventBattlePass", {  Type: id  }); // отправляешь ивент 
 }
 
-function CreateDonateReward(reward_level, lvl) {
+function CreateDonateReward(parent, reward_level, lvl) {
     // 1. Ищем запись в donate_rewards
     let create_reward_check = false;
     let reward_id           = 0;
@@ -193,7 +218,7 @@ function CreateDonateReward(reward_level, lvl) {
 
     // 3. Если записи нет — рисуем «пустую» панель
     if (!create_reward_check) {
-        const emptyPanel = $.CreatePanel("Panel", $("#BattlePass_Donate"), "RewardPanelDonate" + reward_level);
+        const emptyPanel = $.CreatePanel("Panel", parent, "RewardPanelDonate" + reward_level);
         emptyPanel.AddClass("RewardPaneClear");
         return;
     }
@@ -204,7 +229,7 @@ function CreateDonateReward(reward_level, lvl) {
     const rewardUID = entry["5"];                     // уникальный ID награды
 
     // 5. Создаём панель для донат-награды
-    const panel = $.CreatePanel("Panel", $("#BattlePass_Donate"), "RewardPanelDonate" + reward_level);
+    const panel = $.CreatePanel("Panel", parent, "RewardPanelDonate" + reward_level);
     panel.AddClass("RewardPanelDonate");
 
     // Иконка
@@ -227,7 +252,7 @@ function CreateDonateReward(reward_level, lvl) {
     statusLabel.AddClass("BpLockedText");
 
     // 6. Логика разблокировки / уже получено / заблокировано
-    if (lvl >= reward_level) {
+    if (lvl >= reward_level && (player_bp_info[2][0] != null && player_bp_info[2][0] != "none")) {
         if (reward_no_recieve) {
             panel.AddClass("Unlocked");
             lockPanel.SetPanelEvent("onactivate", function() {
@@ -248,19 +273,6 @@ function CreateDonateReward(reward_level, lvl) {
         statusLabel.text = $.Localize("#battleshop_locked");
     }
 }
-
-
-
-function CreateVisualLight(i) {
-	let color = visual_level_light[i]
-	let BattlePass_Effects = $("#BattlePass_Effects")
-	if (color && color != "") {
-		let RewardLight = $.CreatePanel("Panel", BattlePass_Effects, "");
-		RewardLight.AddClass("RewardLight");
-		RewardLight.style.washColor = color
-	}
-}
-
 
 function GetLevelPlayer(tmp) {
 	let exp = Number(tmp), level = 0;
@@ -286,5 +298,19 @@ function GetExpPlayer(tmp) {
 	return exp;
 }
 
+function PurchaseOpenNotif()
+{
+    if (GameUI.CustomUIConfig().OpenPanelBuyPass)
+    {
+        GameUI.CustomUIConfig().OpenPanelBuyPass()
+    }
+}
 
 GameUI.CustomUIConfig().OpenBPGlobal = OpenPanel
+
+GameUI.CustomUIConfig().UpdateBPButton = function()
+{
+    player_bp_info[2] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
+    let ButtonBuyPass = $("#ButtonBuyPass")
+    ButtonBuyPass.style.opacity = (player_bp_info[2][0] == null || player_bp_info[2][0] == "none") ? 1 : 0
+}

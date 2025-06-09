@@ -45,6 +45,7 @@
     width: 100%;
     flow-children: down;
     margin-top: 190px;
+    overflow: squish scroll;
 }
 
 .info_window

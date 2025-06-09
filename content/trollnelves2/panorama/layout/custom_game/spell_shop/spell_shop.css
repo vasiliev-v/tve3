@@ -199,6 +199,12 @@
     height: 120px;
     margin-left: 20px;
     margin-bottom: 35px;
+}
+
+.SpellShopSpellPanel_Body
+{
+    width: 120px;
+    height: 120px;
     border-radius: 100%;
     border: 2px solid rgba(184, 255, 69, 0.5);
 }
@@ -555,6 +561,37 @@
     margin-bottom: 8px;
 }
 
+.SpellShopSpell_counter
+{
+    width: 32px;
+    height: 32px;
+    border: 2px solid #FFC23F;
+    border-radius: 100%;
+    z-index: 5;
+    horizontal-align: right;
+    background-color: #63461C;
+}
+
+.SpellShopSpell_counter_glow
+{
+    width: 100%;
+    height: 100%;
+    background-image: url("file://{images}/new_design/topbar/glow.png");
+    background-size: 100%;
+    wash-color: #C39C37;
+    opacity: 0.8;
+}
+
+.SpellShopSpell_counter_label
+{
+    text-align: center;
+    width: 100%;
+    font-weight: semi-bold;
+    color: white;
+    font-size: 20px;
+    vertical-align: center;
+}
+
 .BuyButtonDeactivate
 {
     saturation: 0;
@@ -573,4 +610,9 @@
 .SpellDisabled:hover
 {
     brightness: 1;
+}
+
+.IsActivatedSpell .SpellShopSpellPanel_Body
+{
+    border: 2px solid rgba(255, 0, 0, 1);
 }

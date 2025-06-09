@@ -232,6 +232,7 @@ function Stats.SubmitMatchData(winner,callback)
 	Timers:CreateTimer(10, function() 
 		GameRules:SetGameWinner(winner)
 		SetResourceValues()
+		GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
 	end)
 	::continue::
 	end)
@@ -353,7 +354,7 @@ function Stats.RequestDataTop10(mapSpd, callback)
 			--DebugPrint(res.Body)
 			if countCheckShop <= 3 then
 				DebugPrint("RECONNECT RATING!!!!!!!")
-				Timers:CreateTimer(60, function() 
+				Timers:CreateTimer(15, function() 
 					countCheckShop = countCheckShop + 1
 					Stats.RequestDataTop10(mapSpd, callback)
 			    end)

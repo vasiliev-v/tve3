@@ -86,7 +86,7 @@
 
 .BattlePass_Rewards 
 {
-    flow-children: down;
+    flow-children: right;
     width: 100%;
     margin-left: 168px;
     overflow: scroll squish;
@@ -168,7 +168,7 @@
 .LevelPanel 
 {
     width: 170px;
-    height: 30px;
+    height: 50px;
     horizontal-align: center;
     vertical-align: center;
 }
@@ -203,18 +203,6 @@
     height: 5px;
 }
 
-.RewardPanelFree 
-{
-    width: 170px;
-    height: 100%;
-}
-
-.RewardPanelDonate 
-{
-    width: 170px;
-    height: 100%;
-}
-
 .reward_image 
 {
     margin-top: 8px;
@@ -228,7 +216,7 @@
 .RewardPaneClear 
 {
     width: 170px;
-    height: 100%;
+    height: 160px;
 }
 
 .PanelLock 
@@ -313,4 +301,23 @@
 .PanelLockOn .reward_image
 {
     brightness: 0.5;
+}
+
+.level_block_main
+{
+    height: 100%;
+    width: 170px;
+    flow-children: down;
+}
+
+.RewardPanelFree 
+{
+    width: 170px;
+    height: 160px;
+}
+
+.RewardPanelDonate 
+{
+    width: 170px;
+    height: 160px;
 }

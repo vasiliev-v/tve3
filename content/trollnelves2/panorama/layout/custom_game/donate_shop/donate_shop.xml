@@ -26,11 +26,10 @@
 					<Panel id="BonusRate" class="BonusRate">
 						<Panel class="BonusRateIcon" />
 					</Panel>
+                    <Panel id="BattlePassButton" class="BattlePassButton">
+                        <Panel class="BattlePassButtonIcon" />
+                    </Panel>
 				</Panel>
-                <Panel class="BattlePassGlow" />
-                <Panel class="BattlePassButton">
-                    <Label text="Battle Pass" />
-                </Panel>
 				<Panel class="DonateShopTopCurrency"> 
 					<Panel class="DonateShopCurrencyMain">
 						<Panel class="DonateShopCurrency">

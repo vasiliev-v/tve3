@@ -33,6 +33,14 @@ function InitSpellPanel()
     UpdateBuyButton()
 }
 
+function UpdateActivatedSpellVisual()
+{
+    for (let child of $("#SpellShopSpellsListBody").Children()) 
+    {
+        child.SetHasClass("IsActivatedSpell", IsSpellActivate(child.spell_id))
+    }
+}
+
 function InitSpellList()
 {
     $("#SpellShopSpellsListBody").RemoveAndDeleteChildren()
@@ -53,13 +61,34 @@ function InitSpellList()
 
 function CreateSpell(info) 
 {
+    let spell_player_level = GetPlayerSpellLevel(info[1], true)
+
     let SpellShopSpellPanel = $.CreatePanel("Panel", $("#SpellShopSpellsListBody"), "")
     SpellShopSpellPanel.AddClass("SpellShopSpellPanel")
+    SpellShopSpellPanel.spell_id = info[1]
 
-    let SpellShopSpellPanelIcon = $.CreatePanel("Panel", SpellShopSpellPanel, "")
+    let SpellShopSpellPanel_Body = $.CreatePanel("Panel", SpellShopSpellPanel, "")
+    SpellShopSpellPanel_Body.AddClass("SpellShopSpellPanel_Body")
+
+    let SpellShopSpellPanelIcon = $.CreatePanel("Panel", SpellShopSpellPanel_Body, "")
     SpellShopSpellPanelIcon.AddClass("SpellShopSpellPanelIcon")
-    SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(info[1], GetPlayerSpellLevel(info[1], true)) + '.png")';
+    SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(info[1], spell_player_level) + '.png")';
     SpellShopSpellPanelIcon.style.backgroundSize = "100%"
+
+    let SpellShopSpell_counter = $.CreatePanel("Panel", SpellShopSpellPanel, "")
+    SpellShopSpell_counter.AddClass("SpellShopSpell_counter")
+
+    let SpellShopSpell_counter_glow = $.CreatePanel("Panel", SpellShopSpell_counter, "")
+    SpellShopSpell_counter_glow.AddClass("SpellShopSpell_counter_glow")
+
+    let SpellShopSpell_counter_label = $.CreatePanel("Label", SpellShopSpell_counter, "")
+    SpellShopSpell_counter_label.AddClass("SpellShopSpell_counter_label")
+    SpellShopSpell_counter_label.text = spell_player_level
+
+    if (spell_player_level <= 1)
+    {
+        SpellShopSpell_counter.visible = false
+    }
 
     if (PlayerHasSpell(info[1]))
     {
@@ -272,11 +301,11 @@ function ActivateSpell(info)
     })
     activate_cooldown = true
     var hero = Players.GetPlayerSelectedHero(Players.GetLocalPlayer());
-
     if (PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")))
     {
         GameEvents.SendCustomGameEventToServer( "event_set_activate_spell", {spell_name : info[1], modifier_name : info[3]} );
     }
+    UpdateActivatedSpellVisual()
 }
 
 function OpenSpellShop()
@@ -292,6 +321,7 @@ function OpenSpellShop()
         $("#SpellShopPanel").SetHasClass("CloseSpellShop", false) // !$("#SpellShopPanel").BHasClass("CloseSpellShop")
         InitSpellList()
         UpdateBuyButton()
+        UpdateActivatedSpellVisual()
     }
 }
 
@@ -327,6 +357,7 @@ function UpdateSpellsLibTable(table, key, data )
 		if (key == "spell_active") 
         {
             UpdateCurrentSpells(data)
+            UpdateActivatedSpellVisual()
 		}
      //   if (key == String(Players.GetLocalPlayer())) 
     //    {

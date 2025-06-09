@@ -33,7 +33,7 @@
 		var teamPlayers = Game.GetPlayerIDsOnTeam( teamId );
 		var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
 		if ( playersContainer )
-		{
+		{ 
 			for (var playerId of teamPlayers ) {
 				var playerPanel = playersContainer.FindChild("_dynamic_player_" + playerId);
 				if(playerPanel){

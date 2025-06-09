@@ -114,7 +114,7 @@
 	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_bkb.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_slow_target.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_slow_area.png" />
-	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_invis.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_invis.png" /> 
 	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_evasion.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_atkspeed.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/troll_spell_wolf.png" />

@@ -10,28 +10,33 @@
 		<snippet name="Phrase">
 			<Panel>
 				<Panel class="Phrase">
-					<Panel class="BirzhaReward" />
 					<Label text="{s:phrase}" />
 				</Panel>
 			</Panel>
 		</snippet>
 	</snippets>
+
 	<Panel hittest="false" class="MyWheel">
-        <Panel id="Wheel">
-            <Panel id="Arrow" class="Hidden" />
-            <Panel id="PointerContainer">
-                <Panel id="WheelPointer" />
-            </Panel>
-            <Panel id="WheelBG">
-                <Panel id="WheelCenter">
-                    <Panel id="WheelBG2" />
-                </Panel>
-            </Panel>
-        </Panel>
-        <Panel id="Bubble">
-            <DOTAHeroImage id="HeroImage" heroimagestyle="icon" />
-        </Panel>
-        <Panel hittest="false" id="PhrasesContainer">
-        </Panel>
+			<Panel id="Wheel">
+				<Panel id="Arrow" class="Hidden" />
+				<Panel id="PointerContainer">
+					<Panel id="WheelPointer" />
+				</Panel>
+				<Panel id="WheelBG">
+					<Panel id="WheelCenter">
+						<Panel id="WheelBG2" />
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="Bubble">
+				<DOTAHeroImage id="HeroImage" heroimagestyle="icon" />
+			</Panel>
+			<Panel id="ChangeWheelButtons" class="ChangeWheelButtons">
+				<Panel class="ChangeWheelButtonLeft" onactivate="LeftButton();"/>
+				<Label class="ChangeWheelButtonLabel" id="ChangeWheelButtonLabel" text="0 / 0" />
+				<Panel class="ChangeWheelButtonRight" onactivate="RightButton();"/>
+			</Panel>
+			<Panel hittest="false" id="PhrasesContainer">
+			</Panel>
 	</Panel>
 </root>

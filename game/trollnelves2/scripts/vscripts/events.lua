@@ -265,7 +265,6 @@ function trollnelves2:OnDisconnect(event)
                             local status, nextCall = Error_debug.ErrorCheck(function() 
                                 Stats.SubmitMatchData(DOTA_TEAM_BADGUYS, callback)
                             end)
-                            GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
                             return nil
                     end
                 end)
@@ -323,7 +322,6 @@ function trollnelves2:OnDisconnect(event)
                     local status, nextCall = Error_debug.ErrorCheck(function() 
                         Stats.SubmitMatchData(DOTA_TEAM_GOODGUYS, callback)
                     end)
-                    GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
                     return nil
             end
         end)
@@ -479,7 +477,6 @@ function trollnelves2:OnEntityKilled(keys)
                         Stats.SubmitMatchData(DOTA_TEAM_BADGUYS, callback)
                     end   
                 end)
-                GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
                 return
             end
             Pets.DeletePet(info)
@@ -507,7 +504,6 @@ function trollnelves2:OnEntityKilled(keys)
                     Stats.SubmitMatchData(DOTA_TEAM_GOODGUYS, callback)
                 end  
             end)
-            GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
         elseif killed:IsWolf() then
             bounty = math.max(killed:GetNetworth() * 0.70,
             GameRules:GetGameTime())

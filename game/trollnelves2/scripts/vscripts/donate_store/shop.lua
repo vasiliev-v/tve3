@@ -69,7 +69,7 @@ function Shop.RequestDonate(pID, steam, callback)
 			-- DebugPrint(res.Body)
 			if countCheckShop <= 3 then
 				DebugPrint("RECONNECT!!!!!!!")
-				Timers:CreateTimer(60, function() 
+				Timers:CreateTimer(15, function() 
 					countCheckShop = countCheckShop + 1
 					Shop.RequestDonate(pID, steam, callback)	
 			    end)

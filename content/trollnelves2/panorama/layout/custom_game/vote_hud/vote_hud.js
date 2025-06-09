@@ -11,6 +11,25 @@ var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer(
 var players_activated_spells = CustomNetTables.GetTableValue("game_spells_lib", "spell_active")
 var game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
 
+function UpdateChat()
+{
+    //$.Msg("GameUI.CustomUIConfig().LoadingChat ", GameUI.CustomUIConfig().LoadingChat == null, " ", GameUI.CustomUIConfig().FindLoadingChat == null)
+    let FindLoadingChat = GameUI.CustomUIConfig().FindLoadingChat
+    if (FindLoadingChat)
+    {
+        FindLoadingChat()
+    }
+    let LoadingScreenChat = GameUI.CustomUIConfig().LoadingChat
+    if (LoadingScreenChat == null)
+    {
+        $.Schedule(3, UpdateChat)
+        return
+    }
+    LoadingScreenChat.SetParent($.GetContextPanel())
+    LoadingScreenChat.style.opacity = "1"
+    LoadingScreenChat.style["ui-scale"] = "80%"
+}
+
 CustomNetTables.SubscribeNetTableListener( "game_spells_lib", UpdateSpellsLibTable );
 
 function UpdateSpellsLibTable(t,k,d)
@@ -22,7 +41,7 @@ function UpdateSpellsLibTable(t,k,d)
         UpdateListSelected()
     }
 }
-
+ 
 GameEvents.SubscribeProtected( "troll_elves_init_stage_screen", InitStageScreen );
 
 function InitStageScreen()
@@ -561,4 +580,5 @@ function RenderEmptyCells(parent, count) {
 
 (function () {
 	Game.AutoAssignPlayersToTeams();
+    UpdateChat()
 })();

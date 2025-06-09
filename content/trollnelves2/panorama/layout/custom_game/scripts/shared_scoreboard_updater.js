@@ -160,9 +160,9 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Kills", playerInfo.player_kills );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Deaths", playerInfo.player_deaths );
 
-		var goldValue = ui.playerGold[playerId];
-		var lumberValue = ui.playerLumber[playerId];
-
+		var goldValue = ui?.playerGold?.[playerId];
+		var lumberValue = ui?.playerLumber?.[playerId];
+ 
 
 		////$.Msg("Scoreboard update... playerId: ", playerId, "; goldValue: ", goldValue, "; lumberValue: ", lumberValue);
 
@@ -601,9 +601,12 @@ function ScoreboardUpdater_GetSortedTeamInfoList( scoreboardHandle )
 
 function ChangePanelType(PanelType) 
 {
-    for (panel_in of $("#ChangePanelType").Children())
+    if ($("#ChangePanelType"))
     {
-        panel_in.SetHasClass("Active", false);
+        for (panel_in of $("#ChangePanelType").Children())
+        {
+            panel_in.SetHasClass("Active", false);
+        }
     }
 	if (PanelType == "Mini") 
     {

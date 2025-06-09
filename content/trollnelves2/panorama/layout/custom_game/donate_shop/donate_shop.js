@@ -37,6 +37,10 @@ function UpdateShop(t, k, d)
         {
             UPDATE_STORE = true
         }
+        if (GameUI.CustomUIConfig().UpdateBPButton)
+        {
+            GameUI.CustomUIConfig().UpdateBPButton()
+        }
     }
     if (t == "Shop_active" && k == Players.GetLocalPlayer())
     {
@@ -70,6 +74,17 @@ function InitShop()
 	$("#BonusRate").SetPanelEvent('onmouseout', function() 
     {
 	    $.DispatchEvent('DOTAHideTextTooltip', $("#BonusRate"));
+	});
+
+    $("#BattlePassButton").SetPanelEvent('onmouseover', function() 
+    {
+        $.Msg(player_table[15])
+        $.DispatchEvent('DOTAShowTextTooltip', $("#BattlePassButton"), $.Localize( "#battlepass_date") + player_table[15][0]); 
+    });
+    
+	$("#BattlePassButton").SetPanelEvent('onmouseout', function() 
+    {
+	    $.DispatchEvent('DOTAHideTextTooltip', $("#BattlePassButton"));
 	});
 
     if (!EVENT_REGISTERED)
@@ -140,6 +155,24 @@ function InitMainPanel()
 	$("#AdsItem_1").style.backgroundSize = "100%"
 } 
 
+function ItemTooltipShow(panel, item_name)
+{
+    panel.SetPanelEvent("onmouseover", () => 
+    {
+        $.DispatchEvent(
+            "UIShowCustomLayoutParametersTooltip",
+            panel,
+            "shop_tooltip",
+            "file://{resources}/layout/custom_game/donate_shop/shop_tooltip.xml",
+            "item_name=" + item_name
+        );
+    });
+    panel.SetPanelEvent("onmouseout", () => 
+    {
+        $.DispatchEvent("UIHideCustomLayoutTooltip", panel, "shop_tooltip");
+    });
+}
+
 function CreateItem(panel, table, i, is_inventory) 
 {
     let is_chest = IsItemChest(table[i][1])
@@ -172,6 +205,8 @@ function CreateItem(panel, table, i, is_inventory)
 	let Recom_item = $.CreatePanel("Panel", panel, "");
 	Recom_item.AddClass("RecomItem");
 
+    ItemTooltipShow(Recom_item, table[i][5])
+
     let ItemImage = $.CreatePanel("Panel", Recom_item, "");
 	ItemImage.AddClass("ItemImage");
 	ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + table[i][4] + '.png")';
@@ -192,6 +227,12 @@ function CreateItem(panel, table, i, is_inventory)
     if (BOX_SHADOW_COLORS[table[i][7]])
     {
         box_color = BOX_SHADOW_COLORS[table[i][7]]
+    }
+
+    if (table[i][4] == "sounds")
+    {
+        ItemImage.style.backgroundSize = "100%"
+        Recom_item.AddClass("SoundItem")
     }
 
 	let ItemPrice = $.CreatePanel("Panel", BuyItemPanel, "ItemPrice");
@@ -1051,3 +1092,51 @@ function CloseChest()
 }
 
 GameUI.CustomUIConfig().OpenStoreGlobal = ToggleShop
+
+
+GameUI.CustomUIConfig().OpenPanelBuyPass = function()
+{
+    let table = GetItemInfo(205)
+    $("#info_item_buy").SetHasClass("IsChest", false)
+    $("#info_item_buy").style.visibility = "visible"
+    $("#ItemNameInfo").text = $.Localize("#" +  table[4] )
+    $("#ItemInfoBody").style.flowChildren = "down"
+
+    let Panel_for_desc = $.CreatePanel("Label", $("#ItemInfoBody"), "Panel_for_desc");
+    Panel_for_desc.AddClass("Panel_for_desc");
+
+    let Item_desc = $.CreatePanel("Label", Panel_for_desc, "Item_desc");
+    Item_desc.AddClass("Item_desc");
+
+    let str = table[4].replace(/[^a-zа-яё]/gi, '');
+    Item_desc.text = $.Localize("#" + str + "_description" )
+
+    if (table[4].indexOf("chest") == 0) 
+    {
+        $("#info_item_buy").SetHasClass("IsChest", true)
+        let chest_table = GetChestInfo(Number(table[1]))
+        let ChestItemPreview = $.CreatePanel("Panel", $("#ItemInfoBody"), "ChestItemPreview");
+        ChestItemPreview.AddClass("ChestItemPreview");
+        for (var i = 0; i <= Object.keys(Items_ALL).length; i++) 
+        {
+            if (Items_ALL[i])
+            {
+                CreateItemInChestPreview(ChestItemPreview, Items_ALL, i, chest_table)
+            }
+        }
+        CreateItemCurrencyPreview(ChestItemPreview, chest_table[2][1], chest_table[2][3], chest_table[2][2])
+    }
+
+    let BuyItemPanel = $.CreatePanel("Panel", $("#ItemInfoBody"), "BuyItemPanel");
+    BuyItemPanel.AddClass("BuyItemPanelInfo");
+
+    let PriceLabel = $.CreatePanel("Label", BuyItemPanel, "PriceLabel");
+    PriceLabel.AddClass("PriceLabelInfo");
+    PriceLabel.text = $.Localize( "#shop_buy" )
+
+    BuyItemPanel.SetPanelEvent("onactivate", function() 
+    { 
+        BuyItemFunction(table); 
+        CloseItemInfo(); 
+    });
+}

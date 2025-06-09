@@ -15,9 +15,9 @@
 		"Ability5" 			"build_workers_guild"
 		"Ability6"			"build_mother_of_nature"
 		"Ability7" 			"build_research_lab"
-		"Ability8"			"build_flag"
-		"Ability9"			"repair"
-		"Ability10"			"plus_high_five"
+		"Ability8"			""
+		"Ability9"			""
+		"Ability10"			""
 		"Ability11"			"" 
 		"Ability12"   	   	""
 		"Ability13"   		""
@@ -43,9 +43,9 @@
 		"Ability33"   	    ""
 		"Ability34"   	    ""
 		"Ability35"   	    ""
-		"Ability36"   	    ""
-		"Ability37"   	    ""
-		"Ability38"   	    ""
+		"Ability36"   	    "build_flag"
+		"Ability37"   	    "repair"
+		"Ability38"   	    "high_five_custom"
 		"Ability39"   	    "attribute_antibonuses"
 		"Ability40"   	    "antiblock"
 		"RepairAbility"				"repair"
@@ -104,7 +104,7 @@
 		"Ability2" 			"troll_invis"
 		"Ability3" 			"troll_teleport"
 		"Ability4" 			"troll_antiblock"
-		"Ability5"    	    "plus_high_five"
+		"Ability5"    	    "high_five_custom"
 		"Ability6"    	    "lone_druid_spirit_bear_datadriven"
 		"Ability7"    	    "troll_spell_silence_target"
 		"Ability8"    	    "troll_spell_silence_area"
@@ -202,7 +202,7 @@
 		"Ability11"   	    ""
 		"Ability12"   	    ""
 		"Ability13"   	    ""
-		"Ability14"   	    "plus_high_five" //пятюня тест
+		"Ability14"   	    "high_five_custom" //пятюня тест
 		"Ability15"   	    "attribute_antibonuses"
 		"Ability16"   	    "antiblock"
 
@@ -278,7 +278,7 @@
 		"Ability11"   	    ""
 		"Ability12"   	    ""
 		"Ability13"   	    ""
-		"Ability14"   	    "plus_high_five" //пятюня тест
+		"Ability14"   	    "high_five_custom" //пятюня тест
 		"Ability15"   	    "attribute_antibonuses"
 		"Ability16"   	    "antiblock"
 
@@ -345,7 +345,7 @@
 		"Ability11"   	    ""
 		"Ability12"   	    ""
 		"Ability13"   	    ""
-		"Ability14"   	    "plus_high_five" //пятюня тест
+		"Ability14"   	    "high_five_custom" //пятюня тест
 		"Ability15"   	    "attribute_antibonuses"
 		"Ability16"   	    "antiblock"
 
@@ -415,7 +415,7 @@
 		"Ability11"   	    ""
 		"Ability12"   	    ""
 		"Ability13"   	    ""
-		"Ability14"   	    "plus_high_five" //пятюня тест
+		"Ability14"   	    "high_five_custom" //пятюня тест
 		"Ability15"   	    "attribute_antibonuses"
 		"Ability16"   	    "antiblock"
 		"Facets"

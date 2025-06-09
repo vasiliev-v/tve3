@@ -110,7 +110,7 @@ function trollnelves2:GameSetup()
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
         --DebugPrint("count player " .. GameRules.PlayersCount)
 
-        setup_state_lib:SetupStartMapVotes()
+        setup_state_lib:SetNextStage()
 
         -- Timers:CreateTimer(TEAM_CHOICE_TIME, function()
         --     SelectHeroes()

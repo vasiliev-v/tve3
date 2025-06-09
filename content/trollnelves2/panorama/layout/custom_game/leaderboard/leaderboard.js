@@ -1,6 +1,8 @@
 var INIT_PANEL = false
+var HAS_PLAYER_IN_ALL_TABLE = false
 var FAKE_LEADERBOARD_LIST =
 {
+
 }
 var FAKE_PLAYER_LOCAL =
 {
@@ -54,17 +56,33 @@ function InitPlayersRating(sort_id)
     players_table.sort((a, b) => b[sort_id] - a[sort_id]);
     for (num in players_table)
     {
+        IsCondLocalPlayer(players_table[num])
         CreatePlayer(num, players_table[num])
+    }
+}
+
+function IsCondLocalPlayer(players_table)
+{
+    let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))?.[13];
+    if (!shop_table) { return }
+    let local_player_info = [shop_table[2], shop_table[3], shop_table[4], shop_table[5], shop_table[6]]
+    if (players_table[0] == local_player_info[0])
+    {
+        HAS_PLAYER_IN_ALL_TABLE = true
     }
 }
 
 function InitLocalPlayer()
 {
-    let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[13]
+    let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))?.[13];
     if (!shop_table) { return }
     let local_player_info = [shop_table[2], shop_table[3], shop_table[4], shop_table[5], shop_table[6]]
+    if (HAS_PLAYER_IN_ALL_TABLE)
+    {
+        return
+    }
     CreatePlayer(shop_table[1], local_player_info, true)
-}
+} 
 
 function CreatePlayer(num, player_info, is_local) 
 {   

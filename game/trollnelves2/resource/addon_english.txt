@@ -5291,6 +5291,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"tower_description"						"Only one Tower Skin is issued per purchase. Tower Skins purchased with coins are permanent. Tower Skins for gems are issued for 1 month. Some Tower Skins are given out for TOP1-10, participation in events, and so on. Follow the events on Discord for free prizes."
 		"skinwisp_description"					"Only one Wisp Skin is issued per purchase. Wisp Skins purchased with coins are permanent. Wisp Skins for gems are issued for 1 month. Some Wisp Skins are given out for TOP1-10, participation in events, and so on. Follow the events on Discord for free prizes."
 		
+		"battlepass_date"			"Valid until: "
 				
 		""                            		 ""
         "_description"                       "Active: "
