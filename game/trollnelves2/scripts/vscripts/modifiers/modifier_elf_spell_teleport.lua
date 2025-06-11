@@ -15,7 +15,8 @@ function modifier_elf_spell_teleport:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_teleport")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_teleport")
+		--hero:AddAbility("elf_spell_teleport")
 		local abil = hero:FindAbilityByName("elf_spell_teleport")
 		abil:SetLevel(countStack)
 	end

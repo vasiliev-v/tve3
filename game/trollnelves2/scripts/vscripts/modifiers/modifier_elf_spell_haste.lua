@@ -14,7 +14,8 @@ function modifier_elf_spell_haste:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_haste")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_haste")
+		--hero:AddAbility("elf_spell_haste")
 		local abil = hero:FindAbilityByName("elf_spell_haste")
 		abil:SetLevel(countStack)
 	end

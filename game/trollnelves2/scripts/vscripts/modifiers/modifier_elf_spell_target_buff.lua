@@ -15,7 +15,8 @@ function modifier_elf_spell_target_buff:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_target_buff")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_target_buff")
+		-- hero:AddAbility("elf_spell_target_buff")
 		local abil = hero:FindAbilityByName("elf_spell_target_buff")
 		abil:SetLevel(countStack)
 	end

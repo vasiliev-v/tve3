@@ -15,7 +15,8 @@ function modifier_elf_spell_reveal:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_reveal")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_reveal")
+		--hero:AddAbility("elf_spell_reveal")
 		local abil = hero:FindAbilityByName("elf_spell_reveal")
 		abil:SetLevel(countStack)
 	end

@@ -379,3 +379,44 @@ end
 function toboolean( obj )
 	return ( obj and obj ~= 0 and obj ~= '' ) or false
 end
+
+function InsertAbilityAfter(hero, ability_after, ability_to_insert)
+    -- 1) Найдём индекс ability_after и соберём список «хвостовых» способностей
+    local tail = {}
+    local afterIndex = nil
+    local i = 0
+    while true do
+        local abi = hero:GetAbilityByIndex(i)
+        if not abi then break end
+
+        if abi:GetAbilityName() == ability_after then
+            afterIndex = i
+        elseif afterIndex then
+            -- сохраняем имя и уровень всех способностей после ability_after
+            table.insert(tail, { name = abi:GetAbilityName(), level = abi:GetLevel() })
+        end
+        i = i + 1
+    end
+
+    if not afterIndex then
+        print("Ошибка: не найдена способность «" .. ability_after .. "»")
+        return
+    end
+
+    -- 2) Удаляем из героя все «tail» способности
+    for _, info in ipairs(tail) do
+        hero:RemoveAbility(info.name)
+    end
+
+    -- 3) Добавляем нужную новую способность
+    if not hero:HasAbility(ability_to_insert) then
+        local newAbi = hero:AddAbility(ability_to_insert)
+        newAbi:SetLevel(1)
+    end
+
+    -- 4) Восстанавливаем «tail» способности в том же порядке
+    for _, info in ipairs(tail) do
+        local abi = hero:AddAbility(info.name)
+        abi:SetLevel(info.level)
+    end
+end

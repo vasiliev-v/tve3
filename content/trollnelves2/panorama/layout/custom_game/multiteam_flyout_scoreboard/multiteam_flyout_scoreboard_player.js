@@ -95,7 +95,6 @@ $.GetContextPanel().SetHasClass('player_muted', Game.IsPlayerMuted(playerId));
 })();
 
 function showHero() {
-=
     const localPlayer = Game.GetLocalPlayerInfo();
     const playerPanel = $.GetContextPanel();
     const target = playerPanel.pID;

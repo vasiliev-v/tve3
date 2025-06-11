@@ -79,6 +79,13 @@ function setup_state_lib:SetupStartSelectPerks()
     end)
 end
 
+function setup_state_lib:SetupStartGame1x1()
+    Timers:CreateTimer(1, function()
+        SelectHeroes()
+        setup_state_lib:SetNextStage()
+    end)
+end
+
 setup_state_lib.CURRENT_QUEUE_STAGE = 1
 setup_state_lib.StageQueue = 
 {
@@ -92,6 +99,6 @@ if GetMapName() == "1x1" then
     {
         setup_state_lib.SetupStartSelectedRole,
         setup_state_lib.SetupStartMapVotes,
-        -- setup_state_lib.SetupStartSelectPerks,
+        setup_state_lib.SetupStartGame1x1,
     }
 end

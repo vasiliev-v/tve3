@@ -15,7 +15,8 @@ function modifier_elf_spell_smoke:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_smoke")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_smoke")
+		-- hero:AddAbility("elf_spell_smoke")
 		local abil = hero:FindAbilityByName("elf_spell_smoke")
 		abil:SetLevel(countStack)
 	end

@@ -15,7 +15,8 @@ function modifier_elf_spell_heal:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_heal")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_heal")
+		-- hero:AddAbility("elf_spell_heal")
 		local abil = hero:FindAbilityByName("elf_spell_heal")
 		abil:SetLevel(countStack)
 	end

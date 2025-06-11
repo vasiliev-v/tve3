@@ -15,7 +15,8 @@ function modifier_elf_spell_evasion:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_evasion")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_evasion")
+		--hero:AddAbility("elf_spell_evasion")
 		local abil = hero:FindAbilityByName("elf_spell_evasion")
 		abil:SetLevel(countStack)
 	end

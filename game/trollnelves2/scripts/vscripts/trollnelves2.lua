@@ -483,6 +483,11 @@ function InitializeBuilder(hero)
             hero:AddAbilityByName("build_demonic_wall")
         end
     end
+
+    --hero:RemoveAbility("dummy_passive_1")
+    --hero:RemoveAbility("dummy_passive_2")
+    --hero:RemoveAbility("dummy_passive_3")
+    
     PlayerResource:ModifyFood(hero, 0)
     PlayerResource:ModifyWisp(hero, 0)
     PlayerResource:ModifyMine(hero, 0)
@@ -590,21 +595,9 @@ function InitializeTroll(hero)
         hero:AddNewModifier(hero, nil, "modifier_movespeed_x4", {})
     end
 
-    hero:RemoveAbility("troll_spell_silence_target")
-    hero:RemoveAbility("troll_spell_silence_area")
-    hero:RemoveAbility("troll_spell_stun_target")
-    hero:RemoveAbility("troll_spell_haste")
-    hero:RemoveAbility("troll_spell_ward")
-    hero:RemoveAbility("troll_spell_bkb")
-    hero:RemoveAbility("troll_spell_slow_target")
-    hero:RemoveAbility("troll_spell_slow_area")
-    hero:RemoveAbility("troll_spell_invis")
-    hero:RemoveAbility("troll_spell_evasion")
-    hero:RemoveAbility("troll_spell_atkspeed")
-    hero:RemoveAbility("troll_spell_wolf")
-    hero:RemoveAbility("troll_spell_reveal")
-    hero:RemoveAbility("troll_spell_night_buff")
-    --hero:RemoveAbility("")
+    hero:RemoveAbility("dummy_passive_1")
+    hero:RemoveAbility("dummy_passive_2")
+    hero:RemoveAbility("dummy_passive_3")
     
     if GameRules.test2 == false then
         hero:RemoveAbility("lone_druid_spirit_bear_datadriven")

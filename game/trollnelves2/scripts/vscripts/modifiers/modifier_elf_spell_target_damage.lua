@@ -15,7 +15,8 @@ function modifier_elf_spell_target_damage:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_target_damage")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_target_damage")
+		-- hero:AddAbility("elf_spell_target_damage")
 		local abil = hero:FindAbilityByName("elf_spell_target_damage")
 		abil:SetLevel(countStack)
 	end

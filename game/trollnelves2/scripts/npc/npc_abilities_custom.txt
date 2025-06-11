@@ -17313,6 +17313,27 @@
 	
 	}
 
+	"dummy_passive_1"
+	{
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	}
+
+	"dummy_passive_2"
+	{
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	}
+
+	"dummy_passive_3"
+	{
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	}
+
 	//-------------------
 // Dummy stuff
 //-------------------

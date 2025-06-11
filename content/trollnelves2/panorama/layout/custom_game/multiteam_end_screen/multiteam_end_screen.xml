@@ -21,7 +21,7 @@
 				<Label class="LegendPanel NewStyleScore_LPS" text="LPS" />
 				<Label class="LegendPanel NewStyleScore_GG" text="Gold Given" />
 				<Label class="LegendPanel NewStyleScore_LG" text="Lumber Given" />
-				<Label class="LegendPanel NewStyleScore_ChangeRating" text="Gem" />
+				<Label class="LegendPanel NewStyleScore_ChangeRating" text="BP" />
 				<Label class="LegendPanel NewStyleScore_Rating" text="Rating" />
 				<Label class="LegendPanel NewStyleScore_ChangeRating" text="Change" />
 			</Panel>

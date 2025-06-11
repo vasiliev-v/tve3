@@ -1539,6 +1539,9 @@ CustomNetTables:SetTableValue("game_spells_lib", "spell_active", game_spells_lib
 --CustomNetTables:SetTableValue("game_spells_lib", tostring(0), game_spells_lib.PLAYER_INFO[0])
 
 function game_spells_lib:event_set_activate_spell(data)
+    if GetMapName() == "1x1" then
+        return
+    end
     if data.PlayerID == nil then return end
     local player_id = data.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(player_id)
@@ -1866,6 +1869,9 @@ end
 
 
 function game_spells_lib:SetSpellPlayers()
+    if GetMapName() == "1x1" then
+        return
+    end
     local pplc = PlayerResource:GetPlayerCount()
     for id = 0, pplc - 1 do
         local team = PlayerResource:GetTeam(id)
@@ -1879,7 +1885,6 @@ function game_spells_lib:SetSpellPlayers()
                     local spell_name = info[1]
                     local allowed_team = info[6]     -- "0" — good guys
                     local enabled      = info[7] == "1"
-                    DebugPrint(spell_name)
                     if allowed_team == "0" and enabled and spell_name ~= "elf_spell_solo_player" then
                         table.insert(candidates, spell_name)
                     end
@@ -1932,19 +1937,25 @@ function game_spells_lib:SetSpellPlayers()
 
         -- Сохраняем обновлённый список, если он был пустым или мы его дополнили
         game_spells_lib.current_activated_spell[id] = active
-        DebugPrint("#active  " .. #active )
         -- Наконец, выдаём перки герою
         if #active > 0 then
             local hero = PlayerResource:GetSelectedHeroEntity(id)
             if hero then
-                DebugPrint("2")
                 for _, spell_name in ipairs(active) do
-                    DebugPrint(spell_name)
+
+                    --if hero:HasAbility("dummy_passive_1") then
+                    --    hero:RemoveAbility("dummy_passive_1")
+                    --elseif hero:HasAbility("dummy_passive_2")  then
+                    --    hero:RemoveAbility("dummy_passive_2")
+                    --elseif hero:HasAbility("dummy_passive_3") then
+                    --    hero:RemoveAbility("dummy_passive_3")
+                    --end
+
+
                     local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
                     local level = game_spells_lib:GetSpellLevel(id, spell_name)
                     local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
                     if mod then
-                        DebugPrint("mod")
                         mod:SetStackCount(level)
                     end
                 end
