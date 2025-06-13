@@ -954,3 +954,139 @@ Wearables.EffectConfig = {
     ["89"] = { label = "#top1cwasummer",   color = {255, 229,  31} },
     ["90"] = { label = "#top1cwautumn",    color = {250, 179,   0} },
 }
+
+
+-- настраиваем данные питомцев
+Wearables.petConfigs = {
+    [1]  = { model = "models/courier/baby_rosh/babyroshan_ti10_dire.vmdl",
+             effect = "particles/econ/courier/courier_trail_hw_2013/courier_trail_hw_2013.vpcf" },
+    [2]  = { model = "models/courier/baby_rosh/babyroshan_elemental.vmdl",
+             effect = "particles/my_new/ambientfx_effigy_wm16_radiant_lvl3.vpcf",
+             matGrp = "2" },
+    [3]  = { model = "models/courier/baby_rosh/babyroshan.vmdl",
+             effect = "particles/econ/courier/courier_roshan_ti8/courier_roshan_ti8_flying.vpcf",
+             matGrp = "5" },
+    [4]  = { model = "models/courier/baby_rosh/babyroshan_elemental.vmdl",
+             effect = "particles/econ/courier/courier_roshan_lava/courier_roshan_lava.vpcf",
+             matGrp = "1" },
+    [5]  = { model = "models/items/courier/butch_pudge_dog/butch_pudge_dog.vmdl",
+             effect = "particles/econ/courier/courier_butch/courier_butch_ambient.vpcf" },
+    [6]  = { model = "models/courier/doom_demihero_courier/doom_demihero_courier.vmdl",
+             effect = "particles/econ/courier/courier_golden_doomling/courier_golden_doomling_ambient.vpcf" },
+    [7]  = { model = "models/courier/huntling/huntling.vmdl",
+             effect = "particles/econ/courier/courier_huntling_gold/courier_huntling_gold_ambient.vpcf" },
+    [8]  = { model = "models/items/courier/krobeling_gold/krobeling_gold.vmdl",
+             effect = "particles/econ/courier/courier_krobeling_gold/courier_krobeling_gold_ambient.vpcf" },
+    [9]  = { model = "models/courier/venoling/venoling.vmdl",
+             effect = "particles/econ/courier/courier_venoling_gold/courier_venoling_ambient_gold.vpcf" },
+    [10] = { model = "models/courier/beetlejaws/mesh/beetlejaws.vmdl",
+             effect = "particles/econ/courier/courier_beetlejaw_gold/courier_beetlejaw_gold_ambient.vpcf" },
+    [11] = { model = "models/items/courier/courier_ti9/courier_ti9_lvl7/courier_ti9_lvl7.vmdl",
+             effect = "particles/econ/courier/courier_roshan_desert_sands/baby_roshan_desert_sands_ambient.vpcf" },
+    [12] = { model = "models/items/courier/duskie/duskie.vmdl",
+             effect = "particles/econ/courier/courier_wyvern_hatchling/courier_wyvern_hatchling_ice.vpcf" },
+    [13] = { model = "models/items/courier/little_sapplingnew_bloom_style/little_sapplingnew_bloom_style.vmdl",
+             effect = "particles/econ/courier/courier_greevil_green/courier_greevil_green_ambient_3.vpcf" },
+    [14] = { model = "models/items/courier/chocobo/chocobo.vmdl",
+             effect = "particles/econ/courier/courier_roshan_lava/courier_roshan_lava.vpcf" },
+    [15] = { model = "models/items/courier/faceless_rex/faceless_rex.vmdl",
+             effect = "particles/econ/courier/courier_greevil_purple/courier_greevil_purple_ambient_3.vpcf" },
+    [16] = { model = "models/items/courier/courier_ti10_radiant/courier_ti10_radiant_lvl4/courier_ti10_radiant_lvl4.vmdl",
+             effect = "particles/econ/courier/courier_ti10/courier_ti10_lvl4_ambient.vpcf" },
+    [17] = { model = "models/items/courier/starladder_grillhound/starladder_grillhound.vmdl",
+             effect = "particles/econ/courier/courier_roshan_lava/courier_roshan_lava.vpcf" },
+    [18] = { model = "models/items/courier/virtus_werebear_t2/virtus_werebear_t2.vmdl" },
+    [19] = { model = "models/items/courier/virtus_werebear_t3/virtus_werebear_t3.vmdl" },
+    [20] = { model = "models/items/courier/raiq/raiq.vmdl" },
+    [21] = { model = "models/items/courier/green_jade_dragon/green_jade_dragon.vmdl" },
+    [22] = { model = "models/items/courier/bajie_pig/bajie_pig.vmdl", matGrp = "1" },
+    [23] = { model = "models/items/courier/baekho/baekho.vmdl" },
+    [24] = { model = "models/items/courier/scuttling_scotty_penguin/scuttling_scotty_penguin.vmdl" },
+    [25] = { model = "models/items/courier/captain_bamboo/captain_bamboo.vmdl" },
+    [26] = { model = "models/items/courier/livery_llama_courier/livery_llama_courier.vmdl" },
+    [27] = { model = "models/courier/seekling/seekling.vmdl" },
+    [28] = { models = {
+                "models/items/courier/guardians_of_justice_enix/guardians_of_justice_enix.vmdl",
+                "models/items/courier/guardians_of_justice_phoe/guardians_of_justice_phoe.vmdl"
+             } },
+    [29] = { model = "models/items/courier/lilnova/lilnova.vmdl" },
+    [30] = { model = "models/items/courier/supernova_rave_courier/supernova_rave_courier.vmdl" },
+    [31] = { model = "models/items/courier/mei_nei_rabbit/mei_nei_rabbit.vmdl" },
+    [32] = { models = {
+                "models/items/courier/jin_yin_white_fox/jin_yin_white_fox.vmdl",
+                "models/items/courier/jin_yin_black_fox/jin_yin_black_fox.vmdl"
+             } },
+    [33] = { model = "models/props_gameplay/pig.vmdl" },
+    [34] = { models = {
+                "models/items/courier/jumo/jumo.vmdl",
+                "models/items/courier/jumo_dire/jumo_dire.vmdl"
+             } },
+    [35] = { model    = "models/items/courier/snaggletooth_red_panda/snaggletooth_red_panda.vmdl",
+             matGrps = { "1", "2" } },
+    [36] = { model = "models/items/courier/el_gato_beyond_the_summit/el_gato_beyond_the_summit.vmdl" },
+    [37] = { model = "models/items/courier/hermid/hermid.vmdl" },
+    [38] = { model = "models/items/courier/nilbog/nilbog.vmdl" },
+    [39] = { model = "models/items/courier/royal_griffin_cub/royal_griffin_cub.vmdl" },
+    [40] = { model = "models/items/courier/blotto_and_stick/blotto.vmdl" },
+    [41] = { model = "models/courier/skippy_parrot/skippy_parrot.vmdl" },
+    [42] = { model = "models/courier/drodo/drodo.vmdl" },
+    [43] = { model = "models/courier/otter_dragon/otter_dragon.vmdl" },
+    [44] = { model = "models/items/courier/pangolier_squire/pangolier_squire.vmdl" },
+    [45] = { model = "models/courier/navi_courier/navi_courier.vmdl" },
+    [46] = { models = {
+                "models/items/courier/hand_courier/hand_courier_radiant_lv1.vmdl",
+                "models/items/courier/hand_courier/hand_courier_dire_lv1.vmdl"
+             } },
+    [47] = { models = {
+                "models/items/courier/hand_courier/hand_courier_radiant_lv2.vmdl",
+                "models/items/courier/hand_courier/hand_courier_dire_lv2.vmdl"
+             } },
+    [48] = { models = {
+                "models/items/courier/hand_courier/hand_courier_radiant_lv3.vmdl",
+                "models/items/courier/hand_courier/hand_courier_dire_lv3.vmdl"
+             } },
+    [49] = { models = {
+                "models/items/courier/hand_courier/hand_courier_radiant_lv4.vmdl",
+                "models/items/courier/hand_courier/hand_courier_dire_lv4.vmdl"
+             } },
+    [50] = { models = {
+                "models/items/courier/hand_courier/hand_courier_radiant_lv5.vmdl",
+                "models/items/courier/hand_courier/hand_courier_dire_lv5.vmdl"
+             } },
+    [51] = { models = {
+                "models/items/courier/hand_courier/hand_courier_radiant_lv6.vmdl",
+                "models/items/courier/hand_courier/hand_courier_dire_lv6.vmdl"
+             } },
+    [52] = { models = {
+                "models/items/courier/hand_courier/hand_courier_radiant_lv7.vmdl",
+                "models/items/courier/hand_courier/hand_courier_dire_lv7.vmdl"
+             } },
+    [53] = { model = "models/items/courier/boooofus_courier/boooofus_courier.vmdl" },
+    [54] = { model = "models/courier/aghanim_courier/aghanim_courier.vmdl" },
+    [55] = { models = {
+                "models/items/courier/vigilante_fox_green/vigilante_fox_green.vmdl",
+                "models/items/courier/vigilante_fox_red/vigilante_fox_red.vmdl"
+             } },
+    [56] = { models = {
+                "models/courier/winter2022/taffy_donkey_courier.vmdl",
+                "models/courier/winter2022/cotton_donkey_courier.vmdl"
+             } },
+    [57] = { model = "models/items/courier/gnomepig/gnomepig.vmdl" },
+    [58] = { model = "models/items/courier/hamster_courier/hamster_courier_lv1.vmdl" },
+    [59] = { model = "models/items/courier/hamster_courier/hamster_courier_lv2.vmdl" },
+    [60] = { model = "models/items/courier/hamster_courier/hamster_courier_lv3.vmdl" },
+    [61] = { model = "models/items/courier/hamster_courier/hamster_courier_lv4.vmdl" },
+    [62] = { model = "models/items/courier/hamster_courier/hamster_courier_lv5.vmdl" },
+    [63] = { model = "models/items/courier/hamster_courier/hamster_courier_lv6.vmdl" },
+    [64] = { model = "models/items/courier/hamster_courier/hamster_courier_lv7.vmdl" },
+    [65] = { model = "models/items/courier/deathbringer/deathbringer.vmdl",
+             effect = "particles/units/heroes/hero_bloodseeker/bloodseeker_scepter_blood_mist_spray_initial.vpcf" },
+    [66] = { model = "models/items/courier/grim_wolf_radiant/grim_wolf_radiant.vmdl" },
+    [67] = { model = "models/items/courier/coco_the_courageous/coco_the_courageous.vmdl" },
+    [68] = { model = "models/items/courier/courier_janjou/courier_janjou.vmdl" },
+    [69] = { model = "models/items/courier/dplus_zao_jun_the_stove_god/dplus_zao_jun_the_stove_god.vmdl" },
+    [70] = { model = "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl" },
+    [71] = { model = "models/items/courier/gama_sennin/gama_sennin.vmdl" },
+    [72] = { model = "models/items/courier/itsy/itsy.vmdl" },
+    [73] = { model = "models/items/courier/shroomy/shroomy.vmdl" },
+}

@@ -47,8 +47,8 @@ function VotekickStart(eventSourceIndex, event)
 					end
 				end
 			end
-			if countEflVote <= MIN_PLAYER_KICK and GameRules.FakeList[event.target] == nil then
-				SendErrorMessage(event.PlayerID, "Not enough players for Kick. Need ".. MIN_PLAYER_KICK .. " players. Count players " .. countEflVote)
+			if countEflVote < MIN_PLAYER_KICK and GameRules.FakeList[event.target] == nil then
+				SendErrorMessage(event.PlayerID, "Not enough players for Kick. Need ".. MIN_PLAYER_KICK + 1 .. " players. Count players " .. countEflVote)
 				return 
 			end
 		end
@@ -119,30 +119,6 @@ function VoteKick(eventSourceIndex, event)
 		hero:Kill(nil, hero)
 		PlayerResource:SetGold(hero, 0)
     	PlayerResource:SetLumber(hero, 0)
-		local i = 1
-		local roll_chance = RandomFloat(1, 100)
-		if roll_chance <= CHANCE_NEW_PERSON then
-			i = 2
-		end
-		local newHeroName = ANGEL_HERO[i]
-		local message = "%s1 will keep helping elves and now is an " .. GetModifiedName(ANGEL_HERO[i])
-		local timer = 0.1
-		local pos = RandomAngelLocation()
-		PlayerResource:SetCustomTeamAssignment(event.playerID1, DOTA_TEAM_GOODGUYS)
-		Timers:CreateTimer(function()
-			GameRules:SendCustomMessage(message, event.playerID1, 0)
-		end)
-		hero:SetTimeUntilRespawn(timer)
-		Timers:CreateTimer(timer, function()
-			PlayerResource:ReplaceHeroWith(event.playerID1, newHeroName, 0, 0)
-			-- UTIL_Remove(hero)
-			hero = PlayerResource:GetSelectedHeroEntity(event.playerID1)
-			PlayerResource:SetCustomTeamAssignment(event.playerID1, DOTA_TEAM_GOODGUYS) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-			FindClearSpaceForUnit(hero, pos, true)
-			Timers:CreateTimer(3, function()
-				PlayerResource:SetCameraTarget(event.playerID1, nil)
-			end)
-		end)
 		
 		CheckWolfInTeam(hero)
 		

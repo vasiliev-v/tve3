@@ -926,6 +926,13 @@ PrecacheResource("particle", "particles/bloode_ground_child.vpcf", context)
     PrecacheModel("models/heroes/lycan/lycan_belt.vmdl", context)
     PrecacheModel("models/heroes/lycan/lycan_head.vmdl", context)
 
+	PrecacheModel("models/heroes/crystal_maiden/crystal_maiden.vmdl", context)
+    PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_staff.vmdl", context)
+    PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_cape.vmdl", context)
+    PrecacheModel("models/items/crystal_maiden/magnolia_arms/magnolia_arms.vmdl", context)
+    PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_shoulders.vmdl", context)
+	PrecacheModel("models/items/crystal_maiden/magnolia_head/magnolia_head.vmdl", context)
+
     PrecacheResource("particle", "particles/units/heroes/hero_lycan/lycan_feral_impulse.vpcf", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts", context)
 
@@ -982,7 +989,7 @@ function Activate()
 	GameRules.GetRep = {}
 	GameRules.GetXpBP = {} 
 	GameRules.isTesting = true
-	GameRules.server =  "https://localhost:7133/test/" -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
+	GameRules.server =  "https://tve4.eu/test/" -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
 	GameRules.types = {}
@@ -1000,8 +1007,8 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = false
-	GameRules.test2 = false
+	GameRules.test = true
+	GameRules.test2 = true
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
 	GameRules.MultiMapSpeed = 1
@@ -1130,6 +1137,21 @@ function PrecacheWearableModels(context)
                     PrecacheModel(mapInfo.model, context)
                 end
             end
+        end
+    end
+	for _, pet in pairs(Wearables.petConfigs or {}) do
+        -- 5.1) одиночная или выбор из двух моделей
+        if pet.model then
+            PrecacheModel(pet.model, context)
+        elseif pet.models then
+            for _, m in ipairs(pet.models) do
+                PrecacheModel(m, context)
+            end
+        end
+        -- 5.2) матгруппы не кешируем, они не модели
+        -- 5.3) эффекты (частицы)
+        if pet.effect then
+            PrecacheResource("particle", pet.effect, context)
         end
     end
 end

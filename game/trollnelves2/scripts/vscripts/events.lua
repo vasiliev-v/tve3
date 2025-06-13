@@ -49,12 +49,7 @@ function trollnelves2:OnNPCSpawned(keys)
             trollnelves2:OnHeroInGame(npc)
         end
     end
-    if npc:IsAngel() and PlayerResource:GetConnectionState(npc:GetPlayerOwnerID()) ~= 2 and not GameRules.test and not GameRules.test2 then
-        npc:AddNewModifier(nil, nil, "modifier_disconnected", {})
-    end
-    if npc:IsWolf() and PlayerResource:GetConnectionState(npc:GetPlayerOwnerID()) ~= 2 and not GameRules.test and not GameRules.test2 then
-        npc:AddNewModifier(nil, nil, "modifier_disconnected", {})
-    end
+
     if npc:IsRealHero() then
         local info = {}
         info.PlayerID = npc:GetPlayerID()
@@ -76,9 +71,6 @@ function trollnelves2:OnNPCSpawned(keys)
     if npc:IsAngel() then
         PlayerResource:SetCustomTeamAssignment(npc:GetPlayerID(), DOTA_TEAM_GOODGUYS) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
         npc:SetTeam(DOTA_TEAM_GOODGUYS)
-    end
-    if EVENT_START then
-        --Halloween(npc)  
     end
 end
 
@@ -233,7 +225,11 @@ function trollnelves2:OnDisconnect(event)
     local trollLoseTimer = 300
     local elfLoseTimer = 180
     if team == DOTA_TEAM_GOODGUYS and not string.match(GetMapName(),"clanwars") then
-        hero:AddNewModifier(nil, nil, "modifier_disconnected", {})
+
+        if hero:IsElf() then
+            hero:AddNewModifier(nil, nil, "modifier_disconnected", {})
+        end
+
         if hero.alive == true then
             hero.alive = false
             hero.dced = true
@@ -859,12 +855,13 @@ function ChooseHelpSide(eventSourceIndex, event)
     local team = event.team
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local player = PlayerResource:GetPlayer(playerID)
     hero.legitChooser = false
     
     if mod_system:GetCurrentModFromVotes() then
         local owner = hero:GetPlayerOwner()
         if owner then
-            CustomGameEventManager:Send_ServerToPlayer(owner, "show_helper_options2", {})
+         --   CustomGameEventManager:Send_ServerToPlayer(owner, "show_helper_options2", {})
         end
         return
     end
@@ -926,15 +923,17 @@ function ChooseHelpSide(eventSourceIndex, event)
     Timers:CreateTimer(function()
         GameRules:SendCustomMessage(message, playerID, 0)
     end)
-    hero:SetTimeUntilRespawn(timer)
-    Timers:CreateTimer(timer, function()
-        UTIL_Remove(hero)
-        DebugPrint(newHeroName)
-        PlayerResource:ReplaceHeroWith(playerID, newHeroName, 0, 0)
+    hero:RemoveSelf()
 
-        hero = PlayerResource:GetSelectedHeroEntity(playerID)
-        PlayerResource:SetCustomTeamAssignment(playerID, team) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-        FindClearSpaceForUnit(hero, pos, true)
+    local newHero = CreateHeroForPlayer(newHeroName, player)
+    FindClearSpaceForUnit(newHero, pos, true)
+    Timers:CreateTimer(2, function()
+        newHero:SetTeam(team)
+        PlayerResource:SetCustomTeamAssignment(playerID, team)
+        newHero:SetOwner(player)
+        newHero:SetControllableByPlayer(playerID, true)
+        player:SetAssignedHeroEntity(newHero)
+        PlayerResource:SetOverrideSelectionEntity(playerID, newHero)
         wearables:SetWolf(playerID)
     end)
 end)
@@ -945,46 +944,7 @@ function RandomAngelLocation()
     #GameRules.angel_spawn_points > 0) and
     GameRules.angel_spawn_points[RandomInt(1,
     #GameRules.angel_spawn_points)]:GetAbsOrigin() or
-    Vector(0, 0, 0)
-end
-
-function Halloween(npc)
-    if string.match(GetMapName(),"halloween") then
-        wearables:RemoveWearables(npc)
-        if npc:IsAngel() then
-            UpdateModel(npc, "models/heroes/death_prophet/death_prophet.vmdl", 1)  
-            wearables:AttachWearable(npc, "models/items/death_prophet/drowned_siren_head/drowned_siren_head.vmdl")
-            wearables:AttachWearable(npc, "models/items/death_prophet/drowned_siren_drowned_siren_skirt/drowned_siren_drowned_siren_skirt.vmdl")
-            wearables:AttachWearable(npc, "models/items/death_prophet/drowned_siren_armor/drowned_siren_armor.vmdl")
-            wearables:AttachWearable(npc, "models/items/death_prophet/exorcism/drowned_siren_drowned_siren_crowned_fish/drowned_siren_drowned_siren_crowned_fish.vmdl")
-            wearables:AttachWearable(npc, "models/items/death_prophet/drowned_siren_misc/drowned_siren_misc.vmdl")
-            elseif npc:IsWolf() then
-            UpdateModel(npc, "models/heroes/life_stealer/life_stealer.vmdl", 1)  
-            wearables:AttachWearable(npc, "models/items/lifestealer/bloody_ripper_belt/bloody_ripper_belt.vmdl")
-            wearables:AttachWearable(npc, "models/items/lifestealer/promo_bloody_ripper_back/promo_bloody_ripper_back.vmdl")
-            wearables:AttachWearable(npc, "models/items/lifestealer/bloody_ripper_arms/bloody_ripper_arms.vmdl")       
-            wearables:AttachWearable(npc, "models/items/lifestealer/bloody_ripper_head/bloody_ripper_head.vmdl")   
-            elseif npc:IsTroll() then            
-            UpdateModel(npc, "models/items/wraith_king/arcana/wraith_king_arcana.vmdl", 1)  
-            wearables:AttachWearable(npc, "models/items/wraith_king/arcana/wraith_king_arcana_weapon.vmdl")
-            wearables:AttachWearable(npc, "models/items/wraith_king/arcana/wraith_king_arcana_arms.vmdl")
-            wearables:AttachWearable(npc, "models/items/wraith_king/arcana/wraith_king_arcana_shoulder.vmdl")
-            wearables:AttachWearable(npc, "models/items/wraith_king/arcana/wraith_king_arcana_armor.vmdl")
-            wearables:AttachWearable(npc, "models/items/wraith_king/arcana/wraith_king_arcana_back.vmdl")
-            wearables:AttachWearable(npc, "models/items/wraith_king/arcana/wraith_king_arcana_head.vmdl")
-                    
-            --UpdateModel(npc, "models/heroes/pudge/pudge.vmdl", 1)  
-           -- wearables:AttachWearable(npc, "models/items/pudge/blackdeath_offhand/blackdeath_offhand.vmdl")
-            --wearables:AttachWearable(npc, "models/items/pudge/blackdeath_belt/blackdeath_belt.vmdl")
-          --  wearables:AttachWearable(npc, "models/items/pudge/blackdeath_head/blackdeath_head.vmdl")
-         --   wearables:AttachWearable(npc, "models/items/pudge/blackdeath_back/blackdeath_back.vmdl")
-          --  wearables:AttachWearable(npc, "models/items/pudge/blackdeath_weapon/blackdeath_weapon.vmdl")
-          --  wearables:AttachWearable(npc, "models/items/pudge/blackdeath_shoulder/blackdeath_shoulder.vmdl")
-         --   wearables:AttachWearable(npc, "models/items/pudge/blackdeath_arms/blackdeath_arms.vmdl")
-            elseif npc:IsElf() then
-            UpdateModel(npc, "models/items/wraith_king/wk_ti8_creep/wk_ti8_creep.vmdl", 1)  
-        end
-    end 
+    Vector(0, -640, 256)
 end
 
 --function StopAnim

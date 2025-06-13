@@ -77,10 +77,10 @@ function mod_system:GetCurrentModFromVotes()
 	--	return true
 	--end
 
-	if GameRules.MapSpeed == 2 then
-		return false
-	else
+	if GameRules.MapSpeed == 4 then
 		return true
+	else
+		return false
 	end
 end
 
