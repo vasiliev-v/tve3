@@ -78,7 +78,6 @@ function InitShop()
 
     $("#BattlePassButton").SetPanelEvent('onmouseover', function() 
     {
-        $.Msg(player_table[15])
         $.DispatchEvent('DOTAShowTextTooltip', $("#BattlePassButton"), $.Localize( "#battlepass_date") + player_table[15][0]); 
     });
     
@@ -1041,7 +1040,6 @@ function ChestAnimate(current, drop_distance, speed, sound_tick, drop_id)
         speed = speed - (speed * Game.GetGameFrameTime())
     }
     speed = Math.max(30, speed);
-    $.Msg(current)
     chest_dropped_panel_line.style.position = current + "px 0px 0px"
     $.Schedule(Game.GetGameFrameTime(), function() 
     {

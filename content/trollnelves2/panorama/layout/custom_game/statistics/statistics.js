@@ -132,19 +132,19 @@ function UpdateInformation()
 {
     let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))
     if (!shop_table) { return }
-
+    
     let rating_elf = shop_table[13][4];
     let rating_troll = shop_table[13][5];
     let player_rep = shop_table[10];
 
     let PlayerAvatar = $("#PlayerAvatar")
-    PlayerAvatar.steamid = player_table[1]
+    PlayerAvatar.steamid = shop_table[5][1]
 
     let PlayerName = $("#PlayerName")
     PlayerName.text = Players.GetPlayerName(Players.GetLocalPlayer())
 
     let PlayerID = $("#PlayerID")
-    PlayerID.text = "(ID: " + player_table[0] + ")"
+    PlayerID.text = "(ID: " + shop_table[5][0] + ")"
 
     let ReputationRating = $("#ReputationRating")
     ReputationRating.text = String(player_rep[0] || 0)
@@ -246,7 +246,6 @@ function UpdateAchivements()
     if (!player_achivements || Object.keys(player_achivements).length === 0) {
         return;
     } 
-    $.Msg(player_achivements)
     for (var achivement_id in player_achivements)
     {
         player_has_alp[achivement_id] = true 
