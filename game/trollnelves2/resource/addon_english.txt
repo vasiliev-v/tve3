@@ -3680,7 +3680,18 @@
 "sounds_85"		"[75] Im fast as boy[ENG]"
 "sounds_86"		"[76] FBI[ENG]"
 "sounds_87"		"[77] 300 bucks[ENG]"
-"sounds_88"		"[78] "
+"sounds_88"		"[78] Slowed Acumalaka[ENG]"
+"sounds_89"		"[79] Anime meme suka blyat[RUS]"
+"sounds_90"		"[80] Louth meme[ENG]"
+"sounds_91"		"[81] Mister Bombastic[ENG]"
+"sounds_92"		"[82] Coffin Dance Meme[ENG]"
+"sounds_93"		"[83] We Got Him Meme Song Loud[ENG]"
+"sounds_94"		"[84] LAKAD MATATAG[ENG]"
+"sounds_95"		"[85] oy oy oy Dota 2[ENG]"
+"sounds_96"		"[86] you know what's cooking boom[ENG]"
+"sounds_97"		"[87] the next level play Dota 2[ENG]"
+"sounds_98"		"[78] "
+
 
 
 "spray_1"		"Poor bear"						

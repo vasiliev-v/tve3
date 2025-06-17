@@ -9,12 +9,12 @@ function modifier_elf_spell_solo_player:GetTexture()         return "elf_spell_s
 --------------------------------------------------------------------------------
 function  modifier_elf_spell_solo_player:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
     }
     return funcs
 end
 
-function modifier_elf_spell_solo_player:GetModifierMoveSpeedBonus_Special_Boots()
+function modifier_elf_spell_solo_player:GetModifierMoveSpeedBonus_Constant()
 	if self:GetStackCount() == 1 then 
 		return 2
 	elseif self:GetStackCount() == 2  then

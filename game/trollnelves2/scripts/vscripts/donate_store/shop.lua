@@ -817,7 +817,18 @@ function Shop:SelectVO(keys)
 		"885",
 		"886",
 		"887",
+		"888",
+		"889",
+		"890",
+		"891",
+		"892",
+		"893",
+		"894",
+		"895",
+		"896",
+		"897",
 
+			
 	}
 
 	local sprays = {
@@ -970,7 +981,17 @@ function Shop:SelectVO(keys)
 					[885] = "[75] Sound - Im fast as boy[ENG]",
 					[886] = "[76] Sound - FBI[ENG]",
 					[887] = "[77] Sound - 300 bucks[ENG]",
-
+					[888] = "[78] Sound - Slowed Acumalaka[ENG]",
+					[889] = "[79] Sound - Anime meme suka blyat[RUS]",
+					[890] = "[80] Sound - Louth meme[ENG]",
+					[891] = "[81] Sound - Mister Bombastic[ENG]",
+					[892] = "[82] Sound - Coffin Dance Meme[ENG]",
+					[893] = "[83] Sound - We Got Him Meme Song Loud[ENG]",
+					[894] = "[84] Sound - LAKAD MATATAG[ENG]",
+					[895] = "[85] Sound - oy oy oy Dota 2[ENG]",
+					[896] = "[86] Sound - you know what's cooking boom[ENG]",
+					[897] = "[87] Sound - the next level play Dota 2[ENG]",
+					
 					
 				}
 

@@ -200,6 +200,10 @@ function trollnelves2:DamageFilter( kv )
       return true
     end
 
+    if OwnHeroAtacker:IsTroll() and OwnHeroKilled:IsWolf() then
+      return true
+    end
+    
 
     if team ~= teamKilled and 
       PlayerResource:IsValidPlayerID(heroAttackerID) and not PlayerResource:IsFakeClient(heroAttackerID) and 

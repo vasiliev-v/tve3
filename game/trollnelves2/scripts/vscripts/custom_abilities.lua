@@ -438,6 +438,9 @@ function GoldOnAttack (event)
 		if event.unit:HasModifier("modifier_antifeed") then
 			koeff = 0
 		end
+		if event.unit:GetTeamNumber() ~= 2 then
+			koeff = 0
+		end
 		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
 		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
 			if caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 1  then
@@ -1370,7 +1373,7 @@ function StealGold(event)
 	local target = event.target
 	local playerID = GameRules.trollID
 	local hero = GameRules.trollHero
-	local sum = math.ceil(hero:GetNetworth()*0.002)+10
+	local sum = math.ceil(hero:GetNetworth()*0.0001)+1
 
 	if GameRules.FakeList[caster:GetPlayerOwnerID()] ~= nil  then
 		return
@@ -1383,7 +1386,7 @@ function StealGold(event)
 				local playerHero = PlayerResource:GetSelectedHeroEntity(pID) or false
 				if playerHero then
 					if playerHero:IsTroll() or playerHero:IsWolf() then
-						sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.001)+10 ) --sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.002)+10 )
+						sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.0001)+1 ) --sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.002)+10 )
 					end
 				end
 			end
@@ -1395,7 +1398,7 @@ function StealGold(event)
 		local unit_name = unit:GetUnitName();
 		if unit_name == "troll_hut_5" or unit_name == "troll_hut_6" then --if unit_name == "troll_hut_6" or unit_name == "troll_hut_7" then
 			maxSum = 500000
-			sum = math.ceil(hero:GetNetworth()*0.002)+10 --sum = math.ceil(hero:GetNetworth()*0.004)+10
+			sum = math.ceil(hero:GetNetworth()*0.0001)+1 --sum = math.ceil(hero:GetNetworth()*0.004)+10
 			caster:GiveMana(5)
 		end
 	end
@@ -1409,7 +1412,7 @@ function StealGold(event)
 	end
 	if sum > 0 then
 		local countAngel = 0
-		local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, caster:GetAbsOrigin() , nil, 2000 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
+		local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, caster:GetAbsOrigin() , nil, 3000 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 		for _,unit in pairs(units) do
 			if unit ~= nil then
 				if unit:IsAngel() and PlayerResource:GetConnectionState(caster:GetPlayerOwnerID()) == 2 then
@@ -1418,7 +1421,7 @@ function StealGold(event)
 			end
 		end
 		if countAngel > 2 then
-			sum = math.ceil(sum/countAngel)
+			sum = math.ceil(hero:GetNetworth()*0.00001)+1
 		end
 		if caster:GetDeaths() > 2 then
 			sum = math.ceil(sum/(caster:GetDeaths() - 1))
@@ -1669,13 +1672,13 @@ function StackModifierCreated3(keys)
 	local tar = target:FindModifierByName( "modifier_storm_bolt_datadriven" )
 	
 	if target:HasModifier("modifier_buff_counter_stun") and stack_count+1 == 2 and tar and not target:IsWolf() then
-		tar:SetDuration(2,true)
-		elseif target:HasModifier("modifier_buff_counter_stun") and stack_count+1 == 3 and tar and not target:IsWolf() then
-		tar:SetDuration(1.5,true)
-		elseif target:HasModifier("modifier_buff_counter_stun") and stack_count+1 == 4 and tar and not target:IsWolf() then
 		tar:SetDuration(1,true)
+		elseif target:HasModifier("modifier_buff_counter_stun") and stack_count+1 == 3 and tar and not target:IsWolf() then
+		tar:SetDuration(0.01,true)
+		elseif target:HasModifier("modifier_buff_counter_stun") and stack_count+1 == 4 and tar and not target:IsWolf() then
+		tar:SetDuration(0.01,true)
 		elseif target:HasModifier("modifier_buff_counter_stun") and stack_count+1 > 4 and tar and not target:IsWolf() then
-		tar:SetDuration(0.5,true)
+		tar:SetDuration(0.01,true)
 	end
 end
 

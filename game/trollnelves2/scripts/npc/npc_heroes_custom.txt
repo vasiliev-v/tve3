@@ -228,10 +228,10 @@
 
 		"BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"
 		//"RingRadius"        "70"
-		"CollisionSize"			"48"
+		"CollisionSize"			"60"
 
 		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"       "360"                 // Speed.
+		"MovementSpeed"       "300"                 // Speed.
 		"MovementTurnRate"      "1.0"                 // Turning rate.
 
 		"StatusHealth"        "500"                 // Base health.
@@ -305,7 +305,7 @@
 
 		"BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"
 		//"RingRadius"        "70"
-		"CollisionSize"			"48"
+		"CollisionSize"			"60"
 
 		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"       "300"                 // Speed.
@@ -332,12 +332,12 @@
 		"SoundSet"			"Hero_Crystal_Maiden" //"Hero_Enigma "
 		"Model"				"models/heroes/crystal_maiden/crystal_maiden.vmdl"//"models/heroes/enigma/enigma.vmdl"
 		"AbilityLayout"     "16"
-		"Ability1" 			""
-		"Ability2" 			"cm_haste"
-		"Ability3" 			"steal_gold"
-		"Ability4" 			"cm_stun" //"enigma_malefice"
-		"Ability5"    	    "cm_heal_building"
-		"Ability6"    	    "stand_invis"
+		"Ability1" 			"cm_haste"
+		"Ability2" 			"steal_gold"
+		"Ability3" 			"cm_stun"
+		"Ability4" 			"stand_invis" 
+		"Ability5"    	    ""
+		"Ability6"    	    ""
 		"Ability7"    	    ""
 		"Ability8"    	    ""
 		"Ability9"    	    ""
@@ -375,7 +375,7 @@
 		"CollisionSize"			"24"
 
 		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"       "340"                 // Speed.
+		"MovementSpeed"       "300"                 // Speed.
 		"MovementTurnRate"      "1.0"                 // Turning rate.
 
 		"StatusHealth"        "25"                 // Base health.
@@ -406,8 +406,8 @@
 		"Ability2" 			"furion_teleportation_datadriven" //"queenofpain_blink "
 		"Ability3" 			"steal_gold"
 		"Ability4" 			"cm_haste" 
-		"Ability5"    	    "cm_heal_building"
-		"Ability6"    	    "stand_invis"
+		"Ability5"    	    "stand_invis"
+		"Ability6"    	    ""
 		"Ability7"    	    "" 
 		"Ability8"    	    ""
 		"Ability9"    	    ""
@@ -447,7 +447,7 @@
 		"CollisionSize"			"24"
 
 		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"       "340"                 // Speed.
+		"MovementSpeed"       "300"                 // Speed.
 		"MovementTurnRate"      "1.0"                 // Turning rate.
 
 		"StatusHealth"        "25"                 // Base health.

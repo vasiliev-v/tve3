@@ -11978,7 +11978,7 @@
 
 		// Time     
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "30.0"
+		"AbilityCooldown"               "300.0"
 
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -11992,8 +11992,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
         {
-            "bolt_speed" "1000"
-            "bolt_stun_duration" "2.0"
+            "bolt_speed" "500"
+            "bolt_stun_duration" "1.0"
             "vision_radius" "225"
         }
 
@@ -12197,7 +12197,7 @@
         {
             "duration" "5"
             "speed" "500"
-            "eva" "100"
+           // "eva" "100"
         }
 		
 		"OnSpellStart"{
@@ -12215,7 +12215,7 @@
 				
 				"Properties"{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%speed"
-					"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%eva"
+					//"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%eva"
 				}
 			}
 		}

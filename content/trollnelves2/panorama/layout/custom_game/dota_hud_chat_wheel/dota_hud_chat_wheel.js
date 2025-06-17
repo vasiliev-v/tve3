@@ -83,6 +83,18 @@ let Items_sounds =
     [885, "sounds_85"],
     [886, "sounds_86"],
     [887, "sounds_87"],
+    [888, "sounds_88"],
+    [889, "sounds_89"],
+    [890, "sounds_90"],
+    [891, "sounds_91"],
+    [892, "sounds_92"],
+    [893, "sounds_93"],
+    [894, "sounds_94"],
+    [895, "sounds_95"],
+    [896, "sounds_96"],
+    [897, "sounds_97"],
+
+    
 ]
 
 var itemTypes = [Items_sounds];

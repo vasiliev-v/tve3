@@ -83,14 +83,23 @@ function trollnelves2:OnPlayerReconnect(event)
         Timers:CreateTimer(0, function()
             if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
               Timers:CreateTimer(2.25, function()
-                --DebugPrint("222 GameRules.disconnectedHeroSelects[playerID] " .. tostring(GameRules.disconnectedHeroSelects[playerID]))
+                local player = PlayerResource:GetPlayer(playerID)
                 local heroname = GameRules.disconnectedHeroSelects[playerID]
-                -- PlayerResource:SetSelectedHero(playerID, GameRules.disconnectedHeroSelects[playerID])
-                local hero = CreateHeroForPlayer("npc_dota_hero_crystal_maiden", PlayerResource:GetPlayer(playerID))
-                PlayerResource:GetPlayer(playerID):SetAssignedHeroEntity(hero)
-                local oldhero = hero
-                hero = PlayerResource:ReplaceHeroWith(playerID, heroname ,0,0)
-                hero = PlayerResource:GetSelectedHeroEntity(playerID)
+                local pos = Vector(0, -640, 256)
+                local oldhero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+                local hero = CreateHeroForPlayer(newHeroName, player)
+                FindClearSpaceForUnit(hero, pos, true)
+                hero:AddNewModifier(hero, hero, "modifier_fountain_glyph", {Duration = 4})
+
+                Timers:CreateTimer(2, function()
+                    hero:SetOwner(player)
+                    hero:SetControllableByPlayer(playerID, true)
+                    player:SetAssignedHeroEntity(hero)
+                    PlayerResource:SetOverrideSelectionEntity(playerID, hero)
+                    wearables:SetWolf(playerID)
+                end)
+
                 if hero then
                     UpdateSpells(hero)
                     hero:SetAbilityPoints(0)
@@ -125,7 +134,7 @@ function trollnelves2:OnPlayerReconnect(event)
                         end
                     end
                     if oldhero then
-                        UTIL_Remove(oldhero)
+                        oldhero:RemoveSelf()
                     end
                 else
                     --DebugPrint("FFUCK HERO IS NULL!!!!")
@@ -927,6 +936,7 @@ function ChooseHelpSide(eventSourceIndex, event)
 
     local newHero = CreateHeroForPlayer(newHeroName, player)
     FindClearSpaceForUnit(newHero, pos, true)
+    newHero:AddNewModifier(newHero, newHero, "modifier_fountain_glyph", {Duration = 4})
     Timers:CreateTimer(2, function()
         newHero:SetTeam(team)
         PlayerResource:SetCustomTeamAssignment(playerID, team)

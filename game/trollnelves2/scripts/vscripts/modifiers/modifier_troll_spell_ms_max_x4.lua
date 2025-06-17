@@ -9,7 +9,7 @@ function modifier_troll_spell_ms_max_x4:GetTexture()         return "troll_spell
 --------------------------------------------------------------------------------
 function  modifier_troll_spell_ms_max_x4:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
     }
     return funcs
 end
