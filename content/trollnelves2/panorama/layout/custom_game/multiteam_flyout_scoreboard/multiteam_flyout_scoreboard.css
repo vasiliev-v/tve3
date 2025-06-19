@@ -526,7 +526,10 @@
     }
 }
 
-#_dynamic_team_3,
+#_dynamic_team_3
+{
+    visibility: visible;
+}
 #_dynamic_team_6,
 #_dynamic_team_7,
 #_dynamic_team_8

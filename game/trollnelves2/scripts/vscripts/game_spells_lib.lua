@@ -1954,9 +1954,11 @@ function game_spells_lib:SetSpellPlayers()
 
                     local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
                     local level = game_spells_lib:GetSpellLevel(id, spell_name)
-                    local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
-                    if mod then
-                        mod:SetStackCount(level)
+                    if not hero:HasModifier(modifier_name) then
+                        local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
+                        if mod then
+                            mod:SetStackCount(level)
+                        end
                     end
                 end
             end

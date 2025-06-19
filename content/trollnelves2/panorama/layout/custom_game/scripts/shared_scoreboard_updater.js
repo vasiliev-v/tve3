@@ -146,6 +146,10 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
         {
             var teamColor = GameUI.CustomUIConfig().team_colors[ playerInfo.player_team_id ];
             var teamColorPanel = playerPanel.FindChildInLayoutFile( "TeamColor" );
+			$.Msg("playerInfo.player_team_id " )
+			$.Msg(playerInfo.player_team_id)
+			$.Msg("teamColor " )
+			$.Msg(teamColor)
             teamColor = teamColor.replace( ";", "" );
             var teamColor_GradentFromTransparentLeft = playerPanel.FindChildInLayoutFile( "TeamColor_GradentFromTransparentLeft" );
             if ( teamColor_GradentFromTransparentLeft )
@@ -406,6 +410,7 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 		{
 			if(Players.GetPlayerSelectedHero(playerId) != "npc_dota_hero_wisp")
 			{
+				//$.Msg("Found " + playerId + " in team " + localPlayerTeamId);
 				_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 			}
 		}

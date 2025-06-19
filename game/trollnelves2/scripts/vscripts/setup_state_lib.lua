@@ -34,7 +34,7 @@ function setup_state_lib:SetupStartMapVotes()
 end
 
 function setup_state_lib:SetupStartSelectedRole()
-    local THIS_STAGE_TIMER = 30
+    local THIS_STAGE_TIMER = 15
     --if IsInToolsMode() then
     --    THIS_STAGE_TIMER = 1
    -- end
@@ -56,7 +56,7 @@ function setup_state_lib:SetupStartSelectedRole()
 end
 
 function setup_state_lib:SetupStartSelectPerks()
-    local THIS_STAGE_TIMER = 30
+    local THIS_STAGE_TIMER = 20
     --if IsInToolsMode() then
     --    THIS_STAGE_TIMER = 10
     --end

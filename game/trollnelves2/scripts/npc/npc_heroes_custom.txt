@@ -227,8 +227,8 @@
 		"BountyGoldMax"       "1"                   // Gold earned max.
 
 		"BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"
-		//"RingRadius"        "70"
-		"CollisionSize"			"60"
+		"RingRadius"        "70"
+		"CollisionSize"			"70"
 
 		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"       "300"                 // Speed.

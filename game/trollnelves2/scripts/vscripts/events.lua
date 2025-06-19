@@ -88,9 +88,11 @@ function trollnelves2:OnPlayerReconnect(event)
                 local pos = Vector(0, -640, 256)
                 local oldhero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-                local hero = CreateHeroForPlayer(newHeroName, player)
+                local hero = CreateHeroForPlayer(heroname, player)
                 FindClearSpaceForUnit(hero, pos, true)
-                hero:AddNewModifier(hero, hero, "modifier_fountain_glyph", {Duration = 4})
+                if hero then
+                    hero:AddNewModifier(hero, hero, "modifier_fountain_glyph", {Duration = 4})
+                end
 
                 Timers:CreateTimer(2, function()
                     hero:SetOwner(player)
@@ -124,6 +126,17 @@ function trollnelves2:OnPlayerReconnect(event)
                         --Timers:CreateTimer(5, function()
                         --    BuildingHelper:SendGNV(args)
                         --end)
+                        local active = game_spells_lib.current_activated_spell[playerID] or {}
+                        for _, spell_name in ipairs(active) do
+                            local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
+                            local level = game_spells_lib:GetSpellLevel(id, spell_name)
+                            if hero and not hero:HasModifier(modifier_name) then
+                                local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
+                                if mod  then
+                                    mod:SetStackCount(level)
+                                end
+                            end
+                        end
                     end
                     if hero.units ~= nil then
                         for i=1,#hero.units do
@@ -133,6 +146,7 @@ function trollnelves2:OnPlayerReconnect(event)
                             end
                         end
                     end
+
                     if oldhero then
                         oldhero:RemoveSelf()
                     end
@@ -936,7 +950,9 @@ function ChooseHelpSide(eventSourceIndex, event)
 
     local newHero = CreateHeroForPlayer(newHeroName, player)
     FindClearSpaceForUnit(newHero, pos, true)
-    newHero:AddNewModifier(newHero, newHero, "modifier_fountain_glyph", {Duration = 4})
+    if newHero then
+        newHero:AddNewModifier(newHero, newHero, "modifier_fountain_glyph", {Duration = 4})
+    end
     Timers:CreateTimer(2, function()
         newHero:SetTeam(team)
         PlayerResource:SetCustomTeamAssignment(playerID, team)

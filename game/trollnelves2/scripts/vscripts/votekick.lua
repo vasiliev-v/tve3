@@ -107,12 +107,6 @@ function VoteKick(eventSourceIndex, event)
 	local hero = PlayerResource:GetSelectedHeroEntity(event.playerID1)
 	local team = hero:GetTeamNumber()
 	if votes[ event.playerID1 ] == 1 and team == DOTA_TEAM_BADGUYS 
-		and PlayerResource:GetSteamAccountID(event.playerID1) ~= 201083179 
-		and PlayerResource:GetSteamAccountID(event.playerID1) ~= 990264201 
-		and PlayerResource:GetSteamAccountID(event.playerID1) ~= 337000240 
-		and PlayerResource:GetSteamAccountID(event.playerID1) ~= 183899786 
-		and PlayerResource:GetSteamAccountID(event.playerID1) ~= 129697246
-		and PlayerResource:GetSteamAccountID(event.playerID1) ~= 381067505
 		then
 		votes[ event.playerID1 ] = 0
 		startVote = {}
@@ -144,9 +138,6 @@ function VoteKick(eventSourceIndex, event)
 		Timers:CreateTimer(35.0, function() 
 			
 			if (votes[ event.playerID1 ]/countVote[event.playerID1]) >= PERC_KICK_PLAYER + disKick 
-				and PlayerResource:GetSteamAccountID(event.playerID1) ~= 201083179 and PlayerResource:GetSteamAccountID(event.playerID1) ~= 990264201 
-				and PlayerResource:GetSteamAccountID(event.playerID1) ~= 337000240 and PlayerResource:GetSteamAccountID(event.playerID1) ~= 183899786 
-				and PlayerResource:GetSteamAccountID(event.playerID1) ~= 129697246 and PlayerResource:GetSteamAccountID(event.playerID1) ~= 381067505 
 				or GameRules.FakeList[event.playerID1] ~= nil 
 				then
 				GameRules.PlayersBase[event.playerID1] = nil

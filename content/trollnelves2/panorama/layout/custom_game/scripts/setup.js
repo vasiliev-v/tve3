@@ -32,6 +32,14 @@ var uiWaitingSchedules = [];
     GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_1] = "#960000;";
     GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_2] = "#960000;";
     GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_3] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_4] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_5] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_6] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_7] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_8] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_NOTEAM] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_NEUTRALS] = "#960000;";
+    GameUI.CustomUIConfig().team_colors[-1] = "#960000;";
 
     var tooltipManager = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("Tooltips");
     tooltipManager.AddClass("CustomTooltipStyle");
