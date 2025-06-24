@@ -361,12 +361,14 @@ function chatcommand:OnPlayerChat(event)
 			PoolTable = CustomNetTables:GetTableValue("Shop", "bpday")	
 			DebugPrintTable(PoolTable)
 		elseif event.text == "!test1213" and PlayerResource:GetSteamAccountID(event.playerid) == 201083179  then
-			GameRules:SendCustomMessage(GetDedicatedServerKeyV3("1"), 1, 1)
-
-
-
-
-
-			
+			-- GameRules:SendCustomMessage(GetDedicatedServerKeyV3("1"), 1, 1)
+		    --PlayerResource:SetUnitShareMaskForPlayer(GameRules.trollID, event.playerid, 2, true)
+			--trollnelves2:ControlUnitForTroll(hero)
+			DebugPrint("GameRules.trollID " .. GameRules.trollID)
+			local player = PlayerResource:GetPlayer(event.playerid)
+			--DebugPrint("event.playerid " .. event.playerid)
+			--DebugPrintTable(hero)
+		    hero:SetPlayerID(playerID)
+			--	player:SetAssignedHeroEntity(hero)
 		end
 end

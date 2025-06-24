@@ -1876,6 +1876,43 @@ function game_spells_lib:SetSpellPlayers()
     for id = 0, pplc - 1 do
         local team = PlayerResource:GetTeam(id)
         local active = game_spells_lib.current_activated_spell[id] or {}
+        local team = PlayerResource:GetTeam(id)
+        local hero = PlayerResource:GetSelectedHeroEntity(id)
+        -- Удаляем все перки, которые не соответствуют команде, расе или выключены
+        if hero then
+        -- Проходим по всем выбранным перкам игрока
+        for i = #active, 1, -1 do
+            local spell_name = active[i]
+
+            -- Ищем информацию об этом перке в общем списке
+            for _, spell_info in ipairs(self.spells_list) do
+                local name_in_list = spell_info[1]
+                if name_in_list == spell_name then
+
+                    local spell_team = tonumber(spell_info[6])  -- 0 - эльфы, 1 - тролли
+                    local is_enabled = tonumber(spell_info[7]) == 1
+
+                    local is_valid = false
+
+                    -- Проверка условий: включен ли перк и подходит ли игрок по расе и команде
+                    if is_enabled then
+                        if spell_team == 0 and team == DOTA_TEAM_GOODGUYS and hero:IsElf() then
+                            is_valid = true
+                        elseif spell_team == 1 and team == DOTA_TEAM_BADGUYS and hero:IsTroll() then
+                            is_valid = true
+                        end
+                    end
+
+                    -- Если перк не подходит, удаляем его
+                    if not is_valid then
+                        table.remove(active, i)
+                    end
+                end
+            end
+        end
+    end
+
+
         -- GOOD GUYS: DOTA_TEAM_GOODGUYS
         if team == DOTA_TEAM_GOODGUYS then
             if #active == 0 then

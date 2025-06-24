@@ -1867,7 +1867,7 @@
 	 {
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	  "AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "BaseClass"	"ability_datadriven" 
 	
@@ -1905,7 +1905,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"					"6804"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
 		// Special
@@ -1924,7 +1924,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"					"6561"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
 		// Special
@@ -17391,7 +17391,7 @@
         {
             "value" "700"
         }
-		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityType"	"ABILITY_TYPE_ATTRIBUTES"
 		"BaseClass"	"special_bonus_cast_range_350"
 	}
 
@@ -18123,7 +18123,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"troll_spell_night_buff"
 	"MaxLevel"						"3"
@@ -18206,7 +18206,7 @@
 
 "troll_spell_gold_wisp"{
 	"BaseClass"						"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"troll_spell_gold_wisp"
 	"MaxLevel"						"3"
@@ -18246,7 +18246,7 @@
 
 	"elf_spell_true"{
 		"BaseClass"						"ability_datadriven"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"    		"elf_spell_true"
 		"MaxLevel"						"3"
@@ -19922,7 +19922,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"troll_spell_night_buff"
 	"MaxLevel"						"3"
@@ -20005,7 +20005,7 @@
 
 "troll_spell_gold_wisp_x4"{
 	"BaseClass"						"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"troll_spell_gold_wisp"
 	"MaxLevel"						"3"
@@ -20045,7 +20045,7 @@
 
 	"elf_spell_true_x4"{
 		"BaseClass"						"ability_datadriven"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"    		"elf_spell_true"
 		"MaxLevel"						"3"

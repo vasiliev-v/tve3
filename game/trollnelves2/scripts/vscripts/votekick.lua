@@ -111,8 +111,8 @@ function VoteKick(eventSourceIndex, event)
 		votes[ event.playerID1 ] = 0
 		startVote = {}
 		hero:Kill(nil, hero)
-		PlayerResource:SetGold(hero, 0)
-    	PlayerResource:SetLumber(hero, 0)
+		--PlayerResource:SetGold(hero, 0)
+    	--PlayerResource:SetLumber(hero, 0)
 		
 		CheckWolfInTeam(hero)
 		

@@ -946,8 +946,9 @@ function ChooseHelpSide(eventSourceIndex, event)
     Timers:CreateTimer(function()
         GameRules:SendCustomMessage(message, playerID, 0)
     end)
-    hero:RemoveSelf()
-
+ 
+    UTIL_Remove(hero)
+    
     local newHero = CreateHeroForPlayer(newHeroName, player)
     FindClearSpaceForUnit(newHero, pos, true)
     if newHero then
@@ -961,6 +962,7 @@ function ChooseHelpSide(eventSourceIndex, event)
         player:SetAssignedHeroEntity(newHero)
         PlayerResource:SetOverrideSelectionEntity(playerID, newHero)
         wearables:SetWolf(playerID)
+        PlayerResource:SetCustomTeamAssignment(playerID, team)
     end)
 end)
 end

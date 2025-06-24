@@ -201,6 +201,7 @@ function trollnelves2:DamageFilter( kv )
     end
 
     if OwnHeroAtacker:IsTroll() and OwnHeroKilled:IsWolf() then
+       OwnHeroKilled:Kill(nil, OwnHeroKilled)
       return true
     end
     
