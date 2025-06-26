@@ -426,15 +426,16 @@ function GetPlayerSpellLevel(spell_name, texture)
 
 function GetSelectedPlayerSpellLevel(spell_name, id)
 {
-    if (player_table)
+    let current_target_table = CustomNetTables.GetTableValue("Shop", id)["12"];
+    if (current_target_table)
     {
-        for ( var id in player_table)
+        for ( var id in current_target_table)
         {
-            if (player_table[id])
+            if (current_target_table[id])
             {
-                if (player_table[id][1] == spell_name)
+                if (current_target_table[id][1] == spell_name)
                 {
-                    return player_table[id][2]
+                    return current_target_table[id][2]
                 }
             }
         }
@@ -449,67 +450,6 @@ function UpdateCurrentSpells(data)
         UpdatePreviewSpellInf(CURRENT_SPELL_SELECTED)
     }
     players_activated_spells = data
-}
-
-function UpdateVisualSelectedSpells()
-{
-    let selected_unit = Players.GetLocalPlayerPortraitUnit()
-    if (selected_unit == null)
-    {
-        $.Schedule(0.1, UpdateVisualSelectedSpells)
-        return
-    }
-    if (!Entities.IsHero( selected_unit ))
-    {
-        $.Schedule(0.1, UpdateVisualSelectedSpells)
-        return
-    }
-    let panel_minimap_hud = FindDotaHudElement("minimap_container") 
-    let player_id = Entities.GetPlayerOwnerID( selected_unit )
-    let active_table = players_activated_spells
-    if (active_table)
-    {
-        if (active_table[player_id])
-        {
-            for (var i = 1; i <= 3; i++)
-            {
-                if (active_table[player_id][i] && active_table[player_id][i] != "")
-                {
-                    if (panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i))
-                    {
-                        panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(active_table[player_id][i], GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id)) + '.png")';
-                        panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundSize = "100%"
-                        SetShowText(panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i), 
-                                    GetSpellName(active_table[player_id][i]) + "_description_level_" + GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id), 
-                                    active_table[player_id][i],
-                                    GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id))
-                    }
-                }
-                else
-                {
-                    if (panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i))
-                    {
-                        panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/no_active2.png")';
-                        panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundSize = "100%"
-                        RemoveText(panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i), "")
-                    }
-                }
-            }
-        }
-        else
-        {
-            for (var i = 1; i <= 3; i++)
-            {
-                if (panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i))
-                {
-                    panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/no_active2.png")';
-                    panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i).style.backgroundSize = "100%"
-                    RemoveText(panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i), "")
-                }
-            }
-        }
-    }
-    $.Schedule(0.1, UpdateVisualSelectedSpells)
 }
 
 function GetSpellTexture(spell_name, any_level)
@@ -556,10 +496,7 @@ function SetShowText(panel, text, spell, level)
 
 function RemoveText(panel, text)
 {
-    panel.SetPanelEvent('onmouseover', function() 
-    {
-        
-    });
+    panel.SetPanelEvent('onmouseover', function() {});
     panel.SetPanelEvent('onmouseout', function() 
     {
         $.DispatchEvent('DOTAHideTextTooltip', panel);
@@ -722,7 +659,47 @@ function CheckBuyAllSpells()
     return false 
 }
 
+function UpdateVisualSelectedSpells() 
+{
+    let selected_unit = Players.GetLocalPlayerPortraitUnit();
+    if (!selected_unit || !Entities.IsHero(selected_unit) || selected_unit == -1) 
+    {
+        return;
+    }
+    let panel_minimap_hud = FindDotaHudElement("minimap_container");
+    let player_id = Entities.GetPlayerOwnerID(selected_unit);
+    let active_table = players_activated_spells;
+    if (Game.IsInToolsMode())
+    {
+        $.Msg("Смена игрока выбранного id - ", player_id)
+    }
+    for (let i = 1; i <= 3; i++) 
+    {
+        let ActivatedSpellIcon = panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i);
+        if (!ActivatedSpellIcon) continue;
+        if (active_table[player_id] && active_table[player_id][i] && active_table[player_id][i] != "") 
+        {
+            let spellName = GetSpellName(active_table[player_id][i])
+            let spellLevel = GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id)
+            let spellTexture = GetSpellTexture(spellName, spellLevel);
+            ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + spellTexture + '.png")';
+            ActivatedSpellIcon.style.backgroundSize = "100%";
+            SetShowText(ActivatedSpellIcon, spellName + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel);
+        } 
+        else 
+        {
+            ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/no_active2.png")';
+            ActivatedSpellIcon.style.backgroundSize = "100%";
+            RemoveText(ActivatedSpellIcon, "");
+        }
+    }
+}
+
+
+
+GameEvents.Subscribe( "dota_player_update_selected_unit", UpdateVisualSelectedSpells );
+GameEvents.Subscribe( "dota_player_update_query_unit", UpdateVisualSelectedSpells );
+GameEvents.Subscribe( "m_event_dota_inventory_changed_query_unit", UpdateVisualSelectedSpells );
 GameEvents.SubscribeProtected("event_spell_shop_drop", SpellDropNotification);
 GameEvents.SubscribeProtected("Shop", SpellDropNotification);
 InitSpellPanel()
-UpdateVisualSelectedSpells()
