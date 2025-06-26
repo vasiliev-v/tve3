@@ -608,14 +608,13 @@
     height: 1512px;
     background-size: 100%;
     background-image: url("file://{images}/new_design/notif/bg.png");
-    ui-scale: 30%;
+    ui-scale: 40%;
     brightness: 1.2;
 }
 
 .InfoItemTop 
 {
     width: 100%;
-    height: 80px;
 }
 
 .CloseInfoItem 
@@ -634,6 +633,21 @@
 .CloseInfoItem:hover 
 {
     transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.ItemNameAndIcon
+{
+    horizontal-align: center;
+    flow-children: down;
+    margin-bottom: 10px;
+}
+
+.ItemIconLarge
+{
+    width: 200px;
+    height: 120px;
+    margin-top: 5px;
+    box-shadow: hollow #b8ff4530 0px 0px 7px 0.5px;
 }
 
 .ItemNameInfoLabel 
@@ -714,7 +728,7 @@
 
 .IsChest .item_info_notifications_BG
 {
-    ui-scale: 50%;
+    ui-scale: 60%;
 }
 
 

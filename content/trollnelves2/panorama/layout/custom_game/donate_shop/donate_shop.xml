@@ -167,7 +167,10 @@
             <Panel class="item_info_notifications_BG" />
 			<Panel id="ItemInfoPanel" >
 				<Panel class="InfoItemTop">
-					<Label text="ItemName" id="ItemNameInfo" class="ItemNameInfoLabel"/>
+					<Panel class="ItemNameAndIcon">
+                        <Label text="ItemName" id="ItemNameInfo" class="ItemNameInfoLabel"/>
+                        <Panel class="ItemIconLarge" id="ItemIconLarge" />
+                    </Panel>
 					<Panel class="CloseInfoItem" onactivate="CloseItemInfo();"/>
 				</Panel>
 				<Panel id="ItemInfoBody" />

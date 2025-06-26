@@ -449,6 +449,7 @@ function ReCreateItemsStoreList(tab)
 function BuyCurrencyPanelActive()
 {
     $("#info_item_buy").SetHasClass("IsChest", false)
+    $("#ItemIconLarge").visible = false
 	$("#info_item_buy").style.visibility = "visible"
 	$("#ItemNameInfo").text = $.Localize( "#buy_currency" )
 
@@ -556,6 +557,9 @@ function SetItemBuyFunction(panel, table)
         $("#info_item_buy").SetHasClass("IsChest", false)
     	$("#info_item_buy").style.visibility = "visible"
     	$("#ItemNameInfo").text = $.Localize("#" +  table[4] )
+        $("#ItemIconLarge").visible = true
+        $("#ItemIconLarge").style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + table[4] + '.png")'
+        $("#ItemIconLarge").style.backgroundSize = "100%"
 		$("#ItemInfoBody").style.flowChildren = "down"
 
 		let Panel_for_desc = $.CreatePanel("Label", $("#ItemInfoBody"), "Panel_for_desc");
@@ -1096,6 +1100,7 @@ GameUI.CustomUIConfig().OpenPanelBuyPass = function()
 {
     let table = GetItemInfo(205)
     $("#info_item_buy").SetHasClass("IsChest", false)
+    $("#ItemIconLarge").visible = true
     $("#info_item_buy").style.visibility = "visible"
     $("#ItemNameInfo").text = $.Localize("#" +  table[4] )
     $("#ItemInfoBody").style.flowChildren = "down"

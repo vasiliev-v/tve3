@@ -11,6 +11,16 @@ var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer(
 var players_activated_spells = CustomNetTables.GetTableValue("game_spells_lib", "spell_active")
 var game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
 
+function InitSetup()
+{
+    if (Game.GetMapInfo().map_display_name == "1x1")
+    {
+        $("#StageLinePanel_3").visible = false
+        $("#WindowMapStage").style.opacity = "0"
+        $("#StagesLines").MoveChildBefore($("#StageLinePanel_2"), $("#StageLinePanel_1"))
+    }
+}
+
 function UpdateChat()
 {
     //$.Msg("GameUI.CustomUIConfig().LoadingChat ", GameUI.CustomUIConfig().LoadingChat == null, " ", GameUI.CustomUIConfig().FindLoadingChat == null)
@@ -67,6 +77,7 @@ function InitStageSelectedMap(data)
     ACTIVATED_STAGE_MAP = true
     CloseOtherScreenStage()
     OLD_SCREEN_STAGE = $("#WindowMapStage")
+    $("#WindowMapStage").style.opacity = "1"
     if (data.maps)
     {
         for (var i = 1; i <= Object.keys(data.maps).length; i++) 
@@ -581,4 +592,5 @@ function RenderEmptyCells(parent, count) {
 (function () {
 	Game.AutoAssignPlayersToTeams();
     UpdateChat()
+    InitSetup()
 })();
