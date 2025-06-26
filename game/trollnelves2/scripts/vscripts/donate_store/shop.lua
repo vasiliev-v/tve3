@@ -32,6 +32,9 @@ function Shop.RequestDonate(pID, steam, callback)
 		for id = 1200, 1250 do
 			PoolTable["1"][id] = tostring(id)
 		end
+		for id = 1700, 1899 do
+			PoolTable["1"][id] = tostring(id)
+		end
 		for id=1, #game_spells_lib.spells_list do
 			PoolTable["12"][tostring(id)] = {game_spells_lib.spells_list[id][1], 1, 0}	
 		end
@@ -120,13 +123,7 @@ function Shop.RequestVip(obj, pID, steam, callback)
 	PoolTable["5"]["0"] = PlayerResource:GetSteamAccountID(pID)
 	PoolTable["5"]["1"] = PlayerResource:GetSteamID(pID)
 	for id = 1, 90 do
-		if GameRules:IsCheatMode() then 
-			PoolTable["1"][id] = tostring(id)
-			parts[id] = "normal"
-		else
-			parts[id] = "nill"
-		end
-		
+		parts[id] = "nill"	
 	end
 	CustomNetTables:SetTableValue("Particles_Tabel",tostring(pID),parts)
 	for id=1,#obj do
@@ -144,19 +141,7 @@ function Shop.RequestVip(obj, pID, steam, callback)
 				--fireLeftNotify(pID, false, msg, {})
 			--end);
 		end	
-	end
-	
-	if GameRules:IsCheatMode() then 
-		for id = 1, 200 do
-			PoolTable["1"][id] = tostring(id)
-		end
-		for id = 600, 1099 do
-			PoolTable["1"][id] = tostring(id)
-		end	
-		for id = 1200, 1250 do
-			PoolTable["1"][id] = tostring(id)
-		end
-	end		
+	end	
 
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	return obj

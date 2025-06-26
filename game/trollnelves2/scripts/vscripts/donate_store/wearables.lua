@@ -252,13 +252,13 @@ function SetModelVip(npc, num)
     end
 
     local data
-    if npc:IsTroll() and npc.wolfperk then
+    if npc:IsWolf() then
         data = Wearables.wolfModels[num]
         if data then
-            npc.wolfperk:SetOriginalModel(data.model)
-            npc.wolfperk:SetModel(data.model)
-            npc.wolfperk:SetModelScale(data.scale)
-            GameRules.SkinTower[npc.wolfperk:GetPlayerOwnerID()]["wolf"] = num
+            npc:SetOriginalModel(data.model)
+            npc:SetModel(data.model)
+            npc:SetModelScale(data.scale)
+            GameRules.SkinTower[npc:GetPlayerOwnerID()]["wolf"] = num
         end
 
     elseif npc:IsTroll() and npc.bear then
@@ -367,7 +367,6 @@ function SetModelVipWisp(npc, num, playerID, save)
         if model then
             UpdateModel(unit, model, scale)
         end
-
         if cfg.materialGroup then
             unit:SetMaterialGroup(tostring(cfg.materialGroup))
         end

@@ -957,13 +957,16 @@ function ChooseHelpSide(eventSourceIndex, event)
     Timers:CreateTimer(2, function()
         newHero:SetTeam(team)
         PlayerResource:SetCustomTeamAssignment(playerID, team)
-        newHero:SetOwner(player)
-        newHero:SetControllableByPlayer(playerID, true)
-        player:SetAssignedHeroEntity(newHero)
-        PlayerResource:SetOverrideSelectionEntity(playerID, newHero)
-        wearables:SetWolf(playerID)
+        player:SetSelectedHero(newHeroName)
+		player:SetAssignedHeroEntity(newHero)
+		newHero:SetControllableByPlayer(playerID, true)
         PlayerResource:SetCustomTeamAssignment(playerID, team)
+        wearables:SetWolf(playerID)
+        if hero then
+            UTIL_Remove(hero)
+        end
     end)
+
 end)
 end
 

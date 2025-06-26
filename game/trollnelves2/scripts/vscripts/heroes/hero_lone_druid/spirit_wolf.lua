@@ -90,7 +90,7 @@ function SpiritBearSpawn( event )
 		end
 		-- Learn its abilities: return lvl 2, entangle lvl 3, demolish lvl 4. By Index
 	end
-	wearables:SetWolf(player)
+ 
 end
 
 --[[

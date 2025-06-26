@@ -192,17 +192,12 @@ function SetRoles()
             local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))["2"]["0"]
             local party_id = tonumber(tostring(PlayerResource:GetPartyID(pID)))
             local partyGame = false 
-            if party_id and party_id == 0 then
-                DebugPrint("not  party_id and party_id = 0 ID " .. pID)
-            else 
-                DebugPrint("party" .. pID .. "party_id        " ..  party_id)
+            if party_id and party_id ~= 0 then
                 local pary_chance = RandomInt(0, 100)
                 if pary_chance > 10 then
-                    partyGame = false 
+                    -- partyGame = true 
                 end
             end
-
-            DebugPrint("party2 " .. pID .. "party_id2 " ..  party_id)
 
             if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
                 if GameRules.PlayersCount >= MIN_RATING_PLAYER and (repScore > 1 or PoolTable ~= "0") and not partyGame then

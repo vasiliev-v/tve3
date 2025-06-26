@@ -536,6 +536,28 @@
 
 		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/sounds.png" /> 
 
+
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/pet_74.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_wisp_30.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_wisp_29.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_wisp_28.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_wisp_27.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1800.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_99.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1713.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1712.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1711.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1710.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1709.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1708.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1707.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1706.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1705.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1704.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1703.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1702.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1701.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1700.png" />
 	    
     </Panel>
 </root>

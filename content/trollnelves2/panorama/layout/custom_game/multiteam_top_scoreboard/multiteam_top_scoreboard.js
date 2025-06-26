@@ -45,11 +45,21 @@ function UpdateTeam( teamId )
 
 function UpdatePlayer( playerId, player_counter, teamPlayers )
 {
+    let heroName = Players.GetPlayerSelectedHero(playerId);
+    if (heroName !== "npc_dota_hero_treant") 
+    {
+        // Не отображать игрока, если у него не treant или он troll
+        if (heroName === "npc_dota_hero_troll") return;
+
+        // Если игрок не treant, но не troll — показываем как мёртвого
+    }
+
     let team_panel = $("#player_list_1")
     if ((player_counter > Math.floor(teamPlayers.length / 2)) && teamPlayers.length > 1)
     {
         team_panel = $("#player_list_2")
     }
+
 	var playerPanelName = "player_" + playerId;
     var playerPanel = team_panel.FindChildTraverse( playerPanelName );
 	if ( playerPanel === null )
@@ -61,17 +71,14 @@ function UpdatePlayer( playerId, player_counter, teamPlayers )
 	}
 
 	var playerInfo = Game.GetPlayerInfo( playerId );
-	if ( !playerInfo )
-		return;
+	if ( !playerInfo ) return;
 
 	var localPlayerInfo = Game.GetLocalPlayerInfo();
-	if ( !localPlayerInfo )
-		return;
+	if ( !localPlayerInfo ) return;
 
-    playerPanel.SetHasClass( "player_dead", ( playerInfo.player_respawn_seconds >= 0 ) );
+    const isDead = playerInfo.player_respawn_seconds >= 0 || heroName !== "npc_dota_hero_treant";
+    playerPanel.SetHasClass( "player_dead", isDead );
 
-	var localPlayerTeamId = localPlayerInfo.player_team_id;
-	
 	if ( playerId == localPlayerInfo.player_id )
 	{
 		playerPanel.AddClass( "is_local_player" );
@@ -92,7 +99,7 @@ function UpdatePlayer( playerId, player_counter, teamPlayers )
         ElfAvatar.style.boxShadow = "0px 0px 8px -1px " + colorString
         playerPanel.SetColor = true
     }
-    
+
 	var playerName = playerPanel.FindChildInLayoutFile( "PlayerName" );
     playerName.text = Players.GetPlayerName( playerId )
 

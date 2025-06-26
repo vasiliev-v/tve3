@@ -25,6 +25,8 @@ Wearables.bearModels = {
     ["680"] = { model = "models/items/lone_druid/true_form/tarzan_and_kingkong_trueform/tarzan_and_kingkong_trueform.vmdl", scale = 0.7 },
     ["681"] = { model = "models/items/lone_druid/true_form/wizened_bear/wizened_bear.vmdl", scale = 0.7 },
     ["682"] = { model = "models/items/lone_druid/true_form/wolf_hunter_true_form/wolf_hunter_true_form.vmdl", scale = 0.7 },
+    ["1800"] = { model = "models/items/lone_druid/true_form/lone_druid_northland_wander_true_form_2/lone_druid_northland_wander_true_form_2.vmdl", scale = 0.7 },
+    
 }
 
 Wearables.elfModels = {
@@ -101,6 +103,23 @@ Wearables.elfModels = {
     ["696"] = { model = "models/items/invoker/forge_spirit/steampowered_magic_forge_spirit/steampowered_magic_forge_spirit.vmdl", scale = 1 },
     ["697"] = { model = "models/items/invoker/forge_spirit/ti8_invoker_prism_forge_spirit/ti8_invoker_prism_forge_spirit.vmdl", scale = 1 },
     ["698"] = { model = "models/items/wraith_king/frostivus_wraith_king/frostivus_wraith_king_skeleton.vmdl", scale = 1.2 },
+    ["699"] = { model = "models/creeps/neutral_creeps/n_creep_tadpole/n_creep_tadpole_ranged_v2.vmdl", scale = 1 },
+    ["1700"] = { model = "models/creeps/neutral_creeps/n_creep_tadpole/n_creep_tadpole_v2.vmdl", scale = 1 },
+    ["1701"] = { model = "models/creeps/neutral_creeps/n_creep_tadpole_c/n_creep_tadpole_c.vmdl", scale = 0.8 },
+    ["1702"] = { model = "models/creeps/neutral_creeps/n_creep_froglet/n_creep_froglet_mage.vmdl", scale = 0.9 },
+    ["1703"] = { model = "models/creeps/neutral_creeps/n_creep_froglet/n_creep_froglet.vmdl", scale = 0.9 },
+    ["1704"] = { model = "models/creeps/neutral_creeps/n_creep_ancient_frog/n_creep_ancient_frog_mage.vmdl", scale = 0.9 },
+    ["1705"] = { model = "models/creeps/neutral_creeps/n_creep_ancient_frog/n_creep_ancient_frog.vmdl", scale = 0.9 },
+    ["1706"] = { model = "models/creeps/lane_creeps/creep_bird_radiant/creep_bird_radiant_ranged_mega.vmdl", scale = 1 },
+    ["1707"] = { model = "models/creeps/lane_creeps/creep_bird_radiant/creep_bird_radiant_ranged.vmdl", scale = 1 },
+    ["1708"] = { model = "models/creeps/lane_creeps/creep_bird_radiant/creep_bird_radiant_melee_mega.vmdl", scale = 1 },
+    ["1709"] = { model = "models/creeps/lane_creeps/creep_bird_radiant/creep_bird_radiant_melee.vmdl", scale = 1 },
+    ["1710"] = { model = "models/creeps/lane_creeps/creep_bird_dire/creep_bird_dire_ranged_mega.vmdl", scale = 1 },
+    ["1711"] = { model = "models/creeps/lane_creeps/creep_bird_dire/creep_bird_dire_ranged.vmdl", scale = 1 },
+    ["1712"] = { model = "models/creeps/lane_creeps/creep_bird_dire/creep_bird_dire_melee_mega.vmdl", scale = 1 },
+    ["1713"] = { model = "models/creeps/lane_creeps/creep_bird_dire/creep_bird_dire_melee.vmdl", scale = 1 },
+
+
 }
 local p
 local p12 = nil
@@ -916,6 +935,11 @@ Wearables.wispSkinConfig = {
     ["1224"] = { model = "models/courier/baby_rosh/babyroshan_ti10_dire_flying.vmdl",            scale = 1.0 },
     ["1225"] = { model = "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl",     scale = 1.0, materialGroup = 1 },
     ["1226"] = { model = "models/courier/baby_winter_wyvern/baby_winter_wyvern_flying.vmdl",     scale = 1.0, materialGroup = 2 },
+    ["1227"] = { model = "models/courier/baby_rosh/babyroshan_crownfall_flying.vmdl",            scale = 1.0 },
+    ["1228"] = { model = "models/items/courier/baby_bruce_the_jaw/baby_bruce_the_jaw_flying.vmdl",            scale = 1.0 },
+    ["1229"] = { model = "models/items/courier/dragon_courier_2024_red/dragon_courier_2024_red_flying.vmdl",            scale = 1.0 },
+    ["1230"] = { model = "models/items/courier/dragon_courier_2024_variation_a/dragon_courier_2024_variation_a_flying.vmdl",            scale = 1.0 },
+    
 }
 
 
@@ -1089,4 +1113,6 @@ Wearables.petConfigs = {
     [71] = { model = "models/items/courier/gama_sennin/gama_sennin.vmdl" },
     [72] = { model = "models/items/courier/itsy/itsy.vmdl" },
     [73] = { model = "models/items/courier/shroomy/shroomy.vmdl" },
+    [74] = { model = "models/items/courier/azuremircourierfinal/azuremircourierfinal.vmdl" },         
+   
 }

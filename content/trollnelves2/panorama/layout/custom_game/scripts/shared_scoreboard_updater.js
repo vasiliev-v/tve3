@@ -146,11 +146,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
         {
             var teamColor = GameUI.CustomUIConfig().team_colors[ playerInfo.player_team_id ];
             var teamColorPanel = playerPanel.FindChildInLayoutFile( "TeamColor" );
-			$.Msg("playerInfo.player_team_id " )
-			$.Msg(playerInfo.player_team_id)
-			$.Msg("teamColor " )
-			$.Msg(teamColor)
-            teamColor = teamColor.replace( ";", "" );
+
             var teamColor_GradentFromTransparentLeft = playerPanel.FindChildInLayoutFile( "TeamColor_GradentFromTransparentLeft" );
             if ( teamColor_GradentFromTransparentLeft )
             {
