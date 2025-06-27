@@ -47,30 +47,6 @@ function OnPlayerTeamChoose(eventSourceIndex, args)
 end
 
 function trollnelves2:GameSetup()
-    goGame = false
-    for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-        if  PlayerResource:GetSteamAccountID(pID) == 201083179  or  -- я 
-            PlayerResource:GetSteamAccountID(pID) == 453925557  or  -- Alma
-            PlayerResource:GetSteamAccountID(pID) == 183899786  or 
-            PlayerResource:GetSteamAccountID(pID) == 381067505  or 
-
-            --- Сингапур
-            PlayerResource:GetSteamAccountID(pID) == 379678577 or
-            PlayerResource:GetSteamAccountID(pID) == 175389622 or   -- super shy
-
-            PlayerResource:GetSteamAccountID(pID) == 1551531770      -- sniper
-            
-        then
-            goGame = true
-        end
-        
-    end
-    if goGame == false then
-        for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-            GameRules.KickList[pID] = 1 
-            SendToServerConsole("kick " .. PlayerResource:GetPlayerName(pID))
-        end
-    end
 
     if IsServer() then
         for pID = 0, DOTA_MAX_TEAM_PLAYERS do

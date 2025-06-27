@@ -229,7 +229,7 @@ function Stats.SubmitMatchData(winner,callback)
 			end 
 		end
 	end
-	Timers:CreateTimer(10, function() 
+	Timers:CreateTimer(5, function() 
 		GameRules:SetGameWinner(winner)
 		SetResourceValues()
 		GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)

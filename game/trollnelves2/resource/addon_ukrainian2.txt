@@ -3,7 +3,7 @@
 	"Language"		"ukrainian2"
 	"Tokens"
 	{
-		"addon_game_name"			"Troll vs Elves 3"
+		"addon_game_name"			"Troll vs Elves 4"
 		
 		// ******************** HEROES ********************
 		"npc_dota_hero_treant"                                                  "Elf"
@@ -1946,10 +1946,10 @@
 		
 		"donate1"																			"<font color='#58ACFA'>Ви можете підтримати наш проект на Patreon.</font>"
 		"donate2"																			"<font color='#58ACFA'>Patreon: https://patreon.com/tve3</font>"
-		"donate3"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve3</font>"
-		"donate4"																			"<font color='#58ACFA'>За порушення правил гри передбачено покарання! Інформація в Discord: https://discord.gg/tve3</font>"
+		"donate3"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve4</font>"
+		"donate4"																			"<font color='#58ACFA'>За порушення правил гри передбачено покарання! Інформація в Discord: https://discord.gg/tve4</font>"
 		"donate5"																			"<font color='#58ACFA'>СТАВТЕ прапорець біля свого каменя!</font>"
-		"donate6"																			"<font color='#58ACFA'>Якщо вам потрібна допомога – пишіть у Discord: https://discord.gg/tve3</font>"
+		"donate6"																			"<font color='#58ACFA'>Якщо вам потрібна допомога – пишіть у Discord: https://discord.gg/tve4</font>"
 		
 		"loading_text"																		"Не змінюйте горячі клавіші після запуску гри."
 		"loading_text_no_troll"																		"Не вибирайте Троля, якщо граєте вперше, будь ласка."

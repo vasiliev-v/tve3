@@ -25,7 +25,7 @@ function Init()
 
 function DiscordOpen()
 {
-    $.DispatchEvent("ExternalBrowserGoToURL", 'https://discord.gg/tve3')
+    $.DispatchEvent("ExternalBrowserGoToURL", 'https://discord.gg/tve4')
 }
 
 function StatsClick()

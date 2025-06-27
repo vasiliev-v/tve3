@@ -18,6 +18,10 @@ function InitSetup()
         $("#StageLinePanel_3").visible = false
         $("#WindowMapStage").style.opacity = "0"
         $("#StagesLines").MoveChildBefore($("#StageLinePanel_2"), $("#StageLinePanel_1"))
+
+        let StageLinePanel = $("#StageLinePanel_2")
+        let StageLineFront = StageLinePanel.FindChildTraverse("StageLineFront_2")
+        StageLineFront.style.width = "0%"
     }
 }
 
@@ -212,7 +216,7 @@ function troll_elves_phase_time(data)
         {
             StageLinePanel.SetHasClass("ActiveStage", false)
         }
-        if (stage > i)
+        if (stage > i && Game.GetMapInfo().map_display_name != "1x1")
         {
             if (StageLineFront)
             {

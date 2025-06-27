@@ -1691,7 +1691,6 @@ function game_spells_lib:AddPlayerSpell(id, spell_name, modifier_name, hero)
     table.insert(game_spells_lib.current_activated_spell[id], spell_name)
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then return end
     local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {}):SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
-    DebugPrint("lvl " .. game_spells_lib:GetSpellLevel(id, spell_name))
     if spell_mod then
         spell_mod:SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
     end
@@ -1706,7 +1705,6 @@ function game_spells_lib:RemoveOldSpell(id, hero)
         if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then return end
         local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
         hero:RemoveModifierByName(modifier_name)
-        DebugPrint("modifier_name 2  "  .. modifier_name)
     end
 end
 

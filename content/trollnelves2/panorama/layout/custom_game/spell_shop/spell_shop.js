@@ -479,6 +479,18 @@ function GetSpellName(spell_name)
     {
         if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
         {
+            return game_spells_lib[i][1] //+ "_" + any_level
+        }
+    }
+}
+
+function GetSpellModifier(spell_name)
+{
+    let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
+    for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
+    {
+        if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
+        {
             return game_spells_lib[i][3] //+ "_" + any_level
         }
     }
@@ -684,7 +696,7 @@ function UpdateVisualSelectedSpells()
             let spellTexture = GetSpellTexture(spellName, spellLevel);
             ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + spellTexture + '.png")';
             ActivatedSpellIcon.style.backgroundSize = "100%";
-            SetShowText(ActivatedSpellIcon, spellName + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel);
+            SetShowText(ActivatedSpellIcon, GetSpellModifier(active_table[player_id][i]) + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel);
         } 
         else 
         {

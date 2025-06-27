@@ -3,7 +3,7 @@
 	"Language"		"ukrainian"
 	"Tokens"
 	{
-		"addon_game_name"			"Troll vs Elves 3"
+		"addon_game_name"			"Troll vs Elves 4"
 		
 		// ******************** HEROES ********************
 		"npc_dota_hero_treant"                                                  "Elf"
@@ -1957,13 +1957,13 @@
 		"donate1"																			"<font color='#58ACFA'>Ви можете підтримати гру на Patreon.</font>"
 		"donate2"																			"<font color='#58ACFA'>Ви можете підвищити шанс на отримання Троля, збільшити кількість очків або отримати один з унікальних косметичних ефектів, підтримавши наш проект на Patreon.</font>"
 		"donate3"																			"<font color='#58ACFA'>Patreon: https://patreon.com/tve3</font>"
-		"donate4"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve3</font>"
+		"donate4"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve4</font>"
 		"donate5"																			"<font color='#58ACFA'>Ви можете поділитись ідеями/багами/побажаннями на нашому сервері Discord!</font>"
 		"donate6"																			"<font color='#58ACFA'>Дякуємо всім тестерам за такий значний внесок у розвиток кастомки! Спасибі:*</font>"
-		"donate7"																			"<font color='#58ACFA'>Відкрито реєстрацію на Турнір 1x4 в Discord: https://discord.gg/tve3</font>"
-		"donate8"																			"<font color='#58ACFA'>За порушення правил гри передбачено покарання! Інформація в Discord: https://discord.gg/tve3</font>"
+		"donate7"																			"<font color='#58ACFA'>Відкрито реєстрацію на Турнір 1x4 в Discord: https://discord.gg/tve4</font>"
+		"donate8"																			"<font color='#58ACFA'>За порушення правил гри передбачено покарання! Інформація в Discord: https://discord.gg/tve4</font>"
 		"donate9"																			"<font color='#58ACFA'>СТАВТЕ прапорець біля свого каменя!</font>"
-		"donate10"																			"<font color='#58ACFA'>Якщо вам потрібна допомога – пишіть у Discord: https://discord.gg/tve3</font>"
+		"donate10"																			"<font color='#58ACFA'>Якщо вам потрібна допомога – пишіть у Discord: https://discord.gg/tve4</font>"
 		
 		"loading_text"																		"&lt;=Натисніть тут, щоб отримати поради!<br>
 		                                                                                    Не змінюйте горячі клавіші після запуску гри.

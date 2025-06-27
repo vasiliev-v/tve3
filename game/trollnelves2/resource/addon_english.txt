@@ -3,7 +3,7 @@
 	"Language"		"english"
 	"Tokens"
 	{
-		"addon_game_name"			"Troll vs Elves 3"
+		"addon_game_name"			"Troll vs Elves 4"
 		
 		// ******************** HEROES ********************
 		"npc_dota_hero_treant"                                                  "Elf"
@@ -3863,10 +3863,10 @@ The effect is issued for 1 year. Your support helps the game develop."
 		
 		"donate1"																			"<font color='#58ACFA'>You can support our project on Patreon.</font>"
 		"donate2"																			"<font color='#58ACFA'>Patreon: https://patreon.com/tve3</font>"
-		"donate3"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve3</font>"
-		"donate4"																			"<font color='#58ACFA'>There are penalties for violating the rules of the game! Information in Discord: https://discord.gg/tve3</font>"
+		"donate3"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve4</font>"
+		"donate4"																			"<font color='#58ACFA'>There are penalties for violating the rules of the game! Information in Discord: https://discord.gg/tve4</font>"
 		"donate5"																			"<font color='#58ACFA'>PUT A FLAG NEAR YOUR STONE!</font>"
-		"donate6"																			"<font color='#58ACFA'>If you need help - write to Discord: https://discord.gg/tve3</font>"
+		"donate6"																			"<font color='#58ACFA'>If you need help - write to Discord: https://discord.gg/tve4</font>"
 		"donate7"																			"<font color='#58ACFA'>SHOP: https://tve-shop.com</font>"
 		"donate8"																			"<font color='#58ACFA'>Our team has created a new game VAMPIRISM SPEED. More info on Discord.</font>"
 		"DOTA_Tooltip_Ability_item_dmg_18"													"dmg 18"

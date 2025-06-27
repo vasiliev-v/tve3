@@ -635,8 +635,6 @@ function Shop:GetReward(chest_id, playerID)
 	end
 	-- Написал убогий рандом надеюсь перепишешь
 	-- vladu4eg: мне нравится твоя идея. Сначала роллятся первые шмотки из списка, а потом уже дорогие шмотки. 
-    print(chest_id)
-    DeepPrintTable(Shop.Chests[chest_id])
 	local reward_recieve = Shop.Chests[chest_id][2][1] 
 	local currency = RandomInt(Shop.Chests[chest_id][2][3][1], Shop.Chests[chest_id][2][3][2])
 	local data = {}

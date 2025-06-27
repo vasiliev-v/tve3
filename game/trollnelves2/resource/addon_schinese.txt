@@ -3,7 +3,7 @@
 	"Language"		"schinese"
 	"Tokens"
 	{
-		"addon_game_name"			"巨魔与精灵3"
+		"addon_game_name"			"巨魔与精灵4"
 		
 		// ******************** HEROES ********************
 		"npc_dota_hero_treant"                                                  "精灵"

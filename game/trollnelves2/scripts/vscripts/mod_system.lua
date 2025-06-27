@@ -77,11 +77,7 @@ function mod_system:GetCurrentModFromVotes()
 	--	return true
 	--end
 
---	if GameRules.MapSpeed == 4 then
---		return true
---	else
-		return false
---	end
+	return false
 end
 
 mod_system:Init()

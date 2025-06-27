@@ -3,7 +3,7 @@
 	"Language"		"russian"
 	"Tokens"
 	{
-		"addon_game_name"			"Troll vs Elves 3"
+		"addon_game_name"			"Troll vs Elves 4"
 		
 		// ******************** HEROES ********************
 		"npc_dota_hero_treant"                                                  "Elf"
@@ -2132,10 +2132,10 @@
 		
 		"donate1"																			"<font color='#58ACFA'>Попробуйте нашу новую игру VAMPIRISM SPEED. Подробная информация в Дискорде.</font>"
 		"donate2"																			"<font color='#58ACFA'>Patreon: https://patreon.com/tve3</font>"
-		"donate3"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve3</font>"
-		"donate4"																			"<font color='#58ACFA'>За нарушение правил игры предусмотрено наказание! Информация в Discord: https://discord.gg/tve3</font>"
+		"donate3"																			"<font color='#58ACFA'>Discord: https://discord.gg/tve4</font>"
+		"donate4"																			"<font color='#58ACFA'>За нарушение правил игры предусмотрено наказание! Информация в Discord: https://discord.gg/tve4</font>"
 		"donate5"																			"<font color='#58ACFA'>СТАВЬТЕ ФЛАГ ВОЗЛЕ СВОЕГО КАМНЯ!</font>"
-		"donate6"																			"<font color='#58ACFA'>Если вам нужна помощь - пишите в Discord: https://discord.gg/tve3</font>"
+		"donate6"																			"<font color='#58ACFA'>Если вам нужна помощь - пишите в Discord: https://discord.gg/tve4</font>"
 		"donate8"																			"<font color='#58ACFA'>Открыт набор в тестеры! Вы можете получить уникальный эффект или донат монеты за помощь в тестировании игры!</font>"
 	
 		"reklama_tester"																	"Открыт набор в тестеры! Вы можете получить уникальный эффект или донат монеты за помощь в тестировании игры!"

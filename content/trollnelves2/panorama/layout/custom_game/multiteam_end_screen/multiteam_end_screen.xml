@@ -37,12 +37,13 @@
 					<Label class="ActiveButton_text" text="DStream" />
 				</Panel>
 				-->
-				<Panel class="ActiveButton"  id="Button_1" onactivate="ExternalBrowserGoToURL('https://paypal.com');" >
-					<Label class="ActiveButton_text" text="PayPal" />
-				</Panel>
-				<Panel class="ActiveButton"  id="Button_2" onactivate="ExternalBrowserGoToURL('https://tve-shop.com');" >
+				<Panel class="ActiveButton"  id="Button_1" onactivate="ExternalBrowserGoToURL('https://tve-shop.com');" >
 					<Label class="ActiveButton_text" text="TvE Shop" />
 				</Panel>
+				<Panel class="ActiveButton"  id="Button_2" onactivate="ExternalBrowserGoToURL('https://paypal.com/paypalme/vasyliev95');" >
+					<Label class="ActiveButton_text" text="PayPal" />
+				</Panel>
+
 				
 				
 			</Panel>
