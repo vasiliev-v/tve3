@@ -101,14 +101,14 @@ function CreatePanelNotificationWithButtons(text, yes_function, no_function)
 
     let panel_notifications_button_yes_label = $.CreatePanel("Label", panel_notifications_button_yes, "")
     panel_notifications_button_yes_label.AddClass("panel_notifications_button_yes_label")
-    panel_notifications_button_yes_label.text = "Принять"
+    panel_notifications_button_yes_label.text = "Accept"
 
     let panel_notifications_button_no = $.CreatePanel("Panel", panel_notifications_buttons, "")
     panel_notifications_button_no.AddClass("panel_notifications_button_no")
 
     let panel_notifications_button_no_label = $.CreatePanel("Label", panel_notifications_button_no, "")
     panel_notifications_button_no_label.AddClass("panel_notifications_button_no_label")
-    panel_notifications_button_no_label.text = "Отказать"
+    panel_notifications_button_no_label.text = "Cancel"
     
     panel_notifications_close.SetPanelEvent("onactivate", function()
     {

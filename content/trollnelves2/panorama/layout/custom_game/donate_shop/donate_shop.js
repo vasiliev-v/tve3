@@ -779,7 +779,7 @@ function SelectParticle(num, is_item_activated)
 {
     if (is_item_activated)
     {
-        GameEvents.SendCustomGameEventToServer( "SelectPart", { id: Players.GetLocalPlayer(),part:String(numPart) , offp:true, name:String(numPart)  } );
+        GameEvents.SendCustomGameEventToServer( "SelectPart", { id: Players.GetLocalPlayer(),part:String(num) , offp:true, name:String(num)  } );
 		GameEvents.SendCustomGameEventToServer( "SetDefaultPart", { id: Players.GetLocalPlayer(),part:"0"} );
         return
     }
@@ -790,12 +790,15 @@ function SelectParticle(num, is_item_activated)
 
 function SelectSkin(num, is_item_activated)
 {
+    $.Msg("1")
     if (is_item_activated)
     {
+        $.Msg("2")
         GameEvents.SendCustomGameEventToServer( "SelectSkin", { id: Players.GetLocalPlayer(),part:String(num) , offp:true, name:String(num)  } );
 		GameEvents.SendCustomGameEventToServer( "SetDefaultSkin", { id: Players.GetLocalPlayer(),part:"0"} );
         return
     }
+    $.Msg("3")
     GameEvents.SendCustomGameEventToServer( "SelectSkin", { id: Players.GetLocalPlayer(), part:String(num), offp:false, name:String(num) } );
     GameEvents.SendCustomGameEventToServer( "SetDefaultSkin", { id: Players.GetLocalPlayer(), part:String(num)} );	
 }

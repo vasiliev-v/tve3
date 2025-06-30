@@ -31,31 +31,38 @@ function SelectPets:SelectPets(info)
     CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
 end
 
-function SelectPets:SetPets()
-	local pplc = PlayerResource:GetPlayerCount()
-	for i=0,pplc-1 do
-		if GameRules.SkinTower[i]["pet"] ~= nil and GameRules.SkinTower[i]["pet"] ~= "" and PlayerResource:GetConnectionState(i) == 2 then
-			local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
-			if PoolTable["1"][GameRules.SkinTower[i]["pet"]] ~= nil  then	
-				local pets = CustomNetTables:GetTableValue("Pets_Tabel",tostring(i))
-				--Say(nil,"text here", false)
-				--GameRules:SendCustomMessage("<font color='#58ACFA'> использовал эффект </font>"..info.name.."partnote".." test", 0, 0)
-				local arr = {
-					i,
-					PlayerResource:GetPlayerName(i),
-					GameRules.SkinTower[i]["pet"] ,
-					PlayerResource:GetSelectedHeroName(i)
-				}
-				local info = {}
-				info.PlayerID = i
-				info.hero = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
-				info.part = GameRules.SkinTower[i]["pet"]
-				Pets.DeletePet( info )
-				Pets.CreatePet( info,  info.part)
-			end
-            CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
-		end
+function SelectPets:SetPets(i)
+
+	local hero = PlayerResource:GetSelectedHeroEntity(i)
+    if not hero then
+        Timers:CreateTimer(2, function()
+            SelectPets:SetPets(i)
+        end)
+		return
 	end
+
+	if GameRules.SkinTower[i]["pet"] ~= nil and GameRules.SkinTower[i]["pet"] ~= "" and PlayerResource:GetConnectionState(i) == 2 then
+		local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
+		if PoolTable["1"][GameRules.SkinTower[i]["pet"]] ~= nil  then	
+			local pets = CustomNetTables:GetTableValue("Pets_Tabel",tostring(i))
+			--Say(nil,"text here", false)
+			--GameRules:SendCustomMessage("<font color='#58ACFA'> использовал эффект </font>"..info.name.."partnote".." test", 0, 0)
+			local arr = {
+				i,
+				PlayerResource:GetPlayerName(i),
+				GameRules.SkinTower[i]["pet"] ,
+				PlayerResource:GetSelectedHeroName(i)
+			}
+			local info = {}
+			info.PlayerID = i
+			info.hero = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
+			info.part = GameRules.SkinTower[i]["pet"]
+			Pets.DeletePet( info )
+			Pets.CreatePet( info,  info.part)
+		end
+		CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
+	end
+	 
 end
 
 function SelectPets:SetDefaultPets(event)

@@ -12,6 +12,7 @@ local chanceCheck = {}
 local countCheckShop = 0
 
 function Shop.RequestDonate(pID, steam, callback)
+	
 	if not PlayerResource:IsValidPlayerID(pID) or PlayerResource:IsFakeClient(pID) then 
 		return
 	end
@@ -1331,31 +1332,38 @@ function Shop:Statistics(table, check, callback)
 	end
 end
 
-function Shop:SetStats()
-	local pplc = PlayerResource:GetPlayerCount()
-	for i=0,pplc-1 do
-		if GameRules.SkinTower[i]["fps"] ~= nil and GameRules.SkinTower[i]["fps"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
-			table.type = "fps"
-			table.count = GameRules.SkinTower[i]["fps"]
-			table.id = i
-			table.PlayerID = i
-			Shop:Statistics(table, 1, callback)
-		end
-		if GameRules.SkinTower[i]["mute"] ~= nil and GameRules.SkinTower[i]["mute"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
-			table.type = "mute"
-			table.count = GameRules.SkinTower[i]["mute"]
-			table.id = i
-			table.PlayerID = i
-			Shop:Statistics(table, 1, callback)
-		end
-		if GameRules.SkinTower[i]["block"] ~= nil and GameRules.SkinTower[i]["block"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
-			table.type = "block"
-			table.count = GameRules.SkinTower[i]["block"]
-			table.id = i
-			table.PlayerID = i
-			Shop:Statistics(table, 1, callback)
-		end
+function Shop:SetStats(i)
+
+	local hero = PlayerResource:GetSelectedHeroEntity(i)
+    if not hero then
+        Timers:CreateTimer(2, function()
+            Shop:SetStats(i)
+        end)
+		return
 	end
+	
+	if GameRules.SkinTower[i]["fps"] ~= nil and GameRules.SkinTower[i]["fps"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
+		table.type = "fps"
+		table.count = GameRules.SkinTower[i]["fps"]
+		table.id = i
+		table.PlayerID = i
+		Shop:Statistics(table, 1, callback)
+	end
+	if GameRules.SkinTower[i]["mute"] ~= nil and GameRules.SkinTower[i]["mute"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
+		table.type = "mute"
+		table.count = GameRules.SkinTower[i]["mute"]
+		table.id = i
+		table.PlayerID = i
+		Shop:Statistics(table, 1, callback)
+	end
+	if GameRules.SkinTower[i]["block"] ~= nil and GameRules.SkinTower[i]["block"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
+		table.type = "block"
+		table.count = GameRules.SkinTower[i]["block"]
+		table.id = i
+		table.PlayerID = i
+		Shop:Statistics(table, 1, callback)
+	end
+	
 end
 
 function SetDefaultStats(event)

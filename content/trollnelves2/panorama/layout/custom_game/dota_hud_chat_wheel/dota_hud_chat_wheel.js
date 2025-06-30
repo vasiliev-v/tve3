@@ -96,38 +96,44 @@ let Items_sounds =
 
     
 ]
+var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer());
+var player_items = player_table && player_table[1] ? player_table[1] : {};
 
 var itemTypes = [Items_sounds];
-var rings = 
-[
+var rings = [
     [
         [],
         [],
         [],
     ],
-]
+];
 
 for (var itemType_find of itemTypes) 
 {
-    for (var item_find of itemType_find) 
+    for (var item_find of itemType_find)
     {
-        let current_ring = rings[rings.length - 1]
+        if (!player_items[String(item_find[0])])
+        {
+            continue;
+        }
+
+        let current_ring = rings[rings.length - 1];
         if (current_ring[0].length < 8)
         {
-            current_ring[0].push($.Localize("#"+item_find[1]))
-            current_ring[1].push(true)
-            current_ring[2].push(Number(item_find[0]))
+            current_ring[0].push($.Localize("#" + item_find[1]));
+            current_ring[1].push(true);
+            current_ring[2].push(Number(item_find[0]));
         }
         else
         {
-            rings.push([[$.Localize("#"+item_find[1])],[true],[Number(item_find[0])]])
+            rings.push([[$.Localize("#" + item_find[1])], [true], [Number(item_find[0])]]);
         }
     }
 }
 
-if (rings[rings.length - 1].length < 8)
+if (rings[rings.length - 1][0].length < 8)
 {
-    for ( var i = 0; i <= 9-rings[rings.length - 1].length; i++ )
+    for ( var i = rings[rings.length - 1][0].length; i < 8; i++ )
     {
         rings[rings.length - 1][0].push("")
         rings[rings.length - 1][1].push(false)

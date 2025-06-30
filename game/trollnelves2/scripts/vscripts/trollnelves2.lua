@@ -783,7 +783,13 @@ function trollnelves2:PreStart()
                     local trollHero = GameRules.trollHero
                     if trollHero then
                         trollHero:AddNewModifier(trollHero, nil, "modifier_stunned", {Duration = trollSpawnTimer})
-                        PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD)
+                        if GameRules.MapSpeed == 4 and not string.match(GetMapName(),"clanwars") and not string.match(GetMapName(),"1x1") and not string.match(GetMapName(),"turbo2x") then
+                            PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_X4)
+                        elseif GameRules.MapSpeed == 2 and not string.match(GetMapName(),"clanwars") and not string.match(GetMapName(),"1x1") and not string.match(GetMapName(),"turbo2x") then
+                            PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_X2)
+                        else
+                            PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD)
+                        end
                         if string.match(GetMapName(),"1x1") then
                             if GameRules.MapSpeed >= 4 then
                                 PlayerResource:SetGold(trollHero, TROLL_STARTING_GOLD_SOLO + TROLL_STARTING_GOLD_X4)
@@ -835,16 +841,19 @@ end
 
 function GetAllItems()
     if IsServer() then
-        Timers:CreateTimer(25, function() 
-            if not PlayerResource:GetSelectedHeroEntity(0) then
-                return 10
+        for pID = 0, DOTA_MAX_TEAM_PLAYERS do
+            if PlayerResource:IsValidPlayerID(pID) and not PlayerResource:IsFakeClient(pID) then
+                wearables:SetPart(pID) 
+                Shop:SetStats(pID) 
+                wearables:SetSkin(pID) 
+                SelectPets:SetPets(pID)
+
+                if not string.match(GetMapName(),"1x1") then
+                    game_spells_lib:SetSpellPlayers(pID)
+                end  
+
             end
-            wearables:SetPart() 
-            Shop:SetStats() 
-            wearables:SetSkin() 
-            SelectPets:SetPets()
-            game_spells_lib:SetSpellPlayers()
-        end)
+        end
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
         GameRules:SendCustomMessage("<font color='#00FFFF '> Number of players: " .. GameRules.PlayersCount .. "</font>" ,  0, 0)
     end 
@@ -980,7 +989,7 @@ function UpdateSpells(unit)
         end
     end
     if ownerHero then
-        if ownerHero.build_worker then
+        if ownerHero.build_worker and IsValidEntity(ownerHero.build_worker) then
             if ownerHero.build_worker:IsAlive() then
                 for a = 0, ownerHero.build_worker:GetAbilityCount() - 1 do
                     DebugPrint("Done")

@@ -76,56 +76,68 @@ function UpdateModel(target, model, scale)
 	target:SetModel(model)
 	target:SetModelScale(scale)
 end
-function wearables:SetPart()
-	local pplc = PlayerResource:GetPlayerCount()
-	for i=0,pplc-1 do
-		if GameRules.SkinTower[i]["effect"] ~= nil and GameRules.SkinTower[i]["effect"] ~= "" and PlayerResource:GetConnectionState(i) == 2 then
-			if PlayerResource:GetSelectedHeroEntity(i):FindModifierByName("part_mod") == nil then
-				local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
-				local num = tostring(tonumber(GameRules.SkinTower[i]["effect"])+100) 
-				if PoolTable["1"][num] ~= nil then
-					local parts = CustomNetTables:GetTableValue("Particles_Tabel",tostring(i))
-					--Say(nil,"text here", false)
-					--GameRules:SendCustomMessage("<font color='#58ACFA'> использовал эффект </font>"..info.name.."#partnote".." test", 0, 0)
-					local arr = {
-						i,
-						PlayerResource:GetPlayerName(i),
-						tonumber(GameRules.SkinTower[i]["effect"]),
-						PlayerResource:GetSelectedHeroName(i)
-					}
-					PlayerResource:GetSelectedHeroEntity(i):AddNewModifier(PlayerResource:GetSelectedHeroEntity(i), PlayerResource:GetSelectedHeroEntity(i), "part_mod", {part = GameRules.SkinTower[i]["effect"]})
+function wearables:SetPart(i)
 
-                    CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
-				end
-			end
-		end
+    local hero = PlayerResource:GetSelectedHeroEntity(i)
+    if not hero then
+        Timers:CreateTimer(2, function()
+            wearables:SetPart(i)
+        end)
+		return
 	end
+
+    if GameRules.SkinTower[i]["effect"] ~= nil and GameRules.SkinTower[i]["effect"] ~= "" and PlayerResource:GetConnectionState(i) == 2 then
+        if PlayerResource:GetSelectedHeroEntity(i):FindModifierByName("part_mod") == nil then
+            local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
+            local num = tostring(tonumber(GameRules.SkinTower[i]["effect"])+100) 
+            if PoolTable["1"][num] ~= nil then
+                local parts = CustomNetTables:GetTableValue("Particles_Tabel",tostring(i))
+                --Say(nil,"text here", false)
+                --GameRules:SendCustomMessage("<font color='#58ACFA'> использовал эффект </font>"..info.name.."#partnote".." test", 0, 0)
+                local arr = {
+                    i,
+                    PlayerResource:GetPlayerName(i),
+                    tonumber(GameRules.SkinTower[i]["effect"]),
+                    PlayerResource:GetSelectedHeroName(i)
+                }
+                PlayerResource:GetSelectedHeroEntity(i):AddNewModifier(PlayerResource:GetSelectedHeroEntity(i), PlayerResource:GetSelectedHeroEntity(i), "part_mod", {part = GameRules.SkinTower[i]["effect"]})
+
+                CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
+            end
+        end
+    end
+
 end
 	
 
 function wearables:SelectSkin(info)
 	local npc = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
     if info.offp == 0 then
-		if not EVENT_START then
-			SetModelVip(npc, info.part)
-		end		
+	    SetModelVip(npc, info.part)
 	else
 		SetModelStandart(npc)
 	end
     CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
 end
 
-function wearables:SetSkin()
-	local pplc = PlayerResource:GetPlayerCount()
-	for i=0,pplc-1 do
-		if GameRules.SkinTower[i]["skin"] ~= nil and GameRules.SkinTower[i]["skin"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
-			local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
-			if PoolTable["1"][GameRules.SkinTower[i]["skin"]] ~= nil  then
-				SetModelVip(PlayerResource:GetSelectedHeroEntity(i), tostring(GameRules.SkinTower[i]["skin"]))
-                CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
-			end
-		end
+function wearables:SetSkin(i)
+	
+    local hero = PlayerResource:GetSelectedHeroEntity(i)
+    if not hero then
+        Timers:CreateTimer(2, function()
+            wearables:SetSkin(i)
+        end)
+		return
 	end
+
+    if GameRules.SkinTower[i]["skin"] ~= nil and GameRules.SkinTower[i]["skin"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
+        local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
+        if PoolTable["1"][GameRules.SkinTower[i]["skin"]] ~= nil  then
+            SetModelVip(PlayerResource:GetSelectedHeroEntity(i), tostring(GameRules.SkinTower[i]["skin"]))
+            CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
+        end
+    end
+	 
 end
 
 function wearables:SetWolf(PlayerID)

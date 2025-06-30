@@ -12228,7 +12228,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"			"omniknight_purification"
 		"MaxLevel"						"3"
-		"AbilityCooldown"				"120 80 60"
+		"AbilityCooldown"				"120"
 		"AbilityManaCost"				"0"
 		
 		"precache"
@@ -12241,8 +12241,8 @@
 		}
 		"AbilityValues"
         {
-            "heal" "300 600 900"
-            "percent" "30 45 70"
+            "heal" "300"
+            "percent" "30"
         }
 
 		"OnSpellStart"

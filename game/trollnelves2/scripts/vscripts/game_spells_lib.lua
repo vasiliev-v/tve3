@@ -819,7 +819,7 @@ else -- X4
             }, 
             {
                 {"4%","8%","15%"},
-                {"5 min","5 min","5 min"},
+                {"7 min","7 min","7 min"},
             },
             "0",
             "1"
@@ -1866,19 +1866,25 @@ function game_spells_lib:FindNewSpell(player_id, idPerk)
 end
 
 
-function game_spells_lib:SetSpellPlayers()
-    if GetMapName() == "1x1" then
+function game_spells_lib:SetSpellPlayers(id)
+    if string.match(GetMapName(),"1x1") then
         return
     end
-    local pplc = PlayerResource:GetPlayerCount()
-    for id = 0, pplc - 1 do
-        local team = PlayerResource:GetTeam(id)
-        local active = game_spells_lib.current_activated_spell[id] or {}
-        local team = PlayerResource:GetTeam(id)
-        local hero = PlayerResource:GetSelectedHeroEntity(id)
-        -- Удаляем все перки, которые не соответствуют команде, расе или выключены
-        if hero then
-        -- Проходим по всем выбранным перкам игрока
+     
+    local team = PlayerResource:GetTeam(id)
+    local active = game_spells_lib.current_activated_spell[id] or {}
+    local team = PlayerResource:GetTeam(id)
+
+    local hero = PlayerResource:GetSelectedHeroEntity(id)
+    if not hero then
+        Timers:CreateTimer(4, function()
+            game_spells_lib:SetSpellPlayers(id)
+        end)
+		return
+	end
+    -- Удаляем все перки, которые не соответствуют команде, расе или выключены
+    if hero then
+    -- Проходим по всем выбранным перкам игрока
         for i = #active, 1, -1 do
             local spell_name = active[i]
 
@@ -1911,104 +1917,85 @@ function game_spells_lib:SetSpellPlayers()
     end
 
 
-        -- GOOD GUYS: DOTA_TEAM_GOODGUYS
-        if team == DOTA_TEAM_GOODGUYS then
-            if #active == 0 then
-                -- нет перков: даём 1 случайный, но не elf_spell_solo_player
-                local candidates = {}
-                for _, info in ipairs(self.spells_list) do
-                    local spell_name = info[1]
-                    local allowed_team = info[6]     -- "0" — good guys
-                    local enabled      = info[7] == "1"
-                    if allowed_team == "0" and enabled and spell_name ~= "elf_spell_solo_player" then
-                        table.insert(candidates, spell_name)
-                    end
-                end
-                if #candidates > 0 then
-                    active[1] = candidates[RandomInt(1, #candidates)]
-                end
-            else
-                -- есть перки, но нет solo-перка: добавляем последний в списке
-                local has_solo = false
-                for _, name in ipairs(active) do
-                    if name == "elf_spell_solo_player" then has_solo = true break end
-                end
-                if not has_solo and #active > 0 then
-                -- запоминаем последнюю запись
-                local last_selected = active[#active]
-                    -- очищаем текущий список active
-                    for i = #active, 1, -1 do
-                        table.remove(active, i)
-                    end
-                -- сохраняем только последний выбранный перк
-                table.insert(active, last_selected)
+    -- GOOD GUYS: DOTA_TEAM_GOODGUYS
+    if team == DOTA_TEAM_GOODGUYS then
+        if #active == 0 then
+            -- нет перков: даём 1 случайный, но не elf_spell_solo_player
+            local candidates = {}
+            for _, info in ipairs(self.spells_list) do
+                local spell_name = info[1]
+                local allowed_team = info[6]     -- "0" — good guys
+                local enabled      = info[7] == "1"
+                if allowed_team == "0" and enabled and spell_name ~= "elf_spell_solo_player" then
+                    table.insert(candidates, spell_name)
                 end
             end
-        -- BAD GUYS: DOTA_TEAM_BADGUYS
-        elseif team == DOTA_TEAM_BADGUYS then
-            if #active == 0 then
-                -- нет перков: даём 3 случайных для bad guys
-                local candidates = {}
-                for _, info in ipairs(self.spells_list) do
-                    local spell_name  = info[1]
-                    local allowed_team = info[6]   -- "1" — bad guys
-                    local enabled      = info[7] == "1"
-                    if allowed_team == "1" and enabled then
-                        table.insert(candidates, spell_name)
-                    end
+            if #candidates > 0 then
+                active[1] = candidates[RandomInt(1, #candidates)]
+            end
+        else
+            -- есть перки, но нет solo-перка: добавляем последний в списке
+            local has_solo = false
+            for _, name in ipairs(active) do
+                if name == "elf_spell_solo_player" then has_solo = true break end
+            end
+            if not has_solo and #active > 0 then
+            -- запоминаем последнюю запись
+            local last_selected = active[#active]
+                -- очищаем текущий список active
+                for i = #active, 1, -1 do
+                    table.remove(active, i)
                 end
-                -- выбираем без повторов
-                local picked = {}
-                while #picked < 3 and #candidates > 0 do
-                    local idx = RandomInt(1, #candidates)
-                    table.insert(picked, candidates[idx])
-                    table.remove(candidates, idx)
-                end
-                for i, name in ipairs(picked) do
-                    active[i] = name
-                end
+            -- сохраняем только последний выбранный перк
+            table.insert(active, last_selected)
             end
         end
+    -- BAD GUYS: DOTA_TEAM_BADGUYS
+    elseif team == DOTA_TEAM_BADGUYS then
+        if #active == 0 then
+            -- нет перков: даём 3 случайных для bad guys
+            local candidates = {}
+            for _, info in ipairs(self.spells_list) do
+                local spell_name  = info[1]
+                local allowed_team = info[6]   -- "1" — bad guys
+                local enabled      = info[7] == "1"
+                if allowed_team == "1" and enabled then
+                    table.insert(candidates, spell_name)
+                end
+            end
+            -- выбираем без повторов
+            local picked = {}
+            while #picked < 3 and #candidates > 0 do
+                local idx = RandomInt(1, #candidates)
+                table.insert(picked, candidates[idx])
+                table.remove(candidates, idx)
+            end
+            for i, name in ipairs(picked) do
+                active[i] = name
+            end
+        end
+    end
 
-        -- Сохраняем обновлённый список, если он был пустым или мы его дополнили
-        game_spells_lib.current_activated_spell[id] = active
-        -- Наконец, выдаём перки герою
-        if #active > 0 then
-            local hero = PlayerResource:GetSelectedHeroEntity(id)
-            if hero then
-                for _, spell_name in ipairs(active) do
-
-                    --if hero:HasAbility("dummy_passive_1") then
-                    --    hero:RemoveAbility("dummy_passive_1")
-                    --elseif hero:HasAbility("dummy_passive_2")  then
-                    --    hero:RemoveAbility("dummy_passive_2")
-                    --elseif hero:HasAbility("dummy_passive_3") then
-                    --    hero:RemoveAbility("dummy_passive_3")
-                    --end
-
-
-                    local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
-                    local level = game_spells_lib:GetSpellLevel(id, spell_name)
-                    if not hero:HasModifier(modifier_name) then
-                        local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
-                        if mod then
-                            mod:SetStackCount(level)
-                        end
+    -- Сохраняем обновлённый список, если он был пустым или мы его дополнили
+    game_spells_lib.current_activated_spell[id] = active
+    -- Наконец, выдаём перки герою
+    if #active > 0 then
+        local hero = PlayerResource:GetSelectedHeroEntity(id)
+        if hero then
+            for _, spell_name in ipairs(active) do
+                local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
+                local level = game_spells_lib:GetSpellLevel(id, spell_name)
+                if not hero:HasModifier(modifier_name) then
+                    local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
+                    if mod then
+                        mod:SetStackCount(level)
                     end
                 end
             end
         end
     end
 
-    -- Обновляем отображение
-    local result = {}
-    for pid, list in pairs(game_spells_lib.current_activated_spell) do
-        result[tostring(pid)] = {}
-        for i = 1, #list do
-            result[tostring(pid)][tostring(i)] = list[i]
-        end
-    end
-    CustomNetTables:SetTableValue("game_spells_lib", "spell_active", result)
+    CustomNetTables:SetTableValue("game_spells_lib", "spell_active", game_spells_lib.current_activated_spell)
 
 end
 

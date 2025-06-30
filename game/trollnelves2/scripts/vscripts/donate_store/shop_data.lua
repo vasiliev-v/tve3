@@ -443,7 +443,7 @@ Shop.DonateList =
 	{"17", "gold", "99999999", "pet_17", "pet_17", false, 8},
 	{"30", "gold", "99999999", "pet_30", "pet_30", false, 8},
 	
-	{"205", "gold", "1500", "battlepass", "subscribe_5", true, 7},
+	{"205", "gold", "1000", "battlepass", "subscribe_5", true, 7},
 	{"203", "gold", "1000", "chance75", "subscribe_3", true, 7},
 	{"202", "gold", "500", "chance50", "subscribe_2", true, 7},
 	{"201", "gold", "150", "chance25", "subscribe_1", true, 7},

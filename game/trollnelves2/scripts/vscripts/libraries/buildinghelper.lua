@@ -400,11 +400,12 @@ function BuildingHelper:UpdateGrid()
     
     GameRules:SendCustomMessage("<font color='#00FF22 '> Map: "  .. GameRules.MapName .. "</font>" ,  0, 0)
 
-    if mod_system:GetCurrentModFromVotes() then
-        GameRules:SendCustomMessage("#ChooseAngelWolfInGameTrue" ,  0, 0)
-    else
-        GameRules:SendCustomMessage("#ChooseAngelWolfInGameFalse" ,  0, 0)
-    end
+    
+    --if mod_system:GetCurrentModFromVotes() then
+    --    GameRules:SendCustomMessage("#ChooseAngelWolfInGameTrue" ,  0, 0)
+    --else
+    --    GameRules:SendCustomMessage("#ChooseAngelWolfInGameFalse" ,  0, 0)
+    --end
     
 
     if GameRules.trollHero and GameRules.trollID then
@@ -1035,8 +1036,8 @@ function BuildingHelper:OrderFilter(order)
         SellItem(unit, item)
         return false
     end
-    local unit = EntIndexToHScript(targetIndex)
-    if order_type == DOTA_UNIT_ORDER_GIVE_ITEM and (string.match(unit:GetUnitName(), "troll_hut") or string.match(unit:GetUnitName(), "shop")) then
+    local unitTarget = EntIndexToHScript(targetIndex)
+    if order_type == DOTA_UNIT_ORDER_GIVE_ITEM and (string.match(unitTarget:GetUnitName(), "troll_hut") or string.match(unitTarget:GetUnitName(), "shop")) then
         local item = EntIndexToHScript(order.entindex_ability)
         if not item then
             return false

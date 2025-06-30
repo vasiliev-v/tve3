@@ -61,7 +61,7 @@ end
 -- After a building is fully constructed via repair ("RequiresRepair" buildings), or is fully repaired
 function BuildingHelper:OnRepairFinished(builder, building)
    -- self:print("OnRepairFinished "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> "..building:GetUnitName().." "..building:GetEntityIndex())
-    if builder and builder.repair_animation_timer then 
+    if builder and builder.repair_animation_timer and IsValidEntity(builder) then 
         builder:RemoveGesture(ACT_DOTA_ATTACK)
         Timers:RemoveTimer(builder.repair_animation_timer)
     end
