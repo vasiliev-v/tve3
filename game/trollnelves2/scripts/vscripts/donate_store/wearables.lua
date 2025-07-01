@@ -116,6 +116,7 @@ function wearables:SelectSkin(info)
 	    SetModelVip(npc, info.part)
 	else
 		SetModelStandart(npc)
+        GameRules.SkinTower[info.PlayerID]["skin"] = nil
 	end
     CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
 end
@@ -188,7 +189,7 @@ function wearables:SetDefaultSkin(event)
 		data.SteamID = tostring(PlayerResource:GetSteamID(event.PlayerID))
 		data.Num = tostring(event.part)
 		data.TypeDonate = tostring(1)
-		if tonumber(event.part) >= 602 and tonumber(event.part) <= 631 then
+		if tonumber(event.part) >= 620 and tonumber(event.part) <= 631 then
 			data.Type = "wolf"
 			if GameRules.SaveDefItem[event.PlayerID][2] == nil then
 				Shop.GetVip(data, callback)
@@ -197,7 +198,8 @@ function wearables:SetDefaultSkin(event)
 				Shop.GetVip(data, callback)
 				GameRules.SaveDefItem[event.PlayerID][2] = GameRules.SaveDefItem[event.PlayerID][2] + 1
 			end
-		elseif tonumber(event.part) >= 673 and tonumber(event.part) <= 682 then
+		elseif (tonumber(event.part) >= 673 and tonumber(event.part) <= 682) or 
+               (tonumber(event.part) >= 1800 and tonumber(event.part) <= 1801) then
 			data.Type = "bear"
 			if GameRules.SaveDefItem[event.PlayerID][3] == nil then
 				Shop.GetVip(data, callback)

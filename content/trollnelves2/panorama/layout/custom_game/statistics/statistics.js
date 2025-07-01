@@ -133,8 +133,8 @@ function UpdateInformation()
     let shop_table = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))
     if (!shop_table) { return }
     
-    let rating_elf = shop_table[13][4];
-    let rating_troll = shop_table[13][5];
+    let rating_elf = shop_table[13][5];
+    let rating_troll = shop_table[13][4];
     let player_rep = shop_table[10];
 
     let PlayerAvatar = $("#PlayerAvatar")

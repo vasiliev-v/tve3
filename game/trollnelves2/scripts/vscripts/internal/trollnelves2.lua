@@ -205,7 +205,7 @@ function trollnelves2:DamageFilter( kv )
       return true
     end
     
-    if OwnHeroAtacker:IsWolf() and OwnHeroKilled:IsWolf() then
+    if OwnHeroAtacker:IsWolf() and OwnHeroKilled:IsWolf() and OwnHeroAtacker ~= OwnHeroKilled  then
       kv.damage = 0
       return true
     end
@@ -231,7 +231,7 @@ function trollnelves2:DamageFilter( kv )
       if OwnHeroAtacker == OwnHeroKilled then
         return true
       end
-      if heroAttacker:GetTeamNumber() == heroKilled:GetTeamNumber() then
+      if heroAttacker:GetTeamNumber() == heroKilled:GetTeamNumber() and OwnHeroAtacker ~= OwnHeroKilled then
         return
       end
       if getGold[heroAttackerID] == nil then
@@ -257,7 +257,7 @@ function trollnelves2:DamageFilter( kv )
       if OwnHeroAtacker == OwnHeroKilled then
         return true
       end
-      if heroAttacker:GetTeamNumber() == heroKilled:GetTeamNumber() then
+      if heroAttacker:GetTeamNumber() == heroKilled:GetTeamNumber() and OwnHeroAtacker ~= OwnHeroKilled then
         return
       end
       if getGold[heroAttackerID] == nil then

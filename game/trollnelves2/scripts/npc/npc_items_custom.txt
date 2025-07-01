@@ -100,7 +100,6 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
-		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -785,7 +784,6 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
-		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -823,7 +821,6 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
-		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -861,7 +858,6 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
-		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -899,7 +895,6 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
-		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -937,7 +932,6 @@
 		"ItemPermanent"					"0"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"Event item"
-		"ItemCastOnPickup" 				"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -3319,7 +3313,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemShopTags"                  "armor"
 		"ItemQuality"                   "component"
-		"ItemAliases"                   "Armor Lv13"
+		"ItemAliases"                   "Armor Lv14"
 		"ItemStackable"                 "0"
 		"ItemSellable" 					"1"
 		"ItemPermanent"                 "1"

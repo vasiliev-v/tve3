@@ -1412,7 +1412,7 @@ function StealGold(event)
 	end
 	if sum > 0 then
 		local countAngel = 0
-		local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, caster:GetAbsOrigin() , nil, 3000 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
+		local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, caster:GetAbsOrigin() , nil, 2000 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 		for _,unit in pairs(units) do
 			if unit ~= nil then
 				if unit:IsAngel() and PlayerResource:GetConnectionState(caster:GetPlayerOwnerID()) == 2 then
@@ -1421,7 +1421,7 @@ function StealGold(event)
 			end
 		end
 		if countAngel > 2 then
-			sum = math.ceil(hero:GetNetworth()*0.00001)+1
+			sum = math.ceil(hero:GetNetworth()*0.00005)+1
 		end
 		if caster:GetDeaths() > 2 then
 			sum = math.ceil(sum/(caster:GetDeaths() - 1))

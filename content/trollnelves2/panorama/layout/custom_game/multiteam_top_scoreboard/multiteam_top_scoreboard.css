@@ -14,7 +14,7 @@
 .player_list_1
 {
     horizontal-align: center;
-    margin-right: 51%;
+    margin-right: 48%;
     flow-children: left;
     width: 600px;
 }
@@ -22,7 +22,7 @@
 .player_list_2
 {
     horizontal-align: center;
-    margin-left: 53.2%;
+    margin-left: 48.2%;
     flow-children: right;
     width: 600px;
 }
@@ -30,7 +30,7 @@
 .ScoreboardPlayerWrapper
 {
     height: 200px;
-    margin-right: 20px;
+    margin-right: 5px;
     flow-children: down;
 }
 

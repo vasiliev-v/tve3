@@ -61,11 +61,7 @@ function chatcommand:OnPlayerChat(event)
 		local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )
 		local dropRadius = RandomFloat( 50, 100 )
 		newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
-		elseif event.text == "!gem" and (PlayerResource:GetSteamAccountID(event.playerid) == 201083179 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 337000240 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 183899786 
-		or PlayerResource:GetSteamAccountID(event.playerid) == 155143382
-		or PlayerResource:GetSteamAccountID(event.playerid) == 381067505)  then
+		elseif event.text == "!gem" and PlayerResource:GetSteamAccountID(event.playerid) == 201083179 then
 		local spawnPoint = hero:GetAbsOrigin()	
 		local newItem = CreateItem("item_get_gem", nil, nil )
 		local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )

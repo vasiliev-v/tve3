@@ -1475,10 +1475,10 @@
 		"DOTA_Tooltip_modifier_paralyzing_cask_datadriven_Description"					"Stun %hero_duration% seconds. %bounces% bounces."
 		
 		"DOTA_Tooltip_ability_troll_warlord_attack_speed_datadriven"                  "Buff/Debuff Troll"
-		"DOTA_Tooltip_ability_troll_warlord_attack_speed_datadriven_Description"      "Buff/Debuff: Atack speed +600 and Disclosure of visibility."
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_datadriven_Description"      "Buff/Debuff: Atack speed +600"
 
 		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven"                  "Buff/Debuff"
-		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven_Description"      "Buff/Debuff: Atack speed +600 and Disclosure of visibility."
+		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven_Description"      "Buff/Debuff: Atack speed +600"
 
 		"DOTA_Tooltip_modifier_troll_warlord_attack_speed"									"Buff: Increased attack speed"
 		"DOTA_Tooltip_modifier_troll_warlord_anti"											"Buff: Increased attack speed"
@@ -1486,6 +1486,20 @@
 		"DOTA_Tooltip_ability_troll_warlord_attack_speed"                  "Buff Troll"
 		"DOTA_Tooltip_ability_troll_warlord_attack_speed_Description"      "Buff: Increased attack speed"
 		"DOTA_Tooltip_ability_troll_warlord_attack_speed_ATTACKSPEED_BONUS"                  "ATTACK SPEED: "
+
+
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_200_datadriven"                  "Buff/Debuff Troll"
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_200_datadriven_Description"      "Buff/Debuff: Atack speed +200"
+
+		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven"                  "Buff/Debuff"
+		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven_Description"      "Buff/Debuff: Atack speed +200"
+
+		"DOTA_Tooltip_modifier_troll_warlord_attack_speed_200"									"Buff: Increased attack speed"
+		"DOTA_Tooltip_modifier_troll_warlord_anti"											"Buff: Increased attack speed"
+		
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_200"                  "Buff Troll"
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_200_Description"      "Buff: Increased attack speed"
+		"DOTA_Tooltip_ability_troll_warlord_attack_speed_200_ATTACKSPEED_BONUS"                  "ATTACK SPEED: "
 
 		"DOTA_Tooltip_ability_troll_warlord_attack_presence_speed"                  "Buff"
 		"DOTA_Tooltip_ability_troll_warlord_attack_presence_speed_Description"      "Buff: Increased attack speed"

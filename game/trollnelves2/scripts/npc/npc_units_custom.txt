@@ -16356,6 +16356,8 @@
 		"Ability5"					"sell_lumber_1"
 		"Ability6"					"sell_lumber_8"
 		"Ability7"					"troll_warlord_cnvrt_manuale"
+		"Ability8"					"troll_warlord_attack_speed_200"
+		
 
 		"TeamGainGold"				"true"
 
