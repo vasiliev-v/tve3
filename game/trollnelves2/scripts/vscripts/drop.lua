@@ -4,7 +4,7 @@ end
 require('settings')
 item_drop = {
 	{items = {"item_vip"}, limit = 2, chance = 10, units = {"npc_dota_hero_treant"} },
-	{items = {"item_get_gem"}, limit = 10, chance = 100, units = {"npc_dota_hero_treant"} },
+	{items = {"item_get_gem"}, limit = 10, chance = 50, units = {"npc_dota_hero_treant"} },
 	{items = {"item_get_gold"}, limit = 1, chance = 1, units = {"npc_dota_hero_treant"} },
 
 	

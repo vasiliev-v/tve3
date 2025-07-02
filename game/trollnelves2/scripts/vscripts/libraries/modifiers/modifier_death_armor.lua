@@ -15,10 +15,12 @@ end
 
 function modifier_death_armor:GetModifierExtraHealthPercentage( params )
     self:GetParent():GetDeaths()
-    if self:GetParent():GetDeaths() == 1 or self:GetParent():GetDeaths() == 2 then
+    if self:GetParent():GetDeaths() == 0 or self:GetParent():GetDeaths() == 1 then
         return -50
-    elseif self:GetParent():GetDeaths() > 2 then
+    elseif self:GetParent():GetDeaths() == 2 then
         return -85
+    else
+        return -95
     end
 end
 

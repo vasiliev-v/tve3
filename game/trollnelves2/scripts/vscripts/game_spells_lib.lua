@@ -320,7 +320,7 @@ if GameRules.MapSpeed ~= 4 then
                 "elf_spell_true_description_level_1_shop", 
             }, 
             {
-                {200, 400, 600},   
+                {150, 200, 300}, 
             },
             "0",
             "1"
@@ -577,7 +577,7 @@ if GameRules.MapSpeed ~= 4 then
                 "troll_spell_silence_target_description_level_2_shop", 
             }, 
             {
-                {10,16,24},
+                {8,12,16},
                 {250,200,150},
             },
             "1",
@@ -1087,7 +1087,7 @@ else -- X4
                 "elf_spell_true_description_level_1_shop_x4", 
             }, 
             {
-                {200, 400, 600},   
+                {150, 200, 300}, 
             },
             "0",
             "1"

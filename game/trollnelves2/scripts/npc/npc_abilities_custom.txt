@@ -7004,7 +7004,7 @@
 		"MaxLevel"				"1"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "MineCost" "0"
         }
@@ -7973,7 +7973,7 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
-		"AbilityCooldown"				"45"
+		"AbilityCooldown"				"300"
 		"MaxLevel"						"1"
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -7994,7 +7994,7 @@
 				"Function"              "RevealArea"//"RevealAreaItem"
 				"Target"				"POINT"
 				"Duration"				"%duration"//"5"
-				"Radius"				"2000"
+				"Radius"				"1000"
 			}
 		}
 		//"OnUpgrade"
@@ -8408,7 +8408,7 @@
 		"AbilityChannelTime"		"4"//"3"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -12428,7 +12428,7 @@
 		"AbilityValues"
         {
 			"chance"  "20"
-            "attack_speed" "-6"
+            "attack_speed" "-1"
 			"movespeed"    "-0.5"
             "duration"     "3"
         }
@@ -12492,7 +12492,7 @@
 		"AbilityValues"
         {
 			"chance"       "20"
-            "attack_speed" "-8"
+            "attack_speed" "-9"
 			"movespeed"    "-1"
             "duration"     "4"
         }
@@ -17461,7 +17461,7 @@
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
-            "time_dur" "10 16 24"
+            "time_dur" "8 12 16"
         }
 		"OnSpellStart"
 		{
@@ -18315,7 +18315,7 @@
 		
 		"AbilityValues"
         {
-            "radius_true" "200 400 600"
+            "radius_true" "150 200 300"
         }
 
 		"Modifiers"
@@ -20114,7 +20114,7 @@
 		
 		"AbilityValues"
         {
-            "radius_true" "200 400 600"
+            "radius_true" "150 200 300"
         }
 
 		"Modifiers"

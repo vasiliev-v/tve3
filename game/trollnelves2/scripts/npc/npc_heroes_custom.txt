@@ -189,9 +189,9 @@
 		"SoundSet"			"Hero_Lycan" //"Hero_DeathProphet "
 		"Model"				"models/heroes/lycan/lycan_wolf.vmdl" //"models/heroes/death_prophet/death_prophet.vmdl "
 		"AbilityLayout"     "16"
-		"Ability1" 			"reveal_area_wolf" //"reveal_area"
-		"Ability2" 			"troll_teleport"
-		"Ability3" 			"attack_gold"
+		"Ability1" 			"troll_teleport" //"reveal_area_wolf"
+		"Ability2" 			"attack_gold"
+		"Ability3" 			""
 		"Ability4" 			"" // silence_datadriven_eventу
 		"Ability5"    	    ""
 		"Ability6"    	    ""
@@ -231,7 +231,7 @@
 		"CollisionSize"			"48"
 
 		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"       "300"                 // Speed.
+		"MovementSpeed"       "275"                 // Speed.
 		"MovementTurnRate"      "1.0"                 // Turning rate.
 
 		"StatusHealth"        "500"                 // Base health.
@@ -265,11 +265,11 @@
 		"SoundSet"					"Hero_NightStalker" //"Hero_Abaddon "
 		"Model"							"models/heroes/nightstalker/nightstalker_night.vmdl" //	"models/heroes/abaddon/abaddon.vmdl "
 		"AbilityLayout"     "16"
-		"Ability1" 			""
-		"Ability2" 			"reveal_area_wolf" //"reveal_area"
-		"Ability3" 			"troll_teleport"
-		"Ability4" 			"attack_gold" // ""
-		"Ability5"    		"night_stalker_hunter_in_the_night_datadriven" 
+		"Ability1" 			"troll_teleport"
+		"Ability2" 			"attack_gold" //"reveal_area_wolf"
+		"Ability3" 			"night_stalker_hunter_in_the_night_datadriven"
+		"Ability4" 			"" // ""
+		"Ability5"    		"" 
 		"Ability6"    	    ""//"abaddon_aphotic_shield"
 		"Ability7"    	    ""
 		"Ability8"    	    ""

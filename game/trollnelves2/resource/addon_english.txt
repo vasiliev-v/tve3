@@ -3431,12 +3431,13 @@
 		"subscribe_2"					"TROLL CHANCE 50%"
 		"subscribe_3"					"TROLL CHANCE 75%"
 		"subscribe_4"					"BONUS RATING 10%"
+		"subscribe_5"					"BATLLE PASS"
 
 		"subscribe_1_description"					"Increases the chance of getting a Troll by 25%. Valid for 1 month."
 		"subscribe_2_description"					"Increases the chance of getting a Troll by 50%. Valid for 1 month."
 		"subscribe_3_description"					"Increases the chance of getting a Troll by 75%. Valid for 1 month."
 		"subscribe_4_description"					"Increases the bonus rating of all players in the game by 10%."
-		
+		"subscribe_5_description"					"Valid for 3 months from the date of purchase. Opens access to additional quests."
 			
 		"spring"                                          										"Awarded for participating in a Spring event."
 		"developer2"                                          									"Developer Effect"
@@ -4241,9 +4242,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 				
 		"troll_spell_silence_target"                            	   "Target Silence"
         "troll_spell_silence_target_description"                       "Active: Target Silence"
-        "modifier_troll_spell_silence_target_description_level_1"               "Duration: 10<br>CD: 250"
-        "modifier_troll_spell_silence_target_description_level_2"               "Duration: 16<br>CD: 200"
-        "modifier_troll_spell_silence_target_description_level_3"               "Duration: 24<br>CD: 150"
+        "modifier_troll_spell_silence_target_description_level_1"               "Duration: 8<br>CD: 250"
+        "modifier_troll_spell_silence_target_description_level_2"               "Duration: 12<br>CD: 200"
+        "modifier_troll_spell_silence_target_description_level_3"               "Duration: 16<br>CD: 150"
 		"DOTA_Tooltip_modifier_troll_spell_silence_target"			   "Active: Target Silence"
 
 		"troll_spell_silence_target_description_level_1_shop"               "Duration"
@@ -4548,9 +4549,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 				
 		"elf_spell_true"                            		 "True Sight"
         "elf_spell_true_description"                       "Passive: Reveals invisible units"
-        "modifier_elf_spell_true_description_level_1"               "Radius: 200"
-        "modifier_elf_spell_true_description_level_2"               "Radius: 400"
-        "modifier_elf_spell_true_description_level_3"               "Radius: 600"
+        "modifier_elf_spell_true_description_level_1"               "Radius: 150"
+        "modifier_elf_spell_true_description_level_2"               "Radius: 200"
+        "modifier_elf_spell_true_description_level_3"               "Radius: 300"
 		"DOTA_Tooltip_modifier_elf_spell_true"			 "Passive: Reveals invisible units"
 		"elf_spell_true_description_level_1_shop"               "Radius"
 				
@@ -5061,9 +5062,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_modifier_elf_spell_limit_lumber_x4"			 "Passive: Increases the maximum lumber limit"
 		"elf_spell_limit_lumber_description_level_1_shop_x4"               "Lumber Limit"
 				
-        "modifier_elf_spell_true_x4_description_level_1"               "Radius: 200"
-        "modifier_elf_spell_true_x4_description_level_2"               "Radius: 400"
-        "modifier_elf_spell_true_x4_description_level_3"               "Radius: 600"
+        "modifier_elf_spell_true_x4_description_level_1"               "Radius: 150"
+        "modifier_elf_spell_true_x4_description_level_2"               "Radius: 200"
+        "modifier_elf_spell_true_x4_description_level_3"               "Radius: 300"
 		"DOTA_Tooltip_modifier_elf_spell_true_x4"			 "Passive: Reveals invisible units"
 		"elf_spell_true_description_level_1_shop_x4"               "Radius"
 
@@ -5318,6 +5319,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"skinwisp_description"					"Only one Wisp Skin is issued per purchase. Wisp Skins purchased with coins are permanent. Wisp Skins for gems are issued for 1 month. Some Wisp Skins are given out for TOP1-10, participation in events, and so on. Follow the events on Discord for free prizes."
 		
 		"battlepass_date"			"Valid until: "
+
+		"error_cant_take_boots_2"			"Wolves cannot use boots lvl 2"
 				
 		""                            		 ""
         "_description"                       "Active: "
