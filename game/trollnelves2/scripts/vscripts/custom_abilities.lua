@@ -1956,6 +1956,7 @@ function TakeBoots(event)
 	local playerID = event.caster:GetPlayerOwnerID()
 	if event.caster:IsWolf() then
 		SendErrorMessage(playerID, "error_cant_take_boots_2")	
+		return 1
 	end
 	if event.caster:HasModifier("modifier_boots_2") then 
 		return 1

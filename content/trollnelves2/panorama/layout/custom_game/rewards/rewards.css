@@ -39,7 +39,7 @@
 
 .RewardsPanelName
 {
-    margin-top: 16px;
+    margin-top: 5px;
     horizontal-align: center;
     font-size: 32px;
     color: #FFFFFF;
@@ -167,4 +167,13 @@
 .reward_close .RewardIcon
 {
     brightness: 0.5;
+}
+
+.RewardsCountdown
+{
+    margin-top: 45px;
+    horizontal-align: center;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: semi-bold;
 }

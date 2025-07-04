@@ -320,7 +320,7 @@ if GameRules.MapSpeed ~= 4 then
                 "elf_spell_true_description_level_1_shop", 
             }, 
             {
-                {150, 200, 300}, 
+                {200, 250, 300}, 
             },
             "0",
             "1"
@@ -1087,7 +1087,7 @@ else -- X4
                 "elf_spell_true_description_level_1_shop_x4", 
             }, 
             {
-                {150, 200, 300}, 
+                {200, 250, 300}, 
             },
             "0",
             "1"

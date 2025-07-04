@@ -10,6 +10,7 @@
 		<Panel id="RewardsPanel" class="RewardsPanel">
 			<Panel class="CloseShop" onactivate="ClosePanel();"/>
 			<Label class="RewardsPanelName" text="#troll_rewards_title" />
+			<Label id="RewardsCountdown" class="RewardsCountdown" text="" />
 			<Panel id="RewardsRow" class="RewardsRow" />
 		</Panel>
 	</Panel>

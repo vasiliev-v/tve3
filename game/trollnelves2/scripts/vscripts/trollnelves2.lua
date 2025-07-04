@@ -82,6 +82,7 @@ function trollnelves2:GameSetup()
         elseif GameRules.MapSpeed == 4 then
             Stats.RequestDataTop10("3", callback)
         end
+        Stats.RequestDataTime(callback)
         -- StartReklama()
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
         --DebugPrint("count player " .. GameRules.PlayersCount)

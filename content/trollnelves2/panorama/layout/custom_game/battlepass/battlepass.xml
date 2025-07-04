@@ -12,6 +12,7 @@
             <Panel class="CloseShop" onactivate="ClosePanel();"/>
             <Label class="BattlePassLabel" text="Battle Pass" />
             <Label id="LevelText" class="LevelText" text="Уровень: 1" />
+            <Label id="BattlePassTimer" class="BattlePassTimer" text="" />
             <Panel class="BattlePass_Progress_4" id="BattlePass_Progress_4" >
                 <Panel class="BattlePass_Progress_5" id="BattlePass_Progress_5" />
                 <Panel class="BattlePass_Progress_6" id="BattlePass_Progress_6" />

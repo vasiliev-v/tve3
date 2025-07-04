@@ -144,4 +144,49 @@ function RecieveReward(claim_panel, reward_panel, type_reward, reward_count)
 	GameEvents.SendCustomGameEventToServer( "EventRewards", {id: Players.GetLocalPlayer(), count: reward_count, type: type_reward} ); // отправляешь ивент 
 }
 
-GameUI.CustomUIConfig().OpenRewardsGlobal = OpenPanel  
+GameUI.CustomUIConfig().OpenRewardsGlobal = OpenPanel
+
+const tableValue = CustomNetTables.GetTableValue("Shop", "datetime");
+const REWARDS_RESET_SECONDS = (tableValue?.[1]?.["2"]) || 86400; // default 24 hours
+
+let rewards_reset_seconds = 0;
+let rewards_timer_schedule = null;
+
+function FormatRewardsTime(sec)
+{
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m;
+}
+
+function UpdateRewardsTimer()
+{
+    const label = $("#RewardsCountdown");
+    if (!label) return;
+
+    if (rewards_reset_seconds <= 0)
+    {
+        label.text = "";
+        return;
+    }
+
+    label.text = $.Localize("#reward_reset_time") + " " + FormatRewardsTime(rewards_reset_seconds);
+    rewards_reset_seconds -= 60;
+    rewards_timer_schedule = $.Schedule(60.0, UpdateRewardsTimer);
+}
+
+function SetRewardsResetTimer(sec)
+{
+    if (rewards_timer_schedule)
+    {
+        $.CancelScheduled(rewards_timer_schedule);
+        rewards_timer_schedule = null;
+    }
+
+    // округляем до ближайшей минуты вниз
+    rewards_reset_seconds = Math.floor(sec / 60) * 60;
+    UpdateRewardsTimer();
+}
+
+GameUI.CustomUIConfig().SetRewardsResetTimer = SetRewardsResetTimer;
+SetRewardsResetTimer(REWARDS_RESET_SECONDS);

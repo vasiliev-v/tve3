@@ -1989,7 +1989,7 @@
 "quest_need_battlepass"		"Требуется BattlePass"
 
 //Награды
-"troll_rewards_title"		"Ежедневные награды"
+"troll_rewards_title"		"Ежедневный опыт для BP"
 "rewards_button"			"Награды"
 "rewards_days"				"День"
 "reward_recieved"			"Получено"
@@ -2710,8 +2710,8 @@
 				
 		"elf_spell_true"                            		 "True Sight"
         "elf_spell_true_description"                       "Пассивное: Обнаруживает невидимых юнитов"
-        "modifier_elf_spell_true_description_level_1"               "Radius: 150"
-        "modifier_elf_spell_true_description_level_2"               "Radius: 200"
+        "modifier_elf_spell_true_description_level_1"               "Radius: 200"
+        "modifier_elf_spell_true_description_level_2"               "Radius: 250"
         "modifier_elf_spell_true_description_level_3"               "Radius: 300"
 		"DOTA_Tooltip_modifier_elf_spell_true"			 "Пассивное: Обнаруживает невидимых юнитов"
 		"elf_spell_true_description_level_1_shop"               "Radius"
@@ -3223,8 +3223,8 @@
 		"DOTA_Tooltip_modifier_elf_spell_limit_lumber_x4"			 "Пассивное: Увеличивает максимальный лимит дерева"
 		"elf_spell_limit_lumber_description_level_1_shop_x4"               "Lumber Limit"
 				
-        "modifier_elf_spell_true_x4_description_level_1"               "Radius: 150"
-        "modifier_elf_spell_true_x4_description_level_2"               "Radius: 200"
+        "modifier_elf_spell_true_x4_description_level_1"               "Radius: 200"
+        "modifier_elf_spell_true_x4_description_level_2"               "Radius: 250"
         "modifier_elf_spell_true_x4_description_level_3"               "Radius: 300"
 		"DOTA_Tooltip_modifier_elf_spell_true_x4"			 "Пассивное: Обнаруживает невидимых юнитов"
 		"elf_spell_true_description_level_1_shop_x4"               "Radius"
@@ -3409,6 +3409,8 @@
 		
 		"battlepass_date"			"Действительно до: "
 		"error_cant_take_boots_2"			"Волки не могут использовать сапог лвл 2"
+		"error_not_build_when_silenced"		"Нельзя строить во время безмолвия"
+		"reward_reset_time"				"До сброса наград: "
 	
 	}
 }

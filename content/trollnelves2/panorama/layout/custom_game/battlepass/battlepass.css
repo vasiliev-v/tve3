@@ -55,6 +55,15 @@
     font-size: 24px;
 }
 
+.BattlePassTimer
+{
+    vertical-align: top;
+    margin-top: 165px;
+    horizontal-align: center;
+    color: white;
+    font-size: 20px;
+}
+
 .BattlePass_Progress_4 
 {
     margin-top: 191px;

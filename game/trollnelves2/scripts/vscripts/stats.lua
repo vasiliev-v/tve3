@@ -2,7 +2,8 @@ require('error_debug')
 Stats = Stats or {}
 
 local checkResult = {}
-local countCheckShop = 0 
+local countCheckStats = 0 
+local countCheckTime = 0 
 
 function Stats.SubmitMatchData(winner,callback)
 	local status, nextCall = Error_debug.ErrorCheck(function() 
@@ -352,10 +353,10 @@ function Stats.RequestDataTop10(mapSpd, callback)
 		if res.StatusCode ~= 200 then
 			DebugPrint("Connection failed! Code: ".. res.StatusCode)
 			--DebugPrint(res.Body)
-			if countCheckShop <= 3 then
+			if countCheckStats <= 3 then
 				DebugPrint("RECONNECT RATING!!!!!!!")
 				Timers:CreateTimer(15, function() 
-					countCheckShop = countCheckShop + 1
+					countCheckStats = countCheckStats + 1
 					Stats.RequestDataTop10(mapSpd, callback)
 			    end)
 			end
@@ -392,6 +393,50 @@ function Stats.RequestRating(obj, pId, callback)
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pId), PoolTable)
 	return obj
+end
+
+
+function Stats.RequestDataTime(callback)
+
+	if GameRules:IsCheatMode() and not GameRules.isTesting then
+		return -1 
+	end
+
+	local req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "datetime" )
+	if not req then
+		return
+	end
+	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
+	--DebugPrint("***********************************************")
+
+	req:Send(function(res)
+		if res.StatusCode ~= 200 then
+			DebugPrint("Connection failed! Code: ".. res.StatusCode)
+			--DebugPrint(res.Body)
+			if countCheckTime <= 3 then
+				DebugPrint("RECONNECT RATING!!!!!!!")
+				Timers:CreateTimer(15, function() 
+					countCheckTime = countCheckTime + 1
+					Stats.RequestDataTime(callback)
+			    end)
+			end
+			return -1
+		end
+		
+		local obj,pos,err = json.decode(res.Body)
+		--DeepPrintTable(obj)
+		--DebugPrint("***********************************************")
+		local obj,pos,err = json.decode(res.Body)
+		local dateTimeTable = {}
+		if #obj > 0 then
+			dateTimeTable[1] = {obj[1].bpTime, obj[1].rewardTime}
+		end
+		CustomNetTables:SetTableValue("Shop", "datetime", dateTimeTable)
+		
+		---CustomNetTables:SetTableValue("stats", tostring( pId ), { steamID = obj.steamID, score = obj.score })
+		return obj
+		
+	end)
 end
 
 --[[

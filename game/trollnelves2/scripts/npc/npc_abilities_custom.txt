@@ -12428,7 +12428,7 @@
 		"AbilityValues"
         {
 			"chance"  "20"
-            "attack_speed" "-1"
+            "attack_speed" "-7"
 			"movespeed"    "-0.5"
             "duration"     "3"
         }
@@ -18315,7 +18315,7 @@
 		
 		"AbilityValues"
         {
-            "radius_true" "150 200 300"
+            "radius_true" "200 250 300"
         }
 
 		"Modifiers"
@@ -18438,12 +18438,6 @@
 				"ApplyModifier"
 				{
 					"Target"		"CASTER"
-					"ModifierName"	"modifier_wind_walk"
-					"Duration"		"%duration"
-				}
-				"ApplyModifier"
-				{
-					"Target"		"CASTER"
 					"ModifierName"	"modifier_invisible"
 					"Duration"		"%duration"
 				}
@@ -18457,22 +18451,12 @@
 				"RemoveModifier"
 				{
 					"Target"		"CASTER"
-					"ModifierName"	"modifier_wind_walk"
-				}
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
 					"ModifierName"	"modifier_invisible"
 				}
 			}
 
 			"OnAbilityExecuted"
 			{
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
-					"ModifierName"	"modifier_wind_walk"
-				}
 				"RemoveModifier"
 				{
 					"Target"		"CASTER"
@@ -20114,7 +20098,7 @@
 		
 		"AbilityValues"
         {
-            "radius_true" "150 200 300"
+            "radius_true" "200 250 300"
         }
 
 		"Modifiers"
@@ -20237,12 +20221,6 @@
 				"ApplyModifier"
 				{
 					"Target"		"CASTER"
-					"ModifierName"	"modifier_wind_walk"
-					"Duration"		"%duration"
-				}
-				"ApplyModifier"
-				{
-					"Target"		"CASTER"
 					"ModifierName"	"modifier_invisible"
 					"Duration"		"%duration"
 				}
@@ -20256,22 +20234,12 @@
 				"RemoveModifier"
 				{
 					"Target"		"CASTER"
-					"ModifierName"	"modifier_wind_walk"
-				}
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
 					"ModifierName"	"modifier_invisible"
 				}
 			}
 
 			"OnAbilityExecuted"
 			{
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
-					"ModifierName"	"modifier_wind_walk"
-				}
 				"RemoveModifier"
 				{
 					"Target"		"CASTER"

@@ -50,6 +50,11 @@ function Build( event )
             return false
         end
 
+        if caster:HasModifier("modifier_silenced") then
+            SendErrorMessage(playerID, "error_not_build_when_silenced")
+            return false
+        end
+
         if  mine_cost ~= nil then
             if mine_cost ~= 0 then
                 if hero.mine >= GameRules.maxMine  then

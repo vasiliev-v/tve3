@@ -314,3 +314,40 @@ GameUI.CustomUIConfig().UpdateBPButton = function()
     let ButtonBuyPass = $("#ButtonBuyPass")
     ButtonBuyPass.style.opacity = (player_bp_info[2][0] == null || player_bp_info[2][0] == "none") ? 1 : 0
 }
+
+function StartBPTimer()
+{
+    var secondsStr = CustomNetTables.GetTableValue("Shop", "datetime")[1]["1"];
+
+    if (!secondsStr || secondsStr === "" || secondsStr === "0")
+        return;
+
+    var remaining = parseInt(secondsStr, 10);
+    if (isNaN(remaining))
+        return;
+
+    var label = $("#BattlePassTimer");
+
+    function update()
+    {
+        if (!label) return;
+
+        if (remaining < 0) remaining = 0;
+
+        var days = Math.floor(remaining / 86400);
+        var hours = Math.floor((remaining % 86400) / 3600);
+        var minutes = Math.floor((remaining % 3600) / 60);
+
+        label.text = $.Localize("#battlepass_date") + days + "d " + hours + "h " + minutes + "m";
+
+        if (remaining > 0)
+        {
+            remaining -= 60;
+            $.Schedule(60.0, update);
+        }
+    }
+
+    update();
+}
+
+StartBPTimer();
