@@ -410,20 +410,10 @@ function UpgradeBuilding( event )
             gold_cost = upgrade.gold_cost
             lumber_cost = upgrade.lumber_cost
         end
-        --new
-        --if upgraded_unit_name == "troll_hut_2" and string.match(GetMapName(),"1x1") then
-        --    gold_cost = 175
-        --    lumber_cost = upgrade.lumber_cost
-        --end
-        --if upgraded_unit_name == "troll_hut_3" and string.match(GetMapName(),"1x1") then
-        --    gold_cost = 250
-        --    lumber_cost = upgrade.lumber_cost
-        --end
-        --if upgraded_unit_name == "troll_hut_4" and string.match(GetMapName(),"1x1") then
-        --    gold_cost = 425
-        --   lumber_cost = upgrade.lumber_cost
-        --end
-        --endnew
+    end
+    if building:HasModifier("modifier_silenced") then
+        SendErrorMessage(playerID, "error_not_build_when_silenced_2")
+        return false
     end
     if gold_cost > PlayerResource:GetGold(playerID) then
         SendErrorMessage(playerID, "error_not_enough_gold")

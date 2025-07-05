@@ -3410,6 +3410,7 @@
 		"battlepass_date"			"Действительно до: "
 		"error_cant_take_boots_2"			"Волки не могут использовать сапог лвл 2"
 		"error_not_build_when_silenced"		"Нельзя строить во время безмолвия"
+		"error_not_build_when_silenced_2"		"Нельзя улучшать здание с Молчанием."
 		"reward_reset_time"				"До сброса наград: "
 	
 	}

@@ -147,7 +147,7 @@ function RecieveReward(claim_panel, reward_panel, type_reward, reward_count)
 GameUI.CustomUIConfig().OpenRewardsGlobal = OpenPanel
 
 const tableValue = CustomNetTables.GetTableValue("Shop", "datetime");
-const REWARDS_RESET_SECONDS = (tableValue?.[1]?.["2"]) || 86400; // default 24 hours
+const REWARDS_RESET_SECONDS = (tableValue?.[1]?.["2"]) || 0; // default 24 hours
 
 let rewards_reset_seconds = 0;
 let rewards_timer_schedule = null;

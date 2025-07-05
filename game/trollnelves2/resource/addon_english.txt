@@ -5322,6 +5322,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"error_cant_take_boots_2"			"Wolves cannot use boots lvl 2"
 		"error_not_build_when_silenced"		"You can't build during silence"
+		"error_not_build_when_silenced_2"		"You can't upgrade a building with Silence."
 		"reward_reset_time"				"Before the rewards reset: "
 				
 		""                            		 ""

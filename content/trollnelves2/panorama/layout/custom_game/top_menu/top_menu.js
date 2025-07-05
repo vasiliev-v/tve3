@@ -10,16 +10,53 @@ var TOP_MENU_BUTTONS =
     ["Discord", DiscordOpen],
 ]
 
-function Init()
-{
+var RewardsButton = null
+var updateRewardsLoop = true
+
+function Init() {
     let TopMenuCustom = $("#TopMenuCustom")
-    for (button_info of TOP_MENU_BUTTONS)
-    {
+    for (let button_info of TOP_MENU_BUTTONS) {
         let button = $.CreatePanel("Panel", TopMenuCustom, "")
         button.AddClass("ButtonTopMenu")
         button.AddClass(button_info[0])
+        if (button_info[0] == "ButtonRewards") {
+            RewardsButton = button
+        }
         let function_button = button_info[1]
         button.SetPanelEvent("onactivate", function_button)
+    }
+
+    UpdateRewardsButtonLoop() // Запускаем цикл
+}
+
+function UpdateRewardsButtonLoop() {
+    if (!updateRewardsLoop) {
+        return
+    }
+
+    UpdateRewardsButton()
+
+    // Следующий вызов через 1 секунду
+    $.Schedule(5, UpdateRewardsButtonLoop)
+}
+
+function UpdateRewardsButton() {
+    if (!RewardsButton) {
+        return
+    }
+
+    let shop_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())
+    if (!shop_table || !shop_table[6]) {
+        return
+    }
+
+    let daily_info = shop_table[6]
+
+    if (Number(daily_info[0]) < Number(daily_info[1])) {
+        RewardsButton.AddClass("Unclaimed")
+    } else {
+        RewardsButton.RemoveClass("Unclaimed")
+        updateRewardsLoop = false // Отключаем цикл при получении награды
     }
 }
 

@@ -77,3 +77,7 @@
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
+
+.ButtonRewards.Unclaimed {
+    wash-color: red;
+}
