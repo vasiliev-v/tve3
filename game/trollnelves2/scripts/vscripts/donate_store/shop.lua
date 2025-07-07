@@ -1164,7 +1164,7 @@ function Shop:EventBattlePass(table, callback)
 	local check = nil
 
 	if not table.Type or 
-	  (tonumber(table.Type) < 1000 and not player_bp_info[3] or  not player_bp_info[3]["0"] or player_bp_info[3]["0"] == "none" ) then
+	  (tonumber(table.Type) < 1000 and (not player_bp_info[3] or  not player_bp_info[3]["0"] or player_bp_info[3]["0"] == "none" )) then
 		return
 	end
 
