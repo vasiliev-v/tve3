@@ -20,15 +20,14 @@ function FindDotaHudElement(sId)
 	return GetDotaHud().FindChildTraverse(sId);
 }
 
-function ConvertTimeMinutes(time)
-{
-    var min = Math.trunc((time)/60) 
-    var sec_n =  (time) - 60*Math.trunc((time)/60) 
-    var min = String(min - 60*( Math.trunc(min/60) ))
-    var sec = String(sec_n)
-    if (sec_n < 10) 
-    {
-        sec = '0' + sec
+function ConvertTimeMinutes(time) {
+    var min = Math.trunc(time / 60);
+    var sec_n = time - 60 * min;
+    var sec = String(Math.trunc(sec_n));
+
+    if (sec_n < 10) {
+        sec = '0' + sec;
     }
-    return min + ':' + sec
+
+    return min + ':' + sec;
 }

@@ -300,8 +300,8 @@ function trollnelves2:OnDisconnect(event)
         elseif team == DOTA_TEAM_BADGUYS and not string.match(GetMapName(),"clanwars")  then
         hero:MoveToPosition(Vector(0, 0, 0))
         if hero:IsWolf() then
-            --hero:AddNewModifier(nil, nil, "modifier_disconnected", {})
-            hero:RemoveModifierByName("modifier_disconnected") 
+            hero:AddNewModifier(nil, nil, "modifier_disconnected", {})
+            --hero:RemoveModifierByName("modifier_disconnected") 
             --[[
             Timers:CreateTimer(60, function()
                 if hero ~= nil and GameRules.KickList[playerID] ~= 1 then
