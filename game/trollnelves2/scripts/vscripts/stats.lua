@@ -223,7 +223,7 @@ function Stats.SubmitMatchData(winner,callback)
 					GameRules.GetXpBP[pID] = data.XpBP
 				end
 				if data.SteamID ~= "0" then
-					Shop.CheckDayQuest(pID)
+					Stats.CheckDayQuest(pID)
 					Stats.SendData(data,callback)
 				end
 				
