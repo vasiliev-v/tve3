@@ -2255,6 +2255,7 @@
 		"SpellShop_Name"                            "Магазин навыков"
         "SpellShop_ChooseSpell"                     "Выберите желаемый навык"
         "SpellShop_Buy"                             "Купить"
+        "SpellShop_Upgrade"                         "Улучшить"
         "SpellShop_DescriptionBuy"                  "Вы покупаете случайный навык. После покупки всех навыков, вам выпадают улучшения случайного навыка"
         "SpellShop_Activate"                        "Активировать"
         "SpellShop_Deactivate"                      "Деактивировать"

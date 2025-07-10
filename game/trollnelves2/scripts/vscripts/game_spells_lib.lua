@@ -1508,6 +1508,13 @@ else -- X4
 end
 
 
+-- Set unique upgrade costs for every spell. Index 8 contains a table
+-- of costs for levels 1-3. Level 1 is always available so its cost is 0.
+for idx, spell in ipairs(game_spells_lib.spells_list) do
+    spell[8] = {0, idx * 200, idx * 400}
+end
+
+
 
 
 
@@ -1863,6 +1870,66 @@ function game_spells_lib:FindNewSpell(player_id, idPerk)
       --return random_spells[RandomInt(1, #random_spells)][1]
     end
     return nil
+end
+
+
+function game_spells_lib:GetSpellCost(spell_name, level)
+    for _, spell in pairs(self.spells_list) do
+        if spell[1] == spell_name and spell[8] then
+            return spell[8][level] or 0
+        end
+    end
+    return 0
+end
+
+function game_spells_lib:PlayerUpgradeSpellSelected(player_id, spell_name)
+    self.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
+    if self.PLAYER_INFO[player_id] == nil then return nil end
+
+    for i=1,GetTableLng(self.PLAYER_INFO[player_id])-1 do
+        local info = self.PLAYER_INFO[player_id][tostring(i)]
+        if info[1] == spell_name then
+            local current = tonumber(info[2])
+            if current >= 3 then return nil end
+            info[2] = current + 1
+            local result = {spell_name, info[2], 0, i}
+            CustomNetTables:SetTableValue("game_spells_lib", tostring(player_id), self.PLAYER_INFO[player_id])
+            return result
+        end
+    end
+    return nil
+end
+
+function game_spells_lib:event_upgrade_spell(data)
+    if not data.PlayerID or not data.spell_name then return end
+    local player_id = data.PlayerID
+    local spell_name = data.spell_name
+    local level = self:GetSpellLevel(player_id, spell_name)
+    if level >= 3 then return end
+
+    local cost = self:GetSpellCost(spell_name, level + 1)
+    local coins = tonumber(CustomNetTables:GetTableValue("Shop", tostring(player_id))["0"]["1"])
+    if coins < cost then return end
+
+    local upgrade_info = self:PlayerUpgradeSpellSelected(player_id, spell_name)
+    if upgrade_info then
+        local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
+        PoolTable["12"][tostring(upgrade_info[4])] = upgrade_info
+        CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
+        self.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))[12]
+        local dataShop = {
+            SteamID = tostring(PlayerResource:GetSteamID(player_id)),
+            Num = tostring(upgrade_info[1]),
+            Score = tostring(upgrade_info[2]),
+            Nick = "skill_upgrade",
+            Coint = tostring(cost),
+            TypeDonate = "gem",
+            PlayerID = player_id,
+        }
+        if not GameRules:IsCheatMode() then
+            Shop.GetSkill(dataShop, callback)
+        end
+    end
 end
 
 
