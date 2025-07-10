@@ -2258,7 +2258,7 @@
         "SpellShop_DescriptionBuy"                  "Вы покупаете случайный навык. После покупки всех навыков, вам выпадают улучшения случайного навыка"
         "SpellShop_Activate"                        "Активировать"
         "SpellShop_Deactivate"                      "Деактивировать"
-        "SpellShop_SpellPreviewUpgrade"             "LVL"
+        "SpellShop_SpellPreviewUpgrade"             "Level"
         "SpellShop_no_buying_spell"                 "Недоступно"
         "SpellShop_DropHeader"                      "Вам выпал навык"
         "SpellShop_DropHeader_upgrade"              "Вам выпало улучшение навыка"
@@ -2303,7 +2303,7 @@
         "SpellShop_DescriptionКупить"                  "Вы покупаете аспекты по одному. После улучшения всех до уровня 2 начинается улучшение до уровня 3."
         "SpellShop_Активировать"                        "Активировать"
         "SpellShop_Деактивировать"                      "Деактивировать"
-        "SpellShop_SpellPreviewUpgrade"             "Уровень"
+        "SpellShop_SpellPreviewUpgrade"             "LVL"
         "SpellShop_no_buying_spell"                 "Недоступно"
         "SpellShop_DropHeader"                      "Вы получили умение"
         "SpellShop_DropHeader_upgrade"              "Вы получили умение upgrade"
@@ -2334,7 +2334,7 @@
 		"DOTA_Tooltip_ability_troll_spell_gold_hit"                                                "Gold Hit"
 		"DOTA_Tooltip_ability_troll_spell_gold_hit_Description"                                     "Добавляет золото при ударе."
 		"DOTA_Tooltip_ability_troll_spell_gold_hit_duration"                 "DURATION: "
-		"DOTA_Tooltip_ability_troll_spell_gold_hit_damage"                 "INCOMING DAMAGE: "
+		"DOTA_Tooltip_ability_troll_spell_gold_hit_damage"                 "1INCOMING DAMAGE: "
 
 		
 

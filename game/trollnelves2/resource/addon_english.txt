@@ -4173,7 +4173,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_gold_hit"                                                "Gold Hit"
 		"DOTA_Tooltip_ability_troll_spell_gold_hit_Description"                                     "Adds gold to hit."
 		"DOTA_Tooltip_ability_troll_spell_gold_hit_duration"                 "DURATION: "
-		"DOTA_Tooltip_ability_troll_spell_gold_hit_damage"                 "INCOMING DAMAGE: "
+		"DOTA_Tooltip_ability_troll_spell_gold_hit_damage"                 "INCOMING DAMAGE: %s1"
 
 		
 
