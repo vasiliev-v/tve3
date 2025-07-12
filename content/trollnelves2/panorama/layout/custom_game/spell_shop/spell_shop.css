@@ -373,6 +373,32 @@
     text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
 }
 
+.SpellPreviewPanelButtonCost
+{
+    vertical-align: center;
+    horizontal-align: right;
+    flow-children: right;
+    margin-right: 10px;
+}
+
+.SpellPreviewPanelButtonCostIcon
+{
+    width: 20px;
+    height: 20px;
+    background-image: url("file://{images}/custom_game/spell_shop/gem_icon.png");
+    background-size: 100%;
+    vertical-align: center;
+}
+
+.SpellPreviewPanelButtonCostLabel
+{
+    color: white;
+    font-weight: semi-bold;
+    font-size: 16px;
+    vertical-align: center;
+    margin-left: 5px;
+}
+
 #VerticalScrollBar
 {
     width: 2px;
