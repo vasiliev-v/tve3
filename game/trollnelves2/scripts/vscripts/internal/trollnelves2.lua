@@ -136,6 +136,7 @@ end, self)
 
   CustomGameEventManager:RegisterListener( "event_set_activate_spell", Dynamic_Wrap(game_spells_lib, "event_set_activate_spell"))
   CustomGameEventManager:RegisterListener( "event_buy_spell", Dynamic_Wrap(game_spells_lib, "event_buy_spell"))
+  CustomGameEventManager:RegisterListener( "event_upgrade_spell", Dynamic_Wrap(game_spells_lib, "event_upgrade_spell"))
 
   
   CustomNetTables:SetTableValue("building_settings", "team_choice_time", { value = TEAM_CHOICE_TIME })

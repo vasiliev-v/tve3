@@ -146,6 +146,22 @@ function UpdatePreviewSpellInf(info)
     SpellPreviewPanelButtonActivate.AddClass("SpellPreviewPanelButtonActivate")
     SetActivateSpell(SpellPreviewPanelButtonActivate, info)
 
+    let SpellPreviewPanelButtonUpgrade = $.CreatePanel("Panel", SpellPreviewPanelNameButton, "")
+    SpellPreviewPanelButtonUpgrade.AddClass("SpellPreviewPanelButtonActivate")
+    let SpellPreviewPanelButtonUpgradeLabel = $.CreatePanel("Label", SpellPreviewPanelButtonUpgrade, "")
+    SpellPreviewPanelButtonUpgradeLabel.AddClass("SpellPreviewPanelButtonActivateLabel")
+    SpellPreviewPanelButtonUpgradeLabel.text = $.Localize("#SpellShop_Upgrade")
+    SetUpgradeSpell(SpellPreviewPanelButtonUpgrade, info)
+
+    if (GetPlayerSpellLevel(info[1]) == 0)
+    {
+        SpellPreviewPanelButtonUpgrade.visible = false
+    }
+    if (GetPlayerSpellLevel(info[1]) >= 3)
+    {
+        SpellPreviewPanelButtonUpgrade.visible = false
+    }
+
     if (CheckBuyAllSpells())
     {
         SpellPreviewPanelButtonActivate.SetHasClass("BuyButtonDeactivate", true)
@@ -256,6 +272,39 @@ function ActivateSpell(info)
 function FindDotaHudElement(sId)
 {
 	return GetDotaHud().FindChildTraverse(sId);
+}
+
+function SetUpgradeSpell(panel, info)
+{
+    panel.SetPanelEvent("onactivate", function()
+    {
+        Game.EmitSound("General.ButtonClick")
+        UpgradeSpell(info)
+    });
+}
+
+function UpgradeSpell(info)
+{
+    if (buy_cooldown)
+    {
+        return
+    }
+    if (GetPlayerSpellLevel(info[1]) >= 3)
+    {
+        return
+    }
+    $.Schedule(0.25, function()
+    {
+        buy_cooldown = false
+    })
+    let nextLvl = GetPlayerSpellLevel(info[1]) + 1
+    let cost = GetSpellCost(info[1], nextLvl)
+    let player_coins = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["0"]["1"]
+    if (player_coins && cost && player_coins >= cost)
+    {
+        buy_cooldown = true
+        GameEvents.SendCustomGameEventToServer("event_upgrade_spell", {spell_name: info[1]});
+    }
 }
 
 function OpenSpellShop()
@@ -408,6 +457,22 @@ function GetSpellTexture(spell_name, any_level)
             return game_spells_lib[i][2] + "_" + any_level
         }
     }
+}
+
+function GetSpellCost(spell_name, level)
+{
+    let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
+    for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
+    {
+        if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
+        {
+            if (game_spells_lib[i][8])
+            {
+                return game_spells_lib[i][8][level]
+            }
+        }
+    }
+    return 0
 }
 
 function SetShowText(panel, text, spell, level)
