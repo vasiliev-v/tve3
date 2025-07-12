@@ -22,10 +22,6 @@
                             <Label text="#wolves_angels_yes" />
                             <Label class="ModVoteCounter" id="ModVoteYesCounter" text="" />
                         </Panel>
-                        <Panel class="ModVoteButton" id="ModVoteNo">
-                            <Label text="#wolves_angels_no" />
-                            <Label class="ModVoteCounter" id="ModVoteNoCounter" text="" />
-                        </Panel>
                     </Panel>
                 </Panel>
             </Panel>

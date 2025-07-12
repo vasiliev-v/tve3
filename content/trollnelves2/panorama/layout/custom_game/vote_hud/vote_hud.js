@@ -608,10 +608,6 @@ function InitModVote()
         GameEvents.SendCustomGameEventToServer("troll_elves_mod_votes", {panel_id : 1});
         LocalChooseMod($("#ModVoteYes"))
     })
-    $("#ModVoteNo").SetPanelEvent("onactivate", function(){
-        GameEvents.SendCustomGameEventToServer("troll_elves_mod_votes", {panel_id : 2});
-        LocalChooseMod($("#ModVoteNo"))
-    })
 }
 
 function LocalChooseMod(panel)
