@@ -1621,12 +1621,12 @@ game_spells_lib.PLAYER_INFO =
 game_spells_lib.current_activated_spell = {}
 game_spells_lib.spells_cost_random = 500
 game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 1
-if GameRules:IsCheatMode() and not GameRules.isTesting then
+if not GameRules:IsCheatMode() and not GameRules.isTesting then
     game_spells_lib.spells_cost_random = -2
     --game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
      
     for idx, spell in ipairs(game_spells_lib.spells_list) do
-        spell[8] = {0, -2, -2}
+        spell[8] = {0, -3, -4}
     end
 
 end
