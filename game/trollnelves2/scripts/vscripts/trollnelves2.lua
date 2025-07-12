@@ -658,6 +658,21 @@ function InitializeAngel(hero)
     --    hero:RemoveAbility("silence_datadriven")
     --end
     hero:CalculateStatBonus(true)
+   
+    if hero:GetUnitName() == ANGEL_HERO[1] then -- crystal maiden
+        wearables:RemoveWearables(hero)
+        local models = {
+            "models/heroes/crystal_maiden/crystal_maiden_staff.vmdl",
+            "models/heroes/crystal_maiden/crystal_maiden_cape.vmdl",
+            "models/items/crystal_maiden/magnolia_arms/magnolia_arms.vmdl",
+            "models/heroes/crystal_maiden/crystal_maiden_shoulders.vmdl",
+            "models/items/crystal_maiden/magnolia_head/magnolia_head.vmdl",
+        }
+
+        for _, modelPath in ipairs(models) do
+            wearables:AttachWearable(hero, modelPath)
+        end
+    end
 end
 
 function trollnelves2:ControlUnitForTroll(hero)

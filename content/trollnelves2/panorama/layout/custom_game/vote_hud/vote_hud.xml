@@ -15,6 +15,19 @@
                 <Label class="SettingsLabelHeader" text="#settings_game" />
                 <Label class="SettingsLabel" id="SettingsHero" html="true" text="" />
                 <Label class="SettingsLabel" id="SettingsMap" html="true" text="" />
+                <Panel class="ModVotePanel" id="ModVotePanel">
+                    <Label class="ModVoteLabel" text="#wolves_angels_label" />
+                    <Panel class="ModVoteButtons">
+                        <Panel class="ModVoteButton" id="ModVoteYes">
+                            <Label text="#wolves_angels_yes" />
+                            <Label class="ModVoteCounter" id="ModVoteYesCounter" text="" />
+                        </Panel>
+                        <Panel class="ModVoteButton" id="ModVoteNo">
+                            <Label text="#wolves_angels_no" />
+                            <Label class="ModVoteCounter" id="ModVoteNoCounter" text="" />
+                        </Panel>
+                    </Panel>
+                </Panel>
             </Panel>
             <Panel class="WindowStage WindowMapStage" id="WindowMapStage">
                 <Label class="WindowStageName" text="#ChooseMapInGame" />

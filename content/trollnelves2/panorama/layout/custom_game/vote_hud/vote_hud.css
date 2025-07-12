@@ -486,3 +486,41 @@
     font-weight: semi-bold;
     text-shadow: 0px 0px 3px 2.0 #0000007e;
 }
+
+.ModVotePanel {
+    margin-top: 20px;
+    flow-children: down;
+    horizontal-align: center;
+}
+
+.ModVoteButtons {
+    flow-children: right;
+    horizontal-align: center;
+    margin-top: 4px;
+}
+
+.ModVoteButton {
+    width: 120px;
+    height: 28px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    transition-property: background-color;
+    transition-duration: 0.1s;
+    flow-children: right;
+    align: center center;
+}
+
+.ModVoteButton:hover {
+    background-color: rgba(184, 255, 69, 0.2);
+}
+
+.ModVoteCounter {
+    margin-left: 4px;
+    color: #B8FF45;
+}
+
+.SelectedModLocal {
+    box-shadow: hollow rgba(184, 255, 69, 0.5) 0px 0px 0px 2px;
+}

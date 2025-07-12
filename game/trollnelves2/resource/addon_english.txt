@@ -4174,7 +4174,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_gold_hit"                                                "Gold Hit"
 		"DOTA_Tooltip_ability_troll_spell_gold_hit_Description"                                     "Adds gold to hit."
 		"DOTA_Tooltip_ability_troll_spell_gold_hit_duration"                 "DURATION: "
-		"DOTA_Tooltip_ability_troll_spell_gold_hit_damage"                 "INCOMING DAMAGE: %s1"
+		"DOTA_Tooltip_ability_troll_spell_gold_hit_damage"                 "INCOMING DAMAGE: "
 
 		
 
@@ -5325,6 +5325,13 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"error_not_build_when_silenced"		"You can't build during silence"
 		"error_not_build_when_silenced_2"		"You can't upgrade a building with Silence."
 		"reward_reset_time"				"Before the rewards reset: "
+
+				
+		"votes"                      "Votes:"
+		"wolves_angels_label"               "Wolves and angels:"
+		"wolves_angels_yes"                 "Enable"
+		"wolves_angels_no"                  "Disable"
+		"you_play_elf_role"                      "You are playing as the Elf"
 				
 		""                            		 ""
         "_description"                       "Active: "

@@ -239,9 +239,9 @@
 		"StatusMana"        "0"                   // Base mana.
 		"StatusManaRegen"     "0"                 // Mana regeneration rate.
 
-		"VisionDaytimeRange"    "1600"                  // Range of vision at night time.
-		"VisionNighttimeRange"    "1200"                  // Range of vision at night time.
-		"DisableWearables"               "0" //"1"
+		"VisionDaytimeRange"    "800"                  // Range of vision at night time.
+		"VisionNighttimeRange"    "600"                  // Range of vision at night time.
+		"DisableWearables"               "1" //"1"
 		"Creature"
 	    {
 	        "AttachWearables" // Eternal Testament
@@ -319,6 +319,7 @@
 		"VisionDaytimeRange"    "1200"                  // Range of vision at night time.
 		"VisionNighttimeRange"    "1600"                  // Range of vision at night time.
 		"DisableClumpingBehavior"  "1" 	//Отключает слипание при попадании в чужую модельку
+		"DisableWearables"               "1" //"1"
 		"Facets"
 		{
 			
@@ -386,7 +387,7 @@
 		"VisionDaytimeRange"    "1400"    //1800              // Range of vision at night time.
 		"VisionNighttimeRange"    "1200"   //1800               // Range of vision at night time.
 		"DisableClumpingBehavior"  "1" 	//Отключает слипание при попадании в чужую модельку
-		"DisableWearables"               "0"	
+		"DisableWearables"               "1"	
 		"Facets"
 		{
 			
@@ -457,7 +458,7 @@
 
 		"VisionDaytimeRange"    "1400"  //1800                // Range of vision at night time.
 		"VisionNighttimeRange"    "1200"      //1800            // Range of vision at night time.1
-		"DisableWearables"               "0"		
+		"DisableWearables"               "1"		
 		"Creature"
 	    {
 	        "AttachWearables" // Style of Twilight Shade

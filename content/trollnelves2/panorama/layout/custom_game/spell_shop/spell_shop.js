@@ -236,9 +236,9 @@ function UpdatePreviewSpellInf(info)
     var hero = Players.GetPlayerSelectedHero(Players.GetLocalPlayer());
 
     let SpellPreviewPanelButtonUpgrade = $.CreatePanel("Panel", SpellPreviewPanelNameButton, "")
-    SpellPreviewPanelButtonUpgrade.AddClass("SpellPreviewPanelButtonActivate")
+    SpellPreviewPanelButtonUpgrade.AddClass("SpellPreviewPanelButtonUpgrade")
     let SpellPreviewPanelButtonUpgradeLabel = $.CreatePanel("Label", SpellPreviewPanelButtonUpgrade, "")
-    SpellPreviewPanelButtonUpgradeLabel.AddClass("SpellPreviewPanelButtonActivateLabel")
+    SpellPreviewPanelButtonUpgradeLabel.AddClass("SpellPreviewPanelButtonUpgradeLabel")
     SpellPreviewPanelButtonUpgradeLabel.text = $.Localize("#SpellShop_Upgrade")
     let SpellPreviewPanelButtonUpgradeCost = $.CreatePanel("Panel", SpellPreviewPanelButtonUpgrade, "")
     SpellPreviewPanelButtonUpgradeCost.AddClass("SpellPreviewPanelButtonCost")

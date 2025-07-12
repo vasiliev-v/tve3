@@ -90,6 +90,7 @@ function InitStageSelectedMap(data)
         }
     }
     CreatePlayersVotesMap()
+    InitModVote()
 }
 
 function CreatePlayersVotesMap()
@@ -592,6 +593,52 @@ function RenderEmptyCells(parent, count) {
         // emptyPanel.AddClass("PerkPanel--empty");
     }
 }
+
+GameEvents.SubscribeProtected( "troll_elves_mod_votes_change_visual", UpdateModVotes );
+
+function InitModVote()
+{
+    if (Game.GetMapInfo().map_display_name == "1x1")
+    {
+        $("#ModVotePanel").visible = false
+        return
+    }
+    $("#ModVotePanel").visible = true
+    $("#ModVoteYes").SetPanelEvent("onactivate", function(){
+        GameEvents.SendCustomGameEventToServer("troll_elves_mod_votes", {panel_id : 1});
+        LocalChooseMod($("#ModVoteYes"))
+    })
+    $("#ModVoteNo").SetPanelEvent("onactivate", function(){
+        GameEvents.SendCustomGameEventToServer("troll_elves_mod_votes", {panel_id : 2});
+        LocalChooseMod($("#ModVoteNo"))
+    })
+}
+
+function LocalChooseMod(panel)
+{
+    $("#ModVoteYes").ClearPanelEvent("onactivate")
+    $("#ModVoteNo").ClearPanelEvent("onactivate")
+    $("#ModVoteYes").AddClass("DisabledChoose")
+    $("#ModVoteNo").AddClass("DisabledChoose")
+    panel.AddClass("SelectedModLocal")
+}
+
+function UpdateModVotes(data)
+{
+    for (id in data)
+    {
+        let info = data[id]
+        if (info.map_id == 1)
+        {
+            $("#ModVoteYesCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes : ""
+        }
+        else if (info.map_id == 2)
+        {
+            $("#ModVoteNoCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes : ""
+        }
+    }
+}
+
 
 (function () {
 	Game.AutoAssignPlayersToTeams();
