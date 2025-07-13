@@ -528,4 +528,10 @@
 
 .SelectedModLocal {
     box-shadow: hollow rgba(184, 255, 69, 0.5) 0px 0px 0px 2px;
+    background-color: #4B6834;
+}
+
+.DisabledChoose.ModVoteButton {
+    pointer-events: none;
+    brightness: 0.4;
 }
