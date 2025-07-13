@@ -226,7 +226,12 @@ function troll_elves_phase_time(data)
         }
     }
     $("#StageTimer").text = time
-    
+
+    if ( $("#ModVotePanel") )
+    {
+        $("#ModVotePanel").visible = stage != 3
+    }
+
     if (role)
     {
         let hero_localize = "you_play_elf_role"
@@ -628,18 +633,33 @@ function LocalChooseMod(panel)
 
 function UpdateModVotes(data)
 {
+    let yesPercent = 0
+    let noPercent = 0
     for (id in data)
     {
         let info = data[id]
         if (info.map_id == 1)
         {
+            yesPercent = info.percent
             $("#ModVoteYesCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
         }
         else if (info.map_id == 2)
         {
+            noPercent = info.percent
             $("#ModVoteNoCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
         }
     }
+
+    const label = $("#SettingsMod")
+    if (yesPercent >= noPercent)
+    {
+        label.text = $.Localize("#wolves_mod_enabled_desc") + " (" + Math.floor(yesPercent) + "%)"
+    }
+    else
+    {
+        label.text = $.Localize("#wolves_mod_disabled_desc") + " (" + Math.floor(noPercent) + "%)"
+    }
+    label.visible = true
 }
 
 
