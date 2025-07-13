@@ -34,7 +34,7 @@ function setup_state_lib:SetupStartMapVotes()
 end
 
 function setup_state_lib:SetupStartSelectedRole()
-    local THIS_STAGE_TIMER = 999
+    local THIS_STAGE_TIMER = 30
     --if IsInToolsMode() then
     --    THIS_STAGE_TIMER = 1
    -- end

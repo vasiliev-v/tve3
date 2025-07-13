@@ -252,7 +252,7 @@ function troll_elves_phase_time(data)
     if (data.mod !== undefined)
     {
         $("#GameInfo").style.opacity = "1"
-        const text = data.mod ? $.Localize("#wolves_mod_enabled_desc") : $.Localize("#wolves_mod_disabled_desc")
+        const text = data.mod ? $.Localize("#wolves_mod_disabled_desc") : $.Localize("#wolves_mod_enabled_desc")
         $("#SettingsMod").text = text
         $("#SettingsMod").visible = true
     }
@@ -625,9 +625,7 @@ function InitModVote()
 function LocalChooseMod(panel)
 {
     $("#ModVoteYes").ClearPanelEvent("onactivate")
-    $("#ModVoteNo").ClearPanelEvent("onactivate")
     $("#ModVoteYes").AddClass("DisabledChoose")
-    $("#ModVoteNo").AddClass("DisabledChoose")
     panel.AddClass("SelectedModLocal")
 }
 
@@ -643,21 +641,12 @@ function UpdateModVotes(data)
             yesPercent = info.percent
             $("#ModVoteYesCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
         }
-        else if (info.map_id == 2)
-        {
-            noPercent = info.percent
-            $("#ModVoteNoCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
-        }
     }
 
     const label = $("#SettingsMod")
     if (yesPercent >= noPercent)
     {
-        label.text = $.Localize("#wolves_mod_enabled_desc") + " (" + Math.floor(yesPercent) + "%)"
-    }
-    else
-    {
-        label.text = $.Localize("#wolves_mod_disabled_desc") + " (" + Math.floor(noPercent) + "%)"
+        label.text = $.Localize("#wolves_mod_voting_desc") + " " + Math.floor(yesPercent) + "%"
     }
     label.visible = true
 }
