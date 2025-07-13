@@ -244,6 +244,13 @@ function troll_elves_phase_time(data)
         $("#SettingsMap").text = $.Localize("#is_current_map") + " " + map.toUpperCase()
         $("#SettingsMap").visible = true
     }
+    if (data.mod !== undefined)
+    {
+        $("#GameInfo").style.opacity = "1"
+        const text = data.mod ? $.Localize("#wolves_mod_enabled_desc") : $.Localize("#wolves_mod_disabled_desc")
+        $("#SettingsMod").text = text
+        $("#SettingsMod").visible = true
+    }
 }
 
 GameEvents.SubscribeProtected( "troll_elves_init_stage_select_role", InitStageSelectedRole );
@@ -626,11 +633,11 @@ function UpdateModVotes(data)
         let info = data[id]
         if (info.map_id == 1)
         {
-            $("#ModVoteYesCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes : ""
+            $("#ModVoteYesCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
         }
         else if (info.map_id == 2)
         {
-            $("#ModVoteNoCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes : ""
+            $("#ModVoteNoCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
         }
     }
 }

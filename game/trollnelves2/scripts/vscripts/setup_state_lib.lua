@@ -45,7 +45,7 @@ function setup_state_lib:SetupStartSelectedRole()
         TIMER_STAGE = TIMER_STAGE - 1
         CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})
         CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_select_role", {})
-        CustomGameEventManager:Send_ServerToAllClients("troll_elves_phase_time", {time = TIMER_STAGE, max_time = TIMER_STAGE_MAX, stage = 2, map = GameRules.MapName})
+        CustomGameEventManager:Send_ServerToAllClients("troll_elves_phase_time", {time = TIMER_STAGE, max_time = TIMER_STAGE_MAX, stage = 2, map = GameRules.MapName, mod = mod_system:GetCurrentModFromVotes()})
         if TIMER_STAGE <= 0 then
             SetRoles()
             setup_state_lib:SetNextStage()
