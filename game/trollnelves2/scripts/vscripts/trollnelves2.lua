@@ -8,6 +8,7 @@ if trollnelves2 == nil then
     _G.trollnelves2 = class({})
 end
 
+
 -- This library allow for easily delayed/timed actions
 require('libraries/timers')
 
@@ -426,19 +427,6 @@ function InitializeBuilder(hero)
     hero.goldPerSecond = 0
     hero.lumberPerSecond = 0
 
-
-    Timers:CreateTimer(function()
-        local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-        if not hero or hero:IsNull() then return 1 end
-        if hero:IsAngel() or hero:IsWolf() then
-            return
-        end
-        if FlagCheck(hero) then
-            hero:AddNewModifier(hero, nil, "modifier_antibase", {Duration = 10})
-        end
-        return 1
-    end)
-    
     UpdateSpells(hero)
     if not string.match(GetMapName(),"turbo2x") then
         PlayerResource:SetGold(hero, ELF_STARTING_GOLD)
@@ -745,6 +733,7 @@ end
 function trollnelves2:PreStart()
     --StopAnimationGlobal()
     StartCreatingMinimapBuildings() --new
+    StartAntibaseChecker()
     local gameStartTimer = PRE_GAME_TIME
     ModifyLumberPrice(0)
 
@@ -1144,20 +1133,67 @@ function GetClass(unitName)
 end
 
 function FlagCheck(caster)
-    local hero = caster
-	local baseID = BuildingHelper:IdBaseArea(hero)
-	local playerID = hero:GetPlayerID()
-	if string.match(GetMapName(),"clanwars") then
-		return false
-	end
-	if baseID ~= nil and baseID ~= GameRules.PlayersBase[playerID] then
-		for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-			if PlayerResource:IsValidPlayerID(pID) then
-				if GameRules.PlayersBase[pID] == baseID then
-					return true
-				end
-			end
-		end
-	end
-	return false
-end 
+    if not caster or caster:IsNull() then
+        return false
+    end
+
+    local playerID = -1
+    if caster.GetPlayerID then
+        playerID = caster:GetPlayerID()
+    elseif caster.GetPlayerOwnerID then
+        playerID = caster:GetPlayerOwnerID()
+    end
+
+    local baseID = BuildingHelper:IdBaseArea(caster)
+    if string.match(GetMapName(), "clanwars") then
+        return false
+    end
+
+    if baseID ~= nil and baseID ~= GameRules.PlayersBase[playerID] then
+        for pID = 0, DOTA_MAX_TEAM_PLAYERS do
+            if PlayerResource:IsValidPlayerID(pID) then
+                if GameRules.PlayersBase[pID] == baseID then
+                    return true
+                end
+            end
+        end
+    end
+
+    return false
+end
+
+function StartAntibaseChecker()
+    Timers:CreateTimer(function()
+        local units = Entities:FindAllByClassname("npc_dota_creature")
+        for _, unit in pairs(units) do
+            if not unit:IsNull() and unit:IsAlive() then
+                if FlagCheck(unit) then
+                    if not unit:HasModifier("modifier_antibase") then
+                        unit:AddNewModifier(unit, nil, "modifier_antibase", {Duration = 10})
+                    end
+                else
+                    if unit:HasModifier("modifier_antibase") then
+                        unit:RemoveModifierByName("modifier_antibase")
+                    end
+                end
+            end
+        end
+
+        local heroes = HeroList:GetAllHeroes()
+        for _, hero in pairs(heroes) do
+            if hero and not hero:IsNull() and hero:IsAlive() and not hero:IsAngel() and not hero:IsWolf() then
+                if FlagCheck(hero) then
+                    if not hero:HasModifier("modifier_antibase") then
+                        hero:AddNewModifier(hero, nil, "modifier_antibase", {Duration = 10})
+                    end
+                else
+                    if hero:HasModifier("modifier_antibase") then
+                        hero:RemoveModifierByName("modifier_antibase")
+                    end
+                end
+            end
+        end
+
+        return 1
+    end)
+end
