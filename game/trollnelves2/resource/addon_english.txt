@@ -5329,7 +5329,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 				
 		"votes"                      "Votes:"
 		"wolves_angels_label"               "Wolves and angels:"
-		"wolves_angels_no"                  "Disable"
+		"wolves_angels_yes"                  "ON"
 		"you_play_elf_role"                  "You are playing as the Elf"
 
 

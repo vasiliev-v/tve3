@@ -501,21 +501,27 @@
 }
 
 .ModVoteButton {
-    width: 140px;
-    height: 32px;
-    margin: 0 5px;
+    width: 80px;
+    height: 25px;
+    margin: -3px 5px;
     background-color: #141414;
     border: 2px solid rgba(184, 255, 69, 0.5);
-    border-radius: 4px;
+    border-radius: 999px;
     transition-property: background-color;
     transition-duration: 0.1s;
-    flow-children: right;
-    align: center center;
-    font-size: 20px;
+
+    font-size: 16px;
     color: white;
-    font-weight: semi-bold;
     text-transform: uppercase;
+    text-align: center;
+    padding: -1px 12px;
+
+    flow-children: none;
+    align: center center;
+    horizontal-align: center;
+    vertical-align: center;
 }
+
 
 .ModVoteButton:hover {
     background-color: #4B6834;
@@ -528,10 +534,4 @@
 
 .SelectedModLocal {
     box-shadow: hollow rgba(184, 255, 69, 0.5) 0px 0px 0px 2px;
-    background-color: #4B6834;
-}
-
-.DisabledChoose.ModVoteButton {
-    pointer-events: none;
-    brightness: 0.4;
 }
