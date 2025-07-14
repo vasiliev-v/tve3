@@ -1452,7 +1452,9 @@ function Shop.GetXpBattlepass(playerID,callback)
 	    	data.Srok = ""
 	    	Error_debug.SendData(data,callback)
 		end
-		Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
+		Timers:CreateTimer(15, function() 
+			Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
+		end)
 		if callback then
 			local obj,pos,err = json.decode(res.Body)
 			callback(obj)
