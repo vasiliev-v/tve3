@@ -10,6 +10,8 @@ var UPDATED_CHANCE_TROLL = {}
 var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
 var players_activated_spells = CustomNetTables.GetTableValue("game_spells_lib", "spell_active")
 var game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
+var votedYesMod = false
+var modVoteLabelOverride = null
 
 function InitSetup()
 {
@@ -249,11 +251,21 @@ function troll_elves_phase_time(data)
         $("#SettingsMap").text = $.Localize("#is_current_map") + " " + map.toUpperCase()
         $("#SettingsMap").visible = true
     }
-    if (data.mod !== undefined)
+    if (stage >= 3)
+    {
+        modVoteLabelOverride = null
+    }
+
+    if (data.mod !== undefined && !modVoteLabelOverride)
     {
         $("#GameInfo").style.opacity = "1"
         const text = data.mod ? $.Localize("#wolves_mod_disabled_desc") : $.Localize("#wolves_mod_enabled_desc")
         $("#SettingsMod").text = text
+        $("#SettingsMod").visible = true
+    }
+    else if (modVoteLabelOverride)
+    {
+        $("#SettingsMod").text = modVoteLabelOverride
         $("#SettingsMod").visible = true
     }
 }
@@ -627,28 +639,35 @@ function LocalChooseMod(panel)
     $("#ModVoteYes").ClearPanelEvent("onactivate")
     $("#ModVoteYes").AddClass("DisabledChoose")
     panel.AddClass("SelectedModLocal")
+    votedYesMod = true
 }
 
 function UpdateModVotes(data)
 {
+    if (data.table_votes)
+    {
+        data = data.table_votes
+    }
     let yesPercent = 0
-    let noPercent = 0
+     
     for (id in data)
     {
         let info = data[id]
         if (info.map_id == 1)
         {
             yesPercent = info.percent
-            $("#ModVoteYesCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
         }
     }
 
     const label = $("#SettingsMod")
-    if (yesPercent >= noPercent)
-    {
-        label.text = $.Localize("#wolves_mod_voting_desc") + " " + Math.floor(yesPercent) + "%"
-    }
+    label.text = $.Localize("#wolves_mod_voting_desc") + " " + Math.floor(yesPercent) + "%"
     label.visible = true
+    modVoteLabelOverride = label.text
+    if (votedYesMod)
+    {
+        $("#ModVoteYes").AddClass("SelectedModLocal")
+        $("#ModVoteYes").AddClass("DisabledChoose")
+    }
 }
 
 
