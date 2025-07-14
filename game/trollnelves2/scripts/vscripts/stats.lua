@@ -230,7 +230,7 @@ function Stats.SubmitMatchData(winner,callback)
 			end 
 		end
 	end
-	Timers:CreateTimer(5, function() 
+	Timers:CreateTimer(10, function() 
 		GameRules:SetGameWinner(winner)
 		SetResourceValues()
 		GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
@@ -441,40 +441,52 @@ end
 
 function Stats.CheckDayQuest(pId)
 	local hero = PlayerResource:GetSelectedHeroEntity(pId)
+	DebugPrint("Start 1")
 	if not hero or PlayerResource:GetDeaths(pId) > 0 then return end
+	DebugPrint("Start 2")
 	if GameRules:GetGameTime() - GameRules.startTime <= MIN_TIME_FOR_QUEST then return end
+	DebugPrint("Start 3 " .. GameRules:GetGameTime() - GameRules.startTime)
 	local bp_data = CustomNetTables:GetTableValue("Shop", "bpday")
 	if not bp_data then return end
+	DebugPrint("Start 4")
 	local player_table = CustomNetTables:GetTableValue("Shop", tostring(pId))["10"]
 	local player_bp_info = CustomNetTables:GetTableValue("Shop", tostring(pId))["15"]
 	if not player_table then return end
+	DebugPrint("Start 5")
 	if PlayerResource:GetConnectionState(pId) ~= 2 then
 		return
 	end
+	DebugPrint("Start 6")
 
 	for i = 1, 3 do
 		local quest_data = player_table["1"] and player_table["1"][tostring(i)]
 		if not quest_data or not quest_data["1"] then goto continue end
+		DebugPrint("Start 7")
 		local quest_id = quest_data["1"]
 		local quest = bp_data[quest_id]
 		
 		if not quest then goto continue end
+		DebugPrint("Start 8")
+		DebugPrintTable(player_bp_info)
+		DebugPrint("quest.donate " .. quest.donate)
 		if tonumber(quest.donate) == 1 and (not player_bp_info or not player_bp_info["0"] or player_bp_info["0"] == "none") then
 			goto continue
 		end
-
+		DebugPrint("Start 9")
 		local data = {}
 		data.KeyId = tostring(quest_data["3"])
 		data.IdQuest = tostring(quest_data["1"])
 		data.SteamID = tostring(PlayerResource:GetSteamID(pId))
 		data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
-
+		DebugPrint("Start 10")
 		if isQuestCompleted(quest, pId) then
 			local progress = quest_data["2"] or 0
 			if tonumber(progress) + 1 == tonumber(quest.count) then
+				DebugPrint("Start 11")
 				Shop.GetXpBattlepass(pId, callback)
 				Shop.GetDayDone(data, callback)
 			elseif tonumber(progress) + 1 < tonumber(quest.count) then
+				DebugPrint("Start 12")
 				Shop.GetDayDone(data, callback)
 			end
 		end
@@ -485,21 +497,24 @@ end
 
 function isQuestCompleted(q, pId)
 	local hero = PlayerResource:GetSelectedHeroEntity(pId)
+	DebugPrint("Completed 10")
 	if not hero then return false end
+	DebugPrint("Completed 11 " .. q.team )
 	if q.team and q.team ~= tostring(PlayerResource:GetTeam(pId)) then
 		return false
 	end
-
+	DebugPrint("Completed 12 q.map " .. q.map )
 	if q.map and q.map ~= "" then
 		local map = GameRules.MapName:lower()
 		if string.match(map,q.map) then
 			return true
 		end
 	end
+	DebugPrint("Completed 13 " .. q.icon)
 	if hero:HasModifier("modifier_" .. q.icon) or hero:HasModifier("modifier_" .. q.icon .. "_x4") then
 		return true
 	end
-
+	DebugPrint("Completed 14")
 	return false
 end
 

@@ -1171,24 +1171,16 @@ function StartAntibaseChecker()
                     if not unit:HasModifier("modifier_antibase") then
                         unit:AddNewModifier(unit, nil, "modifier_antibase", {Duration = 10})
                     end
-                else
-                    if unit:HasModifier("modifier_antibase") then
-                        unit:RemoveModifierByName("modifier_antibase")
-                    end
                 end
             end
         end
 
         local heroes = HeroList:GetAllHeroes()
         for _, hero in pairs(heroes) do
-            if hero and not hero:IsNull() and hero:IsAlive() and not hero:IsAngel() and not hero:IsWolf() then
+            if hero and not hero:IsNull() and hero:IsAlive() and not hero:IsAngel() and not hero:IsWolf() and not hero:IsTroll() then
                 if FlagCheck(hero) then
                     if not hero:HasModifier("modifier_antibase") then
                         hero:AddNewModifier(hero, nil, "modifier_antibase", {Duration = 10})
-                    end
-                else
-                    if hero:HasModifier("modifier_antibase") then
-                        hero:RemoveModifierByName("modifier_antibase")
                     end
                 end
             end
