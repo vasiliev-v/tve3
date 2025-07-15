@@ -676,9 +676,13 @@ function UpdateModVotes(data)
     const label = $("#SettingsMod")
     label.text = $.Localize("#wolves_mod_voting_desc") + " " + Math.floor(yesPercent) + "%"
     label.visible = true
+    if (yesPercent > 60)
+    {
+       //label.style.color = "#82f572ff";  
+    }
     modVoteLabelOverride = label.text
     if (votedYesMod)
-    {
+    {   
         $("#ModVoteYes").AddClass("SelectedModLocal")
         $("#ModVoteYes").AddClass("DisabledChoose")
     }
