@@ -14,6 +14,7 @@ var votedYesMod = false
 var modVoteLabelOverride = null
 var currentModState = null
 
+
 function InitSetup()
 {
     if (Game.GetMapInfo().map_display_name == "1x1")
@@ -260,6 +261,7 @@ function troll_elves_phase_time(data)
     if (stage >= 3)
     {
         modVoteLabelOverride = null
+
         if (currentModState !== null)
         {
             $("#GameInfo").style.opacity = "1"
@@ -661,13 +663,13 @@ function UpdateModVotes(data)
         data = data.table_votes
     }
     let yesPercent = 0
+
     for (id in data)
     {
         let info = data[id]
         if (info.map_id == 1)
         {
             yesPercent = info.percent
-            $("#ModVoteYesCounter").text = info.votes > 0 ? $.Localize("#votes") + " " + info.votes + " (" + Math.floor(info.percent) + "%)" : ""
         }
     }
 

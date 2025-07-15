@@ -21,7 +21,6 @@
                     <Panel class="ModVoteButtons">
                         <Panel class="ModVoteButton" id="ModVoteYes">
                             <Label text="#wolves_angels_yes" />
-                            <Label class="ModVoteCounter" id="ModVoteYesCounter" text="" />
                         </Panel>
                     </Panel>
                 </Panel>
