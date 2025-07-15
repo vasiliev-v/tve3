@@ -1045,7 +1045,8 @@ function Activate()
 	GameRules.PoolTable[14] = {} -- полученные предметы в БП 
 	GameRules.PoolTable[15] = {} -- куплен батлпасс  
 	GameRules.PoolTable[16] = {} -- хз
-	GameRules.PoolTable[17] = {} -- достижения  
+        GameRules.PoolTable[17] = {} -- достижения
+        GameRules.PoolTable[18] = {} -- цены на аспекты
     GameRules.PoolTable[0][0] = {}
     GameRules.PoolTable[1][0] = {}
     GameRules.PoolTable[2][0] = {}
@@ -1061,9 +1062,10 @@ function Activate()
 	GameRules.PoolTable[10][0] = {} 
 	GameRules.PoolTable[10][0][0] = {} 
 	GameRules.PoolTable[11][0] = {} -- реп
-	GameRules.PoolTable[12][0] = {} -- перк
-	GameRules.PoolTable[12][0][0] = {} -- перк
-	GameRules.PoolTable[14][0] = {} -- полученные предметы в БП   
+        GameRules.PoolTable[12][0] = {} -- перк
+        GameRules.PoolTable[12][0][0] = {} -- перк
+        GameRules.PoolTable[14][0] = {} -- полученные предметы в БП
+        GameRules.PoolTable[18][0] = {}
 	
 	GameRules.SkinTower = {}
     GameRules.SaveDefItem = {}
