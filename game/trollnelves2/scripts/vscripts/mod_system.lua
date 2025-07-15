@@ -50,7 +50,8 @@ function mod_system:SetVotesMap(data)
 
 	table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
 
-	CustomGameEventManager:Send_ServerToAllClients("troll_elves_mod_votes_change_visual", table_votes)
+
+  CustomGameEventManager:Send_ServerToAllClients("troll_elves_mod_votes_change_visual", table_votes)
 end
 
 function mod_system:GetCurrentModFromVotes()
@@ -71,7 +72,7 @@ function mod_system:GetCurrentModFromVotes()
 	if table_votes[1] == nil then
 		return true
 	end
-	if table_votes[1].percent >= 60 then
+	if table_votes[1].percent > 60 then
 		return false
 	else
 		return true

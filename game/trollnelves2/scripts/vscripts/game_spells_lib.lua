@@ -29,7 +29,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_limit_gold", 
@@ -43,7 +43,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_limit_lumber", 
@@ -57,7 +57,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_damage_gold", 
@@ -75,7 +75,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_ms", 
@@ -91,7 +91,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_tower_range", 
@@ -105,7 +105,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_armor_wall", 
@@ -119,7 +119,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_tower_damage", 
@@ -133,7 +133,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_lumber", 
@@ -149,7 +149,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_blink", 
@@ -163,7 +163,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_invis", 
@@ -182,7 +182,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_haste",
@@ -200,7 +200,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_evasion",
@@ -218,7 +218,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_cd_reduce", 
@@ -232,7 +232,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_gold", 
@@ -248,7 +248,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_target_buff",
@@ -268,7 +268,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_stun_target",
@@ -284,7 +284,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_teleport",
@@ -298,7 +298,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_target_damage",
@@ -316,7 +316,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_cd_worker", 
@@ -330,7 +330,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_true", 
@@ -344,7 +344,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_reveal",
@@ -360,7 +360,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_heal",
@@ -379,7 +379,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
 
 
@@ -430,7 +430,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_hp_reg",
@@ -444,7 +444,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_armor",
@@ -458,7 +458,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_gold_hit", 
@@ -479,7 +479,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_atkspeed",
@@ -497,7 +497,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_vision",
@@ -511,7 +511,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_ms", 
@@ -525,7 +525,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_cd_reduce",
@@ -539,7 +539,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_magic_resist",
@@ -553,7 +553,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_status_resist",
@@ -567,7 +567,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_haste",
@@ -585,7 +585,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_invis",
@@ -601,7 +601,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_silence_target",
@@ -617,7 +617,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_stun_target",
@@ -633,7 +633,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_silence_area",
@@ -649,7 +649,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_ward",
@@ -665,7 +665,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_slow_target",
@@ -683,7 +683,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_slow_area",
@@ -703,7 +703,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_wolf",
@@ -722,7 +722,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_reveal",
@@ -736,7 +736,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_night_buff",
@@ -754,7 +754,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_gold_wisp",
@@ -772,7 +772,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_evasion",
@@ -788,7 +788,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_bkb",
@@ -804,7 +804,7 @@ if GameRules.MapSpeed ~= 4 then
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         
     }
@@ -829,7 +829,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_limit_gold", 
@@ -843,7 +843,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_limit_lumber", 
@@ -857,7 +857,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_damage_gold", 
@@ -873,7 +873,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_ms", 
@@ -889,7 +889,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_tower_range", 
@@ -903,7 +903,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_armor_wall", 
@@ -917,7 +917,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_tower_damage", 
@@ -931,7 +931,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
 
         {
@@ -948,7 +948,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_blink", 
@@ -962,7 +962,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_invis", 
@@ -981,7 +981,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_haste",
@@ -999,7 +999,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_evasion",
@@ -1017,7 +1017,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_cd_reduce", 
@@ -1031,7 +1031,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_gold", 
@@ -1047,7 +1047,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_target_buff",
@@ -1067,7 +1067,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_stun_target",
@@ -1083,7 +1083,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_teleport",
@@ -1097,7 +1097,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_target_damage",
@@ -1115,7 +1115,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_cd_worker", 
@@ -1129,7 +1129,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_reveal",
@@ -1145,7 +1145,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_true", 
@@ -1159,7 +1159,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "elf_spell_heal",
@@ -1178,7 +1178,7 @@ else -- X4
             },
             "0",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
 
 
@@ -1221,7 +1221,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_hp_reg",
@@ -1235,7 +1235,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_armor",
@@ -1249,7 +1249,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_gold_hit", 
@@ -1270,7 +1270,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_atkspeed",
@@ -1288,7 +1288,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_vision",
@@ -1302,7 +1302,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_ms", 
@@ -1316,7 +1316,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_cd_reduce",
@@ -1330,7 +1330,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_magic_resist",
@@ -1344,7 +1344,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_status_resist",
@@ -1358,7 +1358,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_haste",
@@ -1376,7 +1376,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_invis",
@@ -1392,7 +1392,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_silence_target",
@@ -1408,7 +1408,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_stun_target",
@@ -1424,7 +1424,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_silence_area",
@@ -1440,7 +1440,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_ward",
@@ -1456,7 +1456,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_slow_target",
@@ -1474,7 +1474,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_slow_area",
@@ -1494,7 +1494,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_wolf",
@@ -1513,7 +1513,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_reveal",
@@ -1527,7 +1527,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_night_buff",
@@ -1545,7 +1545,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_gold_wisp",
@@ -1563,7 +1563,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_evasion",
@@ -1579,7 +1579,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
         {
             "troll_spell_bkb",
@@ -1595,7 +1595,7 @@ else -- X4
             },
             "1",
             "1",
-            {0, 1000, 5000}
+            {0, 10000, 30000}
         },
 
     }     
@@ -1977,6 +1977,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     local current_level = 0
     for i = 1, GetTableLng(player_spells) - 1 do
         local info = player_spells[tostring(i)]
+
         if info and info[1] == spell_name then
             target_index = i
             current_level = tonumber(info[2]) or 0
@@ -1993,6 +1994,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     for i = 1, target_index - 1 do
         local info = player_spells[tostring(i)]
         local lvl = tonumber(info and info[2]) or 0
+
         if lvl < required_level then
             need_count = need_count + (required_level - lvl)
         end

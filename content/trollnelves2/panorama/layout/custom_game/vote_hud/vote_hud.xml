@@ -16,13 +16,11 @@
                 <Label class="SettingsLabel" id="SettingsHero" html="true" text="" />
                 <Label class="SettingsLabel" id="SettingsMap" html="true" text="" />
                 <Label class="SettingsLabel" id="SettingsMod" html="true" text="" />
-                <Panel class="ModVotePanel" id="ModVotePanel">
+                <Panel class="SettingsLabel"  id="ModVotePanel">
                     <Label class="ModVoteLabel" text="#wolves_angels_label" />
-                    <Panel class="ModVoteButtons">
                         <Panel class="ModVoteButton" id="ModVoteYes">
                             <Label text="#wolves_angels_yes" />
                         </Panel>
-                    </Panel>
                 </Panel>
             </Panel>
             <Panel class="WindowStage WindowMapStage" id="WindowMapStage">
