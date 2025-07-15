@@ -1977,9 +1977,10 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     local current_level = 0
     for i = 1, GetTableLng(player_spells) - 1 do
         local info = player_spells[tostring(i)]
-        if info[1] == spell_name then
+
+        if info and info[1] == spell_name then
             target_index = i
-            current_level = tonumber(info[2])
+            current_level = tonumber(info[2]) or 0
             break
         end
     end
@@ -1991,7 +1992,9 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
 
     local need_count = 0
     for i = 1, target_index - 1 do
-        local lvl = tonumber(player_spells[tostring(i)][2])
+        local info = player_spells[tostring(i)]
+        local lvl = tonumber(info and info[2]) or 0
+
         if lvl < required_level then
             need_count = need_count + (required_level - lvl)
         end
@@ -2011,9 +2014,11 @@ function game_spells_lib:UpdatePlayerSpellCosts(player_id)
 
     for i = 1, GetTableLng(spells) - 1 do
         local info = spells[tostring(i)]
-        local level = tonumber(info[2])
-        local cost = game_spells_lib:GetSpellCost(player_id, info[1], level + 1)
-        cost_table[tostring(i)] = cost
+        if info then
+            local level = tonumber(info[2]) or 0
+            local cost = self:GetSpellCost(player_id, info[1], level + 1)
+            cost_table[tostring(i)] = cost
+        end
     end
 
     shop["18"] = cost_table
