@@ -12,6 +12,8 @@ var players_activated_spells = CustomNetTables.GetTableValue("game_spells_lib", 
 var game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
 var votedYesMod = false
 var modVoteLabelOverride = null
+var currentModState = null
+
 
 function InitSetup()
 {
@@ -203,6 +205,11 @@ function troll_elves_phase_time(data)
     let map = data.map
     let role = data.role
 
+    if (data.mod !== undefined)
+    {
+        currentModState = data.mod
+    }
+
     for (let i = 1; i <= 3; i++) 
     {
         let StageLinePanel = $("#StageLinePanel_"+i)
@@ -254,9 +261,16 @@ function troll_elves_phase_time(data)
     if (stage >= 3)
     {
         modVoteLabelOverride = null
-    }
 
-    if (data.mod !== undefined && !modVoteLabelOverride)
+        if (currentModState !== null)
+        {
+            $("#GameInfo").style.opacity = "1"
+            const text = currentModState ? $.Localize("#wolves_mod_disabled_desc") : $.Localize("#wolves_mod_enabled_desc")
+            $("#SettingsMod").text = text
+            $("#SettingsMod").visible = true
+        }
+    }
+    else if (data.mod !== undefined && !modVoteLabelOverride)
     {
         $("#GameInfo").style.opacity = "1"
         const text = data.mod ? $.Localize("#wolves_mod_disabled_desc") : $.Localize("#wolves_mod_enabled_desc")
@@ -649,7 +663,7 @@ function UpdateModVotes(data)
         data = data.table_votes
     }
     let yesPercent = 0
-     
+
     for (id in data)
     {
         let info = data[id]
