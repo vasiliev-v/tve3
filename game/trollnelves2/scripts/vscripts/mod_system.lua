@@ -50,7 +50,7 @@ function mod_system:SetVotesMap(data)
 
 	table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
 
-	CustomGameEventManager:Send_ServerToAllClients("troll_elves_mod_votes_change_visual", {table_votes})
+        CustomGameEventManager:Send_ServerToAllClients("troll_elves_mod_votes_change_visual", table_votes)
 end
 
 function mod_system:GetCurrentModFromVotes()
