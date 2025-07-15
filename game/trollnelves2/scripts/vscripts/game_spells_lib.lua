@@ -2012,7 +2012,7 @@ function game_spells_lib:UpdatePlayerSpellCosts(player_id)
     for i = 1, GetTableLng(spells) - 1 do
         local info = spells[tostring(i)]
         local level = tonumber(info[2])
-        local cost = self:GetSpellCost(player_id, info[1], level + 1)
+        local cost = game_spells_lib:GetSpellCost(player_id, info[1], level + 1)
         cost_table[tostring(i)] = cost
     end
 
