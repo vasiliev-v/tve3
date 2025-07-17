@@ -248,6 +248,7 @@ function UpdatePreviewSpellInf(info)
     SpellPreviewPanelButtonUpgradeCostLabel.AddClass("SpellPreviewPanelButtonCostLabel")
     let nextLvlCost = GetSpellCost(info[1], GetPlayerSpellLevel(info[1]) + 1)
     SpellPreviewPanelButtonUpgradeCostLabel.text = nextLvlCost
+
     SetUpgradeSpell(SpellPreviewPanelButtonUpgrade, info)
 
     if (GetPlayerSpellLevel(info[1]) == 0)
@@ -363,6 +364,7 @@ function UpgradeSpell(info)
         buy_cooldown = true
         GameEvents.SendCustomGameEventToServer("event_upgrade_spell", {spell_name: info[1]});
     }
+    
 }
 
 function OpenSpellShop()
