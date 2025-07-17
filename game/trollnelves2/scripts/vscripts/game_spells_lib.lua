@@ -1980,7 +1980,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
 
         if info and info["1"] == spell_name then
             target_index = i
-            current_level = tonumber(info[2]) or 0
+            current_level = tonumber(info["2"]) or 0
             break
         end
     end
@@ -2000,7 +2000,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
         end
     end
 
-    local cost = need_count * 500 * 0.5
+    local cost = need_count * 500 * 0.6
     if cost < 500 then
         cost = 500
     end
