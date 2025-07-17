@@ -560,11 +560,18 @@ function GetSpellCost(spell_name, level)
 
     let spells = shop["12"]
     let costs = shop["18"]
+
+    let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
     for (var i in spells)
     {
         if (spells[i] && spells[i][1] == spell_name)
         {
-            return costs[i] || 0
+            let side = game_spells_lib[i] ? game_spells_lib[i][6] : "0"
+            if (costs[side])
+            {
+                return costs[side][i] || 0
+            }
+            return 0
         }
     }
     return 0

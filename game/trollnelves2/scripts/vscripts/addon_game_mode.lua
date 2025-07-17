@@ -1066,6 +1066,10 @@ function Activate()
         GameRules.PoolTable[12][0][0] = {} -- перк
         GameRules.PoolTable[14][0] = {} -- полученные предметы в БП
         GameRules.PoolTable[18][0] = {}
+
+        GameRules.PoolTable[18][0]["0"] = {}
+        GameRules.PoolTable[18][0]["1"] = {}
+
 	
 	GameRules.SkinTower = {}
     GameRules.SaveDefItem = {}

@@ -184,6 +184,7 @@ function Shop.RequestSkill(obj, pID, steam, callback)
 		Timers:CreateTimer(5, function()
         	game_spells_lib:UpdatePlayerSpellCosts(pID)
 		end)
+
         return obj
 end
 

@@ -2000,7 +2000,12 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
         end
     end
 
-    return need_count * 500 * 0.5
+    local cost = need_count * 500 * 0.5
+    if cost < 500 then
+        cost = 500
+    end
+    return cost
+
 end
 
 function game_spells_lib:UpdatePlayerSpellCosts(player_id)
@@ -2012,12 +2017,16 @@ function game_spells_lib:UpdatePlayerSpellCosts(player_id)
     GameRules.PoolTable[18][player_id] = GameRules.PoolTable[18][player_id] or {}
     local cost_table = GameRules.PoolTable[18][player_id]
 
+    cost_table["0"] = cost_table["0"] or {}
+    cost_table["1"] = cost_table["1"] or {}
+
     for i = 1, GetTableLng(spells) - 1 do
         local info = spells[tostring(i)]
         if info then
             local level = tonumber(info["2"]) or 0
             local cost = self:GetSpellCost(player_id, info["1"], level + 1)
-            cost_table[tostring(i)] = cost
+            local side = tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0")
+            cost_table[side][tostring(i)] = cost
         end
     end
 
@@ -2049,6 +2058,7 @@ function game_spells_lib:event_upgrade_spell(data)
     local player = PlayerResource:GetPlayer( player_id )
     local level = game_spells_lib:GetSpellLevel(player_id, spell_name)
     if level >= 3 then return end
+  
     local cost = game_spells_lib:GetSpellCost(player_id, spell_name, level + 1)
     local coins = tonumber(CustomNetTables:GetTableValue("Shop", tostring(player_id))["0"]["1"])
    
