@@ -1370,16 +1370,16 @@
 
 		
 		"DOTA_Tooltip_modifier_fury_swipes2_caster_datadriven"                             "Ursa"
-		"DOTA_Tooltip_modifier_fury_swipes2_caster_datadriven_Description"                 "%damage_per_stack% magic damage per hit. %bonus_reset_time_roshan% seconds work."
+		"DOTA_Tooltip_modifier_fury_swipes2_caster_datadriven_Description"                 "%damage_per_stack% magic damage per hit. %bonus_reset_time% seconds work."
 		
 		"DOTA_Tooltip_ability_ursa_fury_swipes2_datadriven"                             "Ursa"
-		"DOTA_Tooltip_ability_ursa_fury_swipes2_datadriven_Description"                 "%damage_per_stack% magic damage per hit. %bonus_reset_time_roshan% seconds work."
+		"DOTA_Tooltip_ability_ursa_fury_swipes2_datadriven_Description"                 "%damage_per_stack% magic damage per hit. %bonus_reset_time% seconds work."
 
 		"DOTA_Tooltip_modifier_clink_fury_swipes2_caster_datadriven"                             "Clinkz"
-		"DOTA_Tooltip_modifier_clink_fury_swipes2_caster_datadriven_Description"                 "%damage_per_stack% pure damage per hit. %bonus_reset_time_roshan% seconds work."
+		"DOTA_Tooltip_modifier_clink_fury_swipes2_caster_datadriven_Description"                 "%damage_per_stack% pure damage per hit. %bonus_reset_time% seconds work."
 		
 		"DOTA_Tooltip_Ability_clink_fury_swipes2_datadriven"                             "Clinkz"
-		"DOTA_Tooltip_Ability_clink_fury_swipes2_datadriven_Description"                 "%damage_per_stack% pure damage per hit. %bonus_reset_time_roshan% seconds work."
+		"DOTA_Tooltip_Ability_clink_fury_swipes2_datadriven_Description"                 "%damage_per_stack% pure damage per hit. %bonus_reset_time% seconds work."
 		
 		"DOTA_Tooltip_ability_luna_lunar_blessing_datadriven"                             "Lunar Blessing"
 		"DOTA_Tooltip_ability_luna_lunar_blessing_datadriven_Description"                 "Gives %bonus_damage% damage and %bonus_night_vision% range of vision at night in a radius of %radius%."
@@ -5328,12 +5328,12 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 				
 		"votes"                      "Votes:"
-		"wolves_angels_label"               "Wolves and angels:"
+		"wolves_angels_label"               "Wolves and Angels:"
 		"wolves_angels_yes"                  "ON"
 		"you_play_elf_role"                  "You are playing as the Elf"
 
 
-		"wolves_mod_voting_desc"          "Percentage of votes to include angels: "
+		"wolves_mod_voting_desc"          "Votes for Angels/Wolves: "
 
 		"wolves_mod_enabled_desc"          "Wolves and Angels enabled"
 		"wolves_mod_disabled_desc"         "Wolves and Angels disabled"

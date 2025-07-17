@@ -181,7 +181,9 @@ function Shop.RequestSkill(obj, pID, steam, callback)
 	end
         CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
         game_spells_lib.PLAYER_INFO[pID] = CustomNetTables:GetTableValue("Shop", tostring(pID))["12"]
-        game_spells_lib:UpdatePlayerSpellCosts(pID)
+		Timers:CreateTimer(5, function()
+        	game_spells_lib:UpdatePlayerSpellCosts(pID)
+		end)
 
         return obj
 end

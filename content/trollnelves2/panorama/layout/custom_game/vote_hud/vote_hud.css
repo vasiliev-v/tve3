@@ -488,10 +488,16 @@
 }
 
 .ModVotePanel {
-    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.5);
     flow-children: right;
     horizontal-align: center;
-    margin-right: 0px;
+    font-size: 20px;
+}
+
+#ModVotePanel {
+    flow-children: right;
+    horizontal-align: center;
+    margin-top: 4px;
 }
 
 .ModVoteButtons {
@@ -500,31 +506,36 @@
     margin-top: 4px;
 }
 
+.ModVoteLabel {
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+
 .ModVoteButton {
-    width: 250px;
-    height: 25px;
-    margin: -3px 5px;
+    width: 55px;
+    height: 26px;
+    margin: -1px 25px;
     background-color: #141414;
     border: 2px solid rgba(184, 255, 69, 0.5);
     border-radius: 999px;
     transition-property: background-color;
     transition-duration: 0.1s;
-
-    font-size: 16px;
-    color: white;
-    text-transform: uppercase;
-    text-align: center;
-    padding: -1px 12px;
-
-    flow-children: none;
-    align: center center;
-    horizontal-align: center;
-    vertical-align: center;
 }
 
 
 .ModVoteButton:hover {
     background-color: #4B6834;
+}
+.ModVoteButton Label {
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    align: center center;
+    horizontal-align: center;
+    vertical-align: center;
 }
 
 .ModVoteCounter {
@@ -533,5 +544,7 @@
 }
 
 .SelectedModLocal {
-    box-shadow: hollow rgba(184, 255, 69, 0.5) 0px 0px 0px 2px;
+    background-color: #4B6834; /* выделение цветом */
+    box-shadow: hollow rgba(184, 255, 69, 0.8) 0px 0px 4px 2px;
+    transition-property: background-color, box-shadow;
 }
