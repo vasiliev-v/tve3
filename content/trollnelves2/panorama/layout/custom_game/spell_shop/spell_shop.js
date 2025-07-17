@@ -555,15 +555,22 @@ function GetSpellModifier(spell_name)
 
 function GetSpellCost(spell_name, level)
 {
+    let shop = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())
+    if (!shop || !shop["12"] || !shop["18"]) return 0
+
+    let spells = shop["12"]
+    let costs = shop["18"]
     let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
-    for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
+    for (var i in spells)
     {
-        if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
+        if (spells[i] && spells[i][1] == spell_name)
         {
-            if (game_spells_lib[i][8])
+            let side = game_spells_lib[i] ? game_spells_lib[i][6] : "0"
+            if (costs[side])
             {
-                return game_spells_lib[i][8][level]
+                return costs[side][i] || 0
             }
+            return 0
         }
     }
     return 0
