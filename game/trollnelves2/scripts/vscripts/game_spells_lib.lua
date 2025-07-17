@@ -1978,7 +1978,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     for i = 1, GetTableLng(player_spells) - 1 do
         local info = player_spells[tostring(i)]
 
-        if info and info[1] == spell_name then
+        if info and info["1"] == spell_name then
             target_index = i
             current_level = tonumber(info[2]) or 0
             break
@@ -1993,7 +1993,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     local need_count = 0
     for i = 1, target_index - 1 do
         local info = player_spells[tostring(i)]
-        local lvl = tonumber(info and info[2]) or 0
+        local lvl = tonumber(info and info["2"]) or 0
 
         if lvl < required_level then
             need_count = need_count + (required_level - lvl)
@@ -2015,8 +2015,8 @@ function game_spells_lib:UpdatePlayerSpellCosts(player_id)
     for i = 1, GetTableLng(spells) - 1 do
         local info = spells[tostring(i)]
         if info then
-            local level = tonumber(info[2]) or 0
-            local cost = self:GetSpellCost(player_id, info[1], level + 1)
+            local level = tonumber(info["2"]) or 0
+            local cost = self:GetSpellCost(player_id, info["1"], level + 1)
             cost_table[tostring(i)] = cost
         end
     end
@@ -2026,19 +2026,14 @@ function game_spells_lib:UpdatePlayerSpellCosts(player_id)
 end
 
 function game_spells_lib:PlayerUpgradeSpellSelected(player_id, spell_name)
-    DebugPrint("11")
     game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
     if game_spells_lib.PLAYER_INFO[player_id] == nil then return nil end
-DebugPrint("12")
     for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
         local info = game_spells_lib.PLAYER_INFO[player_id][tostring(i)]
-        DebugPrintTable(info)
         if info["1"] == spell_name then
-            DebugPrint("14")
             local current = tonumber(info["2"])
             if current >= 3 then return nil end
             info["2"] = current + 1
-            DebugPrint("15")
             local result = {spell_name, info["2"], 0, i}
             CustomNetTables:SetTableValue("game_spells_lib", tostring(player_id), game_spells_lib.PLAYER_INFO[player_id])
             return result
@@ -2048,24 +2043,19 @@ DebugPrint("12")
 end
 
 function game_spells_lib:event_upgrade_spell(data)
-    DebugPrint("start")
     if not data.PlayerID or not data.spell_name then return end
     local player_id = data.PlayerID
     local spell_name = data.spell_name
     local player = PlayerResource:GetPlayer( player_id )
     local level = game_spells_lib:GetSpellLevel(player_id, spell_name)
-    DebugPrint("0")
     if level >= 3 then return end
-DebugPrint("1.0")
     local cost = game_spells_lib:GetSpellCost(player_id, spell_name, level + 1)
     local coins = tonumber(CustomNetTables:GetTableValue("Shop", tostring(player_id))["0"]["1"])
-    DebugPrint("1")
    
-DebugPrint("spell_name " .. spell_name)
     local upgrade_info = game_spells_lib:PlayerUpgradeSpellSelected(player_id, spell_name)
-    DebugPrint(upgrade_info)
+
     if upgrade_info then
-        DebugPrint("dsadas")
+
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
         PoolTable["12"][tostring(upgrade_info[4])] = upgrade_info
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
