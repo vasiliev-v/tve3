@@ -248,7 +248,7 @@ function UpdatePreviewSpellInf(info)
     SpellPreviewPanelButtonUpgradeCostLabel.AddClass("SpellPreviewPanelButtonCostLabel")
     let nextLvlCost = GetSpellCost(info[1], GetPlayerSpellLevel(info[1]) + 1)
     SpellPreviewPanelButtonUpgradeCostLabel.text = nextLvlCost
-
+    let player_coins = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["0"]["1"]
     SetUpgradeSpell(SpellPreviewPanelButtonUpgrade, info)
 
     if (GetPlayerSpellLevel(info[1]) == 0)
@@ -258,6 +258,15 @@ function UpdatePreviewSpellInf(info)
     if (GetPlayerSpellLevel(info[1]) >= 3)
     {
         SpellPreviewPanelButtonUpgrade.visible = false
+    }
+
+    if (nextLvlCost > player_coins)
+    {
+        SpellPreviewPanelButtonUpgrade.SetHasClass("BuyButtonDeactivate", true)
+    }
+    else
+    {
+        SpellPreviewPanelButtonUpgrade.SetHasClass("BuyButtonDeactivate", false)
     }
 
     if (PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")) && info[7] == "1")
