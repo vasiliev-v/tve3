@@ -426,7 +426,7 @@ if GameRules.MapSpeed ~= 4 then
                 "troll_spell_limit_gold_description_level_1_shop", 
             }, 
             {
-                {'+200k','+300k','+400k'},
+                {'+200k','+350k','+550k'},
             },
             "1",
             "1",
@@ -1217,7 +1217,7 @@ else -- X4
                 "troll_spell_limit_gold_description_level_1_shop_x4", 
             }, 
             {
-                {'+200k','+350k','+500k'},
+                {'+200k','+350k','+550k'},
             },
             "1",
             "1",
@@ -1625,9 +1625,9 @@ if not GameRules:IsCheatMode() and not GameRules.isTesting then
     game_spells_lib.spells_cost_random = -2
     --game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
      
-    for idx, spell in ipairs(game_spells_lib.spells_list) do
-        spell[8] = {0, -3, -4}
-    end
+    --for idx, spell in ipairs(game_spells_lib.spells_list) do
+    --    spell[8] = {0, -3, -4}
+    --end
 
 end
 
@@ -2004,7 +2004,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
         end
     end
 
-    local cost = need_count * 500 * 0.60
+    local cost = need_count * 500 * 0.40
     if cost < 500 then
         cost = 500
     end

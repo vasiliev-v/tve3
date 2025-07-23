@@ -116,6 +116,7 @@ function NewTroll()
     end
     takeNew = 2
     local newTrollPlayerID = nil
+    
     if #wannabeTrollIDs > 0  then
         newTrollPlayerID = wannabeTrollIDs[math.random(#wannabeTrollIDs)]
         if PlayerResource:GetConnectionState(newTrollPlayerID) ~= 2 or trollPlayerID == newTrollPlayerID then
@@ -156,9 +157,11 @@ function NewTroll()
         PlayerResource:SetCustomTeamAssignment(newTrollPlayerID, DOTA_TEAM_BADGUYS) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
         hero:SetTeam(DOTA_TEAM_BADGUYS)
         InitializeBadHero(hero)
+        game_spells_lib:SetSpellPlayers(newTrollPlayerID)
     end
     end)
 end
+
 
 function SetRoles()
     local donateTroll = {}
@@ -747,7 +750,7 @@ function trollnelves2:PreStart()
     StartCreatingMinimapBuildings() --new
     local gameStartTimer = PRE_GAME_TIME
     ModifyLumberPrice(0)
-
+    local checkTroll1 = nil 
     Timers:CreateTimer(function()
         if gameStartTimer > 0 then
             Notifications:ClearBottomFromAll()

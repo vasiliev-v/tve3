@@ -336,7 +336,7 @@ function Stats.RequestRep(obj, pId, callback)
 			GameRules.Rep[pId] = obj[1].gold 
 		end
 	end
-	if tonumber(GameRules.Rep[pId]) <= -500 then
+	if tonumber(GameRules.Rep[pId]) <= -1000 then
 		GameRules.FakeList[pId] = 1
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pId), PoolTable)

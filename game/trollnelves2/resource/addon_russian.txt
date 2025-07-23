@@ -2351,8 +2351,8 @@
 		"troll_spell_limit_gold"                            	   "Gold Limit"
         "troll_spell_limit_gold_description"                       "Пассивно: Увеличивает лимит золота"
         "modifier_troll_spell_limit_gold_description_level_1"               "Gold Limit +200k"
-        "modifier_troll_spell_limit_gold_description_level_2"               "Gold Limit +300k"
-        "modifier_troll_spell_limit_gold_description_level_3"               "Gold Limit +400k"
+        "modifier_troll_spell_limit_gold_description_level_2"               "Gold Limit +350k"
+        "modifier_troll_spell_limit_gold_description_level_3"               "Gold Limit +550k"
 		"DOTA_Tooltip_modifier_troll_spell_limit_gold"			 "Пассивно: Увеличивает лимит золота"
 
 		"troll_spell_limit_gold_description_level_1_shop"               "Gold Limit"
@@ -2927,7 +2927,7 @@
 				
         "modifier_troll_spell_limit_gold_x4_description_level_1"               "Gold Limit +200k"
         "modifier_troll_spell_limit_gold_x4_description_level_2"               "Gold Limit +350k"
-        "modifier_troll_spell_limit_gold_x4_description_level_3"               "Gold Limit +500k"
+        "modifier_troll_spell_limit_gold_x4_description_level_3"               "Gold Limit +550k"
 		"DOTA_Tooltip_modifier_troll_spell_limit_gold_x4"			 "Пассивно: Увеличивает лимит золота"
 
 		"troll_spell_limit_gold_description_level_1_shop_x4"               "Gold Limit"

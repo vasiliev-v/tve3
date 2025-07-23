@@ -28,9 +28,9 @@ function CDOTA_PlayerResource:SetGold(hero,gold)
 			if hero:FindModifierByName("modifier_troll_spell_limit_gold"):GetStackCount() == 1  then
 				limitGold = 200000 
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold"):GetStackCount() == 2 then
-				limitGold = 300000
+				limitGold = 350000
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold"):GetStackCount() == 3 then
-				limitGold = 400000
+				limitGold = 550000
 			end
 		end
 		if hero:HasModifier("modifier_troll_spell_limit_gold_x4")  then
@@ -39,7 +39,7 @@ function CDOTA_PlayerResource:SetGold(hero,gold)
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold_x4"):GetStackCount() == 2 then
 				limitGold = 350000
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold_x4"):GetStackCount() == 3 then
-				limitGold = 500000
+				limitGold = 550000
 			end
 		end
 
