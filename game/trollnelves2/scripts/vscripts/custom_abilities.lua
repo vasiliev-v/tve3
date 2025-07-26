@@ -1152,6 +1152,7 @@ function BuyItem(event)
 	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
 	if GameRules.FakeList[playerID] ~= nil then
+		SendErrorMessage(playerID, "fake_list")
         return
     end
 
@@ -1376,6 +1377,7 @@ function StealGold(event)
 	local sum = math.ceil(hero:GetNetworth()*0.0001)+1
 
 	if GameRules.FakeList[caster:GetPlayerOwnerID()] ~= nil  then
+		SendErrorMessage(caster:GetPlayerOwnerID(), "fake_list")
 		return
 	end
 
