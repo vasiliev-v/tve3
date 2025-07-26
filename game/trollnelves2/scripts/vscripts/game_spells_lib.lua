@@ -1992,12 +1992,25 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     game_spells_lib.spells_list[target_index][6] or "0")
 
     local need_count = 0
-    for i = 1, target_index - 1 do
-        if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
-            local info = player_spells[tostring(i)]
-            local lvl = tonumber(info and info["2"]) or 0
-            if lvl < required_level then
-                need_count = need_count + (required_level - lvl)
+
+    if required_level < 3 then
+        for i = 1, target_index - 1 do
+            if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
+                local info = player_spells[tostring(i)]
+                local lvl = tonumber(info and info["2"]) or 0
+                if lvl < required_level then
+                    need_count = need_count + (required_level - lvl)
+                end
+            end
+        end
+    else
+        for i = 1, GetTableLng(player_spells) - 1 do
+            if i ~= target_index and tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
+                local info = player_spells[tostring(i)]
+                local lvl = tonumber(info and info["2"]) or 0
+                if lvl < 2 then
+                    need_count = need_count + (2 - lvl)
+                end
             end
         end
     end
