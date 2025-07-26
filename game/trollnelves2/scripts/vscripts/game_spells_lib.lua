@@ -1619,7 +1619,7 @@ game_spells_lib.PLAYER_INFO =
 }
 
 game_spells_lib.current_activated_spell = {}
-game_spells_lib.spells_cost_random = 500
+game_spells_lib.spells_cost_random = 1000
 game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 1
 if not GameRules:IsCheatMode() and not GameRules.isTesting then
     game_spells_lib.spells_cost_random = -2
@@ -1849,7 +1849,7 @@ function game_spells_lib:event_buy_spell(data)
             CustomGameEventManager:Send_ServerToPlayer( player, 'event_spell_shop_drop', {spell_name = drop_info[1], upgrade = drop_info[2]} )
         end
     end
-    DebugPrintTable(drop_info)
+     
     if drop_info ~= nil and drop_info[2] < 4 and drop_info[2] > 0 then
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
         local dataShop = {}
@@ -1959,10 +1959,10 @@ function game_spells_lib:FindNewSpell(player_id, idPerk)
     end
     if #random_spells > 0 then
       --Выбор первого скилла. 
-      return random_spells[1][1]
+      -- return random_spells[1][1]
 
       --Рандом выбор. 
-      --return random_spells[RandomInt(1, #random_spells)][1]
+      return random_spells[RandomInt(1, #random_spells)][1]
     end
     return nil
 end
