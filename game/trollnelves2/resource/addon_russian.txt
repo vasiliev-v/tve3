@@ -2341,9 +2341,9 @@
 
 		"troll_spell_hp_reg"                            		 "HP Regen"
         "troll_spell_hp_reg_description"                       "Пассивно: Увеличивает скорость восстановления здоровья"
-        "modifier_troll_spell_hp_reg_description_level_1"               "Regeneration +2"
-        "modifier_troll_spell_hp_reg_description_level_2"               "Regeneration +4"
-        "modifier_troll_spell_hp_reg_description_level_3"               "Regeneration +8"
+        "modifier_troll_spell_hp_reg_description_level_1"               "Regeneration +1"
+        "modifier_troll_spell_hp_reg_description_level_2"               "Regeneration +2"
+        "modifier_troll_spell_hp_reg_description_level_3"               "Regeneration +4"
 		"DOTA_Tooltip_modifier_troll_spell_hp_reg"			   "Пассивно: Увеличивает скорость восстановления здоровья"
 
 		"troll_spell_hp_reg_description_level_1_shop"               "Regeneration"
@@ -3413,6 +3413,7 @@
 		"error_not_build_when_silenced"		"Нельзя строить во время безмолвия"
 		"error_not_build_when_silenced_2"		"Нельзя улучшать здание с Молчанием."
 		"reward_reset_time"				"До сброса наград: "
+		"fake_list"							"Низкая репутация"
 	
 	}
 }

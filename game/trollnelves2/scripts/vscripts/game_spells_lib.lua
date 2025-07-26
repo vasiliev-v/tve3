@@ -440,7 +440,7 @@ if GameRules.MapSpeed ~= 4 then
                 "troll_spell_hp_reg_description_level_1_shop", 
             },
             {
-                {2,4,8},
+                {1,2,4},
             },
             "1",
             "1",
@@ -1994,6 +1994,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     game_spells_lib.spells_list[target_index][6] or "0")
 
     local need_count = 0
+
     if required_level >= 3 then
         -- Price for upgrading to level 3 depends on the position of the ability
         -- among all abilities of the same side that are below level 3.

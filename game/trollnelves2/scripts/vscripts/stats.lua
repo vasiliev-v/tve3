@@ -200,9 +200,9 @@ function Stats.SubmitMatchData(winner,callback)
 					end
 				else
 					data.Type = "ELF KICK"
-					data.Score = tostring(-100)
+					data.Score = tostring(-200)
 					data.Team = tostring(2)
-					data.Rep = -20 
+					data.Rep = -40 
 				end
 				data.Key = dedicatedServerKey
 				data.BonusPercent = tostring(GameRules.BonusPercent)

@@ -16,10 +16,10 @@ end
 
 function modifier_troll_spell_hp_reg:GetModifierConstantHealthRegen()
 	if self:GetStackCount() == 1 then 
-		return 2
+		return 1
 	elseif self:GetStackCount() == 2  then
-		return 4
+		return 2
 	elseif self:GetStackCount() == 3  then
-		return 8
+		return 4
 	else return 0 end
 end
