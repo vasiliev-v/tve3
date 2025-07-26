@@ -678,7 +678,7 @@ function UpdateModVotes(data)
     label.visible = true
     if (yesPercent > 60)
     {
-       //label.style.color = "#82f572ff";  
+       label.style.color = "#f9f14eff";  
     }
     modVoteLabelOverride = label.text
     if (votedYesMod)

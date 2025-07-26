@@ -1619,9 +1619,9 @@ game_spells_lib.PLAYER_INFO =
 }
 
 game_spells_lib.current_activated_spell = {}
-game_spells_lib.spells_cost_random = 500
+game_spells_lib.spells_cost_random = 1000
 game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 1
-if not GameRules:IsCheatMode() and not GameRules.isTesting then
+if GameRules:IsCheatMode() and not GameRules.isTesting then
     game_spells_lib.spells_cost_random = -2
     --game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
      
@@ -1860,7 +1860,7 @@ function game_spells_lib:event_buy_spell(data)
         end
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
         game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))[12]
-        if not GameRules:IsCheatMode() and not GameRules.isTesting then
+        if not GameRules:IsCheatMode()  then
             dataShop.SteamID = tostring(PlayerResource:GetSteamID(player_id))
             dataShop.Num = tostring(drop_info[1])
             dataShop.Score = tostring(drop_info[2])
@@ -1959,10 +1959,10 @@ function game_spells_lib:FindNewSpell(player_id, idPerk)
     end
     if #random_spells > 0 then
       --Выбор первого скилла. 
-      return random_spells[1][1]
+      --return random_spells[1][1]
 
       --Рандом выбор. 
-      --return random_spells[RandomInt(1, #random_spells)][1]
+      return random_spells[RandomInt(1, #random_spells)][1]
     end
     return nil
 end

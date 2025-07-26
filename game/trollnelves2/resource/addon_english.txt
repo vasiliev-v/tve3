@@ -5209,7 +5209,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_elf_spell_reveal_x4_Description"         "Reveals all enemy heroes on the map"
 		"DOTA_Tooltip_ability_elf_spell_reveal_x4_duration"       "Duration: "
 
-		"quest_150"                         "+150 XP BP"
+		"quest_150"                         "+300 XP BP"
 
 		"quest_1"                        "Win as an Elf with the 'Movespeed' aspect after 20 min without any deaths"
 		"quest_2"                        "Win as an Elf with the 'Starting Gold' aspect after 20 min without any deaths"

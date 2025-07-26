@@ -1428,7 +1428,7 @@ function Shop.GetXpBattlepass(playerID,callback)
 	data.Srok = "0"
 	data.SteamID = tostring(PlayerResource:GetSteamID(playerID))
     data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
-	data.Gold = "150"
+	data.Gold = "300"
 
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "postxp/")
 	if not req then

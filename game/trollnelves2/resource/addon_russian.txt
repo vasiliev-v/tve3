@@ -2256,7 +2256,7 @@
         "SpellShop_ChooseSpell"                     "Выберите желаемый навык"
         "SpellShop_Buy"                             "Купить"
         "SpellShop_Upgrade"                         "Улучшить"
-        "SpellShop_DescriptionBuy"                  "Вы покупаете случайный навык. После покупки всех навыков, вам выпадают улучшения случайного навыка"
+        "SpellShop_DescriptionBuy"                  "You buy a random Aspect. After buying all Aspects, you get a random Aspect upgrade."
         "SpellShop_Activate"                        "Активировать"
         "SpellShop_Deactivate"                      "Деактивировать"
         "SpellShop_SpellPreviewUpgrade"             "Level"
@@ -3413,6 +3413,15 @@
 		"error_not_build_when_silenced"		"Нельзя строить во время безмолвия"
 		"error_not_build_when_silenced_2"		"Нельзя улучшать здание с Молчанием."
 		"reward_reset_time"				"До сброса наград: "
+
+		"wolves_angels_label"               "Ангелы/Волки:"
+		"wolves_angels_yes"                  "ВКЛ"
+
+
+		"wolves_mod_voting_desc"          "Вкл Ангелов/Волков: "
+
+		"wolves_mod_enabled_desc"          "Ангелы/Волки вкл"
+		"wolves_mod_disabled_desc"         "Ангелы/Волки выкл"
 	
 	}
 }
