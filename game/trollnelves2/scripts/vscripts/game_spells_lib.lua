@@ -1994,25 +1994,43 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     game_spells_lib.spells_list[target_index][6] or "0")
 
     local need_count = 0
-    local end_index = target_index - 1
+
     if required_level >= 3 then
-        end_index = GetTableLng(player_spells) - 1
-    end
-    for i = 1, end_index do
-        if i ~= target_index and tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
-            local info = player_spells[tostring(i)]
-            local lvl = tonumber(info and info["2"]) or 0
-            if lvl < required_level then
-                need_count = need_count + (required_level - lvl)
+        -- Price for upgrading to level 3 depends on the position of the ability
+        -- among all abilities of the same side that are below level 3.
+        local step_index = 0
+        for i = 1, target_index do
+            if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
+                local info = player_spells[tostring(i)]
+                local lvl = tonumber(info and info["2"]) or 0
+                if lvl < 3 then
+                    step_index = step_index + 1
+                end
             end
         end
-    end
+        local cost = 500 + (step_index - 1) * 500 * 0.40
+        if cost < 500 then
+            cost = 500
+        end
+        return cost
+    else
+        local end_index = target_index - 1
+        for i = 1, end_index do
+            if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
+                local info = player_spells[tostring(i)]
+                local lvl = tonumber(info and info["2"]) or 0
+                if lvl < required_level then
+                    need_count = need_count + (required_level - lvl)
+                end
+            end
+        end
 
-    local cost = need_count * 500 * 0.40
-    if cost < 500 then
-        cost = 500
+        local cost = need_count * 500 * 0.40
+        if cost < 500 then
+            cost = 500
+        end
+        return cost
     end
-    return cost
 
 end
 
