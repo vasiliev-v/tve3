@@ -21,6 +21,7 @@ function Build( event )
 	local mine_cost = ability:GetSpecialValueFor("MineCost")
     local status, nextCall = Error_debug.ErrorCheck(function()
     if GameRules.FakeList[playerID] ~= nil then
+        SendErrorMessage(playerID, "fake_list")
         return
     end
     -- Makes a building dummy and starts panorama ghosting
@@ -379,6 +380,7 @@ function UpgradeBuilding( event )
   --      return false
   --  end
     if GameRules.FakeList[playerID] ~= nil then
+        SendErrorMessage(playerID, "fake_list")
         return
     end
     if not string.match(NewBuildingName,"troll_hut") and not string.match(NewBuildingName,"troll2_hut") then
