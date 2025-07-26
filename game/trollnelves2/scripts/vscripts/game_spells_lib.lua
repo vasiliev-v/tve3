@@ -440,7 +440,7 @@ if GameRules.MapSpeed ~= 4 then
                 "troll_spell_hp_reg_description_level_1_shop", 
             },
             {
-                {2,4,8},
+                {1,2,4},
             },
             "1",
             "1",

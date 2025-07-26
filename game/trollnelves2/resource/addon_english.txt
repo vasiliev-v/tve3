@@ -4180,9 +4180,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_hp_reg"                            		 "HP Regen"
         "troll_spell_hp_reg_description"                       "Passive: Increases the speed of regeneration."
-        "modifier_troll_spell_hp_reg_description_level_1"               "Regeneration +2"
-        "modifier_troll_spell_hp_reg_description_level_2"               "Regeneration +4"
-        "modifier_troll_spell_hp_reg_description_level_3"               "Regeneration +8"
+        "modifier_troll_spell_hp_reg_description_level_1"               "Regeneration +1"
+        "modifier_troll_spell_hp_reg_description_level_2"               "Regeneration +2"
+        "modifier_troll_spell_hp_reg_description_level_3"               "Regeneration +4"
 		"DOTA_Tooltip_modifier_troll_spell_hp_reg"			   "Passive: Increases the speed of regeneration."
 
 		"troll_spell_hp_reg_description_level_1_shop"               "Regeneration"
