@@ -1994,21 +1994,39 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     game_spells_lib.spells_list[target_index][6] or "0")
 
     local need_count = 0
-    for i = 1, target_index - 1 do
-        if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
-            local info = player_spells[tostring(i)]
-            local lvl = tonumber(info and info["2"]) or 0
-            if lvl < required_level then
-                need_count = need_count + (required_level - lvl)
+    if required_level >= 3 then
+        -- Price for upgrading to level 3 should depend on the permanent
+        -- position of the ability in the upgrade list. Earlier abilities are
+        -- always cheaper even if some of them were already raised to level 3.
+        -- Count all abilities of the same side up to the target index to get
+        -- the ability's order within its side.
+        local step_index = 0
+        for i = 1, target_index do
+            if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
+                step_index = step_index + 1
             end
         end
-    end
 
-    local cost = need_count * 500 * 0.40
-    if cost < 500 then
-        cost = 500
+        local cost = 500 + (step_index - 1) * 500 * 0.40
+        return cost
+    else
+        local end_index = target_index - 1
+        for i = 1, end_index do
+            if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
+                local info = player_spells[tostring(i)]
+                local lvl = tonumber(info and info["2"]) or 0
+                if lvl < required_level then
+                    need_count = need_count + (required_level - lvl)
+                end
+            end
+        end
+
+        local cost = need_count * 500 * 0.40
+        if cost < 500 then
+            cost = 500
+        end
+        return cost
     end
-    return cost
 
 end
 
