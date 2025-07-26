@@ -223,10 +223,12 @@
 
 .SpellShopPanelBuy
 {
+    /*
     width: 100%;
     height: 100%;
     flow-children: down;
     background-color: gradient( linear, 0% 0%, 50% 100%, from( rgba(89, 132, 55, 0.25) ), to( rgba(39, 68, 15, 0.25) ) );
+    */
 }
 
 .UnlockPanelBuyButtonDescription

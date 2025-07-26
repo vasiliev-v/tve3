@@ -31,6 +31,7 @@
                 <Panel class="SpellShopSpellsList">
                     <Label class="SpellShopSpellsListChoose" text="#SpellShop_ChooseSpell"/>
                     <Panel class="SpellShopSpellsListBody" id="SpellShopSpellsListBody" />
+                    <!--
                     <Panel class="SpellShopPanelBuy">
                         <Label class="UnlockPanelBuyButtonDescription" text="#SpellShop_DescriptionBuy" />
                         <Panel class="UnlockPanelBuy">
@@ -43,6 +44,7 @@
                             </Panel>
                         </Panel>
                     </Panel>
+                    -->
                 </Panel>
                 <Panel class="PreviewSpellInfo" id="PreviewSpellInfo" />
             </Panel>
