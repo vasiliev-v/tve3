@@ -1602,12 +1602,6 @@ else -- X4
 end
 
 
-
-
-
-
-
-
 -- Я пока хуй знает как тебе это переписать, но лучше я сделаю все напримере такого массива, а ты поправишь потом
 game_spells_lib.PLAYER_INFO =
 {
@@ -1619,7 +1613,7 @@ game_spells_lib.PLAYER_INFO =
 }
 
 game_spells_lib.current_activated_spell = {}
-game_spells_lib.spells_cost_random = 1000
+game_spells_lib.spells_cost_random = BASE_COST_ASPECT_RANDOM
 game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 1
 if GameRules:IsCheatMode() and not GameRules.isTesting then
     game_spells_lib.spells_cost_random = -2
@@ -1849,7 +1843,7 @@ function game_spells_lib:event_buy_spell(data)
             CustomGameEventManager:Send_ServerToPlayer( player, 'event_spell_shop_drop', {spell_name = drop_info[1], upgrade = drop_info[2]} )
         end
     end
-    DebugPrintTable(drop_info)
+     
     if drop_info ~= nil and drop_info[2] < 4 and drop_info[2] > 0 then
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
         local dataShop = {}
@@ -1940,29 +1934,33 @@ function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
 end
 
 function game_spells_lib:FindNewSpell(player_id, idPerk)
+
     game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
     if game_spells_lib.PLAYER_INFO[player_id] == nil then
         return
     end
+
     local random_spells = {}
     for _, spell_history in pairs(game_spells_lib.spells_list) do
         if tonumber(spell_history[6]) == idPerk then
             table.insert(random_spells, spell_history)
         end
     end
-    for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
+
+    for _, perk in pairs(game_spells_lib.PLAYER_INFO[player_id]) do
         for y=#random_spells, 1, -1 do
             if random_spells[y][1] == game_spells_lib.PLAYER_INFO[player_id][tostring(i)]["1"] then
                 table.remove(random_spells, y)
             end
         end
     end
+
     if #random_spells > 0 then
       --Выбор первого скилла. 
-      --return random_spells[1][1]
+      -- return random_spells[1][1]
 
       --Рандом выбор. 
-      return random_spells[RandomInt(1, #random_spells)][1]
+      return random_spells[RandomInt(1, #random_spells)][1] 
     end
     return nil
 end
@@ -2004,7 +2002,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
         end
     end
 
-    local cost = need_count * 500 * 0.40
+    local cost = need_count * 500 * PERCENT_FOR_COST_ASPECT
     if cost < 500 then
         cost = 500
     end

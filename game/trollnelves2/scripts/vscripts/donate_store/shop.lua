@@ -218,10 +218,11 @@ function Shop.GetSkill(data,callback)
 	    	data.Srok = ""
 	    	Error_debug.SendData(data,callback)
 		end
-		
+		Shop.RequestDonate(tonumber(data.playerID), data.SteamID, callback)
 		if callback then
 			local obj,pos,err = json.decode(res.Body)
 			callback(obj)
+
 		end
 		
 	end)
