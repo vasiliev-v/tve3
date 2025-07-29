@@ -135,7 +135,7 @@ end, self)
   CustomGameEventManager:RegisterListener( "SelectVO", Dynamic_Wrap(Shop,'SelectVO'))
 
   CustomGameEventManager:RegisterListener( "event_set_activate_spell", Dynamic_Wrap(game_spells_lib, "event_set_activate_spell"))
-  CustomGameEventManager:RegisterListener( "event_buy_spell", Dynamic_Wrap(game_spells_lib, "event_buy_spell"))
+  -- CustomGameEventManager:RegisterListener( "event_buy_spell", Dynamic_Wrap(game_spells_lib, "event_buy_spell")) -- remove buy random aspect
   CustomGameEventManager:RegisterListener( "event_upgrade_spell", Dynamic_Wrap(game_spells_lib, "event_upgrade_spell"))
 
   
