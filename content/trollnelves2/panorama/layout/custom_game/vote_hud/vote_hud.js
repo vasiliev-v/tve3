@@ -693,4 +693,8 @@ function UpdateModVotes(data)
 	Game.AutoAssignPlayersToTeams();
     UpdateChat()
     InitSetup()
+    if (Game.GetMapInfo().map_display_name == "1x1")
+    {
+        $("#GameInfo").visible = false
+    }
 })();
