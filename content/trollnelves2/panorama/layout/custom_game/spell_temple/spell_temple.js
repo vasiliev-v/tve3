@@ -37,7 +37,7 @@ function InitSpellList()
     let spell_cost = CustomNetTables.GetTableValue("game_spells_lib", "spell_cost")
     if (spell_cost)
     {
-        $("#UnlockPanelBuyButtonCostLabel").text = spell_cost.cost
+        // $("#UnlockPanelBuyButtonCostLabel").text = spell_cost.cost // remove buy random aspect
     }
     let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
     for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
@@ -506,6 +506,8 @@ function RemoveText(panel, text)
     });       
 }
 
+// remove buy random aspect
+/*
 function BuyRandomSpell()
 {
     if (CheckBuyAllSpells())
@@ -516,7 +518,7 @@ function BuyRandomSpell()
     {
         return
     }
-    $.Schedule(0.25, function() 
+    $.Schedule(0.25, function()
     {
         buy_cooldown = false
     })
@@ -531,6 +533,7 @@ function BuyRandomSpell()
         }
     }
 }
+*/
 
 function UpdateHasSpells()
 {

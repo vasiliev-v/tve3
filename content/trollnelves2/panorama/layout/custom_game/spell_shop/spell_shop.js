@@ -30,7 +30,7 @@ function InitSpellPanel()
         GlyphScanContainer.style.visibility = "collapse"
     }
     InitSpellList()
-    UpdateBuyButton()
+    // UpdateBuyButton() -- remove buy random aspect
 }
 
 function UpdateActivatedSpellVisual()
@@ -47,7 +47,7 @@ function InitSpellList()
     let spell_cost = CustomNetTables.GetTableValue("game_spells_lib", "spell_cost")
     if (spell_cost)
     {
-        $("#UnlockPanelBuyButtonCostLabel").text = spell_cost.cost
+        // $("#UnlockPanelBuyButtonCostLabel").text = spell_cost.cost // remove buy random aspect
     }
     let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
     for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
@@ -388,7 +388,7 @@ function OpenSpellShop()
         active_shop = 0
         $("#SpellShopPanel").SetHasClass("CloseSpellShop", false) // !$("#SpellShopPanel").BHasClass("CloseSpellShop")
         InitSpellList()
-        UpdateBuyButton()
+        // UpdateBuyButton() -- remove buy random aspect
         UpdateActivatedSpellVisual()
     }
 }
@@ -405,7 +405,7 @@ function OpenSpellShoTroll()
         active_shop = 1
         $("#SpellShopPanel").SetHasClass("CloseSpellShop", false) // !$("#SpellShopPanel").BHasClass("CloseSpellShop")
         InitSpellList()
-        UpdateBuyButton()
+        // UpdateBuyButton() -- remove buy random aspect
     }
 }
 
@@ -430,7 +430,7 @@ function UpdateSpellsLibTable(table, key, data )
      //   if (key == String(Players.GetLocalPlayer())) 
     //    {
     //        player_table = CustomNetTables.GetTableValue("game_spells_lib", String(Players.GetLocalPlayer()))
-    //        UpdateBuyButton()
+                //        UpdateBuyButton() -- remove buy random aspect
     //        UpdateHasSpells()
 	//	}
 	}
@@ -443,7 +443,7 @@ function UpdateItem(table, key, data )
         if (key == String(Players.GetLocalPlayer())) 
         {
             player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
-            UpdateBuyButton()
+            // UpdateBuyButton() -- remove buy random aspect
             UpdateHasSpells()
 		}
 	}
@@ -607,6 +607,8 @@ function RemoveText(panel, text)
     });       
 }
 
+// remove buy random aspect
+/*
 function BuyRandomSpell()
 {
     if (CheckBuyAllSpells())
@@ -617,7 +619,7 @@ function BuyRandomSpell()
     {
         return
     }
-    $.Schedule(0.25, function() 
+    $.Schedule(0.25, function()
     {
         buy_cooldown = false
     })
@@ -652,6 +654,7 @@ function UpdateBuyButton()
     }
     $("#UnlockPanelBuyButton").SetHasClass("BuyButtonDeactivate", true)
 }
+*/
 
 function UpdateHasSpells()
 {

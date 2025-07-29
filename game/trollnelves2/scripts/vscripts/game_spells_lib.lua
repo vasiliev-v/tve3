@@ -1818,6 +1818,8 @@ function game_spells_lib:FindModifierFromSpellName(spell_name)
     return nil
 end
 
+-- remove buy random aspect
+--[[
 function game_spells_lib:event_buy_spell(data)
     if data.PlayerID == nil then return end
     local player_id = data.PlayerID
@@ -1849,14 +1851,14 @@ function game_spells_lib:event_buy_spell(data)
             CustomGameEventManager:Send_ServerToPlayer( player, 'event_spell_shop_drop', {spell_name = drop_info[1], upgrade = drop_info[2]} )
         end
     end
-     
+
     if drop_info ~= nil and drop_info[2] < 4 and drop_info[2] > 0 then
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
         local dataShop = {}
         if drop_info[4] == nil then
-            PoolTable["12"][tostring(GetTableLng(PoolTable["12"]))] = drop_info   
+            PoolTable["12"][tostring(GetTableLng(PoolTable["12"]))] = drop_info
         elseif drop_info[2] > 0 and drop_info[2] < 4 then
-            PoolTable["12"][tostring(drop_info[4])] = drop_info 
+            PoolTable["12"][tostring(drop_info[4])] = drop_info
         end
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
         game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))[12]
@@ -1874,6 +1876,7 @@ function game_spells_lib:event_buy_spell(data)
     end
 
 end
+]]
 
 function game_spells_lib:PlayerDropNewSpell(find_new_spell, player_id)
     if game_spells_lib.PLAYER_INFO[player_id] == nil then

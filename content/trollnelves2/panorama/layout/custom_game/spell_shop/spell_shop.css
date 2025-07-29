@@ -221,6 +221,7 @@
     height: 100%;
 }
 
+/* remove buy random aspect
 .SpellShopPanelBuy
 {
     width: 100%;
@@ -297,6 +298,7 @@
     vertical-align: center;
     margin-left: 10px;
 }
+*/
 
 .SpellShopInfoHeaderLabel
 {
