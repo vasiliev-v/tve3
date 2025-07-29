@@ -781,10 +781,12 @@ if GameRules.MapSpeed ~= 4 then
             {
                 "troll_spell_evasion_description_level_1_shop", 
                 "troll_spell_evasion_description_level_2_shop", 
+                "troll_spell_evasion_description_level_3_shop", 
             }, 
             {
                 {2,3,5},
                 {300,250,200},
+                {100,100,100},
             },
             "1",
             "1",
@@ -1572,10 +1574,12 @@ else -- X4
             {
                 "troll_spell_evasion_description_level_1_shop_x4", 
                 "troll_spell_evasion_description_level_2_shop_x4", 
+                "troll_spell_evasion_description_level_3_shop_x4", 
             }, 
             {
                 {2,3,5},
                 {300,250,200},
+                {80,80,80},
             },
             "1",
             "1",

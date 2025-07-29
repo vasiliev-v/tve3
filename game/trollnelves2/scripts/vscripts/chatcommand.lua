@@ -46,7 +46,10 @@ function chatcommand:OnPlayerChat(event)
 				end
 			end
 		--end
-		elseif string.match(event.text,"%D+") == "!kill" and PlayerResource:GetSteamAccountID(event.playerid) == 201083179 then
+		elseif string.match(event.text,"%D+") == "!kill" and 
+		(PlayerResource:GetSteamAccountID(event.playerid) == 201083179 or 
+		PlayerResource:GetSteamAccountID(event.playerid) == 183899786 )
+ 		then
 		local id_kick = tonumber(string.match(event.text,"%d+"))
 		local hero_kick = PlayerResource:GetSelectedHeroEntity(id_kick)
 		-- hero_kick:ForceKill(true)

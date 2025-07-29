@@ -2542,13 +2542,14 @@
 				
 		"troll_spell_evasion"                            		 "Evasion"
         "troll_spell_evasion_description"                       "Активно: Даёт 100% уклонения"
-        "modifier_troll_spell_evasion_description_level_1"               "Duration: 2<br>CD: 300"
-        "modifier_troll_spell_evasion_description_level_2"               "Duration: 3<br>CD: 250"
-        "modifier_troll_spell_evasion_description_level_3"               "Duration: 5<br>CD: 200"
+        "modifier_troll_spell_evasion_description_level_1"               "Duration: 2<br>CD: 300<br>Evasion: 100%"
+        "modifier_troll_spell_evasion_description_level_2"               "Duration: 3<br>CD: 250<br>Evasion: 100%"
+        "modifier_troll_spell_evasion_description_level_3"               "Duration: 5<br>CD: 200<br>Evasion: 100%"
 		"DOTA_Tooltip_modifier_troll_spell_evasion"			 "Активно: Даёт 100% уклонения"
 
 		"troll_spell_evasion_description_level_1_shop"           "Duration"
         "troll_spell_evasion_description_level_2_shop"           "Cooldown"
+		"troll_spell_evasion_description_level_3_shop"           "Evasion"
 
 		"DOTA_Tooltip_ability_troll_spell_evasion"                                                "Evasion"
 		"DOTA_Tooltip_ability_troll_spell_evasion_Description"                                     "Gives 100% evasion"
@@ -3089,9 +3090,9 @@
 		"DOTA_Tooltip_ability_troll_spell_invis_x4_Description"                                     "Gives invisibility"
 		"DOTA_Tooltip_ability_troll_spell_invis_x4_duration"                 "DURATION: "
 				
-        "modifier_troll_spell_evasion_x4_description_level_1"               "Duration: 2<br>CD: 300"
-        "modifier_troll_spell_evasion_x4_description_level_2"               "Duration: 3<br>CD: 250"
-        "modifier_troll_spell_evasion_x4_description_level_3"               "Duration: 5<br>CD: 200"
+        "modifier_troll_spell_evasion_x4_description_level_1"               "Duration: 2<br>CD: 300<br>Evasion: 80%"
+        "modifier_troll_spell_evasion_x4_description_level_2"               "Duration: 3<br>CD: 250<br>Evasion: 80%"
+        "modifier_troll_spell_evasion_x4_description_level_3"               "Duration: 5<br>CD: 200<br>Evasion: 80%"
 		"DOTA_Tooltip_modifier_troll_spell_evasion_x4"			 "Активное: Дает 80% уклонения"
 
 		"troll_spell_evasion_description_level_1_shop_x4"           "Duration"
@@ -3408,12 +3409,13 @@
 		"tower_description"						"Скин Башни выдаётся один раз за покупку. Скины за монеты — постоянные, за гемы — на 1 месяц. Некоторые скины выдаются за ТОП-10, участие в ивентах и т.д. Следите за розыгрышами в Discord."
 		"skinwisp_description"					"Скин Виспa выдаётся один раз за покупку. Скины за монеты — постоянные, за гемы — на 1 месяц. Некоторые скины выдаются за ТОП-10, участие в ивентах и т.д. Следите за розыгрышами в Discord."
 		
-		"battlepass_date"			"Действительно до: "
-		"error_cant_take_boots_2"			"Волки не могут использовать сапог лвл 2"
-		"error_not_build_when_silenced"		"Нельзя строить во время безмолвия"
+		"battlepass_date"						"Действительно до: "
+		"error_cant_take_boots_2"				"Волки не могут использовать сапог лвл 2"
+		"error_not_build_when_silenced"			"Нельзя строить во время безмолвия"
 		"error_not_build_when_silenced_2"		"Нельзя улучшать здание с Молчанием."
-		"reward_reset_time"				"До сброса наград: "
-		"fake_list"							"Низкая репутация"
+		"reward_reset_time"						"До сброса наград: "
+		"fake_list"								"Низкая репутация"
+ 
 	
 	}
 }

@@ -5835,7 +5835,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"				"0"
 		"AbilityManaCost"				"0"
-		"AbilityCooldown"				"30"
+		"AbilityCooldown"				"3"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
 		"AbilityTextureName"            "antiblock"
@@ -5862,18 +5862,18 @@
             "knockback_distance" "300"
         }
 		"OnSpellStart"{
-			"FireSound"
-			{
-				"EffectName"	"DOTA_Item.HavocHammer.Cast"
-				"Target"		"CASTER"
-			}
+			//"FireSound"
+			//{
+			//	"EffectName"	"DOTA_Item.HavocHammer.Cast"
+			//	"Target"		"CASTER"
+			//}
 
-			"FireEffect"
-			{
-				"EffectName"			"particles/units/heroes/hero_huskar/huskar_inner_fire.vpcf"
-				"EffectAttachType"		"follow_origin"
-				"Target"				"CASTER"
-			}
+			//"FireEffect"
+			//{
+			//	"EffectName"			"particles/units/heroes/hero_huskar/huskar_inner_fire.vpcf"
+			//	"EffectAttachType"		"follow_origin"
+			//	"Target"				"CASTER"
+			//}
 
 			"RunScript"
 			{
