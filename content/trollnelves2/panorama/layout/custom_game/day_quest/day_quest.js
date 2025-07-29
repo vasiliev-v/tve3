@@ -1,5 +1,7 @@
 var UPDATED_QUEST_DAY = {}
 
+var HIDE_QUESTS_PANEL = Game.GetMapInfo().map_display_name == "1x1";
+
 
 //GameEvents.SubscribeProtected( 'troll_quest_update', UpdateQuest ); // Обновить квест ( quest_id -- Айди квеста у игрока, current -- Новое значение в этом квесте )
 
@@ -29,7 +31,8 @@ var player_table =
 
 function CreateQuests()
 {
-	let has_battlepass = false
+        if (HIDE_QUESTS_PANEL) { return }
+        let has_battlepass = false
 	quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
 	player_table[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10];  
 	player_table[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
@@ -171,7 +174,8 @@ function CreateQuest(quest_player_table, has_battlepass)
 
 function UpdateQuest(data)
 {
-	$("#QuestPanelSwap").style.visibility = "visible"
+        if (HIDE_QUESTS_PANEL) { return }
+        $("#QuestPanelSwap").style.visibility = "visible"
 	let quest_id = data.quest_id
 	let current = data.current
 	let quest_table = null
@@ -215,12 +219,26 @@ GameEvents.SubscribeProtected( "troll_quest_update_after", UpdateQuestAfter );
 
 function UpdateQuestAfter()
 {
+    if (HIDE_QUESTS_PANEL) {
+        var questsPanel = $("#QuestsPanel");
+        if (questsPanel) {
+            questsPanel.style.visibility = "collapse";
+        }
+        return;
+    }
     if (UPDATED_QUEST_DAY[Players.GetLocalPlayer()] != null ) { return }
     UPDATED_QUEST_DAY[Players.GetLocalPlayer()] = true
-	var questsPanel = $("#QuestsPanel");
+        var questsPanel = $("#QuestsPanel");
     questsPanel.RemoveAndDeleteChildren();
     CreateQuests();
 	//UpdateQuest()
 }
 
-CreateQuests()
+if (!HIDE_QUESTS_PANEL) {
+    CreateQuests();
+} else {
+    var questsPanel = $("#QuestsPanel");
+    if (questsPanel) {
+        questsPanel.style.visibility = "collapse";
+    }
+}
