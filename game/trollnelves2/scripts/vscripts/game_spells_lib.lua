@@ -1619,9 +1619,9 @@ game_spells_lib.PLAYER_INFO =
 }
 
 game_spells_lib.current_activated_spell = {}
-game_spells_lib.spells_cost_random = 1000
+game_spells_lib.spells_cost_random = 500
 game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 1
-if not GameRules:IsCheatMode() and not GameRules.isTesting then
+if GameRules:IsCheatMode() and not GameRules.isTesting then
     game_spells_lib.spells_cost_random = -2
     --game_spells_lib.SPELL_MAX_TIME_TO_ACTIVE = 999 -- в минутах до скольки можно поставить навык
      
@@ -1860,7 +1860,7 @@ function game_spells_lib:event_buy_spell(data)
         end
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)
         game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))[12]
-        if not GameRules:IsCheatMode() and not GameRules.isTesting then
+        if not GameRules:IsCheatMode()  then
             dataShop.SteamID = tostring(PlayerResource:GetSteamID(player_id))
             dataShop.Num = tostring(drop_info[1])
             dataShop.Score = tostring(drop_info[2])
@@ -1959,76 +1959,124 @@ function game_spells_lib:FindNewSpell(player_id, idPerk)
     end
     if #random_spells > 0 then
       --Выбор первого скилла. 
-      -- return random_spells[1][1]
+      return random_spells[1][1]
 
       --Рандом выбор. 
-      return random_spells[RandomInt(1, #random_spells)][1]
+      --return random_spells[RandomInt(1, #random_spells)][1]
     end
     return nil
 end
 
 
 function game_spells_lib:GetSpellCost(player_id, spell_name, level)
-    game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
+    local player_data = CustomNetTables:GetTableValue("Shop", tostring(player_id))
+    if not player_data or not player_data["12"] then return 0 end
+
+    game_spells_lib.PLAYER_INFO[player_id] = player_data["12"]
     local player_spells = game_spells_lib.PLAYER_INFO[player_id]
     if not player_spells then return 0 end
 
-    local target_index = nil
-    local current_level = 0
-    for i = 1, GetTableLng(player_spells) - 1 do
-        local info = player_spells[tostring(i)]
+    local discount_to_2 = 0.3 -- 20% скидка до 2 уровня
+    local discount_to_3 = 0.5 -- 30% скидка до 3 уровня
 
-        if info and info["1"] == spell_name then
-            target_index = i
-            current_level = tonumber(info["2"]) or 0
+    local target_index = nil
+    local target_side = nil
+    for idx, def in ipairs(game_spells_lib.spells_list) do
+        if def[1] == spell_name then
+            target_index = idx
+            target_side = tostring(def[6])
             break
         end
     end
 
-    if not target_index then return 0 end
+    if not target_index or not target_side then return 0 end
 
-    local required_level = level or (current_level + 1)
-    if required_level > 3 then return 0 end
-
-    local target_side = tostring(game_spells_lib.spells_list[target_index] and 
-    game_spells_lib.spells_list[target_index][6] or "0")
-
-    local need_count = 0
- 
-    if required_level >= 3 then
-        -- Price for upgrading to level 3 should depend on the permanent
-        -- position of the ability in the upgrade list. Earlier abilities are
-        -- always cheaper even if some of them were already raised to level 3.
-        -- Count all abilities of the same side up to the target index to get
-        -- the ability's order within its side.
-        local step_index = 0
-        for i = 1, target_index do
-            if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
-                step_index = step_index + 1
-            end
+    local current_level = 0
+    for i = 1, GetTableLng(player_spells) - 1 do
+        local spell = player_spells[tostring(i)]
+        if spell["1"] == spell_name then
+            current_level = tonumber(spell["2"]) or 0
+            break
         end
+    end
 
-        local cost = 500 + (step_index - 1) * 500 * 0.40
-        return cost
-    else
-        local end_index = target_index - 1
-        for i = 1, end_index do
-            if tostring(game_spells_lib.spells_list[i] and game_spells_lib.spells_list[i][6] or "0") == target_side then
-                local info = player_spells[tostring(i)]
-                local lvl = tonumber(info and info["2"]) or 0
-                if lvl < required_level then
-                    need_count = need_count + (required_level - lvl)
+    local target_level = level or (current_level + 1)
+    if target_level > 3 then return 0 end
+
+    local cost = 0
+
+    if target_level == 2 then
+        for i = 1, target_index - 1 do
+            local def = game_spells_lib.spells_list[i]
+            if tostring(def[6]) == target_side then
+                local aspect_name = def[1]
+                local aspect_level = 0
+
+                for j = 1, GetTableLng(player_spells) - 1 do
+                    local spell = player_spells[tostring(j)]
+                    if spell["1"] == aspect_name then
+                        aspect_level = tonumber(spell["2"]) or 0
+                        break
+                    end
+                end
+
+                if aspect_level < 2 then
+                    cost = cost + 500
                 end
             end
         end
 
-        local cost = need_count * 500 * 0.40
-        if cost < 500 then
-            cost = 500
+        cost = cost * (1 - discount_to_2)
+
+    elseif target_level == 3 then
+        -- Все аспекты, не прокачанные до 2
+        for _, def in ipairs(game_spells_lib.spells_list) do
+            if tostring(def[6]) == target_side then
+                local aspect_name = def[1]
+                local aspect_level = 0
+
+                for j = 1, GetTableLng(player_spells) - 1 do
+                    local spell = player_spells[tostring(j)]
+                    if spell["1"] == aspect_name then
+                        aspect_level = tonumber(spell["2"]) or 0
+                        break
+                    end
+                end
+
+                if aspect_level < 2 then
+                    cost = cost + 500
+                end
+            end
         end
-        return cost
+
+        -- Все ДО текущего, не прокачанные до 3
+        for i = 1, target_index - 1 do
+            local def = game_spells_lib.spells_list[i]
+            if tostring(def[6]) == target_side then
+                local aspect_name = def[1]
+                local aspect_level = 0
+
+                for j = 1, GetTableLng(player_spells) - 1 do
+                    local spell = player_spells[tostring(j)]
+                    if spell["1"] == aspect_name then
+                        aspect_level = tonumber(spell["2"]) or 0
+                        break
+                    end
+                end
+
+                if aspect_level < 3 then
+                    cost = cost + 500
+                end
+            end
+        end
+
+        cost = cost * (1 - discount_to_3)
+    end
+    if GameRules:IsCheatMode() and not GameRules.isTesting then
+       return -2 
     end
 
+    return math.max(500, math.floor(cost + 0.5)) -- округление до целого
 end
 
 function game_spells_lib:UpdatePlayerSpellCosts(player_id)
