@@ -69,9 +69,9 @@ if GameRules.MapSpeed ~= 4 then
                 "elf_spell_damage_gold_description_level_3_shop",
             }, 
             {
-                {"4%","8%","15%"},
-                {"30 min","30 min","30 min"},
-                {"15 min","15 min","15 min"},
+                {"10%","15%","20%"},
+                {"35 min","35 min","35 min"},
+                {"20 min","20 min","20 min"},
             },
             "0",
             "1",
@@ -86,8 +86,8 @@ if GameRules.MapSpeed ~= 4 then
                 "elf_spell_ms_description_level_2_shop",
             },
             {
-                {2,5,10},
-                {2,5,10},
+                {5,10,15},
+                {5,10,15},
             },
             "0",
             "1",
@@ -113,9 +113,11 @@ if GameRules.MapSpeed ~= 4 then
             "modifier_elf_spell_armor_wall", 
             {
                 "elf_spell_armor_wall_description_level_1_shop", 
+                "elf_spell_armor_wall_description_level_2_shop", 
             }, 
             {
-                {"4%","8%","12%"},
+                {"5%","10%","15%"},
+                {"1","1","1"},
             },
             "0",
             "1",
@@ -127,9 +129,11 @@ if GameRules.MapSpeed ~= 4 then
             "modifier_elf_spell_tower_damage", 
             {
                 "elf_spell_tower_damage_description_level_1_shop", 
+                "elf_spell_tower_damage_description_level_2_shop", 
             }, 
             {
-                {"4%","8%","12%"},
+                {"10%","15%","20%"},
+                {"1","1","1"},
             },
             "0",
             "1",
@@ -355,8 +359,8 @@ if GameRules.MapSpeed ~= 4 then
                 "elf_spell_reveal_description_level_2_shop", 
             }, 
             {
-                {30, 45, 60},
-                {200, 150, 150},
+                {45, 60, 90},
+                {150, 125, 100},
             },
             "0",
             "1",
@@ -870,7 +874,7 @@ else -- X4
                 "elf_spell_damage_gold_description_level_2_shop_x4", 
             }, 
             {
-                {"4%","8%","15%"},
+                {"10%","15%","20%"},
                 {"7 min","7 min","7 min"},
             },
             "0",
@@ -886,8 +890,8 @@ else -- X4
                 "elf_spell_ms_description_level_2_shop_x4",
             },
             {
-                {5,10,15},
-                {5,10,15},
+                {10,15,20},
+                {10,15,20},
             },
             "0",
             "1",
@@ -913,9 +917,11 @@ else -- X4
             "modifier_elf_spell_armor_wall_x4", 
             {
                 "elf_spell_armor_wall_description_level_1_shop_x4", 
+                "elf_spell_armor_wall_description_level_2_shop_x4", 
             }, 
             {
-                {"4%","8%","12%"},
+                {"5%","10%","15%"},
+                {"1","1","1"},
             },
             "0",
             "1",
@@ -927,9 +933,11 @@ else -- X4
             "modifier_elf_spell_tower_damage_x4", 
             {
                 "elf_spell_tower_damage_description_level_1_shop_x4", 
+                "elf_spell_tower_damage_description_level_2_shop_x4", 
             }, 
             {
-                {"4%","8%","12%"},
+                {"10%","15%","20%"},
+                {"1","1","1"},
             },
             "0",
             "1",
@@ -1142,8 +1150,8 @@ else -- X4
                 "elf_spell_reveal_description_level_2_shop_x4", 
             }, 
             {
-                {30, 45, 60},
-                {200, 150, 150},
+                {45, 60, 90},
+                {150, 125, 100},
             },
             "0",
             "1",

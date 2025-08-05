@@ -226,8 +226,8 @@ function trollnelves2:DamageFilter( kv )
     end
 
     if OwnHeroAtacker:HasModifier("modifier_elf_spell_damage_gold") and 
-    ((GameRules.MapSpeed == 1 and  GameRules:GetGameTime() - GameRules.startTime <= 1800) or 
-    (GameRules.MapSpeed == 2 and  GameRules:GetGameTime() - GameRules.startTime <= 900))
+    ((GameRules.MapSpeed == 1 and  GameRules:GetGameTime() - GameRules.startTime <= 2100) or 
+    (GameRules.MapSpeed == 2 and  GameRules:GetGameTime() - GameRules.startTime <= 1200))
     then
       if OwnHeroAtacker == OwnHeroKilled then
         return true
@@ -239,11 +239,11 @@ function trollnelves2:DamageFilter( kv )
         getGold[heroAttackerID] = 0
       end
 			if OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 1  then
-				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.08
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.10
 			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 2 then
-				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.12 
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.15 
 			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold"):GetStackCount() == 3 then
-				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.15
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.20
 			end
       local goldToGive = math.floor(getGold[heroAttackerID])
       if goldToGive >= 1 then
@@ -265,11 +265,11 @@ function trollnelves2:DamageFilter( kv )
         getGold[heroAttackerID] = 0
       end
 			if OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold_x4"):GetStackCount() == 1  then
-				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.08
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.10
 			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold_x4"):GetStackCount() == 2 then
-				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.12 
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.15 
 			elseif OwnHeroAtacker:FindModifierByName("modifier_elf_spell_damage_gold_x4"):GetStackCount() == 3 then
-				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.15
+				getGold[heroAttackerID] = getGold[heroAttackerID] + kv.damage * 0.20
 			end
       local goldToGive = math.floor(getGold[heroAttackerID])
       if goldToGive >= 1 then

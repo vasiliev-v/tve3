@@ -16,10 +16,10 @@ end
 
 function modifier_elf_spell_ms:GetModifierMoveSpeedBonus_Constant()
 	if self:GetStackCount() == 1 then 
-		return 2
-	elseif self:GetStackCount() == 2  then
 		return 5
-	elseif self:GetStackCount() == 3  then
+	elseif self:GetStackCount() == 2  then
 		return 10
+	elseif self:GetStackCount() == 3  then
+		return 15
 	else return 0 end
 end

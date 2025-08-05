@@ -530,7 +530,9 @@ function KillWispOnAttackTroll (event)
 			end
 		end	
 	end
-	caster:AddNewModifier(caster, nil, "modifier_troll_spell_ms_max", {Duration = time})
+	if string.match(target:GetUnitName(),"%a+") ~= "rock"  then
+		caster:AddNewModifier(caster, nil, "modifier_troll_spell_ms_max", {Duration = time})
+	end
 end
 
 function ExchangeLumber(event)
