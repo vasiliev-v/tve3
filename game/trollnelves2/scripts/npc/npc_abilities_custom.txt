@@ -19157,7 +19157,7 @@
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"elf_spell_reveal"
 	"MaxLevel"						"3"
-	"AbilityCooldown"				"200 150 150"
+	"AbilityCooldown"				"150 125 100"
 	
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
@@ -19175,7 +19175,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-			"duration"		  "30 45 60"
+			"duration"		  "45 60 90"
 
             "presence_radius" "999999"
         }
@@ -20936,7 +20936,7 @@
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"elf_spell_reveal"
 	"MaxLevel"						"3"
-	"AbilityCooldown"				"200 150 150"
+	"AbilityCooldown"				"150 125 100"
 	
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
@@ -20954,7 +20954,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-			"duration"		  "30 45 60"
+			"duration"		  "45 60 90"
 
             "presence_radius" "999999"
         }
