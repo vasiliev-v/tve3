@@ -365,14 +365,8 @@ function UpgradeSpell(info)
     {
         buy_cooldown = false
     })
-    let nextLvl = GetPlayerSpellLevel(info[1]) + 1
-    let cost = GetSpellCost(info[1], nextLvl)
-    let player_coins = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["0"]["1"]
-    if (player_coins && cost && player_coins >= cost)
-    {
-        buy_cooldown = true
-        GameEvents.SendCustomGameEventToServer("event_upgrade_spell", {spell_name: info[1]});
-    }
+    buy_cooldown = true
+    GameEvents.SendCustomGameEventToServer("event_upgrade_spell", {spell_name: info[1]});
     
 }
 
