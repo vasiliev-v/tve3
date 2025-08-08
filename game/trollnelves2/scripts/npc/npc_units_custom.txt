@@ -13146,7 +13146,7 @@
 
 		"AbilityLayout"				"4"
 		"Ability1" 					"repair"
-		"Ability2" 					""//"shredder_flamethrower"
+		"Ability2" 					"max_building_level"//"shredder_flamethrower"
 		"Ability3" 					"commit_suicide"
 		"Ability4" 					""
 		"Ability5"					""

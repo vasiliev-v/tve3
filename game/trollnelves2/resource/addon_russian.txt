@@ -2377,12 +2377,13 @@
 				
 		"troll_spell_vision"                            		 "Vision"
         "troll_spell_vision_description"                       "Пассивно: Увеличивает радиус обзора"
-        "modifier_troll_spell_vision_description_level_1"               "Vision Range +150"
-        "modifier_troll_spell_vision_description_level_2"               "Vision Range +225"
-        "modifier_troll_spell_vision_description_level_3"               "Vision Range +300"
+        "modifier_troll_spell_vision_description_level_1"               "Vision Range +150<br>Reveal +150"
+        "modifier_troll_spell_vision_description_level_2"               "Vision Range +225<br>Reveal +225"
+        "modifier_troll_spell_vision_description_level_3"               "Vision Range +300<br>Reveal +300"
 		"DOTA_Tooltip_modifier_troll_spell_vision"			 "Пассивно: Увеличивает радиус обзора"
 
 		"troll_spell_vision_description_level_1_shop"               "Vision Range"
+		"troll_spell_vision_description_level_2_shop"               "Reveal Range"
 				
 		"troll_spell_magic_resist"                            		 "Magic Resist"
         "troll_spell_magic_resist_description"                       "Пассивно: Увеличивает сопротивление магии"
@@ -2531,7 +2532,7 @@
         "modifier_troll_spell_invis_description_level_1"               "Duration: 20<br>CD: 60"
         "modifier_troll_spell_invis_description_level_2"               "Duration: 40<br>CD: 60"
         "modifier_troll_spell_invis_description_level_3"               "Duration: 60<br>CD: 60"
-		"DOTA_Tooltip_modifier_troll_spell_invis"			 "Активно: Делает невидимым"
+		"DOTA_Tooltip_modifier_troll_spell_invis"			 "Активно: Делает невидимым. Дает иммунитет к True Sight."
 
 		"troll_spell_invis_description_level_1_shop"               "Duration"
         "troll_spell_invis_description_level_2_shop"               "Cooldown"
@@ -2694,7 +2695,6 @@
         "modifier_elf_spell_tower_damage_description_level_3"               "Damage: 15%"
 		"DOTA_Tooltip_modifier_elf_spell_tower_damage"			 "Пассивное: Увеличивает урон башням"
 		"elf_spell_tower_damage_description_level_1_shop"               "Damage"
-		"elf_spell_tower_damage_description_level_2_shop"               "Min Damage"
 				
 		"elf_spell_limit_gold"                            		 "Gold Limit"
         "elf_spell_limit_gold_description"                       "Пассивное: Увеличивает максимальный лимит золота"
@@ -2747,16 +2747,16 @@
 		"elf_spell_damage_gold_description_level_3_shop"               "Max Time X2"
 				
 		"elf_spell_invis"                            		 "Invisible"
-        "elf_spell_invis_description"                       "Активное: Делает героя невидимым"
+        "elf_spell_invis_description"                       "Активное: Делает героя невидимым. Не раскрывает положение на миникарте."
         "modifier_elf_spell_invis_description_level_1"               "Duration: 15<br>Cast: 1<br>Cooldown: 350"
         "modifier_elf_spell_invis_description_level_2"               "Duration: 30<br>Cast: 0.8<br>Cooldown: 300"
         "modifier_elf_spell_invis_description_level_3"               "Duration: 60<br>Cast: 0.6<br>Cooldown: 300"
-		"DOTA_Tooltip_modifier_elf_spell_invis"			 "Активное: Делает героя невидимым"
+		"DOTA_Tooltip_modifier_elf_spell_invis"			 "Активное: Делает героя невидимым. Не раскрывает положение на миникарте."
 		"elf_spell_invis_description_level_1_shop"               "Duration"
 		"elf_spell_invis_description_level_2_shop"               "Cast"
 		"elf_spell_invis_description_level_3_shop"               "Cooldown"
 		"DOTA_Tooltip_ability_elf_spell_invis"                     "Invisible"
-		"DOTA_Tooltip_ability_elf_spell_invis_Description"         "Делает героя невидимым"
+		"DOTA_Tooltip_ability_elf_spell_invis_Description"         "Делает героя невидимым. Не раскрывает положение на миникарте."
 		"DOTA_Tooltip_ability_elf_spell_invis_duration"            "Duration: "
 		"DOTA_Tooltip_ability_elf_spell_invis_fade_time"           "Cast: "	
 			
@@ -2886,9 +2886,9 @@
 				
 		"elf_spell_reveal"                            		 "Global Reveal"
         "elf_spell_reveal_description"                       "Активное: Обнаруживает всех вражеских героев на карте"
-        "modifier_elf_spell_reveal_description_level_1"               "Duration: 45<br>Cooldown: 150"
-        "modifier_elf_spell_reveal_description_level_2"               "Duration: 60<br>Cooldown: 125"
-        "modifier_elf_spell_reveal_description_level_3"               "Duration: 90<br>Cooldown: 100"
+        "modifier_elf_spell_reveal_description_level_1"               "Duration: 45<br>Cooldown: 200"
+        "modifier_elf_spell_reveal_description_level_2"               "Duration: 60<br>Cooldown: 175"
+        "modifier_elf_spell_reveal_description_level_3"               "Duration: 90<br>Cooldown: 150"
 		"DOTA_Tooltip_modifier_elf_spell_reveal"			 "Активное: Обнаруживает всех вражеских героев на карте"
 		"elf_spell_reveal_description_level_1_shop"               "Duration"
 		"elf_spell_reveal_description_level_2_shop"               "Cooldown"
@@ -2949,12 +2949,13 @@
 
 		"troll_spell_armor_description_level_1_shop_x4"               "Armor"
 				
-        "modifier_troll_spell_vision_x4_description_level_1"               "Vision Range +150"
-        "modifier_troll_spell_vision_x4_description_level_2"               "Vision Range +225"
-        "modifier_troll_spell_vision_x4_description_level_3"               "Vision Range +300"
+        "modifier_troll_spell_vision_x4_description_level_1"               "Vision Range +150<br>Reveal +150"
+        "modifier_troll_spell_vision_x4_description_level_2"               "Vision Range +225<br>Reveal +150"
+        "modifier_troll_spell_vision_x4_description_level_3"               "Vision Range +300<br>Reveal +150"
 		"DOTA_Tooltip_modifier_troll_spell_vision_x4"			 "Пассивно: Увеличивает радиус обзора"
 
 		"troll_spell_vision_description_level_1_shop_x4"               "Vision Range"
+		"troll_spell_vision_description_level_1_shop_x4"               "Reveal Range"
 				
 		"troll_spell_magic_resist"                            		 "Magic Resist"
         "troll_spell_magic_resist_description"                       "Пассивно: Увеличивает сопротивление магии"
@@ -3083,7 +3084,7 @@
         "modifier_troll_spell_invis_x4_description_level_1"               "Duration: 20<br>CD: 60"
         "modifier_troll_spell_invis_x4_description_level_2"               "Duration: 40<br>CD: 60"
         "modifier_troll_spell_invis_x4_description_level_3"               "Duration: 60<br>CD: 60"
-		"DOTA_Tooltip_modifier_troll_spell_invis_x4"			 "Активно: Делает невидимым"
+		"DOTA_Tooltip_modifier_troll_spell_invis_x4"			 "Активно: Делает невидимым. Дает иммунитет к True Sight."
 
 		"troll_spell_invis_description_level_1_shop_x4"               "Duration"
         "troll_spell_invis_description_level_2_shop_x4"               "Cooldown"
@@ -3215,7 +3216,6 @@
         "modifier_elf_spell_tower_damage_x4_description_level_3"               "Damage: 15%"
 		"DOTA_Tooltip_modifier_elf_spell_tower_damage_x4"			 "Пассивное: Увеличивает урон башням"
 		"elf_spell_tower_damage_description_level_1_shop_x4"               "Damage"
-		"elf_spell_tower_damage_description_level_2_shop_x4"               "Min Damage"
 
         "modifier_elf_spell_limit_gold_x4_description_level_1"               "Gold Limit: 200k"
         "modifier_elf_spell_limit_gold_x4_description_level_2"               "Gold Limit: 350k"
@@ -3257,12 +3257,12 @@
         "modifier_elf_spell_invis_x4_description_level_1"               "Duration: 15<br>Cast: 1<br>Cooldown: 350"
         "modifier_elf_spell_invis_x4_description_level_2"               "Duration: 30<br>Cast: 0.8<br>Cooldown: 300"
         "modifier_elf_spell_invis_x4_description_level_3"               "Duration: 60<br>Cast: 0.6<br>Cooldown: 300"
-		"DOTA_Tooltip_modifier_elf_spell_invis_x4"			 "Активное: Делает героя невидимым"
+		"DOTA_Tooltip_modifier_elf_spell_invis_x4"			 "Активное: Делает героя невидимым. Не раскрывает положение на миникарте."
 		"elf_spell_invis_description_level_1_shop_x4"               "Duration"
 		"elf_spell_invis_description_level_2_shop_x4"               "Cast"
 		"elf_spell_invis_description_level_3_shop_x4"               "Cooldown"
 		"DOTA_Tooltip_ability_elf_spell_invis_x4"                     "Invisible"
-		"DOTA_Tooltip_ability_elf_spell_invis_x4_Description"         "Делает героя невидимым"
+		"DOTA_Tooltip_ability_elf_spell_invis_x4_Description"         "Делает героя невидимым. Не раскрывает положение на миникарте."
 		"DOTA_Tooltip_ability_elf_spell_invis_x4_duration"            "Duration: "
 		"DOTA_Tooltip_ability_elf_spell_invis_x4_fade_time"           "Cast: "	
 			

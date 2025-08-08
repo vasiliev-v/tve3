@@ -129,11 +129,9 @@ if GameRules.MapSpeed ~= 4 then
             "modifier_elf_spell_tower_damage", 
             {
                 "elf_spell_tower_damage_description_level_1_shop", 
-                "elf_spell_tower_damage_description_level_2_shop", 
             }, 
             {
                 {"5%","10%","15%"},
-                {"1","1","1"},
             },
             "0",
             "1",
@@ -509,8 +507,10 @@ if GameRules.MapSpeed ~= 4 then
             "modifier_troll_spell_vision", 
             {
                 "troll_spell_vision_description_level_1_shop", 
+                "troll_spell_vision_description_level_2_shop", 
             }, 
             {
+                {150,225,300},
                 {150,225,300},
             },
             "1",
@@ -933,11 +933,9 @@ else -- X4
             "modifier_elf_spell_tower_damage_x4", 
             {
                 "elf_spell_tower_damage_description_level_1_shop_x4", 
-                "elf_spell_tower_damage_description_level_2_shop_x4", 
             }, 
             {
                 {"5%","10%","15%"},
-                {"1","1","1"},
             },
             "0",
             "1",
@@ -1306,8 +1304,10 @@ else -- X4
             "modifier_troll_spell_vision_x4", 
             {
                 "troll_spell_vision_description_level_1_shop_x4", 
+                "troll_spell_vision_description_level_2_shop_x4", 
             }, 
             {
+                {150,225,300},
                 {150,225,300},
             },
             "1",
@@ -2149,9 +2149,13 @@ function game_spells_lib:event_upgrade_spell(data)
     local coins = tonumber(CustomNetTables:GetTableValue("Shop", tostring(player_id))["0"]["1"])
    
     local upgrade_info = game_spells_lib:PlayerUpgradeSpellSelected(player_id, spell_name)
+    local coint = CustomNetTables:GetTableValue("Shop", tostring(player_id))["0"]["1"]
 
     if upgrade_info then
-
+        if tonumber(coint) < cost then
+            print("Нет денег")
+            return
+        end
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(player_id))
         PoolTable["12"][tostring(upgrade_info[4])] = upgrade_info
         CustomNetTables:SetTableValue("Shop", tostring(player_id), PoolTable)

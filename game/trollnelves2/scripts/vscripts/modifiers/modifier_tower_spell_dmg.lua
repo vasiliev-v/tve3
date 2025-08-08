@@ -23,5 +23,5 @@ function  modifier_tower_spell_dmg:GetModifierPreAttack_BonusDamage()
 	elseif self:GetStackCount() == 3  then
 		percent = 0.15
 	end
-	return self:GetParent():GetDamageMax() * percent + 1
+	return math.floor(self:GetParent():GetDamageMax() * percent + 0.5)
 end

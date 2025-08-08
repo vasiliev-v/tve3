@@ -353,7 +353,26 @@ function RevealArea( event )
 	local status, nextCall = Error_debug.ErrorCheck(function() 
 		local caster = event.caster
 		local point = event.target_points[1]
+		if caster:HasModifier("modifier_troll_spell_vision")  then
+			if caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount() == 1  then
+				event.Radius = event.Radius + 150
+			elseif caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount() == 2 then
+				event.Radius = event.Radius + 225
+			elseif caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount() == 3 then
+				event.Radius = event.Radius + 300
+			end
+		end
+		if caster:HasModifier("modifier_troll_spell_vision_x4")  then
+			if caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount() == 1  then
+				event.Radius = event.Radius + 150
+			elseif caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount() == 2 then
+				event.Radius = event.Radius + 225
+			elseif caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount() == 3 then
+				event.Radius = event.Radius + 300
+			end
+		end
 		local visionRadius = string.match(GetMapName(),"1x1") and event.Radius*0.32 or string.match(GetMapName(),"arena") and event.Radius*0.58 or event.Radius
+		
 		local visionDuration = event.Duration
 		AddFOWViewer(caster:GetTeamNumber(), point, visionRadius, visionDuration, false)
 		local timeElapsed = 0

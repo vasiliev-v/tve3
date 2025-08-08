@@ -7894,7 +7894,11 @@
 		"MaxLevel"						"1"
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"  "particles/scan_particle.vpcf"
 
+		}
 		"AbilityValues"
         {
             "radius1" "2400"
@@ -7956,7 +7960,7 @@
 					
 					"AttachEffect"
 					{
-						"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
+						"EffectName"		"particles/scan_particle.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"			"TARGET"
 						"ControlPoints"
@@ -18467,6 +18471,8 @@
 			"States"
 			{
 				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED" 
+				"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+				
 			}
 
 			"Properties"
@@ -19153,11 +19159,11 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY "
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"elf_spell_reveal"
 	"MaxLevel"						"3"
-	"AbilityCooldown"				"150 125 100"
+	"AbilityCooldown"				"200 175 150"
 	
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
@@ -20246,6 +20252,7 @@
 			"States"
 			{
 				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED" 
+				"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 
 			"Properties"
