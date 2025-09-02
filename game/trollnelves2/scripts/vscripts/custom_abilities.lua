@@ -353,6 +353,7 @@ function RevealArea( event )
 	local status, nextCall = Error_debug.ErrorCheck(function() 
 		local caster = event.caster
 		local point = event.target_points[1]
+
 		if caster:HasModifier("modifier_troll_spell_vision")  then
 			if caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount() == 1  then
 				event.Radius = event.Radius + 150
@@ -362,6 +363,7 @@ function RevealArea( event )
 				event.Radius = event.Radius + 300
 			end
 		end
+
 		if caster:HasModifier("modifier_troll_spell_vision_x4")  then
 			if caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount() == 1  then
 				event.Radius = event.Radius + 150
@@ -371,34 +373,50 @@ function RevealArea( event )
 				event.Radius = event.Radius + 300
 			end
 		end
-		local visionRadius = string.match(GetMapName(),"1x1") and event.Radius*0.32 or string.match(GetMapName(),"arena") and event.Radius*0.58 or event.Radius
-		
-		local visionDuration = event.Duration
-		AddFOWViewer(caster:GetTeamNumber(), point, visionRadius, visionDuration, false)
-		local timeElapsed = 0
-		--local unit = CreateUnitByName("npc_dota_units_base_reveal", point , true, nil, nil, caster:GetTeamNumber())
 
-		--unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-    	--unit:AddNewModifier(unit, nil, "modifier_phased", {})
-		--unit:AddNewModifier(unit, nil, "modifier_invisible", {})
-		--unit:AddNewModifier(unit, nil, "modifier_invisible_truesight_immune", {})
-		--unit:AddNewModifier(unit, nil, "modifier_kill", {duration = visionDuration})
-		--unit:SetDayTimeVisionRange(visionRadius)
-		--unit:SetNightTimeVisionRange(visionRadius)
+		local visionRadius = string.match(GetMapName(),"1x1") and event.Radius*0.32
+			or string.match(GetMapName(),"arena") and event.Radius*0.58
+			or event.Radius
+
+		local visionDuration = event.Duration
+
+		-- === ПАРТИКЛ ИЗ KV: "particles/scan_particle.vpcf" ===
+		-- Аналог "EffectAttachType" "follow_origin": здесь точка на земле, поэтому WORLDORIGIN.
+		local particle = ParticleManager:CreateParticle(
+			"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf",
+			PATTACH_WORLDORIGIN,
+			nil
+		)
+		-- CP0 — позиция эффекта (аналог "Target" "TARGET" + follow_origin)
+		ParticleManager:SetParticleControl(particle, 0, point)
+		-- CP1 — радиус (замена %radius1)
+		ParticleManager:SetParticleControl(particle, 1, Vector(visionRadius, visionRadius, visionRadius))
+
+		-- Удаляем партикл по завершении действия
+		Timers:CreateTimer(visionDuration, function()
+			if particle then
+				ParticleManager:DestroyParticle(particle, false)
+				ParticleManager:ReleaseParticleIndex(particle)
+			end
+		end)
+		-- === конец блока партикла ===
+
+		-- Вижн
+		AddFOWViewer(caster:GetTeamNumber(), point, visionRadius, visionDuration, false)
+
+		-- Разовые эффекты в зоне
+		local timeElapsed = 0
 		Timers:CreateTimer(0.03,function()
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), point , nil, visionRadius , DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL  , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
+			local units = FindUnitsInRadius(
+				caster:GetTeamNumber(), point , nil, visionRadius,
+				DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL,
+				DOTA_UNIT_TARGET_FLAG_NONE, 0 , false
+			)
 			for _,unit in pairs(units) do
 				if unit ~= nil then
-					if unit:HasModifier("modifier_invisible") and not unit:HasModifier("modifier_invisible_truesight_immune") then -- 
+					if unit:HasModifier("modifier_invisible") and not unit:HasModifier("modifier_invisible_truesight_immune") then
 						unit:RemoveModifierByName("modifier_invisible")
 					end
-					if unit:GetUnitName() == "event_boss_halloween" or unit:GetUnitName() == "event_line_boss_halloween" then 
-						unit:AddNewModifier(unit, unit, "modifier_invisible_truesight_immune", {Duration = 60})
-					end
-
-					--if not unit:HasModifier("modifier_all_vision") then
-					--	unit:AddNewModifier(unit, unit, "modifier_all_vision", {duration=5})
-					--end
 				end
 			end
 			timeElapsed = timeElapsed + 0.03
@@ -408,6 +426,7 @@ function RevealArea( event )
 		end)
 	end)
 end
+
 
 function TeleportTo (event)
 	local caster = event.caster

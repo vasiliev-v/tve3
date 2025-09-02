@@ -340,9 +340,15 @@ if GameRules.MapSpeed ~= 4 then
             "modifier_elf_spell_true", 
             {
                 "elf_spell_true_description_level_1_shop", 
+                "elf_spell_true_description_level_2_shop", 
+                "elf_spell_true_description_level_3_shop", 
+                "elf_spell_true_description_level_4_shop", 
             }, 
             {
-                {200, 250, 300}, 
+                {300, 600, 900}, 
+                {3, 5, 7}, 
+                {300, 240, 180}, 
+                {300, 300, 300}, 
             },
             "0",
             "1",
@@ -357,7 +363,7 @@ if GameRules.MapSpeed ~= 4 then
                 "elf_spell_reveal_description_level_2_shop", 
             }, 
             {
-                {45, 60, 90},
+                {45, 60, 75},
                 {150, 125, 100},
             },
             "0",
@@ -592,22 +598,6 @@ if GameRules.MapSpeed ~= 4 then
             {0, 10000, 30000}
         },
         {
-            "troll_spell_invis",
-            "troll_spell_invis", 
-            "modifier_troll_spell_invis", 
-            {
-                "troll_spell_invis_description_level_1_shop", 
-                "troll_spell_invis_description_level_2_shop", 
-            }, 
-            {
-                {20,40,60},
-                {60,60,60},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
-        {
             "troll_spell_silence_target",
             "troll_spell_silence_target", 
             "modifier_troll_spell_silence_target", 
@@ -807,6 +797,22 @@ if GameRules.MapSpeed ~= 4 then
             {
                 {1,2,3},
                 {300,250,200},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_invis",
+            "troll_spell_invis", 
+            "modifier_troll_spell_invis", 
+            {
+                "troll_spell_invis_description_level_1_shop", 
+                "troll_spell_invis_description_level_2_shop", 
+            }, 
+            {
+                {2.5, 3, 5 },
+                {80, 70, 60},
             },
             "1",
             "1",
@@ -1161,9 +1167,13 @@ else -- X4
             "modifier_elf_spell_true_x4", 
             {
                 "elf_spell_true_description_level_1_shop_x4", 
+                "elf_spell_true_description_level_2_shop_x4", 
+                "elf_spell_true_description_level_3_shop_x4", 
             }, 
             {
-                {200, 250, 300}, 
+                {300, 600, 900}, 
+                {3, 5, 7}, 
+                {150, 120, 100}, 
             },
             "0",
             "1",
@@ -1389,22 +1399,6 @@ else -- X4
             {0, 10000, 30000}
         },
         {
-            "troll_spell_invis",
-            "troll_spell_invis", 
-            "modifier_troll_spell_invis_x4", 
-            {
-                "troll_spell_invis_description_level_1_shop_x4", 
-                "troll_spell_invis_description_level_2_shop_x4", 
-            }, 
-            {
-                {20,40,60},
-                {60,60,60},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
-        {
             "troll_spell_silence_target",
             "troll_spell_silence_target", 
             "modifier_troll_spell_silence_target_x4", 
@@ -1604,6 +1598,22 @@ else -- X4
             {
                 {1,2,3},
                 {300,240,180},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_invis",
+            "troll_spell_invis", 
+            "modifier_troll_spell_invis_x4", 
+            {
+                "troll_spell_invis_description_level_1_shop_x4", 
+                "troll_spell_invis_description_level_2_shop_x4", 
+            }, 
+            {
+                {2.5, 3, 5 },
+                {80, 70, 60},
             },
             "1",
             "1",
@@ -2152,7 +2162,7 @@ function game_spells_lib:event_upgrade_spell(data)
     local coint = CustomNetTables:GetTableValue("Shop", tostring(player_id))["0"]["1"]
 
     if upgrade_info then
-        if tonumber(coint) < cost then
+        if not GameRules:IsCheatMode() and tonumber(coint) < cost then
             print("Нет денег")
             return
         end

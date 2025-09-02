@@ -23,3 +23,42 @@ function modifier_troll_spell_magic_resist:GetModifierMagicalResistanceBonus()
 		return 20
 	else return 0 end
 end
+
+function modifier_troll_spell_magic_resist:OnCreated( kv )
+	if IsServer() then
+		local hero = self:GetParent()
+		local countStack = self:GetStackCount()
+		if countStack == 0 then
+			countStack = 1
+		end
+		--hero:AddAbility("troll_spell_magic_resist")
+		--local abil = hero:FindAbilityByName("troll_spell_magic_resist")
+		--abil:SetLevel(countStack)
+	end
+end
+
+function modifier_troll_spell_magic_resist:OnDestroy( kv )
+	if IsServer() then
+		local hero = self:GetParent()
+		--hero:RemoveAbility("troll_spell_magic_resist")
+	end
+end
+
+function modifier_troll_spell_magic_resist:OnRefresh( kv )
+	if IsServer() then
+		local hero = self:GetParent()
+		local abil = hero:FindAbilityByName("troll_spell_magic_resist")
+		local countStack = hero:FindModifierByName("modifier_troll_spell_magic_resist"):GetStackCount()
+		abil:SetLevel(countStack)
+	end
+end
+
+function modifier_troll_spell_magic_resist:OnStackCountChanged()
+	if IsServer() then
+		local hero = self:GetParent()
+		local abil = hero:FindAbilityByName("troll_spell_magic_resist")
+		local countStack = hero:FindModifierByName("modifier_troll_spell_magic_resist"):GetStackCount()
+		abil:SetLevel(countStack)
+	end
+end
+
