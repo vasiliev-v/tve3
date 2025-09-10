@@ -8400,7 +8400,7 @@
 		"AbilityChannelTime"		"4"//"3"
 		"AbilityValues"
         {
-            "gold_cost" "16"
+            "gold_cost" "8"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8442,7 +8442,7 @@
 		"UnitName"						"worker_1_2"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8471,7 +8471,7 @@
 		"UnitName"						"worker_1_3"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8499,7 +8499,7 @@
 		"UnitName"						"worker_1_4"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8528,7 +8528,7 @@
 		"UnitName"						"worker_2"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8554,7 +8554,7 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "192"
+            "gold_cost" "96"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8600,7 +8600,7 @@
 		"UnitName"						"worker_2_2"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8629,7 +8629,7 @@
 		"UnitName"						"worker_2_3"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8658,7 +8658,7 @@
 		"UnitName"						"worker_2_4"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8687,7 +8687,7 @@
 		"UnitName"						"worker_3"
 		"AbilityValues"
         {
-            "gold_cost" "128"
+            "gold_cost" "64"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
