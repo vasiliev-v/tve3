@@ -86,6 +86,7 @@ function map_system:SetVotesMap(data)
         table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
 
         CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", table_votes)
+
         if string.match(GetMapName(),"1x1") and PlayerResource:GetTeam(data.PlayerID) == DOTA_TEAM_BADGUYS then
                 BuildingHelper:UpdateMapStage()
                 setup_state_lib:SetNextStage()

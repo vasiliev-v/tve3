@@ -909,33 +909,41 @@ PrecacheResource("model", "models/heroes/hoodwink/hoodwink_hood.vmdl", context)
 PrecacheResource("model", "models/heroes/luna/luna_shield.vmdl", context)
 
 PrecacheResource("particle", "particles/bloode_ground_child.vpcf", context) 
-	PrecacheResource("particle", "particles/bloody_ground.vpcf", context) 
-	PrecacheResource("particle", "particles/build_place.vpcf", context) 
-	PrecacheResource("particle", "particles/pulsation_ground.vpcf", context) 
+PrecacheResource("particle", "particles/bloody_ground.vpcf", context) 
+PrecacheResource("particle", "particles/build_place.vpcf", context) 
+PrecacheResource("particle", "particles/pulsation_ground.vpcf", context) 
 
 
-	PrecacheResource("soundfile","soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts",context)
-    PrecacheResource("soundfile","soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts",context)
+PrecacheResource("soundfile","soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts",context)
+PrecacheResource("soundfile","soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts",context)
 
-	-- PrecacheResource("soundfile", "soundevents/game_sounds_birzha.vsndevts", context) 
-	PrecacheResource("soundfile", "soundevents/game_sounds_birzha_new.vsndevts", context) 
+-- PrecacheResource("soundfile", "soundevents/game_sounds_birzha.vsndevts", context) 
+PrecacheResource("soundfile", "soundevents/game_sounds_birzha_new.vsndevts", context) 
 
-    PrecacheModel("models/heroes/lycan/lycan_fur.vmdl", context)
-    PrecacheModel("models/heroes/lycan/lycan_armor.vmdl", context)
-    PrecacheModel("models/heroes/lycan/lycan_blades.vmdl", context)
-    PrecacheModel("models/heroes/lycan/lycan_belt.vmdl", context)
-    PrecacheModel("models/heroes/lycan/lycan_head.vmdl", context)
+PrecacheModel("models/heroes/lycan/lycan_fur.vmdl", context)
+PrecacheModel("models/heroes/lycan/lycan_armor.vmdl", context)
+PrecacheModel("models/heroes/lycan/lycan_blades.vmdl", context)
+PrecacheModel("models/heroes/lycan/lycan_belt.vmdl", context)
+PrecacheModel("models/heroes/lycan/lycan_head.vmdl", context)
 
-	PrecacheModel("models/heroes/crystal_maiden/crystal_maiden.vmdl", context)
-    PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_staff.vmdl", context)
-    PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_cape.vmdl", context)
-    PrecacheModel("models/items/crystal_maiden/magnolia_arms/magnolia_arms.vmdl", context)
-    PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_shoulders.vmdl", context)
-	PrecacheModel("models/items/crystal_maiden/magnolia_head/magnolia_head.vmdl", context)
+PrecacheModel("models/heroes/crystal_maiden/crystal_maiden.vmdl", context)
+PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_staff.vmdl", context)
+PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_cape.vmdl", context)
+PrecacheModel("models/items/crystal_maiden/magnolia_arms/magnolia_arms.vmdl", context)
+PrecacheModel("models/heroes/crystal_maiden/crystal_maiden_shoulders.vmdl", context)
+PrecacheModel("models/items/crystal_maiden/magnolia_head/magnolia_head.vmdl", context)
 
-    PrecacheResource("particle", "particles/units/heroes/hero_lycan/lycan_feral_impulse.vpcf", context)
-    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts", context)
+PrecacheResource("particle", "particles/units/heroes/hero_lycan/lycan_feral_impulse.vpcf", context)
+PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts", context)
 
+PrecacheResource("particle", "particles/scan_particle.vpcf", context)
+PrecacheResource("particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf", context)
+PrecacheResource("particle", "particles/items_fx/linensphere.vpcf", context)	
+PrecacheResource("particle", "particles/items_fx/immunity_sphere.vpcf", context)	
+
+
+
+	
 	PrecacheWearableModels(context)
 
 
@@ -989,7 +997,7 @@ function Activate()
 	GameRules.GetRep = {}
 	GameRules.GetXpBP = {} 
 	GameRules.isTesting = false
-	GameRules.server =  "https://localhost:7133/test/"-- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
+	GameRules.server =  "https://tve4.eu/test/" -- "https://localhost:7133/test/" -- "https://localhost:5001/test/"  --  "https://tve4.eu/test/" -- "https://tve3.us/test/"
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
 	GameRules.types = {}

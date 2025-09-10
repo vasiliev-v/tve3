@@ -59,18 +59,6 @@
 						"EffectName"	"hero_bloodseeker.bloodRite"
 						"Target"		"TARGET"
 					}
-					
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-						"ControlPoints"
-						{
-							"00" "0 0 0"
-							"01" "%radius1 %radius1 %radius1"
-						}
-					}
 				}
 			}
 		}

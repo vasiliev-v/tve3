@@ -7957,18 +7957,6 @@
 						"EffectName"	"hero_bloodseeker.bloodRite"
 						"Target"		"TARGET"
 					}
-					
-					"AttachEffect"
-					{
-						"EffectName"		"particles/scan_particle.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-						"ControlPoints"
-						{
-							"00" "0 0 0"
-							"01" "%radius1 %radius1 %radius1"
-						}
-					}
 				}
 			}
 		}
@@ -8412,7 +8400,7 @@
 		"AbilityChannelTime"		"4"//"3"
 		"AbilityValues"
         {
-            "gold_cost" "16"
+            "gold_cost" "8"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8454,7 +8442,7 @@
 		"UnitName"						"worker_1_2"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8483,7 +8471,7 @@
 		"UnitName"						"worker_1_3"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8511,7 +8499,7 @@
 		"UnitName"						"worker_1_4"
 		"AbilityValues"
         {
-            "gold_cost" "32"
+            "gold_cost" "16"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8540,7 +8528,7 @@
 		"UnitName"						"worker_2"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8566,7 +8554,7 @@
 		
 		"AbilityValues"
         {
-            "gold_cost" "192"
+            "gold_cost" "96"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8612,7 +8600,7 @@
 		"UnitName"						"worker_2_2"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8641,7 +8629,7 @@
 		"UnitName"						"worker_2_3"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8670,7 +8658,7 @@
 		"UnitName"						"worker_2_4"
 		"AbilityValues"
         {
-            "gold_cost" "64"
+            "gold_cost" "32"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8699,7 +8687,7 @@
 		"UnitName"						"worker_3"
 		"AbilityValues"
         {
-            "gold_cost" "128"
+            "gold_cost" "64"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -17933,7 +17921,7 @@
 		"ScriptFile"				    "abilities/troll_spell_invis"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"troll_spell_invis"
-		"AbilityCooldown"				"60"//"30"
+		"AbilityCooldown"				"80 70 60"//"30"
 		"MaxLevel"						"3"
 
 		"precache"
@@ -17943,7 +17931,7 @@
 
 		"AbilityValues"
         {
-            "duration" "20 40 60"
+            "duration" "2.5 3 5"
         }
 	}
 
@@ -18298,80 +18286,119 @@
 	}
 
 
-	"elf_spell_true"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"    		"elf_spell_true"
-		"MaxLevel"						"3"
+// elf_spell_true - активка как Dust
+"elf_spell_true"
+{
+	"BaseClass"               "ability_datadriven"
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"AbilityTextureName"      "elf_spell_true"
+	"MaxLevel"                "3"
 
-		"OnCreated"{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_elf_spell_true_sight_datadriven"
-				"Target"				"CASTER"
-			}
-		}
-		"OnOwnerDied"{
-			"RemoveModifier"{
-				"ModifierName"			"modifier_elf_spell_true_sight_datadriven"
-			}
-		}
-		
-		"AbilityValues"
-        {
-            "radius_true" "200 250 300"
-        }
+	// Балансные параметры
+	"AbilityCooldown"         "300 240 180"                
+	"AbilityManaCost"         "0"
+	"AbilityCastPoint"        "0.0"
 
-		"Modifiers"
+	"precache"
+	{
+		"particle"  "particles/items_fx/dust_of_appearance.vpcf"
+		"particle"  "particles/items_fx/dust_of_appearance_true_sight.vpcf"
+	}
+
+	"AbilityValues"
+	{
+		"radius_true"          "300 600 900"        // классический радиус Dust
+		"reveal_duration"      "3 5 7"              // длительность раскрытия
+	}
+
+	// Основное действие — один раз при прожатии
+	"OnSpellStart"
+	{
+		// Эффект и звук кастера (опционально подставь свои pfx/snd)
+		"FireSound"
 		{
-			"modifier_elf_spell_true_sight_datadriven"
+			"EffectName"       "DOTA_Item.DustOfAppearance.Activate"
+			"Target"           "CASTER"
+		}
+		"FireEffect"
+		{
+			"Target"           "CASTER"
+			"EffectName"       "particles/items_fx/dust_of_appearance.vpcf"
+			"EffectAttachType"	"attach_origin"
+			"ControlPoints"
 			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-		
-				"ThinkInterval"  "0.03"
-				"OnIntervalThink"
-				{
-					"ActOnTargets"
-					{
-						"Target"
-						{
-							"Center"  	"CASTER"
-							"Radius" 	"%radius_true"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_ALL"
-						}
-					
-						"Action"    
-						{
-							"RemoveModifier"
-							{
-								"ModifierName"	"modifier_elf_spell_true_sight_reveal"
-								"Target" 		"TARGET"
-							}
-
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_elf_spell_true_sight_reveal"
-								"Target" 		"TARGET"
-							}
-						}
-					}			
-				}		
+				"01"    "%radius_true %radius_true %radius_true"
 			}
 
-			"modifier_elf_spell_true_sight_reveal"
+		}
+
+		// Наложить дебафф «раскрыт» на всех врагов в радиусе
+		"ActOnTargets"
+		{
+			"Target"
 			{
-				"IsHidden"			"1"
-				"Priority"                     "MODIFIER_PRIORITY_ULTRA"
-				"Duration"			"0.1"	//The True Sight effect lingers for 0.1 seconds.
-				"States"
+				"Center"        "CASTER"
+				"Radius"        "%radius_true"
+				"Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags"         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES" // Dust видит и БКБшных
+			}
+			"Action"
+			{
+				"ApplyModifier"
 				{
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+					"ModifierName" "modifier_elf_spell_true_sight_reveal"
+					"Target"       "TARGET"
+					"Duration"     "%reveal_duration"
+				}
+
+				// Необязательно: маленькая пыль на цели
+				"FireEffect"
+				{
+					"Target"       "TARGET"
+					"EffectName"   "particles/items_fx/dust_of_appearance_true_sight.vpcf"
+					"EffectAttachType"	"attach_origin"
 				}
 			}
-		}		
+		}
 	}
+
+	"Modifiers"
+	{
+		// Дебафф раскрытия как у Dust
+		"modifier_elf_spell_true_sight_reveal"
+		{
+			"IsHidden"        "0"
+			"IsDebuff"        "1"
+			"IsPurgable"      "1"                        // в ваниле Dust можно диспелить сильным диспелом
+			"Attributes"      "MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Priority"        "MODIFIER_PRIORITY_ULTRA"
+
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE" "MODIFIER_STATE_VALUE_DISABLED" // снимает инвиз/не даёт войти
+			}
+
+			// (Опционально) замедление, если хочешь как у старого Dust
+			// "Properties"
+			// {
+			//     "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-20"
+			// }
+
+			// Периодический «пинг» — актуализирует состояние (если юнит пытается снова уйти в инвиз)
+			"ThinkInterval"  "0.25"
+			"OnIntervalThink"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName" "modifier_invisible"
+					"Target"       "TARGET"
+				}
+			}
+		}
+	}
+}
+
 	
 	"elf_spell_invis"
 {
@@ -18380,7 +18407,7 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	"AbilityTextureName"			"elf_spell_invis"
-
+	"MaxLevel"						"3"
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCooldown"				"350 300 300"
@@ -18389,7 +18416,7 @@
 	// Cost
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityManaCost"				"0"
-	
+	 
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
 
@@ -18427,6 +18454,12 @@
 			"ModifierName"	"modifier_wind_walk_fade"
 			"Duration"		"%fade_time"
 		}
+		"ApplyModifier"
+		{
+			"Target"		"CASTER"
+			"ModifierName"	"modifier_wind_walk"
+			"Duration"		"%duration"
+		}
 	}
 
 	"Modifiers"
@@ -18450,47 +18483,9 @@
 
 		"modifier_wind_walk"
 		{
-			"OnAttackLanded"
-			{
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
-					"ModifierName"	"modifier_invisible"
-				}
-			}
-
-			"OnAbilityExecuted"
-			{
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
-					"ModifierName"	"modifier_invisible"
-				}
-			}
-
 			"States"
 			{
-				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED" 
 				"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
-				
-			}
-
-			"Properties"
-			{
-			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus_pct" 
-			}
-
-			"OnDestroy"
-			{
-				"RemoveModifier"
-				{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-					}
-					"ModifierName"	"modifier_invisible"
-				}
 			}
 		}
 	}
@@ -18590,7 +18585,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"			"elf_spell_evasion"
-
+	"MaxLevel"						"3"
 	// Precache
 	"precache"
 	{
@@ -18686,7 +18681,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"			"elf_spell_target_buff"
-
+	"MaxLevel"						"3"
 	// Precache
 	"precache"
 	{
@@ -18787,7 +18782,7 @@
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityTextureName"			"elf_spell_target_damage"
-
+	"MaxLevel"						"3"
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
 	"precache"
@@ -18887,7 +18882,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"		"elf_spell_teleport"
-
+	"MaxLevel"						"3"
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"0" // ?? global
@@ -19181,7 +19176,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-			"duration"		  "45 60 90"
+			"duration"		  "45 60 75"
 
             "presence_radius" "999999"
         }
@@ -19714,7 +19709,7 @@
 		"ScriptFile"				    "abilities/troll_spell_invis_x4"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"troll_spell_invis"
-		"AbilityCooldown"				"60"//"30"
+		"AbilityCooldown"				"80 70 60"//"30"
 		"MaxLevel"						"3"
 
 		"precache"
@@ -19724,7 +19719,7 @@
 
 		"AbilityValues"
         {
-            "duration" "20 40 60"
+            "duration" "2.5 3 5"
         }
 	}
 
@@ -20079,80 +20074,117 @@
 	}
 
 
-	"elf_spell_true_x4"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"    		"elf_spell_true"
-		"MaxLevel"						"3"
+"elf_spell_true_x4"
+{
+	"BaseClass"               "ability_datadriven"
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"AbilityTextureName"      "elf_spell_true"
+	"MaxLevel"                "3"
 
-		"OnCreated"{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_elf_spell_true_sight_datadriven"
-				"Target"				"CASTER"
-			}
-		}
-		"OnOwnerDied"{
-			"RemoveModifier"{
-				"ModifierName"			"modifier_elf_spell_true_sight_datadriven"
-			}
-		}
-		
-		"AbilityValues"
-        {
-            "radius_true" "200 250 300"
-        }
+	// Балансные параметры
+	"AbilityCooldown"         "150 120 100"                
+	"AbilityManaCost"         "0"
+	"AbilityCastPoint"        "0.0"
 
-		"Modifiers"
+	"precache"
+	{
+		"particle"  "particles/items_fx/dust_of_appearance.vpcf"
+		"particle"  "particles/items_fx/dust_of_appearance_true_sight.vpcf"
+	}
+
+	"AbilityValues"
+	{
+		"radius_true"          "300 600 900"        // классический радиус Dust
+		"reveal_duration"      "3 5 7"              // длительность раскрытия
+	}
+
+	// Основное действие — один раз при прожатии
+	"OnSpellStart"
+	{
+		// Эффект и звук кастера (опционально подставь свои pfx/snd)
+		"FireSound"
 		{
-			"modifier_elf_spell_true_sight_datadriven"
+			"EffectName"       "DOTA_Item.DustOfAppearance.Activate"
+			"Target"           "CASTER"
+		}
+		"FireEffect"
+		{
+			"Target"           "CASTER"
+			"EffectName"       "particles/items_fx/dust_of_appearance.vpcf"
+			"EffectAttachType"	"attach_origin"
+			"ControlPoints"
 			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-		
-				"ThinkInterval"  "0.03"
-				"OnIntervalThink"
-				{
-					"ActOnTargets"
-					{
-						"Target"
-						{
-							"Center"  	"CASTER"
-							"Radius" 	"%radius_true"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_ALL"
-						}
-					
-						"Action"    
-						{
-							"RemoveModifier"
-							{
-								"ModifierName"	"modifier_elf_spell_true_sight_reveal"
-								"Target" 		"TARGET"
-							}
-
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_elf_spell_true_sight_reveal"
-								"Target" 		"TARGET"
-							}
-						}
-					}			
-				}		
+				"01"    "%radius_true %radius_true %radius_true"
 			}
 
-			"modifier_elf_spell_true_sight_reveal"
+		}
+
+		// Наложить дебафф «раскрыт» на всех врагов в радиусе
+		"ActOnTargets"
+		{
+			"Target"
 			{
-				"IsHidden"			"1"
-				"Priority"                     "MODIFIER_PRIORITY_ULTRA"
-				"Duration"			"0.1"	//The True Sight effect lingers for 0.1 seconds.
-				"States"
+				"Center"        "CASTER"
+				"Radius"        "%radius_true"
+				"Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags"         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES" // Dust видит и БКБшных
+			}
+			"Action"
+			{
+				"ApplyModifier"
 				{
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+					"ModifierName" "modifier_elf_spell_true_sight_reveal"
+					"Target"       "TARGET"
+					"Duration"     "%reveal_duration"
+				}
+
+				// Необязательно: маленькая пыль на цели
+				"FireEffect"
+				{
+					"Target"       "TARGET"
+					"EffectName"   "particles/items_fx/dust_of_appearance_true_sight.vpcf"
+					"EffectAttachType"	"attach_origin"
 				}
 			}
-		}		
+		}
 	}
+
+	"Modifiers"
+	{
+		// Дебафф раскрытия как у Dust
+		"modifier_elf_spell_true_sight_reveal"
+		{
+			"IsHidden"        "0"
+			"IsDebuff"        "1"
+			"IsPurgable"      "1"                        // в ваниле Dust можно диспелить сильным диспелом
+			"Attributes"      "MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Priority"        "MODIFIER_PRIORITY_ULTRA"
+
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE" "MODIFIER_STATE_VALUE_DISABLED" // снимает инвиз/не даёт войти
+			}
+
+			// (Опционально) замедление, если хочешь как у старого Dust
+			// "Properties"
+			// {
+			//     "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-20"
+			// }
+
+			// Периодический «пинг» — актуализирует состояние (если юнит пытается снова уйти в инвиз)
+			"ThinkInterval"  "0.25"
+			"OnIntervalThink"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName" "modifier_invisible"
+					"Target"       "TARGET"
+				}
+			}
+		}
+	}
+}
 	
 	"elf_spell_invis_x4"
 {
@@ -20166,7 +20198,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCooldown"				"350 300 300"
 	"AbilityCastPoint"				"0"
-	
+	"MaxLevel"						"3"
 	// Cost
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityManaCost"				"0"
@@ -20208,6 +20240,12 @@
 			"ModifierName"	"modifier_wind_walk_fade"
 			"Duration"		"%fade_time"
 		}
+		"ApplyModifier"
+		{
+			"Target"		"CASTER"
+			"ModifierName"	"modifier_wind_walk"
+			"Duration"		"%duration"
+		}
 	}
 
 	"Modifiers"
@@ -20231,46 +20269,9 @@
 
 		"modifier_wind_walk"
 		{
-			"OnAttackLanded"
-			{
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
-					"ModifierName"	"modifier_invisible"
-				}
-			}
-
-			"OnAbilityExecuted"
-			{
-				"RemoveModifier"
-				{
-					"Target"		"CASTER"
-					"ModifierName"	"modifier_invisible"
-				}
-			}
-
 			"States"
 			{
-				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED" 
 				"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-
-			"Properties"
-			{
-			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus_pct" 
-			}
-
-			"OnDestroy"
-			{
-				"RemoveModifier"
-				{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-					}
-					"ModifierName"	"modifier_invisible"
-				}
 			}
 		}
 	}
@@ -20370,7 +20371,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"			"elf_spell_evasion"
-
+	"MaxLevel"						"3"
 	// Precache
 	"precache"
 	{
@@ -20466,6 +20467,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"			"elf_spell_target_buff"
+	"MaxLevel"						"3"
 
 	// Precache
 	"precache"
@@ -20567,6 +20569,7 @@
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityTextureName"			"elf_spell_target_damage"
+	"MaxLevel"						"3"
 
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
@@ -20667,7 +20670,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"		"elf_spell_teleport"
-
+	"MaxLevel"						"3"
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"0" // ?? global
@@ -21029,7 +21032,37 @@
 
 
 
+	"troll_spell_magic_resist"
+	{
+		"BaseClass"              "ability_lua"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"3"
+		"AbilityCooldown"				"250 200 150"
+		"AbilityManaCost"        "0"
+		"AbilityTextureName"     "troll_spell_magic_resist"
+		"ScriptFile"             "abilities/troll_spell_magic_resist.lua"
 
+		"AbilityValues"
+        {
+			"duration"  "10 15 30"   
+		}
+	}
+
+	"troll_spell_magic_resist_x4"
+	{
+		"BaseClass"              "ability_lua"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"3"
+		"AbilityCooldown"				"250 200 150"
+		"AbilityManaCost"        "0"
+		"AbilityTextureName"     "troll_spell_magic_resist"
+		"ScriptFile"             "abilities/troll_spell_magic_resist.lua"
+
+		"AbilityValues"
+        {
+			"duration"  "10 15 30"   
+		}
+	}
 
 
 

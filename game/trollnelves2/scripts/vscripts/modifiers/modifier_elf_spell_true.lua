@@ -15,9 +15,10 @@ function modifier_elf_spell_true:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("elf_spell_true")
+		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_true")
 		local abil = hero:FindAbilityByName("elf_spell_true")
 		abil:SetLevel(countStack)
+		abil:StartCooldown(300)
 	end
 end
 function modifier_elf_spell_true:OnDestroy( kv )
