@@ -86,14 +86,25 @@ function InitStageSelectedMap(data)
     CloseOtherScreenStage()
     OLD_SCREEN_STAGE = $("#WindowMapStage")
     $("#WindowMapStage").style.opacity = "1"
-    if (data.maps)
+    const is1x1 = Game.GetMapInfo().map_display_name == "1x1"
+    const isTroll = Players.GetTeam( Players.GetLocalPlayer() ) == 3
+    if (is1x1 && !isTroll)
     {
-        for (var i = 1; i <= Object.keys(data.maps).length; i++) 
-        {
-            CreatePanelMap(data.maps, i)
-        }
+        $("#WindowStageMapPlayersCounter").visible = false
+        $("#MapsList").visible = false
+        $("#MapSelectInfo").visible = true
     }
-    CreatePlayersVotesMap()
+    else
+    {
+        if (data.maps)
+        {
+            for (var i = 1; i <= Object.keys(data.maps).length; i++)
+            {
+                CreatePanelMap(data.maps, i)
+            }
+        }
+        CreatePlayersVotesMap()
+    }
     InitModVote()
 }
 
