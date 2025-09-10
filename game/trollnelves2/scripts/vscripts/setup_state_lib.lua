@@ -19,6 +19,11 @@ function setup_state_lib:SetupStartMapVotes()
     local TIMER_STAGE = THIS_STAGE_TIMER + 1
     local TIMER_STAGE_MAX = THIS_STAGE_TIMER
     CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})
+    if GetMapName() == "1x1" then
+        CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_select_map", {maps = map_system.MAPS_LIST_G})
+        CustomGameEventManager:Send_ServerToAllClients("troll_elves_phase_time", {time = 0, max_time = 0, stage = 1})
+        return
+    end
     Timers:CreateTimer(FrameTime(), function()
         TIMER_STAGE = TIMER_STAGE - 1
         CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})

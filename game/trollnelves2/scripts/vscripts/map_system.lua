@@ -43,46 +43,53 @@ function map_system:Init()
     end)
 end
 
-function map_system:SetVotesMap(data) 
-	map_system.votes_map[data.PlayerID] = data.panel_id
+function map_system:SetVotesMap(data)
+        if string.match(GetMapName(),"1x1") and PlayerResource:GetTeam(data.PlayerID) ~= DOTA_TEAM_BADGUYS then
+                return
+        end
+        map_system.votes_map[data.PlayerID] = data.panel_id
 
-	local maps_list = MAPS_LIST
+        local maps_list = MAPS_LIST
 
-	local vote_players = 0
+        local vote_players = 0
 
-	for _, i in pairs(map_system.votes_map) do
-		vote_players = vote_players + 1
-	end
+        for _, i in pairs(map_system.votes_map) do
+                vote_players = vote_players + 1
+        end
 
-	local table_k = {}
+        local table_k = {}
 
-	for map_id, i in pairs(maps_list) do
-		local has_info = false
-		for _, map_id_select in pairs(map_system.votes_map) do
-			if tostring(map_id_select) == tostring(map_id)  then
-				if table_k[tostring(map_id_select)] then
-					table_k[tostring(map_id_select)] = table_k[tostring(map_id_select)] + 1
-				else
-					table_k[tostring(map_id_select)] = 1
-				end
-				has_info = true
-			end
-		end
-		if not has_info then
-			table_k[tostring(map_id)] = 0
-		end
-	end
+        for map_id, i in pairs(maps_list) do
+                local has_info = false
+                for _, map_id_select in pairs(map_system.votes_map) do
+                        if tostring(map_id_select) == tostring(map_id)  then
+                                if table_k[tostring(map_id_select)] then
+                                        table_k[tostring(map_id_select)] = table_k[tostring(map_id_select)] + 1
+                                else
+                                        table_k[tostring(map_id_select)] = 1
+                                end
+                                has_info = true
+                        end
+                end
+                if not has_info then
+                        table_k[tostring(map_id)] = 0
+                end
+        end
 
-	local table_votes = {}
+        local table_votes = {}
 
-	for map_id, votes in pairs(table_k) do
-		local percent = votes / vote_players * 100
-		table.insert( table_votes, { map_id = tonumber(map_id), votes = votes, percent = percent  } )
-	end
+        for map_id, votes in pairs(table_k) do
+                local percent = votes / vote_players * 100
+                table.insert( table_votes, { map_id = tonumber(map_id), votes = votes, percent = percent  } )
+        end
 
-	table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
+        table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
 
-	CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", table_votes)
+        CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", table_votes)
+        if string.match(GetMapName(),"1x1") and PlayerResource:GetTeam(data.PlayerID) == DOTA_TEAM_BADGUYS then
+                BuildingHelper:UpdateMapStage()
+                setup_state_lib:SetNextStage()
+        end
 end
 
 function map_system:GetCurrentMapFromVotes()
