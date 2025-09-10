@@ -230,9 +230,16 @@ function troll_elves_phase_time(data)
             StageLinePanel.SetHasClass("ActiveStage", true)
             if (StageLineFront)
             {
-                StageLineFront.style.width = (max_time - time) / max_time * 100 + "%"
+                if (max_time > 0 && time !== undefined)
+                {
+                    StageLineFront.style.width = (max_time - time) / max_time * 100 + "%"
+                }
+                else
+                {
+                    StageLineFront.style.width = "0%"
+                }
             }
-        }   
+        }
         else
         {
             StageLinePanel.SetHasClass("ActiveStage", false)
