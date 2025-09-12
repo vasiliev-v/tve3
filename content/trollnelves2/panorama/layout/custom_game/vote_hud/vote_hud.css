@@ -139,6 +139,16 @@
     horizontal-align: center;
 }
 
+.MapSelectInfo
+{
+    margin-top: 80px;
+    horizontal-align: center;
+    font-size: 32px;
+    color: white;
+    font-weight: semi-bold;
+}
+
+
 .ChooseMapButton
 {
     width: 330px;

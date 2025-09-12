@@ -53,12 +53,14 @@ function Shop.RequestDonate(pID, steam, callback)
 	game_spells_lib.PLAYER_INFO[pID] = CustomNetTables:GetTableValue("Shop", tostring(pID))[12]
 
 	local req 
-	if GameRules.MapSpeed == 1 then
+	if GameRules.MapSpeed == 1 and not string.match(GetMapName(),"1x1") then
 		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip/" .. steam)
 	elseif GameRules.MapSpeed == 2 then 
 		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip2/" .. steam)
 	elseif GameRules.MapSpeed == 4 then
 	    req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip3/" .. steam)
+	elseif GameRules.MapSpeed == 1 and string.match(GetMapName(),"1x1") then
+		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip4/" .. steam)
 	end
 	
 	if not req then

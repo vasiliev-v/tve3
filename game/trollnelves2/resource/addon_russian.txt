@@ -3419,6 +3419,7 @@
 		"error_not_build_when_silenced_2"		"Нельзя улучшать здание с Молчанием."
 		"reward_reset_time"						"До сброса наград: "
 		"fake_list"								"Низкая репутация"
+		"TrollChoseMap"							"Тролль выбирает карту"
  
 	
 	}

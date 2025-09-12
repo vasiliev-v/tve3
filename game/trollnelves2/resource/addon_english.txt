@@ -5345,6 +5345,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"fake_list"							"Low reputation"
 
+		"TrollChoseMap"						"The Troll chooses a map"
+
 				
 		""                            		 ""
         "_description"                       "Active: "

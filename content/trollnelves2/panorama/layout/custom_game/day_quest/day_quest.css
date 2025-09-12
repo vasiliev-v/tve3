@@ -238,3 +238,9 @@
 {
     border: 2px solid #233802;
 }
+
+.hide-quests #QuestsPanel,
+.hide-quests .QuestPanelSwap,
+.hide-quests .PanelShadow {
+    visibility: collapse;
+}
