@@ -866,6 +866,7 @@ function GetAllItems()
                 Shop:SetStats(pID) 
                 wearables:SetSkin(pID) 
                 SelectPets:SetPets(pID)
+                wearables:SetLabel(pID) 
 
                 if not string.match(GetMapName(),"1x1") then
                     game_spells_lib:SetSpellPlayers(pID)

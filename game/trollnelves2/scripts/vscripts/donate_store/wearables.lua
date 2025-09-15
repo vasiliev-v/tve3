@@ -35,7 +35,7 @@ function wearables:SelectPart(info)
     hero:AddNewModifier(hero, hero, "part_mod", { part = info.part })
 
     -- Применяем лейбл из таблицы
-    --local cfg = wearables.EffectConfig[info.part]
+    --local cfg = Wearables.EffectConfig[info.part]
     --if cfg then
     --    hero:SetCustomHealthLabel(cfg.label, unpack(cfg.color))
     --end
@@ -121,6 +121,42 @@ function wearables:SelectSkin(info)
     CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
 end
 
+function wearables:SelectLabel(info)
+	local npc = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
+    if info.offp == 0 then
+	    SetLabelVip(npc, info.part)
+	else
+		SetLabelStandart(npc)
+        GameRules.SkinTower[info.PlayerID]["label"] = nil
+	end
+    CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
+end
+
+function SetLabelStandart(npc, num)
+    if not npc then return end
+    npc:SetCustomHealthLabel("", 255, 255,   255)
+end
+
+
+
+function SetLabelVip(npc, num)
+    if not npc then return end
+
+    local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(npc:GetPlayerOwnerID()))
+    if not PoolTable or not PoolTable["1"] or PoolTable["1"][num] == nil then
+        return
+    end
+
+    -- Применяем лейбл из таблицы
+    local cfg = Wearables.EffectConfig[num]
+    if cfg then
+        npc:SetCustomHealthLabel(cfg.label, unpack(cfg.color))
+    end
+
+    GameRules.SkinTower[npc:GetPlayerOwnerID()]["label"] = num
+    CustomNetTables:SetTableValue("Shop_active", tostring(npc:GetPlayerOwnerID()), GameRules.SkinTower[npc:GetPlayerOwnerID()])
+end
+
 function wearables:SetSkin(i)
 	
     local hero = PlayerResource:GetSelectedHeroEntity(i)
@@ -135,6 +171,26 @@ function wearables:SetSkin(i)
         local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
         if PoolTable["1"][GameRules.SkinTower[i]["skin"]] ~= nil  then
             SetModelVip(PlayerResource:GetSelectedHeroEntity(i), tostring(GameRules.SkinTower[i]["skin"]))
+            CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
+        end
+    end
+	 
+end
+
+function wearables:SetLabel(i)
+	
+    local hero = PlayerResource:GetSelectedHeroEntity(i)
+    if not hero then
+        Timers:CreateTimer(2, function()
+            wearables:SetLabel(i)
+        end)
+		return
+	end
+
+    if GameRules.SkinTower[i]["label"] ~= nil and GameRules.SkinTower[i]["label"]  ~= "" and PlayerResource:GetConnectionState(i) == 2 then
+        local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(i))
+        if PoolTable["1"][GameRules.SkinTower[i]["label"]] ~= nil  then
+            SetLabelVip(PlayerResource:GetSelectedHeroEntity(i), tostring(GameRules.SkinTower[i]["label"]))
             CustomNetTables:SetTableValue("Shop_active", tostring(i), GameRules.SkinTower[i])
         end
     end
@@ -173,6 +229,23 @@ function wearables:SetDefaultPart(event)
 		data.Num = tostring(event.part)
 		data.TypeDonate = tostring(1)
 		data.Type = "effect"
+		if GameRules.SaveDefItem[event.PlayerID][1] == nil then
+			Shop.GetVip(data, callback)
+			GameRules.SaveDefItem[event.PlayerID][1] = 1
+		elseif  GameRules.SaveDefItem[event.PlayerID][1] < 100 then
+			Shop.GetVip(data, callback)
+		end
+	end
+end	
+
+function wearables:SetDefaultLabel(event)
+    local player = PlayerResource:GetPlayer(event.PlayerID)
+	local data = {}
+	if event.part ~=  nil then
+		data.SteamID = tostring(PlayerResource:GetSteamID(event.PlayerID))
+		data.Num = tostring(event.part)
+		data.TypeDonate = tostring(1)
+		data.Type = "label"
 		if GameRules.SaveDefItem[event.PlayerID][1] == nil then
 			Shop.GetVip(data, callback)
 			GameRules.SaveDefItem[event.PlayerID][1] = 1

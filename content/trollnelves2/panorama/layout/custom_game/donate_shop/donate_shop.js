@@ -421,6 +421,10 @@ function ReCreateItemsStoreList(tab)
     {
         items_list_table = Items_skin
     }
+    if (tab == "LabelDonateItems")
+    {
+        items_list_table = Items_label
+    }
     if (tab == "TowerDonateItems")
     {
         items_list_table = Items_tower
@@ -532,6 +536,10 @@ function ReCreateItemsInventoryList(tab)
     if (tab == "SkinPanel")
     {
         items_list_table = Items_skin
+    }
+    if (tab == "LabelPanel")
+    {
+        items_list_table = Items_label
     }
     if (tab == "TowerPanel")
     {
@@ -749,6 +757,13 @@ function SetItemInventory(panel, table, is_item_activated)
 	 		SelectTower(table, is_item_activated)
 	    });
 	}
+    else if (table[5].indexOf("label") == 0) 
+    {
+		panel.SetPanelEvent("onactivate", function() 
+        { 
+	 		SelectLabel(table[1], is_item_activated)
+	    });
+	}
 }
 
 function CreateItemChance(panel, label) 
@@ -801,6 +816,18 @@ function SelectSkin(num, is_item_activated)
     $.Msg("3")
     GameEvents.SendCustomGameEventToServer( "SelectSkin", { id: Players.GetLocalPlayer(), part:String(num), offp:false, name:String(num) } );
     GameEvents.SendCustomGameEventToServer( "SetDefaultSkin", { id: Players.GetLocalPlayer(), part:String(num)} );	
+}
+
+function SelectLabel(num, is_item_activated)
+{
+    if (is_item_activated)
+    {
+        GameEvents.SendCustomGameEventToServer( "SelectLabel", { id: Players.GetLocalPlayer(),part:String(num) , offp:true, name:String(num)  } );
+		GameEvents.SendCustomGameEventToServer( "SetDefaultLabel", { id: Players.GetLocalPlayer(),part:"0"} );
+        return
+    }
+    GameEvents.SendCustomGameEventToServer( "SelectLabel", { id: Players.GetLocalPlayer(), part:String(num), offp:false, name:String(num) } );
+    GameEvents.SendCustomGameEventToServer( "SetDefaultLabel", { id: Players.GetLocalPlayer(), part:String(num)} );	
 }
 
 function SelectTower(table, is_item_activated)

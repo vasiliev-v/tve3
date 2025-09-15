@@ -481,6 +481,11 @@ Shop.DonateList =
 	{"130", "gold", "50", "particle_30", "particle_30", false, 2}, 
 	{"131", "gold", "50", "particle_31", "particle_31", false, 2}, 
 
+	{"187", "gold", "99999999", "particle_87", "particle_87", false, 5},  
+	{"188", "gold", "99999999", "particle_88", "particle_88", false, 5},  
+	{"189", "gold", "99999999", "particle_89", "particle_89", false, 5},  
+	{"190", "gold", "99999999", "particle_90", "particle_90", false, 5},  
+
 	{"138", "gold", "99999999", "particle_38", "particle_38", false, 8}, 
 	{"139", "gold", "99999999", "particle_39", "particle_39", false, 8}, 
 	{"140", "gold", "99999999", "particle_40", "particle_40", false, 8}, 
@@ -685,7 +690,28 @@ Shop.DonateList =
 	{"185", "gold", "99999999", "particle_85", "particle_85", false, 8},  
 
 
-	{"2001", "gold", "500", "label_1", "label_1", false, 7}, 
+	{"3001", "gold", "99999999", "label_1", "label_1", false, 7}, 
+	{"3002", "gold", "99999999", "label_2", "label_2", false, 7}, 
+	{"3003", "gold", "99999999", "label_3", "label_3", false, 7}, 
+	{"3004", "gold", "99999999", "label_4", "label_4", false, 7}, 
+	{"3005", "gold", "99999999", "label_5", "label_5", false, 7}, 
+	{"3006", "gold", "99999999", "label_6", "label_6", false, 7}, 
+	{"3007", "gold", "99999999", "label_7", "label_7", false, 7}, 
+	{"3008", "gold", "99999999", "label_8", "label_8", false, 7}, 
+	{"3009", "gold", "99999999", "label_9", "label_9", false, 7}, 
+	{"3010", "gold", "99999999", "label_10", "label_10", false, 7}, 
+	{"3011", "gold", "99999999", "label_11", "label_11", false, 7}, 
+	{"3012", "gold", "99999999", "label_12", "label_12", false, 7}, 
+	{"3013", "gold", "99999999", "label_13", "label_13", false, 7}, 
+	{"3014", "gold", "99999999", "label_14", "label_14", false, 7}, 
+	{"3015", "gold", "99999999", "label_15", "label_15", false, 7}, 
+	{"3016", "gold", "99999999", "label_16", "label_16", false, 7}, 
+	{"3017", "gold", "99999999", "label_17", "label_17", false, 7}, 
+	{"3018", "gold", "99999999", "label_18", "label_18", false, 7}, 
+	{"3019", "gold", "99999999", "label_19", "label_19", false, 7}, 
+	{"3020", "gold", "99999999", "label_20", "label_20", false, 7},
+
+	
 
 	
 	--{"203", "gem", "20000", "chance75", "subscribe_3", true, 6},

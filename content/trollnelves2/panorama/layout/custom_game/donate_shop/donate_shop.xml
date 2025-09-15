@@ -112,6 +112,10 @@
                         <Panel class="MenuButtonGlow" />
                         <Label text="#shop_sounds" />
                     </Panel>
+					<Panel class="ItemsCategoryButton" onactivate="SwitchShopTab('LabelDonateItems', 'LabelButton');" id="LabelButton">
+                        <Panel class="MenuButtonGlow" />
+                        <Label text="#skin_label" />
+                    </Panel>
 					<!--<Panel class="ItemsCategoryButton" onactivate="SwitchShopTab('SpraysonateItems', 'SpraysButton');" id="SpraysButton">
                         <Panel class="MenuButtonGlow" />
                         <Label text="#shop_sprays" />
@@ -147,6 +151,10 @@
 					<Panel class="ItemsCategoryButton" onactivate="SwitchInventoryShopTab('WispPanel', 'WispButtonInventory');" id="WispButtonInventory">
                         <Panel class="MenuButtonGlow" />
                         <Label text="#wisp_chests" /> 
+                    </Panel>
+					<Panel class="ItemsCategoryButton" onactivate="SwitchInventoryShopTab('LabelPanel', 'LabelButtonInventory');" id="LabelButtonInventory">
+                        <Panel class="MenuButtonGlow" />
+                        <Label text="#skin_label" /> 
                     </Panel>
 				</Panel>
 				<Panel id="PlayerItemsContainer" class="PlayerItemsContainer" />
