@@ -76,12 +76,14 @@ function trollnelves2:GameSetup()
             end
         end
         Shop.RequestBpDay(callback)
-        if GameRules.MapSpeed == 1 then
+        if GameRules.MapSpeed == 1 and not string.match(GetMapName(),"1x1") then
             Stats.RequestDataTop10("1", callback)
         elseif GameRules.MapSpeed == 2 then 
             Stats.RequestDataTop10("2", callback)
         elseif GameRules.MapSpeed == 4 then
             Stats.RequestDataTop10("3", callback)
+        elseif GameRules.MapSpeed == 1 and string.match(GetMapName(),"1x1") then 
+            Stats.RequestDataTop10("4", callback)
         end
         Stats.RequestDataTime(callback)
         -- StartReklama()

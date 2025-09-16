@@ -255,6 +255,7 @@ function Stats.Normal(winner,callback)
 end
 -- Эло 1x1: ожидаемая сила по сумме рейтингов (elf+troll), апдейт только кармана сыгранной стороны
 function Stats.Tournament1x1(winner, callback)
+	DebugPrint("1")
 	local status, nextCall = Error_debug.ErrorCheck(function()
 		if GameRules.startTime == nil then GameRules.startTime = 1 end
 		if not GameRules.isTesting and GameRules:IsCheatMode() then
@@ -262,7 +263,7 @@ function Stats.Tournament1x1(winner, callback)
 			SetResourceValues()
 			return
 		end
-
+DebugPrint("2")
 		-- ========== ELO helpers ==========
 		local K = 32 -- базовый K-фактор
 
@@ -296,29 +297,33 @@ function Stats.Tournament1x1(winner, callback)
 			return "elf"
 		end
 		-- =================================
-
+DebugPrint("3")
 		-- соберём валидных игроков
 		local players = {}
 		for pID = 0, DOTA_MAX_TEAM_PLAYERS do
-			if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) ~= 5 then
+			if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) ~= 5 and not GameRules.isTesting then
+				table.insert(players, pID)
+				ensure_scores(pID)
+			else
 				table.insert(players, pID)
 				ensure_scores(pID)
 			end
 		end
-
+DebugPrint("4")
 		-- строго 1x1
-		if GameRules.PlayersCount ~= 2 or #players ~= 2 then
+		if GameRules.PlayersCount ~= 2 and not GameRules.isTesting then
 			Timers:CreateTimer(1.0, function()
 				GameRules:SetGameWinner(winner)
 				SetResourceValues()
 			end)
 			return
 		end
-
+DebugPrint("5")
 		local p1, p2 = players[1], players[2]
 		local r1, r2 = total_rating(p1), total_rating(p2)
 
 		for _, pID in ipairs(players) do
+			DebugPrint("6")
 			if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) ~= 5 then
 				local opp    = (pID == p1) and p2 or p1
 				local r_self = (pID == p1) and r1 or r2
@@ -334,7 +339,7 @@ function Stats.Tournament1x1(winner, callback)
 				else
 					GameRules.scores[pID].troll = (GameRules.scores[pID].troll or 0) + delta
 				end
-
+DebugPrint("7")
 				-- ===== упаковка данных для вашего бэка (Score = только ΔЭло) =====
 				local data = {}
 				data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
@@ -346,7 +351,25 @@ function Stats.Tournament1x1(winner, callback)
 				data.Death = tostring(PlayerResource:GetDeaths(pID) or 0)
 				data.Nick = tostring(PlayerResource:GetPlayerName(pID) or "unknown")
 				data.Type = tostring(PlayerResource:GetType(pID) or "null")
+				data.DeathTime = tostring(GameRules.deathTime[pID] or 0)
 
+				data.GoldGained = tostring(PlayerResource:GetGoldGained(pID)/1000 or 0)
+				data.GoldGiven = tostring(PlayerResource:GetGoldGiven(pID)/1000 or 0)
+				data.LumberGained = tostring(PlayerResource:GetLumberGained(pID)/1000 or 0)
+				data.LumberGiven = tostring(PlayerResource:GetLumberGiven(pID)/1000 or 0)
+				-- 
+				data.PartyId = tostring(PlayerResource:GetPartyID(pID) or 0)
+				data.Color = tostring(pID)
+				data.DamageGiven = tostring(PlayerResource:GetDamageGiven(pID) or 0)
+				data.DamageTake = tostring(PlayerResource:GetDamageTake(pID) or 0)
+
+				data.Nick = "error-nick"
+				if PlayerResource:GetPlayerName(pID) then
+					data.Nick = tostring(PlayerResource:GetPlayerName(pID))
+				end
+				data.GPS = tostring(tonumber(PlayerResource:GetGoldGained(pID) or 0)/tonumber(GameRules:GetGameTime() - GameRules.startTime))
+				data.LPS = tostring(tonumber(PlayerResource:GetLumberGained(pID) or 0)/tonumber(GameRules:GetGameTime() - GameRules.startTime))
+				
 				-- главное поле
 				data.Score = tostring(delta)
 
@@ -356,8 +379,9 @@ function Stats.Tournament1x1(winner, callback)
 
 				GameRules.Score = GameRules.Score or {}
 				GameRules.Score[pID] = data.Score
-
+DebugPrint("8")
 				if data.SteamID ~= "0" then
+					DebugPrint("9")
 					Stats.SendData(data, callback)
 				end
 			end

@@ -1007,7 +1007,7 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = false
+	GameRules.test = true
 	GameRules.test2 = false
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
