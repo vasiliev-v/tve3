@@ -207,12 +207,26 @@ function CreateItem(panel, table, i, is_inventory)
     ItemTooltipShow(Recom_item, table[i][5])
 
     let ItemImage = $.CreatePanel("Panel", Recom_item, "");
-	ItemImage.AddClass("ItemImage");
-	ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + table[i][4] + '.png")';
-	ItemImage.style.backgroundSize = "100%"
+    ItemImage.AddClass("ItemImage");
 
-	let BuyItemPanel = $.CreatePanel("Panel", Recom_item, "BuyItemPanel");
-	BuyItemPanel.AddClass("BuyItemPanel");
+    const itemName = table[i][5];
+    const isLabelItem = typeof itemName === "string" && itemName.indexOf("label_") === 0;
+
+    if (isLabelItem)
+    {
+        ItemImage.AddClass("LabelItemImage");
+        let labelItemText = $.CreatePanel("Label", ItemImage, "");
+        labelItemText.AddClass("LabelItemText");
+        labelItemText.text = $.Localize("#" + itemName);
+    }
+    else
+    {
+        ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + table[i][4] + '.png")';
+        ItemImage.style.backgroundSize = "100%";
+    }
+
+        let BuyItemPanel = $.CreatePanel("Panel", Recom_item, "BuyItemPanel");
+        BuyItemPanel.AddClass("BuyItemPanel");
 
     if (is_inventory && is_chest)
     {

@@ -418,7 +418,7 @@
     margin: 20px;
 }
 
-.ItemImage 
+.ItemImage
 {
     width: 120px;
     height: 120px;
@@ -426,6 +426,23 @@
     border-radius: 100px;
     border: 2px solid rgba(184, 255, 69, 0.5);
     background-color: #141414;
+}
+
+.LabelItemImage
+{
+    background-image: none;
+}
+
+.LabelItemText
+{
+    align: center center;
+    text-align: center;
+    width: 100%;
+    padding: 0px 8px;
+    color: white;
+    font-size: 24px;
+    font-weight: semi-bold;
+    text-overflow: shrink;
 }
 
 .SoundItem .ItemImage
