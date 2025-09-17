@@ -8759,7 +8759,7 @@
 		"UnitName"						"worker_3_2"
 		"AbilityValues"
         {
-            "gold_cost" "128"
+            "gold_cost" "64"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8788,7 +8788,7 @@
 		"UnitName"						"worker_3_3"
 		"AbilityValues"
         {
-            "gold_cost" "128"
+            "gold_cost" "64"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8817,7 +8817,7 @@
 		"UnitName"						"worker_3_4"
 		"AbilityValues"
         {
-            "gold_cost" "128"
+            "gold_cost" "64"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
@@ -8846,7 +8846,7 @@
 		"UnitName"						"worker_4"
 		"AbilityValues"
         {
-            "gold_cost" "256"
+            "gold_cost" "128"
             "lumber_cost" "0"
             "food_cost" "1"
             "unit_count" "1"
