@@ -8440,7 +8440,7 @@
 		"rock_21"					"1"
 		"trader_3"					"1"
 		"research_lab_6_1"			"1" //"research_lab_5_1"			"1"
-		"tower_22"					"10"
+		"tower_22"					"5"
 		}
 		"Upgrades"
 	    {
