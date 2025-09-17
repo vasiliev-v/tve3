@@ -8,7 +8,7 @@
 	</scripts>
 	<Panel hittest="false" style="width:100%;height:100%;">
         <Panel class="QuestMain Open" id="QuestMain" hittest="false">
-            <Panel class="PanelShadow" hittest="false" />
+            <Panel class="PanelShadow" id="PanelShadow" hittest="false" />
                 <Panel id="QuestPanelSwap" class="QuestPanelSwap">
                 <Panel class="SwapPanel" onactivate="ToggleInfo();">
                     <Panel id="SwapPanelIcon" class="SwapPanelIcon" />

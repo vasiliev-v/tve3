@@ -13,30 +13,39 @@ end
 
 function setup_state_lib:SetupStartMapVotes()
     local THIS_STAGE_TIMER = 30
-    --if IsInToolsMode() then
-    --    THIS_STAGE_TIMER = 10
-    --end
     local TIMER_STAGE = THIS_STAGE_TIMER + 1
     local TIMER_STAGE_MAX = THIS_STAGE_TIMER
+
     CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})
-    if GetMapName() == "1x1" then
-        CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_select_map", {maps = map_system.MAPS_LIST_G})
-        CustomGameEventManager:Send_ServerToAllClients("troll_elves_phase_time", {time = 0, max_time = 0, stage = 1})
-        return
+
+    local TIMER_NAME = "map_vote_stage_timer"
+    if Timers.RemoveTimer then
+        Timers:RemoveTimer(TIMER_NAME)
+    elseif Timers.Remove then
+        Timers:Remove(TIMER_NAME)
     end
-    Timers:CreateTimer(FrameTime(), function()
-        TIMER_STAGE = TIMER_STAGE - 1
-        CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})
-        CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_select_map", {maps = map_system.MAPS_LIST_G})
-        CustomGameEventManager:Send_ServerToAllClients("troll_elves_phase_time", {time = TIMER_STAGE, max_time = TIMER_STAGE_MAX, stage = 1})
-        if TIMER_STAGE <= 0 then
-            BuildingHelper:UpdateMapStage()
-            setup_state_lib:SetNextStage()
-            return
+
+    Timers:CreateTimer(TIMER_NAME, {
+        useGameTime = true,  
+        endTime = 0,        
+        callback = function()
+            TIMER_STAGE = TIMER_STAGE - 1
+
+            CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_screen", {})
+            CustomGameEventManager:Send_ServerToAllClients("troll_elves_init_stage_select_map", {maps = map_system.MAPS_LIST_G})
+            CustomGameEventManager:Send_ServerToAllClients("troll_elves_phase_time", {time = TIMER_STAGE, max_time = TIMER_STAGE_MAX, stage = 1})
+
+            if TIMER_STAGE <= 0 then
+                BuildingHelper:UpdateMapStage()
+                setup_state_lib:SetNextStage()
+                return nil  
+            end
+
+            return 1  
         end
-        return 1
-    end)
+    })
 end
+
 
 function setup_state_lib:SetupStartSelectedRole()
     local THIS_STAGE_TIMER = 10 -- 10

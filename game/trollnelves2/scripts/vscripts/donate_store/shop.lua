@@ -36,6 +36,9 @@ function Shop.RequestDonate(pID, steam, callback)
 		for id = 1700, 1899 do
 			PoolTable["1"][id] = tostring(id)
 		end
+		for id = 3000, 3100 do
+			PoolTable["1"][id] = tostring(id)
+		end
 		for id=1, #game_spells_lib.spells_list do
 			PoolTable["12"][tostring(id)] = {game_spells_lib.spells_list[id][1], 1, 0}	
 		end
@@ -53,12 +56,14 @@ function Shop.RequestDonate(pID, steam, callback)
 	game_spells_lib.PLAYER_INFO[pID] = CustomNetTables:GetTableValue("Shop", tostring(pID))[12]
 
 	local req 
-	if GameRules.MapSpeed == 1 then
+	if GameRules.MapSpeed == 1 and not string.match(GetMapName(),"1x1") then
 		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip/" .. steam)
 	elseif GameRules.MapSpeed == 2 then 
 		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip2/" .. steam)
 	elseif GameRules.MapSpeed == 4 then
 	    req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip3/" .. steam)
+	elseif GameRules.MapSpeed == 1 and string.match(GetMapName(),"1x1") then
+		req = CreateHTTPRequestScriptVM("GET",GameRules.server .. "vip4/" .. steam)
 	end
 	
 	if not req then
@@ -108,6 +113,7 @@ function Shop.RequestDonate(pID, steam, callback)
 			Stats.RequestRating(obj[19], pID)
 			Shop.RequestBPget(obj[20], pID)
 			Shop.RequestAchivements(obj[21], pID)
+			Shop.RequestLabel(obj[22], pID, steam)
 			--Shop.RequestBP(callback)
 		end)
 		return obj
@@ -144,6 +150,53 @@ function Shop.RequestVip(obj, pID, steam, callback)
 		end	
 	end	
 
+	local pos = Shop.GetPlayerTop10Position(steam)
+	if pos >= 1 and pos <= 3 then
+		if pos == 1 then
+			--PoolTable["1"][tostring(150)] = tostring(150)
+			--PoolTable["1"][tostring(140)] = tostring(140)
+			--PoolTable["1"][tostring(143)] = tostring(143)
+			--PoolTable["1"][tostring(125)] = tostring(125)
+
+			PoolTable["1"][tostring(187)] = tostring(187)
+			PoolTable["1"][tostring(188)] = tostring(188)
+			PoolTable["1"][tostring(189)] = tostring(189)
+			PoolTable["1"][tostring(190)] = tostring(190)
+			--parts[50] = "normal"
+			--parts[40] = "normal"
+			--parts[43] = "normal"
+			--parts[25] = "normal"
+			parts[87] = "normal"
+			parts[88] = "normal"
+			parts[89] = "normal"
+			parts[90] = "normal"
+		end
+		if pos >= 1 and pos <= 2 then
+			--PoolTable["1"][tostring(137)] = tostring(137)
+			--PoolTable["1"][tostring(138)] = tostring(138)
+			--PoolTable["1"][tostring(141)] = tostring(141)
+			--PoolTable["1"][tostring(121)] = tostring(121)
+			--parts[37] = "normal"
+			--parts[38] = "normal"
+			--parts[41] = "normal"
+			--parts[21] = "normal"
+		elseif pos >= 1 and pos <= 3 then
+			--PoolTable["1"][tostring(149)] = tostring(149)
+			--PoolTable["1"][tostring(139)] = tostring(139)
+			--PoolTable["1"][tostring(142)] = tostring(142)
+			--PoolTable["1"][tostring(125)] = tostring(125)
+			--parts[49] = "normal"
+			--parts[39] = "normal"
+			--parts[42] = "normal"
+			--parts[25] = "normal"
+		elseif pos >= 1 and pos <= 10 then 
+			PoolTable["1"][tostring(105)] = tostring(105)
+			parts[5] = "normal"
+			
+		end
+		CustomNetTables:SetTableValue("Particles_Tabel",tostring(pID),parts)
+	end
+
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	return obj
 
@@ -158,6 +211,24 @@ function Shop.RequestSkin(obj, pID, steam, callback)
 
 	for id=1,#obj do
 		PoolTable["1"][tostring(obj[id].num)] = tostring(obj[id].num)
+	end
+	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
+	return obj
+end
+
+function Shop.RequestLabel(obj, pID, steam, callback)
+	
+	DebugPrint("Request Label ***********************************************" .. GameRules.server )
+	--DeepPrintTable(obj)
+	--DebugPrint("***********************************************")
+	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(pID))
+
+	for id=1,#obj do
+		PoolTable["1"][tostring(obj[id].num)] = tostring(obj[id].num)
+	end
+	local pos = Shop.GetPlayerTop10Position(steam)
+	if pos >= 1 and pos <= 10 then
+		PoolTable["1"][tostring(3000+pos)] = tostring(3000+pos)
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	return obj
@@ -245,10 +316,6 @@ end
 function Shop.GetVip(data,callback)
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
-	end
-
-	if GameRules.PlayersCount < MIN_RATING_PLAYER  then
-		return
 	end
 
 	data.MatchID = MatchID
@@ -357,13 +424,13 @@ function Shop.RequestBPBonus(obj, pID, steam, callback)
 	if #obj > 0 then
 		if obj[1].srok ~= nil then
 			PoolTable["15"]["0"] = obj[1].srok
-			--[[ 
+
 			if GameRules.BonusGem[pID] ~= nil then
-				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + 0.5
+				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + 0.10
 			else
-				GameRules.BonusGem[pID] = 1.5
+				GameRules.BonusGem[pID] = 1.10
 			end
-			--]]
+		
 		end
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
@@ -382,13 +449,12 @@ function Shop.RequestBonusTroll(obj, pID, steam, callback)
 			PoolTable["2"]["0"] = obj[1].chance
 			PoolTable["2"]["1"] = obj[1].srok
 			local roll_chance = RandomInt(0, 100)
-			--[[
+
 			if GameRules.BonusGem[pID] ~= nil then
-				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + tonumber(obj[1].chance) * 0.01
+				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + tonumber(obj[1].chance) * 0.01 
 			else
 				GameRules.BonusGem[pID] = tonumber(obj[1].chance) * 0.01 + 1
 			end
-			]]
 			
 			if chanceCheck[pID] == nil and GameRules:GetGameTime() and GameRules:GetGameTime() < 60 then
 		---		GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " your chance is increased by " .. obj[1].chance .. "%. Roll: ".. roll_chance .. " </font>" ,  0, 0)
@@ -430,6 +496,17 @@ function Shop.RequestPets(obj, pID, steam, callback)
 		PoolTable["1"][tostring(obj[id].num)] = tostring(obj[id].num)
 		CustomNetTables:SetTableValue("Pets_Tabel",tostring(pID),parts)
 	end
+
+	local pos = Shop.GetPlayerTop10Position(steam)
+	if pos >= 1 and pos <= 3 then
+		if pos == 1 then
+			PoolTable["1"][tostring(1)] = tostring(1)
+			PoolTable["1"][tostring(2)] = tostring(2)
+			PoolTable["1"][tostring(3)] = tostring(3)
+			PoolTable["1"][tostring(4)] = tostring(4)
+		end
+	end
+	
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	return obj
 end	
@@ -1504,3 +1581,27 @@ function Shop.GetDayDone(data,callback)
 		
 	end)
 end	
+
+
+-- Функция возвращает позицию игрока в топ10 или -1 если игрока нет
+function Shop.GetPlayerTop10Position(steamID)
+	-- DebugPrint("GetPlayerTop10Position")
+	if GameRules.MapSpeed ~= 1 and GameRules.MapSpeed ~= 4 then
+		-- DebugPrint("GetPlayerTop10Position 1")
+		return -1 
+	end
+    local top10 = CustomNetTables:GetTableValue("Shop", "top10")
+    if not top10 then
+		-- DebugPrint("GetPlayerTop10Position 2")
+        return -1
+    end
+	-- DebugPrintTable(top10)
+    for pos, data in pairs(top10) do
+        if tostring(data["1"]) == tostring(steamID) then
+			-- DebugPrint("GetPlayerTop10Position 3 " .. pos)
+            return tonumber(pos)
+        end
+    end
+	-- DebugPrint("GetPlayerTop10Position 4 ")
+    return -1
+end

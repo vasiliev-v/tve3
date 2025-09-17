@@ -6,6 +6,14 @@ local countCheckStats = 0
 local countCheckTime = 0 
 
 function Stats.SubmitMatchData(winner,callback)
+	if string.match(GetMapName(),"1x1") then
+		Stats.Tournament1x1(winner,callback)
+	else
+		Stats.Normal(winner,callback)
+	end  
+end
+
+function Stats.Normal(winner,callback)
 	local status, nextCall = Error_debug.ErrorCheck(function() 
 	if GameRules.startTime == nil then
 		GameRules.startTime = 1
@@ -245,6 +253,149 @@ function Stats.SubmitMatchData(winner,callback)
 	::continue::
 	end)
 end
+-- Эло 1x1: ожидаемая сила по сумме рейтингов (elf+troll), апдейт только кармана сыгранной стороны
+function Stats.Tournament1x1(winner, callback)
+	DebugPrint("1")
+	local status, nextCall = Error_debug.ErrorCheck(function()
+		if GameRules.startTime == nil then GameRules.startTime = 1 end
+		if not GameRules.isTesting and GameRules:IsCheatMode() then
+			GameRules:SetGameWinner(winner)
+			SetResourceValues()
+			return
+		end
+DebugPrint("2")
+		-- ========== ELO helpers ==========
+		local K = 32 -- базовый K-фактор
+
+		local function ensure_scores(pID)
+			GameRules.scores = GameRules.scores or {}
+			GameRules.scores[pID] = GameRules.scores[pID] or { elf = 0, troll = 0 }
+			GameRules.scores[pID].elf = GameRules.scores[pID].elf or 0
+			GameRules.scores[pID].troll = GameRules.scores[pID].troll or 0
+		end
+
+		-- суммарный рейтинг игрока (учитываем оба кармана)
+		local function total_rating(pID)
+			ensure_scores(pID)
+			return (tonumber(GameRules.scores[pID].elf) or 0) + (tonumber(GameRules.scores[pID].troll) or 0)
+		end
+
+		local function expected_score(ra, rb)
+			return 1 / (1 + 10 ^ ((rb - ra) / 400))
+		end
+
+		local function elo_delta(ra, rb, S)
+			local E = expected_score(ra, rb)
+			return math.floor(K * (S - E) + 0.5)
+		end
+
+		local function get_side(pID)
+			local hero = PlayerResource:GetSelectedHeroEntity(pID)
+			if hero and hero.IsTroll and hero:IsTroll() then return "troll" end
+			if hero and hero.IsElf and hero:IsElf() then return "elf" end
+			-- если определить по герою не можем, считаем эльфом по умолчанию (при желании поменяйте)
+			return "elf"
+		end
+		-- =================================
+DebugPrint("3")
+		-- соберём валидных игроков
+		local players = {}
+		for pID = 0, DOTA_MAX_TEAM_PLAYERS do
+			if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) ~= 5 and not GameRules.isTesting then
+				table.insert(players, pID)
+				ensure_scores(pID)
+			else
+				table.insert(players, pID)
+				ensure_scores(pID)
+			end
+		end
+DebugPrint("4")
+		-- строго 1x1
+		if GameRules.PlayersCount ~= 2 and not GameRules.isTesting then
+			Timers:CreateTimer(1.0, function()
+				GameRules:SetGameWinner(winner)
+				SetResourceValues()
+			end)
+			return
+		end
+DebugPrint("5")
+		local p1, p2 = players[1], players[2]
+		local r1, r2 = total_rating(p1), total_rating(p2)
+
+		for _, pID in ipairs(players) do
+			DebugPrint("6")
+			if PlayerResource:IsValidPlayerID(pID) and PlayerResource:GetTeam(pID) ~= 5 then
+				local opp    = (pID == p1) and p2 or p1
+				local r_self = (pID == p1) and r1 or r2
+				local r_opp  = (pID == p1) and r2 or r1
+
+				local S = (PlayerResource:GetTeam(pID) == winner) and 1 or 0
+				local delta = elo_delta(r_self, r_opp, S)
+
+				-- обновляем ТОЛЬКО рейтинг сыгранной стороны
+				local side = get_side(pID)
+				if side == "elf" then
+					GameRules.scores[pID].elf = (GameRules.scores[pID].elf or 0) + delta
+				else
+					GameRules.scores[pID].troll = (GameRules.scores[pID].troll or 0) + delta
+				end
+DebugPrint("7")
+				-- ===== упаковка данных для вашего бэка (Score = только ΔЭло) =====
+				local data = {}
+				data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
+				data.Team = tostring(PlayerResource:GetTeam(pID))
+				data.Map = GameRules.MapName
+				data.SteamID = tostring(PlayerResource:GetSteamID(pID) or 0)
+				data.Time = tostring((GameRules:GetGameTime() - GameRules.startTime) / 60 or 0)
+				data.Kill = tostring(PlayerResource:GetKills(pID) or 0)
+				data.Death = tostring(PlayerResource:GetDeaths(pID) or 0)
+				data.Nick = tostring(PlayerResource:GetPlayerName(pID) or "unknown")
+				data.Type = tostring(PlayerResource:GetType(pID) or "null")
+				data.DeathTime = tostring(GameRules.deathTime[pID] or 0)
+
+				data.GoldGained = tostring(PlayerResource:GetGoldGained(pID)/1000 or 0)
+				data.GoldGiven = tostring(PlayerResource:GetGoldGiven(pID)/1000 or 0)
+				data.LumberGained = tostring(PlayerResource:GetLumberGained(pID)/1000 or 0)
+				data.LumberGiven = tostring(PlayerResource:GetLumberGiven(pID)/1000 or 0)
+				-- 
+				data.PartyId = tostring(PlayerResource:GetPartyID(pID) or 0)
+				data.Color = tostring(pID)
+				data.DamageGiven = tostring(PlayerResource:GetDamageGiven(pID) or 0)
+				data.DamageTake = tostring(PlayerResource:GetDamageTake(pID) or 0)
+
+				data.Nick = "error-nick"
+				if PlayerResource:GetPlayerName(pID) then
+					data.Nick = tostring(PlayerResource:GetPlayerName(pID))
+				end
+				data.GPS = tostring(tonumber(PlayerResource:GetGoldGained(pID) or 0)/tonumber(GameRules:GetGameTime() - GameRules.startTime))
+				data.LPS = tostring(tonumber(PlayerResource:GetLumberGained(pID) or 0)/tonumber(GameRules:GetGameTime() - GameRules.startTime))
+				
+				-- главное поле
+				data.Score = tostring(delta)
+
+				-- сопутствующие поля, если их ждёт сервер; не влияют на рейтинг
+				data.Rep = "0"
+				data.Key = dedicatedServerKey
+
+				GameRules.Score = GameRules.Score or {}
+				GameRules.Score[pID] = data.Score
+DebugPrint("8")
+				if data.SteamID ~= "0" then
+					DebugPrint("9")
+					Stats.SendData(data, callback)
+				end
+			end
+		end
+
+		Timers:CreateTimer(10, function()
+			GameRules:SetGameWinner(winner)
+			SetResourceValues()
+			GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
+		end)
+	end)
+end
+
+
 
 function Stats.SendData(data,callback)
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server)
@@ -275,6 +426,7 @@ function Stats.SendData(data,callback)
 		
 	end)
 end
+
 
 function Stats.RequestData(obj, pId, callback)
 	--DebugPrint("***********RequestData*************************")
@@ -386,6 +538,15 @@ function Stats.RequestDataTop10(mapSpd, callback)
 		return obj
 		
 	end)
+	if IsServer() then
+        for pID = 0, DOTA_MAX_TEAM_PLAYERS do
+            if PlayerResource:IsValidPlayerID(pID) and not PlayerResource:IsFakeClient(pID) then
+                local steam = tostring(PlayerResource:GetSteamID(pID))
+                CustomNetTables:SetTableValue("Shop", tostring(pID), GameRules.PoolTable)
+                Shop.RequestDonate(pID, steam, callback)
+            end
+        end
+	end
 end
 
 function Stats.RequestRating(obj, pId, callback)

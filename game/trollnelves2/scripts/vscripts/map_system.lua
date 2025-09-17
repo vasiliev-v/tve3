@@ -43,11 +43,14 @@ function map_system:Init()
     end)
 end
 
-function map_system:SetVotesMap(data)
-        if string.match(GetMapName(),"1x1") and PlayerResource:GetTeam(data.PlayerID) ~= DOTA_TEAM_BADGUYS then
-                return
-        end
-        map_system.votes_map[data.PlayerID] = data.panel_id
+
+function map_system:SetVotesMap(data) 
+	DebugPrint(PlayerResource:GetTeam(data.PlayerID))
+	if string.match(GetMapName(),"1x1") and PlayerResource:GetTeam(data.PlayerID) ~= DOTA_TEAM_BADGUYS then
+        return
+    end
+
+	map_system.votes_map[data.PlayerID] = data.panel_id
 
         local maps_list = MAPS_LIST
 
@@ -87,10 +90,20 @@ function map_system:SetVotesMap(data)
 
         CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", table_votes)
 
-        if string.match(GetMapName(),"1x1") and PlayerResource:GetTeam(data.PlayerID) == DOTA_TEAM_BADGUYS then
-                BuildingHelper:UpdateMapStage()
-                setup_state_lib:SetNextStage()
+        local eligible = map_system:GetEligibleVotersCount()
+        if eligible > 0 and vote_players >= eligible then
+            if Timers.RemoveTimer then
+                Timers:RemoveTimer("map_vote_stage_timer")
+            elseif Timers.Remove then
+                Timers:Remove("map_vote_stage_timer")
+            end
+
+            BuildingHelper:UpdateMapStage()
+            setup_state_lib:SetNextStage()
+
         end
+
+
 end
 
 function map_system:GetCurrentMapFromVotes()
@@ -119,6 +132,32 @@ function map_system:GetCurrentMapFromVotes()
 		end
 	end
     return final_map
+end
+
+function map_system:GetEligibleVotersCount()
+    local total = 0
+    local only_dire = string.match(GetMapName(), "1x1") ~= nil
+
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+        if PlayerResource:IsValidPlayerID(playerID)
+            and PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED
+            and not PlayerResource:IsFakeClient(playerID) then
+
+            local team = PlayerResource:GetTeam(playerID)
+
+            if only_dire then
+                if team == DOTA_TEAM_BADGUYS then
+                    total = total + 1
+                end
+            else
+                if team ~= DOTA_TEAM_NOTEAM then
+                    total = total + 1
+                end
+            end
+        end
+    end
+
+    return total
 end
 
 map_system:Init()

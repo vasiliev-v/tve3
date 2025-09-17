@@ -2,6 +2,41 @@ var UPDATED_QUEST_DAY = {}
 
 var HIDE_QUESTS_PANEL = Game.GetMapInfo().map_display_name == "1x1";
 
+(function forceHideFor1x1() {
+    if (!HIDE_QUESTS_PANEL) return;
+
+    const root = $.GetContextPanel();
+    root.AddClass("hide-quests");
+
+    // 1) Попробовать найти и мгновенно удалить тень
+    let shadow = root.FindChildTraverse("PanelShadow");
+    if (!shadow) {
+        const shadows = root.FindChildrenWithClassTraverse("PanelShadow");
+        if (shadows.length) shadow = shadows[0];
+    }
+    if (shadow) {
+        // Сброс эффектов, чтобы не мигнула
+        shadow.style.visibility = "collapse";
+        shadow.style.opacity = "0";
+        shadow.style.transform = "none";
+        shadow.DeleteAsync(0); // ← физически убрать из DOM
+    }
+
+    // 2) Спрятать свопер и список (на случай, если XML прогрузится раньше CSS)
+    ["QuestPanelSwap", "QuestsPanel", "QuestMain"].forEach(id => {
+        const p = root.FindChildTraverse(id);
+        if (p) {
+            p.style.visibility = "collapse";
+            p.style.opacity = "0";
+            p.style.transform = "none";
+        }
+    });
+
+    // 3) Закрыть «шторку», чтобы не было анимаций
+    const qm = root.FindChildTraverse("QuestMain");
+    if (qm) qm.SetHasClass("Open", false);
+})();
+
 
 //GameEvents.SubscribeProtected( 'troll_quest_update', UpdateQuest ); // Обновить квест ( quest_id -- Айди квеста у игрока, current -- Новое значение в этом квесте )
 
@@ -33,7 +68,7 @@ function CreateQuests()
 {
 	if (HIDE_QUESTS_PANEL) 
 	{ 
-		$("#QuestMain").RemoveAndDeleteChildren()
+		$.GetContextPanel().AddClass("hide-quests");
 		return 
 	}
 	let has_battlepass = false
@@ -224,14 +259,17 @@ GameEvents.SubscribeProtected( "troll_quest_update_after", UpdateQuestAfter );
 function UpdateQuestAfter()
 {
     if (HIDE_QUESTS_PANEL) {
-        var questsPanel = $("#QuestsPanel");
-        if (questsPanel) {
-            questsPanel.style.visibility = "collapse";
-        }
-        var questsPanelSwap = $("#PanelShadow");
-        if (questsPanelSwap) {
-            questsPanelSwap.style.visibility = "collapse";
-        }
+        const root = $.GetContextPanel();
+
+        const qp = $("#QuestsPanel");
+        if (qp) qp.style.visibility = "collapse";
+
+        const swap = $("#QuestPanelSwap");
+        if (swap) swap.style.visibility = "collapse";
+
+        const shadow = $("#PanelShadow") || root.FindChildrenWithClassTraverse("PanelShadow")[0];
+        if (shadow) shadow.style.visibility = "collapse";
+
         return;
     }
     if (UPDATED_QUEST_DAY[Players.GetLocalPlayer()] != null ) { return }
@@ -246,11 +284,11 @@ if (!HIDE_QUESTS_PANEL) {
     CreateQuests();
 } else {
     var questsPanel = $("#QuestsPanel");
-    if (questsPanel) {
-        questsPanel.style.visibility = "collapse";
-    }
+    if (questsPanel) questsPanel.style.visibility = "collapse";
+
     var questsPanelSwap = $("#QuestPanelSwap");
-    if (questsPanelSwap) {
-        questsPanelSwap.style.visibility = "collapse";
-    }
+    if (questsPanelSwap) questsPanelSwap.style.visibility = "collapse";
+
+    var panelShadow = $("#PanelShadow") || $.GetContextPanel().FindChildrenWithClassTraverse("PanelShadow")[0];
+    if (panelShadow) panelShadow.style.visibility = "collapse";
 }

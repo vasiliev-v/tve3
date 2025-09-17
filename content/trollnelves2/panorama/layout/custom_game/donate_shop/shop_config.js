@@ -67,6 +67,8 @@ var Items_pets = data_categories["category_items_pets"]
 var Items_effects = data_categories["category_items_particles"]
 var Items_subscribe = data_categories["category_items_subscribes"]
 var chests_table = data_categories["category_items_chests"]
+var Items_label = data_categories["category_items_label"]
+
 var Items_currency = 
 [
 	["301",  "", "5$", "gold_icon", "donate_5", true], 

@@ -25,7 +25,9 @@
             </Panel>
             <Panel class="WindowStage WindowMapStage" id="WindowMapStage">
                 <Label class="WindowStageName" text="#ChooseMapInGame" />
-                <Label class="MapSelectInfo" id="MapSelectInfo" text="Тролль выбирает карту" visible="false" />
+
+                <Label class="MapSelectInfo" id="MapSelectInfo" text="#TrollChoseMap" visible="false" />
+
                 <Panel class="PlayersCounter" id="WindowStageMapPlayersCounter" />
                 <Panel class="MapsList" id="MapsList" />
             </Panel>
