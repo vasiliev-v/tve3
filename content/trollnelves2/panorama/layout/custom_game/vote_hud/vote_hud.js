@@ -88,6 +88,7 @@ function InitStageSelectedMap(data)
     $("#WindowMapStage").style.opacity = "1"
     const is1x1 = Game.GetMapInfo().map_display_name == "1x1"
     const isTroll = Players.GetTeam( Players.GetLocalPlayer() ) == 3
+    $("#MapSelectInfo").visible = false
     if (is1x1 && !isTroll)
     {
         $("#WindowStageMapPlayersCounter").visible = false
