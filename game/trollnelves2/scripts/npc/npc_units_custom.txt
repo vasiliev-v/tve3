@@ -11107,7 +11107,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"1"
+		"RepairSpeed"				"4"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11212,7 +11212,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"2"
+		"RepairSpeed"				"5"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11317,7 +11317,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"3"
+		"RepairSpeed"				"6"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11422,7 +11422,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"4"
+		"RepairSpeed"				"7"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11528,7 +11528,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"5"
+		"RepairSpeed"				"8"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11601,7 +11601,7 @@
 		"Ability1" 					"repair"
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"5"//"5"
+		"RepairSpeed"				"8"//"5"
 	}
 
 	"worker_2_2"
@@ -11647,7 +11647,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"6"
+		"RepairSpeed"				"9"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11754,7 +11754,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"7"
+		"RepairSpeed"				"10"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11861,7 +11861,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"8"
+		"RepairSpeed"				"11"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -11969,7 +11969,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"9"
+		"RepairSpeed"				"12"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12043,7 +12043,7 @@
 		"Ability1" 					"repair"
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"9"//"5"
+		"RepairSpeed"				"13"//"5"
 	}
 
 	"worker_3_2"
@@ -12089,7 +12089,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"10"
+		"RepairSpeed"				"14"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12196,7 +12196,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"11"
+		"RepairSpeed"				"14"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12303,7 +12303,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"12"
+		"RepairSpeed"				"15"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12410,7 +12410,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"13" //"3"
+		"RepairSpeed"				"16" //"3"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12478,7 +12478,7 @@
 		"Ability1" 					"repair"
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"13"//"5"
+		"RepairSpeed"				"14"//"5"
 	}
 	"worker_4_2" 
 	{
@@ -12523,7 +12523,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"14" //"3"
+		"RepairSpeed"				"17" //"3"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12625,7 +12625,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"15" //"3"
+		"RepairSpeed"				"18" //"3"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12727,7 +12727,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"16" //"3"
+		"RepairSpeed"				"19" //"3"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12829,7 +12829,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"17"//"5"
+		"RepairSpeed"				"20"//"5"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -12900,7 +12900,7 @@
 		"Ability1" 					"repair"
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"17"//"5"
+		"RepairSpeed"				"20"//"5"
 
 	}
 
@@ -12947,7 +12947,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"18"//"5"
+		"RepairSpeed"				"21"//"5"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -13052,7 +13052,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"19"//"5"
+		"RepairSpeed"				"23"//"5"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -13157,7 +13157,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"20"//"5"
+		"RepairSpeed"				"25"//"5"
 
 		// Bounty
 		//----------------------------------------------------------------
