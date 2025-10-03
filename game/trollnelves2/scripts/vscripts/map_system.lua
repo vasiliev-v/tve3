@@ -90,18 +90,18 @@ function map_system:SetVotesMap(data)
 
         CustomGameEventManager:Send_ServerToAllClients("troll_elves_map_votes_change_visual", table_votes)
 
-        local eligible = map_system:GetEligibleVotersCount()
-        if eligible > 0 and vote_players >= eligible then
-            if Timers.RemoveTimer then
-                Timers:RemoveTimer("map_vote_stage_timer")
-            elseif Timers.Remove then
-                Timers:Remove("map_vote_stage_timer")
-            end
-
-            BuildingHelper:UpdateMapStage()
-            setup_state_lib:SetNextStage()
-
-        end
+        --local eligible = map_system:GetEligibleVotersCount()
+        --if eligible > 0 and vote_players >= eligible then
+        --    if Timers.RemoveTimer then
+        --        Timers:RemoveTimer("map_vote_stage_timer")
+        --    elseif Timers.Remove then
+        --        Timers:Remove("map_vote_stage_timer")
+        --    end
+        --
+        --    BuildingHelper:UpdateMapStage()
+        --    setup_state_lib:SetNextStage()
+        --
+        --end
 
 
 end

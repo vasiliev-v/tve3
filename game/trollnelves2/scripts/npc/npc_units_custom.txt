@@ -13052,7 +13052,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"23"//"5"
+		"RepairSpeed"				"22"//"5"
 
 		// Bounty
 		//----------------------------------------------------------------
@@ -13157,7 +13157,7 @@
 		"Ability10"					""
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
-		"RepairSpeed"				"25"//"5"
+		"RepairSpeed"				"23"//"5"
 
 		// Bounty
 		//----------------------------------------------------------------
