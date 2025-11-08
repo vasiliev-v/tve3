@@ -10,6 +10,13 @@
             <Panel class="CloseButtonPanel" onactivate="ClosePanel();"/>
             <Label class="HeaderLabel" text="#leaderboard_name" />
             <Panel class="LeaderboardPanel">
+                <Panel class="SeasonTabsContainer" id="SeasonTabsContainer">
+                    <Button class="SeasonTabNavButton SeasonTabNavButtonLeft" id="SeasonTabsPrev" onactivate="ScrollSeasonTabs(-1)" />
+                    <Panel class="SeasonTabsViewport" id="SeasonTabsViewport">
+                        <Panel class="SeasonTabs" id="SeasonTabs" />
+                    </Panel>
+                    <Button class="SeasonTabNavButton SeasonTabNavButtonRight" id="SeasonTabsNext" onactivate="ScrollSeasonTabs(1)" />
+                </Panel>
                 <Panel class="LeaderboardColumnsHeader">
                     <Label class="Leaderboard_column_id" text="№" />
                     <Label class="Leaderboard_column_name" text="Name" />
