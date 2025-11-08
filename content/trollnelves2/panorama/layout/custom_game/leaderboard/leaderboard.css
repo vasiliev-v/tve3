@@ -40,6 +40,71 @@
     margin-top: 127px;
 }
 
+.SeasonTabsContainer
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.SeasonTabsContainer.Hidden
+{
+    visibility: collapse;
+    height: 0px;
+    margin-bottom: 0px;
+}
+
+.SeasonTabsScroll
+{
+    width: 100%;
+    height: fit-children;
+    flow-children: right;
+    overflow: clip scroll;
+    padding-bottom: 6px;
+}
+
+.SeasonTabs
+{
+    flow-children: right;
+    width: fit-children;
+}
+
+.SeasonTab
+{
+    flow-children: right;
+    height: 36px;
+    padding: 6px 14px;
+    margin-right: 8px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.04);
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.SeasonTab:hover
+{
+    background-color: rgba(184, 255, 69, 0.18);
+}
+
+.SeasonTab.Selected
+{
+    background-color: rgba(184, 255, 69, 0.35);
+}
+
+.SeasonTabLabel
+{
+    vertical-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: semi-bold;
+    text-transform: none;
+}
+
+.SeasonTab.Selected .SeasonTabLabel
+{
+    color: #B8FF45;
+}
+
 .LeaderboardPanel
 {
     flow-children: down;

@@ -10,6 +10,11 @@
             <Panel class="CloseButtonPanel" onactivate="ClosePanel();"/>
             <Label class="HeaderLabel" text="#leaderboard_name" />
             <Panel class="LeaderboardPanel">
+                <Panel class="SeasonTabsContainer" id="SeasonTabsContainer">
+                    <ScrollPanel class="SeasonTabsScroll" id="SeasonTabsScroll" horizontal="true">
+                        <Panel class="SeasonTabs" id="SeasonTabs" />
+                    </ScrollPanel>
+                </Panel>
                 <Panel class="LeaderboardColumnsHeader">
                     <Label class="Leaderboard_column_id" text="№" />
                     <Label class="Leaderboard_column_name" text="Name" />
