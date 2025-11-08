@@ -152,3 +152,83 @@
 {
     background-color: #4B6834;
 }
+
+.SeasonHistory
+{
+    flow-children: down;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.SeasonTabs
+{
+    flow-children: right;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.SeasonTabButton
+{
+    height: 30px;
+    padding: 0px 16px;
+    margin-right: 8px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition-property: background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.SeasonTabButton:hover
+{
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.SeasonTabButton.Active
+{
+    background-color: #4B6834;
+}
+
+.SeasonTabButton Label
+{
+    color: white;
+    font-size: 16px;
+    vertical-align: center;
+}
+
+.SeasonContent
+{
+    flow-children: down;
+    width: 100%;
+}
+
+.SeasonPanel
+{
+    flow-children: down;
+    width: 100%;
+    visibility: collapse;
+}
+
+.SeasonPanel.Active
+{
+    visibility: visible;
+}
+
+.SeasonPanel .SeasonHeader
+{
+    flow-children: right;
+}
+
+.SeasonPlayersList,
+.SeasonLocalPlayer
+{
+    flow-children: down;
+    width: 100%;
+}
+
+.SeasonPlaceholderText
+{
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    margin: 8px 0px;
+}
