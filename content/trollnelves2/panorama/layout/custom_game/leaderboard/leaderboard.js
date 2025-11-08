@@ -106,6 +106,39 @@ var FAKE_SEASON_HISTORY =
         },
     },
 }
+
+var FAKE_SEASON_HISTORY =
+{
+    winter_2025:
+    {
+        name: "Winter",
+        year: 2025,
+        order: 4,
+        players: [],
+    },
+    autumn_2024:
+    {
+        name: "Autumn",
+        year: 2024,
+        order: 3,
+        players: [],
+    },
+    summer_2024:
+    {
+        name: "Summer",
+        year: 2024,
+        order: 2,
+        players: [],
+    },
+    spring_2024:
+    {
+        name: "Spring",
+        year: 2024,
+        order: 1,
+        players: [],
+    },
+}
+
 var SEASON_TABS = []
 var IS_SEASON_LISTENER_ATTACHED = false
 var ACTIVE_SEASON_INDEX = 0
@@ -336,10 +369,12 @@ function UpdateSeasonTabs(seasonData)
         })
     }
 
+
     for (let index = 0; index < SEASON_TABS.length; index++)
     {
         PopulateSeasonPanel(SEASON_TABS[index])
     }
+
 
     if (SEASON_TABS.length > 0)
     {
@@ -352,6 +387,7 @@ function UpdateSeasonTabs(seasonData)
         ActivateSeasonTab(Math.max(indexToActivate, 0))
     }
 }
+
 
 function PopulateSeasonPanel(seasonTab)
 {
