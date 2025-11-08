@@ -10,6 +10,10 @@
             <Panel class="CloseButtonPanel" onactivate="ClosePanel();"/>
             <Label class="HeaderLabel" text="#leaderboard_name" />
             <Panel class="LeaderboardPanel">
+                <Panel class="SeasonHistory">
+                    <Panel class="SeasonTabs" id="SeasonTabs" />
+                    <Panel class="SeasonContent" id="SeasonContent" />
+                </Panel>
                 <Panel class="LeaderboardColumnsHeader">
                     <Label class="Leaderboard_column_id" text="№" />
                     <Label class="Leaderboard_column_name" text="Name" />
