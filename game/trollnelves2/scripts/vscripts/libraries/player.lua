@@ -102,18 +102,18 @@ function CDOTA_PlayerResource:SetLumber(hero, lumber)
 		local limitLumber = 0
 		if hero:HasModifier("modifier_elf_spell_limit_lumber")  then
 			if hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 1  then
-				limitLumber = 100000 
+				limitLumber = 200000 
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 2 then
-				limitLumber = 200000
+				limitLumber = 400000
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 3 then
-				limitLumber = 500000
+				limitLumber = 600000
 			end
 		end
 		if hero:HasModifier("modifier_elf_spell_limit_lumber_x4")  then
 			if hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 1  then
-				limitLumber = 100000 
+				limitLumber = 200000 
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 2 then
-				limitLumber = 200000
+				limitLumber = 350000
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 3 then
 				limitLumber = 500000
 			end

@@ -899,7 +899,13 @@ function GatherLumber(event)
 			caster:Interrupt()
 			return
 		end
-		
+
+		if caster.target_tree2 and caster.target_tree2 ~= event.target and caster:HasAbility("special_bonus_cast_range_700") then
+			caster:RemoveAbility("special_bonus_cast_range_700")
+			caster:Interrupt()
+			return
+		end	 
+
 		local tree = target
 		
 		
