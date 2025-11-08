@@ -183,7 +183,7 @@ function SetRoles()
             end
 
             if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
-                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (repScore > 50 or PoolTable ~= "0") and not partyGame then
+                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (repScore > -49 or PoolTable ~= "0") and not partyGame then
                     table.insert(wannabeTrollIDs, pID)
                 elseif GameRules.PlayersCount < MIN_RATING_PLAYER or GameRules:IsCheatMode() then
                     table.insert(wannabeTrollIDs, pID)

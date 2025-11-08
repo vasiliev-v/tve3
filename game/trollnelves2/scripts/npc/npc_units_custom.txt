@@ -2041,6 +2041,8 @@
 		"StatusHealth"				"1"
 		"AbilityLayout"				"4"
 		"Ability1"					"troll_invis"
+		"VisionDaytimeRange"		"0"		// Range of vision during day light.
+		"VisionNighttimeRange"		"0"		// Range of vision at night time.
 	}
 
 	"flag"
@@ -12818,7 +12820,7 @@
 
 		"AbilityLayout"				"4"
 		"Ability1" 					"repair"
-		"Ability2" 					"train_worker_5_2"//"shredder_flamethrower"
+		"Ability2" 					""//"shredder_flamethrower" train_worker_5_2
 		"Ability3" 					"commit_suicide"
 		"Ability4" 					""
 		"Ability5"					""
