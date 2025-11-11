@@ -15316,5 +15316,58 @@
 	  	"BountyGoldMax"				"25"		// Gold earned max.
 	}
 
+	"winter2023_npc"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creature"
+		"HasInventory" 				"1" 
+		"Model"						"models/development/invisiblebox.vmdl"
+	    "ModelScale"                "1"
+	    "ModelRotation"             "90"
+		"HealthBarOffset"			"150"
+		"PlayerCanControl"			"1"
+		"Scale"						"1"
+		"RequiresRepair"			"1"
+		"StartingBuilding"          "1"
+		"Limit"						"1"
+		"MinimapIcon"				"minimap_tower"
+		"MinimapIconSize"			"320"
+
+	    // Stats
+	    //-----------------------------
+	    "Level"                     "1"
+	    "BuildTime"                 "0.1"
+		"Requirements"{
+		}
+		"AbilityLayout"				"1"
+		"Ability1"					"empty_npc_abil"
+
+	    "ArmorPhysical"             "0"
+		"StatusHealth"              "1"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "0"
+	    "StatusManaRegen"           "0"
+	    "MagicalResistance"         "0"
+
+		"ConstructionSize"          "1"
+	    "BlockPathingSize"          "0"
+		"CollisionSize"				"8"
+
+	    "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+	    "TeamName"                  "DOTA_TEAM_NEUTRALS"
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "600"
+	    "VisionNighttimeRange"      "1200"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "ProjectileCollisionSize"   "1"
+	    "RingRadius"                "1"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+		"AttackAcquisitionRange"	"900"		// Range within a target can be acquired.
+		"AttackRange"				"900"		// Range within a target can be attacked.
+	}
+
 
 }
