@@ -1,0 +1,251 @@
+.Leaderboard 
+{
+    width: 590px;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 30px;
+    transform: translatex(-50%);
+    opacity: 0;
+    transition: transform 0.1s ease 0.0s, opacity 0.2s ease 0.0s;
+    flow-children: down; 
+}
+
+.Leaderboard.Open
+{
+    transform: translatey( 0% );
+    opacity: 1;
+}
+
+.CloseButtonPanel
+{
+    horizontal-align: right;
+    margin-top: 66px;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-image: url("file://{images}/new_design/information/close.png");
+    transition-property: transform;
+    transition-duration: 0.2s;
+}
+
+.CloseButtonPanel:hover
+{
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.HeaderLabel {
+    color: white;
+    font-weight: semi-bold;
+    font-size: 40px;
+    margin-top: 0;
+}
+
+/* Подпись выбранного сезона */
+#SeasonTitle {
+    margin-top: 4px;
+    color: #B8FF45;
+    font-size: 16px;
+}
+
+/* ===== Лента сезонов со стрелками ===== */
+.SeasonTabsWrapper {
+    flow-children: right;
+    width: 100%;
+    height: 36px;
+    margin-top: 8px;
+}
+
+.SeasonTabs {
+    width: fill-parent-flow(1.0);
+    height: 36px;
+    overflow: clip;              /* управляем прокруткой сами */
+    flow-children: none;         /* внутри — один контейнер */
+    z-index: 1;                  /* <-- добавь */
+    padding-left: 6px;           /* небольшие поля, чтобы лента не прилипала к краям */
+    padding-right: 6px;
+    vertical-align: center;
+}
+
+.SeasonTabsInner {
+    flow-children: right;        /* одна строка */
+    height: 36px;
+    margin-left: 0px;            /* будет изменяться из JS */
+}
+
+.SeasonScrollBtn {
+    width: 28px;
+    height: 36px;
+    margin: 0 4px;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition-property: background-color, transform;
+    transition-duration: 0.1s;
+    vertical-align: center;
+    horizontal-align: center;
+    flow-children: none;
+    z-index: 10; 
+}
+
+.SeasonScrollBtn:hover {
+    background-color: rgba(255,255,255,0.12);
+    transform: translateY(-1px);
+}
+
+.SeasonScrollBtn Label {
+    color: #ddd;
+    font-size: 16px;
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+/* Кнопки сезонов */
+.SeasonButton
+{
+    height: 36px;
+    padding: 6px 10px;
+    margin-right: 6px;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition-property: background-color, transform;
+    transition-duration: 0.1s;
+}
+
+.SeasonButton Label
+{
+    color: #ddd;
+    font-size: 14px;
+    vertical-align: center;
+    white-space: nowrap;         /* не переносим названия сезонов */
+}
+
+.SeasonButton:hover
+{
+    background-color: rgba(255,255,255,0.12);
+    transform: translateY(-1px);
+}
+
+.SeasonButton.Active
+{
+    background-color: rgba(184, 255, 69, 0.2);
+    border: 1px solid #B8FF45;
+}
+
+.SeasonButton.Active Label
+{
+    color: #B8FF45;
+}
+
+/* ===== Таблица ===== */
+.LeaderboardPanel {
+    flow-children: down;
+    margin-top: 8px;
+}
+
+.LeaderboardColumnsHeader
+{
+    flow-children: right;
+    margin-top: 8px;
+}
+
+.LeaderboardColumnsHeader Label
+{
+    color: #B8FF45;
+    font-size: 14px;
+}
+
+.Leaderboard_column_id
+{
+    width: 60px;
+    vertical-align: center;
+    padding-left: 20px;
+    text-overflow: shrink;
+}
+
+.Leaderboard_column_name
+{
+    width: 200px;
+    vertical-align: center;
+}
+
+.LeaderboardColumnsHeader .Leaderboard_column_name
+{
+    padding-left: 32px;
+}
+
+.Leaderboard_column_sum
+{
+    width: 80px;
+    vertical-align: center;
+}
+
+.Leaderboard_column_troll
+{
+    width: 60px;
+    vertical-align: center;
+}
+
+.Leaderboard_column_elves
+{
+    width: 60px;
+    vertical-align: center;
+}
+
+.Leaderboard_column_games
+{
+    width: 60px;
+    vertical-align: center;
+}
+
+.PlayersList
+{
+    margin-top: 5px;
+    width: 100%;
+    flow-children: down;
+}
+
+.LinePlayer
+{
+    width: 100%;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    border-radius: 20px;
+    flow-children: right;
+}
+
+.LinePlayer Label
+{
+    color: white;
+    font-weight: semi-bold;
+    font-size: 16px;
+    vertical-align: center;
+}
+
+.LinePlayer_1
+{
+    background-color: gradient( linear, 0% 0%, 40% 0%, from( #ffd84b82 ), to( #78641F ));
+}
+
+.LinePlayer_2
+{
+    background-color: gradient( linear, 0% 0%, 40% 0%, from( #ffffff65 ), to( #717171 ));
+}
+
+.LinePlayer_3
+{
+    background-color: gradient( linear, 0% 0%, 40% 0%, from( #ffa24b97 ), to( #784A1F ));
+}
+
+.LocalPlayer
+{
+    margin-top: 5px;
+    width: 100%;
+    flow-children: down;
+}
+
+.LocalPlayer .LinePlayer
+{
+    background-color: #4B6834;
+}

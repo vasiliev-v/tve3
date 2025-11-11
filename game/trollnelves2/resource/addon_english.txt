@@ -5389,6 +5389,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"label_18"					"TRAINER"
 		"label_19"					"TOP TROLL"
 		"label_20"					"YOUTUBER"
+		"leaderboard_current_season"		"Сurrent"
 
 		""						""
 		""						""
