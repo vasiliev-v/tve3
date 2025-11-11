@@ -369,7 +369,8 @@ function InitializeBadHero(hero)
                 local optimalRate = 1 / fullHpReg
                 rate = optimalRate > rate and optimalRate or rate
                 local ratedHpReg = fullHpReg * rate
-                hero:SetHealth(hero:GetHealth() + ratedHpReg)
+                local new_health = math.min(hero:GetHealth() + ratedHpReg, hero:GetMaxHealth())
+                hero:SetHealth(new_health)
             end
             if rate == nil then
                 rate = 1 
@@ -653,7 +654,7 @@ function InitializeTroll(hero)
         abil2:StartCooldown(999999) 
     end
     hero:CalculateStatBonus(true)
-    --hero:AddItemByName("item_zombie_bag")
+
 end
 
 function InitializeAngel(hero)

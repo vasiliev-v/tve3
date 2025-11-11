@@ -2246,6 +2246,7 @@
 		"DOTA_Tooltip_ability_buy_item_dmg_15"                                            "Buy Sword Lv 15"
 		"DOTA_Tooltip_ability_buy_item_dmg_15_Description"                                ""
 		"DOTA_Tooltip_ability_buy_item_dmg_15_bonus_damage"                                "+$damage"
+		"DOTA_Tooltip_ability_buy_item_dmg_15_move"                                 	   "+$move_speed"
 		"DOTA_Tooltip_ability_buy_item_dmg_15_gold_cost"                                   "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_buy_item_dmg_15_lumber_cost"                                 "<font color='#008000'>LUMBER COST: </font>"
 		
@@ -2757,6 +2758,7 @@
 		"DOTA_Tooltip_ability_item_dmg_15"                                                "Dmg 15"
 		"DOTA_Tooltip_ability_item_dmg_15_Description"                                    ""
 		"DOTA_Tooltip_ability_item_dmg_15_bonus_damage"                                   "+$damage"
+		"DOTA_Tooltip_ability_item_dmg_15_move"                                     	   "+$move_speed"
 		"DOTA_Tooltip_ability_item_dmg_15_gold_cost"                                      "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_item_dmg_15_lumber_cost"                                    "<font color='#008000'>LUMBER COST: </font>"
 		

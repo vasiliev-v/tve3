@@ -1,31 +1,27 @@
---[[Author: Pizzalol, kritth
-	Date: 12.07.2015.
-	Provides vision along the way of the projectile]]
-function WaveOfTerrorVision( keys )
-	local caster = keys.caster
+vengefulspirit_wave_of_terror_datadriven = class({})
+
+LinkLuaModifier("modifier_wave_of_terror_datadriven", "heroes/hero_vengefulspirit/wave_of_terror.lua", LUA_MODIFIER_MOTION_NONE)
+
+function vengefulspirit_wave_of_terror_datadriven:OnSpellStart()
+	if not IsServer() then return end
+	local caster = self:GetCaster()
 	local caster_location = caster:GetAbsOrigin()
-	local ability = keys.ability
-	local target_point = keys.target_points[1]
-	local forwardVec = (target_point - caster_location):Normalized()
+	local target_point = self:GetCursorPosition()
+	local forward = (target_point - caster_location):Normalized()
 
-	-- Projectile variables
-	local wave_speed = ability:GetLevelSpecialValueFor("wave_speed", (ability:GetLevel() - 1))
-	local wave_width = ability:GetLevelSpecialValueFor("wave_width", (ability:GetLevel() - 1))
-	local wave_range = ability:GetLevelSpecialValueFor("wave_range", (ability:GetLevel() - 1))
-	local wave_location = caster_location
-	local wave_particle = keys.wave_particle
+	local wave_speed = self:GetSpecialValueFor("wave_speed")
+	local wave_width = self:GetSpecialValueFor("wave_width")
+	local wave_range = self:GetSpecialValueFor("wave_range")
+	local vision_aoe = self:GetSpecialValueFor("vision_aoe")
+	local vision_duration = self:GetSpecialValueFor("vision_duration")
 
-	-- Vision variables
-	local vision_aoe = ability:GetLevelSpecialValueFor("vision_aoe", (ability:GetLevel() - 1))
-	local vision_duration = ability:GetLevelSpecialValueFor("vision_duration", (ability:GetLevel() - 1))
+	EmitSoundOn("Hero_VengefulSpirit.WaveOfTerror", caster)
 
-	-- Creating the projectile
-	local projectileTable =
-	{
-		EffectName = wave_particle,
-		Ability = ability,
+	local info = {
+		EffectName = "particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf",
+		Ability = self,
 		vSpawnOrigin = caster_location,
-		vVelocity = Vector( forwardVec.x * wave_speed, forwardVec.y * wave_speed, 0 ),
+		vVelocity = Vector(forward.x * wave_speed, forward.y * wave_speed, 0),
 		fDistance = wave_range,
 		fStartRadius = wave_width,
 		fEndRadius = wave_width,
@@ -34,26 +30,54 @@ function WaveOfTerrorVision( keys )
 		bReplaceExisting = false,
 		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
 		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
-		iUnitTargetType = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
+		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
 	}
-	-- Saving the projectile ID so that we can destroy it later
-	projectile_id = ProjectileManager:CreateLinearProjectile( projectileTable )
+	ProjectileManager:CreateLinearProjectile(info)
 
-	-- Timer to provide vision
-	Timers:CreateTimer( function()
-		-- Calculating the distance traveled
-		wave_location = wave_location + forwardVec * (wave_speed * 1/30)
-
-		-- Reveal the area after the projectile passes through it
+	local wave_location = Vector(caster_location.x, caster_location.y, caster_location.z)
+	local traveled = 0
+	local step = wave_speed * (1/30)
+	Timers:CreateTimer(function()
+		wave_location = wave_location + forward * step
+		traveled = traveled + step
 		AddFOWViewer(caster:GetTeamNumber(), wave_location, vision_aoe, vision_duration, false)
-
-		local distance = (wave_location - caster_location):Length2D()
-
-		-- Checking if we traveled far enough, if yes then destroy the timer
-		if distance >= wave_range then
+		if traveled >= wave_range then
 			return nil
 		else
 			return 1/30
 		end
 	end)
+end
+
+function vengefulspirit_wave_of_terror_datadriven:OnProjectileHit(target, location)
+	if not IsServer() then return end
+	if not target then return true end
+	local duration = self:GetSpecialValueFor("tooltip_duration")
+	target:AddNewModifier(self:GetCaster(), self, "modifier_wave_of_terror_datadriven", {duration = duration})
+	local damage = self:GetAbilityDamage() or 0
+	ApplyDamage({
+		victim = target,
+		attacker = self:GetCaster(),
+		ability = self,
+		damage = damage,
+		damage_type = DAMAGE_TYPE_PURE,
+	})
+	return false
+end
+
+modifier_wave_of_terror_datadriven = class({})
+
+function modifier_wave_of_terror_datadriven:IsHidden() return false end
+function modifier_wave_of_terror_datadriven:IsDebuff() return true end
+function modifier_wave_of_terror_datadriven:IsPurgable() return true end
+function modifier_wave_of_terror_datadriven:GetEffectName() return "particles/units/heroes/hero_vengeful/vengeful_wave_of_terror_recipient.vpcf" end
+function modifier_wave_of_terror_datadriven:GetEffectAttachType() return PATTACH_ABSORIGIN_FOLLOW end
+
+function modifier_wave_of_terror_datadriven:DeclareFunctions()
+	return { MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS }
+end
+
+function modifier_wave_of_terror_datadriven:GetModifierPhysicalArmorBonus()
+	if not self:GetAbility() then return 0 end
+	return self:GetAbility():GetSpecialValueFor("armor_reduction")
 end

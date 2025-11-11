@@ -1,118 +1,144 @@
---[[Author: Pizzalol
-	Date: 26.01.2016.
-	Creates vision over the area]]
-function WeaveVision( keys )
-	local caster = keys.caster
-	local target_point = keys.target_points[1]
-	local ability = keys.ability
-	local ability_level = ability:GetLevel() - 1
+weave_datadriven = class({})
 
-	local vision_radius = ability:GetLevelSpecialValueFor("vision", ability_level)
-	local vision_duration = ability:GetLevelSpecialValueFor("vision_duration", ability_level)
+LinkLuaModifier("modifier_weave_friendly_datadriven", "heroes/hero_dazzle/weave.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_weave_enemy_datadriven",    "heroes/hero_dazzle/weave.lua", LUA_MODIFIER_MOTION_NONE)
 
-	AddFOWViewer(caster:GetTeamNumber(),target_point,vision_radius,vision_duration,true)
-end
+function weave_datadriven:OnSpellStart()
+	if not IsServer() then return end
+	local caster = self:GetCaster()
+	local point = self:GetCursorPosition()
 
---[[Author: Pizzalol
-	Date: 26.01.2016.
-	Removes the targeted modifier]]
-function WeaveRemoveModifier( keys )
-	local target = keys.target
-	local modifier = keys.modifier
+	local radius = self:GetSpecialValueFor("radius")
+	local duration = self:GetSpecialValueFor("duration")
+	local vision = self:GetSpecialValueFor("vision")
+	local vision_duration = self:GetSpecialValueFor("vision_duration")
+	local friendly_per_sec = self:GetSpecialValueFor("armor_per_second")
+	local enemy_per_sec = self:GetSpecialValueFor("negative_armor_per_second")
 
-	target:RemoveModifierByName(modifier)
-end
+	if caster:HasScepter() then
+		radius = self:GetSpecialValueFor("radius_scepter")
+		duration = self:GetSpecialValueFor("duration_scepter")
+		friendly_per_sec = self:GetSpecialValueFor("armor_per_second_scepter")
+	end
 
---[[
-	Author: Noya, Pizzalol
-	Date: 05.02.2015.
-	Shows the dazzle friendly armor particle
-]]
-function WeavePositiveParticle( event )
-	local target = event.target
-	local location = target:GetAbsOrigin()
-	local particleName = event.particle_name
-	local modifier = event.modifier
+	EmitSoundOn("Hero_Dazzle.Weave", caster)
 
-	-- Count the number of weave modifiers
-	local count = 0
+	local p = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_weave.vpcf", PATTACH_CUSTOMORIGIN, caster)
+	ParticleManager:SetParticleControl(p, 0, point)
+	ParticleManager:SetParticleControl(p, 1, Vector(radius, 0, 0))
+	ParticleManager:ReleaseParticleIndex(p)
 
-	for i = 0, target:GetModifierCount() do
-		if target:GetModifierNameByIndex(i) == modifier then
-			count = count + 1
+	AddFOWViewer(caster:GetTeamNumber(), point, vision, vision_duration, true)
+
+	local allies = FindUnitsInRadius(
+		caster:GetTeamNumber(), point, nil, radius,
+		DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false
+	)
+	for _,unit in pairs(allies) do
+		if unit and not unit:IsNull() then
+			unit:AddNewModifier(caster, self, "modifier_weave_friendly_datadriven", {duration = duration, armor_per_sec = friendly_per_sec})
 		end
 	end
 
-	-- If its the first one then apply the particle
-	if count == 1 then 
-		target.WeavePositiveParticle = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, target)
-		ParticleManager:SetParticleControl(target.WeavePositiveParticle, 0, target:GetAbsOrigin())
-		ParticleManager:SetParticleControl(target.WeavePositiveParticle, 1, target:GetAbsOrigin())
-
-		ParticleManager:SetParticleControlEnt(target.WeavePositiveParticle, 1, target, PATTACH_OVERHEAD_FOLLOW, "attach_overhead", target:GetAbsOrigin(), true)
-	end
-end
-
---[[
-	Author: Noya, Pizzalol
-	Date: 05.02.2015.
-	Shows the dazzle enemy armor particle
-]]
-function WeaveNegativeParticle( event )
-	local target = event.target
-	local location = target:GetAbsOrigin()
-	local particleName = event.particle_name
-	local modifier = event.modifier
-
-	-- Count the number of weave modifiers
-	local count = 0
-
-	for i = 0, target:GetModifierCount() do
-		if target:GetModifierNameByIndex(i) == modifier then
-			count = count + 1
-		end
-	end
-
-	-- If its the first one then apply the particle
-	if count == 1 then 
-		target.WeaveNegativeParticle = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, target)
-		ParticleManager:SetParticleControl(target.WeaveNegativeParticle, 0, target:GetAbsOrigin())
-		ParticleManager:SetParticleControl(target.WeaveNegativeParticle, 1, target:GetAbsOrigin())
-
-		ParticleManager:SetParticleControlEnt(target.WeaveNegativeParticle, 1, target, PATTACH_OVERHEAD_FOLLOW, "attach_overhead", target:GetAbsOrigin(), true)
-	end
-end
-
---[[Author: Pizzalol
-	Date: 26.01.2016.
-	Destroys the particle when the modifier is destroyed, only when the target doesnt have the modifier]]
-function EndWeaveParticle( event )
-	local target = event.target
-	local modifier = event.modifier
-	local particle_type = event.particle_type -- 0 negative and 1 positive
-
-	if not target:HasModifier(modifier) then
-		if particle_type == 0 then
-			ParticleManager:DestroyParticle(target.WeaveNegativeParticle,false)
-		else
-			ParticleManager:DestroyParticle(target.WeavePositiveParticle,false)
+	local enemies = FindUnitsInRadius(
+		caster:GetTeamNumber(), point, nil, radius,
+		DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false
+	)
+	for _,unit in pairs(enemies) do
+		if unit and not unit:IsNull() then
+			unit:AddNewModifier(caster, self, "modifier_weave_enemy_datadriven", {duration = duration, armor_per_sec = enemy_per_sec})
 		end
 	end
 end
 
---[[Author: Pizzalol
-	Date: 26.01.2016.
-	Increment the stack count]]
-function WeaveIncrement( keys )
-	local caster = keys.caster
-	local target = keys.target
-	local modifier = keys.modifier
+modifier_weave_friendly_datadriven = class({})
 
-	local current_stack = target:GetModifierStackCount(modifier,caster)
+function modifier_weave_friendly_datadriven:IsPurgable() return true end
+function modifier_weave_friendly_datadriven:IsDebuff() return false end
+function modifier_weave_friendly_datadriven:GetAttributes() return MODIFIER_ATTRIBUTE_MULTIPLE end
 
-	if current_stack < 1 then
-		target:SetModifierStackCount(modifier,caster,1)
-	else
-		target:SetModifierStackCount(modifier,caster,current_stack + 1)
+function modifier_weave_friendly_datadriven:OnCreated(kv)
+	self.per_sec = tonumber(kv.armor_per_sec) or (self:GetAbility() and self:GetAbility():GetSpecialValueFor("armor_per_second")) or 0
+	self.tick = (self:GetAbility() and self:GetAbility():GetSpecialValueFor("tick_interval")) or 1.0
+	if IsServer() then
+		self:SetStackCount(0)
+		self.p = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetParent())
+		ParticleManager:SetParticleControlEnt(self.p, 1, self:GetParent(), PATTACH_OVERHEAD_FOLLOW, "attach_overhead", self:GetParent():GetAbsOrigin(), true)
+		self:StartIntervalThink(self.tick)
 	end
+end
+
+function modifier_weave_friendly_datadriven:OnRefresh(kv)
+	self.per_sec = tonumber(kv.armor_per_sec) or (self:GetAbility() and self:GetAbility():GetSpecialValueFor("armor_per_second")) or self.per_sec or 0
+	self.tick = (self:GetAbility() and self:GetAbility():GetSpecialValueFor("tick_interval")) or self.tick or 1.0
+	if IsServer() then
+		self:StartIntervalThink(self.tick)
+	end
+end
+
+function modifier_weave_friendly_datadriven:OnIntervalThink()
+	self:SetStackCount(self:GetStackCount() + 1)
+end
+
+function modifier_weave_friendly_datadriven:OnDestroy()
+	if IsServer() and self.p then
+		ParticleManager:DestroyParticle(self.p, false)
+		ParticleManager:ReleaseParticleIndex(self.p)
+	end
+end
+
+function modifier_weave_friendly_datadriven:DeclareFunctions()
+	return { MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS }
+end
+
+function modifier_weave_friendly_datadriven:GetModifierPhysicalArmorBonus()
+	local per = self.per_sec or 0
+	return self:GetStackCount() * per
+end
+
+modifier_weave_enemy_datadriven = class({})
+
+function modifier_weave_enemy_datadriven:IsPurgable() return true end
+function modifier_weave_enemy_datadriven:IsDebuff() return true end
+function modifier_weave_enemy_datadriven:GetAttributes() return MODIFIER_ATTRIBUTE_MULTIPLE end
+
+function modifier_weave_enemy_datadriven:OnCreated(kv)
+	self.per_sec = tonumber(kv.armor_per_sec) or (self:GetAbility() and self:GetAbility():GetSpecialValueFor("negative_armor_per_second")) or 0
+	self.tick = (self:GetAbility() and self:GetAbility():GetSpecialValueFor("tick_interval")) or 1.0
+	if IsServer() then
+		self:SetStackCount(0)
+		self.p = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_armor_enemy.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetParent())
+		ParticleManager:SetParticleControlEnt(self.p, 1, self:GetParent(), PATTACH_OVERHEAD_FOLLOW, "attach_overhead", self:GetParent():GetAbsOrigin(), true)
+		self:StartIntervalThink(self.tick)
+	end
+end
+
+function modifier_weave_enemy_datadriven:OnRefresh(kv)
+	self.per_sec = tonumber(kv.armor_per_sec) or (self:GetAbility() and self:GetAbility():GetSpecialValueFor("negative_armor_per_second")) or self.per_sec or 0
+	self.tick = (self:GetAbility() and self:GetAbility():GetSpecialValueFor("tick_interval")) or self.tick or 1.0
+	if IsServer() then
+		self:StartIntervalThink(self.tick)
+	end
+end
+
+function modifier_weave_enemy_datadriven:OnIntervalThink()
+	self:SetStackCount(self:GetStackCount() + 1)
+end
+
+function modifier_weave_enemy_datadriven:OnDestroy()
+	if IsServer() and self.p then
+		ParticleManager:DestroyParticle(self.p, false)
+		ParticleManager:ReleaseParticleIndex(self.p)
+	end
+end
+
+function modifier_weave_enemy_datadriven:DeclareFunctions()
+	return { MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS }
+end
+
+function modifier_weave_enemy_datadriven:GetModifierPhysicalArmorBonus()
+	local per = self.per_sec or 0
+	return self:GetStackCount() * per
 end

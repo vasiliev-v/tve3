@@ -3,66 +3,34 @@
 
 	"item_reveal"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                     "item_datadriven"
+		"BaseClass"                     "item_lua"
 		"AbilityTextureName"            "item_reveal"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_SUPPRESS_ASSOCIATED_CONSUMABLE"
 		"Model"                         "models/props_winter/present.vmdl"
 		"Effect"                        "particles/generic_gameplay/dropped_item.vpcf"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"              "0"
-		"AbilityCooldown"				"0.1"
+		"AbilityCooldown"               "0.1"
 		"AbilityCastPoint"              "0.0"
 		"AbilityManaCost"               "0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"1"
-		"ItemPurchasable" 				"0"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
-		"ItemPermanent"					"0"
-		"ItemQuality"					"rare"
-		"ItemAliases"					"reveal item"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemPurchasable"               "0"
+		"ItemShareability"              "ITEM_NOT_SHAREABLE"
+		"ItemPermanent"                 "0"
+		"ItemQuality"                   "rare"
+		"ItemAliases"                   "reveal item"
+
+		"ScriptFile"                    "items\item_reveal.lua"
+
 		"AbilityValues"
-        {
-            "gold_cost" "0"
-            "lumber_cost" "2"
-            "dur_time" "10"
-            "radius1" "2400"
-        }
-		"OnSpellStart"
 		{
-			"RunScript"
-			{
-				"ScriptFile"            "custom_abilities.lua"
-				"Function"              "RevealAreaItem"
-				"Target"				"POINT"
-				"Duration"				"%dur_time"//"5"
-				"Radius"				"%radius1"
-			}
-			"CreateThinker"
-			{
-				"ModifierName"	"modifier_blood_rite_delay"
-				"Target"		"POINT"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_blood_rite_delay"
-			{
-				"Duration"	"%dur_time"
-				
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"hero_bloodseeker.bloodRite"
-						"Target"		"TARGET"
-					}
-				}
-			}
+			"gold_cost"                 "0"
+			"lumber_cost"               "2"
+			"dur_time"                  "10"
+			"radius1"                   "2400"
 		}
 	}
+
 
 	"item_vip"
 	{
@@ -1812,58 +1780,41 @@
 
 	"item_blink_datadriven"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                     "item_datadriven"
-		"ID"							"2007"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED"
-		"Model"                         "models/props_gameplay/red_box.vmdl"
-		"Effect"                        "particles/generic_gameplay/dropped_item.vpcf"
-		"AbilityTextureName"            "item_blink"
+		"BaseClass"             "item_lua"
+		"AbilityTextureName"    "item_blink"
+		"ScriptFile"            "items\item_blink_datadriven.lua"
 
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"              "0"
-		"AbilityCastPoint"              "0.0"
-		"AbilityCooldown"               "32"//"35"
-		"AbilityManaCost"               "0"
-		"ItemSellable"					"0"
-		"ItemDisplayCharges"			"0"
-		"ItemDroppable"					"0"
-		"ItemPurchasable" 				"0"
-		
+		// Основные параметры
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED"
+		"AbilityCastRange"      "0"
+		"AbilityCastPoint"      "0.0"
+		"AbilityCooldown"       "32"
+		"AbilityManaCost"       "0"
+
+		"ItemSellable"          "0"
+		"ItemDisplayCharges"    "0"
+		"ItemDroppable"         "0"
+		"ItemPurchasable"       "0"
+
+		"Model"                 "models/props_gameplay/red_box.vmdl"
+		"Effect"                "particles/generic_gameplay/dropped_item.vpcf"
+
 		"precache"
 		{
-			"particle"	"particles/econ/events/fall_2021/blink_dagger_fall_2021_start.vpcf"
-			"particle"	"particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf"
-			
-	
+			"particle"  "particles/econ/events/fall_2021/blink_dagger_fall_2021_start.vpcf"
+			"particle"  "particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf"
 		}
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
-        {
-            "max_blink_range" "1000"
-			"up1" 			  "1200"
-			"up2" 			  "1400"
-			"up3" 			  "1600"
-        }
-
-		"OnSpellStart"
 		{
-			"RunScript"
-			{
-				"ScriptFile"            "custom_abilities.lua"
-				"Function"              "ItemBlink"
-				"Target"                "POINT"
-				"MaxBlinkRange"         "%max_blink_range"
-				"MaxBlinkRange1"         "%up1"
-				"MaxBlinkRange2"         "%up2"
-				"MaxBlinkRange3"         "%up3"
-			}
+			"max_blink_range"	"1000"
+			"up1"				"1200"
+			"up2"				"1400"
+			"up3"				"1600"
+			"min_blink_range"	"0"
 		}
 	}
+
 
 	"item_dmg_1"
 	{
@@ -6016,47 +5967,6 @@
 	}
     }
 
-	"item_zombie_bag"
-	{
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"            "zombie_bag"
-	
-	"ItemStockInitial" "1" 
-	"ItemStockMax" "1"
-	"ItemStockTime" "1"
-
-
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemAliases"					"troll healer;th;тролль-лекарь;тл"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "20"
-	"ItemKillable"                  "1"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "0"
-	"ItemInitialCharges"            "0"
-	"ItemStackable"					"10"
-	"ItemPurchasable" 				"0"
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"items\ItemSpawn.lua"
-			"Function"		"Spawn"
-			"name_creep"		"zombie_bag"
-		}
-		
-	}
-	"AbilityValues"
-        {
-            "duration" "999999"
-            "gold_cost" "0"
-            "lumber_cost" "0"
-            "food_cost" "0"
-        }
-	}
 
 	//"item_tpscroll" "removed"
 

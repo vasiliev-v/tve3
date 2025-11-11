@@ -1886,7 +1886,8 @@ function BuildingHelper:StartBuilding(builder)
                                 
                                 if hpGain > 0 then
                                     fAddedHealth = fAddedHealth + hpGain
-                                    building:SetHealth(building:GetHealth() + hpGain)
+                                    local newHealth = math.min(building:GetHealth() + hpGain, building:GetMaxHealth())
+                                    building:SetHealth(newHealth)
                                     local fModelScale =
                                     (buildTime - fTimeBuildingCompleted +
                                     GameRules:GetGameTime()) / buildTime *
@@ -1896,9 +1897,9 @@ function BuildingHelper:StartBuilding(builder)
                                     building:SetModelScale(fModelScale)
                                 end
                                 else
-                                building:SetHealth(
-                                    building:GetHealth() + fMaxHealth - fAddedHealth -
-                                nInitialHealth) -- round up the last little bit
+                                local heal = fMaxHealth - fAddedHealth - nInitialHealth
+                                local newHealth = math.min(building:GetHealth() + heal, building:GetMaxHealth())
+                                building:SetHealth(newHealth)
                                 BuildingHelper:print(
                                     "Finished " .. building:GetUnitName() .. " in " ..
                                     math.floor(GameRules:GetGameTime() - startTime) ..
@@ -2169,7 +2170,8 @@ function BuildingHelper:StartRepair(builder, target)
                     if hpGain > 0 and target.missingHealthToComplete then
                         target.missingHealthToComplete =
                         target.missingHealthToComplete - hpGain
-                        target:SetHealth(target:GetHealth() + hpGain)
+                        local newHealth = math.min(target:GetHealth() + hpGain, target:GetMaxHealth())
+                        target:SetHealth(newHealth)
                         local fModelScale =
                         (target:GetMaxHealth() -
                         target.missingHealthToComplete) /

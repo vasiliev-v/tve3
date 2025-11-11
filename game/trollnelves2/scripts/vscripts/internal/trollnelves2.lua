@@ -198,6 +198,14 @@ function trollnelves2:DamageFilter( kv )
     local heroKilledID = heroKilled:GetPlayerOwnerID()
     local OwnHeroAtacker = PlayerResource:GetSelectedHeroEntity(heroAttackerID)
     local OwnHeroKilled = PlayerResource:GetSelectedHeroEntity(heroKilledID)
+    local parame = {}
+
+    if team ~= teamKilled and heroAttacker:HasModifier("gold_on_attack") then
+      parame.unit = heroKilled
+      parame.caster = heroAttacker
+      parame.DamageDealt = kv.damage
+      GoldOnAttack (parame)
+    end
 
     if OwnHeroAtacker == nil or OwnHeroKilled == nil then
       return true
@@ -217,9 +225,11 @@ function trollnelves2:DamageFilter( kv )
       PlayerResource:IsValidPlayerID(heroAttackerID) and not PlayerResource:IsFakeClient(heroAttackerID) and 
       PlayerResource:IsValidPlayerID(heroKilledID) and not PlayerResource:IsFakeClient(heroKilledID) then
 
+       
         
       PlayerResource:ModifyDamageGiven(heroAttackerID, kv.damage)
       PlayerResource:ModifyDamageTake(heroKilledID, kv.damage)
+      
     end
   
 
@@ -280,11 +290,77 @@ function trollnelves2:DamageFilter( kv )
       end
 		end
 
-
-
     return true
   end
 end
+
+function GoldOnAttack (event)
+	if IsServer() and (event.unit:GetUnitName() ~= 'npc_dota_hero_doom_bringer' 
+					or event.unit:GetUnitName() ~= 'npc_dota_hero_phantom_assassin'  
+					or event.unit:GetUnitName() ~= 'npc_dota_hero_tidehunter'
+					or event.unit:GetUnitName() ~= 'event_boss_halloween'
+					or event.unit:GetUnitName() ~= 'npc_dota_hero_lina'
+					or event.unit:GetUnitName() ~= 'npc_dota_hero_pudge' ) then
+		local caster = event.caster
+		local koeff = 1
+		if event.unit:HasModifier("modifier_antifeed") then
+			koeff = 0
+		end
+		if event.unit:GetTeamNumber() ~= 2 then
+			koeff = 0
+		end
+		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
+		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
+			if caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 1  then
+				dmg = dmg + (1 * GameRules.MapSpeed) * koeff
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 2 then
+				dmg = dmg + (2 * GameRules.MapSpeed) * koeff
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 3 then
+				dmg = dmg + (3 * GameRules.MapSpeed) * koeff
+			end
+		end
+		PlayerResource:ModifyGold(caster,dmg)
+		PopupGoldGain(caster,dmg)
+		local target = event.unit
+		caster.attackTarget = target:GetEntityIndex()
+		target.attackers = target.attackers or {}
+		target.attackers[caster:GetEntityIndex()] = true
+		local duoBase = 1
+		if GameRules.countFlag[target:GetPlayerOwnerID()] ~= nil then
+			duoBase = 2
+		end
+		
+		if caster:HasModifier("modifier_convert_gold") and PlayerResource:GetGold(caster:GetPlayerID()) >= 64000 then
+			local gold = PlayerResource:GetGold(caster:GetPlayerID())
+			local lumber = gold/64000 or 0
+			gold = math.floor((lumber - math.floor(lumber)) * 64000) or 0
+			lumber = math.floor(lumber)
+			PlayerResource:SetGold(caster, gold, true)
+			PlayerResource:ModifyLumber(caster, lumber, true)
+		end
+		if string.match(target:GetUnitName(),"rock") and not string.match(GetMapName(),"1x1") and not target:HasModifier("modifier_fountain_glyph") and not string.match(GetMapName(),"clanwars")  then
+			if GameRules.MapSpeed == 2 then
+				target:GiveMana(2.5/duoBase)
+			elseif GameRules.MapSpeed == 4 then
+				target:GiveMana(3/duoBase)
+			else
+				target:GiveMana(2/duoBase)
+			end
+		end
+		if string.match(target:GetUnitName(),"rock") and target:GetMaxMana() == target:GetMana() and target:GetMana() > 0 and GameRules.test2 == false then
+			target:AddNewModifier(target, target, "modifier_antifeed", {Duration = 60})
+			if GameRules.MapSpeed == 2 then
+				target:SetMana(target:GetMana()/2)
+			elseif GameRules.MapSpeed == 4 then
+				target:SetMana(0)
+			else
+				target:SetMana(target:GetMana()*0.75)
+			end
+			 
+		end
+	end
+end
+
 
 function trollnelves2:PlayerLoaded(player, pid)
     if player == nil then return end

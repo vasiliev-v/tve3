@@ -397,14 +397,14 @@
 
 	}
 
-	"npc_dota_hero_dark_willow" //"npc_dota_hero_queenofpain "
+	"npc_dota_hero_dark_willow"  
 	{
-		"override_hero"     "npc_dota_hero_dark_willow" //"npc_dota_hero_queenofpain "
-		"SoundSet"			"Hero_DarkWillow" //"Hero_QueenOfPain "
-		"Model"				"models/heroes/dark_willow/dark_willow.vmdl"//"models/heroes/queenofpain/queenofpain.vmdl"
+		"override_hero"     "npc_dota_hero_dark_willow"  
+		"SoundSet"			"Hero_DarkWillow"  
+		"Model"				"models/heroes/dark_willow/dark_willow.vmdl" 
 		"AbilityLayout"     "8"
-		"Ability1" 			"penitence_datadriven" //"shadow_qop_datadriven "
-		"Ability2" 			"furion_teleportation_datadriven" //"queenofpain_blink "
+		"Ability1" 			"penitence_datadriven"  
+		"Ability2" 			"furion_teleportation_datadriven"  
 		"Ability3" 			"steal_gold"
 		"Ability4" 			"cm_haste" 
 		"Ability5"    	    "stand_invis"

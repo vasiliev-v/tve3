@@ -197,237 +197,6 @@ function GainGoldTeamThinker(event)
 	end
 end
 
-
-function shrapnel_start_charge( keys )
-	-- Only start charging at level 1
-	if keys.ability:GetLevel() ~= 1 then return end
-	
-	-- Variables
-	local caster = keys.caster
-	local ability = keys.ability
-	local modifierName = "modifier_shrapnel_stack_counter_datadriven"
-	local maximum_charges = 2
-	
-	-- Initialize stack
-	caster:SetModifierStackCount( modifierName, caster, 0 )
-	caster.shrapnel_charges = maximum_charges
-	caster.start_charge = false
-	caster.shrapnel_cooldown = 0.0
-	if caster.first == nil then
-		caster.first = true
-	end
-	
-
-	ability:ApplyDataDrivenModifier( caster, caster, modifierName, {} )
-	caster:SetModifierStackCount( modifierName, caster, maximum_charges )
-	if keys.caster:GetUnitName() == "npc_dota_hero_bear" and caster.first then
-		caster.first = false
-		return
-	end
-	-- create timer to restore stack
-	Timers:CreateTimer( function()
-		-- Restore charge
-		if not caster then
-			return 0.5
-		end
-
-		local CD = caster:GetCooldownReduction()
-		if caster:GetUnitName() == "npc_dota_hero_bear" then
-			CD = PlayerResource:GetSelectedHeroEntity(caster:GetPlayerOwnerID()):GetCooldownReduction()
-		end
-		maximum_charges = 2
-		if caster:HasModifier("modifier_troll_spell_reveal")  then
-			if caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 1  then
-				maximum_charges = 3
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 2 then
-				maximum_charges = 4
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 3 then
-				maximum_charges = 5
-			end
-		end
-		local charge_replenish_time = 60 * CD
-		if caster.start_charge and caster.shrapnel_charges < maximum_charges then
-			-- Calculate stacks
-			if ability == nil or caster == nil then
-				return nil
-			end
-			local next_charge = caster.shrapnel_charges + 1
-			caster:RemoveModifierByName( modifierName )
-			if next_charge ~= maximum_charges then
-				ability:ApplyDataDrivenModifier( caster, caster, modifierName, { Duration = charge_replenish_time } )
-				shrapnel_start_cooldown( caster, charge_replenish_time )
-				else
-				ability:ApplyDataDrivenModifier( caster, caster, modifierName, {} )
-				caster.start_charge = false
-			end
-			caster:SetModifierStackCount( modifierName, caster, next_charge )
-			
-			-- Update stack
-			caster.shrapnel_charges = next_charge
-		end
-		
-		-- Check if max is reached then check every 0.5 seconds if the charge is used
-		if caster.shrapnel_charges ~= maximum_charges then
-			caster.start_charge = true
-			return charge_replenish_time
-		else
-			return 0.5
-		end
-	end
-	)
-end
-function shrapnel_fire( keys )
-	-- Reduce stack if more than 0 else refund mana
-	if keys.caster.shrapnel_charges > 0 then
-		-- variables
-		local caster = keys.caster
-		local target = keys.target_points[1]
-		local ability = keys.ability
-		local casterLoc = caster:GetAbsOrigin()
-		local modifierName = "modifier_shrapnel_stack_counter_datadriven"
-		local dummyModifierName = "modifier_shrapnel_dummy_datadriven"
-		local radius = ability:GetLevelSpecialValueFor( "radius", ( ability:GetLevel() - 1 ) )
-		local maximum_charges = 2
-		if caster:HasModifier("modifier_troll_spell_reveal")  then
-			if caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 1  then
-				maximum_charges = 3
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 2 then
-				maximum_charges = 4
-			elseif caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount() == 3 then
-				maximum_charges = 5
-			end
-		end
-		local CD = caster:GetCooldownReduction()
-		if caster:GetUnitName() == "npc_dota_hero_bear" then
-			CD = PlayerResource:GetSelectedHeroEntity(caster:GetPlayerOwnerID()):GetCooldownReduction()
-		end
-		local charge_replenish_time = 60 * CD
-		local next_charge = 0
-		-- Deplete charge
-		if caster:HasModifier("modifier_troll_warlord_presence") or caster:HasModifier("modifier_troll_boots_3") then
-			next_charge = caster.shrapnel_charges
-		else
-			next_charge = caster.shrapnel_charges - 1
-		end
-		if caster.shrapnel_charges == maximum_charges then
-			caster:RemoveModifierByName( modifierName )
-			ability:ApplyDataDrivenModifier( caster, caster, modifierName, { Duration = charge_replenish_time } )
-			shrapnel_start_cooldown( caster, charge_replenish_time )
-		end
-		caster:SetModifierStackCount( modifierName, caster, next_charge )
-		caster.shrapnel_charges = next_charge
-		
-		-- Check if stack is 0, display ability cooldown
-		if caster.shrapnel_charges == 0 then
-			-- Start Cooldown from caster.shrapnel_cooldown
-			ability:StartCooldown( caster.shrapnel_cooldown )
-			else
-			ability:EndCooldown()
-		end
-		-- Deal damage
-		RevealArea( keys )
-	end
-end
-function shrapnel_start_cooldown( caster, charge_replenish_time )
-	caster.shrapnel_cooldown = charge_replenish_time
-	Timers:CreateTimer( function()
-		local current_cooldown = caster.shrapnel_cooldown - 0.1
-		if current_cooldown > 0.1 then
-			caster.shrapnel_cooldown = current_cooldown
-			return 0.1
-		else
-			return nil
-		end
-	end
-	)
-end
-
-function RevealAreaItem( event )
-	event.Radius = event.Radius -- /GameRules.MapSpeed
-	RevealArea(event)
-	local item = event.ability
-	item:Use()
-end
-
-function RevealArea( event )
-	local status, nextCall = Error_debug.ErrorCheck(function() 
-		local caster = event.caster
-		local point = event.target_points[1]
-
-		if caster:HasModifier("modifier_troll_spell_vision")  then
-			if caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount() == 1  then
-				event.Radius = event.Radius + 150
-			elseif caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount() == 2 then
-				event.Radius = event.Radius + 225
-			elseif caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount() == 3 then
-				event.Radius = event.Radius + 300
-			end
-		end
-
-		if caster:HasModifier("modifier_troll_spell_vision_x4")  then
-			if caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount() == 1  then
-				event.Radius = event.Radius + 150
-			elseif caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount() == 2 then
-				event.Radius = event.Radius + 225
-			elseif caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount() == 3 then
-				event.Radius = event.Radius + 300
-			end
-		end
-
-		local visionRadius = string.match(GetMapName(),"1x1") and event.Radius*0.32
-			or string.match(GetMapName(),"arena") and event.Radius*0.58
-			or event.Radius
-
-		local visionDuration = event.Duration
-
-		-- === ПАРТИКЛ ИЗ KV: "particles/scan_particle.vpcf" ===
-		-- Аналог "EffectAttachType" "follow_origin": здесь точка на земле, поэтому WORLDORIGIN.
-		local particle = ParticleManager:CreateParticle(
-			"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf",
-			PATTACH_WORLDORIGIN,
-			nil
-		)
-		-- CP0 — позиция эффекта (аналог "Target" "TARGET" + follow_origin)
-		ParticleManager:SetParticleControl(particle, 0, point)
-		-- CP1 — радиус (замена %radius1)
-		ParticleManager:SetParticleControl(particle, 1, Vector(visionRadius, visionRadius, visionRadius))
-
-		-- Удаляем партикл по завершении действия
-		Timers:CreateTimer(visionDuration, function()
-			if particle then
-				ParticleManager:DestroyParticle(particle, false)
-				ParticleManager:ReleaseParticleIndex(particle)
-			end
-		end)
-		-- === конец блока партикла ===
-
-		-- Вижн
-		AddFOWViewer(caster:GetTeamNumber(), point, visionRadius, visionDuration, false)
-
-		-- Разовые эффекты в зоне
-		local timeElapsed = 0
-		Timers:CreateTimer(0.03,function()
-			local units = FindUnitsInRadius(
-				caster:GetTeamNumber(), point , nil, visionRadius,
-				DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL,
-				DOTA_UNIT_TARGET_FLAG_NONE, 0 , false
-			)
-			for _,unit in pairs(units) do
-				if unit ~= nil then
-					if unit:HasModifier("modifier_invisible") and not unit:HasModifier("modifier_invisible_truesight_immune") then
-						unit:RemoveModifierByName("modifier_invisible")
-					end
-				end
-			end
-			timeElapsed = timeElapsed + 0.03
-			if timeElapsed < visionDuration then
-				return 0.03
-			end
-		end)
-	end)
-end
-
-
 function TeleportTo (event)
 	local caster = event.caster
 	local hull = caster:GetHullRadius()
@@ -456,79 +225,9 @@ function TeleportTo (event)
 		
 	end
 
-	
-
-	
 	caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 1})
     ResolveNPCPositions(caster:GetAbsOrigin(),130)
 	--caster:SetHullRadius(hull) --160
-end
-
-function GoldOnAttack (event)
-	if IsServer() and (event.unit:GetUnitName() ~= 'npc_dota_hero_doom_bringer' 
-					or event.unit:GetUnitName() ~= 'npc_dota_hero_phantom_assassin'  
-					or event.unit:GetUnitName() ~= 'npc_dota_hero_tidehunter'
-					or event.unit:GetUnitName() ~= 'event_boss_halloween'
-					or event.unit:GetUnitName() ~= 'npc_dota_hero_lina'
-					or event.unit:GetUnitName() ~= 'npc_dota_hero_pudge' ) then
-		local caster = event.caster
-		local koeff = 1
-		if event.unit:HasModifier("modifier_antifeed") then
-			koeff = 0
-		end
-		if event.unit:GetTeamNumber() ~= 2 then
-			koeff = 0
-		end
-		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
-		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
-			if caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 1  then
-				dmg = dmg + (1 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 2 then
-				dmg = dmg + (2 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 3 then
-				dmg = dmg + (3 * GameRules.MapSpeed) * koeff
-			end
-		end
-		PlayerResource:ModifyGold(caster,dmg)
-		PopupGoldGain(caster,dmg)
-		local target = event.unit
-		caster.attackTarget = target:GetEntityIndex()
-		target.attackers = target.attackers or {}
-		target.attackers[caster:GetEntityIndex()] = true
-		local duoBase = 1
-		if GameRules.countFlag[target:GetPlayerOwnerID()] ~= nil then
-			duoBase = 2
-		end
-		
-		if caster:HasModifier("modifier_convert_gold") and PlayerResource:GetGold(caster:GetPlayerID()) >= 64000 then
-			local gold = PlayerResource:GetGold(caster:GetPlayerID())
-			local lumber = gold/64000 or 0
-			gold = math.floor((lumber - math.floor(lumber)) * 64000) or 0
-			lumber = math.floor(lumber)
-			PlayerResource:SetGold(caster, gold, true)
-			PlayerResource:ModifyLumber(caster, lumber, true)
-		end
-		if string.match(target:GetUnitName(),"rock") and not string.match(GetMapName(),"1x1") and not target:HasModifier("modifier_fountain_glyph") and not string.match(GetMapName(),"clanwars")  then
-			if GameRules.MapSpeed == 2 then
-				target:GiveMana(2.5/duoBase)
-			elseif GameRules.MapSpeed == 4 then
-				target:GiveMana(3/duoBase)
-			else
-				target:GiveMana(2/duoBase)
-			end
-		end
-		if string.match(target:GetUnitName(),"rock") and target:GetMaxMana() == target:GetMana() and target:GetMana() > 0 and GameRules.test2 == false then
-			target:AddNewModifier(target, target, "modifier_antifeed", {Duration = 60})
-			if GameRules.MapSpeed == 2 then
-				target:SetMana(target:GetMana()/2)
-			elseif GameRules.MapSpeed == 4 then
-				target:SetMana(0)
-			else
-				target:SetMana(target:GetMana()*0.75)
-			end
-			 
-		end
-	end
 end
 
 function KillWispOnAttack (event)
@@ -1370,7 +1069,9 @@ function FountainRegen(event)
 	local radius = event.Radius
 	local units = FindUnitsInRadius(caster:GetTeamNumber() , caster:GetAbsOrigin() , nil , radius , DOTA_UNIT_TARGET_TEAM_FRIENDLY ,  DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false)
 	for _,unit in pairs(units) do
-		unit:SetHealth(unit:GetHealth() + unit:GetMaxHealth() * 0.004)
+		local heal = unit:GetMaxHealth() * 0.004
+		local new_health = math.min(unit:GetHealth() + heal, unit:GetMaxHealth())
+		unit:SetHealth(new_health)
 	end
 end
 
@@ -1519,47 +1220,6 @@ function CommitSuicide(event)
 	end
 end
 
-function ItemBlink(keys)
-	ProjectileManager:ProjectileDodge(keys.caster)  --Disjoints disjointable incoming projectiles.
-	
-	ParticleManager:CreateParticle("particles/econ/events/fall_2021/blink_dagger_fall_2021_start.vpcf", PATTACH_ABSORIGIN, keys.caster)
-	keys.caster:EmitSound("DOTA_Item.BlinkDagger.Activate")
-	
-	local origin_point = keys.caster:GetAbsOrigin()
-	local target_point = keys.target_points[1]
-	local difference_vector = target_point - origin_point
-	if keys.caster:HasModifier("modifier_elf_spell_blink")  then
-		if keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 1  then
-			keys.MaxBlinkRange = keys.MaxBlinkRange1 
-		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 2 then
-			keys.MaxBlinkRange = keys.MaxBlinkRange2
-		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink"):GetStackCount() == 3 then
-			keys.MaxBlinkRange = keys.MaxBlinkRange3
-		end
-	end
-	if keys.caster:HasModifier("modifier_elf_spell_blink_x4")  then
-		if keys.caster:FindModifierByName("modifier_elf_spell_blink_x4"):GetStackCount() == 1  then
-			keys.MaxBlinkRange = keys.MaxBlinkRange1 
-		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink_x4"):GetStackCount() == 2 then
-			keys.MaxBlinkRange = keys.MaxBlinkRange2
-		elseif keys.caster:FindModifierByName("modifier_elf_spell_blink_x4"):GetStackCount() == 3 then
-			keys.MaxBlinkRange = keys.MaxBlinkRange3
-		end
-	end
-	if difference_vector:Length2D() > keys.MaxBlinkRange then  --Clamp the target point to the MaxBlinkRange range in the same direction.
-		target_point = origin_point + (target_point - origin_point):Normalized() * keys.MaxBlinkRange
-	end
-	-- keys.caster:AddNewModifier(keys.caster, keys.caster, "modifier_muted", {Duration=0.01})
-	keys.caster:SetAbsOrigin(target_point)
-	FindClearSpaceForUnit(keys.caster, target_point, false)
-	
-	Timers:CreateTimer(0.3,function()
-		if keys.caster then
-			ParticleManager:CreateParticle("particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf", PATTACH_ABSORIGIN, keys.caster)
-		end
-	end)
-end
-
 function TowerAttackSpeed( keys )
 	local caster = keys.caster
 	local target = keys.target
@@ -1683,7 +1343,7 @@ function HealBuilding(event)
 		if (target:GetHealth() + heal) > target:GetMaxHealth() then
 			target:SetHealth(target:GetMaxHealth())
 			else
-			target:SetHealth(target:GetHealth() + heal)
+			target:SetHealth(math.min(target:GetHealth() + heal, target:GetMaxHealth()))
 		end
 	end 
 end
