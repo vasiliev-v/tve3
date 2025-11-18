@@ -581,13 +581,29 @@
 		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/label_3019.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/label_3020.png" />
 
-		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/1.png" />
-		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/2.png" />
-		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/3.png" />
-		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/4.png" />
-		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/5.png" />
-		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/6.png" />
-		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/7.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/top_spring.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/top_summer.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/top_autumn.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/top_winter.png" />
+
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/elf_spring.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/elf_summer.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/elf_autumn.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/elf_winter.png" />
+
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/troll_spring.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/troll_summer.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/troll_autumn.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/troll_winter.png" />
+
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/bp_spring.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/bp_summer.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/bp_autumn.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/bp_winter.png" />
+
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/top_1x1.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/helper.png" />
+
 		
 		
 		

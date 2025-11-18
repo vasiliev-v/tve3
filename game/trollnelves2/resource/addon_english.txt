@@ -302,7 +302,7 @@
 		"shop_currency_count_from"	"from"
 		"shop_currency_count_to"	"to"
 
-		"shop_trollchance"	"A chance to become a Troll: "
+		"shop_trollchance"	"A bonus chance to become a Troll: "
 		"shop_bonusrate"	"Rating bonus: "
 		"shop_trollchance_date"			"Valid until: "
 		"shop_bonusrate_date"			"Valid until: "
@@ -5392,6 +5392,31 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"label_19"					"TOP TROLL"
 		"label_20"					"YOUTUBER"
 		"leaderboard_current_season"		"Сurrent"
+
+
+		"achivement_top_spring"      "TOP Spring"
+		"achivement_top_summer"      "TOP Summer"
+		"achivement_top_autumn"      "TOP Autumn"
+		"achivement_top_winter"      "TOP Winter"
+
+		"achivement_elf_spring"      "TOP Elf Spring"
+		"achivement_elf_summer"      "TOP Elf Summer"
+		"achivement_elf_autumn"      "TOP Elf Autumn"
+		"achivement_elf_winter"      "TOP Elf Winter"
+
+		"achivement_troll_spring"    "TOP Troll Spring"
+		"achivement_troll_summer"    "TOP Troll Summer"
+		"achivement_troll_autumn"    "TOP Troll Autumn"
+		"achivement_troll_winter"    "TOP Troll Winter"
+
+		"achivement_bp_spring"       "BP Spring"
+		"achivement_bp_summer"       "BP Summer"
+		"achivement_bp_autumn"       "BP Autumn"
+		"achivement_bp_winter"       "BP Winter"
+
+		"achivement_top_1x1"         "TOP 1x1"
+		"achivement_helper"          "Helper"
+
 
 		""						""
 		""						""
