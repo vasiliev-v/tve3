@@ -29,7 +29,7 @@
 		"shop_buy"			"Купить"
 		"shop_activate"		"Включить"
 		"shop_deactivate"	"Выключить"
-		"shop_trollchance"	"Бонус шанс стать тролем: "
+		"shop_trollchance"	"Бонус шанс стать Тролем: +"
 		"shop_bonusrate"	"Бонус рейтинга: "
 		"shop_trollchance_date"			"Действует до: "
 		"shop_bonusrate_date"			"Действует до: "

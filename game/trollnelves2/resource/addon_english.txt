@@ -302,7 +302,7 @@
 		"shop_currency_count_from"	"from"
 		"shop_currency_count_to"	"to"
 
-		"shop_trollchance"	"A bonus chance to become a Troll: "
+		"shop_trollchance"	"Bonus chance to become a Troll: +"
 		"shop_bonusrate"	"Rating bonus: "
 		"shop_trollchance_date"			"Valid until: "
 		"shop_bonusrate_date"			"Valid until: "
