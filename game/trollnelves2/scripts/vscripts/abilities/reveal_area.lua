@@ -1,5 +1,12 @@
+-- reveal_area.lua
+
 reveal_area = class({})
-LinkLuaModifier("modifier_reveal_area_charges", "abilities\\reveal_area.lua", LUA_MODIFIER_MOTION_NONE)
+
+LinkLuaModifier("modifier_reveal_area_charges", "abilities/reveal_area.lua", LUA_MODIFIER_MOTION_NONE)
+
+-------------------------------------------------
+-- Ability
+-------------------------------------------------
 
 function reveal_area:GetIntrinsicModifierName()
 	return "modifier_reveal_area_charges"
@@ -10,42 +17,32 @@ function reveal_area:OnUpgrade()
 	if self:GetLevel() ~= 1 then return end
 
 	local caster = self:GetCaster()
-	local max_charges = self:GetSpecialValueFor("maximum_charges")
-	local modifier = caster:AddNewModifier(caster, self, "modifier_reveal_area_charges", {})
-	if modifier then
-		modifier:SetStackCount(max_charges)
+	local max_charges = self:_getMaxChargesForCaster(caster)
+
+	-- Повесим мод, если его нет (постоянный, без duration)
+	if not caster:HasModifier("modifier_reveal_area_charges") then
+		caster:AddNewModifier(caster, self, "modifier_reveal_area_charges", {})
 	end
 
 	self._charges = max_charges
 	self._start_charge = false
 	self._cooldown_left = 0.0
 
+	-- твой флаг для медведя
 	if caster.first == nil then
 		caster.first = true
 	end
-
 	if caster:GetUnitName() == "npc_dota_hero_bear" and caster.first then
 		caster.first = false
 		return
 	end
 
+	-- Основной цикл восстановления
 	Timers:CreateTimer(function()
 		if not caster or caster:IsNull() then return 0.5 end
 
-		local cd_red = caster:GetCooldownReduction()
-		if caster:GetUnitName() == "npc_dota_hero_bear" then
-			local hero = PlayerResource:GetSelectedHeroEntity(caster:GetPlayerOwnerID())
-			if hero then cd_red = hero:GetCooldownReduction() end
-		end
-
-		local max_ch = self:GetSpecialValueFor("maximum_charges")
-		if caster:HasModifier("modifier_troll_spell_reveal") then
-			local s = caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount()
-			if s == 1 then max_ch = 3
-			elseif s == 2 then max_ch = 4
-			elseif s >= 3 then max_ch = 5 end
-		end
-
+		local cd_red = self:_getCooldownReductionOwnerAware(caster)
+		local max_ch = self:_getMaxChargesForCaster(caster)
 		if not self._charges then self._charges = max_ch end
 
 		local base_replenish = self:GetSpecialValueFor("charge_replenish_time")
@@ -53,18 +50,28 @@ function reveal_area:OnUpgrade()
 
 		if self._start_charge and self._charges < max_ch then
 			local next_charge = self._charges + 1
-			local mod = caster:FindModifierByName("modifier_reveal_area_charges")
+			local mod_name = "modifier_reveal_area_charges"
+
+			-- Обновляем визуализацию РОВНО один раз на цикл:
+			-- если ещё не максимум — делаем Remove+Add С ДЛИТЕЛЬНОСТЬЮ
 			if next_charge ~= max_ch then
-				if mod then mod:SetDuration(replenish_time, true) end
-				self:_startCooldownTick(replenish_time, caster)
+				caster:RemoveModifierByName(mod_name)
+				caster:AddNewModifier(caster, self, mod_name, { duration = replenish_time })
+				self:_startCooldownTick(replenish_time)
 			else
-				if mod then mod:SetDuration(-1, true) end
+				-- Достигли максимума: Remove+Add БЕЗ длительности (постоянный)
+				caster:RemoveModifierByName(mod_name)
+				caster:AddNewModifier(caster, self, mod_name, {})
 				self._start_charge = false
 			end
+
+			-- Стек заряда
+			local mod = caster:FindModifierByName(mod_name)
 			if mod then mod:SetStackCount(next_charge) end
 			self._charges = next_charge
 		end
 
+		-- Планирование следующей «порции» восстановления
 		if self._charges ~= max_ch then
 			self._start_charge = true
 			return replenish_time
@@ -74,7 +81,8 @@ function reveal_area:OnUpgrade()
 	end)
 end
 
-function reveal_area:_startCooldownTick(replenish_time, caster)
+-- внутренняя шкала для КД способности, когда зарядов 0
+function reveal_area:_startCooldownTick(replenish_time)
 	self._cooldown_left = replenish_time
 	Timers:CreateTimer(function()
 		self._cooldown_left = self._cooldown_left - 0.1
@@ -84,6 +92,7 @@ function reveal_area:_startCooldownTick(replenish_time, caster)
 	end)
 end
 
+-- Нажатие способности
 function reveal_area:OnSpellStart()
 	if not IsServer() then return end
 	local caster = self:GetCaster()
@@ -91,43 +100,64 @@ function reveal_area:OnSpellStart()
 
 	if not self._charges or self._charges <= 0 then return end
 
-	local max_charges = self:GetSpecialValueFor("maximum_charges")
-	if caster:HasModifier("modifier_troll_spell_reveal") then
-		local s = caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount()
-		if s == 1 then max_charges = 3
-		elseif s == 2 then max_charges = 4
-		elseif s >= 3 then max_charges = 5 end
+	local max_charges = self:_getMaxChargesForCaster(caster)
+	local cd_red = self:_getCooldownReductionOwnerAware(caster)
+	local base_replenish = self:GetSpecialValueFor("charge_replenish_time")
+	local replenish_time = base_replenish * cd_red
+
+	local no_deplete = caster:HasModifier("modifier_troll_warlord_presence")
+		or caster:HasModifier("modifier_troll_boots_3")
+
+	local next_charge = no_deplete and self._charges or (self._charges - 1)
+	local mod_name = "modifier_reveal_area_charges"
+
+	-- Если трата идёт с ПОЛНОГО стека — запускаем КД-кольцо:
+	-- Remove+Add с duration (и больше duration не трогаем!)
+	if self._charges == max_charges and not no_deplete then
+		caster:RemoveModifierByName(mod_name)
+		caster:AddNewModifier(caster, self, mod_name, { duration = replenish_time })
+		self:_startCooldownTick(replenish_time)
 	end
 
+	-- Обновляем стеки
+	local mod = caster:FindModifierByName(mod_name)
+	if mod then mod:SetStackCount(next_charge) end
+	self._charges = next_charge
+
+	-- КД на самой кнопке при 0 зарядах
+	if not no_deplete then
+		if self._charges == 0 then
+			self:StartCooldown(math.max(self._cooldown_left, 0.05))
+		else
+			self:EndCooldown()
+		end
+	end
+
+	self:_reveal(point)
+end
+
+-------------------------------------------------
+-- Helpers
+-------------------------------------------------
+
+function reveal_area:_getCooldownReductionOwnerAware(caster)
 	local cd_red = caster:GetCooldownReduction()
 	if caster:GetUnitName() == "npc_dota_hero_bear" then
 		local hero = PlayerResource:GetSelectedHeroEntity(caster:GetPlayerOwnerID())
 		if hero then cd_red = hero:GetCooldownReduction() end
 	end
+	return cd_red
+end
 
-	local base_replenish = self:GetSpecialValueFor("charge_replenish_time")
-	local replenish_time = base_replenish * cd_red
-
-	local no_deplete = caster:HasModifier("modifier_troll_warlord_presence") or caster:HasModifier("modifier_troll_boots_3")
-	local next_charge = no_deplete and self._charges or (self._charges - 1)
-
-	if self._charges == max_charges then
-		local mod = caster:FindModifierByName("modifier_reveal_area_charges")
-		if mod then mod:SetDuration(replenish_time, true) end
-		self:_startCooldownTick(replenish_time, caster)
+function reveal_area:_getMaxChargesForCaster(caster)
+	local max_ch = self:GetSpecialValueFor("maximum_charges")
+	if caster:HasModifier("modifier_troll_spell_reveal") then
+		local s = caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount()
+		if s == 1 then max_ch = 3
+		elseif s == 2 then max_ch = 4
+		elseif s >= 3 then max_ch = 5 end
 	end
-
-	local mod = caster:FindModifierByName("modifier_reveal_area_charges")
-	if mod then mod:SetStackCount(next_charge) end
-	self._charges = next_charge
-
-	if self._charges == 0 then
-		self:StartCooldown(self._cooldown_left)
-	else
-		self:EndCooldown()
-	end
-
-	self:_reveal(point)
+	return max_ch
 end
 
 function reveal_area:_scaledRadius(base_radius)
@@ -147,16 +177,16 @@ function reveal_area:_getRadius()
 
 	if caster:HasModifier("modifier_troll_spell_vision") then
 		local s = caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount()
-		if s == 1 then radius = radius + 150
-		elseif s == 2 then radius = radius + 225
-		elseif s >= 3 then radius = radius + 300 end
+		if s == 1 then radius = radius + 300
+		elseif s == 2 then radius = radius + 600
+		elseif s >= 3 then radius = radius + 900 end
 	end
 
 	if caster:HasModifier("modifier_troll_spell_vision_x4") then
 		local s = caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount()
-		if s == 1 then radius = radius + 150
-		elseif s == 2 then radius = radius + 225
-		elseif s >= 3 then radius = radius + 300 end
+		if s == 1 then radius = radius + 300
+		elseif s == 2 then radius = radius + 600
+		elseif s >= 3 then radius = radius + 900 end
 	end
 
 	return self:_scaledRadius(radius)
@@ -170,10 +200,9 @@ function reveal_area:_reveal(point)
 	EmitSoundOn("Hero_Silencer.Curse.Cast", caster)
 	EmitSoundOnLocationWithCaster(point, "hero_bloodseeker.bloodRite", caster)
 
-	local p = ParticleManager:CreateParticle("particles/scan_particle.vpcf", PATTACH_WORLDORIGIN, nil)
+	local p = ParticleManager:CreateParticle("particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf", PATTACH_WORLDORIGIN, nil)
 	ParticleManager:SetParticleControl(p, 0, point)
 	ParticleManager:SetParticleControl(p, 1, Vector(radius, 0, 0))
-
 	Timers:CreateTimer(duration, function()
 		ParticleManager:DestroyParticle(p, false)
 		ParticleManager:ReleaseParticleIndex(p)
@@ -194,11 +223,13 @@ function reveal_area:_reveal(point)
 			end
 		end
 		elapsed = elapsed + 0.03
-		if elapsed < duration then
-			return 0.03
-		end
+		if elapsed < duration then return 0.03 end
 	end)
 end
+
+-------------------------------------------------
+-- ONE modifier: stacks + cooldown ring
+-------------------------------------------------
 
 modifier_reveal_area_charges = class({})
 
@@ -206,4 +237,32 @@ function modifier_reveal_area_charges:IsHidden() return false end
 function modifier_reveal_area_charges:IsPurgable() return false end
 function modifier_reveal_area_charges:IsDebuff() return false end
 function modifier_reveal_area_charges:RemoveOnDeath() return false end
-function modifier_reveal_area_charges:GetAttributes() return MODIFIER_ATTRIBUTE_MULTIPLE end
+function modifier_reveal_area_charges:GetAttributes()
+	-- постоянный; не MULTIPLE; duration задаётся только через Remove+Add
+	return MODIFIER_ATTRIBUTE_PERMANENT
+end
+
+function modifier_reveal_area_charges:GetTexture()
+	return self:GetAbility():GetAbilityTextureName()
+end
+
+function modifier_reveal_area_charges:OnCreated()
+	if not IsServer() then return end
+	local ability = self:GetAbility()
+	if ability and ability._charges then
+		self:SetStackCount(ability._charges)
+	else
+		self:SetStackCount(self:GetAbility():GetSpecialValueFor("maximum_charges"))
+	end
+end
+
+-- По желанию можно добавить тултип с остатком (чтобы видеть цифрой при наведении):
+function modifier_reveal_area_charges:DeclareFunctions()
+	return { MODIFIER_PROPERTY_TOOLTIP }
+end
+function modifier_reveal_area_charges:OnTooltip()
+	-- если у модификатора есть duration, движок отдаст реальный остаток
+	local remain = self:GetRemainingTime() or -1
+	if remain < 0 then return 0 end
+	return math.max(0, math.floor(remain * 10 + 0.5) / 10)
+end

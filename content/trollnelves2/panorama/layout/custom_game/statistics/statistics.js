@@ -248,16 +248,19 @@ function UpdateAchivements()
     } 
     for (var achivement_id in player_achivements)
     {
+        if (!DATA_ACHIVEMENTS_LIST[achivement_id]) {
+            continue;
+        }
         player_has_alp[achivement_id] = true 
         CreateAchivementPanel(achivement_id, true)
     }
-    for (tbl_id in DATA_ACHIVEMENTS_LIST)
-    {
-        if (!player_has_alp[tbl_id])
-        {
-            CreateAchivementPanel(tbl_id, false)
-        }
-    }
+    //for (tbl_id in DATA_ACHIVEMENTS_LIST)
+    //{
+    //    if (!player_has_alp[tbl_id])
+    //    {
+    //        CreateAchivementPanel(tbl_id, false)
+    //    }
+    //}
 }
 
 function CreateAchivementPanel(achivement_id, active)
@@ -291,7 +294,7 @@ function CreateAchivementPanel(achivement_id, active)
 
     let achiviment_panel_counter_label = $.CreatePanel("Label", achiviment_panel_counter, "")
     achiviment_panel_counter_label.AddClass("achiviment_panel_counter_label")
-    achiviment_panel_counter_label.text = "0" // Передать значение сюды
+    achiviment_panel_counter_label.text = "99" // Передать значение сюды
 
     if (!achivement_data.is_allow_counter) // тут я пока хз как будет записываться значение, можно добавить что оно меньше или равно нулю то тоже скрывать
     {

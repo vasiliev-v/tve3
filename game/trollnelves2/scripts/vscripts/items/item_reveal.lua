@@ -9,15 +9,15 @@ function item_reveal:OnSpellStart()
 
 	if caster:HasModifier("modifier_troll_spell_vision") then
 		local s = caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount()
-		if s == 1 then base_radius = base_radius + 150
-		elseif s == 2 then base_radius = base_radius + 225
-		elseif s >= 3 then base_radius = base_radius + 300 end
+		if s == 1 then base_radius = base_radius + 300
+		elseif s == 2 then base_radius = base_radius + 600
+		elseif s >= 3 then base_radius = base_radius + 900 end
 	end
 	if caster:HasModifier("modifier_troll_spell_vision_x4") then
 		local s = caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount()
-		if s == 1 then base_radius = base_radius + 150
-		elseif s == 2 then base_radius = base_radius + 225
-		elseif s >= 3 then base_radius = base_radius + 300 end
+		if s == 1 then base_radius = base_radius + 300
+		elseif s == 2 then base_radius = base_radius + 600
+		elseif s >= 3 then base_radius = base_radius + 900 end
 	end
 
 	local map = GetMapName() or ""
@@ -30,7 +30,7 @@ function item_reveal:OnSpellStart()
 
 	EmitSoundOn("hero_bloodseeker.bloodRite", caster)
 
-	local p = ParticleManager:CreateParticle("particles/scan_particle.vpcf", PATTACH_WORLDORIGIN, nil)
+	local p = ParticleManager:CreateParticle("particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_ring.vpcf", PATTACH_WORLDORIGIN, nil)
 	ParticleManager:SetParticleControl(p, 0, point)
 	ParticleManager:SetParticleControl(p, 1, Vector(radius, 0, 0))
 	Timers:CreateTimer(duration, function()
@@ -58,7 +58,5 @@ function item_reveal:OnSpellStart()
 		end
 	end)
 
-	if self:GetCurrentCharges() > 0 then
-		self:SpendCharge()
-	end
+	self:Use()
 end

@@ -4219,9 +4219,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 				
 		"troll_spell_vision"                            		 "Vision"
         "troll_spell_vision_description"                       "Passive: Increases visibility range"
-        "modifier_troll_spell_vision_description_level_1"               "Vision Range +150<br>Reveal +150"
-        "modifier_troll_spell_vision_description_level_2"               "Vision Range +225<br>Reveal +225"
-        "modifier_troll_spell_vision_description_level_3"               "Vision Range +300<br>Reveal +300"
+        "modifier_troll_spell_vision_description_level_1"               "Vision Range +300<br>Reveal +300"
+        "modifier_troll_spell_vision_description_level_2"               "Vision Range +600<br>Reveal +600"
+        "modifier_troll_spell_vision_description_level_3"               "Vision Range +900<br>Reveal +900"
 		"DOTA_Tooltip_modifier_troll_spell_vision"			 "Passive: Increases visibility range"
 
 		"troll_spell_vision_description_level_1_shop"               "Vision Range"
@@ -4799,9 +4799,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_armor_description_level_1_shop_x4"               "Armor"
 				
-        "modifier_troll_spell_vision_x4_description_level_1"               "Vision Range +150<br>Reveal +150"
-        "modifier_troll_spell_vision_x4_description_level_2"               "Vision Range +225<br>Reveal +225"
-        "modifier_troll_spell_vision_x4_description_level_3"               "Vision Range +300<br>Reveal +300"
+        "modifier_troll_spell_vision_x4_description_level_1"               "Vision Range +300<br>Reveal +300"
+        "modifier_troll_spell_vision_x4_description_level_2"               "Vision Range +600<br>Reveal +600"
+        "modifier_troll_spell_vision_x4_description_level_3"               "Vision Range +900<br>Reveal +900"
 		"DOTA_Tooltip_modifier_troll_spell_vision_x4"			 "Passive: Increases visibility range"
 
 		"troll_spell_vision_description_level_1_shop_x4"               "Vision Range"

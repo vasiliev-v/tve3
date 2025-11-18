@@ -17,20 +17,20 @@ end
 
 function modifier_troll_spell_vision_x4:GetBonusDayVision()
 	if self:GetStackCount() == 1 then 
-		return 150
-	elseif self:GetStackCount() == 2  then
-		return 225
-	elseif self:GetStackCount() == 3  then
 		return 300
+	elseif self:GetStackCount() == 2  then
+		return 600
+	elseif self:GetStackCount() == 3  then
+		return 900
 	else return 0 end
 end
 
 function modifier_troll_spell_vision_x4:GetBonusNightVision()
 	if self:GetStackCount() == 1 then 
-		return 150
-	elseif self:GetStackCount() == 2  then
-		return 225
-	elseif self:GetStackCount() == 3  then
 		return 300
+	elseif self:GetStackCount() == 2  then
+		return 600
+	elseif self:GetStackCount() == 3  then
+		return 900
 	else return 0 end
 end

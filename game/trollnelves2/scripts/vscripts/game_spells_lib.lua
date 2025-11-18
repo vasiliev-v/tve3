@@ -516,8 +516,8 @@ if GameRules.MapSpeed ~= 4 then
                 "troll_spell_vision_description_level_2_shop", 
             }, 
             {
-                {150,225,300},
-                {150,225,300},
+                {300,600,900},
+                {300,600,900},
             },
             "1",
             "1",
@@ -1317,8 +1317,8 @@ else -- X4
                 "troll_spell_vision_description_level_2_shop_x4", 
             }, 
             {
-                {150,225,300},
-                {150,225,300},
+                {300,600,900},
+                {300,600,900},
             },
             "1",
             "1",

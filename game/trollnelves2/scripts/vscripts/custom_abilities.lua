@@ -601,6 +601,7 @@ function GatherLumber(event)
 
 		if caster.target_tree2 and caster.target_tree2 ~= event.target and caster:HasAbility("special_bonus_cast_range_700") then
 			caster:RemoveAbility("special_bonus_cast_range_700")
+			caster.target_tree2 = nil
 			caster:Interrupt()
 			return
 		end	 
@@ -661,56 +662,56 @@ function UpgradeWisp(event)
 		local wisp = ability:GetSpecialValueFor("wisp_cost")
 		if PlayerResource:GetGold(pID) < gold_cost then
             SendErrorMessage(pID, "error_not_enough_gold")
-			if casterAbility ~= nil then
+			if casterAbility ~= nil and caster.target_tree2 ~= nil then
 				caster:AddAbility("special_bonus_cast_range_700")
 				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
             	abil:SetLevel(abil:GetMaxLevel())
 				caster:CastAbilityOnTarget(target, casterAbility, pID)
-				Timers:CreateTimer(0.4,function() 
-					caster:RemoveAbility("special_bonus_cast_range_700")
-				end)
 			end
+			Timers:CreateTimer(0.4,function() 
+					caster:RemoveAbility("special_bonus_cast_range_700")
+			end)
             return false
         end
         if PlayerResource:GetLumber(pID) < lumber_cost then
             SendErrorMessage(pID, "error_not_enough_lumber")
-			if casterAbility ~= nil then
+			if casterAbility ~= nil and caster.target_tree2 ~= nil  then
 				caster:AddAbility("special_bonus_cast_range_700")
 				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
             	abil:SetLevel(abil:GetMaxLevel())
 				caster:CastAbilityOnTarget(target, casterAbility, pID)
-				Timers:CreateTimer(0.4,function() 
-					caster:RemoveAbility("special_bonus_cast_range_700")
-				end)
 			end
+			Timers:CreateTimer(0.4,function() 
+					caster:RemoveAbility("special_bonus_cast_range_700")
+			end)
             return false
         end
 		if hero.food > GameRules.maxFood and food ~= 0 then
 			SendErrorMessage(pID, "error_not_enough_food")
 			caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
-			if casterAbility ~= nil then
+			if casterAbility ~= nil and caster.target_tree2 ~= nil  then
 				caster:AddAbility("special_bonus_cast_range_700")
 				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
             	abil:SetLevel(abil:GetMaxLevel())
 				caster:CastAbilityOnTarget(target, casterAbility, pID)
-				Timers:CreateTimer(0.4,function() 
-					caster:RemoveAbility("special_bonus_cast_range_700")
-				end)
 			end
+			Timers:CreateTimer(0.4,function() 
+				caster:RemoveAbility("special_bonus_cast_range_700")
+			end)
 			return false
 		end
 		if hero.wisp > GameRules.maxWisp and wisp ~= 0 then
 			SendErrorMessage(pID, "error_not_enough_wisp")
 			caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
-			if casterAbility ~= nil then
+			if casterAbility ~= nil and caster.target_tree2 ~= nil then
 				caster:AddAbility("special_bonus_cast_range_700")
 				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
             	abil:SetLevel(abil:GetMaxLevel())
 				caster:CastAbilityOnTarget(target, casterAbility, pID)
-				Timers:CreateTimer(0.4,function() 
-					caster:RemoveAbility("special_bonus_cast_range_700")
-				end)
 			end
+			Timers:CreateTimer(0.4,function() 
+					caster:RemoveAbility("special_bonus_cast_range_700")
+			end)
 			return false
 		end
 		--caster:ForceKill(true) --This will call RemoveBuilding
@@ -726,17 +727,18 @@ function UpgradeWisp(event)
 		unit:SetOwner(hero)
 		unit:SetControllableByPlayer(pID, true)
 		PlayerResource:NewSelection(pID, unit)
+		
 		Timers:CreateTimer(0.3,function() 
 			local targetAbility = unit:FindAbilityByName("gather_lumber")
-			if targetAbility ~= nil then
+			if targetAbility ~= nil and caster.target_tree2 ~= nil  then
 				unit:AddAbility("special_bonus_cast_range_700")
 				local abil = unit:FindAbilityByName("special_bonus_cast_range_700")
             	abil:SetLevel(abil:GetMaxLevel())
 				unit:CastAbilityOnTarget(target, targetAbility, pID)
-				Timers:CreateTimer(0.4,function() 
-					unit:RemoveAbility("special_bonus_cast_range_700")
-				end)
 			end
+			Timers:CreateTimer(0.4,function() 
+				caster:RemoveAbility("special_bonus_cast_range_700")
+			end)
 		end)
 		table.insert(hero.units,unit)
 
