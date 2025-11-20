@@ -339,7 +339,7 @@ function UpdateAchivements()
             continue;
         }
         player_has_alp[achivement_id] = true
-        CreateAchivementPanel(achivement_id, true)
+        CreateAchivementPanel(achivement_id, true, player_achivements[achivement_id])
     }
     if (!selectedAchivementId)
     {
@@ -357,7 +357,7 @@ function UpdateAchivements()
     //}
 }
 
-function CreateAchivementPanel(achivement_id, active)
+function CreateAchivementPanel(achivement_id, active, counterValue)
 {
     let achivement_data = DATA_ACHIVEMENTS_LIST[achivement_id]
 
@@ -394,12 +394,9 @@ function CreateAchivementPanel(achivement_id, active)
 
     let achiviment_panel_counter_label = $.CreatePanel("Label", achiviment_panel_counter, "")
     achiviment_panel_counter_label.AddClass("achiviment_panel_counter_label")
-    achiviment_panel_counter_label.text = "99" // Передать значение сюды
+    achiviment_panel_counter_label.text = counterValue != null ? String(counterValue) : ""
 
-    if (!achivement_data.is_allow_counter) // тут я пока хз как будет записываться значение, можно добавить что оно меньше или равно нулю то тоже скрывать
-    {
-        achiviment_panel_counter.visible = false
-    }
+    achiviment_panel_counter.visible = achivement_data.is_allow_counter && counterValue != null
 
     achiviment_panel.SetPanelEvent('onmouseover', function() 
     {

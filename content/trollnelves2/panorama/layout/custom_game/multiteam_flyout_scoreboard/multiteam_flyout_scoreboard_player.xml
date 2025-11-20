@@ -48,8 +48,8 @@
                     <Panel id="AchievementPanel" class="ScoreboardAchievement">
                         <Panel id="AchievementGlow" />
                         <Panel id="AchievementIcon" />
+                        <Label id="AchievementCounter" class="ScoreboardAchievementCounter" />
                     </Panel>
-                    <Label id="AchievementCounter" />
                 </Panel>
             </Panel>
             <Panel id="GiveResourcesTable" class="ScoreboardPanel">
