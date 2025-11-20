@@ -46,6 +46,11 @@
                 <Label class="SettingsName" text="#Stats_Settings" />
                 <Panel class="PanelSettings" id="PanelSettings" />
                 <Label class="SettingsNameAchivment" text="#Stats_Achivement" />
+                <Panel class="PanelAchivementControls">
+                    <Button class="AchivementToggleButton" id="AchivementToggleButton" onactivate="ToggleAchivementScoreboard()">
+                        <Label id="AchivementToggleButtonLabel" text="#DOTA_Scoreboard_Show" />
+                    </Button>
+                </Panel>
                 <Panel class="PanelAchivement" id="PanelAchivement" />
             </Panel>
                 </Panel>
