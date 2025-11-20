@@ -48,6 +48,6 @@
                 <Label class="SettingsNameAchivment" text="#Stats_Achivement" />
                 <Panel class="PanelAchivement" id="PanelAchivement" />
             </Panel>
-		</Panel>
-	</Panel>
+                </Panel>
+        </Panel>
 </root>

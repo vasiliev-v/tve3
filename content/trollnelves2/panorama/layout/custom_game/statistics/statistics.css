@@ -288,12 +288,23 @@
     brightness: 0.5;
 }
 
+.achiviment_panel.selected
+{
+    saturation: 1;
+    brightness: 1;
+}
+
 .achiviment_panel_body
 {
     width: 105px;
     height: 105px;
     border: 2px solid #BDFF00;
     border-radius: 100%;
+}
+
+.achiviment_panel.show-on-scoreboard .achiviment_panel_body
+{
+    border-color: #FF4040;
 }
 
 .active
@@ -310,6 +321,11 @@
     background-size: 100%;
     wash-color: #B8FF45;
     opacity: 0.5;
+}
+
+.achiviment_panel.show-on-scoreboard .achiviment_panel_glow
+{
+    wash-color: #FF4040;
 }
 
 .achiviment_panel_icon

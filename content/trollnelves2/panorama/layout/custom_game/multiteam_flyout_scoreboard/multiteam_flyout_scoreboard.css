@@ -137,6 +137,11 @@
     width: 50px;
 }
 
+.ScoreCol_Achivement
+{
+    width: 50px;
+}
+
 .ScoreCol_Assists 
 {
     width: 50px;
@@ -251,7 +256,7 @@
     height: 100%;
 }
 
-#PlayerScoreInformation .ScoreboardPanel Label 
+#PlayerScoreInformation .ScoreboardPanel Label
 {
     vertical-align: center;
     font-size: 16px;
@@ -260,6 +265,18 @@
     width: 100%;
     font-weight: semi-bold;
     text-overflow: shrink;
+}
+
+#AchievementIcon
+{
+    width: 32px;
+    height: 32px;
+    vertical-align: center;
+    horizontal-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.9;
 }
 
 .PlayerGoldAmount
