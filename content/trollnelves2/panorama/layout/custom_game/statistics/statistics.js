@@ -20,6 +20,9 @@ var SETTINGS_LIST =
     },
 }
 
+var selectedAchivementId = null
+var isAchivementShownOnScoreboard = false
+
 CustomNetTables.SubscribeNetTableListener( "Shop", UpdateSettingsTable )
 
 function UpdateSettingsTable(table, key, data)
@@ -237,23 +240,114 @@ function UpdateButtonSetting(settings_info, player_table, button_name)
     }
 }
 
-function UpdateAchivements() 
+function EnsureScoreboardAchivementStore()
+{
+    if (!GameUI.CustomUIConfig().scoreboardAchievements)
+    {
+        GameUI.CustomUIConfig().scoreboardAchievements = {}
+    }
+}
+
+function UpdateScoreboardAchivementSelection()
+{
+    EnsureScoreboardAchivementStore()
+    let achivementData = DATA_ACHIVEMENTS_LIST[selectedAchivementId]
+    let playerAchivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))?.[17]
+    let counterValue = null
+
+    if (playerAchivements && selectedAchivementId in playerAchivements)
+    {
+        counterValue = playerAchivements[selectedAchivementId]
+    }
+
+    if (isAchivementShownOnScoreboard && achivementData)
+    {
+        GameUI.CustomUIConfig().scoreboardAchievements[Players.GetLocalPlayer()] = {
+            id: selectedAchivementId,
+            icon: achivementData.icon,
+            counter: counterValue,
+        }
+    }
+    else
+    {
+        GameUI.CustomUIConfig().scoreboardAchievements[Players.GetLocalPlayer()] = null
+        isAchivementShownOnScoreboard = false
+    }
+
+    UpdateSelectedAchivementHighlight()
+}
+
+function SelectAchivement(achivement_id)
+{
+    if (selectedAchivementId === achivement_id)
+    {
+        isAchivementShownOnScoreboard = !isAchivementShownOnScoreboard
+    }
+    else
+    {
+        selectedAchivementId = achivement_id
+        isAchivementShownOnScoreboard = true
+    }
+
+    UpdateSelectedAchivementHighlight()
+    UpdateScoreboardAchivementSelection()
+}
+
+function UpdateSelectedAchivementHighlight()
+{
+    let container = $("#PanelAchivement")
+    if (!container)
+    {
+        return
+    }
+
+    let children = container.Children() || []
+    children.forEach(child => {
+        const isSelected = child.achivement_id == selectedAchivementId
+        child.SetHasClass("selected", isSelected)
+        child.SetHasClass("show-on-scoreboard", isSelected && isAchivementShownOnScoreboard)
+    })
+}
+
+function UpdateAchivements()
 {
     $("#PanelAchivement").RemoveAndDeleteChildren()
     let player_has_alp = {}
+    EnsureScoreboardAchivementStore()
+    let stored_achivement = GameUI.CustomUIConfig().scoreboardAchievements[Players.GetLocalPlayer()]
     player_achivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))[17] || {};
 
+    if (stored_achivement && DATA_ACHIVEMENTS_LIST[stored_achivement.id])
+    {
+        selectedAchivementId = stored_achivement.id
+        isAchivementShownOnScoreboard = true
+    }
+    else
+    {
+        selectedAchivementId = null
+        isAchivementShownOnScoreboard = false
+    }
+
     if (!player_achivements || Object.keys(player_achivements).length === 0) {
+        GameUI.CustomUIConfig().scoreboardAchievements[Players.GetLocalPlayer()] = null
+        UpdateScoreboardAchivementSelection()
         return;
-    } 
+    }
     for (var achivement_id in player_achivements)
     {
         if (!DATA_ACHIVEMENTS_LIST[achivement_id]) {
             continue;
         }
-        player_has_alp[achivement_id] = true 
+        player_has_alp[achivement_id] = true
         CreateAchivementPanel(achivement_id, true)
     }
+    if (!selectedAchivementId)
+    {
+        let first_achivement = Object.keys(player_achivements)[0]
+        selectedAchivementId = first_achivement
+    }
+    UpdateSelectedAchivementHighlight()
+    UpdateScoreboardAchivementSelection()
     //for (tbl_id in DATA_ACHIVEMENTS_LIST)
     //{
     //    if (!player_has_alp[tbl_id])
@@ -269,6 +363,7 @@ function CreateAchivementPanel(achivement_id, active)
 
     let achiviment_panel = $.CreatePanel("Panel", $("#PanelAchivement"), "")
     achiviment_panel.AddClass("achiviment_panel")
+    achiviment_panel.achivement_id = achivement_id
 
     let achiviment_panel_body = $.CreatePanel("Panel", achiviment_panel, "")
     achiviment_panel_body.AddClass("achiviment_panel_body")
@@ -277,6 +372,11 @@ function CreateAchivementPanel(achivement_id, active)
     {
         achiviment_panel.AddClass("active")
     }
+
+    achiviment_panel.SetPanelEvent('onactivate', function()
+    {
+        SelectAchivement(achivement_id)
+    })
     
     let achiviment_panel_glow = $.CreatePanel("Panel", achiviment_panel_body, "")
     achiviment_panel_glow.AddClass("achiviment_panel_glow")
