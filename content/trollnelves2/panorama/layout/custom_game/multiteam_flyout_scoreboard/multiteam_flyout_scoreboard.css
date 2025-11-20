@@ -315,8 +315,8 @@
 {
     horizontal-align: right;
     vertical-align: top;
-    margin-top: -6px;
-    margin-right: -2px;
+    margin-top: 1px;
+    margin-right: 2px;
     z-index: 5;
     font-size: 14px;
     color: white;
