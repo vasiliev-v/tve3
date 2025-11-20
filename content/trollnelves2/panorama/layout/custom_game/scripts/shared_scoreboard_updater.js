@@ -191,13 +191,42 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 
 
 		////$.Msg("Setting Scoreboard resources for playerId: ", playerId, "; playerStatsScore: ", playerStatsScore, "; ");
-		if(playerStatsScore)
-		{
-			_ScoreboardUpdater_SetTextSafe( playerPanel, "ElfScore", playerStatsScore.playerScoreElf.toString() );
-			_ScoreboardUpdater_SetTextSafe( playerPanel, "TrollScore", playerStatsScore.playerScoreTroll.toString() );
-		}
-		////..////////////
-		var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );
+                if(playerStatsScore)
+                {
+                        _ScoreboardUpdater_SetTextSafe( playerPanel, "ElfScore", playerStatsScore.playerScoreElf.toString() );
+                        _ScoreboardUpdater_SetTextSafe( playerPanel, "TrollScore", playerStatsScore.playerScoreTroll.toString() );
+                }
+                if (ui && ui.scoreboardAchievements)
+                {
+                        var achivementInfo = ui.scoreboardAchievements[playerId]
+                        var achievementIconPanel = playerPanel.FindChildInLayoutFile("AchievementIcon")
+                        var achievementPanel = playerPanel.FindChildInLayoutFile("AchievementPanel")
+                        var achievementCounter = playerPanel.FindChildInLayoutFile("AchievementCounter")
+                        if (achievementIconPanel && achievementPanel)
+                        {
+                                if (achivementInfo && achivementInfo.icon)
+                                {
+                                        achievementIconPanel.style.backgroundImage = "url('" + achivementInfo.icon + "')"
+                                        achievementPanel.visible = true
+
+                                        if (achievementCounter)
+                                        {
+                                                achievementCounter.text = achivementInfo.counter ?? ""
+                                                achievementCounter.visible = achivementInfo.counter != null
+                                        }
+                                }
+                                else
+                                {
+                                        achievementPanel.visible = false
+                                        if (achievementCounter)
+                                        {
+                                                achievementCounter.visible = false
+                                        }
+                                }
+                        }
+                }
+                ////..////////////
+                var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );
 		var PlayerName = playerPanel.FindChildInLayoutFile( "PlayerName" );
 		var playerPortraitFlyout = playerPanel.FindChildInLayoutFile( "Hero" );
 		if ( playerPortrait )
