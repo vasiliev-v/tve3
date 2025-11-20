@@ -271,6 +271,13 @@
     margin-bottom: 10px;
 }
 
+.PanelAchivementControls
+{
+    flow-children: right;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
 .PanelAchivement
 {
     flow-children: right-wrap;
