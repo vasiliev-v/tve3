@@ -45,7 +45,11 @@
                     <Label id="TrollScore" text="no"/>
                 </Panel>
                 <Panel id="AchivementContainer" class="ScoreCol_Achivement ScoreboardPanel">
-                    <Panel id="AchievementIcon" />
+                    <Panel id="AchievementPanel" class="ScoreboardAchievement">
+                        <Panel id="AchievementGlow" />
+                        <Panel id="AchievementIcon" />
+                    </Panel>
+                    <Label id="AchievementCounter" />
                 </Panel>
             </Panel>
             <Panel id="GiveResourcesTable" class="ScoreboardPanel">

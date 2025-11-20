@@ -200,16 +200,28 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
                 {
                         var achivementInfo = ui.scoreboardAchievements[playerId]
                         var achievementIconPanel = playerPanel.FindChildInLayoutFile("AchievementIcon")
-                        if (achievementIconPanel)
+                        var achievementPanel = playerPanel.FindChildInLayoutFile("AchievementPanel")
+                        var achievementCounter = playerPanel.FindChildInLayoutFile("AchievementCounter")
+                        if (achievementIconPanel && achievementPanel)
                         {
                                 if (achivementInfo && achivementInfo.icon)
                                 {
                                         achievementIconPanel.style.backgroundImage = "url('" + achivementInfo.icon + "')"
-                                        achievementIconPanel.visible = true
+                                        achievementPanel.visible = true
+
+                                        if (achievementCounter)
+                                        {
+                                                achievementCounter.text = achivementInfo.counter ?? ""
+                                                achievementCounter.visible = achivementInfo.counter != null
+                                        }
                                 }
                                 else
                                 {
-                                        achievementIconPanel.visible = false
+                                        achievementPanel.visible = false
+                                        if (achievementCounter)
+                                        {
+                                                achievementCounter.visible = false
+                                        }
                                 }
                         }
                 }

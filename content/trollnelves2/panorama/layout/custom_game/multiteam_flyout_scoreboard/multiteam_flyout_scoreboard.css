@@ -139,7 +139,7 @@
 
 .ScoreCol_Achivement
 {
-    width: 50px;
+    width: 72px;
 }
 
 .ScoreCol_Assists 
@@ -267,16 +267,54 @@
     text-overflow: shrink;
 }
 
-#AchievementIcon
+#AchivementContainer
+{
+    flow-children: right;
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+.ScoreboardAchievement
 {
     width: 32px;
     height: 32px;
+    border: 2px solid #BDFF00;
+    border-radius: 100%;
+    vertical-align: center;
+    horizontal-align: center;
+    margin-right: 6px;
+}
+
+#AchievementGlow
+{
+    width: 100%;
+    height: 100%;
+    background-image: url("file://{images}/new_design/topbar/glow.png");
+    background-size: 100%;
+    wash-color: #B8FF45;
+    opacity: 0.6;
+}
+
+#AchievementIcon
+{
+    width: 100%;
+    height: 100%;
     vertical-align: center;
     horizontal-align: center;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: 100%;
     opacity: 0.9;
+    margin: 2px;
+    border-radius: 100%;
+}
+
+#AchievementCounter
+{
+    vertical-align: center;
+    font-size: 18px;
+    color: white;
+    font-weight: semi-bold;
 }
 
 .PlayerGoldAmount

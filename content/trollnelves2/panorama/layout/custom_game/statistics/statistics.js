@@ -252,12 +252,20 @@ function UpdateScoreboardAchivementSelection()
 {
     EnsureScoreboardAchivementStore()
     let achivementData = DATA_ACHIVEMENTS_LIST[selectedAchivementId]
+    let playerAchivements = CustomNetTables.GetTableValue("Shop", Entities.GetPlayerOwnerID(Players.GetLocalPlayerPortraitUnit()))?.[17]
+    let counterValue = null
+
+    if (playerAchivements && selectedAchivementId in playerAchivements)
+    {
+        counterValue = playerAchivements[selectedAchivementId]
+    }
 
     if (isAchivementShownOnScoreboard && achivementData)
     {
         GameUI.CustomUIConfig().scoreboardAchievements[Players.GetLocalPlayer()] = {
             id: selectedAchivementId,
             icon: achivementData.icon,
+            counter: counterValue,
         }
     }
     else
