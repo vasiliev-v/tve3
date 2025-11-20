@@ -313,11 +313,12 @@
 
 .ScoreboardAchievementCounter
 {
+    ignore-parent-flow: true;
+    z-index: 10;
     horizontal-align: right;
     vertical-align: top;
     margin-top: 1px;
     margin-right: 2px;
-    z-index: 5;
     font-size: 14px;
     color: white;
     font-weight: semi-bold;
