@@ -248,21 +248,9 @@ function EnsureScoreboardAchivementStore()
     }
 }
 
-function ToggleAchivementScoreboard()
-{
-    if (!selectedAchivementId)
-    {
-        return
-    }
-    isAchivementShownOnScoreboard = !isAchivementShownOnScoreboard
-    UpdateScoreboardAchivementSelection()
-}
-
 function UpdateScoreboardAchivementSelection()
 {
     EnsureScoreboardAchivementStore()
-    let button = $("#AchivementToggleButton")
-    let buttonLabel = $("#AchivementToggleButtonLabel")
     let achivementData = DATA_ACHIVEMENTS_LIST[selectedAchivementId]
 
     if (isAchivementShownOnScoreboard && achivementData)
@@ -278,20 +266,21 @@ function UpdateScoreboardAchivementSelection()
         isAchivementShownOnScoreboard = false
     }
 
-    if (button)
-    {
-        button.SetHasClass("Active", isAchivementShownOnScoreboard && !!selectedAchivementId)
-    }
-
-    if (buttonLabel)
-    {
-        buttonLabel.text = isAchivementShownOnScoreboard ? $.Localize("#DOTA_Scoreboard_Hide") : $.Localize("#DOTA_Scoreboard_Show")
-    }
+    UpdateSelectedAchivementHighlight()
 }
 
 function SelectAchivement(achivement_id)
 {
-    selectedAchivementId = achivement_id
+    if (selectedAchivementId === achivement_id)
+    {
+        isAchivementShownOnScoreboard = !isAchivementShownOnScoreboard
+    }
+    else
+    {
+        selectedAchivementId = achivement_id
+        isAchivementShownOnScoreboard = true
+    }
+
     UpdateSelectedAchivementHighlight()
     UpdateScoreboardAchivementSelection()
 }
@@ -306,7 +295,9 @@ function UpdateSelectedAchivementHighlight()
 
     let children = container.Children() || []
     children.forEach(child => {
-        child.SetHasClass("selected", child.achivement_id == selectedAchivementId)
+        const isSelected = child.achivement_id == selectedAchivementId
+        child.SetHasClass("selected", isSelected)
+        child.SetHasClass("show-on-scoreboard", isSelected && isAchivementShownOnScoreboard)
     })
 }
 
