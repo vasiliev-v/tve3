@@ -3920,7 +3920,7 @@
 		"AbilityValues"
         {
             "bonus_hp_regen" "4"
-            "gold_cost" "75"
+            "gold_cost" "80"
             "lumber_cost" "0"
         }
 
@@ -3976,7 +3976,7 @@
 		"AbilityValues"
         {
             "bonus_hp_regen" "8"
-            "gold_cost" "150"
+            "gold_cost" "160"
             "lumber_cost" "0"
         }
 
@@ -4032,7 +4032,7 @@
 		"AbilityValues"
         {
             "bonus_hp_regen" "16"
-            "gold_cost" "300"
+            "gold_cost" "320"
             "lumber_cost" "0"
         }
 
