@@ -2,7 +2,7 @@
 {
 	material materials/overviews/1x1amazon.vmat
 	pos_x -5447
-	pos_y 2624
+	pos_y 2045
 	scale 10.013
 }
 

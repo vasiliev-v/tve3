@@ -26,13 +26,15 @@
 			<Label class="LegendPanel ScoreCol_PlayerDetails ScoreCol_Name" text="Name" />
             <Label class="LegendPanel ScoreCol_Gold" text="G" />
             <Label class="LegendPanel ScoreCol_Lumber" text="L" />
-                        <Label class="LegendPanel ScoreCol_Kills" text="#custom_end_screen_legend_kills" />
-                        <Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
-                        <Label class="LegendPanel ScoreCol_ElfScore" text="Elf" />
-                        <Label class="LegendPanel ScoreCol_TrollScore" text="Troll" />
-                        <Label class="LegendPanel ScoreCol_Achivement" text="#Stats_Achivement" />
-                </Panel>
-                <Panel id="TeamsContainer" />
+            <Label class="LegendPanel ScoreCol_Kills" text="#custom_end_screen_legend_kills" />
+            <Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
+            <Label class="LegendPanel ScoreCol_ElfScore" text="Elf" />
+            <Label class="LegendPanel ScoreCol_TrollScore" text="Troll" />
+           <!--
+           <Label class="LegendPanel ScoreCol_Achivement" text="#Stats_Achivement" /> 
+           --> 
+        </Panel>
+        <Panel id="TeamsContainer" />
     </Panel>
 </root>
 

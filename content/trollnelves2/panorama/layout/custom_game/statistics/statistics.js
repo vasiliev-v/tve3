@@ -301,12 +301,12 @@ function UpdateSelectedAchivementHighlight()
         return
     }
 
-    let children = container.Children() || []
-    children.forEach(child => {
-        const isSelected = child.achivement_id == selectedAchivementId
-        child.SetHasClass("selected", isSelected)
-        child.SetHasClass("show-on-scoreboard", isSelected && isAchivementShownOnScoreboard)
-    })
+    //let children = container.Children() || []
+     //children.forEach(child => {
+     //    const isSelected = child.achivement_id == selectedAchivementId
+     //    child.SetHasClass("selected", isSelected)
+     //    child.SetHasClass("show-on-scoreboard", isSelected && isAchivementShownOnScoreboard)
+     //})
 }
 
 function UpdateAchivements()
