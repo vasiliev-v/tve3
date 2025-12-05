@@ -149,7 +149,7 @@ function Shop.RequestVip(obj, pID, steam, callback)
 			--end);
 		end	
 	end	
-
+	--[[
 	local pos = Shop.GetPlayerTop10Position(steam)
 	if pos >= 1 and pos <= 3 then
 		if pos == 1 then
@@ -196,7 +196,7 @@ function Shop.RequestVip(obj, pID, steam, callback)
 		end
 		CustomNetTables:SetTableValue("Particles_Tabel",tostring(pID),parts)
 	end
-
+	]]
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	return obj
 
@@ -226,10 +226,12 @@ function Shop.RequestLabel(obj, pID, steam, callback)
 	for id=1,#obj do
 		PoolTable["1"][tostring(obj[id].num)] = tostring(obj[id].num)
 	end
+	--[[
 	local pos = Shop.GetPlayerTop10Position(steam)
 	if pos >= 1 and pos <= 10 then
 		PoolTable["1"][tostring(3000+pos)] = tostring(3000+pos)
 	end
+	]]
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	return obj
 end
@@ -496,7 +498,7 @@ function Shop.RequestPets(obj, pID, steam, callback)
 		PoolTable["1"][tostring(obj[id].num)] = tostring(obj[id].num)
 		CustomNetTables:SetTableValue("Pets_Tabel",tostring(pID),parts)
 	end
-
+	--[[
 	local pos = Shop.GetPlayerTop10Position(steam)
 	if pos >= 1 and pos <= 3 then
 		if pos == 1 then
@@ -506,7 +508,7 @@ function Shop.RequestPets(obj, pID, steam, callback)
 			PoolTable["1"][tostring(4)] = tostring(4)
 		end
 	end
-	
+	]]
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
 	return obj
 end	
@@ -1585,23 +1587,18 @@ end
 
 -- Функция возвращает позицию игрока в топ10 или -1 если игрока нет
 function Shop.GetPlayerTop10Position(steamID)
-	-- DebugPrint("GetPlayerTop10Position")
 	if GameRules.MapSpeed ~= 1 and GameRules.MapSpeed ~= 4 then
-		-- DebugPrint("GetPlayerTop10Position 1")
 		return -1 
 	end
     local top10 = CustomNetTables:GetTableValue("Shop", "top10")
     if not top10 then
-		-- DebugPrint("GetPlayerTop10Position 2")
         return -1
     end
 	-- DebugPrintTable(top10)
     for pos, data in pairs(top10) do
         if tostring(data["1"]) == tostring(steamID) then
-			-- DebugPrint("GetPlayerTop10Position 3 " .. pos)
             return tonumber(pos)
         end
     end
-	-- DebugPrint("GetPlayerTop10Position 4 ")
     return -1
 end
