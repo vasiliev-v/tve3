@@ -311,13 +311,17 @@ function GoldOnAttack (event)
 		end
 		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
 		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
-			if caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 1  then
+			if caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 1 or  
+         caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 1 then
 				dmg = dmg + (1 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 2 then
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 2 or 
+             caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 2 then
 				dmg = dmg + (2 * GameRules.MapSpeed) * koeff
-			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_passive"):GetStackCount() == 3 then
+			elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 3 or 
+             caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 3 then
 				dmg = dmg + (3 * GameRules.MapSpeed) * koeff
 			end
+      
 		end
 		PlayerResource:ModifyGold(caster,dmg)
 		PopupGoldGain(caster,dmg)
