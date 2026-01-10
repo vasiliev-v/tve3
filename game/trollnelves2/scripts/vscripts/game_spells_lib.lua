@@ -2001,8 +2001,8 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     local player_spells = game_spells_lib.PLAYER_INFO[player_id]
     if not player_spells then return 0 end
 
-    local discount_to_2 = 0.3 -- 20% скидка до 2 уровня
-    local discount_to_3 = 0.5 -- 30% скидка до 3 уровня
+    local discount_to_2 = 0.4 -- 20% скидка до 2 уровня
+    local discount_to_3 = 0.6 -- 30% скидка до 3 уровня
 
     local target_index = nil
     local target_side = nil
