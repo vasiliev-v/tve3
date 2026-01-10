@@ -193,7 +193,7 @@ function StartBuildingHelper(params) {
                 // Building Base Grid
                 for (var x = boundingRect.leftBorderX + 32; x <= boundingRect.rightBorderX - 32; x += 64) {
                     for (var y = boundingRect.topBorderY - 32; y >= boundingRect.bottomBorderY + 32; y -= 64) {
-                        var pos = SnapHeight(x, y, GamePos[2] + SHIFT);
+                        var pos = SnapHeight(x, y, GamePos[2] + 5 + SHIFT);
                         if (part > size*size) return;
                         var gridParticle = gridParticles[part++];
                         Particles.SetParticleControl(gridParticle, 0, pos);
@@ -223,7 +223,7 @@ function StartBuildingHelper(params) {
                 };
                 for (var x = boundingRect.leftBorderX + 32; x <= boundingRect.rightBorderX - 32; x += 64) {
                     for (var y = boundingRect.topBorderY - 32; y >= boundingRect.bottomBorderY + 32; y -= 64) {
-                        var pos2 = SnapHeight(x, y, GamePos[2] + SHIFT);
+                        var pos2 = SnapHeight(x, y, GamePos[2] + 5 + SHIFT);
                         if (part >= overlay_size*overlay_size) return;
                         var op = overlayParticles[part++];
                         color = (IsBlocked(pos2) || TooCloseToGoldmine(pos2)) ? [255,0,0] : [255,255,255];
@@ -232,7 +232,7 @@ function StartBuildingHelper(params) {
                     }
                 }
 
-                var modelPos = SnapHeight(GamePos[0], GamePos[1], GamePos[2] + SHIFT);
+                var modelPos = SnapHeight(GamePos[0], GamePos[1], GamePos[2] + 2 + SHIFT);
                 if (invalid) {
                     if (rangeOverlayActive && rangeOverlay !== undefined) {
                         Particles.DestroyParticleEffect(rangeOverlay, true);
