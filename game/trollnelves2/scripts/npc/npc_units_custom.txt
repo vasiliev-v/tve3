@@ -5170,8 +5170,8 @@
 		"SoundSet"					"Hero_Drow_Ranger"
 
 
-		"AttackDamageMin"			"20480"		// Damage range min.
-		"AttackDamageMax"			"20480"		// Damage range max.
+		"AttackDamageMin"			"25600"		// Damage range min.
+		"AttackDamageMax"			"25600"		// Damage range max.
 	    "ArmorPhysical"             "16"//"32"//"40"
 		"StatusHealth"              "45000"
 	    "StatusHealthRegen"         "0"
@@ -14264,7 +14264,7 @@
 	        "Count"     "1"
 	        "1"{
 				"unit_name"			"troll_hut_2"
-				"gold_cost"			"190"//"180" //"160" //"200"
+				"gold_cost"			"200"//"180" //"160" //"200"
 				"lumber_cost"		"0"
 			}
 	    }
@@ -14342,7 +14342,7 @@
 	        "1"
 			{
 				"unit_name"			"troll_hut_3"
-				"gold_cost"			"320"//"320" //"325" //"275" 360
+				"gold_cost"			"360"//"320" //"325" //"275" 360
 				"lumber_cost"		"0"
 			}
 	    }
@@ -14419,7 +14419,7 @@
 	        "Count"     "1"
 	        "1"{
 				"unit_name"			"troll_hut_4"
-				"gold_cost"			"480"//"480" //"490" //"475" 520
+				"gold_cost"			"520"//"480" //"490" //"475" 520
 				"lumber_cost"		"0"
 			}
 	    }
@@ -14879,12 +14879,12 @@
 
 		"AbilityLayout"				"5"
 		"Ability1" 					"repair"
-		"Ability2" 					"build_tower_1"//"build_rock_1"
-		"Ability3" 					"build_mother_of_nature"
-		"Ability4" 					"cm_haste"
-		"Ability5"					"commit_suicide"
-		"Ability6" 					""
-		"Ability7"					""
+		"Ability2" 					"build_rock_1" 
+		"Ability3" 					"build_tower_1"
+		"Ability4" 					"build_mother_of_nature"
+		"Ability5"					"build_research_lab"
+		"Ability6" 					"cm_haste"
+		"Ability7"					"commit_suicide"
 		"Ability8"					""
 		"Ability9"					""
 		"Ability10"					""

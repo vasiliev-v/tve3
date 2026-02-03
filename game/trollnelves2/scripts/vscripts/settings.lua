@@ -88,4 +88,4 @@ end
 
 
 
-dedicatedServerKey = "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ"   -- "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ" -- GetDedicatedServerKeyV3("1") 
+dedicatedServerKey = GetDedicatedServerKeyV3("1") -- "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ" -- GetDedicatedServerKeyV3("1") 

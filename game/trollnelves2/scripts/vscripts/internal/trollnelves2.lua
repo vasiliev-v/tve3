@@ -7,6 +7,8 @@ require("game_spells_lib")
 -- It can be used to pre-initialize any values/tables that will be needed later
 function trollnelves2:_Inittrollnelves2()
   -- Setup rules
+  SendToServerConsole("dota_clientside_wearables false")
+
   GameRules:SetHeroRespawnEnabled(true)
   GameRules:SetUseUniversalShopMode(false)
   GameRules:SetSameHeroSelectionEnabled(true)

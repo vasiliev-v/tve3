@@ -372,6 +372,11 @@ function BuildingHelper:UpdateMapStage()
         GameRules.MapName = GetMapName()
         BuildingHelper:UpdateGrid()
     end
+    if string.match(GameRules.MapName,"1x1fort") then 
+		GameRules.trollTps = {Vector(0,-1280,256)} -- -640
+	elseif string.match(GameRules.MapName,"1x1amazon") then 
+		GameRules.trollTps = {Vector(180,-636,256)} -- -640
+    end
     LinkModifier:Start()
 end
 

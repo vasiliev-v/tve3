@@ -942,6 +942,10 @@ PrecacheResource("particle", "particles/items_fx/linensphere.vpcf", context)
 PrecacheResource("particle", "particles/items_fx/immunity_sphere.vpcf", context)	
 
 
+PrecacheResource("model", "models/heroes/treant_protector/head.vmdl", context)
+PrecacheResource("model", "models/heroes/treant_protector/foliage.vmdl", context)
+PrecacheResource("model", "models/heroes/treant_protector/hands.vmdl", context)
+PrecacheResource("model", "models/heroes/treant_protector/legs.vmdl", context)
 
 	
 	PrecacheWearableModels(context)
@@ -966,11 +970,7 @@ function Activate()
 	GameRules.playerTeamChoices = {}
 	GameRules.dcedChoosers = {}
 	-- --[[
-	if string.match(GetMapName(),"1x1fort") then 
-		GameRules.trollTps = {Vector(0,-1280,256)} -- -640
-	else
-		GameRules.trollTps = {Vector(-320,-320,256),Vector(0,-320,256),Vector(320,-320,256),Vector(-320,-640,256),Vector(0,-640,256),Vector(320,-640,256),Vector(-320,0,256),Vector(0,0,256),Vector(320,0,256),}
-	end
+	GameRules.trollTps = {Vector(-320,-320,256),Vector(0,-320,256),Vector(320,-320,256),Vector(-320,-640,256),Vector(0,-640,256),Vector(320,-640,256),Vector(-320,0,256),Vector(0,0,256),Vector(320,0,256),}
 
 	if GameRules.disconnectedHeroSelects == nil then
 		GameRules.disconnectedHeroSelects = {}
@@ -996,9 +996,9 @@ function Activate()
 	GameRules.Rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetXpBP = {} 
-	GameRules.isTesting = true
+	GameRules.isTesting = false
 
-	GameRules.server =  "https://localhost:7133/test/"-- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
+	GameRules.server =  "https://tve4.eu/test/"-- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
 
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
@@ -1017,8 +1017,8 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = true
-	GameRules.test2 = true
+	GameRules.test = false
+	GameRules.test2 = false
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
 	GameRules.MultiMapSpeed = 1
