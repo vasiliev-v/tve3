@@ -555,6 +555,22 @@ function InitializeTroll(hero)
         startedConstructionCount = 0,
         completedConstructionCount = 0
     }
+    hero.buildings["troll_hut_1_1x1"] = {
+        startedConstructionCount = 0,
+        completedConstructionCount = 0
+    }
+    hero.buildings["troll_hut_2_1x1"] = {
+        startedConstructionCount = 0,
+        completedConstructionCount = 0
+    }
+    hero.buildings["troll_hut_3_1x1"] = {
+        startedConstructionCount = 0,
+        completedConstructionCount = 0
+    }
+    hero.buildings["troll_hut_4_1x1"] = {
+        startedConstructionCount = 0,
+        completedConstructionCount = 0
+    }
     if GameRules.MapSpeed == 1 and not string.match(GetMapName(),"clanwars")  then
         hero:RemoveAbility("special_bonus_cooldown_reduction_50")
         hero:RemoveAbility("special_bonus_cooldown_reduction_30")

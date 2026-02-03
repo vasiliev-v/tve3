@@ -17935,7 +17935,63 @@
 
 
 
-
+	"upgrade_to_troll_hut_2_1x1"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"build_tent"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		"Building"						"1"
+		"BuildTime"						"3"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"UpgradeBuilding"
+				"NewName"		"troll_hut_2_1x1"
+			}
+		}
+	}
+	"upgrade_to_troll_hut_3_1x1"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"build_tent"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		"Building"						"1"
+		"BuildTime"						"3"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"UpgradeBuilding"
+				"NewName"		"troll_hut_3_1x1"
+			}
+		}
+	}
+	"upgrade_to_troll_hut_4_1x1"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"build_tent"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		"Building"						"1"
+		"BuildTime"						"3"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"UpgradeBuilding"
+				"NewName"		"troll_hut_4_1x1"
+			}
+		}
+	}
 
 
 

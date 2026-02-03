@@ -15369,5 +15369,305 @@
 		"AttackRange"				"900"		// Range within a target can be attacked.
 	}
 
+	//=================================================================================
+	// Building: Troll Hut
+	//=================================================================================
+	"troll_hut_1_1x1"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creature"
+		"HasInventory" 				"1" 
+	    "Model"                     "models/props_structures/bad_barracks001_melee.vmdl"
+		"precache"
+		{
+			"model"     "models/props_structures/bad_barracks001_melee.vmdl"
+		}
+	    "ModelScale"                "1"
+	    "ModelRotation"             "180"
+		"HealthBarOffset"			"150"
+		"PlayerCanControl"			"1"
+		"UniqueBuilding"			"1"
+		"RequiresRepair"			"1"
+
+	    // Stats
+	    //-----------------------------
+	    "Level"                     "1"
+	    "BuildTime"                 "2"
+	    "Upgrades"
+	    {
+	        "Count"     "1"
+	        "1"{
+				"unit_name"			"troll_hut_2_1x1"
+				"gold_cost"			"190"//"180" //"160" //"200"
+				"lumber_cost"		"0"
+			}
+	    }
+		"Requirements"{
+
+		}
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"upgrade_to_troll_hut_2_1x1"
+		"Ability2"					"gain_gold_team"
+		"Ability3"					"fountain_ability"
+		"Ability4"					"buy_lumber_1"
+		"Ability5"					"buy_lumber_8"
+		"Ability6"					"sell_lumber_1"
+		"Ability7"					"sell_lumber_8"
+		"TeamGainGold"				"true"
+
+	    // General
+	    //-----------------------------
+
+	    "ArmorPhysical"             "5"
+		"StatusHealth"              "1"//"30"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "1"
+	    "StatusManaRegen"           "1"
+	    "MagicalResistance"         "0"
+
+		"ConstructionSize"          "30"
+	    "BlockPathingSize"          "4"
+		"CollisionSize"				"128"
+
+	    "BoundsHullName"            "DOTA_HULL_SIZE_HERO"
+	    "TeamName"                  "DOTA_TEAM_BADGUYS"
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1200"//"900"
+	    "VisionNighttimeRange"      "800"//"600"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "ProjectileCollisionSize"   "100"
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+		"HasInventory"				"1"
+	}
+	//=================================================================================
+	// Building: Troll Hut
+	//=================================================================================
+	"troll_hut_2_1x1"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creature"
+		"HasInventory" 				"1" 
+	    "Model"                     "models/props_structures/bad_barracks001_melee.vmdl"
+		"precache"
+		{
+			"model"     "models/props_structures/bad_barracks001_melee.vmdl"
+		}
+	    "ModelScale"                "1"
+	    "ModelRotation"             "0"
+		"HealthBarOffset"			"150"
+		"PlayerCanControl"			"1"
+		"UniqueBuilding"			"1"
+		"RequiresRepair"			"1"
+
+	    // Stats
+	    //-----------------------------
+	    "Level"                     "2"
+	    "BuildTime"                 "2"
+	    "Upgrades"
+	    {
+	        "Count"     "1"
+	        "1"
+			{
+				"unit_name"			"troll_hut_3_1x1"
+				"gold_cost"			"320"//"320" //"325" //"275" 360
+				"lumber_cost"		"0"
+			}
+	    }
+		"Requirements"{
+
+		}
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"gain_gold_team"
+		"Ability2"					"fountain_ability"
+		"Ability3"					"buy_lumber_1"
+		"Ability4"					"buy_lumber_8"
+		"Ability5"					"sell_lumber_1"
+		"Ability6"					"sell_lumber_8"
+		"Ability10"					""
+		"TeamGainGold"				"true"
+
+	    // General
+	    //-----------------------------
+
+	    "ArmorPhysical"             "5"
+		"StatusHealth"              "1"//"30"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "1"
+	    "StatusManaRegen"           "1"
+	    "MagicalResistance"         "0"
+
+		"ConstructionSize"          "30"
+	    "BlockPathingSize"          "4"
+		"CollisionSize"				"128"
+
+	    "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+	    "TeamName"                  "DOTA_TEAM_BADGUYS"
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1200"//"900"
+	    "VisionNighttimeRange"      "800"//"600"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "ProjectileCollisionSize"   "100"
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+		"HasInventory"				"1"
+	}
+	//=================================================================================
+	// Building: Troll Hut
+	//=================================================================================
+	"troll_hut_3_1x1"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creature"
+		"HasInventory" 				"1" 
+	    "Model"                     "models/props_structures/bad_barracks001_melee.vmdl"
+		"precache"
+		{
+			"model"     "models/props_structures/bad_barracks001_melee.vmdl"
+		}
+	    "ModelScale"                "1"
+	    "ModelRotation"             "0"
+		"HealthBarOffset"			"150"
+		"PlayerCanControl"			"1"
+		"UniqueBuilding"			"1"
+		"RequiresRepair"			"1"
+
+	    // Stats
+	    //-----------------------------
+	    "Level"                     "3"
+	    "BuildTime"                 "2"
+	    "Upgrades"
+	    {
+	        "Count"     "1"
+	        "1"{
+				"unit_name"			"troll_hut_4_1x1"
+				"gold_cost"			"480"//"480" //"490" //"475" 520
+				"lumber_cost"		"0"
+			}
+	    }
+		"Requirements"{
+
+		}
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"gain_gold_team"
+		"Ability2"					"fountain_ability"
+		"Ability3"					"buy_lumber_1"
+		"Ability4"					"buy_lumber_8"
+		"Ability5"					"sell_lumber_1"
+		"Ability6"					"sell_lumber_8"
+		"Ability10"					""
+		"TeamGainGold"				"true"
+
+	    // General
+	    //-----------------------------
+
+	    "ArmorPhysical"             "5"
+		"StatusHealth"              "1"//"30"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "1"
+	    "StatusManaRegen"           "1"
+	    "MagicalResistance"         "0"
+
+		"ConstructionSize"          "30"
+	    "BlockPathingSize"          "4"
+		"CollisionSize"				"128"
+
+	    "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+	    "TeamName"                  "DOTA_TEAM_BADGUYS"
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1200"//"900"
+	    "VisionNighttimeRange"      "800"//"600"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "ProjectileCollisionSize"   "100"
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+		"HasInventory"				"1"
+	}
+	//=================================================================================
+	// Building: Troll Hut
+	//=================================================================================
+	"troll_hut_4_1x1"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creature"
+		"HasInventory" 				"1" 
+	    "Model"                     "models/props_structures/bad_barracks001_melee.vmdl"
+		"precache"
+		{
+			"model"     "models/props_structures/bad_barracks001_melee.vmdl"
+		}
+	    "ModelScale"                "1"
+	    "ModelRotation"             "0"
+		"HealthBarOffset"			"150"
+		"PlayerCanControl"			"1"
+		"UniqueBuilding"			"1"
+		"RequiresRepair"			"1"
+
+	    // Stats
+	    //-----------------------------
+	    "Level"                     "4"
+	    "BuildTime"                 "2"
+		"Requirements"{
+
+		}
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"gain_gold_team"
+		"Ability2"					"fountain_ability"
+		"Ability3"					"buy_lumber_1"
+		"Ability4"					"buy_lumber_8"
+		"Ability5"					"sell_lumber_1"
+		"Ability6"					"sell_lumber_8"
+
+		"TeamGainGold"				"true"
+
+	    // General
+	    //-----------------------------
+
+	    "ArmorPhysical"             "5"
+		"StatusHealth"              "1"//"30"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "1"
+	    "StatusManaRegen"           "1"
+	    "MagicalResistance"         "0"
+
+		"ConstructionSize"          "30"
+	    "BlockPathingSize"          "4"
+		"CollisionSize"				"128"
+
+	    "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+	    "TeamName"                  "DOTA_TEAM_BADGUYS"
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1200"//"900"
+	    "VisionNighttimeRange"      "800"//"600"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "ProjectileCollisionSize"   "100"
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+		"HasInventory"				"1"
+	}
+
 
 }

@@ -198,6 +198,13 @@
 		"troll_hut_5"                                                                     "Troll Hut 5"
 		"troll_hut_6"                                                                     "Troll Hut 6"
 		"troll_hut_7"                                                                     "Troll Hut 7"
+		"troll_hut_1_1x1"                                                                     "Troll Hut 1"
+		"troll_hut_2_1x1"                                                                     "Troll Hut 2"
+		"troll_hut_3_1x1"                                                                     "Troll Hut 3"
+		"troll_hut_4_1x1"                                                                     "Troll Hut 4"
+		"troll_hut_5_1x1"                                                                     "Troll Hut 5"
+		"troll_hut_6_1x1"                                                                     "Troll Hut 6"
+		"troll_hut_7_1x1"                                                                     "Troll Hut 7"
 		"troll2_hut_1"                                                                     "Troll Hut 1"
 		"troll2_hut_2"                                                                     "Troll Hut 2"
 		"troll2_hut_3"                                                                     "Troll Hut 3"
@@ -2064,6 +2071,15 @@
 
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4"                                     "Upgrade To Troll Hut 4"
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4_Description"                         ""
+
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_2_1x1"                                     "Upgrade To Troll Hut 2"
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_2_1x1_Description"                         ""
+
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_3_1x1"                                     "Upgrade To Troll Hut 3"
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_3_1x1_Description"                         ""
+
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4_1x1"                                     "Upgrade To Troll Hut 4"
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4_1x1_Description"                         ""
 
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5"                                     "Upgrade To Troll Hut 5"
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_Description"                         "Allows you to buy a lumber all over the map."
