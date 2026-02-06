@@ -2466,7 +2466,7 @@
         {
             "bonus_damage" "163840"
             "gold_cost" "0"
-            "lumber_cost" "380"
+            "lumber_cost" "360"
             "move" "15"
         }
 
