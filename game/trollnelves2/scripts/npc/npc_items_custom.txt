@@ -1568,7 +1568,6 @@
 			}
 		}
 	}
-
 	"item_root_ability"{
 		"BaseClass"						"item_datadriven"
 		"ID"                            "2002"
@@ -5818,63 +5817,6 @@
 			{
 				"ScriptFile"			"custom_abilities.lua"
 				"Function"				"AntiAngel"
-			}
-		}
-	}
-
-	"item_stormcrafter_datadriven"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"														
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastPoint"				"0"
-		"AbilityManaCost"				"0"
-		"AbilityCooldown"				"5"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
-		"AbilityTextureName"            "stormcrafter_datadriven"
-		"ItemKillable" 					"1"
-		"MaxLevel"						"1"
-		"ItemDroppable" 				"0"
-		"ItemSellable"					"0"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"5.0" //"10.0"
-					
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"
-		"ItemIsNeutralActiveDrop"				"1"
-		"ItemPurchasable"				"0"
-
-		"Model"							"models/props_gameplay/neutral_box.vmdl"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-        {
-            "range" "99999"
-        }
-		"OnSpellStart"{
-			"FireSound"
-			{
-				"EffectName"	"Hero_FacelessVoid.Chronosphere"//"Hero_FacelessVoid.TimeDilation.Cast"
-				"Target"		"CASTER"
-			}
-
-			"FireEffect"
-			{
-				"EffectName"			"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp.vpcf"
-				"EffectAttachType"		"follow_origin"
-				"Target"				"CASTER"
-			}
-
-			"RunScript"
-			{
-				"ScriptFile"			"custom_abilities.lua"
-				"Function"				"StormcrafterAbility"
 			}
 		}
 	}

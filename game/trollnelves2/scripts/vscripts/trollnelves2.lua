@@ -423,7 +423,6 @@ function InitializeBuilder(hero)
         --hero:AddItemByName("item_night_ability")
         hero:AddItemByName("item_blink_datadriven")
     end
-    hero:AddItemByName("item_stormcrafter_datadriven")
     hero:AddItemByName("item_anti_angel")
     
     
@@ -568,6 +567,10 @@ function InitializeTroll(hero)
         completedConstructionCount = 0
     }
     hero.buildings["troll_hut_4_1x1"] = {
+        startedConstructionCount = 0,
+        completedConstructionCount = 0
+    }
+    hero.buildings["troll_hut_5_1x1"] = {
         startedConstructionCount = 0,
         completedConstructionCount = 0
     }

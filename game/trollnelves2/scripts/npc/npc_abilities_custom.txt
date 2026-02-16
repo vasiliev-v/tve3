@@ -17993,10 +17993,99 @@
 		}
 	}
 
+	"upgrade_to_troll_hut_5_1x1"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"build_tent"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		"Building"						"1"
+		"BuildTime"						"3"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"UpgradeBuilding"
+				"NewName"		"troll_hut_5_1x1"
+			}
+		}
+	}
+
+	"wisp_select"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"wisp_select"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityCastPoint"				"0"
+
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"0"
+		"ItemSellable"					"0"
+		"AbilityCooldown"				"30" 
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_abilities.lua"
+				"Function"		"WispSelect"
+			}
+		}
+	}
 
 
+	"stormcrafter_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"														
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityCooldown"				"5"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityTextureName"            "stormcrafter_datadriven"
+		"ItemKillable" 					"1"
+		"MaxLevel"						"1"
+		"ItemDroppable" 				"0"
+		"ItemSellable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10.0" //"10.0"
 
+		"Model"							"models/props_gameplay/neutral_box.vmdl"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+        {
+            "range" "99999"
+        }
+		"OnSpellStart"{
+			"FireSound"
+			{
+				"EffectName"	"Hero_FacelessVoid.Chronosphere"//"Hero_FacelessVoid.TimeDilation.Cast"
+				"Target"		"CASTER"
+			}
 
+			"FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp.vpcf"
+				"EffectAttachType"		"follow_origin"
+				"Target"				"CASTER"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"			"custom_abilities.lua"
+				"Function"				"StormcrafterAbility"
+			}
+		}
+	}
 
 
 

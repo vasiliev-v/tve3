@@ -14,6 +14,19 @@ var votedYesMod = false
 var modVoteLabelOverride = null
 var currentModState = null
 
+// ===== FIX 1x1 MAP STAGE (retry after 5 sec if team not ready) =====
+var LAST_MAP_STAGE_DATA = null;
+var MAP_STAGE_RETRY_SCHEDULED = false;
+
+function ClearMapStageUI()
+{
+    if ($("#MapsList"))
+        $("#MapsList").RemoveAndDeleteChildren();
+
+    if ($("#WindowStageMapPlayersCounter"))
+        $("#WindowStageMapPlayersCounter").RemoveAndDeleteChildren();
+}
+// ================================================================
 
 function InitSetup()
 {
@@ -31,7 +44,6 @@ function InitSetup()
 
 function UpdateChat()
 {
-    //$.Msg("GameUI.CustomUIConfig().LoadingChat ", GameUI.CustomUIConfig().LoadingChat == null, " ", GameUI.CustomUIConfig().FindLoadingChat == null)
     let FindLoadingChat = GameUI.CustomUIConfig().FindLoadingChat
     if (FindLoadingChat)
     {
@@ -79,35 +91,81 @@ function CloseOtherScreenStage()
 
 GameEvents.SubscribeProtected( "troll_elves_init_stage_select_map", InitStageSelectedMap );
 
+// ===== UPDATED: InitStageSelectedMap with 5 sec retry in 1x1 =====
 function InitStageSelectedMap(data)
 {
-    if (ACTIVATED_STAGE_MAP) { return }
+    // Запоминаем последние данные стадии, чтобы можно было перерисовать позже
+    if (data) LAST_MAP_STAGE_DATA = data;
+
+    const is1x1 = Game.GetMapInfo().map_display_name == "1x1"
+    const isTroll = Players.GetTeam( Players.GetLocalPlayer() ) == 3
+
+    // Если уже активировали, но мы в 1x1 и раньше показали экран как "не тролль",
+    // а теперь команда обновилась и мы тролль — разрешаем повторную прогрузку
+    if (ACTIVATED_STAGE_MAP)
+    {
+        if (is1x1 && $("#MapSelectInfo") && $("#MapSelectInfo").visible && isTroll)
+        {
+            ACTIVATED_STAGE_MAP = false
+        }
+        else
+        {
+            return
+        }
+    }
+
     ACTIVATED_STAGE_MAP = true
     CloseOtherScreenStage()
     OLD_SCREEN_STAGE = $("#WindowMapStage")
     $("#WindowMapStage").style.opacity = "1"
-    const is1x1 = Game.GetMapInfo().map_display_name == "1x1"
-    const isTroll = Players.GetTeam( Players.GetLocalPlayer() ) == 3
+
     $("#MapSelectInfo").visible = false
+
+    // Важно: чистим UI перед построением (иначе при повторе будут дубли)
+    ClearMapStageUI()
+
     if (is1x1 && !isTroll)
     {
         $("#WindowStageMapPlayersCounter").visible = false
         $("#MapsList").visible = false
         $("#MapSelectInfo").visible = true
-    }
-    else
-    {
-        if (data.maps)
+
+        // Повторная проверка через 5 секунд (1 раз)
+        if (!MAP_STAGE_RETRY_SCHEDULED)
         {
-            for (var i = 1; i <= Object.keys(data.maps).length; i++)
-            {
-                CreatePanelMap(data.maps, i)
-            }
+            MAP_STAGE_RETRY_SCHEDULED = true
+            $.Schedule(5.0, function () {
+                MAP_STAGE_RETRY_SCHEDULED = false
+
+                // если за это время команда обновилась и мы стали троллем — перерисуем окно
+                if (Game.GetMapInfo().map_display_name == "1x1" && Players.GetTeam(Players.GetLocalPlayer()) == 3)
+                {
+                    ACTIVATED_STAGE_MAP = false
+                    InitStageSelectedMap(LAST_MAP_STAGE_DATA)
+                }
+            })
         }
-        CreatePlayersVotesMap()
+
+        InitModVote()
+        return
     }
+
+    // обычная логика (тролль или не 1x1)
+    $("#WindowStageMapPlayersCounter").visible = true
+    $("#MapsList").visible = true
+
+    if (data && data.maps)
+    {
+        for (var i = 1; i <= Object.keys(data.maps).length; i++)
+        {
+            CreatePanelMap(data.maps, i)
+        }
+    }
+
+    CreatePlayersVotesMap()
     InitModVote()
 }
+// ===== END UPDATED =====
 
 function CreatePlayersVotesMap()
 {
@@ -377,7 +435,6 @@ function CreateSpell(info, parent, active)
     PerkPanel.AddClass("PerkPanel");
 
     if (!info || !info[1]) {
-        // Пустая ячейка
         return;
     }
 
@@ -401,6 +458,7 @@ function CreateSpell(info, parent, active)
         SetShowText(PerkPanel, info[3] + "_description_level_" + GetSelectedPlayerSpellLevel(info[1], player_id), info[1], GetSelectedPlayerSpellLevel(info[1], player_id))
     }
 }
+
 function UpdateCurrentSpells() {
     const container = $("#PlayerSelectedPerks");
     container.RemoveAndDeleteChildren();
@@ -410,7 +468,6 @@ function UpdateCurrentSpells() {
     const maxAllowed = GetMaxAllowedPerksForLocalPlayer();
     let rendered = 0;
 
-    // сначала рисуем все занятые слоты
     for (let slot = 1; slot <= 3; slot++) {
         const spellName = activeTable[slot];
         if (spellName && spellName !== "") {
@@ -423,11 +480,8 @@ function UpdateCurrentSpells() {
         }
     }
 
-    // затем добираем пустыми
     RenderEmptyCells(container, maxAllowed - rendered);
 }
-
-
 
 function UpdateListSelected() {
     const player_id = Players.GetLocalPlayer();
@@ -436,7 +490,6 @@ function UpdateListSelected() {
 
     const valid_spells = [];
 
-    // Собираем только допустимые (первые N) перки
     for (let i = 1; i <= 3; i++) {
         if (active_table[i] && active_table[i] !== "") {
             valid_spells.push(active_table[i]);
@@ -459,41 +512,30 @@ function UpdateListSelected() {
         panel.ClearPanelEvent("onactivate");
 
         if (is_active && is_valid) {
-            // Разрешаем отключить активный допустимый перк
             panel.RemoveClass("DisabledChoose");
             panel.SetPanelEvent("onactivate", () => {
                 GameEvents.SendCustomGameEventToServer("event_set_activate_spell", {
                     spell_name: spell_name,
                     modifier_name: panel.GetAttributeString("modifier", "")
                 });
-
             });
         } else if (is_active && !is_valid) {
-            // Запрещаем клик по переполненному
             panel.AddClass("DisabledChoose");
-            panel.SetPanelEvent("onactivate", () => {
-
-            });
+            panel.SetPanelEvent("onactivate", () => {});
         } else if (!is_active && valid_spells.length >= max_allowed) {
-            // Запрещаем новый выбор
             panel.AddClass("DisabledChoose");
-            panel.SetPanelEvent("onactivate", () => {
-
-            });
+            panel.SetPanelEvent("onactivate", () => {});
         } else {
-            // Разрешаем выбор нового
             panel.RemoveClass("DisabledChoose");
             panel.SetPanelEvent("onactivate", () => {
                 GameEvents.SendCustomGameEventToServer("event_set_activate_spell", {
                     spell_name: spell_name,
                     modifier_name: panel.GetAttributeString("modifier", "")
                 });
-
             });
         }
     }
 }
-
 
 function GetSpellInformation(spell_name)
 {
@@ -539,7 +581,7 @@ function GetSpellTexture(spell_name, any_level)
     {
         if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
         {
-            return game_spells_lib[i][2] //+ "_" + any_level
+            return game_spells_lib[i][2]
         }
     }
 }
@@ -643,11 +685,8 @@ function GetActivatedPerksCount()
 
 function RenderEmptyCells(parent, count) {
     for (let i = 0; i < count; i++) {
-        // Передаём undefined, чтобы Panorama сам сгенерировал уникальный id
         let emptyPanel = $.CreatePanel("Panel", parent, undefined);
         emptyPanel.AddClass("PerkPanel");
-        // при необходимости можно добавить дополнительные классы для пустых слотов:
-        // emptyPanel.AddClass("PerkPanel--empty");
     }
 }
 
@@ -695,10 +734,7 @@ function UpdateModVotes(data)
     const label = $("#SettingsMod")
     label.text = $.Localize("#wolves_mod_voting_desc") + " " + Math.floor(yesPercent) + "%"
     label.visible = true
-    if (yesPercent > 60)
-    {
-       //label.style.color = "#82f572ff";  
-    }
+
     modVoteLabelOverride = label.text
     if (votedYesMod)
     {   
@@ -706,7 +742,6 @@ function UpdateModVotes(data)
         $("#ModVoteYes").AddClass("DisabledChoose")
     }
 }
-
 
 (function () {
 	Game.AutoAssignPlayersToTeams();

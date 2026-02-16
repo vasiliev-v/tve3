@@ -786,6 +786,8 @@
 		"DOTA_Tooltip_ability_item_building_destroy"                                      "销毁建筑"
 		"DOTA_Tooltip_ability_item_building_destroy_Description"                          "销毁建筑， 你无法收回花费的金钱, 如果敌人在附近你也无法销毁! "
 
+		"DOTA_Tooltip_ability_wisp_select_Description"                         	  		  "选择地图上所有你的 Wisp"
+
 		"DOTA_Tooltip_ability_item_building_cancel"                                       "取消建造"
 		"DOTA_Tooltip_ability_item_building_cancel_Description"                           "取消建造"
 

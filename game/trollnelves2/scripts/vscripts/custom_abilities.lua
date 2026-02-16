@@ -644,6 +644,8 @@ function GatherLumber(event)
 	end
 end
 
+local MAX_WISP_LVL = 15
+
 function UpgradeWisp(event)
 	if IsServer() then
 		local caster = event.caster
@@ -715,34 +717,62 @@ function UpgradeWisp(event)
 			return false
 		end
 		--caster:ForceKill(true) --This will call RemoveBuilding
-		caster:Kill(nil, caster)
-		Timers:CreateTimer(10,function()
-			UTIL_Remove(caster)
-		end)
+		---caster:Kill(nil, caster)
+		--Timers:CreateTimer(10,function()
+		--	UTIL_Remove(caster)
+		--end)
 		PlayerResource:ModifyGold(hero,-gold_cost)
 		PlayerResource:ModifyLumber(hero,-lumber_cost)
 		PlayerResource:ModifyFood(hero,food)
-		PlayerResource:ModifyWisp(hero,wisp)
-		local unit = CreateUnitByName(unit_name, point , true, nil, nil, hero:GetTeamNumber())
-		unit:SetOwner(hero)
-		unit:SetControllableByPlayer(pID, true)
-		PlayerResource:NewSelection(pID, unit)
+		--PlayerResource:ModifyWisp(hero,wisp)
+		local currentName = caster:GetUnitName()          -- "wisp_8"
+		local currentLvl = tonumber(string.match(currentName, "%d+"))
+		if not currentLvl then return end
+
+		local nextLvl = currentLvl + 1
+
+		local oldAbilName = "train_wisp_" .. (currentLvl + 1)
+		local newAbilName = "train_wisp_" .. (nextLvl + 1)
+
+		DebugPrint(oldAbilName)
+		DebugPrint(newAbilName)
+
+		local oldAbil = caster:FindAbilityByName(oldAbilName)
+		if oldAbil then
+			caster:RemoveAbility(oldAbilName)
+		end
+
+		if nextLvl < MAX_WISP_LVL then
+			local newAbi = caster:AddAbility(newAbilName)
+			if newAbi then
+				newAbi:SetLevel(1)
+			end
+		end
+
+		caster:SetUnitName("wisp_" .. tostring(nextLvl))
+
+		caster:SetMaxHealth(caster:GetMaxHealth() + 10)
+		caster:SetHealth(math.min(caster:GetHealth() + 10, caster:GetMaxHealth()))
+		caster:SetBaseMaxHealth(caster:GetBaseMaxHealth() + 10)
 		
 		Timers:CreateTimer(0.3,function() 
-			local targetAbility = unit:FindAbilityByName("gather_lumber")
+			local targetAbility = caster:FindAbilityByName("gather_lumber")
 			if targetAbility ~= nil and caster.target_tree2 ~= nil  then
-				unit:AddAbility("special_bonus_cast_range_700")
-				local abil = unit:FindAbilityByName("special_bonus_cast_range_700")
+				caster:AddAbility("special_bonus_cast_range_700")
+				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
             	abil:SetLevel(abil:GetMaxLevel())
-				unit:CastAbilityOnTarget(target, targetAbility, pID)
+				caster:CastAbilityOnTarget(target, targetAbility, pID)
 			end
 			Timers:CreateTimer(0.4,function() 
 				caster:RemoveAbility("special_bonus_cast_range_700")
 			end)
 		end)
-		table.insert(hero.units,unit)
 
-		UpdateSkinWisp(unit_name, unit)
+		CustomGameEventManager:Send_ServerToPlayer(
+			PlayerResource:GetPlayer(pID),
+			"force_update_ui",
+			{ entindex = caster:entindex() }
+		)
 
 	end
 end
@@ -1636,14 +1666,24 @@ end
 
 -- --[[
 	function StormcrafterAbility( keys )
+		local unit = keys.unit
+		local hero = unit:GetOwner()
+		local playerID = unit:GetMainControllingPlayer()
+
+		if playerID == nil then
+			return
+		end
+
+		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+		if not hero or not hero.IsElf or not hero:IsElf() then
+			return
+		end
 
 		local ability = keys.ability
 		local range = ability:GetSpecialValueFor("range")
-		local hero = ability:GetCaster()
-		local origin_point = keys.caster:GetAbsOrigin()
+		local origin_point = hero:GetAbsOrigin()
 		local owner 
 		--local playerID = caster:GetPlayerOwnerID()
-	
 			if hero:IsElf() then
 				local units = FindUnitsInRadius(hero:GetTeamNumber(), origin_point , nil, range , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 					for _,unit in pairs(units) do
@@ -1836,4 +1876,37 @@ function UpgradeWorkers(event)
 		end)
 		table.insert(hero.units,unit)
 	end
+end
+
+function WispSelect( keys )
+    local unit = keys.unit
+    local hero = unit:GetOwner()
+    local playerID = unit:GetMainControllingPlayer()
+
+	if playerID == nil then
+		return
+	end
+
+	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+	if not hero or not hero.IsElf or not hero:IsElf() then
+		return
+	end
+
+	local wisps = {}
+
+	if hero.units then
+		for _, unit in ipairs(hero.units) do
+			if unit and not unit:IsNull() then
+				local unitName = unit:GetUnitName()
+				if unitName and string.match(unitName, "wisp_") and unit:GetPlayerOwnerID() == playerID then
+				table.insert(wisps, unit)
+				end
+			end
+		end
+	end
+
+	if #wisps > 0 then
+		PlayerResource:NewSelection(playerID, wisps)
+	end
+
 end

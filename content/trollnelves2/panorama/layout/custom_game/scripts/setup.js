@@ -115,6 +115,13 @@ var uiWaitingSchedules = [];
         customHpReg[args.unit] = args.value;
         UpdateHpRegLabel();
     });
+        GameEvents.SubscribeProtected("force_update_ui", function(args) {
+         $.Schedule(0.03, function () {
+            UpdateUI();
+            UpdateAbilityTooltips();      // на всякий случай
+            UpdateAbilityCustomHotkeys(); // если меняются слоты/хоткеи
+        });
+});
 })();
 
 function InitializeCustomHpRegenLabel(healthContainer) {
@@ -180,7 +187,7 @@ function UseItemCommandCalled(data, hotkey, slot) {
     var abilitySlot = unusedHotkeyAbilitySlots[hotkey];
    // //$.Msg("ItemID: ", itemID);
     let itemName = Abilities.GetAbilityName(itemID);
-    if (itemID !== -1 && (itemName != "item_full" && itemName != "item_stormcrafter_datadriven" && itemName != "item_anti_angel")) {
+    if (itemID !== -1 && (itemName != "item_full" && itemName != "item_anti_angel")) {
         //$.Msg("itemName: ", itemName);
         Abilities.ExecuteAbility(itemID, selectedUnitID, false);
     } else if (abilitySlot != null) {
@@ -432,7 +439,7 @@ function IsHotkeyAvailable(selectedUnit, index) {
     }
     let itemID = Entities.GetItemInSlot(selectedUnit, index - 1)
     let itemName = Abilities.GetAbilityName(itemID);
-    if (itemName == "item_full" || itemName == "item_stormcrafter_datadriven" || itemName == "item_anti_angel" )
+    if (itemName == "item_full" || itemName == "item_anti_angel" )
     {
         return true;
     }

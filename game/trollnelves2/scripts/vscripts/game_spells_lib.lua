@@ -8,7 +8,7 @@ game_spells_lib = class({})
 -- 5 - Цифры улучшение 
 -- 6 - Эльф или Тролль.
 -- 7 - Работает ли перк. 
-if GameRules.MapSpeed ~= 4 then
+if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
     DebugPrint("test not x4")
     game_spells_lib.spells_list =
     {
@@ -813,6 +813,157 @@ if GameRules.MapSpeed ~= 4 then
             {
                 {2.5, 3, 5 },
                 {80, 70, 60},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        
+    }
+elseif GetMapName() == "1x1" then
+    game_spells_lib.spells_list =
+    {
+    
+
+        -----------------------
+        -- Troll spells
+        -----------------------
+        {
+            "troll_spell_gold_hit", 
+            "troll_spell_gold_hit", 
+            "modifier_troll_spell_gold_hit", 
+            {
+                "troll_spell_gold_hit_description_level_1_shop", 
+                "troll_spell_gold_hit_description_level_2_shop", 
+                "troll_spell_gold_hit_description_level_3_shop", 
+                "troll_spell_gold_hit_description_level_4_shop",
+                
+            }, 
+            {
+                {1},
+                {"400%",},
+                {5},
+                {150},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_atkspeed",
+            "troll_spell_atkspeed", 
+            "modifier_troll_spell_atkspeed", 
+            {
+                "troll_spell_atkspeed_description_level_1_shop", 
+                "troll_spell_atkspeed_description_level_2_shop", 
+                "troll_spell_atkspeed_description_level_3_shop", 
+            }, 
+            {
+                {'200%'},
+                {2},
+                {300},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_ms", 
+            "troll_spell_ms", 
+            "modifier_troll_spell_ms", 
+            {
+                "troll_spell_ms_description_level_1_shop", 
+            },
+            {
+                {15},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_haste",
+            "troll_spell_haste", 
+            "modifier_troll_spell_haste", 
+            {
+                "troll_spell_haste_description_level_1_shop", 
+                "troll_spell_haste_description_level_2_shop", 
+                "troll_spell_haste_description_level_3_shop", 
+            }, 
+            {
+                {5},
+                {'2%'},
+                {1000},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_night_buff",
+            "troll_spell_night_buff", 
+            "modifier_troll_spell_night_buff", 
+            {
+                "troll_spell_night_buff_description_level_1_shop", 
+                "troll_spell_night_buff_description_level_2_shop", 
+                "troll_spell_night_buff_description_level_3_shop", 
+            }, 
+            {
+                {20},
+                {20},
+                {'1%'},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_gold_wisp",
+            "troll_spell_gold_wisp", 
+            "modifier_troll_spell_gold_wisp", 
+            {
+                "troll_spell_gold_wisp_description_level_1_shop", 
+                "troll_spell_gold_wisp_description_level_2_shop", 
+                "troll_spell_gold_wisp_description_level_3_shop", 
+            }, 
+            {
+                {128},
+                {'MAX'},
+                {5},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_evasion",
+            "troll_spell_evasion", 
+            "modifier_troll_spell_evasion", 
+            {
+                "troll_spell_evasion_description_level_1_shop", 
+                "troll_spell_evasion_description_level_2_shop", 
+                "troll_spell_evasion_description_level_3_shop", 
+            }, 
+            {
+                {2},
+                {300},
+                {100},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_invis",
+            "troll_spell_invis", 
+            "modifier_troll_spell_invis", 
+            {
+                "troll_spell_invis_description_level_1_shop", 
+                "troll_spell_invis_description_level_2_shop", 
+            }, 
+            {
+                {2.5},
+                {80},
             },
             "1",
             "1",

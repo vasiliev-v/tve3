@@ -2081,6 +2081,9 @@
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4_1x1"                                     "Upgrade To Troll Hut 4"
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_4_1x1_Description"                         ""
 
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_1x1"                                     "Upgrade To Troll Hut 5"
+		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_1x1_Description"                         ""
+
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5"                                     "Upgrade To Troll Hut 5"
 		"DOTA_Tooltip_ability_upgrade_to_troll_hut_5_Description"                         "Allows you to buy a lumber all over the map."
 
@@ -2655,6 +2658,10 @@
 		"DOTA_Tooltip_ability_item_building_destroy"                                      "Destroy Building"
 		"DOTA_Tooltip_ability_item_building_destroy_Description"                          "Destroy building. You do not get your resources back, cannot destroy if enemy is nearby! "
 
+		"DOTA_Tooltip_ability_wisp_select"                                      	"Select all Wisps"
+		"DOTA_Tooltip_ability_wisp_select_Description"                          "Selects all your Wisps on the map "
+
+
 		"DOTA_Tooltip_ability_item_building_cancel"                                       "Building Cancel"
 		"DOTA_Tooltip_ability_item_building_cancel_Description"                           "Cancel building"
 
@@ -3181,8 +3188,8 @@
 		"DOTA_Tooltip_Ability_item_anti_angel_range"                                          "RADIUS: "
 		"DOTA_Tooltip_Ability_item_anti_angel_knockback_distance"                             "KNOCKBACK DISTANCE:"
 
-		"DOTA_Tooltip_ability_item_stormcrafter_datadriven"                                                "Time Sphere"
-		"DOTA_Tooltip_ability_item_stormcrafter_datadriven_Description"                                    "Stop Animation of units. Use for increse your fps! Range: global.<br>Cooldown: 5 sec."
+		"DOTA_Tooltip_ability_stormcrafter_datadriven"                                                "Time Sphere"
+		"DOTA_Tooltip_ability_stormcrafter_datadriven_Description"                                    "Stop Animation of units. Use for increse your fps! Range: global.<br>Cooldown: 5 sec."
 
 		"DOTA_Tooltip_Ability_smoke_screen_datadriven"												"Smoke"
 		"DOTA_Tooltip_Ability_smoke_screen_datadriven_Description"                               	"Grants a -%move_slow%  slow for %duration% seconds. Troll have a %miss_chance%% miss chance."
@@ -4968,6 +4975,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_evasion_description_level_1_shop_x4"           "Duration"
         "troll_spell_evasion_description_level_2_shop_x4"           "Cooldown"
+		"troll_spell_evasion_description_level_3_shop_x4"           "Evasion"
 
 		"DOTA_Tooltip_ability_troll_spell_evasion_x4"                                                "Evasion"
 		"DOTA_Tooltip_ability_troll_spell_evasion_x4_Description"                                     "Gives 80% evasion"
