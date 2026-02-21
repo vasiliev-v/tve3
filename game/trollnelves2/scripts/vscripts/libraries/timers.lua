@@ -1,5 +1,5 @@
 TIMERS_VERSION = "1.03"
-
+print ( '[[TROLLNELVES2] timer 1' )
 --[[
 
   -- A timer running every second that starts immediately on the next frame, respects pauses

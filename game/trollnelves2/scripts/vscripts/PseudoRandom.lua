@@ -1,6 +1,6 @@
 PseudoRandom = {}
 PseudoRandom.__index = PseudoRandom
-
+print ( '[[TROLLNELVES2] PseudoRandom' )
 function PseudoRandom:New(nChance) 
 	local obj = { 
 		counter = 0,

@@ -1,5 +1,6 @@
 
 LinkModifier = LinkModifier or {}
+print ( '[[TROLLNELVES2] LinkModifier' )
 function LinkModifier:Start()
     LinkLuaModifier("modifier_movespeed_x4", "libraries/modifiers/modifier_movespeed_x4", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_movespeed_x2", "libraries/modifiers/modifier_movespeed_x2", LUA_MODIFIER_MOTION_NONE)

@@ -8,7 +8,7 @@ if trollnelves2 == nil then
     _G.trollnelves2 = class({})
 end
 
-
+print ( '[[TROLLNELVES2] trollnelves2' )
 -- This library allow for easily delayed/timed actions
 require('libraries/timers')
 

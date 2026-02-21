@@ -341,33 +341,13 @@ function chatcommand:OnPlayerChat(event)
 	--GameRules:SendCustomMessage("Please do not leave the game.", 1, 1)
 	--Stats.SubmitMatchData(DOTA_TEAM_BADGUYS, callback)
 	--GameRules:SendCustomMessage("The game can be left, thanks!", 1, 1)
-		elseif event.text  ==  "!money"  then
-			-- PlayerResource:ModifyGold(hero, nil)
-			local player_table = {}
-			local PoolTable = {}
-			player_table[1] = CustomNetTables:GetTableValue("Shop", tostring(event.playerid))["10"] 
-			player_table[0] = CustomNetTables:GetTableValue("Shop", tostring(event.playerid))["15"]
-			DebugPrint("player_table[1]")
-			DebugPrintTable(player_table[1])
-		 	DebugPrint("player_table[0]")
-		    DebugPrintTable(player_table[0])
-			DebugPrint("player_table[1][1][1]")
-			DebugPrintTable(player_table[1]["1"]["1"])
 
-			if not player_table[0]["0"] or player_table[0]["0"] == "none" then
-				DebugPrint("true")
-			end
-			PoolTable = CustomNetTables:GetTableValue("Shop", "bpday")	
-			DebugPrintTable(PoolTable)
-		elseif event.text == "!test1213" and PlayerResource:GetSteamAccountID(event.playerid) == 201083179  then
-			-- GameRules:SendCustomMessage(GetDedicatedServerKeyV3("1"), 1, 1)
-		    --PlayerResource:SetUnitShareMaskForPlayer(GameRules.trollID, event.playerid, 2, true)
-			--trollnelves2:ControlUnitForTroll(hero)
-			DebugPrint("GameRules.trollID " .. GameRules.trollID)
-			local player = PlayerResource:GetPlayer(event.playerid)
-			--DebugPrint("event.playerid " .. event.playerid)
-			--DebugPrintTable(hero)
-		    hero:SetPlayerID(playerID)
-			--	player:SetAssignedHeroEntity(hero)
+
+
+
+
+
+
+	
 		end
 end

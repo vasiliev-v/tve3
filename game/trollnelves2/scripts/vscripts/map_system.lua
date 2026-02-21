@@ -1,7 +1,7 @@
 if map_system == nil then
     _G.map_system = class({})
 end
-
+print ( '[[TROLLNELVES2] map_system' )
 local MAPS_LIST = {}
 
 if string.match(GetMapName(),"1x1")  then

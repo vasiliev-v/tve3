@@ -1,5 +1,5 @@
 mod_system = class({})
-
+print ( '[[TROLLNELVES2] mod_system' )
 local MOD_LIST = 
 	{
 		{"Yes", 0}

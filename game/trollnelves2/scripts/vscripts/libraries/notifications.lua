@@ -1,5 +1,5 @@
 NOTIFICATIONS_VERSION = "0.89"
-
+print ( '[[TROLLNELVES2] notifications' )
 --[[
   Sample Panorama Notifications Library by BMD
 

@@ -1,7 +1,7 @@
 if setup_state_lib == nil then
     _G.setup_state_lib = class({})
 end
-
+print ( '[[TROLLNELVES2] setup_state_lib' )
 function setup_state_lib:SetNextStage()
     if setup_state_lib.StageQueue[setup_state_lib.CURRENT_QUEUE_STAGE] then
         setup_state_lib.StageQueue[setup_state_lib.CURRENT_QUEUE_STAGE]()

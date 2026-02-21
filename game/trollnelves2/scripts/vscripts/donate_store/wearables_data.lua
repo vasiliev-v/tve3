@@ -1,4 +1,5 @@
 Wearables = {}
+print ( '[[TROLLNELVES2] Wearables' )
 Wearables.wolfModels = {
     ["620"] = { model = "models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl", scale = 1 },
     ["621"] = { model = "models/items/lycan/ultimate/sirius_curse/sirius_curse.vmdl", scale = 1 },

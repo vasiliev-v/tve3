@@ -647,134 +647,187 @@ end
 local MAX_WISP_LVL = 15
 
 function UpgradeWisp(event)
-	if IsServer() then
-		local caster = event.caster
-		local target = caster.target_tree2
-		local point = caster:GetAbsOrigin()
-		local pID = caster:GetPlayerOwnerID()
-		local hero = PlayerResource:GetSelectedHeroEntity(pID)
-		local ability = event.ability
+	if not IsServer() then return end
+
+	local caster = event.caster
+	local target = caster.target_tree2
+	local point  = caster:GetAbsOrigin()
+	local pID    = caster:GetPlayerOwnerID()
+	local hero   = PlayerResource:GetSelectedHeroEntity(pID)
+	local ability = event.ability
+
+	local casterAbility = caster:FindAbilityByName("gather_lumber")
+
+	-- COSTS (общие проверки оставляем одинаковыми)
+	local gold_cost   = ability:GetSpecialValueFor("gold_cost")
+	local lumber_cost = ability:GetSpecialValueFor("lumber_cost")
+	local food_cost   = ability:GetSpecialValueFor("food_cost")
+	local wisp_cost   = ability:GetSpecialValueFor("wisp_cost")
+
+	-- ====== проверки ресурсов (как у тебя) ======
+	if PlayerResource:GetGold(pID) < gold_cost then
+		SendErrorMessage(pID, "error_not_enough_gold")
+		if casterAbility ~= nil and target ~= nil then
+			caster:AddAbility("special_bonus_cast_range_700")
+			local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
+			abil:SetLevel(abil:GetMaxLevel())
+			caster:CastAbilityOnTarget(target, casterAbility, pID)
+		end
+		Timers:CreateTimer(0.4, function()
+			caster:RemoveAbility("special_bonus_cast_range_700")
+		end)
+		return false
+	end
+
+	if PlayerResource:GetLumber(pID) < lumber_cost then
+		SendErrorMessage(pID, "error_not_enough_lumber")
+		if casterAbility ~= nil and target ~= nil then
+			caster:AddAbility("special_bonus_cast_range_700")
+			local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
+			abil:SetLevel(abil:GetMaxLevel())
+			caster:CastAbilityOnTarget(target, casterAbility, pID)
+		end
+		Timers:CreateTimer(0.4, function()
+			caster:RemoveAbility("special_bonus_cast_range_700")
+		end)
+		return false
+	end
+
+	if hero.food > GameRules.maxFood and food_cost ~= 0 then
+		SendErrorMessage(pID, "error_not_enough_food")
+		caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
+		if casterAbility ~= nil and target ~= nil then
+			caster:AddAbility("special_bonus_cast_range_700")
+			local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
+			abil:SetLevel(abil:GetMaxLevel())
+			caster:CastAbilityOnTarget(target, casterAbility, pID)
+		end
+		Timers:CreateTimer(0.4, function()
+			caster:RemoveAbility("special_bonus_cast_range_700")
+		end)
+		return false
+	end
+
+	if hero.wisp > GameRules.maxWisp and wisp_cost ~= 0 then
+		SendErrorMessage(pID, "error_not_enough_wisp")
+		caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
+		if casterAbility ~= nil and target ~= nil then
+			caster:AddAbility("special_bonus_cast_range_700")
+			local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
+			abil:SetLevel(abil:GetMaxLevel())
+			caster:CastAbilityOnTarget(target, casterAbility, pID)
+		end
+		Timers:CreateTimer(0.4, function()
+			caster:RemoveAbility("special_bonus_cast_range_700")
+		end)
+		return false
+	end
+
+	-- ====== определяем текущий уровень виспа по имени ======
+	local currentName = caster:GetUnitName() -- "wisp_8"
+	local currentLvl = tonumber(string.match(currentName, "%d+"))
+	if not currentLvl then return end
+	local nextLvl = currentLvl + 1
+
+	-- ====== списываем ресурсы (часть общая) ======
+	PlayerResource:ModifyGold(hero, -gold_cost)
+	PlayerResource:ModifyLumber(hero, -lumber_cost)
+	PlayerResource:ModifyFood(hero,  food_cost)
+
+	-- ====== ВАЖНО: 15-й уровень по старому ======
+	-- то есть апгрейд С 14 -> 15 (или nextLvl == 15)
+	if nextLvl == 15 then
+		-- старый алгоритм требует wisp_cost
+		PlayerResource:ModifyWisp(hero, wisp_cost)
+
+		-- unit_name берём из KV апгрейд-абилки (как в старом коде)
 		local unit_name = GetAbilityKV(ability:GetAbilityName()).UnitName
-		local casterAbility = caster:FindAbilityByName("gather_lumber")
 
+		-- убиваем и удаляем старого
+		caster:Kill(nil, caster)
+		Timers:CreateTimer(10, function()
+			UTIL_Remove(caster)
+		end)
 
-		local gold_cost = ability:GetSpecialValueFor("gold_cost")
-		local lumber_cost = ability:GetSpecialValueFor("lumber_cost")
-		local food = ability:GetSpecialValueFor("food_cost")
-		local wisp = ability:GetSpecialValueFor("wisp_cost")
-		if PlayerResource:GetGold(pID) < gold_cost then
-            SendErrorMessage(pID, "error_not_enough_gold")
-			if casterAbility ~= nil and caster.target_tree2 ~= nil then
-				caster:AddAbility("special_bonus_cast_range_700")
-				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
-            	abil:SetLevel(abil:GetMaxLevel())
-				caster:CastAbilityOnTarget(target, casterAbility, pID)
+		-- создаём нового
+		local unit = CreateUnitByName(unit_name, point, true, nil, nil, hero:GetTeamNumber())
+		unit:SetOwner(hero)
+		unit:SetControllableByPlayer(pID, true)
+		PlayerResource:NewSelection(pID, unit)
+
+		-- вернуть команду добычи (как в старом коде)
+		Timers:CreateTimer(0.3, function()
+			local targetAbility = unit:FindAbilityByName("gather_lumber")
+			if targetAbility ~= nil and target ~= nil then
+				unit:AddAbility("special_bonus_cast_range_700")
+				local abil = unit:FindAbilityByName("special_bonus_cast_range_700")
+				abil:SetLevel(abil:GetMaxLevel())
+				unit:CastAbilityOnTarget(target, targetAbility, pID)
 			end
-			Timers:CreateTimer(0.4,function() 
-					caster:RemoveAbility("special_bonus_cast_range_700")
-			end)
-            return false
-        end
-        if PlayerResource:GetLumber(pID) < lumber_cost then
-            SendErrorMessage(pID, "error_not_enough_lumber")
-			if casterAbility ~= nil and caster.target_tree2 ~= nil  then
-				caster:AddAbility("special_bonus_cast_range_700")
-				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
-            	abil:SetLevel(abil:GetMaxLevel())
-				caster:CastAbilityOnTarget(target, casterAbility, pID)
-			end
-			Timers:CreateTimer(0.4,function() 
-					caster:RemoveAbility("special_bonus_cast_range_700")
-			end)
-            return false
-        end
-		if hero.food > GameRules.maxFood and food ~= 0 then
-			SendErrorMessage(pID, "error_not_enough_food")
-			caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
-			if casterAbility ~= nil and caster.target_tree2 ~= nil  then
-				caster:AddAbility("special_bonus_cast_range_700")
-				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
-            	abil:SetLevel(abil:GetMaxLevel())
-				caster:CastAbilityOnTarget(target, casterAbility, pID)
-			end
-			Timers:CreateTimer(0.4,function() 
-				caster:RemoveAbility("special_bonus_cast_range_700")
-			end)
-			return false
-		end
-		if hero.wisp > GameRules.maxWisp and wisp ~= 0 then
-			SendErrorMessage(pID, "error_not_enough_wisp")
-			caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=0.03})
-			if casterAbility ~= nil and caster.target_tree2 ~= nil then
-				caster:AddAbility("special_bonus_cast_range_700")
-				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
-            	abil:SetLevel(abil:GetMaxLevel())
-				caster:CastAbilityOnTarget(target, casterAbility, pID)
-			end
-			Timers:CreateTimer(0.4,function() 
-					caster:RemoveAbility("special_bonus_cast_range_700")
-			end)
-			return false
-		end
-		--caster:ForceKill(true) --This will call RemoveBuilding
-		---caster:Kill(nil, caster)
-		--Timers:CreateTimer(10,function()
-		--	UTIL_Remove(caster)
-		--end)
-		PlayerResource:ModifyGold(hero,-gold_cost)
-		PlayerResource:ModifyLumber(hero,-lumber_cost)
-		PlayerResource:ModifyFood(hero,food)
-		--PlayerResource:ModifyWisp(hero,wisp)
-		local currentName = caster:GetUnitName()          -- "wisp_8"
-		local currentLvl = tonumber(string.match(currentName, "%d+"))
-		if not currentLvl then return end
-
-		local nextLvl = currentLvl + 1
-
-		local oldAbilName = "train_wisp_" .. (currentLvl + 1)
-		local newAbilName = "train_wisp_" .. (nextLvl + 1)
-
-		DebugPrint(oldAbilName)
-		DebugPrint(newAbilName)
-
-		local oldAbil = caster:FindAbilityByName(oldAbilName)
-		if oldAbil then
-			caster:RemoveAbility(oldAbilName)
-		end
-
-		if nextLvl < MAX_WISP_LVL then
-			local newAbi = caster:AddAbility(newAbilName)
-			if newAbi then
-				newAbi:SetLevel(1)
-			end
-		end
-
-		caster:SetUnitName("wisp_" .. tostring(nextLvl))
-
-		caster:SetMaxHealth(caster:GetMaxHealth() + 10)
-		caster:SetHealth(math.min(caster:GetHealth() + 10, caster:GetMaxHealth()))
-		caster:SetBaseMaxHealth(caster:GetBaseMaxHealth() + 10)
-		
-		Timers:CreateTimer(0.3,function() 
-			local targetAbility = caster:FindAbilityByName("gather_lumber")
-			if targetAbility ~= nil and caster.target_tree2 ~= nil  then
-				caster:AddAbility("special_bonus_cast_range_700")
-				local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
-            	abil:SetLevel(abil:GetMaxLevel())
-				caster:CastAbilityOnTarget(target, targetAbility, pID)
-			end
-			Timers:CreateTimer(0.4,function() 
-				caster:RemoveAbility("special_bonus_cast_range_700")
+			Timers:CreateTimer(0.4, function()
+				unit:RemoveAbility("special_bonus_cast_range_700")
 			end)
 		end)
 
-		CustomGameEventManager:Send_ServerToPlayer(
-			PlayerResource:GetPlayer(pID),
-			"force_update_ui",
-			{ entindex = caster:entindex() }
-		)
+		-- если у тебя ведётся список юнитов
+		if hero.units then
+			table.insert(hero.units, unit)
+		end
 
+		UpdateSkinWisp(unit_name, unit)
+		return
 	end
+
+	-- ====== 8..14 (и вообще всё, что НЕ ведёт к 15) по новому ======
+	-- (если тебе нужно строго только 8-14, можно добавить: if currentLvl >= 8 and nextLvl <= 14 then ...)
+	-- wisp_cost тут НЕ списываем (как в новом коде)
+	-- PlayerResource:ModifyWisp(hero, wisp_cost) -- НЕ НАДО
+
+	-- обновляем train-абилки
+	-- пример: wisp_8 имеет train_wisp_9, после апа должен получить train_wisp_10
+	local oldAbilName = "train_wisp_" .. (currentLvl + 1)
+	local newAbilName = "train_wisp_" .. (nextLvl + 1)
+
+	local oldAbil = caster:FindAbilityByName(oldAbilName)
+	if oldAbil then
+		caster:RemoveAbility(oldAbilName)
+	end
+
+	-- ограничение на выдачу следующей абилки (если надо)
+	-- например, до 14 включительно у тебя есть дальнейшие апгрейды, а после 14 уже нет
+	if nextLvl < 15 then
+		local newAbi = caster:AddAbility(newAbilName)
+		if newAbi then
+			newAbi:SetLevel(1)
+		end
+	end
+
+	-- меняем имя + хп (как в новом)
+	caster:SetUnitName("wisp_" .. tostring(nextLvl))
+
+	caster:SetMaxHealth(caster:GetMaxHealth() + 10)
+	caster:SetBaseMaxHealth(caster:GetBaseMaxHealth() + 10)
+	caster:SetHealth(math.min(caster:GetHealth() + 10, caster:GetMaxHealth()))
+
+	-- вернуть команду добычи (как в новом коде)
+	Timers:CreateTimer(0.3, function()
+		local targetAbility = caster:FindAbilityByName("gather_lumber")
+		if targetAbility ~= nil and target ~= nil then
+			caster:AddAbility("special_bonus_cast_range_700")
+			local abil = caster:FindAbilityByName("special_bonus_cast_range_700")
+			abil:SetLevel(abil:GetMaxLevel())
+			caster:CastAbilityOnTarget(target, targetAbility, pID)
+		end
+		Timers:CreateTimer(0.4, function()
+			caster:RemoveAbility("special_bonus_cast_range_700")
+		end)
+	end)
+
+	CustomGameEventManager:Send_ServerToPlayer(
+		PlayerResource:GetPlayer(pID),
+		"force_update_ui",
+		{ entindex = caster:entindex() }
+	)
 end
 
 function LumberGain( event )

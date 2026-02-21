@@ -79,37 +79,107 @@ function BuildingHelper:Init()
 end
 function BuildingHelper:HookBoilerplate()
     if not __ACTIVATE_HOOK then
-        __ACTIVATE_HOOK = {funcs = {}}
+        __ACTIVATE_HOOK = {
+            funcs = {},
+            started = false,
+            done = false,
+            listener = nil
+        }
+
+        -- Делаем __ACTIVATE_HOOK вызываемым: __ACTIVATE_HOOK(function() ... end)
         setmetatable(__ACTIVATE_HOOK, {
-            __call = function(t, func) table.insert(t.funcs, func) end
-        })
-        
-        debug.sethook(function(...)
-            local info = debug.getinfo(2)
-            local src = tostring(info.short_src)
-            local name = tostring(info.name)
-            if name ~= "__index" then
-                if string.find(src, "addon_game_mode") then
-                    if GameRules:GetGameModeEntity() then
-                        for _, func in ipairs(__ACTIVATE_HOOK.funcs) do
-                            local status, err = pcall(func)
-                            if not status then
-                                print("__ACTIVATE_HOOK callback error: " .. err)
-                            end
-                        end
-                        
-                        debug.sethook(nil, "c")
+            __call = function(t, func)
+                if type(func) ~= "function" then
+                    print("__ACTIVATE_HOOK: callback is not a function")
+                    return
+                end
+
+                -- Если уже отработали — выполняем сразу (чтобы поздние регистрации не терялись)
+                if t.done then
+                    local ok, err = pcall(func)
+                    if not ok then
+                        print("__ACTIVATE_HOOK late callback error: " .. tostring(err))
                     end
+                    return
+                end
+
+                table.insert(t.funcs, func)
+            end
+        })
+
+        -- Внутренний запуск колбэков один раз
+        function __ACTIVATE_HOOK:RunOnce()
+            if self.done then return end
+            self.done = true
+
+            for _, func in ipairs(self.funcs) do
+                local ok, err = pcall(func)
+                if not ok then
+                    print("__ACTIVATE_HOOK callback error: " .. tostring(err))
                 end
             end
-        end, "c")
+
+            self.funcs = {}
+
+            -- Отписываемся от listener'а, если ставили
+            if self.listener ~= nil and StopListeningToGameEvent then
+                StopListeningToGameEvent(self.listener)
+                self.listener = nil
+            end
+        end
+
+        -- Проверка готовности
+        function __ACTIVATE_HOOK:IsReady()
+            return GameRules and GameRules.GetGameModeEntity and GameRules:GetGameModeEntity() ~= nil
+        end
+
+        -- Запуск "ожидателя" (Timers или game_rules_state_change)
+        function __ACTIVATE_HOOK:StartWatcher()
+            if self.started or self.done then return end
+            self.started = true
+
+            -- 0) Попробуем сразу
+            if self:IsReady() then
+                self:RunOnce()
+                return
+            end
+
+            -- 1) Если есть Timers — самый быстрый и надёжный polling
+            if Timers and Timers.CreateTimer then
+                Timers:CreateTimer("___activate_hook_waiter", {
+                    useGameTime = true,
+                    endTime = 0.0,
+                    callback = function()
+                        if __ACTIVATE_HOOK:IsReady() then
+                            __ACTIVATE_HOOK:RunOnce()
+                            return nil -- stop timer
+                        end
+                        return 0.1
+                    end
+                })
+                return
+            end
+
+            -- 2) Без Timers: слушаем смену состояния правил игры
+            if ListenToGameEvent then
+                self.listener = ListenToGameEvent("game_rules_state_change", function()
+                    if __ACTIVATE_HOOK:IsReady() then
+                        __ACTIVATE_HOOK:RunOnce()
+                    end
+                end, nil)
+                return
+            end
+            print("[BuildingHelper] __ACTIVATE_HOOK: no Timers and no ListenToGameEvent; cannot auto-run hooks.")
+        end
+        __ACTIVATE_HOOK:StartWatcher()
     end
-    
-    -- Hook the order filter
+
+    -- Hook the order filter (как было)
     __ACTIVATE_HOOK(function()
         local mode = GameRules:GetGameModeEntity()
-        mode:SetExecuteOrderFilter(Dynamic_Wrap(BuildingHelper, 'OrderFilter'),
-        BuildingHelper)
+
+        mode:SetExecuteOrderFilter(Dynamic_Wrap(BuildingHelper, "OrderFilter"), BuildingHelper)
+
         self.oldFilter = mode.SetExecuteOrderFilter
         mode.SetExecuteOrderFilter = function(mode, fun, context)
             BuildingHelper.nextFilter = fun
