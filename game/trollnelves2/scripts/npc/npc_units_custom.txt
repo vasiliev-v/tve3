@@ -307,9 +307,14 @@
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
 		"Ability1"					"stormcrafter_datadriven"
-		"Ability2"					"wisp_select"
-		"Ability3"					""
-		"Ability4"					""
+		"Ability2"					"wisp_select_7"
+		"Ability3"					"wisp_select_8_14"
+		"Ability4"					"wisp_select_15"
+		"Ability5"					"wisp_select"
+		"Ability6"					""
+		"Ability7"					""
+		"Ability8"					""
+		"Ability9"					""
 		"Ability10"					""
 
 	    // General

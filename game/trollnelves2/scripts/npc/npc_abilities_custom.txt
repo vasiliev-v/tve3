@@ -18035,6 +18035,72 @@
 		}
 	}
 
+	"wisp_select_7"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"wisp_select_7"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityCastPoint"				"0"
+
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"0"
+		"ItemSellable"					"0"
+		"AbilityCooldown"				"30" 
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_abilities.lua"
+				"Function"		"WispSelect_7"
+			}
+		}
+	}
+
+	"wisp_select_8_14"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"wisp_select_8_14"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityCastPoint"				"0"
+
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"0"
+		"ItemSellable"					"0"
+		"AbilityCooldown"				"30" 
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_abilities.lua"
+				"Function"		"WispSelect_8_14"
+			}
+		}
+	}
+
+	"wisp_select_15"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"wisp_select_15"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityCastPoint"				"0"
+
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"0"
+		"ItemSellable"					"0"
+		"AbilityCooldown"				"30" 
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_abilities.lua"
+				"Function"		"WispSelect_15"
+			}
+		}
+	}
+
 
 	"stormcrafter_datadriven"
 	{

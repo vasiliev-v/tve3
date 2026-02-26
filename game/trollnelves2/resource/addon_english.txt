@@ -2661,6 +2661,14 @@
 		"DOTA_Tooltip_ability_wisp_select"                                      	"Select all Wisps"
 		"DOTA_Tooltip_ability_wisp_select_Description"                          "Selects all your Wisps on the map "
 
+		"DOTA_Tooltip_ability_wisp_select_7"                                      	"Select Wisps 1-7 lvl"
+		"DOTA_Tooltip_ability_wisp_select_7_Description"                          "Selects all your Wisps 1-7 lvl on the map "
+
+		"DOTA_Tooltip_ability_wisp_select_8_14"                                      	"Select Wisps 8-14 lvl"
+		"DOTA_Tooltip_ability_wisp_select_8_14_Description"                          "Selects all your Wisps 8-14 lvl on the map "
+
+		"DOTA_Tooltip_ability_wisp_select_15"                                      	"Select all Wisps 15 lvl"
+		"DOTA_Tooltip_ability_wisp_select_15_Description"                          "Selects all your Wisps 15 lvl on the map "
 
 		"DOTA_Tooltip_ability_item_building_cancel"                                       "Building Cancel"
 		"DOTA_Tooltip_ability_item_building_cancel_Description"                           "Cancel building"

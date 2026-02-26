@@ -1963,3 +1963,108 @@ function WispSelect( keys )
 	end
 
 end
+
+function WispSelect_7( keys )
+    local unit = keys.unit
+    local hero = unit:GetOwner()
+    local playerID = unit:GetMainControllingPlayer()
+
+	if playerID == nil then
+		return
+	end
+
+	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+	if not hero or not hero.IsElf or not hero:IsElf() then
+		return
+	end
+
+	local wisps = {}
+
+	if hero.units then
+		for _, unit in ipairs(hero.units) do
+			if unit and not unit:IsNull() then
+				local unitName = unit:GetUnitName()
+				if unitName and string.match(unitName, "wisp_") and tonumber(string.match(unitName,"%d+")) ~= nil and unit:GetPlayerOwnerID() == playerID then
+					if tonumber(string.match(unitName,"%d+")) >= 1 and tonumber(string.match(unitName,"%d+")) <= 7 then
+						table.insert(wisps, unit)
+					end
+				end
+			end
+		end
+	end
+
+	if #wisps > 0 then
+		PlayerResource:NewSelection(playerID, wisps)
+	end
+
+end
+
+function WispSelect_8_14( keys )
+    local unit = keys.unit
+    local hero = unit:GetOwner()
+    local playerID = unit:GetMainControllingPlayer()
+
+	if playerID == nil then
+		return
+	end
+
+	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+	if not hero or not hero.IsElf or not hero:IsElf() then
+		return
+	end
+
+	local wisps = {}
+
+	if hero.units then
+		for _, unit in ipairs(hero.units) do
+			if unit and not unit:IsNull() then
+				local unitName = unit:GetUnitName()
+				if unitName and string.match(unitName, "wisp_") and tonumber(string.match(unitName,"%d+")) ~= nil and unit:GetPlayerOwnerID() == playerID then
+					if tonumber(string.match(unitName,"%d+")) >= 8 and tonumber(string.match(unitName,"%d+")) <= 14 then
+						table.insert(wisps, unit)
+					end
+				end
+			end
+		end
+	end
+
+	if #wisps > 0 then
+		PlayerResource:NewSelection(playerID, wisps)
+	end
+
+end
+
+function WispSelect_15( keys )
+    local unit = keys.unit
+    local hero = unit:GetOwner()
+    local playerID = unit:GetMainControllingPlayer()
+
+	if playerID == nil then
+		return
+	end
+
+	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+	if not hero or not hero.IsElf or not hero:IsElf() then
+		return
+	end
+
+	local wisps = {}
+
+	if hero.units then
+		for _, unit in ipairs(hero.units) do
+			if unit and not unit:IsNull() then
+				local unitName = unit:GetUnitName()
+				if unitName and string.match(unitName, "wisp_") and tonumber(string.match(unitName,"%d+")) ~= nil and unit:GetPlayerOwnerID() == playerID then
+					if tonumber(string.match(unitName,"%d+")) == 15  then
+						table.insert(wisps, unit)
+					end
+				end
+			end
+		end
+	end
+
+	if #wisps > 0 then
+		PlayerResource:NewSelection(playerID, wisps)
+	end
+
+end

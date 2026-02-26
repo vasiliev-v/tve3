@@ -345,6 +345,9 @@
 		"DOTA_Tooltip_ability_item_building_destroy_Description"                          "Разрушает постройку. Ресурсы не возвращаются, нельзя уничтожить, если рядом враг! "
 		"DOTA_Tooltip_ability_item_building_cancel_Description"                           "Отменить постройку"
 		"DOTA_Tooltip_ability_wisp_select_Description"                           "Выбирает всех ваших Wisp на карте"
+		"DOTA_Tooltip_ability_wisp_select_7_Description"                           "Выбирает всех ваших Wisp 1-7 уровня на карте"
+		"DOTA_Tooltip_ability_wisp_select_8_14_Description"                           "Выбирает всех ваших Wisp 8-14 уровня на карте"
+		"DOTA_Tooltip_ability_wisp_select_8_15_Description"                           "Выбирает всех ваших Wisp 15 уровня на карте"
 
 		"DOTA_Tooltip_ability_item_blink_datadriven"					  "Блинк"
 		"DOTA_Tooltip_ability_item_blink_datadriven_Description"			  "<br>Мгновенно телепортирует на короткое расстояние."
