@@ -24,7 +24,10 @@ module.exports = [
         },
         rules: {
             ...tsPlugin.configs.recommended.rules,
+            ...stylistic.configs["recommended-flat"].rules,
             curly: ["error", "all"],
+            "@stylistic/brace-style": ["error", "1tbs", { allowSingleLine: false }],
+            "@stylistic/indent": ["error", 4, { SwitchCase: 1 }],
             "@stylistic/quotes": ["error", "double", { avoidEscape: true }],
             "@stylistic/semi": ["error", "always"],
             "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],

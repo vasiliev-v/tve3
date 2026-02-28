@@ -14,7 +14,7 @@
                 <Panel class="SpellButtonOpenIcon" />
             </Panel>
         </Panel>
-        <Panel class="SpellShopPanel SpellTemple_CloseSpellShop" id="SpellShopPanel">
+        <Panel class="SpellShopPanel CloseSpellShop" id="SpellShopPanel">
             <Panel class="SpellShopHeader">
                 <Label class="SpellShopHeaderLabel" text="#SpellShop_Name" />
                 <Panel class="CloseSpellShopButton" onactivate="SpellTemple_CloseSpellShop();"/> 

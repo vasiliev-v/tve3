@@ -8,8 +8,8 @@
     "build:panorama": "tsc --project content/trollnelves2/panorama/tsconfig.json",
     "dev": "run-p dev:*",
     "dev:panorama": "node scripts/dev.js content/trollnelves2/panorama/tsconfig.json",
-    "lint": "eslint . --fix",
-    "lint-nofix": "eslint ."
+    "lint": "eslint --fix",
+    "lint-nofix": "eslint"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

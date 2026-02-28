@@ -25,7 +25,7 @@
                 <Panel class="ActivatedSpellIcon" id="ActivatedSpellIcon3" />
             </Panel>
         </Panel>
-        <Panel class="SpellShopPanel SpellShop_CloseSpellShop" id="SpellShopPanel">
+        <Panel class="SpellShopPanel CloseSpellShop" id="SpellShopPanel">
             <Panel class="CloseSpellShopButton" onactivate="SpellShop_CloseSpellShop();"/>
             <Panel class="SpellShopPanelBody">
                 <Panel class="SpellShopSpellsList">
