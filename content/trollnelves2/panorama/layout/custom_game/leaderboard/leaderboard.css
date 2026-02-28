@@ -40,6 +40,118 @@
     margin-top: 127px;
 }
 
+.SeasonTabsContainer
+{
+    width: 100%;
+    margin-bottom: 20px;
+    flow-children: right;
+    height: fit-children;
+    align: center top;
+}
+
+.SeasonTabsContainer.Hidden
+{
+    visibility: collapse;
+    height: 0px;
+    margin-bottom: 0px;
+}
+
+.SeasonTabsViewport
+{
+    width: fill-parent-flow(1.0);
+    height: fit-children;
+    overflow: clip;
+    padding-bottom: 6px;
+    margin: 0px 8px;
+}
+
+.SeasonTabs
+{
+    flow-children: right;
+    width: fit-children;
+    transition-property: margin-left;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.SeasonTabNavButton
+{
+    width: 28px;
+    height: 28px;
+    margin: 0px 2px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    background-size: 18px 18px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    wash-color: #B8FF45aa;
+    transition-property: background-color, wash-color;
+    transition-duration: 0.15s;
+}
+
+.SeasonTabNavButton:hover
+{
+    background-color: rgba(184, 255, 69, 0.25);
+    wash-color: #B8FF45;
+}
+
+.SeasonTabNavButton.Hidden
+{
+    visibility: collapse;
+}
+
+.SeasonTabNavButtonLeft
+{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_left_png.vtex");
+}
+
+.SeasonTabNavButtonRight
+{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_right_png.vtex");
+}
+
+.SeasonTabsContainer.Hidden .SeasonTabs
+{
+    margin-left: 0px;
+}
+
+.SeasonTab
+{
+    flow-children: right;
+    height: 36px;
+    padding: 6px 14px;
+    margin-right: 8px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.04);
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.SeasonTab:hover
+{
+    background-color: rgba(184, 255, 69, 0.18);
+}
+
+.SeasonTab.Selected
+{
+    background-color: rgba(184, 255, 69, 0.35);
+}
+
+.SeasonTabLabel
+{
+    vertical-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: semi-bold;
+    text-transform: none;
+}
+
+.SeasonTab.Selected .SeasonTabLabel
+{
+    color: #B8FF45;
+}
+
 .LeaderboardPanel
 {
     flow-children: down;
