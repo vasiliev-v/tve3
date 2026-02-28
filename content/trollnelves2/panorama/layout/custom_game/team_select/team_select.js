@@ -9,7 +9,7 @@ var g_TEAM_SPECATOR = 1;
 var MAP_NAME_ACTIVE = "clanwars"
 
 
-function OnLeaveTeamPressed()
+function TeamSelect_OnLeaveTeamPressed()
 {
 	Game.PlayerJoinTeam( DOTATeam_t.DOTA_TEAM_NOTEAM );
 }

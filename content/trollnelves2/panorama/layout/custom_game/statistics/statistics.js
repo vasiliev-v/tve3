@@ -34,7 +34,7 @@ function UpdateSettingsTable(table, key, data)
 }
 
 
-function OpenPanel()
+function Statistics_OpenPanel()
 {
     let Statistics = $("#Statistics")
     if (!Statistics.BHasClass("Open"))
@@ -52,7 +52,7 @@ function OpenPanel()
     }
 }
 
-function ClosePanel()
+function Statistics_ClosePanel()
 {
     let Statistics = $("#Statistics")
     if (Statistics.BHasClass("Open"))
@@ -409,5 +409,5 @@ function CreateAchivementPanel(achivement_id, active, counterValue)
 	});
 }
 
-GameUI.CustomUIConfig().OpenStatsGlobal = OpenPanel
-GameUI.CustomUIConfig().CloseStatsGlobal = ClosePanel
+GameUI.CustomUIConfig().OpenStatsGlobal = Statistics_OpenPanel
+GameUI.CustomUIConfig().CloseStatsGlobal = Statistics_ClosePanel

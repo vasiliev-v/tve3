@@ -12,7 +12,7 @@ var information_panels =
 
 var INIT_PANEL = false
  
-function OpenPanel()
+function Info_OpenPanel()
 {
     let InformationPanel = $("#InformationPanel")
     InformationPanel.SetHasClass("Open", !InformationPanel.BHasClass("Open"))
@@ -23,7 +23,7 @@ function OpenPanel()
     }
 }
 
-function ClosePanel()
+function Info_ClosePanel()
 {
     let InformationPanel = $("#InformationPanel")
     if (InformationPanel.BHasClass("Open"))
@@ -72,5 +72,5 @@ function ToggleInformation(info_window)
     info_window.SetHasClass("Opened", !info_window.BHasClass("Opened"))
 }
 
-GameUI.CustomUIConfig().OpenInfoGlobal = OpenPanel
-GameUI.CustomUIConfig().CloseInfoGlobal = ClosePanel
+GameUI.CustomUIConfig().OpenInfoGlobal = Info_OpenPanel
+GameUI.CustomUIConfig().CloseInfoGlobal = Info_ClosePanel

@@ -19,14 +19,14 @@ var player_table =
 	1, // Количество недель подряд
 ]
 
-function OpenPanel() 
+function Rewards_OpenPanel() 
 {
     player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[6];
     InitGameRewards()
     $("#RewardsPanel").SetHasClass("Open", !$("#RewardsPanel").BHasClass("Open"))
 }
 
-function ClosePanel()
+function Rewards_ClosePanel()
 {
     $("#RewardsPanel").SetHasClass("Open", false)
 }
@@ -144,7 +144,7 @@ function RecieveReward(claim_panel, reward_panel, type_reward, reward_count)
 	GameEvents.SendCustomGameEventToServer( "EventRewards", {id: Players.GetLocalPlayer(), count: reward_count, type: type_reward} ); // отправляешь ивент 
 }
 
-GameUI.CustomUIConfig().OpenRewardsGlobal = OpenPanel
+GameUI.CustomUIConfig().OpenRewardsGlobal = Rewards_OpenPanel
 
 const tableValue = CustomNetTables.GetTableValue("Shop", "datetime");
 const REWARDS_RESET_SECONDS = (tableValue?.[1]?.["2"]) || 0; // default 24 hours

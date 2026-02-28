@@ -137,7 +137,7 @@ function StartBuildingHelper(params) {
         // Build the entity grid with the construction sizes and entity origins
         entityGrid = [];
         for (var i = 0; i < entities.length; i++) {
-            if (!Entities.IsAlive(entities[i]) || Entities.IsOutOfGame(entities[i]) || !HasModifier(entities[i], "modifier_building"))
+            if (!Entities.IsAlive(entities[i]) || Entities.IsOutOfGame(entities[i]) || !BuildingHelper_HasModifier(entities[i], "modifier_building"))
                 continue;
             var entPos = Entities.GetAbsOrigin(entities[i]);
             var squares = GetConstructionSize(entities[i]);
@@ -146,9 +146,9 @@ function StartBuildingHelper(params) {
                 BlockGridSquares(entPos, squares, GRID_TYPES["BLOCKED"]);
             } else {
                 if (Entities.GetUnitName(entities[i]) == 'npc_dota_units_base') {
-                    if (HasModifier(entities[i], "modifier_tree_cut"))
+                    if (BuildingHelper_HasModifier(entities[i], "modifier_tree_cut"))
                         cutTrees[entPos] = entities[i];
-                } else if (Entities.GetTeamNumber(entities[i]) != Entities.GetTeamNumber(builderIndex) && !HasModifier(entities[i], "modifier_out_of_world")) {
+                } else if (Entities.GetTeamNumber(entities[i]) != Entities.GetTeamNumber(builderIndex) && !BuildingHelper_HasModifier(entities[i], "modifier_out_of_world")) {
                     BlockGridSquares(entPos, 2, GRID_TYPES["BLOCKED"]);
                 } else if (entities[i] == builderIndex) {
                     BlockGridSquares(entPos, 2, GRID_TYPES["BLOCKED"]);
@@ -534,7 +534,7 @@ function GetCustomGrid(entIndex) {
     var table = CustomNetTables.GetTableValue("buildings", entName);
     if (table && table.grid !== undefined) {
         for (var type in table.grid) {
-            if (HasModifier(entIndex, "modifier_grid_" + type.toLowerCase()))
+            if (BuildingHelper_HasModifier(entIndex, "modifier_grid_" + type.toLowerCase()))
                 return table.grid;
         }
     }
@@ -566,7 +566,7 @@ function Length2D(v1, v2) {
     return Math.sqrt((v2[0] - v1[0]) ** 2 + (v2[1] - v1[1]) ** 2);
 }
 
-function HasModifier(entIndex, modifierName) {
+function BuildingHelper_HasModifier(entIndex, modifierName) {
     var nBuffs = Entities.GetNumBuffs(entIndex);
     for (var i = 0; i < nBuffs; i++) {
         if (Buffs.GetName(entIndex, Entities.GetBuff(entIndex, i)) == modifierName)

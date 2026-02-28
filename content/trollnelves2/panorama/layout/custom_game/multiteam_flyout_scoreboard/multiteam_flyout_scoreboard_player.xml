@@ -14,7 +14,7 @@
 			</Panel>
             <Panel id="PlayerMainInformation" class="ScoreboardPanel" >
                 <Panel id="PlayerOneMainInformation" > 
-                    <Panel onactivate="showHero()" id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+                    <Panel onactivate="FlyoutScoreboard_ShowHero()" id="Hero" class="ScoreCol_Hero ScoreboardPanel">
                         <Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect"/>
                         <Panel class="PlayerDead" />
                     </Panel>

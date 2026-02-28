@@ -34,7 +34,7 @@ function OnRightButtonPressed() {
     if (mouseEntities.length > 0) {
       for ( var e of mouseEntities ) {
         const targetIndex = e.entityIndex;
-        if (right_click_repair && IsCustomBuilding(targetIndex) && Entities.GetHealthPercent(targetIndex) < 100 && IsAlliedUnit(targetIndex, mainSelected)) {
+        if (right_click_repair && Clicks_IsCustomBuilding(targetIndex) && Entities.GetHealthPercent(targetIndex) < 100 && IsAlliedUnit(targetIndex, mainSelected)) {
           GameEvents.SendCustomGameEventToServer( "building_helper_repair_command", {targetIndex: targetIndex, queue: pressedShift});
           return true;
         }
@@ -51,11 +51,11 @@ function OnLeftButtonPressed() {
   return false
 }
 
-function IsCustomBuilding(entIndex){
-  return HasModifier(entIndex,"modifier_building");
+function Clicks_IsCustomBuilding(entIndex){
+  return Clicks_HasModifier(entIndex,"modifier_building");
 }
 
-function HasModifier(entIndex, modifierName) {
+function Clicks_HasModifier(entIndex, modifierName) {
   var nBuffs = Entities.GetNumBuffs(entIndex)
   for (var i = 0; i < nBuffs; i++) {
     if (Buffs.GetName(entIndex, Entities.GetBuff(entIndex, i)) == modifierName)

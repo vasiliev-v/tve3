@@ -6,7 +6,7 @@ function MutePlayer()
     $.GetContextPanel().SetHasClass('player_muted', newIsMuted);
 }
 
-function SendResource()
+function TopScoreboard_SendResource()
 {
     let playerId = $.GetContextPanel().PlayerID
     if (GameUI.CustomUIConfig().OpenSendResourcePanelGlobal)
@@ -15,7 +15,7 @@ function SendResource()
     }
 }
 
-function showHero()
+function TopScoreboard_ShowHero()
 {
     const localPlayer = Game.GetLocalPlayerInfo();
     const playerPanel = $.GetContextPanel();

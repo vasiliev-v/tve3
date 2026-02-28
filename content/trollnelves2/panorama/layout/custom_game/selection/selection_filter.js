@@ -27,7 +27,7 @@ function SelectionFilter( entityList ) {
             Particles.DestroyParticleEffect(rangedParticle, true)
 
         // Create range display on the selected ranged attacker
-        if (IsCustomBuilding(mainSelected) && Entities.HasAttackCapability(mainSelected))
+        if (SelectionFilter_IsCustomBuilding(mainSelected) && Entities.HasAttackCapability(mainSelected))
         {
             var range = Entities.GetAttackRange(mainSelected)
             rangedParticle = Particles.CreateParticle("particles/ui_mouseactions/range_display.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, mainSelected)
@@ -56,7 +56,7 @@ function DeselectBuildings() {
 
     for (var unit of selectedEntities) {
         skip = true; // Makes it skip an update
-        if (!IsCustomBuilding(unit) && unit != first){
+        if (!SelectionFilter_IsCustomBuilding(unit) && unit != first){
             GameUI.SelectUnit(unit, true);
         }
     }
@@ -64,7 +64,7 @@ function DeselectBuildings() {
 
 function FirstNonBuildingEntityFromSelection( entityList ){
     for (var i = 0; i < entityList.length; i++) {
-        if (!IsCustomBuilding(entityList[i])){
+        if (!SelectionFilter_IsCustomBuilding(entityList[i])){
             return entityList[i]
         }
     }
@@ -85,7 +85,7 @@ function IsMixedBuildingSelectionGroup ( entityList ) {
     var buildings = 0
     var nonBuildings = 0
     for (var i = 0; i < entityList.length; i++) {
-        if (IsCustomBuilding(entityList[i])){
+        if (SelectionFilter_IsCustomBuilding(entityList[i])){
             buildings++
         }
         else {
@@ -105,7 +105,7 @@ function SelectOnlyBuildings() {
 
     for (var unit of selectedEntities) {
         skip = true; // Makes it skip an update
-        if (IsCustomBuilding(unit) && unit != first){
+        if (SelectionFilter_IsCustomBuilding(unit) && unit != first){
             GameUI.SelectUnit(unit, true);
         }
     }
@@ -113,15 +113,15 @@ function SelectOnlyBuildings() {
 
 function FirstBuildingEntityFromSelection( entityList ){
     for (var i = 0; i < entityList.length; i++) {
-        if (IsCustomBuilding(entityList[i])){
+        if (SelectionFilter_IsCustomBuilding(entityList[i])){
             return entityList[i]
         }
     }
     return 0
 }
 
-function IsCustomBuilding( entityIndex ){
-    return HasModifier(entityIndex,"modifier_building");
+function SelectionFilter_IsCustomBuilding( entityIndex ){
+    return SelectionFilter_HasModifier(entityIndex,"modifier_building");
 }
 
 function IsMechanical( entityIndex ) {
@@ -133,7 +133,7 @@ function IsCityCenter( entityIndex ){
     return (Entities.GetUnitLabel( entityIndex ) == "city_center")
 }
 
-function HasModifier(entIndex, modifierName) {
+function SelectionFilter_HasModifier(entIndex, modifierName) {
     var nBuffs = Entities.GetNumBuffs(entIndex)
     for (var i = 0; i < nBuffs; i++) {
         if (Buffs.GetName(entIndex, Entities.GetBuff(entIndex, i)) == modifierName)

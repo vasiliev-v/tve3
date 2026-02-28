@@ -21,7 +21,7 @@ var FAKE_PLAYER_LOCAL =
 
 
 
-function OpenPanel()
+function Leaderboard_OpenPanel()
 {
     let Leaderboard = $("#Leaderboard")
     Leaderboard.SetHasClass("Open", !Leaderboard.BHasClass("Open"))
@@ -33,7 +33,7 @@ function OpenPanel()
     }
 }
 
-function ClosePanel()
+function Leaderboard_ClosePanel()
 {
     let Leaderboard = $("#Leaderboard")
     if (Leaderboard.BHasClass("Open"))
@@ -128,5 +128,5 @@ function CreatePlayer(num, player_info, is_local)
     Leaderboard_column_games.text = player_info[4]
 } 
 
-GameUI.CustomUIConfig().OpenLeaderboardGlobal = OpenPanel
-GameUI.CustomUIConfig().CloseLeaderboardGlobal = ClosePanel
+GameUI.CustomUIConfig().OpenLeaderboardGlobal = Leaderboard_OpenPanel
+GameUI.CustomUIConfig().CloseLeaderboardGlobal = Leaderboard_ClosePanel

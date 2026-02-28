@@ -9,7 +9,7 @@ var SPELLS_TEXTURE = {}
 var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
 var active_shop = null
 
-function InitSpellPanel()
+function SpellShop_InitSpellPanel()
 {
     let minimap_container = FindDotaHudElement("minimap_container")
     let SpellMapPanel = $("#SpellMapPanel")
@@ -29,7 +29,7 @@ function InitSpellPanel()
     {
         GlyphScanContainer.style.visibility = "collapse"
     }
-    InitSpellList()
+    SpellShop_InitSpellList()
     // UpdateBuyButton() -- remove buy random aspect
 }
 
@@ -37,11 +37,11 @@ function UpdateActivatedSpellVisual()
 {
     for (let child of $("#SpellShopSpellsListBody").Children()) 
     {
-        child.SetHasClass("IsActivatedSpell", IsSpellActivate(child.spell_id))
+        child.SetHasClass("IsActivatedSpell", SpellShop_IsSpellActivate(child.spell_id))
     }
 }
 
-function InitSpellList()
+function SpellShop_InitSpellList()
 {
     $("#SpellShopSpellsListBody").RemoveAndDeleteChildren()
     let spell_cost = CustomNetTables.GetTableValue("game_spells_lib", "spell_cost")
@@ -54,14 +54,14 @@ function InitSpellList()
     {
         if (game_spells_lib[i] && game_spells_lib[i][6] == active_shop)
         {
-            CreateSpell(game_spells_lib[i])
+            SpellShop_CreateSpell(game_spells_lib[i])
         }
     }
 }
 
-function CreateSpell(info) 
+function SpellShop_CreateSpell(info) 
 {
-    let spell_player_level = GetPlayerSpellLevel(info[1], true)
+    let spell_player_level = SpellShop_GetPlayerSpellLevel(info[1], true)
 
     let SpellShopSpellPanel = $.CreatePanel("Panel", $("#SpellShopSpellsListBody"), "")
     SpellShopSpellPanel.AddClass("SpellShopSpellPanel")
@@ -72,7 +72,7 @@ function CreateSpell(info)
 
     let SpellShopSpellPanelIcon = $.CreatePanel("Panel", SpellShopSpellPanel_Body, "")
     SpellShopSpellPanelIcon.AddClass("SpellShopSpellPanelIcon")
-    SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(info[1], spell_player_level) + '.png")';
+    SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + SpellShop_GetSpellTexture(info[1], spell_player_level) + '.png")';
     SpellShopSpellPanelIcon.style.backgroundSize = "100%"
 
     let SpellShopSpell_counter = $.CreatePanel("Panel", SpellShopSpellPanel, "")
@@ -90,7 +90,7 @@ function CreateSpell(info)
         SpellShopSpell_counter.visible = false
     }
 
-    if (PlayerHasSpell(info[1]))
+    if (SpellShop_PlayerHasSpell(info[1]))
     {
         SpellShopSpellPanelIcon.SetHasClass("SpellDisabled", false)
     }
@@ -104,10 +104,10 @@ function CreateSpell(info)
         SpellShopSpellPanelIcon.SetHasClass("SpellDisabled", true)
     }
 
-    SetActiveSpellPreview(SpellShopSpellPanel, info)
+    SpellShop_SetActiveSpellPreview(SpellShopSpellPanel, info)
 }
 
-function PlayerHasSpell(spell)
+function SpellShop_PlayerHasSpell(spell)
 {
     if (player_table)
     {
@@ -125,16 +125,16 @@ function PlayerHasSpell(spell)
     return false
 }
 
-function SetActiveSpellPreview(panel, info)
+function SpellShop_SetActiveSpellPreview(panel, info)
 {
     panel.SetPanelEvent("onactivate", function() 
     { 
         Game.EmitSound("General.ButtonClick")
-        UpdatePreviewSpell(panel, info)
+        SpellShop_UpdatePreviewSpell(panel, info)
     });
 }
 
-function UpdatePreviewSpell(panel, info)
+function SpellShop_UpdatePreviewSpell(panel, info)
 {
     for (var i = 0; i < $("#SpellShopSpellsListBody").GetChildCount(); i++) 
     {
@@ -146,10 +146,10 @@ function UpdatePreviewSpell(panel, info)
     }
     CURRENT_SPELL_SELECTED = info
     panel.SetHasClass("SelectedSpellPrew", true)
-    UpdatePreviewSpellInf(info)
+    SpellShop_UpdatePreviewSpellInf(info)
 }
 
-function UpdatePreviewSpellInf(info)
+function SpellShop_UpdatePreviewSpellInf(info)
 {
     $("#PreviewSpellInfo").RemoveAndDeleteChildren()
 
@@ -165,7 +165,7 @@ function UpdatePreviewSpellInf(info)
 
     let SpellShopSpellPanelIcon = $.CreatePanel("Panel", SpellShopPreviewIcon, "")
     SpellShopSpellPanelIcon.AddClass("SpellShopSpellPanelIcon")
-    SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(info[1], GetPlayerSpellLevel(info[1], true)) + '.png")';
+    SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + SpellShop_GetSpellTexture(info[1], SpellShop_GetPlayerSpellLevel(info[1], true)) + '.png")';
     SpellShopSpellPanelIcon.style.backgroundSize = "100%"
 
     let SpellPreviewPanelNameButton = $.CreatePanel("Panel", SpellShopIconAndButton, "")
@@ -202,7 +202,7 @@ function UpdatePreviewSpellInf(info)
         SpellColumnBonus = $.CreatePanel("Panel", SpellBonusesPanel, "SpellColumnBonus_"+i)
         SpellColumnBonus.AddClass("SpellColumnBonus")
         SpellColumnBonus.AddClass("SpellColumnBonus_"+i)
-        if (GetPlayerSpellLevel(info[1]) == i)
+        if (SpellShop_GetPlayerSpellLevel(info[1]) == i)
         {
             SpellColumnBonus.AddClass("IsActiveColumn")
         }
@@ -246,16 +246,16 @@ function UpdatePreviewSpellInf(info)
     SpellPreviewPanelButtonUpgradeCostIcon.AddClass("SpellPreviewPanelButtonCostIcon")
     let SpellPreviewPanelButtonUpgradeCostLabel = $.CreatePanel("Label", SpellPreviewPanelButtonUpgradeCost, "")
     SpellPreviewPanelButtonUpgradeCostLabel.AddClass("SpellPreviewPanelButtonCostLabel")
-    let nextLvlCost = GetSpellCost(info[1], GetPlayerSpellLevel(info[1]) + 1)
+    let nextLvlCost = SpellShop_GetSpellCost(info[1], SpellShop_GetPlayerSpellLevel(info[1]) + 1)
     SpellPreviewPanelButtonUpgradeCostLabel.text = nextLvlCost
     let player_coins = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["0"]["1"]
-    SetUpgradeSpell(SpellPreviewPanelButtonUpgrade, info)
+    SpellShop_SetUpgradeSpell(SpellPreviewPanelButtonUpgrade, info)
 
-    if (GetPlayerSpellLevel(info[1]) == 0)
+    if (SpellShop_GetPlayerSpellLevel(info[1]) == 0)
     {
         SpellPreviewPanelButtonUpgrade.visible = false
     }
-    if (GetPlayerSpellLevel(info[1]) >= 3)
+    if (SpellShop_GetPlayerSpellLevel(info[1]) >= 3)
     {
         SpellPreviewPanelButtonUpgrade.visible = false
     }
@@ -269,9 +269,9 @@ function UpdatePreviewSpellInf(info)
         SpellPreviewPanelButtonUpgrade.SetHasClass("BuyButtonDeactivate", false)
     }
 
-    if (PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")) && info[7] == "1")
+    if (SpellShop_PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")) && info[7] == "1")
     {
-        if (IsSpellActivate(info[1]))
+        if (SpellShop_IsSpellActivate(info[1]))
         {
             SpellPreviewPanelButtonActivateLabel.text = $.Localize("#SpellShop_Deactivate")
             SpellPreviewPanelButtonActivate.AddClass("SpellPreviewPanelButtonDeactivate")
@@ -282,7 +282,7 @@ function UpdatePreviewSpellInf(info)
             SpellPreviewPanelButtonActivateLabel.text = $.Localize("#SpellShop_no_buying_spell")
             SpellPreviewPanelButtonActivate.AddClass("SpellDisabled")
         }
-        SetActivateSpell(SpellPreviewPanelButtonActivate, info)
+        SpellShop_SetActivateSpell(SpellPreviewPanelButtonActivate, info)
     }
     else
     {
@@ -314,16 +314,16 @@ function UpdatePreviewSpellInf(info)
     }
 }
 
-function SetActivateSpell(panel, info)
+function SpellShop_SetActivateSpell(panel, info)
 {
     panel.SetPanelEvent("onactivate", function() 
     { 
         Game.EmitSound("General.ButtonClick")
-        ActivateSpell(info)
+        SpellShop_ActivateSpell(info)
     });
 }
 
-function ActivateSpell(info)
+function SpellShop_ActivateSpell(info)
 {
     if (activate_cooldown)
     {
@@ -335,29 +335,29 @@ function ActivateSpell(info)
     })
     activate_cooldown = true
     var hero = Players.GetPlayerSelectedHero(Players.GetLocalPlayer());
-    if (PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")))
+    if (SpellShop_PlayerHasSpell(info[1]) && ((active_shop == 0 && hero == "npc_dota_hero_treant") || (active_shop == 1 && hero == "npc_dota_hero_troll_warlord")))
     {
         GameEvents.SendCustomGameEventToServer( "event_set_activate_spell", {spell_name : info[1], modifier_name : info[3]} );
     }
     UpdateActivatedSpellVisual()
 }
 
-function SetUpgradeSpell(panel, info)
+function SpellShop_SetUpgradeSpell(panel, info)
 {
     panel.SetPanelEvent("onactivate", function()
     {
         Game.EmitSound("General.ButtonClick")
-        UpgradeSpell(info)
+        SpellShop_UpgradeSpell(info)
     });
 }
 
-function UpgradeSpell(info)
+function SpellShop_UpgradeSpell(info)
 {
     if (buy_cooldown)
     {
         return
     }
-    if (GetPlayerSpellLevel(info[1]) >= 3)
+    if (SpellShop_GetPlayerSpellLevel(info[1]) >= 3)
     {
         return
     }
@@ -370,67 +370,67 @@ function UpgradeSpell(info)
     
 }
 
-function OpenSpellShop()
+function SpellShop_OpenSpellShop()
 {
     if(active_shop == 0)
     {
-        $("#SpellShopPanel").SetHasClass("CloseSpellShop", true) 
+        $("#SpellShopPanel").SetHasClass("SpellShop_CloseSpellShop", true) 
         active_shop = null
     }
     else
     {
         active_shop = 0
-        $("#SpellShopPanel").SetHasClass("CloseSpellShop", false) // !$("#SpellShopPanel").BHasClass("CloseSpellShop")
-        InitSpellList()
+        $("#SpellShopPanel").SetHasClass("SpellShop_CloseSpellShop", false) // !$("#SpellShopPanel").BHasClass("SpellShop_CloseSpellShop")
+        SpellShop_InitSpellList()
         // UpdateBuyButton() -- remove buy random aspect
         UpdateActivatedSpellVisual()
     }
 }
 
-function OpenSpellShoTroll()
+function SpellShop_OpenSpellShoTroll()
 {
     if(active_shop == 1)
     {
-        $("#SpellShopPanel").SetHasClass("CloseSpellShop", true) 
+        $("#SpellShopPanel").SetHasClass("SpellShop_CloseSpellShop", true) 
         active_shop = null
     }
     else
     {
         active_shop = 1
-        $("#SpellShopPanel").SetHasClass("CloseSpellShop", false) // !$("#SpellShopPanel").BHasClass("CloseSpellShop")
-        InitSpellList()
+        $("#SpellShopPanel").SetHasClass("SpellShop_CloseSpellShop", false) // !$("#SpellShopPanel").BHasClass("SpellShop_CloseSpellShop")
+        SpellShop_InitSpellList()
         // UpdateBuyButton() -- remove buy random aspect
     }
 }
 
-function CloseSpellShop()
+function SpellShop_CloseSpellShop()
 {
-    $("#SpellShopPanel").SetHasClass("CloseSpellShop",true ) // !$("#SpellShopPanel").BHasClass("CloseSpellShop")
+    $("#SpellShopPanel").SetHasClass("SpellShop_CloseSpellShop",true ) // !$("#SpellShopPanel").BHasClass("SpellShop_CloseSpellShop")
     active_shop = null
 }
 
-CustomNetTables.SubscribeNetTableListener( "game_spells_lib", UpdateSpellsLibTable );
-CustomNetTables.SubscribeNetTableListener( "Shop", UpdateItem);
+CustomNetTables.SubscribeNetTableListener( "game_spells_lib", SpellShop_UpdateSpellsLibTable );
+CustomNetTables.SubscribeNetTableListener( "Shop", SpellShop_UpdateItem);
 
-function UpdateSpellsLibTable(table, key, data ) 
+function SpellShop_UpdateSpellsLibTable(table, key, data ) 
 {
 	if (table == "game_spells_lib") 
 	{
 		if (key == "spell_active") 
         {
-            UpdateCurrentSpells(data)
+            SpellShop_UpdateCurrentSpells(data)
             UpdateActivatedSpellVisual()
 		}
      //   if (key == String(Players.GetLocalPlayer())) 
     //    {
     //        player_table = CustomNetTables.GetTableValue("game_spells_lib", String(Players.GetLocalPlayer()))
                 //        UpdateBuyButton() -- remove buy random aspect
-    //        UpdateHasSpells()
+    //        SpellShop_UpdateHasSpells()
 	//	}
 	}
 }
 
-function UpdateItem(table, key, data ) 
+function SpellShop_UpdateItem(table, key, data ) 
 {
 	if (table == "Shop") 
 	{
@@ -438,12 +438,12 @@ function UpdateItem(table, key, data )
         {
             player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
             // UpdateBuyButton() -- remove buy random aspect
-            UpdateHasSpells()
+            SpellShop_UpdateHasSpells()
 		}
 	}
 }
 
-function IsSpellActivate(spell_name)
+function SpellShop_IsSpellActivate(spell_name)
 {
     let player_id = Players.GetLocalPlayer()
     let active_table = CustomNetTables.GetTableValue("game_spells_lib", "spell_active")
@@ -463,7 +463,7 @@ function IsSpellActivate(spell_name)
     return false
 }
 
-function GetPlayerSpellLevel(spell_name, texture)
+function SpellShop_GetPlayerSpellLevel(spell_name, texture)
 {
     player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
     if (player_table)
@@ -486,7 +486,7 @@ function GetPlayerSpellLevel(spell_name, texture)
     return 0
 }
 
-function GetSelectedPlayerSpellLevel(spell_name, id)
+function SpellShop_GetSelectedPlayerSpellLevel(spell_name, id)
 {
     let current_target_table = CustomNetTables.GetTableValue("Shop", id)["12"];
     if (current_target_table)
@@ -505,16 +505,16 @@ function GetSelectedPlayerSpellLevel(spell_name, id)
     return 0
 }
 
-function UpdateCurrentSpells(data)
+function SpellShop_UpdateCurrentSpells(data)
 {
     if (CURRENT_SPELL_SELECTED != null)
     {
-        UpdatePreviewSpellInf(CURRENT_SPELL_SELECTED)
+        SpellShop_UpdatePreviewSpellInf(CURRENT_SPELL_SELECTED)
     }
     players_activated_spells = data
 }
 
-function GetSpellTexture(spell_name, any_level)
+function SpellShop_GetSpellTexture(spell_name, any_level)
 {
     if (any_level == null)
     {
@@ -558,7 +558,7 @@ function GetSpellModifier(spell_name)
     }
 }
 
-function GetSpellCost(spell_name, level)
+function SpellShop_GetSpellCost(spell_name, level)
 {
     let shop = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())
     if (!shop || !shop["12"] || !shop["18"]) return 0
@@ -582,7 +582,7 @@ function GetSpellCost(spell_name, level)
     return 0
 }
 
-function SetShowText(panel, text, spell, level)
+function SpellShop_SetShowText(panel, text, spell, level)
 {
     panel.SetPanelEvent('onmouseover', function() {
         $.DispatchEvent('DOTAShowTextTooltip', panel, "<b>" + $.Localize("#"+spell) + " " + level + "</b><br>" + $.Localize("#"+text)) });
@@ -592,7 +592,7 @@ function SetShowText(panel, text, spell, level)
     });       
 }
 
-function RemoveText(panel, text)
+function SpellShop_RemoveText(panel, text)
 {
     panel.SetPanelEvent('onmouseover', function() {});
     panel.SetPanelEvent('onmouseout', function() 
@@ -603,9 +603,9 @@ function RemoveText(panel, text)
 
 // remove buy random aspect
 /*
-function BuyRandomSpell()
+function SpellShop_BuyRandomSpell()
 {
-    if (CheckBuyAllSpells())
+    if (SpellShop_CheckBuyAllSpells())
     {
         return
     }
@@ -631,7 +631,7 @@ function BuyRandomSpell()
 
 function UpdateBuyButton()
 {
-    if (CheckBuyAllSpells())
+    if (SpellShop_CheckBuyAllSpells())
     {
         $("#UnlockPanelBuyButton").SetHasClass("BuyButtonDeactivate", true)
         return
@@ -650,13 +650,13 @@ function UpdateBuyButton()
 }
 */
 
-function UpdateHasSpells()
+function SpellShop_UpdateHasSpells()
 {
     $("#PreviewSpellInfo").RemoveAndDeleteChildren()
-    InitSpellList()
+    SpellShop_InitSpellList()
 }
 
-function SpellDropNotification(data)
+function SpellShop_SpellDropNotification(data)
 {
     let panel_spell_drop = $.CreatePanel("Panel", $.GetContextPanel(), "")
     panel_spell_drop.AddClass("panel_spell_drop")
@@ -684,13 +684,13 @@ function SpellDropNotification(data)
 
     if (data.upgrade)
     {
-        SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(data.spell_name, data.upgrade) + '.png")';
+        SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + SpellShop_GetSpellTexture(data.spell_name, data.upgrade) + '.png")';
         SpellShopSpellPanelIcon.style.backgroundSize = "100%"
     
     }
     else
     {
-        SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(data.spell_name) + '.png")';
+        SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + SpellShop_GetSpellTexture(data.spell_name) + '.png")';
         SpellShopSpellPanelIcon.style.backgroundSize = "100%"
     }
 
@@ -719,7 +719,7 @@ function SpellDropNotification(data)
     });
 }
 
-function CheckBuyAllSpells()
+function SpellShop_CheckBuyAllSpells()
 {
     let counts_spell = 0
     let count_spell_player = 0
@@ -781,17 +781,17 @@ function UpdateVisualSelectedSpells()
         if (active_table[player_id] && active_table[player_id][i] && active_table[player_id][i] != "") 
         {
             let spellName = GetSpellName(active_table[player_id][i])
-            let spellLevel = GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id)
-            let spellTexture = GetSpellTexture(spellName, spellLevel);
+            let spellLevel = SpellShop_GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id)
+            let spellTexture = SpellShop_GetSpellTexture(spellName, spellLevel);
             ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + spellTexture + '.png")';
             ActivatedSpellIcon.style.backgroundSize = "100%";
-            SetShowText(ActivatedSpellIcon, GetSpellModifier(active_table[player_id][i]) + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel);
+            SpellShop_SetShowText(ActivatedSpellIcon, GetSpellModifier(active_table[player_id][i]) + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel);
         } 
         else 
         {
             ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/no_active2.png")';
             ActivatedSpellIcon.style.backgroundSize = "100%";
-            RemoveText(ActivatedSpellIcon, "");
+            SpellShop_RemoveText(ActivatedSpellIcon, "");
         }
     }
 }
@@ -801,6 +801,6 @@ function UpdateVisualSelectedSpells()
 GameEvents.Subscribe( "dota_player_update_selected_unit", UpdateVisualSelectedSpells );
 GameEvents.Subscribe( "dota_player_update_query_unit", UpdateVisualSelectedSpells );
 GameEvents.Subscribe( "m_event_dota_inventory_changed_query_unit", UpdateVisualSelectedSpells );
-GameEvents.SubscribeProtected("event_spell_shop_drop", SpellDropNotification);
-GameEvents.SubscribeProtected("Shop", SpellDropNotification);
-InitSpellPanel()
+GameEvents.SubscribeProtected("event_spell_shop_drop", SpellShop_SpellDropNotification);
+GameEvents.SubscribeProtected("Shop", SpellShop_SpellDropNotification);
+SpellShop_InitSpellPanel()

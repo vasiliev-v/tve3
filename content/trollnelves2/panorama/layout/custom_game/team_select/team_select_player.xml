@@ -10,6 +10,6 @@
 		<DOTAAvatarImage id="PlayerAvatar" />
 		<Label id="PlayerIsHostPanel" />
 		<Label id="PlayerName" text="xxxxx" />
-		<Button id="PlayerLeaveTeamButton" onactivate="OnLeaveTeamPressed()" />
+		<Button id="PlayerLeaveTeamButton" onactivate="TeamSelectPlayer_OnLeaveTeamPressed()" />
 	</Panel>
 </root>

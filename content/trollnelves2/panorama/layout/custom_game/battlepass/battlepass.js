@@ -1,7 +1,7 @@
 var BP_INIT = false
 var player_bp_info = [0, []]
 
-function OpenPanel() {
+function Battlepass_OpenPanel() {
 	player_bp_info[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[7];
 	player_bp_info[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[14];
 	//Куплен батллпасс. 
@@ -23,7 +23,7 @@ function OpenPanel() {
 
 
 
-function ClosePanel() {
+function Battlepass_ClosePanel() {
 	$("#BattlePassPanel").SetHasClass("Open", false)
 }
 
@@ -306,7 +306,7 @@ function PurchaseOpenNotif()
     }
 }
 
-GameUI.CustomUIConfig().OpenBPGlobal = OpenPanel
+GameUI.CustomUIConfig().OpenBPGlobal = Battlepass_OpenPanel
 
 GameUI.CustomUIConfig().UpdateBPButton = function()
 {

@@ -60,14 +60,14 @@ function UpdateChat()
     LoadingScreenChat.style["ui-scale"] = "80%"
 }
 
-CustomNetTables.SubscribeNetTableListener( "game_spells_lib", UpdateSpellsLibTable );
+CustomNetTables.SubscribeNetTableListener( "game_spells_lib", VoteHud_UpdateSpellsLibTable );
 
-function UpdateSpellsLibTable(t,k,d)
+function VoteHud_UpdateSpellsLibTable(t,k,d)
 {
     if (k == "spell_active")
     {
         players_activated_spells = d
-        UpdateCurrentSpells()
+        VoteHud_UpdateCurrentSpells()
         UpdateListSelected()
     }
 }
@@ -402,12 +402,12 @@ function InitStageSelectedPerks()
     CloseOtherScreenStage()
     $("#WindowPerksStage").style.opacity = "1"
     OLD_SCREEN_STAGE = $("#WindowPerksStage")
-    InitSpellList()
-    UpdateCurrentSpells()
+    VoteHud_InitSpellList()
+    VoteHud_UpdateCurrentSpells()
     UpdateListSelected()
 }
 
-function InitSpellList()
+function VoteHud_InitSpellList()
 {
     let active_shop = 0
     if (Players.GetTeam( Players.GetLocalPlayer() ) == 3)
@@ -418,12 +418,12 @@ function InitSpellList()
     {
         if (game_spells_lib[i] && game_spells_lib[i][6] == active_shop && game_spells_lib[i][7] == "1")
         {
-            CreateSpell(game_spells_lib[i], $("#AllPerksList"), true)
+            VoteHud_CreateSpell(game_spells_lib[i], $("#AllPerksList"), true)
         }
     }
 }
 
-function CreateSpell(info, parent, active)
+function VoteHud_CreateSpell(info, parent, active)
 {
     let panel_id = ""
     if (active && info && info[1])
@@ -442,7 +442,7 @@ function CreateSpell(info, parent, active)
 
     let PerkImage = $.CreatePanel("Panel", PerkPanel, "");
     PerkImage.AddClass("PerkImage");
-    PerkImage.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(info[1], GetPlayerSpellLevel(info[1], true)) + '.png")';
+    PerkImage.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + VoteHud_GetSpellTexture(info[1], VoteHud_GetPlayerSpellLevel(info[1], true)) + '.png")';
     PerkImage.style.backgroundSize = "100%"
 
     if (active)
@@ -455,11 +455,11 @@ function CreateSpell(info, parent, active)
         PerkPanelNumber.AddClass("PerkPanelNumber");
         PerkPanelNumber.text = "2"
 
-        SetShowText(PerkPanel, info[3] + "_description_level_" + GetSelectedPlayerSpellLevel(info[1], player_id), info[1], GetSelectedPlayerSpellLevel(info[1], player_id))
+        VoteHud_SetShowText(PerkPanel, info[3] + "_description_level_" + VoteHud_GetSelectedPlayerSpellLevel(info[1], player_id), info[1], VoteHud_GetSelectedPlayerSpellLevel(info[1], player_id))
     }
 }
 
-function UpdateCurrentSpells() {
+function VoteHud_UpdateCurrentSpells() {
     const container = $("#PlayerSelectedPerks");
     container.RemoveAndDeleteChildren();
 
@@ -474,7 +474,7 @@ function UpdateCurrentSpells() {
             if (rendered >= maxAllowed) break;
             const info = GetSpellInformation(spellName);
             if (info) {
-                CreateSpell(info, container, true);
+                VoteHud_CreateSpell(info, container, true);
                 rendered++;
             }
         }
@@ -549,7 +549,7 @@ function GetSpellInformation(spell_name)
     return null
 }
 
-function PlayerHasSpell(spell)
+function VoteHud_PlayerHasSpell(spell)
 {
     if (player_table)
     {
@@ -567,7 +567,7 @@ function PlayerHasSpell(spell)
     return false
 }
 
-function GetSpellTexture(spell_name, any_level)
+function VoteHud_GetSpellTexture(spell_name, any_level)
 {
     if (any_level == null)
     {
@@ -586,7 +586,7 @@ function GetSpellTexture(spell_name, any_level)
     }
 }
 
-function GetPlayerSpellLevel(spell_name, texture)
+function VoteHud_GetPlayerSpellLevel(spell_name, texture)
 {
     player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
     if (player_table)
@@ -609,7 +609,7 @@ function GetPlayerSpellLevel(spell_name, texture)
     return 0
 }
 
-function SetShowText(panel, text, spell, level)
+function VoteHud_SetShowText(panel, text, spell, level)
 {
     panel.SetPanelEvent('onmouseover', function() {
         $.DispatchEvent('DOTAShowTextTooltip', panel, "<b>" + $.Localize("#"+spell) + " " + level + "</b><br>" + $.Localize("#"+text)) });
@@ -619,7 +619,7 @@ function SetShowText(panel, text, spell, level)
     });       
 }
 
-function GetSelectedPlayerSpellLevel(spell_name, id)
+function VoteHud_GetSelectedPlayerSpellLevel(spell_name, id)
 {
     if (player_table)
     {

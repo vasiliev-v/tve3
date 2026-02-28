@@ -4,7 +4,7 @@
 // Handeler for when the unssigned players panel is clicked that causes the player to be reassigned
 // to the unssigned players team
 //--------------------------------------------------------------------------------------------------
-function OnLeaveTeamPressed() {
+function TeamSelectPlayer_OnLeaveTeamPressed() {
     Game.PlayerJoinTeam(5); // 5 == unassigned ( DOTA_TEAM_NOTEAM )
 }
 

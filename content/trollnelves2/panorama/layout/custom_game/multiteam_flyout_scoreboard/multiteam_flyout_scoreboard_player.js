@@ -94,7 +94,7 @@ const playerId = $.GetContextPanel().GetAttributeInt('player_id', -1);
 $.GetContextPanel().SetHasClass('player_muted', Game.IsPlayerMuted(playerId));
 })();
 
-function showHero() {
+function FlyoutScoreboard_ShowHero() {
     const localPlayer = Game.GetLocalPlayerInfo();
     const playerPanel = $.GetContextPanel();
     const target = playerPanel.pID;

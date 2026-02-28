@@ -55,7 +55,7 @@ function SliderLumberUpdater()
     }
 }
 
-function SendResource()
+function SendResourcePanel_SendResource()
 {
     let casterID = Players.GetLocalPlayer();
     let target = $("#SendResourceMain").target_id
