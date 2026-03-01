@@ -201,7 +201,7 @@ function StartBuildingHelper(params) {
                 // Building Base Grid
                 for (var x = boundingRect.leftBorderX + 32; x <= boundingRect.rightBorderX - 32; x += 64) {
                     for (var y = boundingRect.topBorderY - 32; y >= boundingRect.bottomBorderY + 32; y -= 64) {
-                        const pos = SnapHeight(x, y, GamePos[2] + 5 + SHIFT);
+                        const pos = SnapHeight(x, y, GamePos[2] + SHIFT);
                         if (part > size * size) {
                             return;
                         }
@@ -235,7 +235,7 @@ function StartBuildingHelper(params) {
                 };
                 for (var x = boundingRect.leftBorderX + 32; x <= boundingRect.rightBorderX - 32; x += 64) {
                     for (var y = boundingRect.topBorderY - 32; y >= boundingRect.bottomBorderY + 32; y -= 64) {
-                        const pos2 = SnapHeight(x, y, GamePos[2] + 5 + SHIFT);
+                        const pos2 = SnapHeight(x, y, GamePos[2] + SHIFT);
                         if (part >= overlay_size * overlay_size) {
                             return;
                         }
@@ -246,7 +246,7 @@ function StartBuildingHelper(params) {
                     }
                 }
 
-                const modelPos = SnapHeight(GamePos[0], GamePos[1], GamePos[2] + 2 + SHIFT);
+                const modelPos = SnapHeight(GamePos[0], GamePos[1], GamePos[2] + SHIFT);
                 if (invalid) {
                     if (rangeOverlayActive && rangeOverlay !== undefined) {
                         Particles.DestroyParticleEffect(rangeOverlay, true);
@@ -443,7 +443,10 @@ function SnapToGrid32(coord) {
 }
 
 function SnapHeight(x, y, z) {
-    return [x, y, z - ((z + 1) % 128)];
+    // for terrain heights 128, 256 - dota reports 129, 257
+    const snapped = (z - 2) - ((z - 2) % 128) + 128; // if z = 129, snapped = 128; if z = 130, snapped = 256. This works well for stairs.
+    const adjusted = snapped + 10 // add 15 to show above grass and other small particles
+    return [x, y, snapped];
 }
 
 function IsBlocked(position) {
