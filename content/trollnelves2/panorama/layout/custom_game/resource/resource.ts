@@ -20,7 +20,7 @@ function OnPlayerLumberChanged(args) {
 
 function UpdateLumberValue() {
     const playerID = Players.GetLocalPlayer();
-    $("#LumberText").text = resourceUi.playerLumber[playerID];
+    $("#LumberText").text = FormatNumberWithCommas(resourceUi.playerLumber[playerID]);
 }
 
 function OnPlayerGoldChanged(args) {
@@ -33,7 +33,7 @@ function OnPlayerGoldChanged(args) {
 
 function UpdateGoldValue() {
     const playerID = Players.GetLocalPlayer();
-    $("#GoldText").text = resourceUi.playerGold[playerID];
+    $("#GoldText").text = FormatNumberWithCommas(resourceUi.playerGold[playerID]);
 }
 
 function OnPlayerFoodChanged(args) {
@@ -83,8 +83,8 @@ function UpdateWispValue() {
 function OnPlayerLumberPriceChanged(args) {
     const lumberPrice = args.lumberPrice;
     const lumberSell = args.lumberSell;
-    $("#ResourceChangeInfoGold").text = "<font color='#FFD74B'>" + lumberPrice + "</font> -> " + "<font color='#23BD33'>10</font>";
-    $("#ResourceChangeInfoLumber").text = "<font color='#23BD33'>10</font>" + " -> <font color='#FFD74B'>" + lumberSell + "</font>";
+    $("#ResourceChangeInfoGold").text = "<font color='#FFD74B'>" + FormatNumberWithCommas(lumberPrice) + "</font> -> " + "<font color='#23BD33'>10</font>";
+    $("#ResourceChangeInfoLumber").text = "<font color='#23BD33'>10</font>" + " -> <font color='#FFD74B'>" + FormatNumberWithCommas(lumberSell) + "</font>";
 }
 
 var lumberPopupSchedules = {};

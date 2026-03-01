@@ -5,6 +5,7 @@
         <include src="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard/multiteam_flyout_scoreboard.css" />
     </styles>
     <scripts>
+        <include src="file://{resources}/layout/custom_game/scripts/util.js" />
         <include src="file://{resources}/layout/custom_game/scripts/shared_scoreboard_updater.js" />
         <include src="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard/multiteam_flyout_scoreboard.js" />
     </scripts>
@@ -37,5 +38,4 @@
         <Panel id="TeamsContainer" />
     </Panel>
 </root>
-
 

@@ -41,12 +41,12 @@
                     const playerStatsScore = CustomNetTables.GetTableValue("scorestats", playerId.toString());
                     if (playerResourceStats != null) {
                         /// /$.Msg("Setting end game resources for playerId: ", playerId, "; playerResourceStats: ", playerResourceStats, "; ");
-                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerGoldAmount", Math.round(playerResourceStats.gold / 1000));
-                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerLumberAmount", Math.round(playerResourceStats.lumber / 1000));
-                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerGPSAmount", Math.round(playerResourceStats.goldGained / playerResourceStats.timePassed));
-                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerLPSAmount", Math.round(playerResourceStats.lumberGained / playerResourceStats.timePassed));
-                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerGoldGivenAmount", Math.round(playerResourceStats.goldGiven / 1000));
-                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerLumberGivenAmount", Math.round(playerResourceStats.lumberGiven / 1000));
+                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerGoldAmount", FormatNumberWithCommas(Math.round(playerResourceStats.gold / 1000)));
+                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerLumberAmount", FormatNumberWithCommas(Math.round(playerResourceStats.lumber / 1000)));
+                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerGPSAmount", FormatNumberWithCommas(Math.round(playerResourceStats.goldGained / playerResourceStats.timePassed)));
+                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerLPSAmount", FormatNumberWithCommas(Math.round(playerResourceStats.lumberGained / playerResourceStats.timePassed)));
+                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerGoldGivenAmount", FormatNumberWithCommas(Math.round(playerResourceStats.goldGiven / 1000)));
+                        _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerLumberGivenAmount", FormatNumberWithCommas(Math.round(playerResourceStats.lumberGiven / 1000)));
                         _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerChangeScore", playerResourceStats.PlayerChangeScore);
                         _ScoreboardUpdater_SetTextSafe(playerPanel, "GetGem", playerResourceStats.GetGem);
                     }
