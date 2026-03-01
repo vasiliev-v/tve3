@@ -9,10 +9,10 @@
 	</scripts>  
 	<Panel style="width:100%;height:100%;" hittest="false">
         <Panel class="SpellMapPanel" id="SpellMapPanel">
-            <Panel class="SpellButtonOpen" id="SpellButtonOpen" onactivate="OpenSpellShop();">
+            <Panel class="SpellButtonOpen" id="SpellButtonOpen" onactivate="SpellShop_OpenSpellShop();">
                 <Panel class="SpellButtonOpenIcon" />
             </Panel>
-            <Panel class="SpellButtonOpenTroll" id="SpellButtonOpenTroll" onactivate="OpenSpellShoTroll();">
+            <Panel class="SpellButtonOpenTroll" id="SpellButtonOpenTroll" onactivate="SpellShop_OpenSpellShoTroll();">
                 <Panel class="SpellButtonOpenIconTroll" />
             </Panel>
             <Panel class="ActivatedSpell" id="ActivatedSpell1">
@@ -26,7 +26,7 @@
             </Panel>
         </Panel>
         <Panel class="SpellShopPanel CloseSpellShop" id="SpellShopPanel">
-            <Panel class="CloseSpellShopButton" onactivate="CloseSpellShop();"/>
+            <Panel class="CloseSpellShopButton" onactivate="SpellShop_CloseSpellShop();"/>
             <Panel class="SpellShopPanelBody">
                 <Panel class="SpellShopSpellsList">
                     <Label class="SpellShopSpellsListChoose" text="#SpellShop_ChooseSpell"/>
@@ -35,7 +35,7 @@
                     <Panel class="SpellShopPanelBuy">
                         <Label class="UnlockPanelBuyButtonDescription" text="#SpellShop_DescriptionBuy" />
                         <Panel class="UnlockPanelBuy">
-                            <Panel class="UnlockPanelBuyButton" id="UnlockPanelBuyButton" onactivate="BuyRandomSpell();">
+                            <Panel class="UnlockPanelBuyButton" id="UnlockPanelBuyButton" onactivate="SpellShop_BuyRandomSpell();">
                                 <Label text="#SpellShop_Buy"/>
                             </Panel>
                             <Panel class="UnlockPanelBuyButtonCost">

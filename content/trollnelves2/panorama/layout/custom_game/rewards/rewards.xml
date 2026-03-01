@@ -8,7 +8,7 @@
 	</scripts>
 	<Panel hittest="false" style="width:100%;height:100%;">
 		<Panel id="RewardsPanel" class="RewardsPanel">
-			<Panel class="CloseShop" onactivate="ClosePanel();"/>
+			<Panel class="CloseShop" onactivate="Rewards_ClosePanel();"/>
 			<Label class="RewardsPanelName" text="#troll_rewards_title" />
 			<Label id="RewardsCountdown" class="RewardsCountdown" text="" />
 			<Panel id="RewardsRow" class="RewardsRow" />

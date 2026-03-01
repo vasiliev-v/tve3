@@ -55,7 +55,7 @@
                     </Panel>
                 </Panel>
                 <Panel class="SendButtons">
-                    <Panel class="SendButton" onactivate="SendResource();">
+                    <Panel class="SendButton" onactivate="SendResourcePanel_SendResource();">
                         <Label text="Передать" />
                     </Panel>
                     <Panel class="SendAllButton" onactivate="SendResourceAll();">

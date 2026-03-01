@@ -1,3 +1,4 @@
+node_modules/
 # Cache crap that Valve autogenerates
 *.bin
 
@@ -22,3 +23,6 @@
 # Map overviews
 content/dota_addons/trollnelves2/materials/overviews/*
 game/dota_addons/trollnelves2/resource/overviews/*
+
+# Compiled Panorama TS output
+content/trollnelves2/panorama/layout/custom_game/**/*.js

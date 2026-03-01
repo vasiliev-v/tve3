@@ -1,0 +1,60 @@
+// @ts-nocheck
+// Устаналивает уровни баттлапасс
+var exp_battlepass = CustomNetTables.GetTableValue("Shop", "battlepass_xp");
+var donate_rewards = CustomNetTables.GetTableValue("Shop", "donate_rewards");
+var free_rewards = CustomNetTables.GetTableValue("Shop", "free_rewards");
+
+var visual_level_light
+= [
+    // Визуальный цвет столбца наград
+    "", // Ignore
+    "#8847ff",
+    "#b28a33",
+    "#d32ce6",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+];

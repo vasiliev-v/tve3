@@ -1446,7 +1446,6 @@
 		}
 	    "ModelScale"                "1"
 	    "ModelRotation"             "90"
-		"ModelGhostOffset"			"128"
 		"HealthBarOffset"			"150"
 		"PlayerCanControl"			"1"
 		"Scale"						"1"
@@ -1825,7 +1824,7 @@
 		}
 	    "ModelScale"                "1"
 	    "ModelRotation"             "90"
-		"ModelGhostOffset"			"128"
+		"ModelGhostOffset"			"15" // rock_1 model is quite small and can get hidden behind building overlay
 		"HealthBarOffset"			"150"
 		"PlayerCanControl"			"1"
 		"Scale"						"3"
