@@ -1,6 +1,10 @@
 // @ts-nocheck
 // Dont use this file for utility functions, dont require it anywhere except custom_ui_manifest
-const TOKEN = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+const CONFIG = GameUI.CustomUIConfig();
+if (!CONFIG.__protectedEventsToken) {
+    CONFIG.__protectedEventsToken = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+const TOKEN = CONFIG.__protectedEventsToken;
 const MANIFEST_LAYOUT_NAME = $.GetContextPanel().layoutfile;
 const FRAMES = {};
 
