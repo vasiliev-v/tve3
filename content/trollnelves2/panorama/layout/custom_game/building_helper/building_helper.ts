@@ -14,6 +14,7 @@ var pressedShift = false;
 var altDown = false;
 var invalid = false;
 var requires;
+var ghostColor;
 var modelParticle;
 var propParticle;
 var propScale;
@@ -94,6 +95,7 @@ function StartBuildingHelper(params) {
         if (!recolor_ghost) {
             ghost_color = [255, 255, 255];
         }
+        ghostColor = ghost_color;
 
         pressedShift = GameUI.IsShiftDown();
 
@@ -270,7 +272,7 @@ function StartBuildingHelper(params) {
                 Particles.SetParticleControl(modelParticle, 0, modelPos);
 
                 if (turn_red) {
-                    const mc = invalid ? [255, 0, 0] : [255, 255, 255];
+                    const mc = invalid ? [255, 0, 0] : ghostColor;
                     Particles.SetParticleControl(modelParticle, 2, mc);
                 }
             }
