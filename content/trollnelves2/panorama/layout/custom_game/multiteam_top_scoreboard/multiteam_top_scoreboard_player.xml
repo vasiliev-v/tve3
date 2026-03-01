@@ -10,11 +10,11 @@
 	<Panel hittest="false" class="ScoreboardPlayerWrapper">
         <Panel class="PlayerSettings">
             <Panel class="ButtonPlayer MuteButton" onactivate="MutePlayer();" />
-            <Panel class="ButtonPlayer MuteResource" onactivate="SendResource();" />
+            <Panel class="ButtonPlayer MuteResource" onactivate="TopScoreboard_SendResource();" />
         </Panel>
 		<Panel hittest="false" class="ScoreboardPlayer">
             <Panel class="LineTop" />
-            <Panel class="ElfAvatar" id="ElfAvatar" onactivate="showHero()">
+            <Panel class="ElfAvatar" id="ElfAvatar" onactivate="TopScoreboard_ShowHero()">
                 <Panel class="ElfGlow" id="ElfGlow" />
                 <Panel class="ElfIcon" />
                 <Panel class="PlayerDead" />

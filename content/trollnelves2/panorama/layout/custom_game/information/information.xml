@@ -8,7 +8,7 @@
 	</scripts>
 	<Panel hittest="false" style="width:100%;height:100%;">
 		<Panel id="InformationPanel" class="InformationPanel">
-			<Panel class="CloseButtonPanel" onactivate="ClosePanel();"/>
+			<Panel class="CloseButtonPanel" onactivate="Info_ClosePanel();"/>
             <Label class="HeaderLabel" text="#tve_how_to_play" />
 			<Panel id="GuidesPanels" class="GuidesPanels" />
 		</Panel>

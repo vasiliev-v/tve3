@@ -9,7 +9,7 @@
 	</scripts>
 	<Panel hittest="false" style="width:100%;height:100%;">
 		<Panel id="BattlePassPanel" class="BattlePassPanel">
-            <Panel class="CloseShop" onactivate="ClosePanel();"/>
+            <Panel class="CloseShop" onactivate="Battlepass_ClosePanel();"/>
             <Label class="BattlePassLabel" text="Battle Pass" />
             <Label id="LevelText" class="LevelText" text="Уровень: 1" />
             <Label id="BattlePassTimer" class="BattlePassTimer" text="" />

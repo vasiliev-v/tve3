@@ -1236,6 +1236,8 @@ function BuildingHelper:AddBuilding(keys)
     
     -- Get a model dummy to pass it to panorama
     local mgd = BuildingHelper:GetOrCreateDummy(unitName)
+    -- Ensure the dummy is in the player's vision so Panorama can resolve its model
+    mgd:SetAbsOrigin(builder:GetAbsOrigin())
     event.entindex = mgd:GetEntityIndex()
     
     -- Range overlay

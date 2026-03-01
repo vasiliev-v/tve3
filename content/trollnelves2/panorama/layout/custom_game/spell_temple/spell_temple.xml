@@ -10,14 +10,14 @@
 
 	<Panel class="SpellShopMain" hittest="false">
         <Panel class="SpellMapPanel" id="SpellMapPanel">
-            <Panel class="SpellButtonOpen" id="SpellButtonOpen" onactivate="OpenSpellShop();">
+            <Panel class="SpellButtonOpen" id="SpellButtonOpen" onactivate="SpellTemple_OpenSpellShop();">
                 <Panel class="SpellButtonOpenIcon" />
             </Panel>
         </Panel>
         <Panel class="SpellShopPanel CloseSpellShop" id="SpellShopPanel">
             <Panel class="SpellShopHeader">
                 <Label class="SpellShopHeaderLabel" text="#SpellShop_Name" />
-                <Panel class="CloseSpellShopButton" onactivate="CloseSpellShop();"/> 
+                <Panel class="CloseSpellShopButton" onactivate="SpellTemple_CloseSpellShop();"/> 
             </Panel>
             <Panel class="SpellShopPanelBody">
                 <Panel class="SpellShopSpellsList">
