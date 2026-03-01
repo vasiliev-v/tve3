@@ -41,7 +41,7 @@
 					</Panel>
 				</Panel>
 				<Panel id="UnassignedPlayerPanel">
-					<Button id="UnassignedPlayersButton" onactivate="OnLeaveTeamPressed()">
+					<Button id="UnassignedPlayersButton" onactivate="TeamSelect_OnLeaveTeamPressed()">
 						<Panel id="UnassignedPlayersHeader">
 							<Label text="#custom_game_team_select_unassigned_players" />
 						</Panel>
