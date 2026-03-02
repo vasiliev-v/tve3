@@ -75,7 +75,7 @@ function Shop.RequestDonate(pID, steam, callback)
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
 			DebugPrint("Connection failed! Code: ".. res.StatusCode)
-			-- DebugPrint(res.Body)
+			DebugPrint(res.Body)
 			if countCheckShop <= 3 then
 				DebugPrint("RECONNECT!!!!!!!")
 				Timers:CreateTimer(15, function() 

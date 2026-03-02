@@ -488,7 +488,7 @@ function Stats.RequestRep(obj, pId, callback)
 end
 
 function Stats.RequestDataTop10(mapSpd, callback)
-
+	DebugPrint("***********RequestDataTop10*************************")
 	if GameRules:IsCheatMode() and not GameRules.isTesting then
 		return -1 
 	end
@@ -503,7 +503,7 @@ function Stats.RequestDataTop10(mapSpd, callback)
 	req:Send(function(res)
 		if res.StatusCode ~= 200 then
 			DebugPrint("Connection failed! Code: ".. res.StatusCode)
-			--DebugPrint(res.Body)
+			DebugPrint(res.Body)
 			if countCheckStats <= 3 then
 				DebugPrint("RECONNECT RATING!!!!!!!")
 				Timers:CreateTimer(15, function() 
@@ -521,7 +521,7 @@ function Stats.RequestDataTop10(mapSpd, callback)
 		local ratingTable = {}
 		if #obj > 0 then
 			for id=1,#obj do
-				ratingTable[id] = {obj[id].steamID, obj[id].elf, obj[id].troll, obj[id].score, obj[id].matchID}
+				ratingTable[id] = {obj[id].steamID, obj[id].score, obj[id].troll, obj[id].elf,  obj[id].matchID}
 			end
 		end
 		CustomNetTables:SetTableValue("Shop", "top10", ratingTable)	
@@ -539,6 +539,82 @@ function Stats.RequestDataTop10(mapSpd, callback)
             end
         end
 	end
+end
+
+function Stats.RequestLastTop(mapSpd, callback)
+	DebugPrint("***********RequestLastTop*************************")
+    if GameRules:IsCheatMode() and not GameRules.isTesting then
+        return -1
+    end
+
+    local req = CreateHTTPRequestScriptVM("GET", GameRules.server .. "lasttop/" .. mapSpd)
+    if not req then return end
+
+    req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
+
+    req:Send(function(res)
+        if res.StatusCode ~= 200 then
+            DebugPrint("Connection failed! Code: " .. res.StatusCode)
+            DebugPrint(res.Body)
+            return -1
+        end
+
+        local obj, pos, err = json.decode(res.Body)
+        if not obj or type(obj) ~= "table" then
+            DebugPrint("Bad JSON: " .. tostring(err))
+            return -1
+        end
+
+        -- top10_H: { [Season] = { [pos] = {nick, sum, troll, elf, games} } }
+        local top10_H = {}
+
+        for i = 1, #obj do
+            local row = obj[i]
+
+            local season = tostring(row.Season or row.season or "")
+            local p = tostring(row.pos or row.Pos or row.position or "")
+
+            -- значения (строки -> числа, если надо)
+            local nick  = tostring(row.Nick or row.nick or "Unknown")
+            local score   = tonumber(row.Score or row.score or 0) or 0
+            local troll = tonumber(row.Troll or row.troll or 0) or 0
+            local elf   = tonumber(row.Elf or row.elf or 0) or 0
+            local games = tonumber(row.Count or row.count or 0) or 0
+
+            if season ~= "" and p ~= "" then
+                top10_H[season] = top10_H[season] or {}
+                -- ВАЖНО: формат истории: [name, sum, troll, elves, games]
+                top10_H[season][p] = { nick, score, troll, elf, games }
+            end
+        end
+
+        CustomNetTables:SetTableValue("Shop", "top10_H", top10_H)
+
+        -- (опционально) также можно сразу выставить top10 (текущий сезон),
+        -- если в ответе данные отсортированы IdSeason DESC, pos ASC:
+        -- возьмём первый season как "самый свежий"
+        local currentSeason = nil
+        for s, _ in pairs(top10_H) do
+            currentSeason = s
+            break
+        end
+
+        -- лучше выбрать “самый новый” корректно: из obj[1].Season (потому что ORDER BY IdSeason DESC, pos ASC)
+        if #obj > 0 then
+            currentSeason = tostring(obj[1].Season or obj[1].season or currentSeason or "")
+        end
+
+        if currentSeason ~= "" and top10_H[currentSeason] then
+            local top10 = {}
+            for placeStr, arr in pairs(top10_H[currentSeason]) do
+                -- top10 формат для текущего сезона в твоём JS: [steamid, sum, troll, elves, games]
+                -- но в истории steamid не нужен. Если хочешь top10 тоже — бери SteamID из obj и собирай отдельно.
+            end
+        end
+
+        if callback then callback(obj) end
+        return obj
+    end)
 end
 
 function Stats.RequestRating(obj, pId, callback)

@@ -5,10 +5,28 @@
 	<styles>
 		<include src="file://{resources}/layout/custom_game/leaderboard/leaderboard.css" />
 	</styles>
+
 	<Panel style="width:100%;height:100%;" hittest="false"> 
 		<Panel id="Leaderboard" class="Leaderboard">
             <Panel class="CloseButtonPanel" onactivate="ClosePanel();"/>
             <Label class="HeaderLabel" text="#leaderboard_name" />
+            <Label id="SeasonTitle" text="Current season" />
+
+            <!-- Табы сезонов с кнопками прокрутки -->
+            <Panel class="SeasonTabsWrapper">
+                <Panel class="SeasonScrollBtn Left" hittest="true" onactivate="SeasonScroll(-1)">
+                    <Label text="◀"/>
+                </Panel>
+
+                <Panel id="SeasonTabs" class="SeasonTabs">
+                    <Panel id="SeasonTabsInner" class="SeasonTabsInner" />
+                </Panel>
+
+                <Panel class="SeasonScrollBtn Right" hittest="true" onactivate="SeasonScroll(1)">
+                    <Label text="▶"/>
+                </Panel>
+            </Panel>
+
             <Panel class="LeaderboardPanel">
                 <Panel class="LeaderboardColumnsHeader">
                     <Label class="Leaderboard_column_id" text="№" />
