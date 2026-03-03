@@ -1825,7 +1825,7 @@
 		}
 	    "ModelScale"                "1"
 	    "ModelRotation"             "90"
-		"ModelGhostOffset"			"128"
+		"ModelGhostOffset"			"15"
 		"HealthBarOffset"			"150"
 		"PlayerCanControl"			"1"
 		"Scale"						"3"

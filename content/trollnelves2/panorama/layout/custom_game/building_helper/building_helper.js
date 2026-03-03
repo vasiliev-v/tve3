@@ -13,6 +13,7 @@ var pressedShift = false;
 var altDown = false;
 var invalid = false;
 var requires;
+var ghostColor;
 var modelParticle;
 var propParticle;
 var propScale;
@@ -91,7 +92,7 @@ function StartBuildingHelper(params) {
         var ghost_color = [0, 255, 0];
         if (!recolor_ghost)
             ghost_color = [255, 255, 255];
-
+        ghostColor = ghost_color;
         pressedShift = GameUI.IsShiftDown();
 
         // Building Ghost
@@ -193,7 +194,7 @@ function StartBuildingHelper(params) {
                 // Building Base Grid
                 for (var x = boundingRect.leftBorderX + 32; x <= boundingRect.rightBorderX - 32; x += 64) {
                     for (var y = boundingRect.topBorderY - 32; y >= boundingRect.bottomBorderY + 32; y -= 64) {
-                        var pos = SnapHeight(x, y, GamePos[2] + 5 + SHIFT);
+                        var pos = SnapHeight(x, y, GamePos[2] + SHIFT);
                         if (part > size*size) return;
                         var gridParticle = gridParticles[part++];
                         Particles.SetParticleControl(gridParticle, 0, pos);
@@ -223,7 +224,7 @@ function StartBuildingHelper(params) {
                 };
                 for (var x = boundingRect.leftBorderX + 32; x <= boundingRect.rightBorderX - 32; x += 64) {
                     for (var y = boundingRect.topBorderY - 32; y >= boundingRect.bottomBorderY + 32; y -= 64) {
-                        var pos2 = SnapHeight(x, y, GamePos[2] + 5 + SHIFT);
+                        var pos2 = SnapHeight(x, y, GamePos[2] + SHIFT);
                         if (part >= overlay_size*overlay_size) return;
                         var op = overlayParticles[part++];
                         color = (IsBlocked(pos2) || TooCloseToGoldmine(pos2)) ? [255,0,0] : [255,255,255];
@@ -232,7 +233,7 @@ function StartBuildingHelper(params) {
                     }
                 }
 
-                var modelPos = SnapHeight(GamePos[0], GamePos[1], GamePos[2] + 2 + SHIFT);
+                var modelPos = SnapHeight(GamePos[0], GamePos[1], GamePos[2] + SHIFT);
                 if (invalid) {
                     if (rangeOverlayActive && rangeOverlay !== undefined) {
                         Particles.DestroyParticleEffect(rangeOverlay, true);
@@ -254,7 +255,7 @@ function StartBuildingHelper(params) {
                 Particles.SetParticleControl(modelParticle, 0, modelPos);
 
                 if (turn_red) {
-                    var mc = invalid ? [255,0,0] : [255,255,255];
+                    var mc = invalid ? [255, 0, 0] : ghostColor;
                     Particles.SetParticleControl(modelParticle, 2, mc);
                 }
             }
@@ -421,7 +422,10 @@ function SnapToGrid32(coord) {
 }
 
 function SnapHeight(x, y, z) {
-    return [x, y, z - ((z + 1) % 128)];
+    // for terrain heights 128, 256 - dota reports 129, 257
+    const snapped = (z - 2) - ((z - 2) % 128) + 128; // if z = 129, snapped = 128; if z = 130, snapped = 256. This works well for stairs.
+    const adjusted = snapped + 10 // add 15 to show above grass and other small particles
+    return [x, y, snapped];
 }
 
 function IsBlocked(position) {

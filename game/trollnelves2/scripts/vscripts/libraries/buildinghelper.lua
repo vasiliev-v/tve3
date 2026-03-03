@@ -1236,6 +1236,7 @@ function BuildingHelper:AddBuilding(keys)
     
     -- Get a model dummy to pass it to panorama
     local mgd = BuildingHelper:GetOrCreateDummy(unitName)
+    mgd:SetAbsOrigin(builder:GetAbsOrigin())
     event.entindex = mgd:GetEntityIndex()
     
     -- Range overlay

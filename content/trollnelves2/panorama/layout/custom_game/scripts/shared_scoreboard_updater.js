@@ -176,8 +176,8 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			if (gold_icon) {
 				gold_icon.style.visibility = "visible"
 			}
-			_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerGoldAmount", goldValue );
-			_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerLumberAmount", lumberValue );
+			_ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerGoldAmount", FormatNumberWithCommas(goldValue));
+            _ScoreboardUpdater_SetTextSafe(playerPanel, "PlayerLumberAmount", FormatNumberWithCommas(lumberValue));
 		} else {
 			var lumber_icon = playerPanel.FindChildInLayoutFile( "GoldPanel" );
 			var gold_icon = playerPanel.FindChildInLayoutFile( "LumberPanel" );
