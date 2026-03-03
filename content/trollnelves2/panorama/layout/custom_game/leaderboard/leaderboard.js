@@ -223,18 +223,6 @@ function InitPlayersRating(sort_id) {
     if (ACTIVE_VIEW.type === "current") {
         // ================== ТЕКУЩИЙ ТОП10 (НЕ ТРОГАЕМ ЛОГИКУ) ==================
         sourceTable = CustomNetTables.GetTableValue("Shop", "top10")
-        if (!sourceTable || Object.keys(sourceTable).length === 0) {
-            // твой фейк для текущего сезона (оставил как было у тебя)
-            sourceTable = {}
-            for (let i = 1; i <= 10; i++) {
-                const steamid = String(111111111 + i)
-                const troll = 1000 + (i * 7) % 90
-                const elves = 1000 + (i * 5) % 90
-                const sum = troll + elves + ((i % 3) * 10)
-                const games = 50 + (i * 3) % 40
-                sourceTable[i] = [steamid, sum, troll, elves, games]
-            }
-        }
 
         for (let idx in sourceTable) {
             rows.push(NormalizeCurrentEntry(sourceTable[idx]))
