@@ -689,7 +689,7 @@ function Stats.CheckDayQuest(pId)
 		return
 	end
 
-	for i = 1, 3 do
+	for i = 1, 4 do
 		local quest_data = player_table["1"] and player_table["1"][tostring(i)]
 		if not quest_data or not quest_data["1"] then goto continue end
 		local quest_id = quest_data["1"]

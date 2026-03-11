@@ -422,9 +422,12 @@ function SnapToGrid32(coord) {
 }
 
 function SnapHeight(x, y, z) {
-    // for terrain heights 128, 256 - dota reports 129, 257
-    const snapped = (z - 2) - ((z - 2) % 128) + 128; // if z = 129, snapped = 128; if z = 130, snapped = 256. This works well for stairs.
-    const adjusted = snapped + 10 // add 15 to show above grass and other small particles
+    const v = z - 2;
+    const rem = ((v % 128) + 128) % 128;
+    const base = v - rem;
+
+    const snapped = rem === 0 ? base : base + 128;
+
     return [x, y, snapped];
 }
 
