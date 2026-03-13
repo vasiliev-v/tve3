@@ -422,11 +422,21 @@ function SnapToGrid32(coord) {
 }
 
 function SnapHeight(x, y, z) {
+    // old
+    //return [x, y, z - ((z + 1) % 128)];
+    
+    
     const v = z - 2;
     const rem = ((v % 128) + 128) % 128;
     const base = v - rem;
 
-    const snapped = rem === 0 ? base : base + 128;
+    const threshold = 25; // чувствительность (32-64 нормально)
+
+    let snapped = base;
+
+    if (rem > threshold) {
+        snapped = base + 128;
+    }
 
     return [x, y, snapped];
 }

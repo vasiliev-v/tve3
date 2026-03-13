@@ -52,6 +52,8 @@ var uiWaitingSchedules = [];
     newUI.FindChildTraverse("RadarButton").style.visibility = "collapse";
     newUI.FindChildTraverse("RoshanTimer").style.visibility = "collapse";
 
+    newUI.FindChildTraverse("TormentorTimerContainer").style.visibility = "collapse";
+
     //Use 284 if you want to keep 4 ability minimum size, and only use 160 if you want ~2 ability min size
     centerBlock.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "284px";
 
@@ -84,6 +86,7 @@ var uiWaitingSchedules = [];
     centerBlock.FindChildTraverse("inventory_tpscroll_HotkeyContainer").style.visibility = "collapse";
     centerBlock.FindChildTraverse("inventory_neutral_slot_HotkeyContainer").style.visibility = "collapse";
 
+    
 
     //fuck backpack UI (We have Lua filling these slots with junk, and if the player can't touch them it should be effectively disabled)
    // var inventory = centerBlock.FindChildTraverse("inventory").FindChildTraverse("inventory_items");

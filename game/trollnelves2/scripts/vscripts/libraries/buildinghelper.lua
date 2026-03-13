@@ -935,6 +935,88 @@ function BuildingHelper:OrderFilter(order)
             end
         end
     end
+
+    if order.order_type == DOTA_UNIT_ORDER_CAST_POSITION
+        and order.entindex_ability
+        and order.units
+        and order.units["0"] then
+
+        if order.custom_blink_reissued == 1 then
+            return true
+        end
+
+        local caster = EntIndexToHScript(order.units["0"])
+        local ability = EntIndexToHScript(order.entindex_ability)
+
+        if not caster or caster:IsNull() or not ability or ability:IsNull() then
+            return false
+        end
+
+        if ability:GetAbilityName() == "item_blink_datadriven" then
+            -- строгая проверка владельца юнита
+            local casterOwnerID = caster:GetPlayerOwnerID()
+            if (casterOwnerID == nil or casterOwnerID == -1) and caster.GetOwner then
+                local realOwner = caster:GetOwner()
+                if realOwner and not realOwner:IsNull() then
+                    casterOwnerID = realOwner:GetPlayerOwnerID()
+                end
+            end
+
+            if casterOwnerID ~= issuerID then
+                return false
+            end
+
+            -- строгая проверка владельца предмета
+            local abilityOwner = ability:GetCaster()
+            if not abilityOwner or abilityOwner:IsNull() then
+                abilityOwner = ability:GetOwner()
+            end
+
+            if not abilityOwner or abilityOwner:IsNull() then
+                return false
+            end
+
+            local abilityOwnerID = abilityOwner:GetPlayerOwnerID()
+            if (abilityOwnerID == nil or abilityOwnerID == -1) and abilityOwner.GetOwner then
+                local realOwner = abilityOwner:GetOwner()
+                if realOwner and not realOwner:IsNull() then
+                    abilityOwnerID = realOwner:GetPlayerOwnerID()
+                end
+            end
+
+            if abilityOwnerID ~= issuerID then
+                return false
+            end
+
+            local origin = caster:GetAbsOrigin()
+            local target = Vector(order.position_x, order.position_y, order.position_z or 0)
+            local diff = target - origin
+            diff.z = 0
+
+            local dist = diff:Length2D()
+            local maxRange = ability:GetSpecialValueFor("max_blink_range")
+
+            if ability.GetBlinkRange then
+                maxRange = ability:GetBlinkRange()
+            end
+
+            if dist > maxRange then
+                local clamped = origin + diff:Normalized() * maxRange
+                clamped = GetGroundPosition(clamped, caster)
+
+                ExecuteOrderFromTable({
+                    UnitIndex = caster:entindex(),
+                    OrderType = DOTA_UNIT_ORDER_CAST_POSITION,
+                    AbilityIndex = ability:entindex(),
+                    Position = clamped,
+                    Queue = order.queue == 1,
+                    custom_blink_reissued = 1
+                })
+
+                return false
+            end
+        end
+    end
     
     -- Item is dropped
     if order_type == DOTA_UNIT_ORDER_DROP_ITEM and IsBuilder(unit) then

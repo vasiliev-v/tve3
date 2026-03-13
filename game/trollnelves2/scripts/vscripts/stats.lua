@@ -208,9 +208,9 @@ function Stats.Normal(winner,callback)
 					end
 				else
 					data.Type = "ELF KICK"
-					data.Score = tostring(-200)
+					data.Score = tostring(-500)
 					data.Team = tostring(2)
-					data.Rep = -40 
+					data.Rep = -50 
 				end
 				data.Key = dedicatedServerKey
 				data.BonusPercent = tostring(GameRules.BonusPercent)

@@ -10,6 +10,14 @@ function SpiritBearSpawn( event )
 	local level = ability:GetLevel()
 	
 	local origin = Vector(-320,-320,256) + RandomVector(200)
+	for i=1,#GameRules.trollTps do
+		local units = FindUnitsInRadius(caster:GetTeamNumber(), GameRules.trollTps[i] , nil, 200 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
+		if #units == 0 then
+			origin = GameRules.trollTps[i] 
+			break
+		end
+	end
+
 	if string.match(GetMapName(),"clanwars") then
 		if caster:GetTeamNumber() == 2 then
 			origin = Vector(-472,-628,256)
@@ -192,6 +200,13 @@ function SpiritBearDeath( event )
 	local casterHP = caster:GetMaxHealth()
 	local backlash_damage = ability:GetLevelSpecialValueFor( "backlash_damage", ability:GetLevel() - 1 ) * 0.01
 	local origin = Vector(-320,-320,256) + RandomVector(200)
+	for i=1,#GameRules.trollTps do
+		local units = FindUnitsInRadius(caster:GetTeamNumber(), GameRules.trollTps[i] , nil, 200 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
+		if #units == 0 then
+			origin = GameRules.trollTps[i] 
+			break
+		end
+	end
 	-- Calculate and do the damage
 	local damage = casterHP * backlash_damage
 	

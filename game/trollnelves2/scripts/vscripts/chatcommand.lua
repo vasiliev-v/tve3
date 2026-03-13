@@ -196,6 +196,37 @@ function chatcommand:OnPlayerChat(event)
 		local dropRadius = RandomFloat( 50, 100 )
 		newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
 
+		--elseif event.text == "12345" then
+		--	DebugPrintTable(GameRules.angel_spawn_points )
+
+		-- elseif event.text == "12345" then
+        -- local player = PlayerResource:GetPlayer(event.playerid)
+		-- PlayerResource:SetCustomTeamAssignment(event.playerid, DOTA_TEAM_BADGUYS)
+        -- UTIL_Remove(hero)
+        -- PrecacheUnitByNameAsync(TROLL_HERO, function()
+        --     local newHero = CreateHeroForPlayer(TROLL_HERO, player)
+        --     FindClearSpaceForUnit( newHero , GameRules.trollTps[1] , true )
+        --     if newHero then
+        --         newHero:AddNewModifier(newHero, newHero, "modifier_fountain_glyph", {Duration = 4})
+        --     end
+        --     Timers:CreateTimer(2, function()
+        --         newHero:SetTeam(DOTA_TEAM_BADGUYS)
+        --         PlayerResource:SetCustomTeamAssignment(event.playerid, DOTA_TEAM_BADGUYS)
+        --         player:SetSelectedHero(newHeroName)
+        --         player:SetAssignedHeroEntity(newHero)
+        --         newHero:SetControllableByPlayer(event.playerid, true)
+        --         PlayerResource:SetCustomTeamAssignment(event.playerid, DOTA_TEAM_BADGUYS)
+                
+                
+        --         InitializeBadHero(newHero)
+        --         game_spells_lib:SetSpellPlayers(event.playerid)
+        --         if hero then
+        --             UTIL_Remove(hero)
+        --         end
+        --     end)
+        -- end, event.playerid)
+        
+
 		--[[
 	elseif event.text == "!test23" then
 		for pID = 0, DOTA_MAX_TEAM_PLAYERS do

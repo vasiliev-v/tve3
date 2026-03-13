@@ -87,72 +87,74 @@ function trollnelves2:OnPlayerReconnect(event)
                 local heroname = GameRules.disconnectedHeroSelects[playerID]
                 local pos = Vector(0, -640, 256)
                 local oldhero = PlayerResource:GetSelectedHeroEntity(playerID)
+                PrecacheUnitByNameAsync(heroname, function()
+                    local hero = CreateHeroForPlayer(heroname, player)
+                    FindClearSpaceForUnit(hero, pos, true)
+                    if hero then
+                        hero:AddNewModifier(hero, hero, "modifier_fountain_glyph", {Duration = 4})
+                    end
 
-                local hero = CreateHeroForPlayer(heroname, player)
-                FindClearSpaceForUnit(hero, pos, true)
-                if hero then
-                    hero:AddNewModifier(hero, hero, "modifier_fountain_glyph", {Duration = 4})
-                end
+                    Timers:CreateTimer(2, function()
+                        hero:SetOwner(player)
+                        hero:SetControllableByPlayer(playerID, true)
+                        player:SetAssignedHeroEntity(hero)
+                        PlayerResource:SetOverrideSelectionEntity(playerID, hero)
+                        wearables:SetWolf(playerID)
+                    end)
 
-                Timers:CreateTimer(2, function()
-                    hero:SetOwner(player)
-                    hero:SetControllableByPlayer(playerID, true)
-                    player:SetAssignedHeroEntity(hero)
-                    PlayerResource:SetOverrideSelectionEntity(playerID, hero)
-                    wearables:SetWolf(playerID)
-                end)
-
-                if hero then
-                    UpdateSpells(hero)
-                    hero:SetAbilityPoints(0)
-                    PlayerResource:ModifyGold(hero, 0)
-                    PlayerResource:ModifyLumber(hero, 0)
-                    PlayerResource:ModifyFood(hero, 0)
-                    PlayerResource:ModifyWisp(hero, 0)
-                    PlayerResource:ModifyMine(hero, 0)
-                    PlayerResource:ModifyWispMine(hero, 0)
-                    ModifyLumberPrice(0)
-                    hero:CalculateStatBonus(true)
-                    hero:RemoveModifierByName("modifier_disconnected")
-                    GameRules.disconnectedHeroSelects[playerID] = nil
-                    if hero:IsElf() and hero:IsAlive() then
-                        hero.alive = true
+                    if hero then
                         UpdateSpells(hero)
+                        hero:SetAbilityPoints(0)
+                        PlayerResource:ModifyGold(hero, 0)
+                        PlayerResource:ModifyLumber(hero, 0)
+                        PlayerResource:ModifyFood(hero, 0)
+                        PlayerResource:ModifyWisp(hero, 0)
                         PlayerResource:ModifyMine(hero, 0)
                         PlayerResource:ModifyWispMine(hero, 0)
-                       -- local args = {}
-                       -- args.PlayerID = playerID
-                       -- BuildingHelper:SendGNV(args)
-                        --Timers:CreateTimer(5, function()
-                        --    BuildingHelper:SendGNV(args)
-                        --end)
-                        local active = game_spells_lib.current_activated_spell[playerID] or {}
-                        for _, spell_name in ipairs(active) do
-                            local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
-                            local level = game_spells_lib:GetSpellLevel(id, spell_name)
-                            if hero and not hero:HasModifier(modifier_name) then
-                                local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
-                                if mod  then
-                                    mod:SetStackCount(level)
+                        ModifyLumberPrice(0)
+                        hero:CalculateStatBonus(true)
+                        hero:RemoveModifierByName("modifier_disconnected")
+                        GameRules.disconnectedHeroSelects[playerID] = nil
+                        if hero:IsElf() and hero:IsAlive() then
+                            hero.alive = true
+                            UpdateSpells(hero)
+                            PlayerResource:ModifyMine(hero, 0)
+                            PlayerResource:ModifyWispMine(hero, 0)
+                        -- local args = {}
+                        -- args.PlayerID = playerID
+                        -- BuildingHelper:SendGNV(args)
+                            --Timers:CreateTimer(5, function()
+                            --    BuildingHelper:SendGNV(args)
+                            --end)
+                            local active = game_spells_lib.current_activated_spell[playerID] or {}
+                            for _, spell_name in ipairs(active) do
+                                local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
+                                local level = game_spells_lib:GetSpellLevel(id, spell_name)
+                                if hero and not hero:HasModifier(modifier_name) then
+                                    local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
+                                    if mod  then
+                                        mod:SetStackCount(level)
+                                    end
                                 end
                             end
                         end
-                    end
-                    if hero.units ~= nil then
-                        for i=1,#hero.units do
-                            if hero.units[i] and not hero.units[i]:IsNull() then
-                                local unit = hero.units[i]
-                                unit:RemoveModifierByName("modifier_disconnected_unit")
+                        if hero.units ~= nil then
+                            for i=1,#hero.units do
+                                if hero.units[i] and not hero.units[i]:IsNull() then
+                                    local unit = hero.units[i]
+                                    unit:RemoveModifierByName("modifier_disconnected_unit")
+                                end
                             end
                         end
-                    end
 
-                    if oldhero then
-                        oldhero:RemoveSelf()
+                        if oldhero then
+                            oldhero:RemoveSelf()
+                        end
+                    else
+                        --DebugPrint("FFUCK HERO IS NULL!!!!")
                     end
-                else
-                    --DebugPrint("FFUCK HERO IS NULL!!!!")
-                end
+                end, playerID)
+                
               end)
             else
               return 0.03
@@ -948,25 +950,25 @@ function ChooseHelpSide(eventSourceIndex, event)
     end)
  
     UTIL_Remove(hero)
-    
-    local newHero = CreateHeroForPlayer(newHeroName, player)
-    FindClearSpaceForUnit(newHero, pos, true)
-    if newHero then
-        newHero:AddNewModifier(newHero, newHero, "modifier_fountain_glyph", {Duration = 4})
-    end
-    Timers:CreateTimer(2, function()
-        newHero:SetTeam(team)
-        PlayerResource:SetCustomTeamAssignment(playerID, team)
-        player:SetSelectedHero(newHeroName)
-		player:SetAssignedHeroEntity(newHero)
-		newHero:SetControllableByPlayer(playerID, true)
-        PlayerResource:SetCustomTeamAssignment(playerID, team)
-        wearables:SetWolf(playerID)
-        if hero then
-            UTIL_Remove(hero)
+    PrecacheUnitByNameAsync(newHeroName, function()
+        local newHero = CreateHeroForPlayer(newHeroName, player)
+        FindClearSpaceForUnit(newHero, pos, true)
+        if newHero then
+            newHero:AddNewModifier(newHero, newHero, "modifier_fountain_glyph", {Duration = 4})
         end
-    end)
-
+        Timers:CreateTimer(2, function()
+            newHero:SetTeam(team)
+            PlayerResource:SetCustomTeamAssignment(playerID, team)
+            player:SetSelectedHero(newHeroName)
+            player:SetAssignedHeroEntity(newHero)
+            newHero:SetControllableByPlayer(playerID, true)
+            PlayerResource:SetCustomTeamAssignment(playerID, team)
+            wearables:SetWolf(playerID)
+            if hero then
+                UTIL_Remove(hero)
+            end
+        end)
+    end, playerID)
 end)
 end
 

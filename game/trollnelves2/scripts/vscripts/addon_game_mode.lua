@@ -947,6 +947,13 @@ PrecacheResource("model", "models/heroes/treant_protector/foliage.vmdl", context
 PrecacheResource("model", "models/heroes/treant_protector/hands.vmdl", context)
 PrecacheResource("model", "models/heroes/treant_protector/legs.vmdl", context)
 
+
+PrecacheResource("model", "models/heroes/troll_warlord/troll_warlord_axe_melee_l.vmdl", context)
+PrecacheResource("model", "models/heroes/troll_warlord/troll_warlord_head.vmdl", context)
+PrecacheResource("model", "models/heroes/troll_warlord/troll_warlord_shoulders.vmdl", context)
+PrecacheResource("model", "models/heroes/troll_warlord/troll_warlord_weapon_fx.vmdl", context)
+PrecacheResource("model", "models/heroes/troll_warlord/troll_warlord_weapons.vmdl", context)
+PrecacheResource("model", "models/heroes/troll_warlord/mesh/troll_warlord_armor_model_lod0.vmdl", context)
 	
 	PrecacheWearableModels(context)
 

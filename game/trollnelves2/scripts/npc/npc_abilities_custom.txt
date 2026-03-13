@@ -12327,7 +12327,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"					"5174"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_OVERSHOOT | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilitySound"					"Hero_QueenOfPain.Blink_in"
 
         "HasShardUpgrade"               "0"

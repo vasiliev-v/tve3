@@ -157,13 +157,33 @@ function NewTroll()
             countAttempts = countAttempts + 1 
             return
         end
-        PlayerResource:ReplaceHeroWith(newTrollPlayerID, TROLL_HERO, 0, 0)
+
+        local player = PlayerResource:GetPlayer(newTrollPlayerID)
+        PlayerResource:SetCustomTeamAssignment(newTrollPlayerID, DOTA_TEAM_BADGUYS)
         UTIL_Remove(hero)
-        hero = PlayerResource:GetSelectedHeroEntity(newTrollPlayerID)
-        PlayerResource:SetCustomTeamAssignment(newTrollPlayerID, DOTA_TEAM_BADGUYS) -- A workaround for wolves sometimes getting stuck on elves team, I don't know why or how it happens.
-        hero:SetTeam(DOTA_TEAM_BADGUYS)
-        InitializeBadHero(hero)
-        game_spells_lib:SetSpellPlayers(newTrollPlayerID)
+        PrecacheUnitByNameAsync(TROLL_HERO, function()
+            local newHero = CreateHeroForPlayer(TROLL_HERO, player)
+            FindClearSpaceForUnit( newHero , GameRules.trollTps[5] , true )
+            if newHero then
+                newHero:AddNewModifier(newHero, newHero, "modifier_fountain_glyph", {Duration = 4})
+            end
+            Timers:CreateTimer(2, function()
+                newHero:SetTeam(DOTA_TEAM_BADGUYS)
+                PlayerResource:SetCustomTeamAssignment(newTrollPlayerID, DOTA_TEAM_BADGUYS)
+                player:SetSelectedHero(newHeroName)
+                player:SetAssignedHeroEntity(newHero)
+                newHero:SetControllableByPlayer(newTrollPlayerID, true)
+                PlayerResource:SetCustomTeamAssignment(newTrollPlayerID, DOTA_TEAM_BADGUYS)
+                
+                
+                InitializeBadHero(newHero)
+                game_spells_lib:SetSpellPlayers(newTrollPlayerID)
+                if hero then
+                    UTIL_Remove(hero)
+                end
+            end)
+        end, newTrollPlayerID)
+        
     end
     end)
 end
