@@ -2,12 +2,6 @@ if item_blink_datadriven == nil then
 	item_blink_datadriven = class({})
 end
 
-function item_blink_datadriven:GetBehavior()
-	return DOTA_ABILITY_BEHAVIOR_OVERSHOOT
-	     + DOTA_ABILITY_BEHAVIOR_POINT
-		 + DOTA_ABILITY_BEHAVIOR_AOE
-end
-
 function item_blink_datadriven:GetBlinkRange()
 	local caster = self:GetCaster()
 
