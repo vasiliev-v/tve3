@@ -1,7 +1,10 @@
-part_mod = class({})
---------------------------------------------------------------------------------
-function part_mod:GetEffectName()
-    local partcls = {
+if part_mod == nil then
+    part_mod = class({})
+end
+
+function GetPartEffectList()
+    return {
+
     "particles/econ/items/dazzle/dazzle_ti6_gold/dazzle_ti6_shallow_grave_gold.vpcf", -- 1
     "particles/econ/courier/courier_greevil_orange/courier_greevil_orange_ambient_3.vpcf",--2
     "particles/econ/events/ti7/fountain_regen_ti7_lvl3.vpcf",--3
@@ -93,7 +96,7 @@ function part_mod:GetEffectName()
     "particles/econ/items/bane/slumbering_terror/bane_slumber_nightmare.vpcf", -- son 69
     "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", -- аура дума кольцо ОГОнь 70
     "particles/econ/courier/courier_hermit_crab/hermit_crab_skady_ambient.vpcf", -- хрень топ10 71
-    "particlesecon/courier/courier_hyeonmu_ambient/courier_hyeonmu_ambient.vpcf",  -- хрень донат7 72
+    "particles/econ/courier/courier_hyeonmu_ambient/courier_hyeonmu_ambient.vpcf",  -- хрень донат7 72
 
 
     "particles/tve_void_spirit_planeshift.vpcf", -- крылья гуд 73
@@ -160,23 +163,26 @@ function part_mod:GetEffectName()
     "particles/econ/courier/courier_red_horn/courier_red_horn_ambient.vpcf",--слабый красный эффект 44
     "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_ground_ambient.vpcf",--слабые снежинки под ногами 45
     "particles/econ/courier/courier_smeevil_flying_carpet/courier_smeevil_flying_carpet_ambient.vpcf",--слабые очень маленикие жёлтые частички 46
-
     }
-	return partcls[self:GetStackCount()]
+end
+
+function part_mod:GetEffectName()
+    local partcls = GetPartEffectList()
+    return partcls[self:GetStackCount()]
 end
 
 function part_mod:IsHidden()
-	return true
+    return true
 end
---------------------------------------------------------------------------------
-function part_mod:OnCreated( kv )
+
+function part_mod:OnCreated(kv)
     if IsServer() then
         self:SetStackCount(tonumber(kv.part))
     end
 end
 
 function part_mod:IsPurgable()
-	return false
+    return false
 end
 
 function part_mod:RemoveOnDeath()
