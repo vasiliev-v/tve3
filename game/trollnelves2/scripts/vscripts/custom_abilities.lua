@@ -972,12 +972,23 @@ end
 
 
 
+local function FindSameInventoryItem(hero, item_name)
+	for slot = 0, 8 do
+		local item = hero:GetItemInSlot(slot)
+		if item and not item:IsNull() and item:GetAbilityName() == item_name then
+			return item
+		end
+	end
+	return nil
+end
+
 function BuyItem(event)
 	local ability = event.ability
 	local caster = event.caster
 	local item_name = GetAbilityKV(ability:GetAbilityName()).ItemName
-	local gold_cost = GetItemKV(item_name)["AbilityValues"]["gold_cost"];
-	local lumber_cost = GetItemKV(item_name)["AbilityValues"]["lumber_cost"];
+	local itemKV = GetItemKV(item_name)
+	local gold_cost = itemKV["AbilityValues"]["gold_cost"]
+	local lumber_cost = itemKV["AbilityValues"]["lumber_cost"]
 	local playerID = caster.buyer
 	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
@@ -986,57 +997,74 @@ function BuyItem(event)
         return
     end
 
-	if not IsInsideShopArea(hero) and item_name ~=  "item_book_of_agility" and item_name ~=  "item_book_of_strength" and item_name ~=  "item_book_of_intelligence" then
+	if not IsInsideShopArea(hero)
+		and item_name ~= "item_book_of_agility"
+		and item_name ~= "item_book_of_strength"
+		and item_name ~= "item_book_of_intelligence" then
 		SendErrorMessage(playerID, "error_shop_out_of_range")
 		ability:EndCooldown()
 		return
 	end
+
 	if gold_cost > PlayerResource:GetGold(playerID) then
 		SendErrorMessage(playerID, "error_not_enough_gold")
 		ability:EndCooldown()
 		return
 	end
+
 	if lumber_cost > PlayerResource:GetLumber(playerID) then
 		SendErrorMessage(playerID, "error_not_enough_lumber")
 		ability:EndCooldown()
 		return
 	end
-	if hero:GetNumItemsInInventory() >= 9 then
-	--	hero:DropStash()
+
+	local isStackable = tostring(itemKV.ItemStackable or "0") == "1"
+	local existingStackItem = nil
+
+	if isStackable then
+		existingStackItem = FindSameInventoryItem(hero, item_name)
+	end
+
+	if hero:GetNumItemsInInventory() >= 9 and not existingStackItem then
 		SendErrorMessage(playerID, "error_full_inventory")
 		ability:EndCooldown()
-		return		
+		return
 	end
-	if hero:FindItemInInventory("item_disable_repair_2") ~= nil and item_name == 'item_disable_repair_2'  then
+
+	if hero:FindItemInInventory("item_disable_repair_2") ~= nil and item_name == "item_disable_repair_2" then
 		SendErrorMessage(playerID, "error_full_inventory")
 		ability:EndCooldown()
-		return		
+		return
 	end
-	if hero:FindItemInInventory("item_havoc_hammer_datadriven") ~= nil and item_name == 'item_disable_repair_2'  then
+
+	if hero:FindItemInInventory("item_havoc_hammer_datadriven") ~= nil and item_name == "item_disable_repair_2" then
 		SendErrorMessage(playerID, "error_full_inventory")
 		ability:EndCooldown()
-		return		
+		return
 	end
-	if item_name == 'item_troll_boots_3' and (GameRules:GetGameTime() - GameRules.startTime) < (7200 / GameRules.MapSpeed) then
+
+	if item_name == "item_troll_boots_3" and (GameRules:GetGameTime() - GameRules.startTime) < (7200 / GameRules.MapSpeed) then
 		SendErrorMessage(playerID, "error_no_time_boots")
 		ability:EndCooldown()
-		return	
+		return
 	end
-	
-	
-	PlayerResource:ModifyLumber(hero,-lumber_cost)
-	PlayerResource:ModifyGold(hero,-gold_cost)
-	local item = CreateItem(item_name, hero, hero)
-	
 
-	
-	--local units = Entities:FindAllByClassname("npc_dota_creature")
-	--for _,unit in pairs(units) do
-	--	local unit_name_hut = unit:GetUnitName();
-	--	if unit_name_hut == "troll_hut_7" then
-	--		item:SetShareability(ITEM_PARTIALLY_SHAREABLE)
-	--	end
-	--end
+	PlayerResource:ModifyLumber(hero, -lumber_cost)
+	PlayerResource:ModifyGold(hero, -gold_cost)
+
+	if existingStackItem then
+		local addCharges = tonumber(itemKV.ItemInitialCharges or 1) or 1
+		existingStackItem:SetCurrentCharges(existingStackItem:GetCurrentCharges() + addCharges)
+		return
+	end
+
+	local item = CreateItem(item_name, hero, hero)
+	if not item then
+		SendErrorMessage(playerID, "error_full_inventory")
+		ability:EndCooldown()
+		return
+	end
+
 	hero:AddItem(item)
 end
 

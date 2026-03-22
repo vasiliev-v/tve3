@@ -508,48 +508,62 @@ function UpgradeBuilding( event )
         if GameRules.Bonus[playerID] == nil then
             GameRules.Bonus[playerID] = 0
         end
+
         GameRules.Bonus[playerID] = GameRules.Bonus[playerID] + 10
         CheckBank = true
         local roll_chance = RandomFloat(0, 100)
+        if GameRules.test == true or GameRules.test2 == true then
+            roll_chance = 0 
+            CheckBank = false
+        end
         local playername = PlayerResource:GetPlayerName(playerID)
-	    GameRules:SendCustomMessageToTeam("<font color='#009900'>"..playername.."</font> built Bank at "..ConvertToTime(GameRules:GetGameTime() - GameRules.startTime).." in X" .. GameRules.MapSpeed .. " mode.", hero:GetTeamNumber(), hero:GetTeamNumber(), hero:GetTeamNumber())
+
+        GameRules:SendCustomMessageToTeam(
+            "<font color='#009900'>" .. playername .. "</font> built Bank at " ..
+            ConvertToTime(GameRules:GetGameTime() - GameRules.startTime) ..
+            " in X" .. GameRules.MapSpeed .. " mode.",
+            hero:GetTeamNumber(),
+            hero:GetTeamNumber(),
+            hero:GetTeamNumber()
+        )
+
+        local spawnPoint = newBuilding:GetAbsOrigin()
+
         if roll_chance <= CHANCE_DROP_GEM_BANK then
-            local spawnPoint = newBuilding:GetAbsOrigin()	
-            local newItem = CreateItem( "item_get_gem", nil, nil )
-            local dropRadius = RandomFloat( 250, 450 )
-            local randRadius = spawnPoint + RandomVector( dropRadius )
-            CreateItemOnPositionForLaunch( randRadius, newItem )
-            newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
+            DropLootByRules("item_get_gem", spawnPoint, 250, 450, 250, 0.5)
         end
+
         if roll_chance <= CHANCE_DROP_GOLD_BANK then
-            local spawnPoint = newBuilding:GetAbsOrigin()	
-            local newItem = CreateItem( "item_get_gold", nil, nil )
-            local dropRadius = RandomFloat( 250, 450 )
-            local randRadius = spawnPoint + RandomVector( dropRadius )
-            CreateItemOnPositionForLaunch( randRadius, newItem )
-            newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
+            DropLootByRules("item_get_gold", spawnPoint, 250, 450, 250, 0.5)
         end
+
     elseif newBuildingName == "barracks_3" and (not CheckBarak3 and not string.match(GetMapName(),"clanwars")) then
         GameRules.Bonus[playerID] = GameRules.Bonus[playerID] + 5
         CheckBarak3 = true
         local roll_chance = RandomFloat(0, 100)
-        local playername = PlayerResource:GetPlayerName(playerID)
-	    GameRules:SendCustomMessageToTeam("<font color='#009900'>"..playername.."</font> built Barracks 3 at "..ConvertToTime(GameRules:GetGameTime() - GameRules.startTime).." in X" .. GameRules.MapSpeed .. " mode.", hero:GetTeamNumber(), hero:GetTeamNumber(), hero:GetTeamNumber())
-        if roll_chance <= CHANCE_DROP_GEM_BARRACKS_3 then
-            local spawnPoint = newBuilding:GetAbsOrigin()	
-            local newItem = CreateItem( "item_get_gem", nil, nil )
-            local dropRadius = RandomFloat( 250, 450 )
-            local randRadius = spawnPoint + RandomVector( dropRadius )
-            CreateItemOnPositionForLaunch( randRadius, newItem )
-            newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
+        if GameRules.test == true or GameRules.test2 == true then
+            roll_chance = 0 
+            CheckBarak3 = false
         end
+        local playername = PlayerResource:GetPlayerName(playerID)
+
+        GameRules:SendCustomMessageToTeam(
+            "<font color='#009900'>" .. playername .. "</font> built Barracks 3 at " ..
+            ConvertToTime(GameRules:GetGameTime() - GameRules.startTime) ..
+            " in X" .. GameRules.MapSpeed .. " mode.",
+            hero:GetTeamNumber(),
+            hero:GetTeamNumber(),
+            hero:GetTeamNumber()
+        )
+
+        local spawnPoint = newBuilding:GetAbsOrigin()
+
+        if roll_chance <= CHANCE_DROP_GEM_BARRACKS_3 then
+            DropLootByRules("item_get_gem", spawnPoint, 250, 450, 250, 0.5)
+        end
+
         if roll_chance <= CHANCE_DROP_GOLD_BARRACKS_3 then
-            local spawnPoint = newBuilding:GetAbsOrigin()	
-            local newItem = CreateItem( "item_get_gold", nil, nil )
-            local dropRadius = RandomFloat( 250, 450 )
-            local randRadius = spawnPoint + RandomVector( dropRadius )
-            CreateItemOnPositionForLaunch( randRadius, newItem )
-            newItem:LaunchLootInitialHeight( false, 0, 250, 0.5, randRadius ) 
+            DropLootByRules("item_get_gold", spawnPoint, 250, 450, 250, 0.5)
         end
     end
 

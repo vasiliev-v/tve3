@@ -1219,9 +1219,7 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 		end
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)		
-	Timers:CreateTimer(5, function() 
-		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "troll_quest_update_after", {})
-	end)
+	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "troll_quest_update_after", {})
 	return obj
 end
 

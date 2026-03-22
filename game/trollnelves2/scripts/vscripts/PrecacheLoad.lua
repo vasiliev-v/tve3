@@ -3,6 +3,7 @@ if PrecacheLoad == nil then
 	PrecacheLoad = {}
 end
 
+require('modifiers/parts/part_mod')
 local particle_folders = {
 	"particles/buildinghelper",
     "particles/econ",
@@ -61,3 +62,23 @@ function PrecacheLoad:PrecacheLoad (context)
     end
 end
 
+function PrecachePartEffects(context)
+    if not GetPartEffectList then
+        print("[PRECACHE] GetPartEffectList() not found")
+        return
+    end
+
+    local effects = GetPartEffectList()
+    local seen = {}
+
+    for _, particlePath in pairs(effects) do
+        if particlePath
+            and type(particlePath) == "string"
+            and string.find(particlePath, "vpcf")
+            and not seen[particlePath] then
+
+            seen[particlePath] = true
+            PrecacheResource("particle", particlePath, context)
+        end
+    end
+end

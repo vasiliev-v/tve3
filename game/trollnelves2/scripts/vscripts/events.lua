@@ -374,24 +374,46 @@ end
 function trollnelves2:OnItemPickedUp(keys)
     print('[BAREBONES] OnItemPickedUp')
     DeepPrintTable(keys)
+
     local hero = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
     local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
     local player = PlayerResource:GetPlayer(keys.PlayerID)
     local itemname = keys.itemname
-    
-    if (hero:IsAngel() or hero:IsElf()) and (string.match(itemname,"hp") or string.match(itemname,"armor") or string.match(itemname,"dmg") or string.match(itemname,"spd") or string.match(itemname,"boots")  or string.match(itemname,"repair") or string.match(itemname,"havoc")) then 
-        hero:TakeItem(itemEntity)
-        return
-    end  
 
-    if itemname == "item_tpscroll" then 
-        hero:TakeItem(itemEntity)
+    if not hero or hero:IsNull() or not itemEntity or itemEntity:IsNull() then
         return
-    end 
+    end
+
+    if (hero:IsAngel() or hero:IsElf()) and itemname == "item_reveal" then
+        hero:TakeItem(itemEntity)
+        UTIL_Remove(itemEntity)
+        return
+    end
+
+    if (hero:IsAngel() or hero:IsElf()) and (
+        string.match(itemname, "hp") or
+        string.match(itemname, "armor") or
+        string.match(itemname, "dmg") or
+        string.match(itemname, "spd") or
+        string.match(itemname, "boots") or
+        string.match(itemname, "repair") or
+        string.match(itemname, "havoc")
+    ) then
+        hero:TakeItem(itemEntity)
+        UTIL_Remove(itemEntity)
+        return
+    end
+
+    if itemname == "item_tpscroll" then
+        hero:TakeItem(itemEntity)
+        UTIL_Remove(itemEntity)
+        return
+    end
+
     --[[
     if hero:GetNumItemsInInventory() > 6 then
-        local spawnPoint = hero:GetAbsOrigin() + RandomFloat(50, 100)
-         local newItem = CreateItem(itemname, itemEntity:GetPurchaser(), itemEntity:GetPurchaser())
+        local spawnPoint = hero:GetAbsOrigin() + RandomVector(RandomFloat(50, 100))
+        local newItem = CreateItem(itemname, itemEntity:GetPurchaser(), itemEntity:GetPurchaser())
         local drop = CreateItemOnPositionForLaunch(spawnPoint, newItem)
         newItem:LaunchLootInitialHeight(false, 0, 150, 0.5, spawnPoint)
         hero:TakeItem(itemEntity)
@@ -402,24 +424,48 @@ end
 function trollnelves2:OnItemAddedInv(keys)
     print('[BAREBONES] OnItemAddedInv')
     DeepPrintTable(keys)
+
     local hero = EntIndexToHScript(keys.inventory_parent_entindex)
     local itemEntity = EntIndexToHScript(keys.item_entindex)
     local player = PlayerResource:GetPlayer(keys.inventory_player_id)
     local itemname = keys.itemname
-    if hero ~= nil then
-        if itemname == "item_tpscroll" then 
+
+    if hero ~= nil and itemEntity ~= nil then
+        if itemname == "item_tpscroll" then
             hero:TakeItem(itemEntity)
-        end 
-        if (hero:IsAngel() or hero:IsElf()) and (string.match(itemname,"hp") or string.match(itemname,"armor") or string.match(itemname,"dmg") or string.match(itemname,"spd") or string.match(itemname,"boots")  or string.match(itemname,"repair") or string.match(itemname,"havoc")) then 
-            hero:TakeItem(itemEntity)
+            UTIL_Remove(itemEntity)
             return
-        end  
+        end
+
+        -- elf / angel не могут держать reveal, удаляем предмет полностью
+        if (hero:IsAngel() or hero:IsElf()) and itemname == "item_reveal" then
+            hero:TakeItem(itemEntity)
+            UTIL_Remove(itemEntity)
+            return
+        end
+
+        if (hero:IsAngel() or hero:IsElf()) and (
+            string.match(itemname, "hp") or
+            string.match(itemname, "armor") or
+            string.match(itemname, "dmg") or
+            string.match(itemname, "spd") or
+            string.match(itemname, "boots") or
+            string.match(itemname, "repair") or
+            string.match(itemname, "havoc")
+        ) then
+            hero:TakeItem(itemEntity)
+            UTIL_Remove(itemEntity)
+            return
+        end
+
         if hero:GetNumItemsInInventory() > 6 then
-            local spawnPoint = hero:GetAbsOrigin() + RandomFloat(50, 100)
+            local spawnPoint = hero:GetAbsOrigin() + RandomVector(RandomFloat(50, 100))
             local newItem = CreateItem(itemname, itemEntity:GetPurchaser(), itemEntity:GetPurchaser())
             local drop = CreateItemOnPositionForLaunch(spawnPoint, newItem)
             newItem:LaunchLootInitialHeight(false, 0, 150, 0.5, spawnPoint)
+
             hero:TakeItem(itemEntity)
+            return
         end
     end
 end

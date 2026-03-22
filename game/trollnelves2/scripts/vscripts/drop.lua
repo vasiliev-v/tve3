@@ -2,6 +2,7 @@ if drop == nil then
 	_G.drop = class({})
 end
 require('settings')
+require('libraries/util')
 item_drop = {
 	{items = {"item_vip"}, limit = 2, chance = 10, units = {"npc_dota_hero_treant"} },
 	{items = {"item_get_gem"}, limit = 10, chance = 50, units = {"npc_dota_hero_treant"} },
@@ -150,24 +151,16 @@ function KillLoot( item, drop )
 end
 
 function RandomDropLoot(item_name)
-	local spawnPoint = Vector(-320,-320,256)
-	local dropRadius = RandomFloat( 2600, 7800 )
-	local randRadius = spawnPoint + RandomVector( dropRadius )
-	for i = 0, 99 do
-		randRadius = spawnPoint + RandomVector( dropRadius )
-		local gridX = GridNav:GridPosToWorldCenterX(randRadius.x)
-    	local gridY = GridNav:GridPosToWorldCenterY(randRadius.y)
-		local position = Vector(gridX, gridY, 0)
-		if not GridNav:IsTraversable(position) and not GridNav:IsBlocked(position) and 
-	       not GridNav:IsBlocked(position) and not GridNav:IsNearbyTree(position, 34, true) then
-			break	
-		end
-	end
+    local spawnPoint = Vector(-320, -320, 256)
 
-	local newItem = CreateItem( item_name, nil, nil )
-	local drop = CreateItemOnPositionForLaunch( randRadius, newItem )
-	newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, randRadius )
-
+    return DropLootByRules(
+        item_name,
+        spawnPoint,
+        2600,   -- min radius
+        7800,   -- max radius
+        150,    -- height
+        0.5     -- duration
+    )
 end
 
 function TimerRandomDrop(event)

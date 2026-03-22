@@ -5356,7 +5356,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"quest_locked_buy_battlepass"          "Available in the BattlePass" 
 
 		"error_cant_take_aspect"			"You can't change aspect"
-		"error_not_send_flag_block"			"The player has disabled flag transmission"
+		"error_not_send_flag_block"			"The player has disabled flag transmission or the Loner aspect is selected"
 
 		"battlepass"						"BattlePass"
 		"battlepass_description"			"Valid for 3 months from the date of purchase. Opens access to additional quests."

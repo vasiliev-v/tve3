@@ -11902,6 +11902,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"				"4"
 		"Ability1" 					"gather_lumber"
@@ -11977,6 +11978,8 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
+
 		"WispCost"                              "1"
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12054,6 +12057,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12131,6 +12135,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12208,6 +12213,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12285,6 +12291,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12361,6 +12368,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12437,6 +12445,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12513,6 +12522,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12589,6 +12599,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12665,6 +12676,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12741,6 +12753,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12818,6 +12831,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12895,6 +12909,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -12972,6 +12987,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"4"
 		"Ability1" 								"gather_lumber"
@@ -13050,6 +13066,7 @@
 		"AttackDamageMin"                       "1"
 		"AttackDamageMax"                       "1"
 		"AttackRate"                            "1.00"
+		"AttackRange"		  					"64"
 
 		"AbilityLayout"							"11"
 		"Ability1" 								"build_gold_mine_1"

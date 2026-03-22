@@ -973,7 +973,7 @@
 		"quest_locked"                          "Недоступно"
 		"quest_locked_buy_battlepass"          "Доступно в BattlePass" 
 		"error_cant_take_aspect"			"Вы не можете сменить аспект"
-		"error_not_send_flag_block"			"Игрок отключил передачу флага"
+		"error_not_send_flag_block"			"Игрок отключил передачу флага или выбран аспект Loner"
 		"battlepass_description"			"Действует 3 месяца с момента покупки. Открывает доступ к дополнительным заданиям."
 		"chance25"					"ШАНС ТРОЛЛЯ 25%"
 		"chance50"					"ШАНС ТРОЛЛЯ 50%"

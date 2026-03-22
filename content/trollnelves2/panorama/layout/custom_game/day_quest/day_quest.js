@@ -1,6 +1,13 @@
-var UPDATED_QUEST_DAY = {}
+"use strict";
 
 var HIDE_QUESTS_PANEL = Game.GetMapInfo().map_display_name == "1x1";
+
+var quest_information_table = {};
+var player_table = [0, []];
+
+var QUESTS_REBUILD_PENDING = false;
+var QUESTS_REBUILD_DELAY = 0.10;
+var QUESTS_INITIALIZED = false;
 
 (function forceHideFor1x1() {
     if (!HIDE_QUESTS_PANEL) return;
@@ -8,21 +15,19 @@ var HIDE_QUESTS_PANEL = Game.GetMapInfo().map_display_name == "1x1";
     const root = $.GetContextPanel();
     root.AddClass("hide-quests");
 
-    // 1) Попробовать найти и мгновенно удалить тень
     let shadow = root.FindChildTraverse("PanelShadow");
     if (!shadow) {
         const shadows = root.FindChildrenWithClassTraverse("PanelShadow");
         if (shadows.length) shadow = shadows[0];
     }
+
     if (shadow) {
-        // Сброс эффектов, чтобы не мигнула
         shadow.style.visibility = "collapse";
         shadow.style.opacity = "0";
         shadow.style.transform = "none";
-        shadow.DeleteAsync(0); // ← физически убрать из DOM
+        shadow.DeleteAsync(0);
     }
 
-    // 2) Спрятать свопер и список (на случай, если XML прогрузится раньше CSS)
     ["QuestPanelSwap", "QuestsPanel", "QuestMain"].forEach(id => {
         const p = root.FindChildTraverse(id);
         if (p) {
@@ -32,232 +37,212 @@ var HIDE_QUESTS_PANEL = Game.GetMapInfo().map_display_name == "1x1";
         }
     });
 
-    // 3) Закрыть «шторку», чтобы не было анимаций
     const qm = root.FindChildTraverse("QuestMain");
     if (qm) qm.SetHasClass("Open", false);
 })();
 
+function ToggleInfo() {
+    if (HIDE_QUESTS_PANEL) return;
 
-//GameEvents.SubscribeProtected( 'troll_quest_update', UpdateQuest ); // Обновить квест ( quest_id -- Айди квеста у игрока, current -- Новое значение в этом квесте )
+    const main = $("#QuestMain");
+    if (!main) return;
 
-function ToggleInfo()
-{
-	$("#QuestMain").SetHasClass("Open", !$("#QuestMain").BHasClass("Open"))
+    main.SetHasClass("Open", !main.BHasClass("Open"));
 }
 
-// Массив визуальной информации по заданиям ( его кстати можно передать из луа чтоб не дублировать )
-// Айди квеста, название, иконка, награда, максимальное количество для выполнения, УНИКАЛЬНЫЙ ЛИ КВЕСТ 0-обычный, 1-батллпасс
-var quest_information_table = 
-[
-	
-]
-
-// Массив игрока, передать надо бы
-// Имеет ли батлл пасс (0,1), задания(внутри айди квеста и сколько уже прошел прогресс)
-var player_table = 
-[
-	0,
-	[
-	
-	]
-]
-
-
-
-function CreateQuests()
-{
-	if (HIDE_QUESTS_PANEL) 
-	{ 
-		$.GetContextPanel().AddClass("hide-quests");
-		return 
-	}
-	let has_battlepass = false
-	quest_information_table = CustomNetTables.GetTableValue("Shop", "bpday");
-	player_table[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10];  
-	player_table[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
-	// есть ли батлл пасс у игрока
-	if (player_table) 
-    {
-		if (player_table[0][0] != "none")
-		{
-			has_battlepass = true
-		} 
-        else 
-        {
-			has_battlepass = false
-		}
-	}
-	if (quest_information_table) 
-	{
-		const sortedQuests = Object.values(quest_information_table).sort((a, b) => {
-			if (a.type < b.type) return -1;
-			if (a.type > b.type) return  1;
-			return 0;
-		});
-		if (sortedQuests) 
-		{  
-			Object.keys(sortedQuests).forEach(key => {
-				CreateQuest(sortedQuests[key], has_battlepass); 
-			});
-		}
-	}
-
+function GetLocalPlayerKey() {
+    return String(Players.GetLocalPlayer());
 }
 
-function CreateQuest(quest_player_table, has_battlepass)
-{
-	let quest_table = null
-	if (quest_player_table == null) 
-    {
-		return
-	}
-    let is_locked_quest_battlepass = false
-	
-    if (player_table[1][1])
-    {  
-        for (var i = 1; i <= Object.keys(player_table[1][1]).length; i++) 
-        {
-            if (player_table[1][1][i][1] == quest_player_table.id)
-            {
-                quest_table = player_table[1][1][i]; 
-				break;
-            }
-        } 
+function GetShopPlayerTable() {
+    return CustomNetTables.GetTableValue("Shop", GetLocalPlayerKey());
+}
+
+function GetShopBpDayTable() {
+    return CustomNetTables.GetTableValue("Shop", "bpday");
+}
+
+function IsQuestDataReady() {
+    const shopBpDay = GetShopBpDayTable();
+    const shopPlayer = GetShopPlayerTable();
+
+    if (!shopBpDay || !shopPlayer) return false;
+    if (!shopPlayer[10] || !shopPlayer[15]) return false;
+
+    return true;
+}
+
+function RefreshQuestCache() {
+    const shopBpDay = GetShopBpDayTable();
+    const shopPlayer = GetShopPlayerTable();
+
+    if (!shopBpDay || !shopPlayer || !shopPlayer[10] || !shopPlayer[15]) {
+        return false;
     }
 
-	if (quest_player_table.donate == "1")
-	{
-		if (!has_battlepass)
-		{
-			is_locked_quest_battlepass = true
-		}
-	}
+    quest_information_table = shopBpDay;
+    player_table[1] = shopPlayer[10];
+    player_table[0] = shopPlayer[15];
 
-	if (quest_table == null) 
-    {
-		return
-	}
+    return true;
+}
 
-	let DayQuest = $.CreatePanel("Panel", $("#QuestsPanel"), "quest_id_" + quest_player_table.id);
-	DayQuest.AddClass("DayQuest");
-    if (is_locked_quest_battlepass)
-    {
+function HasBattlePass() {
+    return !!(player_table[0] && player_table[0][0] != "none");
+}
+
+function ScheduleRebuild(delay) {
+    if (HIDE_QUESTS_PANEL) return;
+    if (QUESTS_REBUILD_PENDING) return;
+
+    QUESTS_REBUILD_PENDING = true;
+
+    $.Schedule(delay || QUESTS_REBUILD_DELAY, function () {
+        QUESTS_REBUILD_PENDING = false;
+        RebuildQuests();
+    });
+}
+
+function RebuildQuests() {
+    if (HIDE_QUESTS_PANEL) return;
+
+    const questsPanel = $("#QuestsPanel");
+    if (!questsPanel) {
+        ScheduleRebuild(0.2);
+        return;
+    }
+
+    if (!RefreshQuestCache()) {
+        ScheduleRebuild(0.5);
+        return;
+    }
+
+    questsPanel.RemoveAndDeleteChildren();
+
+    const has_battlepass = HasBattlePass();
+    const sortedQuests = Object.values(quest_information_table).sort((a, b) => {
+        const ta = Number(a.type) || 0;
+        const tb = Number(b.type) || 0;
+        return ta - tb;
+    });
+
+    for (let i = 0; i < sortedQuests.length; i++) {
+        CreateQuest(sortedQuests[i], has_battlepass);
+    }
+}
+
+function FindPlayerQuestData(questId) {
+    if (!player_table[1] || !player_table[1][1]) return null;
+
+    const entries = player_table[1][1];
+    const length = Object.keys(entries).length;
+
+    for (let i = 1; i <= length; i++) {
+        if (!entries[i]) continue;
+
+        if (Number(entries[i][1]) === Number(questId)) {
+            return entries[i];
+        }
+    }
+
+    return null;
+}
+
+function CreateQuest(quest_player_table, has_battlepass) {
+    if (!quest_player_table) return;
+
+    const questData = FindPlayerQuestData(quest_player_table.id);
+    if (!questData) return;
+
+    const questsPanel = $("#QuestsPanel");
+    if (!questsPanel) return;
+
+    let is_locked_quest_battlepass = false;
+    if (String(quest_player_table.donate) === "1" && !has_battlepass) {
+        is_locked_quest_battlepass = true;
+    }
+
+    const DayQuest = $.CreatePanel("Panel", questsPanel, "quest_id_" + quest_player_table.id);
+    DayQuest.AddClass("DayQuest");
+    if (is_locked_quest_battlepass) {
         DayQuest.AddClass("LockedQuest");
     }
 
-	let QuestIcon = $.CreatePanel("Panel", DayQuest, "");
-	QuestIcon.AddClass("QuestIcon");
+    const QuestIcon = $.CreatePanel("Panel", DayQuest, "");
+    QuestIcon.AddClass("QuestIcon");
 
-	// Инфа о квесте 
-	let QuestInfo = $.CreatePanel("Panel", DayQuest, "");
-	QuestInfo.AddClass("QuestInfo");
-	
-	let QuestName = $.CreatePanel("Label", QuestInfo, "");
-	QuestName.AddClass("QuestName");
+    const QuestInfo = $.CreatePanel("Panel", DayQuest, "");
+    QuestInfo.AddClass("QuestInfo");
 
-    if (is_locked_quest_battlepass)
-    {
-        QuestName.text = $.Localize("#quest_locked")
-    }
-    else
-    {
-        QuestName.text = $.Localize("#" + quest_player_table.name) // название задания
-		QuestIcon.style.backgroundImage = 'url("file://{images}/custom_game/quest/icons/' + quest_player_table.icon + '.png")';
-	 	QuestIcon.style.backgroundSize = "100%"
+    const QuestName = $.CreatePanel("Label", QuestInfo, "");
+    QuestName.AddClass("QuestName");
+
+    if (is_locked_quest_battlepass) {
+        QuestName.text = $.Localize("#quest_locked");
+    } else {
+        QuestName.text = $.Localize("#" + quest_player_table.name);
+        QuestIcon.style.backgroundImage = 'url("file://{images}/custom_game/quest/icons/' + quest_player_table.icon + '.png")';
+        QuestIcon.style.backgroundSize = "100%";
     }
 
-	let QuestProgress = $.CreatePanel("Panel", QuestInfo, "");
-	QuestProgress.AddClass("QuestProgress");
+    const QuestProgress = $.CreatePanel("Panel", QuestInfo, "");
+    QuestProgress.AddClass("QuestProgress");
 
-	let QuestProgressBackground = $.CreatePanel("Panel", QuestProgress, "");
-	QuestProgressBackground.AddClass("QuestProgressBackground");
+    const QuestProgressBackground = $.CreatePanel("Panel", QuestProgress, "");
+    QuestProgressBackground.AddClass("QuestProgressBackground");
 
-	let QuestProgressLine = $.CreatePanel("Panel", QuestProgress, "QuestProgressLine");
-	QuestProgressLine.AddClass("QuestProgressLine");
+    const QuestProgressLine = $.CreatePanel("Panel", QuestProgress, "QuestProgressLine");
+    QuestProgressLine.AddClass("QuestProgressLine");
 
-	let percentage = ((quest_player_table.count-quest_table[2])*100)/quest_player_table.count
-	QuestProgressLine.style['width'] = (100 - percentage) +'%';
+    const currentCount = Number(questData[2]) || 0;
+    const maxCount = Number(quest_player_table.count) || 0;
+    const progressPercent = maxCount > 0 ? Math.min(100, (currentCount * 100) / maxCount) : 0;
 
-	let QuestProgressLabel = $.CreatePanel("Label", QuestProgress, "QuestProgressLabel");
-	QuestProgressLabel.AddClass("QuestProgressLabel");
-	QuestProgressLabel.text = quest_table[2] + " / " + quest_player_table.count  // Прогресс квеста
+    QuestProgressLine.style.width = progressPercent + "%";
 
-	let QuestRewardLabel = $.CreatePanel("Label", QuestInfo, "");
-	QuestRewardLabel.AddClass("QuestRewardLabel");
-    if (is_locked_quest_battlepass)
-    {
-        QuestRewardLabel.text = $.Localize("#quest_locked_buy_battlepass")
+    const QuestProgressLabel = $.CreatePanel("Label", QuestProgress, "QuestProgressLabel");
+    QuestProgressLabel.AddClass("QuestProgressLabel");
+    QuestProgressLabel.text = currentCount + " / " + maxCount;
+
+    const QuestRewardLabel = $.CreatePanel("Label", QuestInfo, "");
+    QuestRewardLabel.AddClass("QuestRewardLabel");
+
+    if (is_locked_quest_battlepass) {
+        QuestRewardLabel.text = $.Localize("#quest_locked_buy_battlepass");
+    } else {
+        QuestRewardLabel.text = $.Localize("#" + quest_player_table.reward);
     }
-    else
-    {
-	    QuestRewardLabel.text = $.Localize("#" + quest_player_table.reward) // Награда квеста
+
+    const QuestSucces = $.CreatePanel("Panel", QuestIcon, "");
+    QuestSucces.AddClass("QuestSucces");
+
+    const QuestSuccesIcon = $.CreatePanel("Panel", QuestIcon, "QuestSuccesIcon");
+    QuestSuccesIcon.AddClass("QuestSuccesIcon");
+
+    if (currentCount >= maxCount && maxCount > 0) {
+        DayQuest.AddClass("QuestComplete");
     }
 
-	let QuestSucces = $.CreatePanel("Panel", QuestIcon, "");
-	QuestSucces.AddClass("QuestSucces");
+    const QuestLockedBG = $.CreatePanel("Panel", QuestIcon, "");
+    QuestLockedBG.AddClass("QuestLockedBG");
 
-	let QuestSuccesIcon = $.CreatePanel("Panel", QuestIcon, "QuestSuccesIcon");
-	QuestSuccesIcon.AddClass("QuestSuccesIcon");
-
-	if (Number(quest_table[2]) >= Number(quest_player_table.count))
-	{
-		DayQuest.AddClass("QuestComplete");
-	}
-
-    let QuestLockedBG = $.CreatePanel("Panel", QuestIcon, "");
-	QuestLockedBG.AddClass("QuestLockedBG");
-    
-    let QuestLockedBGIcon = $.CreatePanel("Panel", QuestIcon, "");
-	QuestLockedBGIcon.AddClass("QuestLockedBGIcon");
+    const QuestLockedBGIcon = $.CreatePanel("Panel", QuestIcon, "");
+    QuestLockedBGIcon.AddClass("QuestLockedBGIcon");
 }
 
-function UpdateQuest(data)
-{
-        if (HIDE_QUESTS_PANEL) { return }
-        $("#PanelShadow").style.visibility = "visible"
-	let quest_id = data.quest_id
-	let current = data.current
-	let quest_table = null
-	player_table[1] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[10]; 
-	player_table[0] = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())[15];
-	for (var i = 1; i < quest_information_table.length; i++) {
-		if (Number(quest_information_table[i][0]) == Number(quest_id))
-		{
-			quest_table = quest_information_table[i]
-		}
-	}
+function OnShopTableChanged(tableName, key, data) {
+    if (HIDE_QUESTS_PANEL) return;
 
-	if (quest_table == null) {
-		//$.Msg("У вас нет задания в базе")
-		return
-	}
+    const localPlayerKey = GetLocalPlayerKey();
 
-	let quest_panel = $.GetContextPanel().FindChildTraverse("quest_id_" + quest_id)
-	if (quest_panel) 
-    {
-		let percentage = ((quest_table[4]-current)*100)/quest_table[4]
-		let QuestProgressLine = quest_panel.FindChildTraverse("QuestProgressLine")
-		let QuestProgressLabel = quest_panel.FindChildTraverse("QuestProgressLabel")
-		if (QuestProgressLine)
-		{
-			QuestProgressLine.style['width'] = (100 - percentage) +'%';
-		}
-		if (QuestProgressLabel)
-		{
-			QuestProgressLabel.text = current + " / " + quest_table[4]  // Прогресс квеста
-		}
-        if (Number(current) >= Number(quest_table[4]))
-        {
-            quest_panel.AddClass("QuestComplete");
-        }
-	} 
+    if (key !== "bpday" && key !== localPlayerKey) {
+        return;
+    }
+
+    ScheduleRebuild(0.05);
 }
 
-
-GameEvents.SubscribeProtected( "troll_quest_update_after", UpdateQuestAfter );
-
-function UpdateQuestAfter()
-{
+function UpdateQuestAfter() {
     if (HIDE_QUESTS_PANEL) {
         const root = $.GetContextPanel();
 
@@ -272,23 +257,31 @@ function UpdateQuestAfter()
 
         return;
     }
-    if (UPDATED_QUEST_DAY[Players.GetLocalPlayer()] != null ) { return }
-    UPDATED_QUEST_DAY[Players.GetLocalPlayer()] = true
-        var questsPanel = $("#QuestsPanel");
-    questsPanel.RemoveAndDeleteChildren();
-    CreateQuests();
-	//UpdateQuest()
+
+    ScheduleRebuild(0.05);
 }
 
-if (!HIDE_QUESTS_PANEL) {
-    CreateQuests();
-} else {
-    var questsPanel = $("#QuestsPanel");
-    if (questsPanel) questsPanel.style.visibility = "collapse";
+function InitQuests() {
+    if (QUESTS_INITIALIZED) return;
+    QUESTS_INITIALIZED = true;
 
-    var questsPanelSwap = $("#QuestPanelSwap");
-    if (questsPanelSwap) questsPanelSwap.style.visibility = "collapse";
+    if (HIDE_QUESTS_PANEL) {
+        const questsPanel = $("#QuestsPanel");
+        if (questsPanel) questsPanel.style.visibility = "collapse";
 
-    var panelShadow = $("#PanelShadow") || $.GetContextPanel().FindChildrenWithClassTraverse("PanelShadow")[0];
-    if (panelShadow) panelShadow.style.visibility = "collapse";
+        const questsPanelSwap = $("#QuestPanelSwap");
+        if (questsPanelSwap) questsPanelSwap.style.visibility = "collapse";
+
+        const panelShadow = $("#PanelShadow") || $.GetContextPanel().FindChildrenWithClassTraverse("PanelShadow")[0];
+        if (panelShadow) panelShadow.style.visibility = "collapse";
+
+        return;
+    }
+
+    CustomNetTables.SubscribeNetTableListener("Shop", OnShopTableChanged);
+    GameEvents.SubscribeProtected("troll_quest_update_after", UpdateQuestAfter);
+
+    ScheduleRebuild(0.01);
 }
+
+InitQuests();

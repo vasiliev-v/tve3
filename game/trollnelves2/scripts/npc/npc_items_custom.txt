@@ -20,12 +20,19 @@
 		"ItemQuality"                   "rare"
 		"ItemAliases"                   "reveal item"
 
+		"ItemStockInitial" 				"1" 
+		"ItemInitialStockTime"			"1"	
+		"ItemStockTime"					"1"	
+		"ItemStockMax"					"5"	
+		"ItemStackable"					"1"
+		"ItemInitialCharges"            "1"
+
 		"ScriptFile"                    "items\item_reveal.lua"
 
 		"AbilityValues"
 		{
 			"gold_cost"                 "0"
-			"lumber_cost"               "2"
+			"lumber_cost"               "5"
 			"dur_time"                  "10"
 			"radius1"                   "2400"
 		}
