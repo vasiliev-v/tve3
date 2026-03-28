@@ -513,8 +513,8 @@ function UpgradeBuilding( event )
         CheckBank = true
         local roll_chance = RandomFloat(0, 100)
         if GameRules.test == true or GameRules.test2 == true then
-            roll_chance = 0 
-            CheckBank = false
+            -- roll_chance = 0 
+            -- CheckBank = false
         end
         local playername = PlayerResource:GetPlayerName(playerID)
 
@@ -542,8 +542,8 @@ function UpgradeBuilding( event )
         CheckBarak3 = true
         local roll_chance = RandomFloat(0, 100)
         if GameRules.test == true or GameRules.test2 == true then
-            roll_chance = 0 
-            CheckBarak3 = false
+            -- roll_chance = 0 
+            -- CheckBarak3 = false
         end
         local playername = PlayerResource:GetPlayerName(playerID)
 

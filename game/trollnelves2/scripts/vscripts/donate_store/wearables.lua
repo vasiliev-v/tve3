@@ -8,11 +8,74 @@ require('settings')
 require("donate_store/wearables_data")
 
 function wearables:SelectPart(info)
+    local hero = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
+    if not hero or hero:IsNull() then
+        return
+    end
+
+    local skinData = GameRules.SkinTower[info.PlayerID]
+    if not skinData then
+        return
+    end
+
+    -- Сохраняем выбранную модель ДО любых изменений
+    local savedWolf = skinData["wolf"]
+    local savedSkin = skinData["skin"]
+
+    local function RestoreSavedModel()
+        local hero2 = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
+        if not hero2 or hero2:IsNull() then
+            return
+        end
+
+        if hero2:IsWolf() then
+            if savedWolf ~= nil and savedWolf ~= "" then
+                SetModelVip(hero2, tostring(savedWolf))
+            end
+        elseif hero2:IsElf() then
+            if savedSkin ~= nil and savedSkin ~= "" then
+                SetModelVip(hero2, tostring(savedSkin))
+            end
+        end
+    end
+
+    local function RebuildEffect(newPart)
+        local hero2 = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
+        if not hero2 or hero2:IsNull() then
+            return
+        end
+
+        -- 1. удалить старый эффект
+        hero2:RemoveModifierByName("part_mod")
+
+        -- 2. поставить стандартную модель
+        wearables:ApplyDefaultModel(info.PlayerID)
+
+        -- 3. на следующий кадр повесить новый эффект
+        Timers:CreateTimer(FrameTime(), function()
+            local hero3 = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
+            if not hero3 or hero3:IsNull() then
+                return
+            end
+
+            if newPart ~= nil then
+                hero3:AddNewModifier(hero3, hero3, "part_mod", { part = newPart })
+                GameRules.SkinTower[info.PlayerID]["effect"] = newPart
+            else
+                GameRules.SkinTower[info.PlayerID]["effect"] = nil
+            end
+
+            -- 4. ещё на следующий кадр вернуть сохранённую модель
+            Timers:CreateTimer(FrameTime(), function()
+                RestoreSavedModel()
+                CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
+            end)
+        end)
+    end
+
+    -- Снятие эффекта
     if info.offp ~= 0 then
-        -- сброс эффекта
-        GameRules.SkinTower[info.PlayerID]["effect"] = nil
-        PlayerResource:GetSelectedHeroEntity(info.PlayerID):RemoveModifierByName("part_mod")
-        CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
+        RebuildEffect(nil)
         return
     end
 
@@ -21,8 +84,6 @@ function wearables:SelectPart(info)
         return
     end
 
-    -- Общие действия
-    local hero = PlayerResource:GetSelectedHeroEntity(info.PlayerID)
     local arr = {
         info.PlayerID,
         PlayerResource:GetPlayerName(info.PlayerID),
@@ -31,18 +92,7 @@ function wearables:SelectPart(info)
     }
     CustomGameEventManager:Send_ServerToAllClients("UpdateParticlesUI", arr)
 
-    hero:RemoveModifierByName("part_mod")
-    hero:AddNewModifier(hero, hero, "part_mod", { part = info.part })
-
-    -- Применяем лейбл из таблицы
-    --local cfg = Wearables.EffectConfig[info.part]
-    --if cfg then
-    --    hero:SetCustomHealthLabel(cfg.label, unpack(cfg.color))
-    --end
-
-    -- Запоминаем выбор
-    GameRules.SkinTower[info.PlayerID]["effect"] = info.part
-    CustomNetTables:SetTableValue("Shop_active", tostring(info.PlayerID), GameRules.SkinTower[info.PlayerID])
+    RebuildEffect(info.part)
 end
 
 function wearables:AttachWearable(unit, modelPath)
@@ -368,17 +418,21 @@ function SetModelVip(npc, num)
     end
 end
 
-function SetModelStandart(npc)	
-	if npc:GetUnitName() == "npc_dota_hero_lycan" then
-		npc:SetOriginalModel("models/heroes/lycan/lycan_wolf.vmdl")
-		npc:SetModel("models/heroes/lycan/lycan_wolf.vmdl")
-		npc:SetModelScale(1)
+function SetModelStandart(npc)
+    if not npc or npc:IsNull() then return end
+
+    if npc:GetUnitName() == "npc_dota_hero_lycan" then
+        npc:SetOriginalModel("models/heroes/lycan/lycan_wolf.vmdl")
+        npc:SetModel("models/heroes/lycan/lycan_wolf.vmdl")
+        npc:SetModelScale(1)
         GameRules.SkinTower[npc:GetPlayerOwnerID()]["wolf"] = nil
-	elseif npc:IsElf() then
-		npc:SetOriginalModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
-		npc:SetModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
-		npc:SetModelScale(1)
-	end
+
+    elseif npc:IsElf() then
+        npc:SetOriginalModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+        npc:SetModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+        npc:SetModelScale(1)
+        GameRules.SkinTower[npc:GetPlayerOwnerID()]["skin"] = nil
+    end
 end
 
 function wearables:SelectSkinTower(info)
@@ -537,5 +591,41 @@ function SetModelVipTower(npc, num, playerID)
 
     -- Обновляем NetTable
     CustomNetTables:SetTableValue("Shop_active", tostring(playerID), GameRules.SkinTower[playerID])
+end
+
+function wearables:ApplyDefaultModel(playerID)
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    if not hero or hero:IsNull() then return end
+
+    if hero:IsWolf() then
+        hero:SetOriginalModel("models/heroes/lycan/lycan_wolf.vmdl")
+        hero:SetModel("models/heroes/lycan/lycan_wolf.vmdl")
+        hero:SetModelScale(1)
+
+    elseif hero:IsElf() then
+        hero:SetOriginalModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+        hero:SetModel("models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl")
+        hero:SetModelScale(1)
+    end
+end
+
+function wearables:RestoreSelectedModel(playerID)
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    if not hero or hero:IsNull() then return end
+
+    local data = GameRules.SkinTower[playerID]
+    if not data then return end
+
+    -- Возвращаем выбранную модель героя
+    if hero:IsWolf() then
+        if data["wolf"] ~= nil and data["wolf"] ~= "" then
+            SetModelVip(hero, tostring(data["wolf"]))
+        end
+
+    elseif hero:IsElf() then
+        if data["skin"] ~= nil and data["skin"] ~= "" then
+            SetModelVip(hero, tostring(data["skin"]))
+        end
+    end
 end
 
