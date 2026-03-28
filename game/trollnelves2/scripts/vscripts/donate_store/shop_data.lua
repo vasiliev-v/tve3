@@ -80,7 +80,6 @@ Shop.ITEM_RECOMMEND_IDS =
     ["515"] = true,
     ["521"] = true,
     ["524"] = true,
-    ["525"] = true,
 }
 
 Shop.DonateList = 
