@@ -412,20 +412,50 @@
     padding-left: 10px;
 }
 
+/* CARD ITEMS */
+
 .RecomItem 
 {
-    width: 120px;
-    margin: 20px;
+    width: 132px;
+    height: 182px;
+    margin: 14px 10px;
+    flow-children: down;
+    transition-property: transform, brightness;
+    transition-duration: 0.18s;
+}
+
+.RecomItem:hover
+{
+    transform: translateY(-2px);
+    brightness: 1.08;
+}
+
+.ItemImageWrap
+{
+    width: 132px;
+    height: 132px;
+    horizontal-align: center;
+    flow-children: none;
 }
 
 .ItemImage
 {
     width: 120px;
     height: 120px;
-    horizontal-align: center;
+    align: center bottom;
     border-radius: 100px;
-    border: 2px solid rgba(184, 255, 69, 0.5);
-    background-color: #141414;
+    border: 2px solid rgba(184, 255, 69, 0.45);
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #252825 ), to( #141414 ) );
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.IsItemBought .ItemImage,
+.RecomItem:hover .ItemImage
+{
+    border: 2px solid rgba(198, 255, 106, 0.75);
 }
 
 .LabelItemImage
@@ -438,9 +468,9 @@
     align: center center;
     text-align: center;
     width: 100%;
-    padding: 0px 8px;
+    padding: 0px 10px;
     color: white;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: semi-bold;
     text-overflow: shrink;
 }
@@ -452,17 +482,47 @@
     background-repeat: no-repeat;
 }
 
+.ItemTopNamePanel
+{
+    min-width: 54px;
+    max-width: 92px;
+    height: 20px;
+    horizontal-align: center;
+    vertical-align: top;
+    margin-top: -5px;
+    padding: 0px 6px;
+    background-color: transparent;
+    border: 0px solid transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    z-index: 6;
+}
+
+.ItemTopNameLabel
+{
+    align: center center;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-overflow: shrink;
+    max-width: 78px;
+    white-space: nowrap;
+    text-shadow: 0px 0px 4px 3 rgba(0, 0, 0, 0.85);
+}
+
 .BuyItemPanel 
 {
-    width: 90px;
+    width: 96px;
     height: 32px;
-    background-color: #141414;
-    border-radius: 20px;
-    border: 2px solid rgba(184, 255, 69, 0.5);
     horizontal-align: center;
-    margin-top: 105px;
-    transition-property: background-color;
-    transition-duration: 0.2s;
+    margin-top: -6px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #171717 ), to( #0e0e0e ) );
+    border-radius: 20px;
+    border: 2px solid rgba(184, 255, 69, 0.55);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.28);
+    transition-property: background-color, brightness, transform, border;
+    transition-duration: 0.18s;
 }
 
 .ItemPrice
@@ -473,39 +533,45 @@
 
 .PriceIcongold 
 {
-    width: 20px;
+    width: 18px;
+    height: 18px;
+    vertical-align: center;
+    margin-right: 3px;
     background-size: 100%;
-    height: 100%;
-    margin-right: 2px;
     background-image: url("file://{images}/custom_game/shop/gold_icon.png");
 }
 
 .PriceIcongem 
 {
-    width: 18px;
+    width: 16px;
+    height: 16px;
+    vertical-align: center;
+    margin-right: 3px;
     background-size: 100%;
-    height: 100%;
-    margin-right: 2px;
     background-image: url("file://{images}/custom_game/shop/gem_icon.png");
 }
 
 .PriceLabel 
 {
     text-align: center;
-    font-size: 16px;
-    color: #FFD74B;
+    font-size: 15px;
+    color: #EAF8D1;
     vertical-align: center;
     text-overflow: shrink;
+    font-weight: bold;
+    letter-spacing: 0.6px;
 }
 
 .RecomItem:hover .BuyItemPanel 
 {
-    background-color: #4B6834;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #536f39 ), to( #354825 ) );
+    brightness: 1.08;
 }
 
 .IsItemBought .BuyItemPanel
 {
-    background-color: #4B6834;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #536f39 ), to( #354825 ) );
+    border: 2px solid rgba(198, 255, 106, 0.9);
 }
 
 .IsItemBought .PriceLabel
@@ -513,9 +579,36 @@
     color: white;
     text-transform: uppercase;
     font-weight: semi-bold;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 1px;
 }
+
+.IsItemInventory .PriceLabel
+{
+    color: white;
+    text-transform: uppercase;
+    font-weight: semi-bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.DeactivateItem .BuyItemPanel
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #552020 ), to( #2f1111 ) );
+    border: 2px solid rgba(201, 9, 9, 0.9);
+}
+
+.DeactivateItem .ItemImage
+{
+    border: 2px solid rgba(201, 9, 9, 0.85);
+}
+
+.RecomItem.DeactivateItem:hover .BuyItemPanel 
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #6f2d2d ), to( #421919 ) );
+}
+
+/* MENU */
 
 .MenuItems 
 {
@@ -577,7 +670,7 @@
 {
     width: 100%;
     height: 720px;
-    overflow:  squish scroll;
+    overflow: squish scroll;
     flow-children: right-wrap;
 }
 
@@ -600,7 +693,7 @@
 {
     width: 100%;
     height: 720px;
-    overflow:  squish scroll;
+    overflow: squish scroll;
     flow-children: right-wrap;
 }
 
@@ -697,7 +790,7 @@
     text-align: center;
     font-size: 18px;
     color:#daebff;
-    align:  center center;
+    align: center center;
     text-overflow: shrink;
 }
 
@@ -747,7 +840,6 @@
 {
     ui-scale: 60%;
 }
-
 
 .Chest_in_item_preview 
 {
@@ -1073,15 +1165,6 @@
     text-shadow: 0px 0px 5px 2 rgba(0, 0, 0, 0.692);
 }
 
-.IsItemInventory .PriceLabel
-{
-    color: white;
-    text-transform: uppercase;
-    font-weight: semi-bold;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
 .ChestCounterPanel
 {
     background-color: #425524a1;
@@ -1125,21 +1208,4 @@
     font-weight: semi-bold;
     font-size: 36px;
     text-shadow: 0px 0px 5px 4 black;
-}
-
-.DeactivateItem .BuyItemPanel
-{
-    background-color: #360f0f;
-    border-radius: 20px;
-    border: 2px solid rgba(201, 9, 9, 0.884);
-}
-
-.DeactivateItem .ItemImage
-{
-    border: 2px solid rgb(180, 1, 1);
-}
-
-.RecomItem.DeactivateItem:hover .BuyItemPanel 
-{
-    background-color: #683434;
 }
