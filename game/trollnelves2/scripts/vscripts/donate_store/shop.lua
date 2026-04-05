@@ -714,69 +714,99 @@ function Shop:OpenChestAnimation(data)
 end
 
 function Shop:GetReward(chest_id, playerID)
-	if not GameRules.isTesting  then
+	if not GameRules.isTesting then
 		if GameRules:IsCheatMode() then return end
 	end
-	-- Написал убогий рандом надеюсь перепишешь
-	-- vladu4eg: мне нравится твоя идея. Сначала роллятся первые шмотки из списка, а потом уже дорогие шмотки. 
-	local reward_recieve = Shop.Chests[chest_id][2][1] 
-	local currency = RandomInt(Shop.Chests[chest_id][2][3][1], Shop.Chests[chest_id][2][3][2])
+
+	local chest_data = Shop.Chests[tostring(chest_id)] or Shop.Chests[chest_id]
+	if not chest_data then
+		return
+	end
+
+	local default_reward = chest_data[2]
+	local reward_recieve = default_reward[1]
+	local reward_range = default_reward[3]
+
 	local data = {}
 	data.SteamID = tostring(PlayerResource:GetSteamID(playerID))
 	data.PlayerID = playerID
-	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(playerID))
---	PoolTable["4"][tostring(chest_id)] = {tostring(chest_id), tostring(chest_id.score - 1) }
---	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)
-	if PoolTable["4"][tostring(chest_id)] == nil then
-		return
-	end
-	
-	--DebugPrint("reward_recieve " .. reward_recieve)
-	for _, reward in pairs(Shop.Chests[chest_id][1]) do
-		if RollPercentage(reward[2]) then
-		    reward_recieve = reward[1]
-			--DebugPrint("playerID " .. playerID)
-			
-			
-			for i, v in pairs(PoolTable["1"]) do
-				if tostring(reward[1]) == tostring(v) then
-					reward_recieve = Shop.Chests[chest_id][2][1]
-					goto continue
-				end
-			end
-			break
-		end
-
-		::continue::
-	end
 	data.TypeDonate = "chests"
 	data.Coint = "0"
-
-	data.Nick = chest_id 
-	data.Num = tostring(reward_recieve)
+	data.Nick = chest_id
 	data.id = tostring(playerID)
-	
-	if reward_recieve == "gold" then -- Проверка что выпала голда
+
+	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(playerID))
+	if not PoolTable or PoolTable["4"][tostring(chest_id)] == nil then
+		return
+	end
+
+	local final_range = reward_range
+
+	for _, reward in pairs(chest_data[1]) do
+		if RollPercentage(reward[2]) then
+			local candidate_reward = reward[1]
+			local candidate_range = reward[3]
+
+			-- gold/gem можно выдавать повторно, проверка на дубликаты им не нужна
+			if candidate_reward == "gold" or candidate_reward == "gem" then
+				reward_recieve = candidate_reward
+				final_range = candidate_range
+				break
+			end
+
+			local already_has_item = false
+			for _, v in pairs(PoolTable["1"]) do
+				if tostring(candidate_reward) == tostring(v) then
+					already_has_item = true
+					break
+				end
+			end
+
+			if not already_has_item then
+				reward_recieve = candidate_reward
+				final_range = candidate_range
+				break
+			else
+				reward_recieve = default_reward[1]
+				final_range = default_reward[3]
+			end
+		end
+	end
+
+	data.Num = tostring(reward_recieve)
+
+	if reward_recieve == "gold" then
+		local currency = RandomInt(final_range[1], final_range[2])
 		data.Gem = 0
 		data.Gold = currency
 		data.Num = tostring(999)
-		print(currency)
-	elseif reward_recieve == "gem" then -- Проверка что выпали гемы
+	elseif reward_recieve == "gem" then
+		local currency = RandomInt(final_range[1], final_range[2])
 		data.Gem = currency
 		data.Gold = 0
 		data.Num = tostring(999)
 	elseif reward_recieve < 100 then
-		data.Nick = "pet_open_" .. chest_id 
+		data.Gem = 0
+		data.Gold = 0
+		data.Nick = "pet_open_" .. chest_id
 	elseif reward_recieve >= 100 and reward_recieve < 200 then
-		data.Nick = "particle_open_" .. chest_id 
+		data.Gem = 0
+		data.Gold = 0
+		data.Nick = "particle_open_" .. chest_id
 	elseif reward_recieve >= 600 and reward_recieve < 700 then
-		data.Nick = "skin_open_" .. chest_id 
+		data.Gem = 0
+		data.Gold = 0
+		data.Nick = "skin_open_" .. chest_id
 	elseif reward_recieve >= 700 and reward_recieve < 900 then
-		data.Nick = "sound_open_" .. chest_id 
+		data.Gem = 0
+		data.Gold = 0
+		data.Nick = "sound_open_" .. chest_id
+	else
+		data.Gem = 0
+		data.Gold = 0
 	end
-	
+
 	Shop:BuyOpenChests(data, callback)
-	-- Тут сразу можно отправку в базу данных оформить для награды, ее айди это reward_recieve / currency это сколько голды или гемов
 	return reward_recieve
 end
 

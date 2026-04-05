@@ -631,7 +631,14 @@ function CreateItemInChestPreview(panel, table, i, table_chest)
 {
 	for (let item_chest_num in table_chest[1]) 
     {
-        let item_chest_info = table_chest[1][item_chest_num]
+        let item_chest_info = table_chest[1][item_chest_num];
+
+        if (item_chest_info[1] == "gold" || item_chest_info[1] == "gem")
+        {
+            CreateCurrencyInChestPreview(panel, item_chest_info);
+            continue;
+        }
+
 		if (table[i][1] == item_chest_info[1]) 
         {
 			if (!panel.FindChildTraverse("item_" + item_chest_info[1])) 
@@ -642,12 +649,12 @@ function CreateItemInChestPreview(panel, table, i, table_chest)
 				let ItemImage = $.CreatePanel("Panel", Chest_in_item, "");
 				ItemImage.AddClass("ItemChestImage_preview");
 				ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + table[i][4] + '.png")';
-				ItemImage.style.backgroundSize = "100%"
+				ItemImage.style.backgroundSize = "100%";
 
 				let RarePanel = $.CreatePanel("Panel", Chest_in_item, "");
 				RarePanel.AddClass("RarePanel");
 
-                let color_rare = CHEST_GRADIENT_COLORS[table[i][7]]
+                let color_rare = CHEST_GRADIENT_COLORS[table[i][7]];
                 if (color_rare)
                 {
                     ItemImage.style.borderBrush = 'gradient( linear, 0% 0%, 0% 100%, from( ' + CHEST_GRADIENT_COLORS[table[i][7]][0] + ' ), to( ' + CHEST_GRADIENT_COLORS[table[i][7]][1] + ' ))';
@@ -655,11 +662,11 @@ function CreateItemInChestPreview(panel, table, i, table_chest)
 
 				let ItemName = $.CreatePanel("Label", RarePanel, "ItemName");
 				ItemName.AddClass("ItemChestName_preview");
-				ItemName.text = $.Localize("#" + table[i][5])
+				ItemName.text = $.Localize("#" + table[i][5]);
 			
                 if (PlayerHasItem(item_chest_info[1]))
                 {
-                    Chest_in_item.AddClass("HasItemInChest")
+                    Chest_in_item.AddClass("HasItemInChest");
                 }
 			}
 		}
@@ -902,10 +909,10 @@ function CreateItemInRoll(main_panel, item_info, delay_count, roll, drop_slot, c
 {
     $.Schedule(0.01 * delay_count, function()
     {
-        let panel_id = ""
+        let panel_id = "";
         if (drop_slot)
         {
-            panel_id = "dropped_item"
+            panel_id = "dropped_item";
         }
 
         let chest_roll_item = $.CreatePanel("Panel", main_panel, panel_id);
@@ -920,31 +927,40 @@ function CreateItemInRoll(main_panel, item_info, delay_count, roll, drop_slot, c
         let ItemRollRarity = $.CreatePanel("Panel", chest_roll_item, "");
         ItemRollRarity.AddClass("ItemRollRarity");
 
-        let item_info_real = GetItemInfo(item_info[1])
-        if (item_info_real != null)
+        if (item_info[1] == "gold" || item_info[1] == "gem")
         {
-            if (BOX_SHADOW_COLORS[item_info_real[7]])
+            ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + item_info[1] + '.png")';
+            ItemImage.style.backgroundSize = "100%";
+            ItemRollRarity.style.opacity = "0.3";
+        }
+        else
+        {
+            let item_info_real = GetItemInfo(item_info[1]);
+            if (item_info_real != null)
             {
-                ItemRollRarity.style.washColor = BOX_SHADOW_COLORS[item_info_real[7]]
-                ItemRollRarity.style.opacity = "0.3"
+                if (BOX_SHADOW_COLORS[item_info_real[7]])
+                {
+                    ItemRollRarity.style.washColor = BOX_SHADOW_COLORS[item_info_real[7]];
+                    ItemRollRarity.style.opacity = "0.3";
+                }
+                ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + item_info_real[4] + '.png")';
+                ItemImage.style.backgroundSize = "100%";
             }
-            ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + item_info_real[4] + '.png")';
-            ItemImage.style.backgroundSize = "100%"
         }
 
         $.Schedule(0.1, function()
         {
             if (drop_slot)
             {
-                let check_pos = chest_roll_item.style.position
+                let check_pos = chest_roll_item.style.position;
                 let SpaceFind = check_pos.indexOf('px');
-                let center_panel = Number(check_pos.substring(0, SpaceFind))
-                SOUND_TICK_WIDTH = (chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) + (20 * 2)
-                DROP_POS[0] = -((center_panel - (((chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) * 2)) + ((chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) * 0.25)) - ((chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) / 2))
-                DROP_POS[1] = DROP_POS[0]
+                let center_panel = Number(check_pos.substring(0, SpaceFind));
+                SOUND_TICK_WIDTH = (chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) + (20 * 2);
+                DROP_POS[0] = -((center_panel - (((chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) * 2)) + ((chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) * 0.25)) - ((chest_roll_item.actuallayoutwidth / chest_roll_item.actualuiscale_x) / 2));
+                DROP_POS[1] = DROP_POS[0];
             }
-        })
-    })
+        });
+    });
 }
 
 function CheckDropPos(pos)
@@ -1000,7 +1016,7 @@ function RewardRequest(data)
         }
         if (reward == "gem") 
         {
-            ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/gem.png")';
+            ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/gem_icon.png")'; 
             ItemImage.style.backgroundSize = "100%"
         }
     }
@@ -1062,7 +1078,7 @@ function SetRewardView(drop_id)
 	    }
 	    if (drop_id == "gem") 
         {
-	    	icon = "gem"
+	    	icon = "gem_icon"
 	    }
 	}
 
@@ -1133,4 +1149,35 @@ GameUI.CustomUIConfig().OpenPanelBuyPass = function()
         BuyItemFunction(table); 
         CloseItemInfo(); 
     });
+}
+
+function CreateCurrencyInChestPreview(panel, currency_info)
+{
+    if (!currency_info || !currency_info[1]) 
+    {
+        return;
+    }
+
+    let currency = currency_info[1];
+
+    if (panel.FindChildTraverse("item_" + currency))
+    {
+        return;
+    }
+
+    let Chest_in_item = $.CreatePanel("Panel", panel, "item_" + currency);
+    Chest_in_item.AddClass("Chest_in_item_preview");
+
+    let ItemImage = $.CreatePanel("Panel", Chest_in_item, "");
+    ItemImage.AddClass("ItemChestImage_preview");
+    ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + currency + '.png")';
+    ItemImage.style.backgroundSize = "100%";
+
+    let RarePanel = $.CreatePanel("Panel", Chest_in_item, "");
+    RarePanel.AddClass("RarePanel");
+    ItemImage.style.borderBrush = 'gradient( linear, 0% 0%, 0% 100%, from( #b28a33 ), to( #664c15 ))';
+
+    let ItemName = $.CreatePanel("Label", RarePanel, "ItemName");
+    ItemName.AddClass("ItemChestName_preview");
+    ItemName.text = $.Localize("#shop_currency_" + currency);
 }
