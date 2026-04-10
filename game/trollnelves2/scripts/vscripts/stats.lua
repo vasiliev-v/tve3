@@ -689,7 +689,7 @@ function Stats.CheckDayQuest(pId)
 		return
 	end
 
-	for i = 1, 4 do
+	for i = 1, 5 do
 		local quest_data = player_table["1"] and player_table["1"][tostring(i)]
 		if not quest_data or not quest_data["1"] then goto continue end
 		local quest_id = quest_data["1"]
@@ -724,7 +724,7 @@ function isQuestCompleted(q, pId)
 	local hero = PlayerResource:GetSelectedHeroEntity(pId)
 	if not hero then return false end
 
-	if q.team and q.team ~= tostring(PlayerResource:GetTeam(pId)) then
+	if q.team and q.team ~= "" and q.team ~= tostring(PlayerResource:GetTeam(pId)) then
 		return false
 	end
 
@@ -735,7 +735,7 @@ function isQuestCompleted(q, pId)
 		end
 	end
 
-	if hero:HasModifier("modifier_" .. q.icon) or hero:HasModifier("modifier_" .. q.icon .. "_x4") then
+	if q.icon and q.icon ~= "" and hero:HasModifier("modifier_" .. q.icon) or hero:HasModifier("modifier_" .. q.icon .. "_x4") then
 		return true
 	end
 

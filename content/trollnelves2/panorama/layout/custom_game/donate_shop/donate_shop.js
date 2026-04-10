@@ -566,7 +566,7 @@ function SetItemBuyFunction(panel, table)
                     CreateItemInChestPreview(ChestItemPreview, Items_ALL, i, chest_table)
                 }
 		    }
-		    CreateItemCurrencyPreview(ChestItemPreview, chest_table[2][1], chest_table[2][3], chest_table[2][2])
+		    CreateItemCurrencyPreview(ChestItemPreview, chest_table[2])
 		}
 
 		let BuyItemPanel = $.CreatePanel("Panel", $("#ItemInfoBody"), "BuyItemPanel");
@@ -586,7 +586,10 @@ function SetItemBuyFunction(panel, table)
 
 function BuyItemFunction(table) 
 {
-	if ((table[2] == "gold" && Number(table[3]) <= Number(player_table[0][0])) || (table[2] == "gem" && Number(table[2]) <= Number(player_table[0][1])) && Number(table[3]) != "999999") 
+	if (
+		(table[2] == "gold" && Number(table[3]) <= Number(player_table[0][0])) ||
+		(table[2] == "gem" && Number(table[3]) <= Number(player_table[0][1]))
+	) 
 	{
 		GameEvents.SendCustomGameEventToServer("BuyShopItem", { id: Players.GetLocalPlayer(), TypeDonate: table[2], Coint: table[3], Nick: table[5], Num: table[1] });
 	} 
@@ -608,23 +611,45 @@ function GetChestInfo(id)
     return null
 }
 
-function CreateItemCurrencyPreview(panel, currency, count, chance) 
+function CreateItemCurrencyPreview(panel, currency_info) 
 {
-	let Chest_in_item = $.CreatePanel("Panel", panel, "item_" + currency);
-	Chest_in_item.AddClass("Chest_in_item_preview");
+    if (!currency_info || !currency_info[1])
+    {
+        return;
+    }
 
-	let ItemImage = $.CreatePanel("Panel", Chest_in_item, "");
-	ItemImage.AddClass("ItemChestImage_preview");
-	ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + currency + '.png")';
-	ItemImage.style.backgroundSize = "100%"
+    let currency = currency_info[1];
+    let amount_text = GetCurrencyAmountText(currency_info);
 
-	let RarePanel = $.CreatePanel("Panel", Chest_in_item, "");
-	RarePanel.AddClass("RarePanel");
-	ItemImage.style.borderBrush = 'gradient( linear, 0% 0%, 0% 100%, from( #b28a33 ), to( #664c15 ))';
+    let unique_id = "item_" + currency + "_" + amount_text.replace(/[^0-9\-]/g, "");
 
-	let ItemName = $.CreatePanel("Label", RarePanel, "ItemName");
-	ItemName.AddClass("ItemChestName_preview");
-	ItemName.text = $.Localize("#shop_currency_" + currency)
+    if (panel.FindChildTraverse(unique_id))
+    {
+        return;
+    }
+
+    let Chest_in_item = $.CreatePanel("Panel", panel, unique_id);
+    Chest_in_item.AddClass("Chest_in_item_preview");
+
+    let ItemImage = $.CreatePanel("Panel", Chest_in_item, "");
+    ItemImage.AddClass("ItemChestImage_preview");
+    ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + currency + '.png")';
+    ItemImage.style.backgroundSize = "100%";
+
+    let RarePanel = $.CreatePanel("Panel", Chest_in_item, "");
+    RarePanel.AddClass("RarePanel");
+    ItemImage.style.borderBrush = 'gradient( linear, 0% 0%, 0% 100%, from( #b28a33 ), to( #664c15 ))';
+
+    let ItemName = $.CreatePanel("Label", RarePanel, "ItemName");
+    ItemName.AddClass("ItemChestName_preview");
+    ItemName.text = $.Localize("#shop_currency_" + currency);
+
+    if (amount_text !== "")
+    {
+        let CountLabel = $.CreatePanel("Label", Chest_in_item, "");
+        CountLabel.AddClass("ChestItemCountLabel");
+        CountLabel.text = amount_text;
+    }
 }
 
 function CreateItemInChestPreview(panel, table, i, table_chest) 
@@ -881,7 +906,7 @@ function SetOpenChestPanel(panel, table)
             }
         }
 
-	    CreateItemCurrencyPreview(ChestAllRewardsPanel, chest_table[2][1], chest_table[2][3], chest_table[2][2])
+	    CreateItemCurrencyPreview(ChestAllRewardsPanel, chest_table[2])
         RecreateRandomItemsList(chest_dropped_panel_line, chest_table)
 		OpenChestButton.SetPanelEvent("onactivate", function() { OpenChest(table); });
     });  
@@ -991,19 +1016,24 @@ function OpenChest(table)
     {
         OpenChestButton.style.opacity = "0"
     }
-	GameEvents.SendCustomGameEventToServer("OpenChestAnimation", { chest_id: table[1], PlayerID2: Players.GetLocalPlayer() });
+	GameEvents.SendCustomGameEventToServer("OpenChestAnimation", { chest_id: table[1] });
 }
 
 function RewardRequest(data) 
 {
+    //$.Msg(data)
     let reward = data.reward
+    let reward_count = Number(data.count) || 1
+    //$.Msg(reward_count)
     let current = 0
     let randomly_max_distance = Math.floor(DROP_POS[0]);
     let chest_dropped_panel_line = $("#ChestBodyInfo").FindChildTraverse("chest_dropped_panel_line")
+
     if (chest_dropped_panel_line)
     {
         let ItemImage = chest_dropped_panel_line.FindChildTraverse("dropped_item").FindChildTraverse("ItemImage")
         let item_info_real = GetItemInfo(reward)
+
         if (item_info_real != null)
         {
             ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + item_info_real[4] + '.png")';
@@ -1016,14 +1046,15 @@ function RewardRequest(data)
         }
         if (reward == "gem") 
         {
-            ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/gem_icon.png")'; 
+            ItemImage.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/gem.png")';
             ItemImage.style.backgroundSize = "100%"
         }
     }
-    ChestAnimate(current, randomly_max_distance, STARTING_SPEED, SOUND_TICK_WIDTH, reward)
+
+    ChestAnimate(current, randomly_max_distance, STARTING_SPEED, SOUND_TICK_WIDTH, reward, reward_count)
 }
 
-function ChestAnimate(current, drop_distance, speed, sound_tick, drop_id)
+function ChestAnimate(current, drop_distance, speed, sound_tick, drop_id, reward_count)
 {
     let chest_dropped_panel_line = $("#ChestBodyInfo").FindChildTraverse("chest_dropped_panel_line")
     if ($("#ChestOpenPanelMainClosed").visible == false)
@@ -1034,7 +1065,7 @@ function ChestAnimate(current, drop_distance, speed, sound_tick, drop_id)
     {
         $.Schedule(0.1, function() 
         {
-            SetRewardView(drop_id)
+            SetRewardView(drop_id, reward_count)
         })
         current = drop_distance
         chest_dropped_panel_line.style.position = drop_distance + "px 0px 0px"
@@ -1055,45 +1086,56 @@ function ChestAnimate(current, drop_distance, speed, sound_tick, drop_id)
     chest_dropped_panel_line.style.position = current + "px 0px 0px"
     $.Schedule(Game.GetGameFrameTime(), function() 
     {
-		ChestAnimate(current, drop_distance, speed, sound_tick, drop_id)
-	})
+        ChestAnimate(current, drop_distance, speed, sound_tick, drop_id, reward_count)
+    })
 }
 
-function SetRewardView(drop_id)
+function SetRewardView(drop_id, reward_count)
 {
     $("#chest_opened_animation").RemoveAndDeleteChildren()
-	let RewardIcon = $.CreatePanel("Panel", $("#chest_opened_animation"), "RewardIcon");
-	RewardIcon.AddClass("ChestOpenImageItem");
-	let icon
-	if (drop_id) 
+
+    let RewardIcon = $.CreatePanel("Panel", $("#chest_opened_animation"), "RewardIcon");
+    RewardIcon.AddClass("ChestOpenImageItem");
+
+    let icon;
+    if (drop_id) 
     {
-        let item_info_real = GetItemInfo(drop_id)
+        let item_info_real = GetItemInfo(drop_id);
         if (item_info_real != null)
         {
-            icon = item_info_real[4]
+            icon = item_info_real[4];
         }
-	    if (drop_id == "gold") 
+        if (drop_id == "gold")
         {
-	    	icon = "gold"
-	    }
-	    if (drop_id == "gem") 
+            icon = "gold";
+        }
+        if (drop_id == "gem")
         {
-	    	icon = "gem_icon"
-	    }
-	}
+            icon = "gem";
+        }
+    }
 
-	RewardIcon.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + icon + '.png")';
-	RewardIcon.style.backgroundSize = "100%"
+    RewardIcon.style.backgroundImage = 'url("file://{images}/custom_game/shop/itemicon/' + icon + '.png")';
+    RewardIcon.style.backgroundSize = "100%";
 
-	let AcceptButton = $.CreatePanel("Panel", $("#chest_opened_animation"), "AcceptButton");
-	AcceptButton.AddClass("AcceptButton");
-	AcceptButton.SetPanelEvent("onactivate", function() { CloseChest(); CloseOpenChest() });
-	
-	let LabelAccept = $.CreatePanel("Label", AcceptButton, "LabelAccept");
-	LabelAccept.AddClass("LabelAccept");
-	LabelAccept.text = $.Localize("#shop_accept")
+    if ((drop_id == "gold" || drop_id == "gem") && Number(reward_count) > 0)
+    {
+        let RewardCount = $.CreatePanel("Label", $("#chest_opened_animation"), "ChestRewardCount");
+        RewardCount.AddClass("ChestRewardCountLabel");
+        RewardCount.text = String(reward_count);
+        RewardCount.style.visibility = "visible";
+        RewardCount.style.opacity = "1";
+    }
+
+    let AcceptButton = $.CreatePanel("Panel", $("#chest_opened_animation"), "AcceptButton");
+    AcceptButton.AddClass("AcceptButton");
+    AcceptButton.SetPanelEvent("onactivate", function() { CloseChest(); CloseOpenChest() });
     
-    $("#chest_opened_animation").style.visibility = "visible"
+    let LabelAccept = $.CreatePanel("Label", AcceptButton, "LabelAccept");
+    LabelAccept.AddClass("LabelAccept");
+    LabelAccept.text = $.Localize("#shop_accept");
+    
+    $("#chest_opened_animation").style.visibility = "visible";
 }
 
 function CloseChest() 
@@ -1134,7 +1176,7 @@ GameUI.CustomUIConfig().OpenPanelBuyPass = function()
                 CreateItemInChestPreview(ChestItemPreview, Items_ALL, i, chest_table)
             }
         }
-        CreateItemCurrencyPreview(ChestItemPreview, chest_table[2][1], chest_table[2][3], chest_table[2][2])
+        CreateItemCurrencyPreview(ChestItemPreview, chest_table[2])
     }
 
     let BuyItemPanel = $.CreatePanel("Panel", $("#ItemInfoBody"), "BuyItemPanel");
@@ -1159,13 +1201,16 @@ function CreateCurrencyInChestPreview(panel, currency_info)
     }
 
     let currency = currency_info[1];
+    let amount_text = GetCurrencyAmountText(currency_info);
 
-    if (panel.FindChildTraverse("item_" + currency))
+    let unique_id = "item_" + currency + "_" + amount_text.replace(/[^0-9\-]/g, "");
+
+    if (panel.FindChildTraverse(unique_id))
     {
         return;
     }
 
-    let Chest_in_item = $.CreatePanel("Panel", panel, "item_" + currency);
+    let Chest_in_item = $.CreatePanel("Panel", panel, unique_id);
     Chest_in_item.AddClass("Chest_in_item_preview");
 
     let ItemImage = $.CreatePanel("Panel", Chest_in_item, "");
@@ -1180,4 +1225,41 @@ function CreateCurrencyInChestPreview(panel, currency_info)
     let ItemName = $.CreatePanel("Label", RarePanel, "ItemName");
     ItemName.AddClass("ItemChestName_preview");
     ItemName.text = $.Localize("#shop_currency_" + currency);
+
+    if (amount_text !== "")
+    {
+        let CountLabel = $.CreatePanel("Label", Chest_in_item, "");
+        CountLabel.AddClass("ChestItemCountLabel");
+        CountLabel.text = amount_text;
+    }
+}
+
+function GetCurrencyAmountText(currency_info)
+{
+    if (!currency_info || !currency_info[3])
+    {
+        return "";
+    }
+
+    let amount_data = currency_info[3];
+
+    let min_value = Number(amount_data[1] || amount_data[0] || 0);
+    let max_value = Number(amount_data[2] || amount_data[1] || 0);
+
+    if (min_value <= 0 && max_value <= 0)
+    {
+        return "";
+    }
+
+    if (max_value <= 0)
+    {
+        max_value = min_value;
+    }
+
+    if (min_value === max_value)
+    {
+        return String(min_value);
+    }
+
+    return String(min_value) + "-" + String(max_value);
 }

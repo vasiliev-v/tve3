@@ -137,7 +137,8 @@
     align: center center;
     background-size: 100%;
     transition-duration: 0.25s;
-    transition-property: pre-transform-scale2d;
+    /* transition-property: pre-transform-scale2d; */
+    pre-transform-scale2d: 1.15;
 }
 
 #BonusRate 
@@ -164,7 +165,9 @@
     align: center center;
     background-size: 100%;
     transition-duration: 0.25s;
-    transition-property: pre-transform-scale2d;
+    /* transition-property: pre-transform-scale2d; */
+    pre-transform-scale2d: 1.15;
+    
 }
 
 #BattlePassButton 
@@ -189,7 +192,8 @@
     height: 100%;
     align: center center;
     transition-duration: 0.25s;
-    transition-property: pre-transform-scale2d;
+    /* transition-property: pre-transform-scale2d; */
+    pre-transform-scale2d: 1.15;
 }
 
 .CloseShop 
@@ -858,16 +862,6 @@
     background-color: #141414;
 }
 
-.ItemChestName_preview 
-{
-    text-align: center;
-    font-size: 12px;
-    color: white;
-    font-weight: bold;
-    align: center center;
-    text-overflow: shrink;
-}
-
 .HasItemInChest .ItemChestImage_preview
 {
     saturation: 0;
@@ -1068,12 +1062,6 @@
     font-weight: bold;
 }
 
-.RarePanel 
-{
-    width: 100%;
-    height: 20px;
-}
-
 .chest_roll_item
 {
     width: 190px;
@@ -1208,4 +1196,62 @@
     font-weight: semi-bold;
     font-size: 36px;
     text-shadow: 0px 0px 5px 4 black;
+}
+
+.RarePanel 
+{
+    width: 100%;
+    height: 20px;
+}
+
+.ItemChestName_preview 
+{
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+    align: center center;
+    text-overflow: shrink;
+}
+
+.ChestItemCountLabel
+{
+    width: 76px;
+    horizontal-align: center;
+    text-align: center;
+    margin-top: 2px;
+    /* color: rgba(184, 255, 69, 0.88); */
+    color: white;
+    font-size: 11px;
+    font-weight: semi-bold;
+    letter-spacing: 0.4px;
+    text-shadow: 0px 0px 3px 2 rgba(0, 0, 0, 0.6);
+    z-index: 5;
+}
+
+.ChestRewardCountLabel
+{
+    ignore-parent-flow: true;
+    horizontal-align: center;
+    vertical-align: center;
+    margin-top: 196px;
+    padding: 2px 10px 3px 10px;
+
+    min-width: 56px;
+    text-align: center;
+
+    font-size: 24px;
+    font-weight: semi-bold;
+    letter-spacing: 0.4px;
+
+    color: gradient( linear, 0% 0%, 0% 100%, from( #FFF6C7 ), to( #E7C85A ) );
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( rgba(20, 20, 20, 0.92) ), to( rgba(8, 8, 8, 0.82) ) );
+
+    border: 1px solid rgba(255, 223, 120, 0.22);
+    border-radius: 18px;
+
+    text-shadow: 0px 0px 4px 3 rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.35);
+
+    z-index: 22;
 }

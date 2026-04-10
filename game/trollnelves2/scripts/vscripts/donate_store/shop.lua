@@ -709,8 +709,16 @@ end
 
 function Shop:OpenChestAnimation(data)
 	local id = data.PlayerID
-	local reward = Shop:GetReward(data.chest_id, id) -- Предлагаю в этой функции возвращать выданный айди предмета
-	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(id), "shop_reward_request", {reward = reward})
+	local reward, count = Shop:GetReward(data.chest_id, id)
+	--DebugPrint("reward, count " .. reward .. ", " .. count)
+	CustomGameEventManager:Send_ServerToPlayer(
+		PlayerResource:GetPlayer(id),
+		"shop_reward_request",
+		{
+			reward = reward,
+			count = count or 0
+		}
+	)
 end
 
 function Shop:GetReward(chest_id, playerID)
@@ -720,7 +728,7 @@ function Shop:GetReward(chest_id, playerID)
 
 	local chest_data = Shop.Chests[tostring(chest_id)] or Shop.Chests[chest_id]
 	if not chest_data then
-		return
+		return nil, 0
 	end
 
 	local default_reward = chest_data[2]
@@ -737,17 +745,17 @@ function Shop:GetReward(chest_id, playerID)
 
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(playerID))
 	if not PoolTable or PoolTable["4"][tostring(chest_id)] == nil then
-		return
+		return nil, 0
 	end
 
 	local final_range = reward_range
+	local reward_count = 0
 
 	for _, reward in pairs(chest_data[1]) do
 		if RollPercentage(reward[2]) then
 			local candidate_reward = reward[1]
 			local candidate_range = reward[3]
 
-			-- gold/gem можно выдавать повторно, проверка на дубликаты им не нужна
 			if candidate_reward == "gold" or candidate_reward == "gem" then
 				reward_recieve = candidate_reward
 				final_range = candidate_range
@@ -777,37 +785,45 @@ function Shop:GetReward(chest_id, playerID)
 
 	if reward_recieve == "gold" then
 		local currency = RandomInt(final_range[1], final_range[2])
+		reward_count = currency
 		data.Gem = 0
 		data.Gold = currency
 		data.Num = tostring(999)
+
 	elseif reward_recieve == "gem" then
 		local currency = RandomInt(final_range[1], final_range[2])
+		reward_count = currency
 		data.Gem = currency
 		data.Gold = 0
 		data.Num = tostring(999)
+
 	elseif reward_recieve < 100 then
 		data.Gem = 0
 		data.Gold = 0
 		data.Nick = "pet_open_" .. chest_id
+
 	elseif reward_recieve >= 100 and reward_recieve < 200 then
 		data.Gem = 0
 		data.Gold = 0
 		data.Nick = "particle_open_" .. chest_id
+
 	elseif reward_recieve >= 600 and reward_recieve < 700 then
 		data.Gem = 0
 		data.Gold = 0
 		data.Nick = "skin_open_" .. chest_id
+
 	elseif reward_recieve >= 700 and reward_recieve < 900 then
 		data.Gem = 0
 		data.Gold = 0
 		data.Nick = "sound_open_" .. chest_id
+
 	else
 		data.Gem = 0
 		data.Gold = 0
 	end
 
 	Shop:BuyOpenChests(data, callback)
-	return reward_recieve
+	return reward_recieve, reward_count
 end
 
 function DonateShopIsItemBought(id, item)

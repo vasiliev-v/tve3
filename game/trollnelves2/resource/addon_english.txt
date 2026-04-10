@@ -301,7 +301,7 @@
 		"shop_chest_count" "Quantity"
 		"shop_open"			"Open"
 		"shop_currency_gold"	"TvE Coint"
-		"shop_currency_gem"		"TvE Coint"
+		"shop_currency_gem"		"TvE Gem"
 		"shop_accept"			"Accept"
 
 		"shop_chance"	"Drop Chance: "
@@ -3770,7 +3770,7 @@
 
 "chest_1"		"Elf Сhest NUM 1"						
 "chest_2"		"Elf Сhest NUM 2"	
-"chest_3"		"Elf Сhest NUM 3"						
+"chest_3"		"Elf Сhest NUM 3"					 	
 "chest_4"		"Elf Сhest NUM 4"
 "chest_5"		"Elf Сhest NUM 5"							
 "chest_6"		"Elf Сhest NUM 6"		
@@ -3794,6 +3794,19 @@
 "chest_24"		"Bear Chest NUM 1"
 "chest_25"		"Elf Super Сhest NUM 3"
 
+
+"chest_37"		"Сhest NUM 37"
+"chest_38"		"Сhest NUM 38"
+"chest_39"		"Сhest NUM 39"
+"chest_40"		"Сhest NUM 40"
+"chest_41"		"Сhest NUM 41"
+"chest_42"		"Сhest NUM 42"
+"chest_43"		"Сhest NUM 43"
+"chest_44"		"Сhest NUM 44"
+"chest_45"		"Сhest NUM 45"
+"chest_46"		"Сhest NUM 46"
+
+"chest_90"		"Gems Сhest"
 
 "sounds_1_description"		"Open chat wheel to L and use sound - Уху минус три"						
 "sounds_2_description"		"Open chat wheel to L and use sound - Heelp"	
@@ -5262,6 +5275,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_elf_spell_reveal_x4_duration"       "Duration: "
 
 		"quest_150"                         "+300 XP BP"
+		"quest_gem_chest"                   "Gem Chest"
 
 		"quest_1"                        "Win as an Elf with the 'Movespeed' aspect after 20 min without any deaths"
 		"quest_2"                        "Win as an Elf with the 'Starting Gold' aspect after 20 min without any deaths"
@@ -5332,7 +5346,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"quest_2019"                     "Win as the Troll on the OASIS map after 20 minutes"
 		"quest_2020"                     "Win as the Troll on the OKINAWA map after 20 minutes"
 
-		
+		"quest_3001"                     "Win after after 20 minutes"
 
 		"settings_game"                      "Game settings"
 		"select_roll"                        "Select a role"

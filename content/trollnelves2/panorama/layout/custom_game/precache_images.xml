@@ -607,8 +607,8 @@
 		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/top_1x1.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/achivements/helper.png" />
 		 <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/gem.png" />
-		
-		
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_90.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/chest_90.png" />
 		
 	    
     </Panel>
