@@ -195,7 +195,8 @@ function chatcommand:OnPlayerChat(event)
 		local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )
 		local dropRadius = RandomFloat( 50, 100 )
 		newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
-
+		--elseif event.text == "!tp" then
+		--DebugPrintTable(GameRules.trollTps )
 		--elseif event.text == "12345" then
 		--	DebugPrintTable(GameRules.angel_spawn_points )
 

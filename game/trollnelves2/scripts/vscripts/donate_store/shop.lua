@@ -1590,6 +1590,53 @@ function Shop.GetXpBattlepass(playerID,callback)
 	end)
 end	
 
+function Shop.GetGetGemChest(playerID,callback)
+	if not GameRules.isTesting  then
+		if GameRules:IsCheatMode() then return end
+	end
+	local data = {}
+	data.Time = ""
+	data.Srok = "0"
+	data.SteamID = tostring(PlayerResource:GetSteamID(playerID))
+    data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
+	data.Gold = "0"
+	data.Num = "590"
+	local req = CreateHTTPRequestScriptVM("POST",GameRules.server .. "gemchest/")
+	if not req then
+		return
+	end
+
+	local encData = json.encode(data)
+	--DebugPrint("**********get skill*********************")
+	--DebugPrint(GameRules.server)
+	DebugPrint(encData)
+	--DebugPrint("***********************************************")
+	
+	req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
+	req:SetHTTPRequestRawPostBody("application/json", encData)
+	req:Send(function(res)
+		--DebugPrint("***********************************************")
+		--DebugPrint(res.Body)
+		--DebugPrint("Response code: " .. res.StatusCode)
+		--DebugPrint("***********************************************")
+		if res.StatusCode ~= 200 then
+			--DebugPrint("Error connecting GET GEM")
+			local data = {}
+        	data.Log = res.Body
+	    	data.Srok = ""
+	    	Error_debug.SendData(data,callback)
+		end
+		Timers:CreateTimer(15, function() 
+			Shop.RequestDonate(tonumber(table.playerID), table.SteamID, callback)
+		end)
+		if callback then
+			local obj,pos,err = json.decode(res.Body)
+			callback(obj)
+		end
+		
+	end)
+end	
+
 function Shop.GetDayDone(data,callback)
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end

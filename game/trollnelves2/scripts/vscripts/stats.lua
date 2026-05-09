@@ -709,7 +709,11 @@ function Stats.CheckDayQuest(pId)
 		if isQuestCompleted(quest, pId) then
 			local progress = quest_data["2"] or 0
 			if tonumber(progress) + 1 == tonumber(quest.count) then
-				Shop.GetXpBattlepass(pId, callback)
+				if tostring(quest.reward) == "quest_gem_chest" then
+					Shop.GetGetGemChest(pId, callback)
+				else
+					Shop.GetXpBattlepass(pId, callback)	
+				end
 				Shop.GetDayDone(dataBPtmp, callback)
 			elseif tonumber(progress) + 1 < tonumber(quest.count) then
 				Shop.GetDayDone(dataBPtmp, callback)
@@ -736,6 +740,10 @@ function isQuestCompleted(q, pId)
 	end
 
 	if q.icon and q.icon ~= "" and hero:HasModifier("modifier_" .. q.icon) or hero:HasModifier("modifier_" .. q.icon .. "_x4") then
+		return true
+	end
+
+	if q.type == "5" then
 		return true
 	end
 

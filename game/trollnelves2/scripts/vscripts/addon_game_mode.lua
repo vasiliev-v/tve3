@@ -976,14 +976,13 @@ function Activate()
 	GameRules.maxWispMine = STARTING_MAX_WISP_MINE
 	GameRules.playerTeamChoices = {}
 	GameRules.dcedChoosers = {}
-	-- --[[
+	
 	GameRules.trollTps = {Vector(-320,-320,256),Vector(0,-320,256),Vector(320,-320,256),Vector(-320,-640,256),Vector(0,-640,256),Vector(320,-640,256),Vector(-320,0,256),Vector(0,0,256),Vector(320,0,256),}
 
 	if GameRules.disconnectedHeroSelects == nil then
 		GameRules.disconnectedHeroSelects = {}
 	end
-	--]]
-	--GameRules.trollTps = {Vector(-320,-320,256),Vector(0,-320,256),Vector(320,-320,256),Vector(-320,-640,256),Vector(0,-640,256),Vector(320,-640,256),Vector(-320,0,256),Vector(0,0,256),Vector(320,0,256),}
+	
 	GameRules.angel_spawn_points = Entities:FindAllByName("angel_spawn_point")
 	GameRules.shops = Entities:FindAllByClassname("trigger_shop")
 	GameRules.base = Entities:FindAllByName("trigger_base")

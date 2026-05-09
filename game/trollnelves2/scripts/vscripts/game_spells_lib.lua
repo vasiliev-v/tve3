@@ -364,7 +364,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {45, 60, 75},
-                {150, 125, 100},
+                {200, 175, 150},
             },
             "0",
             "1",
@@ -671,7 +671,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_slow_target_description_level_3_shop", 
             }, 
             {
-                {-80,-90,-120},
+                {-80,-90,-100},
                 {10,15,20},
                 {120,80,60},
             },

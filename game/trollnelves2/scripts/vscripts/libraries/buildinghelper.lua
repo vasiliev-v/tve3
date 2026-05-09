@@ -442,11 +442,6 @@ function BuildingHelper:UpdateMapStage()
         GameRules.MapName = GetMapName()
         BuildingHelper:UpdateGrid()
     end
-    if string.match(GameRules.MapName,"1x1fort") then 
-		GameRules.trollTps = {Vector(0,-1280,256)} -- -640
-	elseif string.match(GameRules.MapName,"1x1amazon") then 
-		GameRules.trollTps = {Vector(180,-636,256)} -- -640
-    end
     LinkModifier:Start()
 end
 
@@ -472,6 +467,19 @@ function BuildingHelper:UpdateGrid()
     if not string.match(GameRules.MapName, "%d+")  then
         GameRules.MapName = GameRules.MapName .. GameRules.MapSpeed .. "x"
     end
+
+    if string.match(GameRules.MapName,"1x1fort") then 
+		GameRules.trollTps = {Vector(0,-1280,256)} -- -640
+	elseif string.match(GameRules.MapName,"1x1amazon") then 
+		GameRules.trollTps = {Vector(180,-636,256)} -- -640
+    end
+
+    local troll_hut = FindTrollHut()
+    if troll_hut then
+        CreateTrollTpPoints(troll_hut)
+    else
+        print("TROLL HUT NOT FOUND")
+    end
     
     GameRules:SendCustomMessage("<font color='#00FF22 '> Map: "  .. GameRules.MapName .. "</font>" ,  0, 0)
 
@@ -481,7 +489,6 @@ function BuildingHelper:UpdateGrid()
     --else
     --    GameRules:SendCustomMessage("#ChooseAngelWolfInGameFalse" ,  0, 0)
     --end
-    
 
     if GameRules.trollHero and GameRules.trollID then
         local units = Entities:FindAllByClassname("npc_dota_creature")
@@ -504,6 +511,56 @@ function BuildingHelper:UpdateGrid()
                 unit:AddNewModifier(unit, nil, "modifier_phased", {})
             end
         end
+    end
+end
+
+function FindTrollHut()
+    local units = Entities:FindAllByClassname("npc_dota_creature")
+
+    for _, unit in pairs(units) do
+        local unit_name = unit:GetUnitName()
+
+        if unit_name == "troll_hut_1" or unit_name == "troll_hut_1_1x1" then
+            return unit
+        end
+    end
+
+    return nil
+end
+
+function CreateTrollTpPoints(hut)
+    GameRules.trollTps = {}
+
+    local center = hut:GetAbsOrigin()
+    local radius = 550
+    local count = 9
+
+    for i = 1, count do
+        local point = nil
+
+        for attempt = 1, 10 do
+            local angle = RandomFloat(0, 360)
+            local distance = RandomFloat(150, radius)
+
+            local x = center.x + math.cos(math.rad(angle)) * distance
+            local y = center.y + math.sin(math.rad(angle)) * distance
+            local z = GetGroundPosition(Vector(x, y, center.z), nil).z
+
+            local testPoint = Vector(x, y, z)
+
+            if GridNav:IsTraversable(testPoint) and not GridNav:IsBlocked(testPoint) then
+                point = testPoint
+                break
+            end
+        end
+
+        table.insert(GameRules.trollTps, point or center)
+    end
+
+    print("Random Troll TP points created:", #GameRules.trollTps)
+
+    for i, point in pairs(GameRules.trollTps) do
+        print("TROLL TP " .. i .. ":", point)
     end
 end
 

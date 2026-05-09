@@ -213,13 +213,35 @@ function TeleportTo (event)
 			
 		end
 	else
-		for i=1,#GameRules.trollTps do
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), GameRules.trollTps[i] , nil, 200 , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
-			if #units == 0 then
-			--	caster:SetHullRadius(1) --160
-				FindClearSpaceForUnit( caster , GameRules.trollTps[i] , true )
-				caster:AddNewModifier(caster, nil, "modifier_phased", {Duration = 15})
-				break
+		local success = false
+		for attempt = 1, 10 do
+			local point = GameRules.trollTps[RandomInt(1, #GameRules.trollTps)]
+
+			local units = FindUnitsInRadius(
+				caster:GetTeamNumber(),
+				point,
+				nil,
+				200,
+				DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+				DOTA_UNIT_TARGET_HERO,
+				DOTA_UNIT_TARGET_FLAG_NONE,
+				FIND_ANY_ORDER,
+				false
+			)
+
+			-- первые 9 попыток — ищем свободную точку
+			if attempt < 10 then
+				if #units == 0 then
+					FindClearSpaceForUnit(caster, point, true)
+					caster:AddNewModifier(caster, nil, "modifier_phased", {duration = 15})
+					success = true
+					break
+				end
+			else
+				-- 10-я попытка — пофиг, телепортируем куда угодно
+				FindClearSpaceForUnit(caster, point, true)
+				caster:AddNewModifier(caster, nil, "modifier_phased", {duration = 15})
+				success = true
 			end
 		end
 		
@@ -1951,6 +1973,24 @@ function UpgradeWorkers(event)
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(2) 
 					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 3 then
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(3) 
+					end
+				end
+				if hero:HasModifier("modifier_elf_spell_ms")  then
+					if hero:FindModifierByName("modifier_elf_spell_ms"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_ms"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_ms"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms", {}):SetStackCount(3) 
+					end
+				end
+				if hero:HasModifier("modifier_elf_spell_ms_x4")  then
+					if hero:FindModifierByName("modifier_elf_spell_ms_x4"):GetStackCount() == 1  then
+						unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms_x4", {}):SetStackCount(1) 
+					elseif hero:FindModifierByName("modifier_elf_spell_ms_x4"):GetStackCount() == 2 then
+						unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms_x4", {}):SetStackCount(2) 
+					elseif hero:FindModifierByName("modifier_elf_spell_ms_x4"):GetStackCount() == 3 then
+						unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms_x4", {}):SetStackCount(3) 
 					end
 				end
 			end
