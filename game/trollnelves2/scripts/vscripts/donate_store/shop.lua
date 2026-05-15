@@ -1646,6 +1646,12 @@ function Shop.GetDayDone(data,callback)
 		return
 	end
 	data.Time = ""
+	if GameRules.MapSpeed == 4 then
+		data.Take = 0.5
+	else
+		data.Take = 1 
+	end
+
 	local encData = json.encode(data)
 	DebugPrint("**********Shop.GetDayDone*********************")
 	--DebugPrint(GameRules.server)

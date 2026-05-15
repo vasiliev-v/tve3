@@ -557,11 +557,11 @@ function CreateTrollTpPoints(hut)
         table.insert(GameRules.trollTps, point or center)
     end
 
-    print("Random Troll TP points created:", #GameRules.trollTps)
+    --print("Random Troll TP points created:", #GameRules.trollTps)
 
-    for i, point in pairs(GameRules.trollTps) do
-        print("TROLL TP " .. i .. ":", point)
-    end
+    --for i, point in pairs(GameRules.trollTps) do
+    --    print("TROLL TP " .. i .. ":", point)
+    --end
 end
 
 function BuildingHelper:OnNPCSpawned(keys)
