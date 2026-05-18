@@ -81,3 +81,36 @@
 .ButtonRewards.Unclaimed {
     wash-color: red;
 }
+
+.TopMenuCustom
+{
+    flow-children: right;
+    vertical-align: top;
+    margin-left: 170px;
+    margin-top: 4px;
+}
+
+.ButtonTopMenu
+{
+    width: 50px;
+    height: 54px;
+    transition-property: brightness;
+    transition-duration: 0.15s;
+    brightness: 0.8;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.ButtonTopMenuText
+{
+    width: 100%;
+    text-align: center;
+    vertical-align: bottom;
+    margin-bottom: 0px;
+
+    color: white;
+    font-size: 11px;
+    font-weight: semi-bold;
+
+    text-shadow: 0px 0px 4px 2 black;
+}

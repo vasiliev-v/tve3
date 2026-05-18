@@ -55,9 +55,19 @@ function UpdatePlayer( playerId, player_counter, teamPlayers )
     }
 
     let team_panel = $("#player_list_1")
-    if ((player_counter > Math.floor(teamPlayers.length / 2)) && teamPlayers.length > 1)
+    if (teamPlayers.length >= 15)
     {
-        team_panel = $("#player_list_2")
+        if (player_counter > 7)
+        {
+            team_panel = $("#player_list_2")
+        }
+    }
+    else
+    {
+        if ((player_counter > Math.floor(teamPlayers.length / 2)) && teamPlayers.length > 1)
+        {
+            team_panel = $("#player_list_2")
+        }
     }
 
 	var playerPanelName = "player_" + playerId;

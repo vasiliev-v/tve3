@@ -1,13 +1,12 @@
 var TOP_MENU_BUTTONS =
 [
-    
-    ["ButtonStats", StatsClick],
-    ["ButtonLeaderboards", LeaderboardsClick],
-    ["ButtonStore", StoreClick],
-    ["ButtonBattlePass", BattlePassClick],
-    ["ButtonRewards", RewardsClick],
-    ["ButtonInfo", InfoClick],
-    ["Discord", DiscordOpen],
+    ["ButtonStats", StatsClick, "Profile"],
+    ["ButtonLeaderboards", LeaderboardsClick, "Leaders"],
+    ["ButtonStore", StoreClick, "Shop"],
+    ["ButtonBattlePass", BattlePassClick, "BP"],
+    ["ButtonRewards", RewardsClick, "Rewards"],
+    ["ButtonInfo", InfoClick, "Info"],
+    ["Discord", DiscordOpen, "Discord"],
 ]
 
 var RewardsButton = null
@@ -15,18 +14,27 @@ var updateRewardsLoop = true
 
 function Init() {
     let TopMenuCustom = $("#TopMenuCustom")
-    for (let button_info of TOP_MENU_BUTTONS) {
+
+    for (let button_info of TOP_MENU_BUTTONS)
+    {
         let button = $.CreatePanel("Panel", TopMenuCustom, "")
         button.AddClass("ButtonTopMenu")
         button.AddClass(button_info[0])
+
         if (button_info[0] == "ButtonRewards") {
             RewardsButton = button
         }
+
         let function_button = button_info[1]
         button.SetPanelEvent("onactivate", function_button)
+
+        // Текст снизу
+        let label = $.CreatePanel("Label", button, "")
+        label.AddClass("ButtonTopMenuText")
+        label.text = button_info[2] || ""
     }
 
-    UpdateRewardsButtonLoop() // Запускаем цикл
+    UpdateRewardsButtonLoop()
 }
 
 function UpdateRewardsButtonLoop() {
