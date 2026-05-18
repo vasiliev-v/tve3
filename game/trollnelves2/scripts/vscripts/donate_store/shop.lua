@@ -1261,7 +1261,7 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 	if #obj > 0 then
 	--	DebugPrintTable(obj)
 		for id=1,#obj do
-			PoolTable["10"]["1"][id] = {obj[id].idQuest, obj[id].count, obj[id].keyId }
+			PoolTable["10"]["1"][id] = {obj[id].idQuest, obj[id].take, obj[id].keyId }
 		end
 	end
 	CustomNetTables:SetTableValue("Shop", tostring(pID), PoolTable)		
@@ -1646,10 +1646,11 @@ function Shop.GetDayDone(data,callback)
 		return
 	end
 	data.Time = ""
-	if GameRules.MapSpeed == 4 then
-		data.Take = 0.5
-	else
-		data.Take = 1 
+	
+	data.Take = GameRules.Progress
+
+	if tonumber(data.Progress) + tonumber(data.Take) > tonumber(data.count) then
+		data.Take = tostring(tonumber(data.count) - tonumber(data.Progress))
 	end
 
 	local encData = json.encode(data)

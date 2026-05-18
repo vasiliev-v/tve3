@@ -1040,6 +1040,18 @@ function Activate()
 	else
 		GameRules.WOLF_START_SPAWN_TIME = 300 -- When the players will be able to choose wolf instead of auto chosen to angels. In seconds.
 	end
+
+	if GameRules.MapSpeed == 4 then
+		GameRules.MIN_TIME_FOR_QUEST = 1 -- 900
+	else 
+		GameRules.MIN_TIME_FOR_QUEST = 1 -- 1200
+	end
+
+	if GameRules.MapSpeed == 4 then
+		GameRules.Progress = "0.5"
+	else
+		GameRules.Progress = "1"
+	end
 	
 	GameRules:GetGameModeEntity():SetDaynightCycleAdvanceRate(1 * GameRules.MapSpeed)
 

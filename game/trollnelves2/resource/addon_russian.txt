@@ -991,6 +991,7 @@
 		"fake_list"								"Низкая репутация"
 		"TrollChoseMap"							"Тролль выбирает карту"
 		"leaderboard_current_season"		"Текущий"
+
  
 	}
 }

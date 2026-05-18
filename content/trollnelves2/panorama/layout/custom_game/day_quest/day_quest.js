@@ -119,6 +119,14 @@ function RebuildQuests() {
 
     questsPanel.RemoveAndDeleteChildren();
 
+    const header = $.CreatePanel("Panel", questsPanel, "");
+    header.AddClass("QuestPanelInformation");
+
+    const headerLabel = $.CreatePanel("Label", header, "");
+    headerLabel.text = $.Localize("#troll_quest_title");
+
+    CreateQuestInfoBlock(questsPanel);
+
     const has_battlepass = HasBattlePass();
     const sortedQuests = Object.values(quest_information_table).sort((a, b) => {
         const ta = Number(a.type) || 0;
@@ -282,6 +290,39 @@ function InitQuests() {
     GameEvents.SubscribeProtected("troll_quest_update_after", UpdateQuestAfter);
 
     ScheduleRebuild(0.01);
+}
+
+function GetQuestTimeText()
+{
+    const mapInfo = Game.GetMapInfo();
+    const mapName = mapInfo.map_display_name;
+
+    // пример проверки режима
+    if (mapName == "classic4x") {
+        return "15";
+    }
+
+    return "20";
+}
+
+function CreateQuestInfoBlock(parent)
+{
+    const block = $.CreatePanel("Panel", parent, "QuestInfoBlock");
+    block.AddClass("QuestInfoBlock");
+
+    //const icon = $.CreatePanel("Panel", block, "");
+    //icon.AddClass("QuestInfoBlockIcon");
+
+    const textWrap = $.CreatePanel("Panel", block, "");
+    textWrap.AddClass("QuestInfoBlockTextWrap");
+
+    const title = $.CreatePanel("Label", textWrap, "");
+    title.AddClass("QuestInfoBlockTitle");
+    title.text = $.Localize("#quest_info_title");
+
+    const desc = $.CreatePanel("Label", textWrap, "");
+    desc.AddClass("QuestInfoBlockDesc");
+    desc.text = $.Localize("#quest_info_desc").replace("{time}", GetQuestTimeText());
 }
 
 InitQuests();

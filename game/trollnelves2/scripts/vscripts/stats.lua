@@ -678,7 +678,7 @@ end
 function Stats.CheckDayQuest(pId)
 	local hero = PlayerResource:GetSelectedHeroEntity(pId)
 	if not hero or PlayerResource:GetDeaths(pId) > 0 then return end
-	if GameRules:GetGameTime() - GameRules.startTime <= MIN_TIME_FOR_QUEST then return end
+	if GameRules:GetGameTime() - GameRules.startTime <= GameRules.MIN_TIME_FOR_QUEST then return end
 	local bp_data = CustomNetTables:GetTableValue("Shop", "bpday")
 	if not bp_data then return end
 	local player_table = CustomNetTables:GetTableValue("Shop", tostring(pId))["10"]
@@ -705,17 +705,19 @@ function Stats.CheckDayQuest(pId)
 		dataBPtmp.IdQuest = tostring(quest_data["1"])
 		dataBPtmp.SteamID = tostring(PlayerResource:GetSteamID(pId))
 		dataBPtmp.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
-
+		dataBPtmp.Progress = tostring(quest_data["2"]) or "0"
+		dataBPtmp.count = quest.count or "0"
 		if isQuestCompleted(quest, pId) then
-			local progress = quest_data["2"] or 0
-			if tonumber(progress) + 1 == tonumber(quest.count) then
+			
+			if tonumber(dataBPtmp.Progress) + tonumber(GameRules.Progress) >= tonumber(quest.count) then
+
 				if tostring(quest.reward) == "quest_gem_chest" then
 					Shop.GetGetGemChest(pId, callback)
 				else
 					Shop.GetXpBattlepass(pId, callback)	
 				end
 				Shop.GetDayDone(dataBPtmp, callback)
-			elseif tonumber(progress) + 1 < tonumber(quest.count) then
+			elseif tonumber(dataBPtmp.Progress) + tonumber(GameRules.Progress) < tonumber(quest.count) then
 				Shop.GetDayDone(dataBPtmp, callback)
 			end
 		end
