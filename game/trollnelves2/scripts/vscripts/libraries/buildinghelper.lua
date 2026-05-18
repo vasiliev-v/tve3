@@ -460,7 +460,12 @@ function BuildingHelper:UpdateGrid()
             BuildingHelper:SendGNV(args)
         end
     end
+
     GameRules.angel_spawn_points = Entities:FindAllByName("angel_spawn_point")
+    Timers:CreateTimer(60, function()
+        GameRules.angel_spawn_points = Entities:FindAllByName("angel_spawn_point")
+    end)
+    
     GameRules.shops = Entities:FindAllByClassname("trigger_shop")
     GameRules.base = Entities:FindAllByName("trigger_base")
     GameRules.baseBlock = Entities:FindAllByName("trigger_antibild")

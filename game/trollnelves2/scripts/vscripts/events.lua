@@ -1019,11 +1019,22 @@ end)
 end
 
 function RandomAngelLocation()
-    return (GameRules.angel_spawn_points and #GameRules.angel_spawn_points and
-    #GameRules.angel_spawn_points > 0) and
-    GameRules.angel_spawn_points[RandomInt(1,
-    #GameRules.angel_spawn_points)]:GetAbsOrigin() or
-    Vector(0, -640, 256)
+    -- Есть готовые точки
+    if GameRules.angel_spawn_points and #GameRules.angel_spawn_points > 0 then
+        return GameRules.angel_spawn_points[RandomInt(1, #GameRules.angel_spawn_points)]:GetAbsOrigin()
+    end
+
+    -- Рандом по карте с проверкой валидности
+    local randomCenter = Vector(RandomInt(-7000, 7000), RandomInt(-7000, 7000), 256)
+
+    local validPos = FindValidLootPosition(randomCenter, 0, 2000, 100, 64)
+
+    if validPos then
+        return validPos
+    end
+
+    -- Фолбек
+    return Vector(0, -640, 256)
 end
 
 --function StopAnim
