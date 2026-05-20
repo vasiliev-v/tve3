@@ -1002,9 +1002,6 @@ function Activate()
 	GameRules.Rep = {}
 	GameRules.GetRep = {}
 	GameRules.GetXpBP = {} 
-	GameRules.isTesting = false
-
-	GameRules.server =  "https://tve4.eu/test/"-- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
 
 	GameRules.BonusGem = {}
 	--GameRules.xp = {}
@@ -1023,8 +1020,6 @@ function Activate()
 	GameRules.PlayersBase = {}
 	GameRules.PlayersBaseSendFlag = {}
 	GameRules.PlayersFPS = {}
-	GameRules.test = false
-	GameRules.test2 = false
 	GameRules.PlayersCount = 0
 	GameRules.KickList = {}
 	GameRules.MultiMapSpeed = 1
@@ -1041,17 +1036,20 @@ function Activate()
 		GameRules.WOLF_START_SPAWN_TIME = 300 -- When the players will be able to choose wolf instead of auto chosen to angels. In seconds.
 	end
 
+	GameRules.Progress = "1"
+    ------------------------------------------------------------------------------------------------------------
+	GameRules.isTesting = false
+	GameRules.server =  "https://tve4.eu/test/" -- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
+	GameRules.test = false
+	GameRules.test2 = false
 	if GameRules.MapSpeed == 4 then
-		GameRules.MIN_TIME_FOR_QUEST = 1 -- 900
+		GameRules.MIN_TIME_FOR_QUEST_MIN = 900 -- 900
 	else 
-		GameRules.MIN_TIME_FOR_QUEST = 1 -- 1200
+		GameRules.MIN_TIME_FOR_QUEST_MIN = 1200 -- 1200
 	end
-
-	if GameRules.MapSpeed == 4 then
-		GameRules.Progress = "0.5"
-	else
-		GameRules.Progress = "1"
-	end
+	GameRules.MIN_TIME_FOR_QUEST = 1200 -- 1200
+	------------------------------------------------------------------------------------------------------------
+	
 	
 	GameRules:GetGameModeEntity():SetDaynightCycleAdvanceRate(1 * GameRules.MapSpeed)
 

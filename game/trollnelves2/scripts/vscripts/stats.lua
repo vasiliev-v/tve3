@@ -26,6 +26,10 @@ function Stats.Normal(winner,callback)
 		end
 	end
 
+	if GameRules:GetGameTime() - GameRules.startTime <= GameRules.MIN_TIME_FOR_QUEST then
+		GameRules.Progress = "0.5"
+	end
+
 	local data = {}
 	local koeff =  string.match(GetMapName(),"%d+") or 1
 	local debuffPoint = 0
@@ -678,7 +682,7 @@ end
 function Stats.CheckDayQuest(pId)
 	local hero = PlayerResource:GetSelectedHeroEntity(pId)
 	if not hero or PlayerResource:GetDeaths(pId) > 0 then return end
-	if GameRules:GetGameTime() - GameRules.startTime <= GameRules.MIN_TIME_FOR_QUEST then return end
+	if GameRules:GetGameTime() - GameRules.startTime <= GameRules.MIN_TIME_FOR_QUEST_MIN then return end
 	local bp_data = CustomNetTables:GetTableValue("Shop", "bpday")
 	if not bp_data then return end
 	local player_table = CustomNetTables:GetTableValue("Shop", tostring(pId))["10"]
@@ -707,7 +711,7 @@ function Stats.CheckDayQuest(pId)
 		dataBPtmp.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
 		dataBPtmp.Progress = tostring(quest_data["2"]) or "0"
 		dataBPtmp.count = quest.count or "0"
-		if isQuestCompleted(quest, pId) then
+		if isQuestCompleted(quest, pId) and tonumber(dataBPtmp.Progress) < tonumber(quest.count) then
 			
 			if tonumber(dataBPtmp.Progress) + tonumber(GameRules.Progress) >= tonumber(quest.count) then
 
