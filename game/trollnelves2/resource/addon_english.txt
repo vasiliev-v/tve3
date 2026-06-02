@@ -212,6 +212,83 @@
 		"troll2_hut_5"                                                                     "Troll Hut 5"
 		"troll2_hut_6"                                                                     "Troll Hut 6"
 
+		// Если не сделать эти строчки, то всегда в начале будет писаться "#", поэтому хоть ничего и не меняется я добавил все это в локализацию чтобы убрать этот знак + в конце seconds добавил
+		"Game starts in 40" "The game starts in 40 seconds"
+		"Game starts in 39" "The game starts in 39 seconds"
+		"Game starts in 38" "The game starts in 38 seconds"
+		"Game starts in 37" "The game starts in 37 seconds"
+		"Game starts in 36" "The game starts in 36 seconds"
+		"Game starts in 35" "The game starts in 35 seconds"
+		"Game starts in 34" "The game starts in 34 seconds"
+		"Game starts in 33" "The game starts in 33 seconds"
+		"Game starts in 32" "The game starts in 32 seconds"
+		"Game starts in 31" "The game starts in 31 seconds"
+		"Game starts in 30" "The game starts in 30 seconds"
+		"Game starts in 29" "The game starts in 29 seconds"
+		"Game starts in 28" "The game starts in 28 seconds"
+		"Game starts in 27" "The game starts in 27 seconds"
+		"Game starts in 26" "The game starts in 26 seconds"
+		"Game starts in 25" "The game starts in 25 seconds"
+		"Game starts in 24" "The game starts in 24 seconds"
+		"Game starts in 23" "The game starts in 23 seconds"
+		"Game starts in 22" "The game starts in 22 seconds"
+		"Game starts in 21" "The game starts in 21 seconds"
+		"Game starts in 20" "The game starts in 20 seconds"
+		"Game starts in 19" "The game starts in 19 seconds"
+		"Game starts in 18" "The game starts in 18 seconds"
+		"Game starts in 17" "The game starts in 17 seconds"
+		"Game starts in 16" "The game starts in 16 seconds"
+		"Game starts in 15" "The game starts in 15 seconds"
+		"Game starts in 14" "The game starts in 14 seconds"
+		"Game starts in 13" "The game starts in 13 seconds"
+		"Game starts in 12" "The game starts in 12 seconds"
+		"Game starts in 11" "The game starts in 11 seconds"
+		"Game starts in 10" "The game starts in 10 seconds"
+		"Game starts in 9" "The game starts in 9 seconds"
+		"Game starts in 8" "The game starts in 8 seconds"
+		"Game starts in 7" "The game starts in 7 seconds"
+		"Game starts in 6" "The game starts in 6 seconds"
+		"Game starts in 5" "The game starts in 5 seconds"
+		"Game starts in 4" "The game starts in 4 seconds"
+		"Game starts in 3" "The game starts in 3 seconds"
+		"Game starts in 2" "The game starts in 2 seconds"
+		"Game starts in 1" "The game starts in 1 second"
+
+		"Game started!"	   "Game Started!"
+		"Troll hasn't spawned yet!Resetting!"		"Troll hasn't spawned yet! Resetting!"
+
+		"Troll spawns in 30" "The troll spawns in 30 seconds"
+		"Troll spawns in 29" "The troll spawns in 29 seconds"
+		"Troll spawns in 28" "The troll spawns in 28 seconds"
+		"Troll spawns in 27" "The troll spawns in 27 seconds"
+		"Troll spawns in 26" "The troll spawns in 26 seconds"
+		"Troll spawns in 25" "The troll spawns in 25 seconds"
+		"Troll spawns in 24" "The troll spawns in 24 seconds"
+		"Troll spawns in 23" "The troll spawns in 23 seconds"
+		"Troll spawns in 22" "The troll spawns in 22 seconds"
+		"Troll spawns in 21" "The troll spawns in 21 seconds"
+		"Troll spawns in 20" "The troll spawns in 20 seconds"
+		"Troll spawns in 19" "The troll spawns in 19 seconds"
+		"Troll spawns in 18" "The troll spawns in 18 seconds"
+		"Troll spawns in 17" "The troll spawns in 17 seconds"
+		"Troll spawns in 16" "The troll spawns in 16 seconds"
+		"Troll spawns in 15" "The troll spawns in 15 seconds"
+		"Troll spawns in 14" "The troll spawns in 14 seconds"
+		"Troll spawns in 13" "The troll spawns in 13 seconds"
+		"Troll spawns in 12" "The troll spawns in 12 seconds"
+		"Troll spawns in 11" "The troll spawns in 11 seconds"
+		"Troll spawns in 10" "The troll spawns in 10 seconds"
+		"Troll spawns in 9" "The troll spawns in 9 seconds"
+		"Troll spawns in 8" "The troll spawns in 8 seconds"
+		"Troll spawns in 7" "The troll spawns in 7 seconds"
+		"Troll spawns in 6" "The troll spawns in 6 seconds"
+		"Troll spawns in 5" "The troll spawns in 5 seconds"
+		"Troll spawns in 4" "The troll spawns in 4 seconds"
+		"Troll spawns in 3" "The troll spawns in 3 seconds"
+		"Troll spawns in 2" "The troll spawns in 2 seconds"
+		"Troll spawns in 1" "The troll spawns in 1 second"
+
+
 		"weapon2_shop2"                                                                     "Weapon Shop"
 		"armor2_shop2"                                                                      "Armor Shop"
 		"hp2_shop2"                                                                         "HP Shop"
@@ -460,6 +537,11 @@
 
 		// ******************** ABILITY MODIFIERS ********************
 
+		"DOTA_Tooltip_modifier_fervor_target"										"PRACTICE AIM"
+		"DOTA_Tooltip_modifier_fervor_target_Description"							"Provides towers with bonus attack speed for each hit. Lasts 10 seconds."
+
+		"DOTA_Tooltip_modifier_frost_slow_target"									"Frost Arrow"
+
 		"DOTA_Tooltip_ability_mars_bulwark"                                        "Bulwark"
 		"DOTA_Tooltip_ability_mars_bulwark_Description"                            "Ignores all physical damage"
 
@@ -546,14 +628,14 @@
 		"DOTA_Tooltip_modifier_death_armor_bear"                                     "Debuff Health"
 		"DOTA_Tooltip_modifier_death_armor_bear_Description"                         "Reduces health by 50%."
 
-		"DOTA_Tooltip_modifier_buff_glyph_counter"                                     "Блок Glyph"
-		"DOTA_Tooltip_modifier_buff_glyph_counter_Description"                         "1 stack - 10 sec, 2 stacks - 10 sec, 3 stacks - 4 sec, 4 and more stacks - 2 sec."
+		"DOTA_Tooltip_modifier_buff_glyph_counter"                                     "Glyph Counter"
+		"DOTA_Tooltip_modifier_buff_glyph_counter_Description"                         "1 stack - 12 sec, 2 stacks - 8 sec, 3 stacks - 4 sec, 4 and more stacks - 2 sec."
 
 		"DOTA_Tooltip_modifier_gain_gold"                                                 "Gain Gold"
 		"DOTA_Tooltip_modifier_gain_gold_Description"                                     ""
 		
-		"DOTA_Tooltip_modifier_antiblock"                                                 "Blocks damage, increases attack."
-		"DOTA_Tooltip_modifier_antiblock_Description"                                     "Outside the flag's radius, blocks 50% damage and increases attack by 10%."
+		"DOTA_Tooltip_modifier_antiblock"                                                 "Composure"
+		"DOTA_Tooltip_modifier_antiblock_Description"                                     "Your armor grows stronger when there is no Flag. If there is no Flag within 900 range, you gain 50% tower damage reduction, 35% magic resistance, and 10% status resistance"
 
 		"DOTA_Tooltip_modifier_gain_gold_team"                                            "Gain Gold Team"
 		"DOTA_Tooltip_modifier_gain_gold_team_Description"                                ""
@@ -1310,7 +1392,7 @@
 		"DOTA_Tooltip_ability_high_true_sight_ability_radius"                                  "RADIUS: "
 		
 		
-		"DOTA_Tooltip_ability_tower_atk_spd"												"Practise aim"
+		"DOTA_Tooltip_ability_tower_atk_spd"												"Practice aim"
 		"DOTA_Tooltip_ability_tower_atk_spd_Description"									"Provides bonus attack speed with every hit. The bonus attack speed debuff lasts %duration% seconds on the enemy after the last auto attack hit him."
 		"DOTA_Tooltip_ability_tower_atk_spd_attack_speed"									"ATTACKSPEED: "
 		"DOTA_Tooltip_ability_tower_atk_spd_max_stacks"										"MAX STACKS: "
@@ -1560,9 +1642,15 @@
 
 		
 
+		"DOTA_Tooltip_modifier_reveaL_area_charges"										  "Available amount of charges"
+		"DOTA_Tooltip_modifier_boots_2"													  "Troll Boots LVL 2"
+		"DOTA_Tooltip_modifier_boots_2_Description"										  "Increases your movespeed by 150."
+
+
 		"DOTA_Tooltip_ability_troll_invis"                                                "Troll Invis"
 		"DOTA_Tooltip_ability_troll_invis_Description"                                    "Grants invisibility, increases movement speed!"
 		"DOTA_Tooltip_ability_troll_invis_duration"                                        "DURATION: "
+		"DOTA_Tooltip_modifier_generic_invisibility"									   "Troll invis"
 
 		"DOTA_Tooltip_ability_troll_teleport"                                             "Troll Teleport"
 		"DOTA_Tooltip_ability_troll_teleport_Description"                                 "Teleport to Troll's base!"
@@ -1591,7 +1679,7 @@
 		"DOTA_Tooltip_ability_treant_debuff_Description"  								"You were supposed to fight the evil, not become one of them!!! You were cursed by the mighty Treant Protector and your health regeneration does not work."
 
 		"DOTA_Tooltip_ability_block_buff"											"Composure"
-		"DOTA_Tooltip_ability_block_buff_Description"  								"Your armor gets stronger when the Flag is not present.<br>If there is no Flag within 900 radius, you gain 10% attack bonus, 10% magic defense, and 33% tower damage reduction."
+		"DOTA_Tooltip_ability_block_buff_Description"  								"Your armor grows stronger when there is no flag. If there is no Flag within 900 range, you gain 50 percent tower damage reduction, 35 percent magic resistance, and 10 percent status resistance."
 
 
 		"DOTA_Tooltip_Ability_lone_druid_spirit_bear_datadriven"						"Teddy bear"
@@ -2596,7 +2684,7 @@
 
 
 		"DOTA_Tooltip_ability_buy_item_disable_repair_2"                                                "Buy No Hammer Time! Level 2!"
-		"DOTA_Tooltip_ability_buy_item_disable_repair_2_Description"                                    "Applies a debuff on an autoattack that makes the target unrepairable! Lasts for %dur_time% seconds. Uses a neutral slot. Cannot be sold. Removed after death!"
+		"DOTA_Tooltip_ability_buy_item_disable_repair_2_Description"                                    "Applies a debuff on an autoattack that makes the target unrepairable! Lasts for %dur_time% seconds. Uses a neutral slot. Cannot be sold."
 		"DOTA_Tooltip_ability_buy_item_disable_repair_2_gold_cost"                               "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_buy_item_disable_repair_2_lumber_cost"                             "<font color='#008000'>LUMBER COST: </font>"
 
@@ -2653,7 +2741,7 @@
 		// ******************** ITEMS ********************
 		// ***********************************************
 		"DOTA_Tooltip_modifier_buff_glyph_counter"                             "Block Glyph"
-		"DOTA_Tooltip_modifier_buff_glyph_counter_Description"                         "1 time - 10 sec, 2 times - 10 sec, 3 times - 4 sec, 4 or more times - 2 sec."
+		"DOTA_Tooltip_modifier_buff_glyph_counter_Description"                 "1 time - 12 sec, 2 times - 8 sec, 3 times - 4 sec, 4 or more times - 2 sec."
 
 		"DOTA_Tooltip_ability_item_building_destroy"                                      "Destroy Building"
 		"DOTA_Tooltip_ability_item_building_destroy_Description"                          "Destroy building. You do not get your resources back, cannot destroy if enemy is nearby! "
@@ -2691,7 +2779,7 @@
 		"DOTA_Tooltip_ability_item_silence_ability_time_dur"							  "DURATION: "
 
 		"DOTA_Tooltip_ability_item_glyph_ability"                                         "Glyph"
-		"DOTA_Tooltip_ability_item_glyph_ability_Description"                             "Makes the target invulnerable.<br><font color=\"#ff0000\">Duration decreases with each stack!</font><br><br><font color=\"#ffff00\">Cooldown: 300</ font><br><br><font color=\"#ff9933\">Duration: 10/10/3/1</font><br> "
+		"DOTA_Tooltip_ability_item_glyph_ability_Description"                             "Makes the target invulnerable."
 		"DOTA_Tooltip_ability_item_glyph_ability_time_dur"								  "DURATION: "
 
 		"DOTA_Tooltip_ability_item_night_ability"                                         "Night"
@@ -3181,7 +3269,7 @@
 		"DOTA_Tooltip_ability_item_disable_repair_lumber_cost"                                    "<font color='#008000'>LUMBER COST: </font>"
 
 		"DOTA_Tooltip_ability_item_disable_repair_2"                                                "No Hammer Time! Level 2!"
-		"DOTA_Tooltip_ability_item_disable_repair_2_Description"                                    "Applies a debuff on an autoattack that makes the target unrepairable! Lasts for %dur_time% seconds. Uses a neutral slot. Cannot be sold. Removed after death!"
+		"DOTA_Tooltip_ability_item_disable_repair_2_Description"                                    "Applies a debuff on an autoattack that makes the target unrepairable! Lasts for %dur_time% seconds. Uses a neutral slot. Cannot be sold."
 		"DOTA_Tooltip_ability_item_disable_repair_2_bonus_damage"                                   "+$damage"
 		"DOTA_Tooltip_ability_item_disable_repair_2_gold_cost"                                      "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_item_disable_repair_2_lumber_cost"                                    "<font color='#008000'>LUMBER COST: </font>"
@@ -4345,12 +4433,15 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_haste_description_level_1_shop"               "Duration"
         "troll_spell_haste_description_level_2_shop"               "Evasion"
-		"troll_spell_haste_description_level_3_shop"               "Movespeed"
+		"troll_spell_haste_description_level_3_shop"			   "Cooldown"
+		"troll_spell_haste_description_level_4_shop"               "Movespeed"
+		
 
 		"DOTA_Tooltip_ability_troll_spell_haste"                                                "Haste"
 		"DOTA_Tooltip_ability_troll_spell_haste_Description"                                     "Increases movespeed"
 		"DOTA_Tooltip_ability_troll_spell_haste_duration"                 "DURATION: "
 		"DOTA_Tooltip_ability_troll_spell_haste_eva"                 "EVASION: "
+		"DOTA_Tooltip_ability_troll_spell_haste_cooldown"                 "COOLDOWN: "
 		"DOTA_Tooltip_ability_troll_spell_haste_SPEED"                 "MOVESPEED: "
 				
 		"troll_spell_ward"                            		 "Ward"
@@ -4406,7 +4497,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_slow_area_description_level_1_shop"               "Movespeed"
         "troll_spell_slow_area_description_level_2_shop"               "Miss chance"
-        "troll_spell_slow_area_description_level_3_shop"               "Duration"
+		"troll_spell_slow_area_description_level_3_shop"               "Duration"
 		"troll_spell_slow_area_description_level_4_shop"               "Cooldown"
 
 		"DOTA_Tooltip_ability_troll_spell_slow_area"                                                "Area Slow"

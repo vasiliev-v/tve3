@@ -14158,10 +14158,6 @@
 		"Ability10"					"buy_item_troll_boots"
 		"Ability11"					"buy_item_troll_boots_2"
 		"Ability12"					"buy_item_reveal"
-		"Ability13"					"buy_lumber_1"
-		"Ability14"					"buy_lumber_8"
-		"Ability15"					"sell_lumber_1"
-		"Ability16"					"sell_lumber_8"
 		//"Ability10"					"buy_item_troll_boots_2"
 		//"Ability11"					"buy_item_troll_boots_3"
 

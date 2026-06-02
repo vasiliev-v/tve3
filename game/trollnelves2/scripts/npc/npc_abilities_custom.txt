@@ -1950,7 +1950,7 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_tent"
-		"AbilityCastRange"		"200"//"375"//"400"
+		"AbilityCastRange"		"250"//"375"//"400"
 		"Building"				"1"
 		"BuildTime"				"2.0"
 		"Scale"					"1"
@@ -3724,7 +3724,7 @@
         {
             "gold_cost" "0"
             "lumber_cost" "10240"
-            "bonus_damage" "40960"
+            "bonus_damage" "81920"
         }
 	}
 	"upgrade_to_tower_11_1"
@@ -3799,7 +3799,7 @@
         {
             "gold_cost" "0"
             "lumber_cost" "20480"
-            "bonus_damage" "81920"
+            "bonus_damage" "25600"
         }
 	}
 	"upgrade_to_tower_12_1"
@@ -4274,8 +4274,8 @@
 		}
 		"AbilityValues"
         {
-            "gold_cost" "160"
-            "lumber_cost" "0"
+            "gold_cost" "0"
+            "lumber_cost" "160"
         }
 	}
 	"upgrade_to_high_true_sight_tower"
@@ -4481,7 +4481,7 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_trader"
-		"AbilityCastRange"		"200"//"375"//"400"
+		"AbilityCastRange"		"250"//"375"//"400"
 		"Building"				"1"
 		"BuildTime"				"5.0"
 		"Scale"					"1"
@@ -4548,7 +4548,7 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_workers_guild"
-		"AbilityCastRange"		"200"//"375"//"400"
+		"AbilityCastRange"		"250"//"375"//"400"
 		"Building"				"1"
 		"BuildTime"				"2.0"
 		"Scale"					"1"
@@ -4574,7 +4574,7 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_mon"
-		"AbilityCastRange"		"200"//"375"//"400"
+		"AbilityCastRange"		"250"//"375"//"400"
 		"Building"				"1"
 		"BuildTime"				"6.0"
 		"Scale"					"1"
@@ -4601,7 +4601,7 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_research_lab"
-		"AbilityCastRange"		"200"//"400"
+		"AbilityCastRange"		"250"//"400"
 		"Building"				"1"
 		"BuildTime"				"6.0"
 		"Scale"					"1"
@@ -9232,7 +9232,7 @@
             "gold_cost" "0"
             "lumber_cost" "5"
             "dur_time" "10"
-            "radius1" "5200"
+            "radius1" "2400"
         }
 	}
 	
@@ -14645,6 +14645,7 @@
             "duration" "15 30 45"
             "speed" "1000"
             "eva" "2 4 8"
+			"cooldown"	"300 250 200"
         }
 		
 		"OnSpellStart"{
@@ -14897,7 +14898,7 @@
 					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"		"DOTA_UNIT_TARGET_BASIC"
 				}
-				"Duration"		"%duration_creeps"
+				"Duration"		"%duration_creeps"	
 			}
 
 			"FireSound"
