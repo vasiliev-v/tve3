@@ -19,6 +19,7 @@ function modifier_elf_spell_target_damage:OnCreated( kv )
 		-- hero:AddAbility("elf_spell_target_damage")
 		local abil = hero:FindAbilityByName("elf_spell_target_damage")
 		abil:SetLevel(countStack)
+		abil:StartCooldown(300)
 	end
 end
 function modifier_elf_spell_target_damage:OnDestroy( kv )

@@ -16,10 +16,10 @@ end
 
 function modifier_troll_spell_ms_x4:GetModifierMoveSpeedBonus_Special_Boots()
 	if self:GetStackCount() == 1 then 
-		return 15
+		return 30
 	elseif self:GetStackCount() == 2  then
-		return 20
+		return 35
 	elseif self:GetStackCount() == 3  then
-		return 25
+		return 40
 	else return 0 end
 end

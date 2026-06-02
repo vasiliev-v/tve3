@@ -1816,8 +1816,8 @@
 		"AbilityValues"
 		{
 			"max_blink_range"	"1000"
-			"up1"				"1200"
-			"up2"				"1400"
+			"up1"				"1225"
+			"up2"				"1450"
 			"up3"				"1600"
 			"min_blink_range"	"0"
 			"blink_move_speed_pct1"        "10"
