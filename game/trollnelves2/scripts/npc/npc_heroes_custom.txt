@@ -72,7 +72,7 @@
 	    "BountyGoldMin"       "1"                   // Gold earned min.
 	    "BountyGoldMax"       "1"                   // Gold earned max.
 
-		"AttackRange"		  "64"
+		"AttackRange"		  "64" 
 
 	    //"BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	    //"RingRadius"        "70"
