@@ -633,7 +633,7 @@ function GatherLumber(event)
 		
 		-- Check for empty tree for Wisps
 		if tree.builder ~= nil and tree.builder ~= caster then
-			SendErrorMessage(pID,"The tree is occupied!")
+			SendErrorMessage(pID,"occupied_tree")
 			caster:Interrupt()
 			return
 		end
