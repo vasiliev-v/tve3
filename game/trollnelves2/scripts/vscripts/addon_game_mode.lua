@@ -1038,10 +1038,10 @@ function Activate()
 
 	GameRules.Progress = "1"
     ------------------------------------------------------------------------------------------------------------
-	GameRules.isTesting = false
-	GameRules.server =  "https://tve4.eu/test/" -- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
-	GameRules.test = false
-	GameRules.test2 = false
+	GameRules.isTesting = true
+	GameRules.server =  "https://localhost:7133/test/" -- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
+	GameRules.test = true
+	GameRules.test2 = true
 	if GameRules.MapSpeed == 4 then
 		GameRules.MIN_TIME_FOR_QUEST_MIN = 900 -- 900
 	else 

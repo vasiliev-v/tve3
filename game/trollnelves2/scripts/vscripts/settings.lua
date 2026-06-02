@@ -87,4 +87,4 @@ end
 
 MIN_RATING_PLAYER = 10
 MIN_RATING_PLAYER_CW = 10
-dedicatedServerKey = GetDedicatedServerKeyV3("1")  -- "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ" -- GetDedicatedServerKeyV3("1") 
+dedicatedServerKey = "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ"  -- "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ" -- GetDedicatedServerKeyV3("1") 

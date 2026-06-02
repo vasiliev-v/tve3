@@ -22,3 +22,7 @@
 # Map overviews
 content/dota_addons/trollnelves2/materials/overviews/*
 game/dota_addons/trollnelves2/resource/overviews/*
+*.sqlite3-wal
+*.sqlite3-shm
+game/trollnelves2/tools_thumbnail_cache.sqlite3
+*.sqlite3

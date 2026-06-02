@@ -131,7 +131,7 @@ function BuildSeasonTabs() {
         for (let k in topH) seasonKeys.push(k)
 
         // сортировка: по году DESC, затем Winter>Autumn>Summer>Spring
-        const order = { "Winter": 4, "Autumn": 3, "Summer": 2, "Spring": 1 }
+        const order = { "Winter": 1, "Autumn": 4, "Summer": 3, "Spring": 2 }
         seasonKeys.sort((a, b) => {
             const [sa, ya] = a.split(" ")
             const [sb, yb] = b.split(" ")
