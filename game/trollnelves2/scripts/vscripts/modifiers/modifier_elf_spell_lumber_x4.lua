@@ -49,7 +49,7 @@ function modifier_elf_spell_lumber_x4:OnStackCountChanged()
 		if countStack == 2 then
 			PlayerResource:ModifyLumber(hero,3,true)
 		elseif countStack == 3 then
-			PlayerResource:ModifyLumber(hero,6,true)
+			PlayerResource:ModifyLumber(hero,7,true)
 		end
 	end
 end

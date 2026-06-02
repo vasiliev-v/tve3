@@ -383,26 +383,31 @@ function InitializeBadHero(hero)
     --DebugPrint("Initialize bad hero")
     local playerID = hero:GetPlayerOwnerID()
     local status, nextCall = Error_debug.ErrorCheck(function() 
-        hero.hpReg = 0
-        hero.hpRegDebuff = 0
-        Timers:CreateTimer(function()
-            if hero:IsNull() then return 1 end
-            local rate = FrameTime()
-            local fullHpReg = math.max(hero.hpReg - hero.hpRegDebuff, 0)
+    hero.hpReg = 0
+    hero.hpRegDebuff = 0
+    Timers:CreateTimer(1, function()
+
+            if not hero or hero:IsNull() then 
+                return nil 
+            end
+
+            if hero.hpReg == nil or hero.hpReg < 0 then
+                hero.hpReg = 0
+            end 
+
+            local fullHpReg = math.max((hero.hpReg or 0) - (hero.hpRegDebuff or 0), 0)
+
             if fullHpReg > 0 and hero:IsAlive() then
-                local optimalRate = 1 / fullHpReg
-                rate = optimalRate > rate and optimalRate or rate
+                local rate = math.max(FrameTime(), 1 / fullHpReg)
                 local ratedHpReg = fullHpReg * rate
+
                 local new_health = math.min(hero:GetHealth() + ratedHpReg, hero:GetMaxHealth())
                 hero:SetHealth(new_health)
+
+                return rate
             end
-            if rate == nil then
-                rate = 1 
-            end
-            if rate == 0 then
-                rate = 1 
-            end
-            return rate
+
+            return 1
         end)
     end)
     

@@ -195,6 +195,15 @@ function chatcommand:OnPlayerChat(event)
 		local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )
 		local dropRadius = RandomFloat( 50, 100 )
 		newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
+		
+		--elseif event.text == "1" then
+		--	hero.hpReg = nil
+		--elseif event.text == "2" then
+		--	hero.hpRegDebuff = nil
+		--elseif event.text == "3" then
+		--DebugPrint("hero.hpReg " .. hero.hpReg )
+		--DebugPrint("hero.hpRegDebuff " .. hero.hpRegDebuff )
+
 		--elseif event.text == "!tp" then
 		--DebugPrintTable(GameRules.trollTps )
 		--elseif event.text == "12345" then

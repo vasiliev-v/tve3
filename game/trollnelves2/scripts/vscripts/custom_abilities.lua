@@ -971,7 +971,7 @@ function HpRegenModifier(keys)
 	local status, nextCall = Error_debug.ErrorCheck(function() 
 	local caster = keys.caster
 	
-	if caster.hpReg == nil then
+	if caster.hpReg == nil or caster.hpReg < 0 then
 		caster.hpReg = 0
 	end
 	

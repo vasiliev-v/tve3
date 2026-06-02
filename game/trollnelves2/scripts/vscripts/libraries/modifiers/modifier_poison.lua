@@ -11,7 +11,7 @@ function modifier_poison:OnCreated(event)
     if hero:GetEntityIndex() == nil then
         return
     end
-    if hero.hpReg == nil then
+    if hero.hpReg == nil or hero.hpReg < 0 then
         hero.hpReg = 0
     end
     local value = hero.hpReg * 0.05
@@ -36,7 +36,7 @@ function modifier_poison:OnDestroy(event)
     if hero:GetEntityIndex() == nil then
         return
     end
-    if hero.hpReg == nil then
+    if hero.hpReg == nil or hero.hpReg < 0 then
         hero.hpReg = 0
     end
     local value = self.value
