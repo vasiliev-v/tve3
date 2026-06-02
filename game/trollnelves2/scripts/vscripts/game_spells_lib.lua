@@ -383,7 +383,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 {1000, 2000, 3000},
                 {"50%", "75%", "100%"},
-                {350, 300, 300},
+                {300, 250, 250},
             },
             "0",
             "1",
@@ -482,7 +482,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 {1,2,3},
                 {"400%","400%","400%"},
-                {5,10,15},
+                {5,15,20},
                 {150,100,60},
             },
             "1",
@@ -587,10 +587,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_haste_description_level_1_shop", 
                 "troll_spell_haste_description_level_2_shop", 
                 "troll_spell_haste_description_level_3_shop", 
+                "troll_spell_haste_description_level_4_shop", 
             }, 
             {
-                {5,15,30},
+                {15,30,45},
                 {'2%','4%','8%'},
+                {300, 250, 200},
                 {1000,1000,1000},
             },
             "1",
@@ -686,7 +688,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 "troll_spell_slow_area_description_level_1_shop", 
                 "troll_spell_slow_area_description_level_2_shop", 
-                "troll_spell_slow_area_description_level_3_shop", 
+                "troll_spell_slow_area_description_level_3_shop",
                 "troll_spell_slow_area_description_level_4_shop", 
             }, 
             {
@@ -1434,7 +1436,7 @@ else -- X4
             {
                 {1,2,3},
                 {"400%","400%","400%"},
-                {5,10,15},
+                {5,15,20},
                 {150,100,60},
             },
             "1",
@@ -1638,7 +1640,6 @@ else -- X4
             {
                 "troll_spell_slow_area_description_level_1_shop_x4", 
                 "troll_spell_slow_area_description_level_2_shop_x4", 
-                "troll_spell_slow_area_description_level_3_shop_x4", 
                 "troll_spell_slow_area_description_level_3_shop_x4", 
             }, 
             {
