@@ -448,42 +448,42 @@ function SpawnUnitOnChannelSucceeded(event)
 			if string.match(unit_name,"%a+") == "worker" then
 				ABILITY_Repair = unit:FindAbilityByName("repair")
 				ABILITY_Repair:ToggleAutoCast()
-				if hero:HasModifier("modifier_elf_spell_cd_worker")  then
-					if hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 1  then
+				if hero:HasModifier("modifier_elf_spell_cd_reduce")  then
+					if hero:FindModifierByName("modifier_elf_spell_cd_reduce"):GetStackCount() == 1  then
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(1) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 2 then
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_reduce"):GetStackCount() == 2 then
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(2) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker"):GetStackCount() == 3 then
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_reduce"):GetStackCount() == 3 then
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
 					end
 				end
-				if hero:HasModifier("modifier_elf_spell_cd_worker_x4")  then
+				if hero:HasModifier("modifier_elf_spell_cd_reduce_x4")  then
 					if hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 1  then
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(1) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 2 then
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_reduce_x4"):GetStackCount() == 2 then
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(2) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 3 then
+					elseif hero:FindModifierByName("modifier_elf_spell_cd_reduce_x4"):GetStackCount() == 3 then
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(3) 
 					end
 				end
 			end
 			
-			if hero:HasModifier("modifier_elf_spell_ms")  then
-				if hero:FindModifierByName("modifier_elf_spell_ms"):GetStackCount() == 1  then
-					unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms", {}):SetStackCount(1) 
-				elseif hero:FindModifierByName("modifier_elf_spell_ms"):GetStackCount() == 2 then
-					unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms", {}):SetStackCount(2) 
-				elseif hero:FindModifierByName("modifier_elf_spell_ms"):GetStackCount() == 3 then
-					unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms", {}):SetStackCount(3) 
+			if hero:HasModifier("modifier_elf_spell_solo_player")  then
+				if hero:FindModifierByName("modifier_elf_spell_solo_player"):GetStackCount() == 1  then
+					unit:AddNewModifier(unit, unit, "modifier_unit_spell_solo_player", {}):SetStackCount(1) 
+				elseif hero:FindModifierByName("modifier_elf_spell_solo_player"):GetStackCount() == 2 then
+					unit:AddNewModifier(unit, unit, "modifier_unit_spell_solo_player", {}):SetStackCount(2) 
+				elseif hero:FindModifierByName("modifier_elf_spell_solo_player"):GetStackCount() == 3 then
+					unit:AddNewModifier(unit, unit, "modifier_unit_spell_solo_player", {}):SetStackCount(3) 
 				end
 			end
-			if hero:HasModifier("modifier_elf_spell_ms_x4")  then
-				if hero:FindModifierByName("modifier_elf_spell_ms_x4"):GetStackCount() == 1  then
-					unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms_x4", {}):SetStackCount(1) 
-				elseif hero:FindModifierByName("modifier_elf_spell_ms_x4"):GetStackCount() == 2 then
-					unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms_x4", {}):SetStackCount(2) 
-				elseif hero:FindModifierByName("modifier_elf_spell_ms_x4"):GetStackCount() == 3 then
-					unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms_x4", {}):SetStackCount(3) 
+			if hero:HasModifier("modifier_elf_spell_solo_player_x4")  then
+				if hero:FindModifierByName("modifier_elf_spell_solo_player_x4"):GetStackCount() == 1  then
+					unit:AddNewModifier(unit, unit, "modifier_unit_spell_solo_player_x4", {}):SetStackCount(1) 
+				elseif hero:FindModifierByName("modifier_elf_spell_solo_player_x4"):GetStackCount() == 2 then
+					unit:AddNewModifier(unit, unit, "modifier_unit_spell_solo_player_x4", {}):SetStackCount(2) 
+				elseif hero:FindModifierByName("modifier_elf_spell_solo_player_x4"):GetStackCount() == 3 then
+					unit:AddNewModifier(unit, unit, "modifier_unit_spell_solo_player_x4", {}):SetStackCount(3) 
 				end
 			end
 
@@ -633,7 +633,7 @@ function GatherLumber(event)
 		
 		-- Check for empty tree for Wisps
 		if tree.builder ~= nil and tree.builder ~= caster then
-			SendErrorMessage(pID,"The tree is occupied!")
+			SendErrorMessage(pID,"occupied_tree")
 			caster:Interrupt()
 			return
 		end

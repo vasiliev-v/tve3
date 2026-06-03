@@ -10,6 +10,7 @@ function modifier_troll_spell_armor:GetTexture()         return "troll_spell_arm
 function  modifier_troll_spell_armor:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
     }
     return funcs
 end
@@ -23,3 +24,15 @@ function modifier_troll_spell_armor:GetModifierPhysicalArmorBonus()
 		return 8
 	else return 0 end
 end
+
+function modifier_troll_spell_armor:GetModifierConstantHealthRegen()
+	if self:GetStackCount() == 1 then 
+		return 2
+	elseif self:GetStackCount() == 2  then
+		return 4
+	elseif self:GetStackCount() == 3  then
+		return 6
+	else return 0 end
+end
+
+

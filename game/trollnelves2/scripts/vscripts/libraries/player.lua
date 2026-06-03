@@ -28,38 +28,38 @@ function CDOTA_PlayerResource:SetGold(hero,gold)
 			if hero:FindModifierByName("modifier_troll_spell_limit_gold"):GetStackCount() == 1  then
 				limitGold = 200000 
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold"):GetStackCount() == 2 then
-				limitGold = 350000
+				limitGold = 275000
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold"):GetStackCount() == 3 then
-				limitGold = 550000
+				limitGold = 350000
 			end
 		end
 		if hero:HasModifier("modifier_troll_spell_limit_gold_x4")  then
 			if hero:FindModifierByName("modifier_troll_spell_limit_gold_x4"):GetStackCount() == 1  then
 				limitGold = 200000 
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold_x4"):GetStackCount() == 2 then
-				limitGold = 350000
+				limitGold = 275000
 			elseif hero:FindModifierByName("modifier_troll_spell_limit_gold_x4"):GetStackCount() == 3 then
-				limitGold = 550000
+				limitGold = 350000
 			end
 		end
 
 		if hero:HasModifier("modifier_elf_spell_limit_gold")  then
 			if hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 1  then
-				limitGold = 200000 
+				limitGold = 150000 
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 2 then
-				limitGold = 400000
+				limitGold = 350000
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 3 then
-				limitGold = 600000
+				limitGold = 450000
 			end
 		end
 
 		if hero:HasModifier("modifier_elf_spell_limit_gold_x4")  then
 			if hero:FindModifierByName("modifier_elf_spell_limit_gold_x4"):GetStackCount() == 1  then
-				limitGold = 200000 
+				limitGold = 150000 
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold_x4"):GetStackCount() == 2 then
 				limitGold = 350000
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold_x4"):GetStackCount() == 3 then
-				limitGold = 500000
+				limitGold = 450000
 			end
 		end
 
@@ -100,22 +100,22 @@ function CDOTA_PlayerResource:SetLumber(hero, lumber)
 	local status, nextCall = Error_debug.ErrorCheck(function() 
 		local playerID = hero:GetPlayerOwnerID()
 		local limitLumber = 0
-		if hero:HasModifier("modifier_elf_spell_limit_lumber")  then
-			if hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 1  then
-				limitLumber = 200000 
-			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 2 then
-				limitLumber = 400000
-			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber"):GetStackCount() == 3 then
-				limitLumber = 600000
+		if hero:HasModifier("modifier_elf_spell_limit_gold")  then
+			if hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 1  then
+				limitLumber = 150000 
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 2 then
+				limitLumber = 250000
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 3 then
+				limitLumber = 350000
 			end
 		end
-		if hero:HasModifier("modifier_elf_spell_limit_lumber_x4")  then
-			if hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 1  then
-				limitLumber = 200000 
-			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 2 then
+		if hero:HasModifier("modifier_elf_spell_limit_gold_x4")  then
+			if hero:FindModifierByName("modifier_elf_spell_limit_gold_x4"):GetStackCount() == 1  then
+				limitLumber = 150000 
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold_x4"):GetStackCount() == 2 then
+				limitLumber = 250000
+			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold_x4"):GetStackCount() == 3 then
 				limitLumber = 350000
-			elseif hero:FindModifierByName("modifier_elf_spell_limit_lumber_x4"):GetStackCount() == 3 then
-				limitLumber = 500000
 			end
 		end
 		if GameRules.MapSpeed >= 4 then

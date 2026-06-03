@@ -25,7 +25,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {"2","2","2"},
-                {"2","5","10"},
+                {"7","15","25"},
             },
             "0",
             "1",
@@ -36,29 +36,31 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "elf_spell_limit_gold", 
             "modifier_elf_spell_limit_gold", 
             {
-                "elf_spell_limit_gold_description_level_1_shop", 
+                "elf_spell_limit_gold_description_level_1_shop",
+                "elf_spell_limit_gold_description_level_2_shop",
             }, 
             {
-                {"200k","400k","600k"},
+                {"150k","250k","350k"},
+                {"150k","250k","350k"},
             },
             "0",
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_limit_lumber", 
-            "elf_spell_limit_lumber", 
-            "modifier_elf_spell_limit_lumber", 
-            {
-                "elf_spell_limit_lumber_description_level_1_shop", 
-            }, 
-            {
-                {"200k","400k","600k"},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_limit_lumber", 
+        --    "elf_spell_limit_lumber", 
+        --    "modifier_elf_spell_limit_lumber", 
+        --    {
+        --         "elf_spell_limit_lumber_description_level_1_shop", 
+        --     }, 
+        --    {
+        --        {"200k","400k","600k"},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --  },
         {
             "elf_spell_damage_gold", 
             "elf_spell_damage_gold", 
@@ -77,36 +79,36 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_ms", 
-            "elf_spell_ms", 
-            "modifier_elf_spell_ms", 
-            {
-                "elf_spell_ms_description_level_1_shop",
-                "elf_spell_ms_description_level_2_shop",
-            },
-            {
-                {5,10,15},
-                {5,10,15},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
-        {
-            "elf_spell_tower_range", 
-            "elf_spell_tower_range", 
-            "modifier_elf_spell_tower_range", 
-            {
-                "elf_spell_tower_range_description_level_1_shop", 
-            }, 
-            {
-                {10,20,40},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_ms", 
+        --    "elf_spell_ms", 
+        --    "modifier_elf_spell_ms", 
+        --    {
+        --        "elf_spell_ms_description_level_1_shop",
+        --        "elf_spell_ms_description_level_2_shop",
+        --    },
+        --    {
+        --        {5,10,15},
+        --        {5,10,15},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
+        --{
+        --    "elf_spell_tower_range", 
+        --    "elf_spell_tower_range", 
+        --    "modifier_elf_spell_tower_range", 
+        --    {
+        --        "elf_spell_tower_range_description_level_1_shop", 
+        --    }, 
+        --    {
+        --        {10,20,40},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "elf_spell_armor_wall", 
             "elf_spell_armor_wall", 
@@ -116,7 +118,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "elf_spell_armor_wall_description_level_2_shop", 
             }, 
             {
-                {"5%","10%","15%"},
+                {"10%","15%","20%"},
                 {"1","1","1"},
             },
             "0",
@@ -128,10 +130,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "elf_spell_tower_damage", 
             "modifier_elf_spell_tower_damage", 
             {
-                "elf_spell_tower_damage_description_level_1_shop", 
+                "elf_spell_tower_damage_description_level_1_shop",
+                "elf_spell_tower_damage_description_level_2_shop",  
             }, 
             {
-                {"5%","10%","15%"},
+                {"10%","15%","20%"},
+                {"10", "20", "30"}
             },
             "0",
             "1",
@@ -161,7 +165,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "elf_spell_blink_description_level_1_shop", 
             }, 
             {
-                {"+200","+400","+600"},
+                {"+225","+450","+600"},
             },
             "0",
             "1",
@@ -186,24 +190,24 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_haste",
-            "elf_spell_haste", 
-            "modifier_elf_spell_haste", 
-            {
-                "elf_spell_haste_description_level_1_shop", 
-                "elf_spell_haste_description_level_2_shop", 
-                "elf_spell_haste_description_level_3_shop", 
-            }, 
-            {
-                {10, 20 ,50},
-                {10, 20, 50},
-                {350, 300, 300},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_haste",
+        --    "elf_spell_haste", 
+        --    "modifier_elf_spell_haste", 
+        --    {
+        --       "elf_spell_haste_description_level_1_shop", 
+        --       "elf_spell_haste_description_level_2_shop", 
+        --        "elf_spell_haste_description_level_3_shop", 
+        --    }, 
+        --    {
+        --        {10, 20 ,50},
+        --        {10, 20, 50},
+        --        {350, 300, 300},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "elf_spell_evasion",
             "elf_spell_evasion", 
@@ -214,9 +218,9 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "elf_spell_evasion_description_level_3_shop", 
             }, 
             {
-                {"50%", "60%", "75%"},
-                {3, 5 ,7},
-                {350, 300, 300},
+                {"75%", "85%", "95%"},
+                {4, 6 ,8},
+                {300, 275, 250},
             },
             "0",
             "1",
@@ -227,10 +231,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "elf_spell_cd_reduce", 
             "modifier_elf_spell_cd_reduce", 
             {
-                "elf_spell_cd_reduce_description_level_1_shop", 
+                "elf_spell_cd_reduce_description_level_1_shop",
+                "elf_spell_cd_reduce_description_level_2_shop",
             }, 
             {
-                {"-4%","-8%","-16%"},
+                {"-4%","-8%","-12%"},
+                {"-30%","-50%","-75%"},
             },
             "0",
             "1",
@@ -282,7 +288,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {1, 1.5, 2},
-                {350, 300, 300},
+                {300, 240, 180},
             },
             "0",
             "1",
@@ -309,31 +315,33 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 "elf_spell_target_damage_description_level_1_shop", 
                 "elf_spell_target_damage_description_level_2_shop", 
-                "elf_spell_target_damage_description_level_3_shop", 
+                "elf_spell_target_damage_description_level_3_shop",
+                "elf_spell_target_damage_description_level_4_shop", 
             }, 
             {
-                {"10%", "20%", "30%"},
-                {4, 8 , 15},
+                {"15%", "20%", "25%"},
+                {5, 8 , 12},
                 {350, 300, 300},
+                {300, 300, 300},
             },
             "0",
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_cd_worker", 
-            "elf_spell_cd_worker", 
-            "modifier_elf_spell_cd_worker", 
-            {
-                "elf_spell_cd_worker_description_level_1_shop", 
-            }, 
-            {
-                {"-30%","-50%","-75%"},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_cd_worker", 
+        --    "elf_spell_cd_worker", 
+        --    "modifier_elf_spell_cd_worker", 
+        --    {
+        --        "elf_spell_cd_worker_description_level_1_shop", 
+        --    }, 
+        --    {
+        --        {"-30%","-50%","-75%"},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "elf_spell_true", 
             "elf_spell_true", 
@@ -434,35 +442,37 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_limit_gold_description_level_1_shop", 
             }, 
             {
-                {'+200k','+350k','+550k'},
+                {'+200k','+275k','+350k'},
             },
             "1",
             "1",
             {0, 10000, 30000}
         },
-        {
-            "troll_spell_hp_reg",
-            "troll_spell_hp_reg", 
-            "modifier_troll_spell_hp_reg", 
-            {
-                "troll_spell_hp_reg_description_level_1_shop", 
-            },
-            {
-                {1,2,4},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "troll_spell_hp_reg",
+        --    "troll_spell_hp_reg", 
+        --    "modifier_troll_spell_hp_reg", 
+        --    {
+        --        "troll_spell_hp_reg_description_level_1_shop", 
+        --    },
+        --    {
+        --        {1,2,4},
+        --    },
+        --    "1",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "troll_spell_armor",
             "troll_spell_armor", 
             "modifier_troll_spell_armor", 
             {
-                "troll_spell_armor_description_level_1_shop", 
+                "troll_spell_armor_description_level_1_shop",
+                "troll_spell_armor_description_level_2_shop",
             }, 
             {
                 {2,4,8},
+                {2,4,6}
             },
             "1",
             "1",
@@ -475,13 +485,11 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 "troll_spell_gold_hit_description_level_1_shop", 
                 "troll_spell_gold_hit_description_level_2_shop", 
-                "troll_spell_gold_hit_description_level_3_shop", 
-                "troll_spell_gold_hit_description_level_4_shop",
+                "troll_spell_gold_hit_description_level_3_shop",
                 
             }, 
             {
                 {1,2,3},
-                {"400%","400%","400%"},
                 {5,15,20},
                 {150,100,60},
             },
@@ -507,22 +515,22 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "1",
             {0, 10000, 30000}
         },
-        {
-            "troll_spell_vision",
-            "troll_spell_vision", 
-            "modifier_troll_spell_vision", 
-            {
-                "troll_spell_vision_description_level_1_shop", 
-                "troll_spell_vision_description_level_2_shop", 
-            }, 
-            {
-                {300,600,900},
-                {300,600,900},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "troll_spell_vision",
+        --    "troll_spell_vision", 
+        --    "modifier_troll_spell_vision", 
+        --    {
+        --        "troll_spell_vision_description_level_1_shop", 
+        --        "troll_spell_vision_description_level_2_shop", 
+        --   }, 
+        --    {
+        --        {300,600,900},
+        --        {300,600,900},
+        --    },
+        --    "1",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "troll_spell_ms", 
             "troll_spell_ms", 
@@ -531,7 +539,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_ms_description_level_1_shop", 
             },
             {
-                {15,20,25},
+                {30,35,40},
             },
             "1",
             "1",
@@ -542,38 +550,42 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "troll_spell_cd_reduce", 
             "modifier_troll_spell_cd_reduce", 
             {
-                "troll_spell_cd_reduce_description_level_1_shop", 
+                "troll_spell_cd_reduce_description_level_1_shop",
+                "troll_spell_cd_reduce_description_level_2_shop",  
             }, 
             {
-                {'-10%','-15%','-20%'},
+                {'-15%','-20%','-25%'},
+                {'-15%','-20%','-25%'},
             },
             "1",
             "1",
             {0, 10000, 30000}
         },
-        {
-            "troll_spell_magic_resist",
-            "troll_spell_magic_resist", 
-            "modifier_troll_spell_magic_resist", 
-            {
-                "troll_spell_magic_resist_description_level_1_shop", 
-            }, 
-            {
-                {'+10%','+15%','+20%'},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "troll_spell_magic_resist",
+        --    "troll_spell_magic_resist", 
+        --    "modifier_troll_spell_magic_resist", 
+        --    {
+        --        "troll_spell_magic_resist_description_level_1_shop", 
+        --    }, 
+        --    {
+        --       {'+10%','+15%','+20%'},
+        --    },
+        --    "1",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "troll_spell_status_resist",
             "troll_spell_status_resist", 
             "modifier_troll_spell_status_resist", 
             {
-                "troll_spell_status_resist_description_level_1_shop", 
+                "troll_spell_status_resist_description_level_1_shop",
+                "troll_spell_status_resist_description_level_2_shop",
             }, 
             {
-                {'+10%','+15%','+20%'},
+                {'+15%','+20%','+25%'},
+                {'+15%','+20%','+25%'},
             },
             "1",
             "1",
@@ -673,8 +685,8 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_slow_target_description_level_3_shop", 
             }, 
             {
-                {-80,-90,-100},
-                {10,15,20},
+                {-80,-100,-120},
+                {12,16,20},
                 {120,80,60},
             },
             "1",
@@ -725,10 +737,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "troll_spell_reveal", 
             "modifier_troll_spell_reveal", 
             {
-                "troll_spell_reveal_description_level_1_shop", 
+                "troll_spell_reveal_description_level_1_shop",
+                "troll_spell_reveal_description_level_2_shop",  
             }, 
             {
                 {'+1','+2','+3'},
+                {150,300,450}
             },
             "1",
             "1",
@@ -745,7 +759,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {20,40,50},
-                {20,40,60},
+                {20,35,55},
                 {'1%','2%','3%'},
             },
             "1",
@@ -764,7 +778,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 {128,160,192},
                 {'MAX','MAX','MAX'},
-                {5,10,25},
+                {5,10,20},
             },
             "1",
             "1",
@@ -781,7 +795,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {2,3,5},
-                {300,250,200},
+                {350,300,300},
                 {100,100,100},
             },
             "1",
@@ -798,7 +812,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {1,2,3},
-                {300,250,200},
+                {350,300,300},
             },
             "1",
             "1",
@@ -837,13 +851,11 @@ elseif GetMapName() == "1x1" then
             {
                 "troll_spell_gold_hit_description_level_1_shop", 
                 "troll_spell_gold_hit_description_level_2_shop", 
-                "troll_spell_gold_hit_description_level_3_shop", 
-                "troll_spell_gold_hit_description_level_4_shop",
+                "troll_spell_gold_hit_description_level_3_shop",
                 
             }, 
             {
                 {1},
-                {"400%",},
                 {5},
                 {150},
             },
@@ -948,7 +960,7 @@ elseif GetMapName() == "1x1" then
             }, 
             {
                 {2},
-                {300},
+                {350},
                 {100},
             },
             "1",
@@ -990,7 +1002,7 @@ else -- X4
             }, 
             {
                 {"2","2","2"},
-                {"2","5","10"},
+                {"7","15","25"},
             },
             "0",
             "1",
@@ -1002,28 +1014,30 @@ else -- X4
             "modifier_elf_spell_limit_gold_x4", 
             {
                 "elf_spell_limit_gold_description_level_1_shop_x4", 
+                "elf_spell_limit_gold_description_level_2_shop_x4", 
             }, 
             {
-                {"200k","350k","500k"},
+                {"150k","250k","350k"},
+                {"150k","250k","350k"},
             },
             "0",
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_limit_lumber", 
-            "elf_spell_limit_lumber", 
-            "modifier_elf_spell_limit_lumber_x4", 
-            {
-                "elf_spell_limit_lumber_description_level_1_shop_x4", 
-            }, 
-            {
-                {"200k","350k","500k"},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_limit_lumber", 
+        --    "elf_spell_limit_lumber", 
+        --    "modifier_elf_spell_limit_lumber_x4", 
+        --    {
+        --        "elf_spell_limit_lumber_description_level_1_shop_x4", 
+        --    }, 
+        --    {
+        --        {"200k","350k","500k"},
+        --    },
+        --    "0",
+        --   "1",
+        --    {0, 10000, 30000}
+        --e},
         {
             "elf_spell_damage_gold", 
             "elf_spell_damage_gold", 
@@ -1040,36 +1054,36 @@ else -- X4
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_ms", 
-            "elf_spell_ms", 
-            "modifier_elf_spell_ms_x4", 
-            {
-                "elf_spell_ms_description_level_1_shop_x4",
-                "elf_spell_ms_description_level_2_shop_x4",
-            },
-            {
-                {10,15,20},
-                {10,15,20},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
-        {
-            "elf_spell_tower_range", 
-            "elf_spell_tower_range", 
-            "modifier_elf_spell_tower_range_x4", 
-            {
-                "elf_spell_tower_range_description_level_1_shop_x4", 
-            }, 
-            {
-                {10,20,40},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_ms", 
+        --    "elf_spell_ms", 
+        --    "modifier_elf_spell_ms_x4", 
+        --    {
+        --        "elf_spell_ms_description_level_1_shop_x4",
+        --        "elf_spell_ms_description_level_2_shop_x4",
+        --    },
+        --    {
+        --        {10,15,20},
+        --        {10,15,20},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
+        --{
+        --    "elf_spell_tower_range", 
+        --    "elf_spell_tower_range", 
+        --    "modifier_elf_spell_tower_range_x4", 
+        --    {
+        --        "elf_spell_tower_range_description_level_1_shop_x4", 
+        --    }, 
+        --    {
+        --        {10,20,40},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "elf_spell_armor_wall", 
             "elf_spell_armor_wall", 
@@ -1079,7 +1093,7 @@ else -- X4
                 "elf_spell_armor_wall_description_level_2_shop_x4", 
             }, 
             {
-                {"5%","10%","15%"},
+                {"10%","15%","20%"},
                 {"1","1","1"},
             },
             "0",
@@ -1091,10 +1105,12 @@ else -- X4
             "elf_spell_tower_damage", 
             "modifier_elf_spell_tower_damage_x4", 
             {
-                "elf_spell_tower_damage_description_level_1_shop_x4", 
+                "elf_spell_tower_damage_description_level_1_shop_x4",
+                "elf_spell_tower_damage_description_level_2_shop"
             }, 
             {
-                {"5%","10%","15%"},
+                {"10%","15%","20%"},
+                {"10", "20", "30"},
             },
             "0",
             "1",
@@ -1125,7 +1141,7 @@ else -- X4
                 "elf_spell_blink_description_level_1_shop_x4", 
             }, 
             {
-                {"+200","+400","+600"},
+                {"+225","+450","+600"},
             },
             "0",
             "1",
@@ -1150,24 +1166,24 @@ else -- X4
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_haste",
-            "elf_spell_haste", 
-            "modifier_elf_spell_haste_x4", 
-            {
-                "elf_spell_haste_description_level_1_shop_x4", 
-                "elf_spell_haste_description_level_2_shop_x4", 
-                "elf_spell_haste_description_level_3_shop_x4", 
-            }, 
-            {
-                {50, 50 ,"MAX"},
-                {5, 6, 7},
-                {300, 240, 180},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_haste",
+        --    "elf_spell_haste", 
+        --    "modifier_elf_spell_haste_x4", 
+        --    {
+        --        "elf_spell_haste_description_level_1_shop_x4", 
+        --        "elf_spell_haste_description_level_2_shop_x4", 
+        --        "elf_spell_haste_description_level_3_shop_x4", 
+        --    }, 
+        --    {
+        --        {50, 50 ,"MAX"},
+        --        {5, 6, 7},
+        --        {300, 240, 180},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "elf_spell_evasion",
             "elf_spell_evasion", 
@@ -1178,9 +1194,9 @@ else -- X4
                 "elf_spell_evasion_description_level_3_shop_x4", 
             }, 
             {
-                {"30%", "45%", "60%"},
-                {2, 3 ,6},
-                {350, 300, 300},
+                {"55%", "75%", "85%"},
+                {3, 5 ,7},
+                {300, 275, 250},
             },
             "0",
             "1",
@@ -1191,10 +1207,12 @@ else -- X4
             "elf_spell_cd_reduce", 
             "modifier_elf_spell_cd_reduce_x4", 
             {
-                "elf_spell_cd_reduce_description_level_1_shop_x4", 
+                "elf_spell_cd_reduce_description_level_1_shop_x4",
+                "elf_spell_cd_reduce_description_level_2_shop_x4",
             }, 
             {
                 {"-5%","-7%","-10%"},
+                {"-10%","-20%","-25%"},
             },
             "0",
             "1",
@@ -1246,7 +1264,7 @@ else -- X4
             }, 
             {
                 {1, 1.5, 2},
-                {350, 300, 300},
+                {300, 240, 180},
             },
             "0",
             "1",
@@ -1273,31 +1291,33 @@ else -- X4
             {
                 "elf_spell_target_damage_description_level_1_shop_x4", 
                 "elf_spell_target_damage_description_level_2_shop_x4", 
-                "elf_spell_target_damage_description_level_3_shop_x4", 
+                "elf_spell_target_damage_description_level_3_shop_x4",
+                "elf_spell_target_damage_description_level_4_shop_x4", 
             }, 
             {
-                {"8%", "10%", "15%"},
-                {4, 8 , 15},
+                {"10%", "12%", "15%"},
+                {4, 8 , 12},
                 {350, 300, 300},
+                {300, 300, 300},
             },
             "0",
             "1",
             {0, 10000, 30000}
         },
-        {
-            "elf_spell_cd_worker", 
-            "elf_spell_cd_worker", 
-            "modifier_elf_spell_cd_worker_x4", 
-            {
-                "elf_spell_cd_worker_description_level_1_shop_x4", 
-            }, 
-            {
-                {"-10%","-20%","-25%"},
-            },
-            "0",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "elf_spell_cd_worker", 
+        --    "elf_spell_cd_worker", 
+        --    "modifier_elf_spell_cd_worker_x4", 
+        --    {
+        --        "elf_spell_cd_worker_description_level_1_shop_x4", 
+        --    }, 
+        --    {
+        --        {"-10%","-20%","-25%"},
+        --    },
+        --    "0",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "elf_spell_reveal",
             "elf_spell_reveal", 
@@ -1394,29 +1414,31 @@ else -- X4
             "1",
             {0, 10000, 30000}
         },
-        {
-            "troll_spell_hp_reg",
-            "troll_spell_hp_reg", 
-            "modifier_troll_spell_hp_reg_x4", 
-            {
-                "troll_spell_hp_reg_description_level_1_shop_x4", 
-            },
-            {
-                {2,4,8},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "troll_spell_hp_reg",
+        --    "troll_spell_hp_reg", 
+        --    "modifier_troll_spell_hp_reg_x4", 
+        --    {
+        --        "troll_spell_hp_reg_description_level_1_shop_x4", 
+        --    },
+        --    {
+        --        {2,4,8},
+        --    },
+        --    "1",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "troll_spell_armor",
             "troll_spell_armor", 
             "modifier_troll_spell_armor_x4", 
             {
-                "troll_spell_armor_description_level_1_shop_x4", 
+                "troll_spell_armor_description_level_1_shop_x4",
+                "troll_spell_armor_description_level_2_shop_x4",
             }, 
             {
                 {2,4,8},
+                {2,4,6}
             },
             "1",
             "1",
@@ -1429,13 +1451,11 @@ else -- X4
             {
                 "troll_spell_gold_hit_description_level_1_shop_x4", 
                 "troll_spell_gold_hit_description_level_2_shop_x4", 
-                "troll_spell_gold_hit_description_level_3_shop_x4", 
-                "troll_spell_gold_hit_description_level_4_shop_x4",
+                "troll_spell_gold_hit_description_level_3_shop_x4",
                 
             }, 
             {
                 {1,2,3},
-                {"400%","400%","400%"},
                 {5,15,20},
                 {150,100,60},
             },
@@ -1461,22 +1481,22 @@ else -- X4
             "1",
             {0, 10000, 30000}
         },
-        {
-            "troll_spell_vision",
-            "troll_spell_vision", 
-            "modifier_troll_spell_vision_x4", 
-            {
-                "troll_spell_vision_description_level_1_shop_x4", 
-                "troll_spell_vision_description_level_2_shop_x4", 
-            }, 
-            {
-                {300,600,900},
-                {300,600,900},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "troll_spell_vision",
+        --    "troll_spell_vision", 
+        --    "modifier_troll_spell_vision_x4", 
+        --    {
+        --        "troll_spell_vision_description_level_1_shop_x4", 
+        --        "troll_spell_vision_description_level_2_shop_x4", 
+        --    }, 
+        --    {
+        --        {300,600,900},
+        --        {300,600,900},
+        --    },
+        --    "1",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "troll_spell_ms", 
             "troll_spell_ms", 
@@ -1485,7 +1505,7 @@ else -- X4
                 "troll_spell_ms_description_level_1_shop_x4", 
             },
             {
-                {15,20,25},
+                {30,35,40},
             },
             "1",
             "1",
@@ -1505,20 +1525,20 @@ else -- X4
             "1",
             {0, 10000, 30000}
         },
-        {
-            "troll_spell_magic_resist",
-            "troll_spell_magic_resist", 
-            "modifier_troll_spell_magic_resist_x4", 
-            {
-                "troll_spell_magic_resist_description_level_1_shop_x4", 
-            }, 
-            {
-                {'+10%','+15%','+20%'},
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
+        --{
+        --    "troll_spell_magic_resist",
+        --    "troll_spell_magic_resist", 
+        --    "modifier_troll_spell_magic_resist_x4", 
+        --    {
+        --        "troll_spell_magic_resist_description_level_1_shop_x4", 
+        --    }, 
+    --     {
+        --        {'+10%','+15%','+20%'},
+        --    },
+        --    "1",
+        --    "1",
+        --    {0, 10000, 30000}
+        --},
         {
             "troll_spell_status_resist",
             "troll_spell_status_resist", 
@@ -1527,7 +1547,8 @@ else -- X4
                 "troll_spell_status_resist_description_level_1_shop_x4", 
             }, 
             {
-                {'+10%','+15%','+20%'},
+                {'+15%','+20%','+25%'},
+                {'+15%','+20%','+25%'},
             },
             "1",
             "1",
@@ -1625,8 +1646,8 @@ else -- X4
                 "troll_spell_slow_target_description_level_3_shop_x4", 
             }, 
             {
-                {-80,-90,-120},
-                {10,15,20},
+                {-80,-100,-120},
+                {12,16,20},
                 {120,80,60},
             },
             "1",
@@ -1676,10 +1697,12 @@ else -- X4
             "troll_spell_reveal", 
             "modifier_troll_spell_reveal_x4", 
             {
-                "troll_spell_reveal_description_level_1_shop_x4", 
+                "troll_spell_reveal_description_level_1_shop_x4",
+                "troll_spell_reveal_description_level_2_shop_x4", 
             }, 
             {
                 {'+1','+2','+3'},
+                {150, 300, 450}
             },
             "1",
             "1",
@@ -1696,7 +1719,7 @@ else -- X4
             }, 
             {
                 {20,40,50},
-                {20,40,60},
+                {20,35,55},
                 {'1%','2%','3%'},
             },
             "1",
@@ -1715,7 +1738,7 @@ else -- X4
             {
                 {128,160,192},
                 {'MAX','MAX','MAX'},
-                {5,10,25},
+                {5,10,20},
             },
             "1",
             "1",
@@ -1732,7 +1755,7 @@ else -- X4
             }, 
             {
                 {2,3,5},
-                {300,250,200},
+                {350,300,250},
                 {80,80,80},
             },
             "1",
@@ -1749,7 +1772,7 @@ else -- X4
             }, 
             {
                 {1,2,3},
-                {300,240,180},
+                {350,275,200},
             },
             "1",
             "1",
