@@ -19,6 +19,7 @@ function modifier_elf_spell_true_x4:OnCreated( kv )
 		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_true_x4")
 		local abil = hero:FindAbilityByName("elf_spell_true_x4")
 		abil:SetLevel(countStack)
+		abil:StartCooldown(75)
 	end
 end
 function modifier_elf_spell_true_x4:OnDestroy( kv )

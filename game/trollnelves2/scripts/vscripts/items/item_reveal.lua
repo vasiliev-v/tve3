@@ -7,17 +7,17 @@ function item_reveal:OnSpellStart()
 	local duration = self:GetSpecialValueFor("dur_time")
 	local base_radius = self:GetSpecialValueFor("radius1")
 
-	if caster:HasModifier("modifier_troll_spell_vision") then
-		local s = caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount()
-		if s == 1 then base_radius = base_radius + 300
-		elseif s == 2 then base_radius = base_radius + 600
-		elseif s >= 3 then base_radius = base_radius + 900 end
+	if caster:HasModifier("modifier_troll_spell_reveal") then
+		local s = caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount()
+		if s == 1 then base_radius = base_radius + 150
+		elseif s == 2 then base_radius = base_radius + 300
+		elseif s >= 3 then base_radius = base_radius + 450 end
 	end
-	if caster:HasModifier("modifier_troll_spell_vision_x4") then
-		local s = caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount()
-		if s == 1 then base_radius = base_radius + 300
-		elseif s == 2 then base_radius = base_radius + 600
-		elseif s >= 3 then base_radius = base_radius + 900 end
+	if caster:HasModifier("modifier_troll_spell_reveal_x4") then
+		local s = caster:FindModifierByName("modifier_troll_spell_reveal_x4"):GetStackCount()
+		if s == 1 then base_radius = base_radius + 150
+		elseif s == 2 then base_radius = base_radius + 300
+		elseif s >= 3 then base_radius = base_radius + 450 end
 	end
 
 	local map = GetMapName() or ""

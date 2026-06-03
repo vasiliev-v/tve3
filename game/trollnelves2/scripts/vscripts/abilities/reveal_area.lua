@@ -175,18 +175,18 @@ function reveal_area:_getRadius()
 	local caster = self:GetCaster()
 	local radius = self:GetSpecialValueFor("radius1")
 
-	if caster:HasModifier("modifier_troll_spell_vision") then
-		local s = caster:FindModifierByName("modifier_troll_spell_vision"):GetStackCount()
-		if s == 1 then radius = radius + 300
-		elseif s == 2 then radius = radius + 600
-		elseif s >= 3 then radius = radius + 900 end
+	if caster:HasModifier("modifier_troll_spell_reveal") then
+		local s = caster:FindModifierByName("modifier_troll_spell_reveal"):GetStackCount()
+		if s == 1 then radius = radius + 150
+		elseif s == 2 then radius = radius + 300
+		elseif s >= 3 then radius = radius + 450 end
 	end
 
-	if caster:HasModifier("modifier_troll_spell_vision_x4") then
-		local s = caster:FindModifierByName("modifier_troll_spell_vision_x4"):GetStackCount()
-		if s == 1 then radius = radius + 300
-		elseif s == 2 then radius = radius + 600
-		elseif s >= 3 then radius = radius + 900 end
+	if caster:HasModifier("modifier_troll_spell_reveal_x4") then
+		local s = caster:FindModifierByName("modifier_troll_spell_reveal_x4"):GetStackCount()
+		if s == 1 then radius = radius + 150
+		elseif s == 2 then radius = radius + 300
+		elseif s >= 3 then radius = radius + 450 end
 	end
 
 	return self:_scaledRadius(radius)

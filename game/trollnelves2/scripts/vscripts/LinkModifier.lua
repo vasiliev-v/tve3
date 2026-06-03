@@ -101,8 +101,9 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_stun_target", "modifiers/modifier_elf_spell_stun_target", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_elf_spell_heal", "modifiers/modifier_elf_spell_heal", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_elf_spell_reveal", "modifiers/modifier_elf_spell_reveal", LUA_MODIFIER_MOTION_NONE )	
-
+	LinkLuaModifier("modifier_unit_spell_solo_player", "modifiers/modifier_unit_spell_solo_player", LUA_MODIFIER_MOTION_NONE )
 	-- X4
+	LinkLuaModifier("modifier_unit_spell_solo_player_x4", "modifiers/modifier_unit_spell_solo_player_x4", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_elf_spell_solo_player_x4", "modifiers/modifier_elf_spell_solo_player_x4", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_ms_x4", "modifiers/modifier_troll_spell_ms_x4", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_troll_spell_gold_hit_x4", "modifiers/modifier_troll_spell_gold_hit_x4", LUA_MODIFIER_MOTION_NONE )

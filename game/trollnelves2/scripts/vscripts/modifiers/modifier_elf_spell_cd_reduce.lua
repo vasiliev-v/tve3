@@ -20,6 +20,6 @@ function modifier_elf_spell_cd_reduce:GetModifierPercentageCooldown()
 	elseif self:GetStackCount() == 2  then
 		return 8
 	elseif self:GetStackCount() == 3  then
-		return 16
+		return 12
 	else return 0 end
 end
