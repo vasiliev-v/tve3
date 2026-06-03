@@ -136,6 +136,9 @@ function modifier_item_blink_datadriven_speed:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 
+function modifier_item_blink_datadriven_speed:GetTexture()         return "elf_spell_blink" end
+
+
 function modifier_item_blink_datadriven_speed:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
