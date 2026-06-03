@@ -2768,6 +2768,14 @@
 		"DOTA_Tooltip_ability_item_blink_datadriven_up2"		  "RANGE UPGRATE 2: "
 		"DOTA_Tooltip_ability_item_blink_datadriven_up3"		  "RANGE UPGRATE 3: "
 
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_pct1"		  "MS UPGRATE 1: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_pct2"		  "MS UPGRATE 2: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_pct3"		  "MS UPGRATE 3: "
+
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration1"		  "DURATION UP 1: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration2"		  "DURATION UP 2: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration3"		  "DURATION UP 3: "
+
 		"DOTA_Tooltip_ability_item_root_ability"                                          "Root"
 		"DOTA_Tooltip_ability_item_root_ability_Description"                              "<br>Causes the troll to become numb."
 		"DOTA_Tooltip_ability_item_root_ability_time_dur"								  "DURATION: "

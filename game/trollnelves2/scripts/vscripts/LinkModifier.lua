@@ -159,6 +159,9 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_reveal_x4", "modifiers/modifier_elf_spell_reveal_x4", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_magic_resist_buff", "abilities/troll_spell_magic_resist", LUA_MODIFIER_MOTION_NONE )	
 
+    
+
+	LinkLuaModifier("modifier_item_blink_datadriven_speed", "items/item_blink_datadriven.lua", LUA_MODIFIER_MOTION_NONE)
 
 	--LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
 	--LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
