@@ -514,7 +514,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "troll_spell_vision", 
             "modifier_troll_spell_vision", 
             {
-                "troll_spell_vision_descripelf_spell_target_damageion_level_1_shop", 
+                "troll_spell_vision_description_level_1_shop", 
                 "troll_spell_vision_description_level_2_shop", 
             }, 
             {
