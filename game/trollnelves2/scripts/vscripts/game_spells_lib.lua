@@ -554,7 +554,8 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "troll_spell_cd_reduce", 
             "modifier_troll_spell_cd_reduce", 
             {
-                "troll_spell_cd_reduce_description_level_1_shop", 
+                "troll_spell_cd_reduce_description_level_1_shop",
+                "troll_spell_cd_reduce_description_level_2_shop",  
             }, 
             {
                 {'-10%','-15%','-20%'},
