@@ -163,9 +163,13 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "modifier_elf_spell_blink", 
             {
                 "elf_spell_blink_description_level_1_shop", 
+                "elf_spell_blink_description_level_2_shop", 
+                "elf_spell_blink_description_level_3_shop", 
             }, 
             {
                 {"+225","+450","+600"},
+                {"10","20","30"},
+                {"3","4","5"},
             },
             "0",
             "1",
@@ -725,7 +729,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {50,100,200},
-                {300,340,380},
+                {320,370,390},
                 {300,150,60},
             },
             "1",
@@ -1139,9 +1143,13 @@ else -- X4
             "modifier_elf_spell_blink_x4", 
             {
                 "elf_spell_blink_description_level_1_shop_x4", 
+                "elf_spell_blink_description_level_2_shop_x4", 
+                "elf_spell_blink_description_level_3_shop_x4", 
             }, 
             {
                 {"+225","+450","+600"},
+                {"10","20","30"},
+                {"3","4","5"},
             },
             "0",
             "1",
@@ -1685,7 +1693,7 @@ else -- X4
             }, 
             {
                 {50,100,200},
-                {300,340,380},
+                {320,370,390},
                 {180,120,60},
             },
             "1",

@@ -14702,7 +14702,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"            "abilities/spawn_winter"
+				"ScriptFile"            "abilities/spawn_troll"
 				"Name"					"models/items/shadowshaman/serpent_ward/shaman_charmer_of_firesnake_ability/shaman_charmer_of_firesnake_ability.vmdl"
 				"Function"              "OnSpellStart"
 				"SizeModel"				"1"
@@ -15116,7 +15116,7 @@
             "bear_bat" "1.75"
             "bear_armor" "1"
             "backlash_damage" "0"
-			"ms"		"300 340 380"
+			"ms"		"320 370 390"
         }
 
 	"precache"
@@ -15701,104 +15701,85 @@
 	}
 	}
 
+"elf_spell_target_buff"
+{
+    "BaseClass"                 "ability_datadriven"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityTextureName"        "elf_spell_target_buff"
+    "MaxLevel"                  "3"
 
-	"elf_spell_target_buff"
-	{
-	// General
-	"BaseClass"				        "ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"			"elf_spell_target_buff"
-	"MaxLevel"						"3"
-	// Precache
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
-	}
-	
-	// Casting
-	"AbilityCastPoint"				"1.5 1 0.5"
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+    }
 
-	// Time		
-	"AbilityCastRange"				"600"//"400"
-	"AbilityCooldown"				"120 100 60"
+    "AbilityCastPoint"          "1.5 1 0.5"
+    "AbilityCastRange"          "600"
+    "AbilityCooldown"           "120 100 60"
+    "AbilityAOERadius"          "%radius"
 
-	// Special
-	"AbilityValues"
+    "AbilityValues"
+    {
+        "bonus_ms"      "5 10 20"
+        "attack_speed"  "60 80 120"
+        "damage"        "5 10 20"
+        "duration"      "6 8 12"
+        "radius"        "64 64 64"
+    }
+
+    "OnSpellStart"
+    {
+        "FireSound"
         {
-            "bonus_ms"     "5 10 20"
-			"attack_speed" "60 80 120"
-			"damage"       "5 10 20"
-			"duration"     "6 8 12"
-			"speed"        "2000"
+            "EffectName" "Hero_LegionCommander.PressTheAttack"
+            "Target"     "CASTER"
         }
 
-	"OnSpellStart"
-	{
-	//	"FireSound"
-	//	{
-	//		"EffectName"	"Hero_LegionCommander.Overwhelming.Location"
-	//		"Target" 		"CASTER"
-    //		}
-
-		"TrackingProjectile"
+        "ActOnTargets"
 		{
-			"Target"           	"TARGET"
-			"EffectName"		""
-			"Dodgeable"			"0"
-			"ProvidesVision"	"0"
-			"MoveSpeed"        	"%speed"
-			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-		}
-	}
-
-	"OnProjectileHitUnit"
-	{
-		"DeleteOnHit"	"1"
-		
-		"FireSound"
-		{
-			"EffectName"	"Hero_LegionCommander.PressTheAttack"
-			"Target" 		"TARGET"
-		}
-
-    //	"FireEffect"
-	//	{
-	//		"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-	//		"EffectAttachType"  "follow_origin"
-	//		"Target"            "TARGET"
-	//	}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_elf_spell_evasion_datadriven"
-			"Target" 		"TARGET"
-			"Duration"		"%duration"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_elf_spell_evasion_datadriven"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsDebuff"			"0"
-	
-			"EffectName"		"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-			"EffectAttachType"	"follow_origin"
-	
-			"Properties"
+			"Target"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_ms"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
-			   //"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%damage"
+				"Center" "TARGET"
+				"Radius" "%radius"
+				"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" "modifier_elf_spell_evasion_datadriven"
+					"Target"       "TARGET"
+					"Duration"     "%duration"
+				}
 			}
 		}
-	}
-	}
+    }
+
+    "Modifiers"
+    {
+        "modifier_elf_spell_evasion_datadriven"
+        {
+            "Passive"  "0"
+            "IsHidden" "0"
+            "IsDebuff" "0"
+
+            "EffectName"       "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+            "EffectAttachType" "follow_origin"
+
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_ms"
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+                //"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%damage"
+            }
+        }
+    }
+}
 
 
 "elf_spell_target_damage"
@@ -16408,7 +16389,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"            "abilities/spawn_winter"
+				"ScriptFile"            "abilities/spawn_troll"
 				"Name"					"models/items/shadowshaman/serpent_ward/shaman_charmer_of_firesnake_ability/shaman_charmer_of_firesnake_ability.vmdl"
 				"Function"              "OnSpellStart"
 				"SizeModel"				"1"
@@ -16822,7 +16803,7 @@
             "bear_bat" "1.75"
             "bear_armor" "1"
             "backlash_damage" "0"
-			"ms"		"300 340 380"
+			"ms"		"320 370 390"
         }
 
 	"precache"
@@ -17406,104 +17387,86 @@
 	}
 
 
-	"elf_spell_target_buff_x4"
-	{
-	// General
-	"BaseClass"				        "ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"			"elf_spell_target_buff"
-	"MaxLevel"						"3"
 
-	// Precache
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
-	}
-	
-	// Casting
-	"AbilityCastPoint"				"1.5 1 0.5"
+"elf_spell_target_buff_x4"
+{
+    "BaseClass"                 "ability_datadriven"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityTextureName"        "elf_spell_target_buff"
+    "MaxLevel"                  "3"
 
-	// Time		
-	"AbilityCastRange"				"600"//"400"
-	"AbilityCooldown"				"120 100 60"
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+    }
 
-	// Special
-	"AbilityValues"
+    "AbilityCastPoint"          "1.5 1 0.5"
+    "AbilityCastRange"          "600"
+    "AbilityCooldown"           "120 100 60"
+    "AbilityAOERadius"          "%radius"
+
+    "AbilityValues"
+    {
+        "bonus_ms"     "5 10 20"
+		"attack_speed" "60 80 120"
+		"damage"       "5 10 20"
+		"duration"     "6 8 12"
+        "radius"       "64 64 64"
+    }
+
+    "OnSpellStart"
+    {
+        "FireSound"
         {
-            "bonus_ms"     "5 10 20"
-			"attack_speed" "60 80 120"
-			"damage"       "5 10 20"
-			"duration"     "6 8 12"
-			"speed"        "2000"
+            "EffectName" "Hero_LegionCommander.PressTheAttack"
+            "Target"     "CASTER"
         }
 
-	"OnSpellStart"
-	{
-	//	"FireSound"
-	//	{
-	//		"EffectName"	"Hero_LegionCommander.Overwhelming.Location"
-	//		"Target" 		"CASTER"
-    //		}
-
-		"TrackingProjectile"
+        "ActOnTargets"
 		{
-			"Target"           	"TARGET"
-			"EffectName"		""
-			"Dodgeable"			"0"
-			"ProvidesVision"	"0"
-			"MoveSpeed"        	"%speed"
-			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-		}
-	}
-
-	"OnProjectileHitUnit"
-	{
-		"DeleteOnHit"	"1"
-		
-		"FireSound"
-		{
-			"EffectName"	"Hero_LegionCommander.PressTheAttack"
-			"Target" 		"TARGET"
-		}
-
-    //	"FireEffect"
-	//	{
-	//		"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-	//		"EffectAttachType"  "follow_origin"
-	//		"Target"            "TARGET"
-	//	}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_elf_spell_evasion_datadriven"
-			"Target" 		"TARGET"
-			"Duration"		"%duration"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_elf_spell_evasion_datadriven"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsDebuff"			"0"
-	
-			"EffectName"		"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-			"EffectAttachType"	"follow_origin"
-	
-			"Properties"
+			"Target"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_ms"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
-			   //"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%damage"
+				"Center" "TARGET"
+				"Radius" "%radius"
+				"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" "modifier_elf_spell_evasion_datadriven"
+					"Target"       "TARGET"
+					"Duration"     "%duration"
+				}
 			}
 		}
-	}
-	}
+    }
+
+    "Modifiers"
+    {
+        "modifier_elf_spell_evasion_datadriven"
+        {
+            "Passive"  "0"
+            "IsHidden" "0"
+            "IsDebuff" "0"
+
+            "EffectName"       "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+            "EffectAttachType" "follow_origin"
+
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_ms"
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+                //"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%damage"
+            }
+        }
+    }
+}
 
 
 "elf_spell_target_damage_x4"
