@@ -7,19 +7,60 @@ var players_activated_spells = CustomNetTables.GetTableValue("game_spells_lib", 
 var CURRENT_SELECT_UNIT = null
 var SPELLS_TEXTURE = {}
 var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
+var ASPECTS_CONFIG = CustomNetTables.GetTableValue("game_spells_lib", "aspects_config") || {}
 var active_shop = null
+
+
+function GetAspectConfig(spellName)
+{
+    ASPECTS_CONFIG = CustomNetTables.GetTableValue("game_spells_lib", "aspects_config") || ASPECTS_CONFIG || {}
+    for (var id in ASPECTS_CONFIG)
+    {
+        if (ASPECTS_CONFIG[id] && ASPECTS_CONFIG[id].id == spellName)
+        {
+            return ASPECTS_CONFIG[id]
+        }
+    }
+    return null
+}
+
+function GetAspectMaxLevel(spellName)
+{
+    let config = GetAspectConfig(spellName)
+    return config && config.max_level ? Number(config.max_level) : 3
+}
+
+function GetAspectLevelValue(info, valueIndex, level)
+{
+    let config = GetAspectConfig(info[1])
+    let values = (config && config.values) ? config.values : info[5]
+    if (values && values[valueIndex] && values[valueIndex][level] != null)
+    {
+        return values[valueIndex][level]
+    }
+    return ""
+}
+
+function FormatAspectTemplate(text, info, level)
+{
+    if (!text) return ""
+    return String(text).replace(/\{value_(\d+)\}/g, function(match, valueIndex)
+    {
+        return GetAspectLevelValue(info, valueIndex, level)
+    }).replace(/\{level\}/g, level)
+}
 
 function InitSpellPanel()
 {
     let minimap_container = FindDotaHudElement("minimap_container")
     let SpellMapPanel = $("#SpellMapPanel")
-    if (SpellMapPanel) 
+    if (SpellMapPanel)
     {
         if (minimap_container.FindChildTraverse("SpellMapPanel"))
         {
             SpellMapPanel.DeleteAsync( 0 );
-        } 
-        else 
+        }
+        else
         {
             SpellMapPanel.SetParent(minimap_container);
         }
@@ -35,7 +76,7 @@ function InitSpellPanel()
 
 function UpdateActivatedSpellVisual()
 {
-    for (let child of $("#SpellShopSpellsListBody").Children()) 
+    for (let child of $("#SpellShopSpellsListBody").Children())
     {
         child.SetHasClass("IsActivatedSpell", IsSpellActivate(child.spell_id))
     }
@@ -59,7 +100,7 @@ function InitSpellList()
     }
 }
 
-function CreateSpell(info) 
+function CreateSpell(info)
 {
     let spell_player_level = GetPlayerSpellLevel(info[1], true)
 
@@ -98,7 +139,7 @@ function CreateSpell(info)
     {
         SpellShopSpellPanelIcon.SetHasClass("SpellDisabled", true)
     }
-    // Отключаем перк, если он не доступен в этом режиме. 
+    // Отключаем перк, если он не доступен в этом режиме.
     if (info[7] != "1")
     {
         SpellShopSpellPanelIcon.SetHasClass("SpellDisabled", true)
@@ -127,8 +168,8 @@ function PlayerHasSpell(spell)
 
 function SetActiveSpellPreview(panel, info)
 {
-    panel.SetPanelEvent("onactivate", function() 
-    { 
+    panel.SetPanelEvent("onactivate", function()
+    {
         Game.EmitSound("General.ButtonClick")
         UpdatePreviewSpell(panel, info)
     });
@@ -136,7 +177,7 @@ function SetActiveSpellPreview(panel, info)
 
 function UpdatePreviewSpell(panel, info)
 {
-    for (var i = 0; i < $("#SpellShopSpellsListBody").GetChildCount(); i++) 
+    for (var i = 0; i < $("#SpellShopSpellsListBody").GetChildCount(); i++)
     {
         let panel_old = $("#SpellShopSpellsListBody").GetChild(i)
         if (panel_old)
@@ -177,7 +218,7 @@ function UpdatePreviewSpellInf(info)
 
     let SpellPreviewPanelNameLabelDesc = $.CreatePanel("Label", SpellPreviewPanelNameButton, "")
     SpellPreviewPanelNameLabelDesc.AddClass("SpellPreviewPanelNameLabelDesc")
-    SpellPreviewPanelNameLabelDesc.text = $.Localize("#" + info[1] + "_description")
+    SpellPreviewPanelNameLabelDesc.text = FormatAspectTemplate($.Localize("#" + info[1] + "_description"), info, GetPlayerSpellLevel(info[1], true))
 
     let SpellBonusesPanel = $.CreatePanel("Panel", $("#PreviewSpellInfo"), "")
     SpellBonusesPanel.AddClass("SpellBonusesPanel")
@@ -193,11 +234,11 @@ function UpdatePreviewSpellInf(info)
             let SpellPreviewLevelLabelDesc = $.CreatePanel("Label", SpellColumnBonus, "")
             SpellPreviewLevelLabelDesc.AddClass("SpellPreviewLevelLabelDesc")
             SpellPreviewLevelLabelDesc.html = true
-            SpellPreviewLevelLabelDesc.text = $.Localize("#" + info[4][i])
+            SpellPreviewLevelLabelDesc.text = FormatAspectTemplate($.Localize("#" + info[4][i]), info, GetPlayerSpellLevel(info[1], true))
         }
     }
 
-    for (var i = 1; i <= 3; i++)
+    for (var i = 1; i <= GetAspectMaxLevel(info[1]); i++)
     {
         SpellColumnBonus = $.CreatePanel("Panel", SpellBonusesPanel, "SpellColumnBonus_"+i)
         SpellColumnBonus.AddClass("SpellColumnBonus")
@@ -222,7 +263,7 @@ function UpdatePreviewSpellInf(info)
                 let SpellPreviewLevelLabelValue = $.CreatePanel("Label", SpellColumnBonus_panel, "")
                 SpellPreviewLevelLabelValue.AddClass("SpellPreviewLevelLabelValue")
                 SpellPreviewLevelLabelValue.html = true
-                SpellPreviewLevelLabelValue.text = info[5][i][d]
+                SpellPreviewLevelLabelValue.text = GetAspectLevelValue(info, i, d)
             }
         }
     }
@@ -255,7 +296,7 @@ function UpdatePreviewSpellInf(info)
     {
         SpellPreviewPanelButtonUpgrade.visible = false
     }
-    if (GetPlayerSpellLevel(info[1]) >= 3)
+    if (GetPlayerSpellLevel(info[1]) >= GetAspectMaxLevel(info[1]))
     {
         SpellPreviewPanelButtonUpgrade.visible = false
     }
@@ -316,8 +357,8 @@ function UpdatePreviewSpellInf(info)
 
 function SetActivateSpell(panel, info)
 {
-    panel.SetPanelEvent("onactivate", function() 
-    { 
+    panel.SetPanelEvent("onactivate", function()
+    {
         Game.EmitSound("General.ButtonClick")
         ActivateSpell(info)
     });
@@ -329,7 +370,7 @@ function ActivateSpell(info)
     {
         return
     }
-    $.Schedule(0.25, function() 
+    $.Schedule(0.25, function()
     {
         activate_cooldown = false
     })
@@ -357,7 +398,7 @@ function UpgradeSpell(info)
     {
         return
     }
-    if (GetPlayerSpellLevel(info[1]) >= 3)
+    if (GetPlayerSpellLevel(info[1]) >= GetAspectMaxLevel(info[1]))
     {
         return
     }
@@ -367,14 +408,14 @@ function UpgradeSpell(info)
     })
     buy_cooldown = true
     GameEvents.SendCustomGameEventToServer("event_upgrade_spell", {spell_name: info[1]});
-    
+
 }
 
 function OpenSpellShop()
 {
     if(active_shop == 0)
     {
-        $("#SpellShopPanel").SetHasClass("CloseSpellShop", true) 
+        $("#SpellShopPanel").SetHasClass("CloseSpellShop", true)
         active_shop = null
     }
     else
@@ -391,7 +432,7 @@ function OpenSpellShoTroll()
 {
     if(active_shop == 1)
     {
-        $("#SpellShopPanel").SetHasClass("CloseSpellShop", true) 
+        $("#SpellShopPanel").SetHasClass("CloseSpellShop", true)
         active_shop = null
     }
     else
@@ -412,16 +453,21 @@ function CloseSpellShop()
 CustomNetTables.SubscribeNetTableListener( "game_spells_lib", UpdateSpellsLibTable );
 CustomNetTables.SubscribeNetTableListener( "Shop", UpdateItem);
 
-function UpdateSpellsLibTable(table, key, data ) 
+function UpdateSpellsLibTable(table, key, data )
 {
-	if (table == "game_spells_lib") 
+	if (table == "game_spells_lib")
 	{
-		if (key == "spell_active") 
+		if (key == "aspects_config")
+        {
+            ASPECTS_CONFIG = data || {}
+            UpdateHasSpells()
+        }
+        if (key == "spell_active")
         {
             UpdateCurrentSpells(data)
             UpdateActivatedSpellVisual()
 		}
-     //   if (key == String(Players.GetLocalPlayer())) 
+     //   if (key == String(Players.GetLocalPlayer()))
     //    {
     //        player_table = CustomNetTables.GetTableValue("game_spells_lib", String(Players.GetLocalPlayer()))
                 //        UpdateBuyButton() -- remove buy random aspect
@@ -430,11 +476,11 @@ function UpdateSpellsLibTable(table, key, data )
 	}
 }
 
-function UpdateItem(table, key, data ) 
+function UpdateItem(table, key, data )
 {
-	if (table == "Shop") 
+	if (table == "Shop")
 	{
-        if (key == String(Players.GetLocalPlayer())) 
+        if (key == String(Players.GetLocalPlayer()))
         {
             player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
             // UpdateBuyButton() -- remove buy random aspect
@@ -586,19 +632,19 @@ function SetShowText(panel, text, spell, level)
 {
     panel.SetPanelEvent('onmouseover', function() {
         $.DispatchEvent('DOTAShowTextTooltip', panel, "<b>" + $.Localize("#"+spell) + " " + level + "</b><br>" + $.Localize("#"+text)) });
-        
+
     panel.SetPanelEvent('onmouseout', function() {
         $.DispatchEvent('DOTAHideTextTooltip', panel);
-    });       
+    });
 }
 
 function RemoveText(panel, text)
 {
     panel.SetPanelEvent('onmouseover', function() {});
-    panel.SetPanelEvent('onmouseout', function() 
+    panel.SetPanelEvent('onmouseout', function()
     {
         $.DispatchEvent('DOTAHideTextTooltip', panel);
-    });       
+    });
 }
 
 // remove buy random aspect
@@ -686,7 +732,7 @@ function SpellDropNotification(data)
     {
         SpellShopSpellPanelIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + GetSpellTexture(data.spell_name, data.upgrade) + '.png")';
         SpellShopSpellPanelIcon.style.backgroundSize = "100%"
-    
+
     }
     else
     {
@@ -712,8 +758,8 @@ function SpellDropNotification(data)
 
     Game.EmitSound("ui_item_gifted")
 
-    SpellShopButtonDropClose.SetPanelEvent("onactivate", function() 
-    { 
+    SpellShopButtonDropClose.SetPanelEvent("onactivate", function()
+    {
         panel_spell_drop.style.opacity = "0"
         panel_spell_drop.DeleteAsync(1)
     });
@@ -743,7 +789,7 @@ function CheckBuyAllSpells()
             {
                 for (var i = 0; i <= perkInShop.length; i++)
                 {
-                    if(player_table[id][2] < 3 && player_table[id][1] == perkInShop[i])
+                    if(player_table[id][2] < GetAspectMaxLevel(player_table[id][1]) && player_table[id][1] == perkInShop[i])
                     {
                         //$.Msg(player_table[id][2])
                         //$.Msg(player_table[id])
@@ -757,13 +803,13 @@ function CheckBuyAllSpells()
     {
         return true
     }
-    return false 
+    return false
 }
 
-function UpdateVisualSelectedSpells() 
+function UpdateVisualSelectedSpells()
 {
     let selected_unit = Players.GetLocalPlayerPortraitUnit();
-    if (!selected_unit || !Entities.IsHero(selected_unit) || selected_unit == -1) 
+    if (!selected_unit || !Entities.IsHero(selected_unit) || selected_unit == -1)
     {
         return;
     }
@@ -774,11 +820,11 @@ function UpdateVisualSelectedSpells()
     {
         $.Msg("Смена игрока выбранного id - ", player_id)
     }
-    for (let i = 1; i <= 3; i++) 
+    for (let i = 1; i <= 3; i++)
     {
         let ActivatedSpellIcon = panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i);
         if (!ActivatedSpellIcon) continue;
-        if (active_table[player_id] && active_table[player_id][i] && active_table[player_id][i] != "") 
+        if (active_table[player_id] && active_table[player_id][i] && active_table[player_id][i] != "")
         {
             let spellName = GetSpellName(active_table[player_id][i])
             let spellLevel = GetSelectedPlayerSpellLevel(active_table[player_id][i], player_id)
@@ -786,8 +832,8 @@ function UpdateVisualSelectedSpells()
             ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + spellTexture + '.png")';
             ActivatedSpellIcon.style.backgroundSize = "100%";
             SetShowText(ActivatedSpellIcon, GetSpellModifier(active_table[player_id][i]) + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel);
-        } 
-        else 
+        }
+        else
         {
             ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/no_active2.png")';
             ActivatedSpellIcon.style.backgroundSize = "100%";
