@@ -54,7 +54,7 @@ function OnSpellStart(event)
 
     unit:AddNewModifier(unit, nil, "modifier_phased", {})
     unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-    unit:AddNewModifier(unit, nil, "modifier_building", {})
+    unit:AddNewModifier(unit, nil, "modifier_rooted", {})
     
 
     local dur = ability:GetSpecialValueFor("duration")
