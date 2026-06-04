@@ -8,40 +8,54 @@ modifier_item_blink_datadriven_speed = class({})
 
 function item_blink_datadriven:GetUpgradeValue(value1, value2, value3)
 	local caster = self:GetCaster()
-	local value = value1
 
 	if not caster then
-		return value
+		return 0
 	end
 
-	local function applyUpgrade(modName)
+	local function getValueFromModifier(modName)
 		if not caster:HasModifier(modName) then
-			return
+			return nil
 		end
 
 		local stacks = caster:GetModifierStackCount(modName, caster)
 
 		if stacks == 1 then
-			value = value1
+			return value1
 		elseif stacks == 2 then
-			value = value2
+			return value2
 		elseif stacks >= 3 then
-			value = value3
+			return value3
 		end
+
+		return nil
 	end
 
-	applyUpgrade("modifier_elf_spell_blink")
-	applyUpgrade("modifier_elf_spell_blink_x4")
+	local value = getValueFromModifier("modifier_elf_spell_blink")
+	if value ~= nil then
+		return value
+	end
 
-	return value
+	value = getValueFromModifier("modifier_elf_spell_blink_x4")
+	if value ~= nil then
+		return value
+	end
+
+	return 0
 end
 
 function item_blink_datadriven:GetBlinkRange()
-	return self:GetUpgradeValue(
+	local range = self:GetUpgradeValue(
 		self:GetSpecialValueFor("up1"),
 		self:GetSpecialValueFor("up2"),
 		self:GetSpecialValueFor("up3")
 	)
+
+	if range <= 0 then
+		return self:GetSpecialValueFor("max_blink_range")
+	end
+
+	return range
 end
 
 function item_blink_datadriven:GetBlinkMoveSpeedBonus()
@@ -103,14 +117,18 @@ function item_blink_datadriven:OnSpellStart()
 
 	FindClearSpaceForUnit(caster, target, true)
 
-	caster:AddNewModifier(
-		caster,
-		self,
-		"modifier_item_blink_datadriven_speed",
-		{
-			duration = self:GetBlinkMoveSpeedDuration()
-		}
-	)
+	local speedDuration = self:GetBlinkMoveSpeedDuration()
+
+	if speedDuration > 0 then
+		caster:AddNewModifier(
+			caster,
+			self,
+			"modifier_item_blink_datadriven_speed",
+			{
+				duration = speedDuration
+			}
+		)
+	end
 
 	local p_end = ParticleManager:CreateParticle(
 		"particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf",
@@ -129,7 +147,7 @@ function modifier_item_blink_datadriven_speed:IsPurgable()
 end
 
 function modifier_item_blink_datadriven_speed:GetEffectName()
-	return "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
+	return "particles/items2_fx/phase_boots.vpcf"
 end
 
 function modifier_item_blink_datadriven_speed:GetEffectAttachType()
