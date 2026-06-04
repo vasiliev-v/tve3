@@ -2780,6 +2780,14 @@
 		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration2"		  "DURATION UP 2: "
 		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration3"		  "DURATION UP 3: "
 
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_pct1"		  "MS UPGRATE 1: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_pct2"		  "MS UPGRATE 2: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_pct3"		  "MS UPGRATE 3: "
+
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration1"		  "DURATION UP 1: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration2"		  "DURATION UP 2: "
+		"DOTA_Tooltip_ability_item_blink_datadriven_blink_move_speed_duration3"		  "DURATION UP 3: "
+
 		"DOTA_Tooltip_ability_item_root_ability"                                          "Root"
 		"DOTA_Tooltip_ability_item_root_ability_Description"                              "<br>Causes the troll to become numb."
 		"DOTA_Tooltip_ability_item_root_ability_time_dur"								  "DURATION: "
@@ -4605,7 +4613,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_reveal_description_level_1"               "Reveal +1<br>Reveal Radius: +150"
         "modifier_troll_spell_reveal_description_level_2"               "Reveal +2<br>Reveal Radius: +300"
         "modifier_troll_spell_reveal_description_level_3"               "Reveal +3<br>Reveal Radius: +450"
-		"DOTA_Tooltip_modifier_troll_spell_reveal"			 "Passive: Adds an additional Reveal"
+		"DOTA_Tooltip_modifier_troll_spell_reveal"			 "Passive: Increase the number of reveals and their radius."
 
 		"troll_spell_reveal_description_level_1_shop"               "Reveal Amount"
 		"troll_spell_reveal_description_level_2_shop"				"Reveal Radius"

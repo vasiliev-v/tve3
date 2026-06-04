@@ -1810,6 +1810,7 @@
 		{
 			"particle"  "particles/econ/events/fall_2021/blink_dagger_fall_2021_start.vpcf"
 			"particle"  "particles/econ/events/fall_2021/blink_dagger_fall_2021_end.vpcf"
+			"particle"  "particles/items2_fx/phase_boots.vpcf"
 		}
 
 		"AbilityValues"
@@ -1819,6 +1820,12 @@
 			"up2"				"1450"
 			"up3"				"1600"
 			"min_blink_range"	"0"
+			"blink_move_speed_pct1"        "10"
+			"blink_move_speed_pct2"        "20"
+			"blink_move_speed_pct3"        "30"
+			"blink_move_speed_duration1"   "3"
+			"blink_move_speed_duration2"   "4"
+			"blink_move_speed_duration3"   "5"
 		}
 	}
 
