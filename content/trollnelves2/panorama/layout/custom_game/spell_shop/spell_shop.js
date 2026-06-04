@@ -9,6 +9,47 @@ var SPELLS_TEXTURE = {}
 var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
 var active_shop = null
 
+function GetAspectsConfig()
+{
+    return CustomNetTables.GetTableValue("game_spells_lib", "aspects_config") || { max_level: 3 }
+}
+
+function GetAspectMaxLevel()
+{
+    return Number(GetAspectsConfig().max_level || 3)
+}
+
+function GetAspectLevelValues(info, level)
+{
+    let values = []
+    if (!info || !info[5]) return values
+    for (let row = 1; row <= Object.keys(info[5]).length; row++)
+    {
+        if (info[5][row] && info[5][row][level] != null)
+        {
+            values.push(info[5][row][level])
+        }
+    }
+    return values
+}
+
+function FormatAspectTemplate(template, values)
+{
+    if (!template) return ""
+    let result = template
+    for (let i = 0; i < values.length; i++)
+    {
+        result = result.replace(new RegExp("\\{value" + (i + 1) + "\\}", "g"), values[i])
+        result = result.replace(new RegExp("\\{" + (i + 1) + "\\}", "g"), values[i])
+    }
+    return result
+}
+
+function LocalizeAspectText(token, info, level)
+{
+    return FormatAspectTemplate($.Localize("#" + token), GetAspectLevelValues(info, level))
+}
+
 function InitSpellPanel()
 {
     let minimap_container = FindDotaHudElement("minimap_container")
@@ -177,7 +218,7 @@ function UpdatePreviewSpellInf(info)
 
     let SpellPreviewPanelNameLabelDesc = $.CreatePanel("Label", SpellPreviewPanelNameButton, "")
     SpellPreviewPanelNameLabelDesc.AddClass("SpellPreviewPanelNameLabelDesc")
-    SpellPreviewPanelNameLabelDesc.text = $.Localize("#" + info[1] + "_description")
+    SpellPreviewPanelNameLabelDesc.text = LocalizeAspectText(info[1] + "_description", info, Math.max(GetPlayerSpellLevel(info[1]), 1))
 
     let SpellBonusesPanel = $.CreatePanel("Panel", $("#PreviewSpellInfo"), "")
     SpellBonusesPanel.AddClass("SpellBonusesPanel")
@@ -193,11 +234,11 @@ function UpdatePreviewSpellInf(info)
             let SpellPreviewLevelLabelDesc = $.CreatePanel("Label", SpellColumnBonus, "")
             SpellPreviewLevelLabelDesc.AddClass("SpellPreviewLevelLabelDesc")
             SpellPreviewLevelLabelDesc.html = true
-            SpellPreviewLevelLabelDesc.text = $.Localize("#" + info[4][i])
+            SpellPreviewLevelLabelDesc.text = LocalizeAspectText(info[4][i], info, Math.max(GetPlayerSpellLevel(info[1]), 1))
         }
     }
 
-    for (var i = 1; i <= 3; i++)
+    for (var i = 1; i <= GetAspectMaxLevel(); i++)
     {
         SpellColumnBonus = $.CreatePanel("Panel", SpellBonusesPanel, "SpellColumnBonus_"+i)
         SpellColumnBonus.AddClass("SpellColumnBonus")
@@ -255,7 +296,7 @@ function UpdatePreviewSpellInf(info)
     {
         SpellPreviewPanelButtonUpgrade.visible = false
     }
-    if (GetPlayerSpellLevel(info[1]) >= 3)
+    if (GetPlayerSpellLevel(info[1]) >= GetAspectMaxLevel())
     {
         SpellPreviewPanelButtonUpgrade.visible = false
     }
@@ -357,7 +398,7 @@ function UpgradeSpell(info)
     {
         return
     }
-    if (GetPlayerSpellLevel(info[1]) >= 3)
+    if (GetPlayerSpellLevel(info[1]) >= GetAspectMaxLevel())
     {
         return
     }
@@ -514,6 +555,19 @@ function UpdateCurrentSpells(data)
     players_activated_spells = data
 }
 
+function GetSpellInfo(spell_name)
+{
+    let game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
+    for (var i = 0; i <= Object.keys(game_spells_lib).length; i++)
+    {
+        if (game_spells_lib[i] && game_spells_lib[i][1] == spell_name)
+        {
+            return game_spells_lib[i]
+        }
+    }
+    return null
+}
+
 function GetSpellTexture(spell_name, any_level)
 {
     if (any_level == null)
@@ -582,10 +636,10 @@ function GetSpellCost(spell_name, level)
     return 0
 }
 
-function SetShowText(panel, text, spell, level)
+function SetShowText(panel, text, spell, level, info)
 {
     panel.SetPanelEvent('onmouseover', function() {
-        $.DispatchEvent('DOTAShowTextTooltip', panel, "<b>" + $.Localize("#"+spell) + " " + level + "</b><br>" + $.Localize("#"+text)) });
+        $.DispatchEvent('DOTAShowTextTooltip', panel, "<b>" + $.Localize("#"+spell) + " " + level + "</b><br>" + LocalizeAspectText(text, info, level)) });
         
     panel.SetPanelEvent('onmouseout', function() {
         $.DispatchEvent('DOTAHideTextTooltip', panel);
@@ -743,7 +797,7 @@ function CheckBuyAllSpells()
             {
                 for (var i = 0; i <= perkInShop.length; i++)
                 {
-                    if(player_table[id][2] < 3 && player_table[id][1] == perkInShop[i])
+                    if(player_table[id][2] < GetAspectMaxLevel() && player_table[id][1] == perkInShop[i])
                     {
                         //$.Msg(player_table[id][2])
                         //$.Msg(player_table[id])
@@ -774,7 +828,7 @@ function UpdateVisualSelectedSpells()
     {
         $.Msg("Смена игрока выбранного id - ", player_id)
     }
-    for (let i = 1; i <= 3; i++) 
+    for (let i = 1; i <= GetAspectMaxLevel(); i++) 
     {
         let ActivatedSpellIcon = panel_minimap_hud.FindChildTraverse("ActivatedSpellIcon"+i);
         if (!ActivatedSpellIcon) continue;
@@ -785,7 +839,7 @@ function UpdateVisualSelectedSpells()
             let spellTexture = GetSpellTexture(spellName, spellLevel);
             ActivatedSpellIcon.style.backgroundImage = 'url("file://{images}/custom_game/spell_shop/spell_icons/' + spellTexture + '.png")';
             ActivatedSpellIcon.style.backgroundSize = "100%";
-            SetShowText(ActivatedSpellIcon, GetSpellModifier(active_table[player_id][i]) + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel);
+            SetShowText(ActivatedSpellIcon, GetSpellModifier(active_table[player_id][i]) + "_description_level_" + spellLevel, active_table[player_id][i], spellLevel, GetSpellInfo(active_table[player_id][i]));
         } 
         else 
         {
