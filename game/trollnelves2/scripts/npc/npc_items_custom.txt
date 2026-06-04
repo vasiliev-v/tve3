@@ -1815,17 +1815,10 @@
 
 		"AbilityValues"
 		{
-			"max_blink_range"	"1000 1800"
-			"up1"				"1225"
-			"up2"				"1450"
-			"up3"				"1600"
+			"max_blink_range"	"1000 1225 1450 1600"
 			"min_blink_range"	"0"
-			"blink_move_speed_pct1"        "10 20 30"
-			"blink_move_speed_pct2"        "10 20 30"
-			"blink_move_speed_pct3"        "10 20 30"
-			"blink_move_speed_duration1"   "3 4 5"
-			"blink_move_speed_duration2"   "3 4 5"
-			"blink_move_speed_duration3"   "3 4 5"
+			"movespeed"        "0 10 20 30"
+			"duration"   "0 3 4 5"
 		}
 	}
 

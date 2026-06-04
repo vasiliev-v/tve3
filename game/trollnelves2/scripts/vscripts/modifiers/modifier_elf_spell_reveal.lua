@@ -19,6 +19,7 @@ function modifier_elf_spell_reveal:OnCreated( kv )
 		--hero:AddAbility("elf_spell_reveal")
 		local abil = hero:FindAbilityByName("elf_spell_reveal")
 		abil:SetLevel(countStack)
+		abil:StartCooldown(300)
 	end
 end
 function modifier_elf_spell_reveal:OnDestroy( kv )

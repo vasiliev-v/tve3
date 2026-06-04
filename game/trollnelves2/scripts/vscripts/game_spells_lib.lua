@@ -373,10 +373,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 "elf_spell_reveal_description_level_1_shop", 
                 "elf_spell_reveal_description_level_2_shop", 
+                "elf_spell_reveal_description_level_3_shop", 
             }, 
             {
-                {45, 60, 75},
+                {25, 40, 55},
                 {200, 175, 150},
+                {300, 300, 300},
             },
             "0",
             "1",
@@ -1333,7 +1335,7 @@ else -- X4
                 "elf_spell_reveal_description_level_2_shop_x4", 
             }, 
             {
-                {45, 60, 90},
+                {25, 40, 55},
                 {150, 125, 100},
             },
             "0",

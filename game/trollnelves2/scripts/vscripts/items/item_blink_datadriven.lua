@@ -6,72 +6,16 @@ end
 
 modifier_item_blink_datadriven_speed = class({})
 
-function item_blink_datadriven:GetUpgradeValue(value1, value2, value3)
-	local caster = self:GetCaster()
-
-	if not caster then
-		return 0
-	end
-
-	local function getValueFromModifier(modName)
-		if not caster:HasModifier(modName) then
-			return nil
-		end
-
-		local stacks = caster:GetModifierStackCount(modName, caster)
-
-		if stacks == 1 then
-			return value1
-		elseif stacks == 2 then
-			return value2
-		elseif stacks >= 3 then
-			return value3
-		end
-
-		return nil
-	end
-
-	local value = getValueFromModifier("modifier_elf_spell_blink")
-	if value ~= nil then
-		return value
-	end
-
-	value = getValueFromModifier("modifier_elf_spell_blink_x4")
-	if value ~= nil then
-		return value
-	end
-
-	return 0
-end
-
 function item_blink_datadriven:GetBlinkRange()
-	local range = self:GetUpgradeValue(
-		self:GetSpecialValueFor("up1"),
-		self:GetSpecialValueFor("up2"),
-		self:GetSpecialValueFor("up3")
-	)
-
-	if range <= 0 then
-		return self:GetSpecialValueFor("max_blink_range")
-	end
-
-	return range
+	return self:GetSpecialValueFor("max_blink_range")
 end
 
 function item_blink_datadriven:GetBlinkMoveSpeedBonus()
-	return self:GetUpgradeValue(
-		self:GetSpecialValueFor("blink_move_speed_pct1"),
-		self:GetSpecialValueFor("blink_move_speed_pct2"),
-		self:GetSpecialValueFor("blink_move_speed_pct3")
-	)
+	return self:GetSpecialValueFor("movespeed")
 end
 
 function item_blink_datadriven:GetBlinkMoveSpeedDuration()
-	return self:GetUpgradeValue(
-		self:GetSpecialValueFor("blink_move_speed_duration1"),
-		self:GetSpecialValueFor("blink_move_speed_duration2"),
-		self:GetSpecialValueFor("blink_move_speed_duration3")
-	)
+	return self:GetSpecialValueFor("duration")
 end
 
 function item_blink_datadriven:GetCastRange(vLocation, hTarget)
@@ -154,16 +98,17 @@ function modifier_item_blink_datadriven_speed:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 
-function modifier_item_blink_datadriven_speed:GetTexture()         return "elf_spell_blink" end
-
+function modifier_item_blink_datadriven_speed:GetTexture()
+	return "elf_spell_blink"
+end
 
 function modifier_item_blink_datadriven_speed:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT
 	}
 end
 
-function modifier_item_blink_datadriven_speed:GetModifierMoveSpeedBonus_Percentage()
+function modifier_item_blink_datadriven_speed:GetModifierMoveSpeedBonus_Constant()
 	local ability = self:GetAbility()
 
 	if not ability then
