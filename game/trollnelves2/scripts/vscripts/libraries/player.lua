@@ -47,9 +47,9 @@ function CDOTA_PlayerResource:SetGold(hero,gold)
 			if hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 1  then
 				limitGold = 150000 
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 2 then
-				limitGold = 350000
+				limitGold = 250000
 			elseif hero:FindModifierByName("modifier_elf_spell_limit_gold"):GetStackCount() == 3 then
-				limitGold = 450000
+				limitGold = 350000
 			end
 		end
 

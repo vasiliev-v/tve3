@@ -1966,15 +1966,6 @@ function UpgradeWorkers(event)
 						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce", {}):SetStackCount(3) 
 					end
 				end
-				if hero:HasModifier("modifier_elf_spell_cd_worker_x4")  then
-					if hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 1  then
-						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(1) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 2 then
-						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(2) 
-					elseif hero:FindModifierByName("modifier_elf_spell_cd_worker_x4"):GetStackCount() == 3 then
-						unit:AddNewModifier(unit, unit, "modifier_worker_spell_cd_reduce_x4", {}):SetStackCount(3) 
-					end
-				end
 				if hero:HasModifier("modifier_elf_spell_ms")  then
 					if hero:FindModifierByName("modifier_elf_spell_ms"):GetStackCount() == 1  then
 						unit:AddNewModifier(unit, unit, "modifier_elf_spell_ms", {}):SetStackCount(1) 

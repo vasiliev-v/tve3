@@ -1304,7 +1304,7 @@ else -- X4
                 {"10%", "12%", "15%"},
                 {4, 8 , 12},
                 {350, 300, 300},
-                {300, 300, 300},
+                {75, 75, 75},
             },
             "0",
             "1",
@@ -1347,12 +1347,14 @@ else -- X4
             {
                 "elf_spell_true_description_level_1_shop_x4", 
                 "elf_spell_true_description_level_2_shop_x4", 
-                "elf_spell_true_description_level_3_shop_x4", 
+                "elf_spell_true_description_level_3_shop_x4",
+                "elf_spell_true_description_level_4_shop_x4",
             }, 
             {
                 {300, 600, 900}, 
                 {3, 5, 7}, 
-                {150, 120, 100}, 
+                {150, 120, 100},
+                {75, 75, 75} 
             },
             "0",
             "1",
@@ -1550,7 +1552,8 @@ else -- X4
             "troll_spell_status_resist", 
             "modifier_troll_spell_status_resist_x4", 
             {
-                "troll_spell_status_resist_description_level_1_shop_x4", 
+                "troll_spell_status_resist_description_level_1_shop_x4",
+                "troll_spell_status_resist_description_level_2_shop_x4", 
             }, 
             {
                 {'+15%','+20%','+25%'},
@@ -1567,12 +1570,14 @@ else -- X4
             {
                 "troll_spell_haste_description_level_1_shop_x4", 
                 "troll_spell_haste_description_level_2_shop_x4", 
-                "troll_spell_haste_description_level_3_shop_x4", 
+                "troll_spell_haste_description_level_3_shop_x4",
+                "troll_spell_haste_description_level_4_shop_x4",
             }, 
             {
                 {5,15,30},
                 {'2%','4%','8%'},
                 {1000,1000,1000},
+                {300, 250, 200}
             },
             "1",
             "1",
@@ -1667,7 +1672,8 @@ else -- X4
             {
                 "troll_spell_slow_area_description_level_1_shop_x4", 
                 "troll_spell_slow_area_description_level_2_shop_x4", 
-                "troll_spell_slow_area_description_level_3_shop_x4", 
+                "troll_spell_slow_area_description_level_3_shop_x4",
+                "troll_spell_slow_area_description_level_4_shop_x4", 
             }, 
             {
                 {-50,-60,-70},

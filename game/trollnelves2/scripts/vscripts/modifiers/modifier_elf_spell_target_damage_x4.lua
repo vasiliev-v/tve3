@@ -19,6 +19,7 @@ function modifier_elf_spell_target_damage_x4:OnCreated( kv )
 		--hero:AddAbility("elf_spell_target_damage_x4")
 		local abil = hero:FindAbilityByName("elf_spell_target_damage_x4")
 		abil:SetLevel(countStack)
+		abil:StartCooldown(75)
 	end
 end
 function modifier_elf_spell_target_damage_x4:OnDestroy( kv )
