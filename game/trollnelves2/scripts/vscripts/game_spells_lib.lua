@@ -2192,8 +2192,8 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     local player_spells = game_spells_lib.PLAYER_INFO[player_id]
     if not player_spells then return 0 end
 
-    local discount_to_2 = 0.4 -- 20% скидка до 2 уровня
-    local discount_to_3 = 0.6 -- 30% скидка до 3 уровня
+    local discount_to_2 = GameRules.SPELL_DISCOUNT_TO_2 -- 20% скидка до 2 уровня
+    local discount_to_3 = GameRules.SPELL_DISCOUNT_TO_3 -- 30% скидка до 3 уровня
 
     local target_index = nil
     local target_side = nil
@@ -2237,11 +2237,14 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
                 end
 
                 if aspect_level < 2 then
-                    cost = cost + 500
+                    cost = cost + GameRules.SPELL_PRICE_BASE
                 end
             end
         end
 
+        if target_side == "1" then
+            cost = cost * (1 - GameRules.TROLL_DISCOUNT)
+        end
         cost = cost * (1 - discount_to_2)
 
     elseif target_level == 3 then
@@ -2260,7 +2263,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
                 end
 
                 if aspect_level < 2 then
-                    cost = cost + 500
+                    cost = cost + GameRules.SPELL_PRICE_BASE
                 end
             end
         end
@@ -2281,18 +2284,20 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
                 end
 
                 if aspect_level < 3 then
-                    cost = cost + 500
+                    cost = cost + GameRules.SPELL_PRICE_BASE
                 end
             end
         end
-
+        if target_side == "1" then
+            cost = cost * (1 - GameRules.TROLL_DISCOUNT)
+        end
         cost = cost * (1 - discount_to_3)
     end
     if GameRules:IsCheatMode() and not GameRules.isTesting then
        return -2 
     end
 
-    return math.max(500, math.floor(cost + 0.5)) -- округление до целого
+    return math.max(GameRules.SPELL_PRICE_BASE, math.floor(cost + 0.5)) -- округление до целого
 end
 
 function game_spells_lib:UpdatePlayerSpellCosts(player_id)
