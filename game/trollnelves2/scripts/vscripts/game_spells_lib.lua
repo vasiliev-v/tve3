@@ -1333,10 +1333,12 @@ else -- X4
             {
                 "elf_spell_reveal_description_level_1_shop_x4", 
                 "elf_spell_reveal_description_level_2_shop_x4", 
+                "elf_spell_reveal_description_level_3_shop_x4", 
             }, 
             {
                 {25, 40, 55},
                 {150, 125, 100},
+                {90, 90, 90},
             },
             "0",
             "1",
