@@ -494,12 +494,14 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_gold_hit_description_level_1_shop", 
                 "troll_spell_gold_hit_description_level_2_shop", 
                 "troll_spell_gold_hit_description_level_3_shop",
+                "troll_spell_gold_hit_description_level_4_shop"
                 
             }, 
             {
-                {1,2,3},
-                {5,15,20},
-                {150,100,60},
+                {"+100%","+100%","+100%"},
+                {"+400%", "+400%", "+400%"},
+                {5, 10, 15},
+                {300, 250, 200}
             },
             "1",
             "1",
@@ -515,7 +517,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_atkspeed_description_level_3_shop", 
             }, 
             {
-                {'200%','200%','200%'},
+                {"+200%", "+200%", "+200%"},
                 {2,3,5},
                 {300,250,200},
             },
@@ -676,8 +678,8 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {60,120,180},
-                {300, 600, 900},
                 {60,60,60},
+                {"+300", "+600", "+900"},
             },
             "1",
             "1",
@@ -881,7 +883,7 @@ elseif GetMapName() == "1x1" then
                 "troll_spell_atkspeed_description_level_3_shop", 
             }, 
             {
-                {'200%'},
+                {"+200%", "+200%", "+200%"},
                 {2},
                 {300},
             },
@@ -1465,17 +1467,19 @@ else -- X4
         {
             "troll_spell_gold_hit", 
             "troll_spell_gold_hit", 
-            "modifier_troll_spell_gold_hit_x4", 
+            "modifier_troll_spell_gold_hit", 
             {
                 "troll_spell_gold_hit_description_level_1_shop_x4", 
                 "troll_spell_gold_hit_description_level_2_shop_x4", 
                 "troll_spell_gold_hit_description_level_3_shop_x4",
+                "troll_spell_gold_hit_description_level_4_shop_x4"
                 
             }, 
             {
-                {1,2,3},
-                {5,15,20},
-                {150,100,60},
+                {"+100%","+100%","+100%"},
+                {"+400%", "+400%", "+400%"},
+                {5, 10, 15},
+                {300, 250, 200}
             },
             "1",
             "1",
@@ -1491,7 +1495,7 @@ else -- X4
                 "troll_spell_atkspeed_description_level_3_shop_x4", 
             }, 
             {
-                {'200%','200%','200%'},
+                {"+200%", "+200%", "+200%"},
                 {2,3,5},
                 {300,250,200},
             },
@@ -1647,11 +1651,13 @@ else -- X4
             "modifier_troll_spell_ward_x4", 
             {
                 "troll_spell_ward_description_level_1_shop_x4", 
-                "troll_spell_ward_description_level_2_shop_x4", 
+                "troll_spell_ward_description_level_2_shop_x4",
+                "troll_spell_ward_description_level_3_shop_x4", 
             }, 
             {
                 {60,120,180},
                 {60,60,60},
+                {"+300","+600","+900"}
             },
             "1",
             "1",

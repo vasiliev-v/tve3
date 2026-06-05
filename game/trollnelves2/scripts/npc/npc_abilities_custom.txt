@@ -15099,7 +15099,7 @@
 		"AbilityValues"
         {
             "duration" "5 15 20"
-			"damage"	"0"
+			"damage"	"400"
         }
 		"OnSpellStart"
 		{
