@@ -373,10 +373,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 "elf_spell_reveal_description_level_1_shop", 
                 "elf_spell_reveal_description_level_2_shop", 
+                "elf_spell_reveal_description_level_3_shop", 
             }, 
             {
-                {45, 60, 75},
+                {25, 40, 55},
                 {200, 175, 150},
+                {300, 300, 300},
             },
             "0",
             "1",
@@ -554,7 +556,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "troll_spell_cd_reduce", 
             "modifier_troll_spell_cd_reduce", 
             {
-                "troll_spell_cd_reduce_description_level_1_shop", 
+                "troll_spell_cd_reduce_description_level_1_shop",  
             }, 
             {
                 {'-10%','-15%','-20%'},
@@ -1304,7 +1306,7 @@ else -- X4
                 {"10%", "12%", "15%"},
                 {4, 8 , 12},
                 {350, 300, 300},
-                {300, 300, 300},
+                {75, 75, 75},
             },
             "0",
             "1",
@@ -1331,10 +1333,12 @@ else -- X4
             {
                 "elf_spell_reveal_description_level_1_shop_x4", 
                 "elf_spell_reveal_description_level_2_shop_x4", 
+                "elf_spell_reveal_description_level_3_shop_x4", 
             }, 
             {
-                {45, 60, 90},
+                {25, 40, 55},
                 {150, 125, 100},
+                {90, 90, 90},
             },
             "0",
             "1",
@@ -1347,12 +1351,14 @@ else -- X4
             {
                 "elf_spell_true_description_level_1_shop_x4", 
                 "elf_spell_true_description_level_2_shop_x4", 
-                "elf_spell_true_description_level_3_shop_x4", 
+                "elf_spell_true_description_level_3_shop_x4",
+                "elf_spell_true_description_level_4_shop_x4",
             }, 
             {
                 {300, 600, 900}, 
                 {3, 5, 7}, 
-                {150, 120, 100}, 
+                {150, 120, 100},
+                {75, 75, 75} 
             },
             "0",
             "1",
@@ -1550,7 +1556,8 @@ else -- X4
             "troll_spell_status_resist", 
             "modifier_troll_spell_status_resist_x4", 
             {
-                "troll_spell_status_resist_description_level_1_shop_x4", 
+                "troll_spell_status_resist_description_level_1_shop_x4",
+                "troll_spell_status_resist_description_level_2_shop_x4", 
             }, 
             {
                 {'+15%','+20%','+25%'},
@@ -1567,12 +1574,14 @@ else -- X4
             {
                 "troll_spell_haste_description_level_1_shop_x4", 
                 "troll_spell_haste_description_level_2_shop_x4", 
-                "troll_spell_haste_description_level_3_shop_x4", 
+                "troll_spell_haste_description_level_3_shop_x4",
+                "troll_spell_haste_description_level_4_shop_x4",
             }, 
             {
                 {5,15,30},
                 {'2%','4%','8%'},
                 {1000,1000,1000},
+                {300, 250, 200}
             },
             "1",
             "1",
@@ -1667,7 +1676,8 @@ else -- X4
             {
                 "troll_spell_slow_area_description_level_1_shop_x4", 
                 "troll_spell_slow_area_description_level_2_shop_x4", 
-                "troll_spell_slow_area_description_level_3_shop_x4", 
+                "troll_spell_slow_area_description_level_3_shop_x4",
+                "troll_spell_slow_area_description_level_4_shop_x4", 
             }, 
             {
                 {-50,-60,-70},
@@ -2182,8 +2192,8 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
     local player_spells = game_spells_lib.PLAYER_INFO[player_id]
     if not player_spells then return 0 end
 
-    local discount_to_2 = 0.4 -- 20% скидка до 2 уровня
-    local discount_to_3 = 0.6 -- 30% скидка до 3 уровня
+    local discount_to_2 = GameRules.SPELL_DISCOUNT_TO_2 -- 20% скидка до 2 уровня
+    local discount_to_3 = GameRules.SPELL_DISCOUNT_TO_3 -- 30% скидка до 3 уровня
 
     local target_index = nil
     local target_side = nil
@@ -2227,11 +2237,14 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
                 end
 
                 if aspect_level < 2 then
-                    cost = cost + 500
+                    cost = cost + GameRules.SPELL_PRICE_BASE
                 end
             end
         end
 
+        if target_side == "1" then
+            cost = cost * (1 - GameRules.TROLL_DISCOUNT)
+        end
         cost = cost * (1 - discount_to_2)
 
     elseif target_level == 3 then
@@ -2250,7 +2263,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
                 end
 
                 if aspect_level < 2 then
-                    cost = cost + 500
+                    cost = cost + GameRules.SPELL_PRICE_BASE
                 end
             end
         end
@@ -2271,18 +2284,20 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
                 end
 
                 if aspect_level < 3 then
-                    cost = cost + 500
+                    cost = cost + GameRules.SPELL_PRICE_BASE
                 end
             end
         end
-
+        if target_side == "1" then
+            cost = cost * (1 - GameRules.TROLL_DISCOUNT)
+        end
         cost = cost * (1 - discount_to_3)
     end
     if GameRules:IsCheatMode() and not GameRules.isTesting then
        return -2 
     end
 
-    return math.max(500, math.floor(cost + 0.5)) -- округление до целого
+    return math.max(GameRules.SPELL_PRICE_BASE, math.floor(cost + 0.5)) -- округление до целого
 end
 
 function game_spells_lib:UpdatePlayerSpellCosts(player_id)

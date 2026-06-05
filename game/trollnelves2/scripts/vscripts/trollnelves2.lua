@@ -451,6 +451,7 @@ function InitializeBuilder(hero)
     else  
         --hero:AddItemByName("item_night_ability")
         hero:AddItemByName("item_blink_datadriven")
+        UpdateBlinkItemLevel(hero)
     end
     hero:AddItemByName("item_anti_angel")
     
@@ -1216,3 +1217,33 @@ function FlagCheck(caster)
 	end
 	return false
 end 
+
+function UpdateBlinkItemLevel(hero)
+	if not hero or hero:IsNull() then return end
+
+	local item = hero:FindItemInInventory("item_blink_datadriven")
+	if not item then return end
+
+	local level = 1
+
+	local function checkModifier(modName)
+		if not hero:HasModifier(modName) then
+			return
+		end
+
+		local stacks = hero:GetModifierStackCount(modName, hero)
+
+		if stacks == 1 then
+			level = math.max(level, 2)
+		elseif stacks == 2 then
+			level = math.max(level, 3)
+		elseif stacks >= 3 then
+			level = math.max(level, 4)
+		end
+	end
+
+	checkModifier("modifier_elf_spell_blink")
+	checkModifier("modifier_elf_spell_blink_x4")
+
+	item:SetLevel(level)
+end
