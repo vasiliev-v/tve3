@@ -31,7 +31,7 @@ function modifier_troll_spell_armor:GetModifierConstantHealthRegen()
 	elseif self:GetStackCount() == 2  then
 		return 4
 	elseif self:GetStackCount() == 3  then
-		return 6
+		return 8
 	else return 0 end
 end
 

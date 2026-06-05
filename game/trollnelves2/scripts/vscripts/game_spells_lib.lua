@@ -22,10 +22,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 "elf_spell_solo_player_description_level_1_shop", 
                 "elf_spell_solo_player_description_level_2_shop", 
+                "elf_spell_solo_player_description_level_3_shop", 
             }, 
             {
                 {"2","2","2"},
                 {"7","15","25"},
+                {"20", "30", "40"},
             },
             "0",
             "1",
@@ -240,7 +242,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {"-4%","-8%","-12%"},
-                {"-30%","-50%","-75%"},
+                {"-33%","-50%","-66%"},
             },
             "0",
             "1",
@@ -359,7 +361,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 {300, 600, 900}, 
                 {3, 5, 7}, 
-                {300, 240, 180}, 
+                {300, 250, 200}, 
                 {300, 300, 300}, 
             },
             "0",
@@ -376,8 +378,8 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "elf_spell_reveal_description_level_3_shop", 
             }, 
             {
-                {25, 40, 55},
-                {200, 175, 150},
+                {30, 45, 60},
+                {250, 200, 175},
                 {300, 300, 300},
             },
             "0",
@@ -396,8 +398,8 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {1000, 2000, 3000},
-                {"50%", "75%", "100%"},
-                {300, 250, 250},
+                {"33%", "66%", "99%"},
+                {350, 300, 250},
             },
             "0",
             "1",
@@ -478,7 +480,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {2,4,8},
-                {2,4,6}
+                {2,4,8}
             },
             "1",
             "1",
@@ -559,7 +561,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_cd_reduce_description_level_1_shop",  
             }, 
             {
-                {'-10%','-15%','-20%'},
+                {'-15%','-20%','-25%'},
             },
             "1",
             "1",
@@ -607,8 +609,8 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             }, 
             {
                 {15,30,45},
-                {'2%','4%','8%'},
-                {300, 250, 200},
+                {'2%','4%','6%'},
+                {200, 150, 100},
                 {1000,1000,1000},
             },
             "1",
@@ -668,11 +670,13 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "troll_spell_ward", 
             "modifier_troll_spell_ward", 
             {
-                "troll_spell_ward_description_level_1_shop", 
-                "troll_spell_ward_description_level_2_shop", 
+                "troll_spell_ward_description_level_1_shop",
+                "troll_spell_ward_description_level_2_shop",
+                "troll_spell_ward_description_level_3_shop", 
             }, 
             {
                 {60,120,180},
+                {300, 600, 900},
                 {60,60,60},
             },
             "1",
@@ -728,8 +732,8 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 
             }, 
             {
-                {50,100,200},
-                {320,370,390},
+                {75,100,200},
+                {360,380,400},
                 {300,150,60},
             },
             "1",
@@ -1002,11 +1006,13 @@ else -- X4
             "modifier_elf_spell_solo_player", 
             {
                 "elf_spell_solo_player_description_level_1_shop", 
-                "elf_spell_solo_player_description_level_2_shop", 
+                "elf_spell_solo_player_description_level_2_shop",
+                "elf_spell_solo_player_description_level_3_shop", 
             }, 
             {
                 {"2","2","2"},
                 {"7","15","25"},
+                {}
             },
             "0",
             "1",
@@ -1336,8 +1342,8 @@ else -- X4
                 "elf_spell_reveal_description_level_3_shop_x4", 
             }, 
             {
-                {25, 40, 55},
-                {150, 125, 100},
+                {30, 45, 60},
+                {200, 150, 125},
                 {90, 90, 90},
             },
             "0",
@@ -1357,7 +1363,7 @@ else -- X4
             {
                 {300, 600, 900}, 
                 {3, 5, 7}, 
-                {150, 120, 100},
+                {150, 125, 100},
                 {75, 75, 75} 
             },
             "0",
@@ -1376,8 +1382,8 @@ else -- X4
             }, 
             {
                 {1000, 2000, 3000},
-                {"50%", "75%", "100%"},
-                {350, 300, 300},
+                {"33%", "66%", "99%"},
+                {350, 300, 250},
             },
             "0",
             "1",
@@ -1450,7 +1456,7 @@ else -- X4
             }, 
             {
                 {2,4,8},
-                {2,4,6}
+                {2,4,8}
             },
             "1",
             "1",
@@ -1531,7 +1537,7 @@ else -- X4
                 "troll_spell_cd_reduce_description_level_1_shop_x4", 
             }, 
             {
-                {'-7%','-10%','-15%'},
+                {'-12%','-15%','-20%'},
             },
             "1",
             "1",
@@ -1578,10 +1584,10 @@ else -- X4
                 "troll_spell_haste_description_level_4_shop_x4",
             }, 
             {
-                {5,15,30},
-                {'2%','4%','8%'},
+                {15,30,45},
+                {'2%','4%','6%'},
                 {1000,1000,1000},
-                {300, 250, 200}
+                {200, 150, 100}
             },
             "1",
             "1",
@@ -1700,8 +1706,8 @@ else -- X4
                 
             }, 
             {
-                {50,100,200},
-                {320,370,390},
+                {75,100,200},
+                {360,380,400},
                 {180,120,60},
             },
             "1",

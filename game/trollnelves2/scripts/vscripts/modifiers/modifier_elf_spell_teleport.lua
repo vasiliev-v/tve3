@@ -7,7 +7,6 @@ function modifier_elf_spell_teleport:IsStackable()        return true end
 function modifier_elf_spell_teleport:IsPermanent()        return false end
 function modifier_elf_spell_teleport:GetTexture()         return "elf_spell_teleport" end
 --------------------------------------------------------------------------------
-
 function modifier_elf_spell_teleport:OnCreated( kv )
 	if IsServer() then
 		local hero = self:GetParent()
