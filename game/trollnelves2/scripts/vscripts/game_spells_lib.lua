@@ -27,7 +27,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {
                 {"2","2","2"},
                 {"7","15","25"},
-                {"20", "30", "40"},
+                {"15", "30", "45"},
             },
             "0",
             "1",
@@ -1005,16 +1005,16 @@ else -- X4
         {
             "elf_spell_solo_player", 
             "elf_spell_solo_player", 
-            "modifier_elf_spell_solo_player", 
+            "modifier_elf_spell_solo_player_x4", 
             {
-                "elf_spell_solo_player_description_level_1_shop", 
-                "elf_spell_solo_player_description_level_2_shop",
-                "elf_spell_solo_player_description_level_3_shop", 
+                "elf_spell_solo_player_description_level_1_shop_x4", 
+                "elf_spell_solo_player_description_level_2_shop_x4",
+                "elf_spell_solo_player_description_level_3_shop_x4", 
             }, 
             {
                 {"2","2","2"},
                 {"7","15","25"},
-                {}
+                {"30", "40", "50"}
             },
             "0",
             "1",

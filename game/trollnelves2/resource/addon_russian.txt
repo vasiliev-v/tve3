@@ -865,7 +865,7 @@
 		"ChooseAngelWolfInGame"							"Включить Волков/Ангелов?"
 		"ChooseAngelWolfInGameTrue"							"<font color='#EE4747 '> Снижение рейтинга ОТКЛЮЧЕНО за покинутую игру ПОСЛЕ смерти. </font>"
 		"ChooseAngelWolfInGameFalse"							"<font color='#EEC747 '> Снижение рейтинга ВКЛЮЧЕНО за покинутую игру ПОСЛЕ смерти.  </font>"
-		"wolves_mod_enabled_desc"  		   "Волки и Ангелы включены"
+		"wolves_mod_enabled_desc"  		   "Волки и Ангелы включены " 
 		"wolves_mod_disabled_desc"         "Волки и Ангелы Выключены"
 		"wolves_angels_label"			"Волки и Ангелы"
 		"stress_bubble"																"Войти могут только 5 избранных слуг у которых есть особые способности для проявлений своего потенциала."

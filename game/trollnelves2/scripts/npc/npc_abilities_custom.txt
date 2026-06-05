@@ -15094,11 +15094,11 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"              "0.0"
 		"AbilityManaCost"               "0"
-		"AbilityCooldown"				"150 100 60"
+		"AbilityCooldown"				"300 250 200"
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
-            "duration" "5 15 20"
+            "duration" "5 10 15"
 			"damage"	"400"
         }
 		"OnSpellStart"
