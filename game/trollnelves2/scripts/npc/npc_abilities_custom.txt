@@ -1925,14 +1925,13 @@
             "gold_cost" "0"
             "lumber_cost" "0"
             "MineCost" "0"
-            "incom_resist" "-50"
-            "incom_resist_cw" "-75"
-            "mag_resist" "-35"
-            "mag_resist_cw" "-50"
-            "status_resits" "-10"
-            "status_resits_cw" "-50"
-            "ms" "0"
-            "ms_cw" "-20"
+            "incom_resist" "50"
+			"status_resits" "10"
+            "mag_resist" "35"
+            "mag_resist_cw" "50"
+            "status_resits_cw" "50"
+            "ms_cw" "20"
+			"incom_resist_cw" "75"
             "radius" "900"
         }
 		
@@ -1976,7 +1975,7 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_barracks"//"build_tent"
-		"AbilityCastRange"		"200"//"375"//"400"
+		"AbilityCastRange"		"250"//"375"//"400"
 		"Building"				"1"
 		"BuildTime"				"2.0"
 		"Scale"					"1"
@@ -3338,6 +3337,7 @@
 		"MaxLevel"				"1"
 		"AbilityValues"
         {
+			"bonus_damage" "1"
             "gold_cost" "4"
             "lumber_cost" "0"
             "MineCost" "0"
@@ -3372,9 +3372,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "2"
             "gold_cost" "16"
             "lumber_cost" "0"
-            "bonus_damage" "2"
         }
 	}
 	"upgrade_to_tower_3"
@@ -3397,9 +3397,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "4"
             "gold_cost" "32"
             "lumber_cost" "0"
-            "bonus_damage" "4"
         }
 	}
 	"upgrade_to_tower_4"
@@ -3422,9 +3422,9 @@
 		}
 		"AbilityValues"
         {
+            "bonus_damage" "8"
             "gold_cost" "64"
             "lumber_cost" "0"
-            "bonus_damage" "8"
         }
 	}
 	"upgrade_to_tower_5"
@@ -3447,9 +3447,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "16"
             "gold_cost" "128"
             "lumber_cost" "0"
-            "bonus_damage" "16"
         }
 	}
 	"upgrade_to_tower_6"
@@ -3472,9 +3472,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "32"
             "gold_cost" "256"
             "lumber_cost" "0"
-            "bonus_damage" "32"
         }
 	}
 	"upgrade_to_tower_7"
@@ -3497,9 +3497,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "64"
             "gold_cost" "512"
             "lumber_cost" "2"
-            "bonus_damage" "64"
         }
 	}
 	"upgrade_to_tower_8"
@@ -3522,9 +3522,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "128"
             "gold_cost" "1024"
             "lumber_cost" "4"
-            "bonus_damage" "128"
         }
 	}
 	"upgrade_to_tower_9"
@@ -3547,9 +3547,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "1536"
             "gold_cost" "2048"
             "lumber_cost" "8"
-            "bonus_damage" "1536"
         }
 	}
 	"upgrade_to_tower_10"
@@ -3572,9 +3572,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "3048"
             "gold_cost" "4096"
             "lumber_cost" "16"
-            "bonus_damage" "3048"
         }
 	}
 	"upgrade_to_tower_10_1"
@@ -3597,9 +3597,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "6144"
             "gold_cost" "8192"
             "lumber_cost" "32"
-            "bonus_damage" "6144"
         }
 	}
 	"upgrade_to_tower_10_2"
@@ -3622,9 +3622,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "12288"
             "gold_cost" "16384"
             "lumber_cost" "64"
-            "bonus_damage" "12288"
         }
 	}
 	"upgrade_to_tower_10_3"
@@ -3647,9 +3647,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "24576"
             "gold_cost" "32768"
             "lumber_cost" "128"
-            "bonus_damage" "24576"
         }
 	}
 	"upgrade_to_tower_10_4"
@@ -3672,9 +3672,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "49152"
             "gold_cost" "65536"
             "lumber_cost" "256"
-            "bonus_damage" "49152"
         }
 	}
 	"upgrade_to_tower_10_5"
@@ -3697,9 +3697,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "98304"
             "gold_cost" "131072"
             "lumber_cost" "512"
-            "bonus_damage" "98304"
         }
 	}
 	"upgrade_to_tower_11"
@@ -3722,9 +3722,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "81920"
             "gold_cost" "0"
             "lumber_cost" "10240"
-            "bonus_damage" "81920"
         }
 	}
 	"upgrade_to_tower_11_1"
@@ -3747,9 +3747,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "256000"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "256000"
         }
 	}
 	"upgrade_to_tower_11_2"
@@ -3772,9 +3772,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_tower_12"
@@ -3797,9 +3797,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "25600"
             "gold_cost" "0"
             "lumber_cost" "20480"
-            "bonus_damage" "25600"
         }
 	}
 	"upgrade_to_tower_12_1"
@@ -3822,9 +3822,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "256000"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "256000"
         }
 	}
 	"upgrade_to_tower_12_2"
@@ -3847,9 +3847,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_tower_13"
@@ -3872,9 +3872,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "500100"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "500100"
         }
 		
 	}
@@ -3898,9 +3898,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "600100"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "600100"
         }
 	}
 	"upgrade_to_tower_14_1"
@@ -3923,9 +3923,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_tower_15"
@@ -3948,9 +3948,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "700100"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "700100"
         }
 	}
 	"upgrade_to_tower_15_1"
@@ -3973,9 +3973,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "700100"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "700100"
         }
 	}
 	"upgrade_to_tower_15_2"
@@ -3998,9 +3998,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_tower_16"
@@ -4023,9 +4023,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "800100"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "800100"
         }
 	}
 	"upgrade_to_tower_17_1"
@@ -4048,9 +4048,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "900100"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "900100"
         }
 	}
 	"upgrade_to_tower_17"
@@ -4073,9 +4073,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "900100"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "900100"
         }
 	}
 	"upgrade_to_tower_18"
@@ -4098,9 +4098,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_tower_19"
@@ -4199,9 +4199,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_tower_21"
@@ -4224,9 +4224,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_tower_22"
@@ -4249,9 +4249,9 @@
 		}
 		"AbilityValues"
         {
+			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
-            "bonus_damage" "999999"
         }
 	}
 	"upgrade_to_true_sight_tower"
@@ -15927,9 +15927,11 @@
 	"AbilityTextureName"	"elf_spell_teleport"
 	"MaxLevel"				"3"
 
+	"AbilityCharges"				"1 1 2"
+	"AbilityChargeRestoreTime"		"0"
 	"AbilityCastRange"		"0"
 	"AbilityCastPoint"		"5 4 3"
-	"AbilityCooldown"		"500 400 300"
+	"AbilityCooldown"		"600"
 
 	"precache"
 	{
@@ -15945,6 +15947,20 @@
 	"AbilityValues"
 	{
 	}
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_charges"					"1 1 2"
+			}
+			"02"
+			{
+				"var_type" 						"FIELD_INTEGER"
+				"charge_cooldown"				"0"
+			}
+		}
+
 }
 
 "elf_spell_stun_target"{

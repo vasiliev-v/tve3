@@ -305,10 +305,12 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             "elf_spell_teleport", 
             "modifier_elf_spell_teleport", 
             {
-                "elf_spell_teleport_description_level_1_shop", 
+                "elf_spell_teleport_description_level_1_shop",
+                "elf_spell_teleport_description_level_2_shop",  
             }, 
             {
-                {500, 400, 300},
+                {1, 1, 2},
+                {"None", "None", 600},
             },
             "0",
             "1",
@@ -1291,10 +1293,12 @@ else -- X4
             "elf_spell_teleport", 
             "modifier_elf_spell_teleport_x4", 
             {
-                "elf_spell_teleport_description_level_1_shop_x4", 
+                "elf_spell_teleport_description_level_1_shop_x4",
+                "elf_spell_teleport_description_level_2_shop_x4",  
             }, 
             {
-                {500, 400, 300},
+                {1, 1, 2},
+                {"None", "None", 600},
             },
             "0",
             "1",
@@ -1590,8 +1594,8 @@ else -- X4
             {
                 {15,30,45},
                 {'2%','4%','6%'},
-                {1000,1000,1000},
-                {200, 150, 100}
+                {200, 150, 100},
+                {1000,1000,1000}
             },
             "1",
             "1",
