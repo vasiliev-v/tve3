@@ -5,7 +5,7 @@ function modifier_troll_spell_ms_max:RemoveOnDeath()      return true end
 function modifier_troll_spell_ms_max:IsHidden()           return false end
 function modifier_troll_spell_ms_max:IsStackable()        return true end
 function modifier_troll_spell_ms_max:IsPermanent()        return false end
-function modifier_troll_spell_ms_max:GetTexture()         return "troll_spell_ms_max" end
+function modifier_troll_spell_ms_max:GetTexture()         return "troll_spell_gold_wisp" end
 --------------------------------------------------------------------------------
 function  modifier_troll_spell_ms_max:DeclareFunctions()
 	local funcs = {

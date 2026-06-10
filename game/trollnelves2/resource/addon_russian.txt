@@ -117,6 +117,8 @@
 		"DOTA_Tooltip_Ability_buy_skill_bear_desolator_Description"					"Применяет эффект, предотвращающий ремонт здания при атаке. Длится %dur_time% секунд. Не занимает слот."
 		"DOTA_Tooltip_Ability_buy_skill_bear_respawn_Description"					"Позволяет убрать КД на респавн Медведя. После покупки необходимо заново призвать Медведя."
 		"DOTA_Tooltip_Ability_attack_gold_wisp_Description"					"Убивает всех Gold Wisp в радиусе 128."
+		"DOTA_Tooltip_modifier_troll_spell_ms_max_Description"	 			"Дает максимальную скорость передвижения."
+		"DOTA_Tooltip_modifier_troll_spell_ms_max_x4_Description"	 			"Дает максимальную скорость передвижения."
 		"DOTA_Tooltip_Ability_bear_desolator_Description"					"Накладывает эффект, запрещающий чинить постройку при атаке. Длится %dur_time% секунд. Не занимает слот."
 		"DOTA_Tooltip_ability_build_tower_1_Description"                                  "Постройте башню, <font color='#ff6363'>чтобы защитить себя от Тролля!</font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_2_Description"                             "Улучшите свою башню, чтобы защитить себя от Тролля!"

@@ -27,6 +27,11 @@ function BuildingHelper:Init()
     BuildingHelper.Encoded = "" -- String containing the base terrain, networked to clients
     BuildingHelper.squareX = 0 -- Number of X grid points
     BuildingHelper.squareY = 0 -- Number of Y grid points
+
+    -- где-то сверху файла, рядом с другими глобальными таблицами
+    if not GameRules.ItemsMarkedForSell then
+        GameRules.ItemsMarkedForSell = {}
+    end
     
     -- Grid States
     BuildingHelper.GridTypes = {}
@@ -970,6 +975,32 @@ function BuildingHelper:OrderFilter(order)
     if BuildingHelper.nextFilter then
         ret = BuildingHelper.nextFilter(BuildingHelper.nextContext, order)
     end
+
+    function BuildingHelper:TryAutoSellMarkedItemsForPlayer(pID)
+    if not pID or pID == -1 then return end
+
+    local hero = PlayerResource:GetSelectedHeroEntity(pID)
+    if not hero or hero:IsNull() then return end
+
+    if not GameRules.ItemsMarkedForSell then return end
+    local marked = GameRules.ItemsMarkedForSell[pID]
+    if not marked then return end
+
+    if not IsInsideShopArea(hero) then return end
+    if not hero.CanSellItems or not hero:CanSellItems() then return end
+
+    for slot = 0, 8 do
+        local item = hero:GetItemInSlot(slot)
+        if item and not item:IsNull() then
+            local entIndex = item:entindex()
+            if marked[entIndex] and item:IsSellable() then
+                SellItem(hero, item)
+                marked[entIndex] = nil
+            end
+        end
+    end
+end
+
     
     if not ret then return false end
     
@@ -1279,11 +1310,69 @@ function BuildingHelper:OrderFilter(order)
         return false
     end
 
-    if order_type == 42 then -- mark for sell 
-        SendErrorMessage(issuerID, "error_shop_out_of_range")
+    if order_type == 42 then -- mark for sell
+    -- юнит, который нажал кнопку
+    local hero = PlayerResource:GetSelectedHeroEntity(issuerID)
+    if not hero or hero:IsNull() then
         return false
     end
-    
+
+    -- предмет, который помечаем
+    local item = EntIndexToHScript(order.entindex_ability)
+    if not item or item:IsNull() then
+        return false
+    end
+
+    -- проверка владельца предмета
+    local owner = item:GetOwner()
+    if not owner or owner:GetPlayerOwnerID() ~= issuerID then
+        return false
+    end
+
+    -- инициализируем таблицу для этого героя
+    GameRules.ItemsMarkedForSell[issuerID] = GameRules.ItemsMarkedForSell[issuerID] or {}
+
+    local entIndex = item:entindex()
+
+    -- переключатель: если уже помечен — снять отметку
+    if GameRules.ItemsMarkedForSell[issuerID][entIndex] then
+        GameRules.ItemsMarkedForSell[issuerID][entIndex] = nil
+        -- сюда можно отправить кастомное сообщение / звук «снято с продажи»
+        -- SendErrorMessage(issuerID, "#unmark_for_sell")
+    else
+        GameRules.ItemsMarkedForSell[issuerID][entIndex] = true
+        -- сюда можно отправить кастомное сообщение «помечено на продажу»
+        -- SendErrorMessage(issuerID, "#mark_for_sell")
+    end
+
+    return false -- чтобы дефолтная логика доты не лезла
+end
+
+-- авто-продажа помеченных предметов при входе в магазин
+local hero = PlayerResource:GetSelectedHeroEntity(issuerID)
+if hero and not hero:IsNull() then
+    local inShop = IsInsideShopArea(hero)
+    if inShop and GameRules.ItemsMarkedForSell[issuerID] then
+        for slot = 0, 8 do -- инвентарь героя
+            local item = hero:GetItemInSlot(slot)
+            if item and not item:IsNull() then
+                local entIndex = item:entindex()
+                if GameRules.ItemsMarkedForSell[issuerID][entIndex] then
+                    -- проверяем, что предмет ещё можно продать
+                    local bSellCondition = hero:CanSellItems() and item:IsSellable()
+                    if bSellCondition then
+                        SellItem(hero, item)
+                        GameRules.ItemsMarkedForSell[issuerID][entIndex] = nil
+                    else
+                        -- если нельзя продать, снимаем отметку, чтобы не пытаться вечно
+                        GameRules.ItemsMarkedForSell[issuerID][entIndex] = nil
+                    end
+                end
+            end
+        end
+    end
+end
+
     return ret
 end
 
