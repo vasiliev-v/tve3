@@ -19,6 +19,7 @@ function modifier_elf_spell_true:OnCreated( kv )
 		--hero:AddAbility("elf_spell_true")
 		local abil = hero:FindAbilityByName("elf_spell_true")
 		abil:SetLevel(countStack)
+		
 	end
 end
 function modifier_elf_spell_true:OnDestroy( kv )

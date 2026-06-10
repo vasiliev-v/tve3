@@ -16,10 +16,10 @@ end
 
 function modifier_troll_spell_cd_reduce_x4:GetModifierPercentageCooldown()
 	if self:GetStackCount() == 1 then 
-		return 7
+		return 12
 	elseif self:GetStackCount() == 2  then
-		return 10
-	elseif self:GetStackCount() == 3  then
 		return 15
+	elseif self:GetStackCount() == 3  then
+		return 20
 	else return 0 end
 end

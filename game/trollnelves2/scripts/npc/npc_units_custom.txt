@@ -14282,7 +14282,7 @@
 	        "Count"     "1"
 	        "1"{
 				"unit_name"			"troll_hut_2"
-				"gold_cost"			"200"//"180" //"160" //"200"
+				"gold_cost"			"190"//"180" //"160" //"200"
 				"lumber_cost"		"0"
 			}
 	    }
@@ -14360,7 +14360,7 @@
 	        "1"
 			{
 				"unit_name"			"troll_hut_3"
-				"gold_cost"			"360"//"320" //"325" //"275" 360
+				"gold_cost"			"320"//"320" //"325" //"275" 360
 				"lumber_cost"		"0"
 			}
 	    }
@@ -14437,7 +14437,7 @@
 	        "Count"     "1"
 	        "1"{
 				"unit_name"			"troll_hut_4"
-				"gold_cost"			"520"//"480" //"490" //"475" 520
+				"gold_cost"			"480"//"480" //"490" //"475" 520
 				"lumber_cost"		"0"
 			}
 	    }
@@ -15015,7 +15015,7 @@
   		"FormationRank"                         "0"
   		// Movement
   		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
-  		"MovementSpeed"                         "320"
+  		"MovementSpeed"                         "360"
   		"MovementTurnRate"                      "1"
   		// Status
   		"StatusHealth"                          "50"
@@ -15077,7 +15077,7 @@
   		"FormationRank"                         "0"
   		// Movement
   		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
-  		"MovementSpeed"                         "370"
+  		"MovementSpeed"                         "380"
   		"MovementTurnRate"                      "1"
   		// Status
   		"StatusHealth"                          "100"
@@ -15140,7 +15140,7 @@
   		"FormationRank"                         "0"
   		// Movement
   		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
-  		"MovementSpeed"                         "390"
+  		"MovementSpeed"                         "400"
   		"MovementTurnRate"                      "1"
   		// Status
   		"StatusHealth"                          "200"
