@@ -394,7 +394,7 @@
 		"shop_nice_buy"						"A purchase request has been sent. IF THE FOLLOWING GAME WAS NOT ISSUED A DONATE, PLEASE CONTACT THE DEVELOPER! Thanks for the support!"
 		"shop_error_label"					"Not enough money! "
 		"buy_currency"						"Purchase of TvE Coint."
-		"buy_currency_description"						"1 dollar = 100 coins. Write to Discord @vladu4eg for technical support. If you purchase a large number of coins, then you can request additional free coins in Discord. With the first purchase of 50 coins or more, 100 coins are issued for free (Write in Discord)."
+		"buy_currency_description"						"1 dollar = 100 coins. Write to Discord @vladu4eg for technical support. If you purchase a large number of coins, then you can request additional free coins in Discord. With the first purchase of 100 coins or more, 100 coins are issued for free (Write in Discord)."
 
 		"pet_description"											"Only one Pet is issued per purchase. Pets purchased with coins are permanent. Pets for gems are issued for 1 month. Some Pets are given out for TOP1-10, participation in events, and so on. Follow the events on Discord for free prizes."
 		"skin_description"											"Only one Skin is issued per purchase. Skins purchased with coins are permanent. Skins for gems are issued for 1 month. Some Skins are given out for TOP1-10, participation in events, and so on. Follow the events on Discord for free prizes."

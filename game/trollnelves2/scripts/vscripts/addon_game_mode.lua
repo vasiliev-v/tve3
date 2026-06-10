@@ -1042,7 +1042,7 @@ function Activate()
 	GameRules.SPELL_DISCOUNT_TO_2 = 0.3 -- 30%
 	GameRules.SPELL_DISCOUNT_TO_3 = 0.5 -- 50%
 	GameRules.SPELL_MIN_COST = 500
-	GameRules.TROLL_DISCOUNT = 0.50 -- 15%
+	GameRules.TROLL_DISCOUNT = 0.25 -- 15%
     ------------------------------------------------------------------------------------------------------------
 	GameRules.isTesting = true
 	GameRules.server =  "https://localhost:7133/test/" -- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
