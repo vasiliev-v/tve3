@@ -2,6 +2,7 @@
 LinkModifier = LinkModifier or {}
 print ( '[[TROLLNELVES2] LinkModifier' )
 function LinkModifier:Start()
+	-- Main
     LinkLuaModifier("modifier_movespeed_x4", "libraries/modifiers/modifier_movespeed_x4", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_movespeed_x2", "libraries/modifiers/modifier_movespeed_x2", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_antiblock", "libraries/modifiers/modifier_antiblock", LUA_MODIFIER_MOTION_NONE) 
@@ -39,6 +40,8 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_skill_troll_ms", "modifiers/modifier_skill_troll_ms", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_skill_troll_bkb", "modifiers/modifier_skill_troll_bkb", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_skill_troll_cd_reduce", "modifiers/modifier_skill_troll_cd_reduce", LUA_MODIFIER_MOTION_NONE )
+	--Other
+	LinkLuaModifier("modifier_item_blink_datadriven_speed", "items/item_blink_datadriven.lua", LUA_MODIFIER_MOTION_NONE)
 
 	LinkLuaModifier("modifier_spell_test", "modifiers/modifier_spell_test", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_spell_test_2", "modifiers/modifier_spell_test_2", LUA_MODIFIER_MOTION_NONE )
@@ -102,6 +105,10 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_heal", "modifiers/modifier_elf_spell_heal", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_elf_spell_reveal", "modifiers/modifier_elf_spell_reveal", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_unit_spell_solo_player", "modifiers/modifier_unit_spell_solo_player", LUA_MODIFIER_MOTION_NONE )
+	LinkLuaModifier("modifier_troll_spell_haste_bonus_ms", "abilities/troll_spell_haste.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_troll_spell_haste_no_limit", "abilities/troll_spell_haste.lua", LUA_MODIFIER_MOTION_NONE)
+
+	
 	-- X4
 	LinkLuaModifier("modifier_unit_spell_solo_player_x4", "modifiers/modifier_unit_spell_solo_player_x4", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_elf_spell_solo_player_x4", "modifiers/modifier_elf_spell_solo_player_x4", LUA_MODIFIER_MOTION_NONE )	
@@ -159,10 +166,10 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_heal_x4", "modifiers/modifier_elf_spell_heal_x4", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_elf_spell_reveal_x4", "modifiers/modifier_elf_spell_reveal_x4", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_magic_resist_buff", "abilities/troll_spell_magic_resist", LUA_MODIFIER_MOTION_NONE )	
-
+	LinkLuaModifier("modifier_troll_spell_haste_x4_bonus_ms", "abilities/troll_spell_haste_x4.lua", LUA_MODIFIER_MOTION_NONE)
     
 
-	LinkLuaModifier("modifier_item_blink_datadriven_speed", "items/item_blink_datadriven.lua", LUA_MODIFIER_MOTION_NONE)
+	
 
 	--LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	
 	--LinkLuaModifier("modifier_elf_spell_", "modifiers/modifier_elf_spell_", LUA_MODIFIER_MOTION_NONE )	

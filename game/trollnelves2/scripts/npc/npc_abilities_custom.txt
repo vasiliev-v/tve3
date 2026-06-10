@@ -14627,88 +14627,29 @@
 			}
 		}	
 	}
-"troll_spell_haste"
-{
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityTextureName"			"troll_spell_haste"
-	"MaxLevel"						"3"
-	"AbilityCooldown"				"200 150 100"
-
-	"precache"
+	"troll_spell_haste"
 	{
-		"soundfile"                 "soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
-		"particle"                  "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_focusfire_v2.vpcf"
-	}
-
-	"AbilityValues"
-	{
-		"duration"	"15 30 45"
-		"speed"		"100 200 300"
-		"eva"		"2 4 6"
-	}
-
-	// Пассивка вешается при появлении способности у героя
-	"OnOwnerSpawned"
-	{
-		"ApplyModifier"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"                    "abilities/troll_spell_haste.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"troll_spell_haste"
+		"MaxLevel"						"3"
+		"AbilityCooldown"				"200 150 100"
+		
+		"precache"
 		{
-			"ModifierName"	"modifier_passive_evasion"
-			"Target"		"CASTER"
-		}
-	}
-
-	"OnUpgrade"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_passive_evasion"
-			"Target"		"CASTER"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_troll_spell_haste_bonus_ms"
-			"Target"		"CASTER"
-		}
-		"FireSound"
-		{
-			"EffectName"	"Hero_Windrun.Windrun"
-			"Target" 		"CASTER"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_troll_spell_haste_bonus_ms"
-		{
-			"Duration"				"%duration"
-
-			"EffectName"            "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
-			"EffectAttachType"      "follow_origin"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%speed"
-				"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%eva"
-			}
+			"soundfile"                 "soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+			"particle"                  "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_focusfire_v2.vpcf"
 		}
 
-		"modifier_passive_evasion"
+		"AbilityValues"
 		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%eva"
-			}
+			"duration"	"15 30 45"
+			"speed"		"100 200 300"
+			"eva"		"2 4 6"
 		}
+		
 	}
-}
 
 	"troll_spell_ward"{
 		"BaseClass"						"ability_datadriven"
@@ -16367,8 +16308,9 @@
 		}	
 	}
 	"troll_spell_haste_x4"{
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET || DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"                    "abilities/troll_spell_haste_x4.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"troll_spell_haste"
 		"MaxLevel"						"3"
 		"AbilityCooldown"				"300 250 200"
@@ -16385,32 +16327,7 @@
             "speed" "1000"
             "eva" "2 4 8"
         }
-		
-		"OnSpellStart"{
-			"ApplyModifier"{
-				"ModifierName"			"modifier_troll_spell_haste_bonus_ms"
-				"Target"				"CASTER"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Windrun.Windrun"
-				"Target" 		"CASTER"
-			}
-
-		}
-		"Modifiers"{
-			"modifier_troll_spell_haste_bonus_ms"{
-				"Duration"				"%duration"
-				 
-				"EffectName"            "particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
-				"EffectAttachType"      "follow_origin"
-				
-				"Properties"{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%speed"
-					"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%eva"
-				}
-			}
-		}
+	
 	}
 
 	"troll_spell_ward_x4"{

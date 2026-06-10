@@ -428,9 +428,9 @@ function Shop.RequestBPBonus(obj, pID, steam, callback)
 			PoolTable["15"]["0"] = obj[1].srok
 
 			if GameRules.BonusGem[pID] ~= nil then
-				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + 0.10
+				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + 3
 			else
-				GameRules.BonusGem[pID] = 1.10
+				GameRules.BonusGem[pID] = 3
 			end
 		
 		end

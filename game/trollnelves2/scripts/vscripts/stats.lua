@@ -175,8 +175,11 @@ function Stats.Normal(winner,callback)
 						data.Score = tostring(math.floor(debuffPoint - 10 + GameRules.Bonus[pID] + tonumber(data.GetScoreBonus)))
 						if not hero:IsTroll() then
 							data.Team = tostring(2)
+							data.Rep = -3
+						else 
+							data.Rep = -2
 						end
-						data.Rep = -3
+						
 					end 
 						
 					if PlayerResource:GetConnectionState(pID) ~= 2 and hero:IsTroll() and PlayerResource:GetTeam(pID) == winner then
@@ -205,7 +208,7 @@ function Stats.Normal(winner,callback)
 					end
 					if tonumber(data.Score) >= 30 then
 						data.Score = tostring(math.floor(tonumber(data.Score) *  (1 + GameRules.BonusPercent)))
-						data.XpBP = tonumber(data.Score)/10 + 1
+						data.XpBP = tonumber(data.Score)/5 + 1
 					else 
 						data.Score = tostring(math.floor(tonumber(data.Score) *  (1 - GameRules.BonusPercent)))
 						data.XpBP = tonumber(0)
