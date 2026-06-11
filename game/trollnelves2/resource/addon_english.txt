@@ -5605,6 +5605,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"quest_info_desc" 		"Win after {time} min without any deaths"
 		"quest_info_title" "Quest condition"
 
+		"modif_game_rules_header"	"GAME MODIFIER"
+		"modif_game_rules_desc"		"Changes the standard rules of the match"
+
 
 		""						""
 		""						""

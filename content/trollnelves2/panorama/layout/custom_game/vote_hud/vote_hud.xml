@@ -1,46 +1,51 @@
 <root>
-	<styles>
-		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
-		<include src="file://{resources}/layout/custom_game/vote_hud/vote_hud.css" />
-	</styles>
-	<scripts>
+    <styles>
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+        <include src="file://{resources}/layout/custom_game/vote_hud/vote_hud.css" />
+    </styles>
+
+    <scripts>
         <include src="file://{resources}/layout/custom_game/scripts/util.js" />
-		<include src="file://{resources}/layout/custom_game/vote_hud/vote_hud.js" />
-	</scripts>
-	<Panel hittest="false" style="width:100%;height:100%;">
-		<Panel class="GameSetupStages" id="GameSetupStages">
-            <Panel class="SetupStageBG" onactivate=""/>
+        <include src="file://{resources}/layout/custom_game/vote_hud/vote_hud.js" />
+    </scripts>
+
+    <Panel hittest="false" style="width:100%;height:100%;">
+        <Panel class="GameSetupStages" id="GameSetupStages">
+            <Panel class="SetupStageBG" onactivate="" />
             <Label class="StageTimer" id="StageTimer" text="30" />
+
             <Panel class="GameInfo" id="GameInfo">
                 <Label class="SettingsLabelHeader" text="#settings_game" />
+
                 <Label class="SettingsLabel" id="SettingsHero" html="true" text="" />
                 <Label class="SettingsLabel" id="SettingsMap" html="true" text="" />
                 <Label class="SettingsLabel" id="SettingsMod" html="true" text="" />
+            </Panel>
+
+            <Panel class="ModVoteBlock" id="ModVoteBlock">
+                <Label class="ModVoteHeader" text="#modif_game_rules_header" />
+                <Label class="ModVoteDescription" text="#modif_game_rules_desc" />
+
                 <Panel class="ModVoteCard" id="ModVotePanel">
-                    <Panel class="ModVoteCardHeader">
+                    <Label class="ModVoteTitle" text="#wolves_angels_label" />
 
-                        <Label class="ModVoteTitle"
-                            text="#wolves_angels_label" />
-
-                        <Panel class="ModVoteButton" id="ModVoteYes">
-                            <Label class="ModVoteButtonText"
-                                text="#wolves_angels_yes" />
-                        </Panel>
-
+                    <Panel class="ModVoteButton" id="ModVoteYes">
+                        <Label class="ModVoteButtonText" text="#wolves_angels_yes" />
                     </Panel>
                 </Panel>
             </Panel>
+
             <Panel class="WindowStage WindowMapStage" id="WindowMapStage">
                 <Label class="WindowStageName" text="#ChooseMapInGame" />
-
                 <Label class="MapSelectInfo" id="MapSelectInfo" text="#TrollChoseMap" visible="false" />
-
                 <Panel class="PlayersCounter" id="WindowStageMapPlayersCounter" />
                 <Panel class="MapsList" id="MapsList" />
             </Panel>
+
             <Panel class="WindowStage WindowRoleStage" id="WindowRoleStage">
                 <Label class="WindowStageName" text="#select_roll" />
                 <Label class="YourChanceTroll" id="YourChanceTroll" text="" />
+
                 <Panel class="ChooseRolePanels">
                     <Panel class="ChooseRolePanel ElfPanel" id="ElfPanel">
                         <Panel class="RoleButton" onactivate="ChooseTeam('elf')">
@@ -49,12 +54,15 @@
                                 <Panel class="RoleIcon" />
                                 <Panel class="RoleBorder" />
                             </Panel>
+
                             <Panel class="RoleNamePanel">
                                 <Label text="#npc_dota_hero_treant" />
                             </Panel>
                         </Panel>
+
                         <Label class="RoleDescription" text="#guide_elf" />
                     </Panel>
+
                     <Panel class="ChooseRolePanel TrollPanel" id="TrollPanel">
                         <Panel class="RoleButton" onactivate="ChooseTeam('troll')">
                             <Panel class="RoleAvatar">
@@ -62,61 +70,70 @@
                                 <Panel class="RoleIcon" />
                                 <Panel class="RoleBorder" />
                             </Panel>
+
                             <Panel class="RoleNamePanel">
                                 <Label text="#npc_dota_hero_troll_warlord" />
                             </Panel>
                         </Panel>
+
                         <Label class="RoleDescription" text="#guide_troll" />
                     </Panel>
                 </Panel>
             </Panel>
+
             <Panel class="WindowStage WindowPerksStage" id="WindowPerksStage">
                 <Label class="WindowStageName" text="#select_aspect" />
-                <Panel class="PlayerSelectedPerks" id="PlayerSelectedPerks">
-                    
-                </Panel>
+                <Panel class="PlayerSelectedPerks" id="PlayerSelectedPerks" />
+
                 <Panel class="AllPerksPanel">
                     <Label class="PerksHeaderLabel" text="#available_aspects" />
                     <Panel class="PerksBorderLine" />
                     <Panel class="AllPerksList" id="AllPerksList" />
                 </Panel>
             </Panel>
+
             <Panel class="StagesLines" id="StagesLines">
                 <Panel class="StageLinePanel ActiveStage" id="StageLinePanel_1">
                     <Panel class="StageNameAndArrow">
                         <Label class="StageName" text="#stage_1_name" />
                         <Panel class="ArrowStage" />
                     </Panel>
+
                     <Panel class="StageLine">
                         <Panel class="StageLineBack" />
                         <Panel class="StageLineFront" id="StageLineFront_1" />
                     </Panel>
                 </Panel>
+
                 <Panel class="StageLinePanel" id="StageLinePanel_2">
                     <Panel class="StageNameAndArrow">
                         <Label class="StageName" text="#stage_2_name" />
                         <Panel class="ArrowStage" />
                     </Panel>
+
                     <Panel class="StageLine">
                         <Panel class="StageLineBack" />
                         <Panel class="StageLineFront" id="StageLineFront_2" />
                     </Panel>
                 </Panel>
+
                 <Panel class="StageLinePanel" id="StageLinePanel_3">
                     <Panel class="StageNameAndArrow">
                         <Label class="StageName" text="#stage_3_name" />
                         <Panel class="ArrowStage" />
                     </Panel>
+
                     <Panel class="StageLine">
                         <Panel class="StageLineBack" />
                         <Panel class="StageLineFront" id="StageLineFront_3" />
                     </Panel>
                 </Panel>
             </Panel>
+
             <Panel class="GameTips">
                 <Label class="GameTip" text="#loading_text" />
                 <Label class="GameTip" text="#loading_text_no_troll" />
             </Panel>
         </Panel>
-	</Panel>
+    </Panel>
 </root>

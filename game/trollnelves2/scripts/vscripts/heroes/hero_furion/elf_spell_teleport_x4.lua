@@ -49,8 +49,43 @@ modifier_teleportation = class({})
 
 function modifier_teleportation:IsHidden() return false end
 function modifier_teleportation:IsPurgable() return false end
-function modifier_teleportation:GetEffectName() return "particles/units/heroes/hero_furion/furion_teleport.vpcf" end
-function modifier_teleportation:GetEffectAttachType() return PATTACH_ABSORIGIN_FOLLOW end
+
+function modifier_teleportation:OnCreated(kv)
+	if not IsServer() then return end
+
+	local parent = self:GetParent()
+
+	self.particle = ParticleManager:CreateParticle(
+		"particles/units/heroes/hero_furion/furion_teleport_end.vpcf",
+		PATTACH_WORLDORIGIN,
+		parent
+	)
+
+	ParticleManager:SetParticleControl(self.particle, 0, parent:GetAbsOrigin())
+	ParticleManager:SetParticleControl(self.particle, 1, parent:GetAbsOrigin())
+
+	self:StartIntervalThink(FrameTime())
+
+	self:AddParticle(
+		self.particle,
+		false,
+		false,
+		-1,
+		false,
+		false
+	)
+end
+
+function modifier_teleportation:OnIntervalThink()
+	if not IsServer() then return end
+
+	local parent = self:GetParent()
+	if not self.particle then return end
+
+	local pos = parent:GetAbsOrigin()
+	ParticleManager:SetParticleControl(self.particle, 0, pos)
+	ParticleManager:SetParticleControl(self.particle, 1, pos)
+end
 
 function modifier_teleportation:DeclareFunctions()
 	return { MODIFIER_EVENT_ON_ORDER }
@@ -59,13 +94,15 @@ end
 function modifier_teleportation:OnOrder(event)
 	if not IsServer() then return end
 	if event.unit ~= self:GetParent() then return end
+
 	local parent = self:GetParent()
-	EmitSoundOn("Hero_Furion.Teleport_Disappear", parent)
-	if parent._elfx4_tp_end then
-		ParticleManager:DestroyParticle(parent._elfx4_tp_end, false)
-		ParticleManager:ReleaseParticleIndex(parent._elfx4_tp_end)
-		parent._elfx4_tp_end = nil
+
+	if parent._elf_tp_end then
+		ParticleManager:DestroyParticle(parent._elf_tp_end, false)
+		ParticleManager:ReleaseParticleIndex(parent._elf_tp_end)
+		parent._elf_tp_end = nil
 	end
+
 	parent:StopSound("Hero_Furion.Teleport_Grow")
 	parent:Interrupt()
 	self:Destroy()

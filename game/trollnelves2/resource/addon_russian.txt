@@ -1400,6 +1400,9 @@
 		"TrollChoseMap"							"Тролль выбирает карту"
 		"leaderboard_current_season"		"Текущий"
 
+		"modif_game_rules_header"	"МОДИФИКАТОР ИГРЫ"
+		"modif_game_rules_desc"		"Изменяет стандартные правила матча"
+
  
 	}
 }
