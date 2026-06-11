@@ -15186,7 +15186,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-            "bonus_movement_speed_night" "20 40 50"
+            "bonus_movement_speed_night" "80 90 100"
             "bonus_attack_speed_night" "20 35 55"
             "bonus_evasion" "1 2 3"
         }
@@ -16854,7 +16854,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-            "bonus_movement_speed_night" "20 40 50"
+            "bonus_movement_speed_night" "80 90 100"
             "bonus_attack_speed_night" "20 35 55"
             "bonus_evasion" "1 2 3"
         }
