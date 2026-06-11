@@ -770,7 +770,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_night_buff_description_level_3_shop", 
             }, 
             {
-                {20,40,50},
+                {80,90,100},
                 {20,35,55},
                 {'1%','2%','3%'},
             },
@@ -1750,7 +1750,7 @@ else -- X4
                 "troll_spell_night_buff_description_level_3_shop_x4", 
             }, 
             {
-                {20,40,50},
+                {80,90,100},
                 {20,35,55},
                 {'1%','2%','3%'},
             },
