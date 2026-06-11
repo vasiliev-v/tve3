@@ -15887,20 +15887,9 @@
 
 	"AbilityValues"
 	{
+		"max_charges"					"1 1 2"
+		"charge_cooldown"				"0"
 	}
-	"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"max_charges"					"1 1 2"
-			}
-			"02"
-			{
-				"var_type" 						"FIELD_INTEGER"
-				"charge_cooldown"				"0"
-			}
-		}
 
 }
 

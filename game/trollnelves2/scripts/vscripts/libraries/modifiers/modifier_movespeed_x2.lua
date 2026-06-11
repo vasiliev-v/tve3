@@ -16,14 +16,27 @@ function modifier_movespeed_x2:DeclareFunctions()
     }
 end
 
+function modifier_movespeed_x2:HasSpeedModifier()
+    local parent = self:GetParent()
+    return parent:HasModifier("modifier_troll_spell_haste_bonus_ms")
+end
+
 function modifier_movespeed_x2:GetModifierMoveSpeed_Max(params)
-    return 550
+    if self:HasSpeedModifier() then
+        return 800
+    end
+
+    return 650
 end
 
 function modifier_movespeed_x2:GetModifierMoveSpeed_Limit(params)
-    return 550
+    if self:HasSpeedModifier() then
+        return 800
+    end
+
+    return 650
 end
 
 function modifier_movespeed_x2:GetModifierIgnoreMovespeedLimit()
-    return 0
+    return 1
 end

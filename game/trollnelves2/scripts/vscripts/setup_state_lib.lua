@@ -12,7 +12,7 @@ function setup_state_lib:SetNextStage()
 end
 
 function setup_state_lib:SetupStartMapVotes()
-    local THIS_STAGE_TIMER = 30
+    local THIS_STAGE_TIMER = 1
     local TIMER_STAGE = THIS_STAGE_TIMER + 1
     local TIMER_STAGE_MAX = THIS_STAGE_TIMER
 
@@ -48,7 +48,7 @@ end
 
 
 function setup_state_lib:SetupStartSelectedRole()
-    local THIS_STAGE_TIMER = 10 -- 10
+    local THIS_STAGE_TIMER = 999 -- 10
     --if IsInToolsMode() then
     --    THIS_STAGE_TIMER = 1
    -- end

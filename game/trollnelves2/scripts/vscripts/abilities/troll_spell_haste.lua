@@ -67,19 +67,11 @@ function modifier_troll_spell_haste_no_limit:DeclareFunctions()
 end
 
 function modifier_troll_spell_haste_no_limit:GetModifierMoveSpeed_Max( params )
-    local ms = 700 
-    if GameRules.MapSpeed == 2 then
-        ms = 800 
-    end
-    return ms
+    return 700
 end
 
 function modifier_troll_spell_haste_no_limit:GetModifierMoveSpeed_Limit( params )
-    local ms = 700 
-    if GameRules.MapSpeed == 2 then
-        ms = 800 
-    end
-    return ms
+    return 700
 end
 
 function modifier_troll_spell_haste_no_limit:GetModifierIgnoreMovespeedLimit()
