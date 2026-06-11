@@ -709,9 +709,19 @@ function InitModVote()
         $("#ModVotePanel").visible = false
         return
     }
+
     $("#ModVotePanel").visible = true
+
+    $("#SettingsMod").text =
+        $.Localize("#wolves_mod_voting_desc") + " 0%"
+    $("#SettingsMod").visible = true
+
     $("#ModVoteYes").SetPanelEvent("onactivate", function(){
-        GameEvents.SendCustomGameEventToServer("troll_elves_mod_votes", {panel_id : 1});
+        GameEvents.SendCustomGameEventToServer(
+            "troll_elves_mod_votes",
+            {panel_id : 1}
+        )
+
         LocalChooseMod($("#ModVoteYes"))
     })
 }
