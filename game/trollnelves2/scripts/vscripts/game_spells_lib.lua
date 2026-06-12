@@ -551,7 +551,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_ms_description_level_1_shop", 
             },
             {
-                {30,35,40},
+                {15,35,55},
             },
             "1",
             "1",
@@ -1531,7 +1531,7 @@ else -- X4
                 "troll_spell_ms_description_level_1_shop_x4", 
             },
             {
-                {30,35,40},
+                {15,35,55},
             },
             "1",
             "1",

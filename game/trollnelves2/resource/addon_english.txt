@@ -4250,9 +4250,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_ms"                                   "Movespeed"
         "troll_spell_ms_description"                       "Passive: Increases movespeed"
-        "modifier_troll_spell_ms_description_level_1"               "Movespeed 30"
+        "modifier_troll_spell_ms_description_level_1"               "Movespeed 15"
 		"modifier_troll_spell_ms_description_level_2"               "Movespeed 35"
-		"modifier_troll_spell_ms_description_level_3"               "Movespeed 40"
+		"modifier_troll_spell_ms_description_level_3"               "Movespeed 55"
 		"DOTA_Tooltip_modifier_troll_spell_ms"			   "Passive: Increases movespeed"
 		"troll_spell_ms_description_level_1_shop"               "Movespeed"
 		
@@ -4878,9 +4878,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		// X4444444444444444444444444444444444444444444444444444
 		// x4
 
-        "modifier_troll_spell_ms_x4_description_level_1"               "Movespeed 30"
+        "modifier_troll_spell_ms_x4_description_level_1"               "Movespeed 15"
 		"modifier_troll_spell_ms_x4_description_level_2"               "Movespeed 35"
-		"modifier_troll_spell_ms_x4_description_level_3"               "Movespeed 40"
+		"modifier_troll_spell_ms_x4_description_level_3"               "Movespeed 55"
 		"DOTA_Tooltip_modifier_troll_spell_ms_x4"			   "Passive: Increases movespeed"
 		"troll_spell_ms_description_level_1_shop_x4"               "Movespeed"
 
