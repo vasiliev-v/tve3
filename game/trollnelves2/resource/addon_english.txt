@@ -4250,9 +4250,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"troll_spell_ms"                                   "Movespeed"
         "troll_spell_ms_description"                       "Passive: Increases movespeed"
-        "modifier_troll_spell_ms_description_level_1"               "Movespeed 30"
+        "modifier_troll_spell_ms_description_level_1"               "Movespeed 15"
 		"modifier_troll_spell_ms_description_level_2"               "Movespeed 35"
-		"modifier_troll_spell_ms_description_level_3"               "Movespeed 40"
+		"modifier_troll_spell_ms_description_level_3"               "Movespeed 55"
 		"DOTA_Tooltip_modifier_troll_spell_ms"			   "Passive: Increases movespeed"
 		"troll_spell_ms_description_level_1_shop"               "Movespeed"
 		
@@ -4545,9 +4545,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 				
 		"troll_spell_night_buff"                            	"Night Buff"
         "troll_spell_night_buff_description"                    "Passive: Increases stats at night"
-        "modifier_troll_spell_night_buff_description_level_1"            "MS: 20<br>AtackSpeed: 20<br>Evasion: 1"
-        "modifier_troll_spell_night_buff_description_level_2"            "MS: 40<br>AtackSpeed: 35<br>Evasion: 2"
-        "modifier_troll_spell_night_buff_description_level_3"            "MS: 50<br>AtackSpeed: 55<br>Evasion: 3"
+        "modifier_troll_spell_night_buff_description_level_1"            "MS: 80<br>AtackSpeed: 20<br>Evasion: 1%"
+        "modifier_troll_spell_night_buff_description_level_2"            "MS: 90<br>AtackSpeed: 35<br>Evasion: 2%"
+        "modifier_troll_spell_night_buff_description_level_3"            "MS: 100<br>AtackSpeed: 55<br>Evasion: 3%"
 
 		"troll_spell_night_buff_description_level_1_shop"            "Movespeed"
         "troll_spell_night_buff_description_level_2_shop"            "AtackSpeed"
@@ -4878,9 +4878,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		// X4444444444444444444444444444444444444444444444444444
 		// x4
 
-        "modifier_troll_spell_ms_x4_description_level_1"               "Movespeed 30"
+        "modifier_troll_spell_ms_x4_description_level_1"               "Movespeed 15"
 		"modifier_troll_spell_ms_x4_description_level_2"               "Movespeed 35"
-		"modifier_troll_spell_ms_x4_description_level_3"               "Movespeed 40"
+		"modifier_troll_spell_ms_x4_description_level_3"               "Movespeed 55"
 		"DOTA_Tooltip_modifier_troll_spell_ms_x4"			   "Passive: Increases movespeed"
 		"troll_spell_ms_description_level_1_shop_x4"               "Movespeed"
 
@@ -4993,9 +4993,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_Description"                                     "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_bolt_stun_duration"                 "DURATION: "
 				
-        "modifier_troll_spell_haste_x4_description_level_1"               "Duration: 10<br>CD: 300<br>Passive Evasion: 2%<br>Movespeed: MAX"
-        "modifier_troll_spell_haste_x4_description_level_2"               "Duration: 15<br>CD: 250<br>Passiv	e Evasion: 4%<br>Movespeed: MAX"
-        "modifier_troll_spell_haste_x4_description_level_3"               "Duration: 25<br>CD: 150<br>Passive Evasion: 6%<br>Movespeed: MAX"
+        "modifier_troll_spell_haste_x4_description_level_1"               "Duration: 15<br>CD: 200<br>Passive Evasion: 2%<br>Movespeed: MAX"
+        "modifier_troll_spell_haste_x4_description_level_2"               "Duration: 30<br>CD: 150<br>Passive Evasion: 4%<br>Movespeed: MAX"
+        "modifier_troll_spell_haste_x4_description_level_3"               "Duration: 45<br>CD: 100<br>Passive Evasion: 6%<br>Movespeed: MAX"
 		"DOTA_Tooltip_modifier_troll_spell_haste_x4"			 "Active: Increases movespeed"
 
 		"troll_spell_haste_description_level_1_shop_x4"               "Duration"
@@ -5126,9 +5126,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"troll_spell_reveal_description_level_1_shop_x4"               "Reveal Amount"
 		"troll_spell_reveal_description_level_2_shop_x4"				   "Reveal Radius"
 				
-        "modifier_troll_spell_night_buff_x4_description_level_1"            "MS: 20<br>AtackSpeed: 20<br>Evasion: 1"
-        "modifier_troll_spell_night_buff_x4_description_level_2"            "MS: 40<br>AtackSpeed: 35<br>Evasion: 2"
-        "modifier_troll_spell_night_buff_x4_description_level_3"            "MS: 50<br>AtackSpeed: 55<br>Evasion: 3"
+        "modifier_troll_spell_night_buff_x4_description_level_1"            "MS: 80<br>AtackSpeed: 20<br>Evasion: 1%"
+        "modifier_troll_spell_night_buff_x4_description_level_2"            "MS: 90<br>AtackSpeed: 35<br>Evasion: 2%"
+        "modifier_troll_spell_night_buff_x4_description_level_3"            "MS: 100<br>AtackSpeed: 55<br>Evasion: 3%"
 
 		"troll_spell_night_buff_description_level_1_shop_x4"            "Movespeed"
         "troll_spell_night_buff_description_level_2_shop_x4"            "AtackSpeed"
@@ -5604,6 +5604,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"quest_info_desc" 		"Win after {time} min without any deaths"
 		"quest_info_title" "Quest condition"
+
+		"modif_game_rules_header"	"GAME MODIFIER"
+		"modif_game_rules_desc"		"Changes the standard rules of the match"
 
 
 		""						""

@@ -94,14 +94,11 @@ GameEvents.SubscribeProtected( "troll_elves_init_stage_select_map", InitStageSel
 // ===== UPDATED: InitStageSelectedMap with 5 sec retry in 1x1 =====
 function InitStageSelectedMap(data)
 {
-    // Запоминаем последние данные стадии, чтобы можно было перерисовать позже
     if (data) LAST_MAP_STAGE_DATA = data;
 
     const is1x1 = Game.GetMapInfo().map_display_name == "1x1"
     const isTroll = Players.GetTeam( Players.GetLocalPlayer() ) == 3
 
-    // Если уже активировали, но мы в 1x1 и раньше показали экран как "не тролль",
-    // а теперь команда обновилась и мы тролль — разрешаем повторную прогрузку
     if (ACTIVATED_STAGE_MAP)
     {
         if (is1x1 && $("#MapSelectInfo") && $("#MapSelectInfo").visible && isTroll)
@@ -116,12 +113,15 @@ function InitStageSelectedMap(data)
 
     ACTIVATED_STAGE_MAP = true
     CloseOtherScreenStage()
+
     OLD_SCREEN_STAGE = $("#WindowMapStage")
     $("#WindowMapStage").style.opacity = "1"
 
+    SetGameInfoVisible(true)
+    SetModVoteVisible(!is1x1)
+
     $("#MapSelectInfo").visible = false
 
-    // Важно: чистим UI перед построением (иначе при повторе будут дубли)
     ClearMapStageUI()
 
     if (is1x1 && !isTroll)
@@ -130,14 +130,13 @@ function InitStageSelectedMap(data)
         $("#MapsList").visible = false
         $("#MapSelectInfo").visible = true
 
-        // Повторная проверка через 5 секунд (1 раз)
         if (!MAP_STAGE_RETRY_SCHEDULED)
         {
             MAP_STAGE_RETRY_SCHEDULED = true
+
             $.Schedule(5.0, function () {
                 MAP_STAGE_RETRY_SCHEDULED = false
 
-                // если за это время команда обновилась и мы стали троллем — перерисуем окно
                 if (Game.GetMapInfo().map_display_name == "1x1" && Players.GetTeam(Players.GetLocalPlayer()) == 3)
                 {
                     ACTIVATED_STAGE_MAP = false
@@ -150,7 +149,6 @@ function InitStageSelectedMap(data)
         return
     }
 
-    // обычная логика (тролль или не 1x1)
     $("#WindowStageMapPlayersCounter").visible = true
     $("#MapsList").visible = true
 
@@ -313,10 +311,8 @@ function troll_elves_phase_time(data)
     }
     $("#StageTimer").text = time
 
-    if ( $("#ModVotePanel") )
-    {
-        $("#ModVotePanel").visible = stage != 3
-    }
+    SetGameInfoVisible(stage == 1 || stage == 2 || stage == 3)
+    SetModVoteVisible((stage == 1 || stage == 2) && Game.GetMapInfo().map_display_name != "1x1")
 
     if (role)
     {
@@ -366,11 +362,19 @@ GameEvents.SubscribeProtected( "troll_elves_init_stage_select_role", InitStageSe
 function InitStageSelectedRole()
 {
     if (ACTIVATED_STAGE_ROLE) { return }
+
     ACTIVATED_STAGE_ROLE = true
     CloseOtherScreenStage()
+
     $("#WindowRoleStage").style.opacity = "1"
     OLD_SCREEN_STAGE = $("#WindowRoleStage")
+
+    SetGameInfoVisible(true)
+    SetModVoteVisible(Game.GetMapInfo().map_display_name != "1x1")
+    InitModVote()
+
     let player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer());
+
     if (player_table && Object.keys(player_table[2][0]).length > 0)
     {
         $("#YourChanceTroll").text = $.Localize( "#shop_trollchance" ) + player_table[2][0] + "%"
@@ -398,10 +402,16 @@ GameEvents.SubscribeProtected( "troll_elves_init_stage_select_perks", InitStageS
 function InitStageSelectedPerks()
 {
     if (ACTIVATED_STAGE_PERKS) { return }
+
     ACTIVATED_STAGE_PERKS = true
     CloseOtherScreenStage()
+
     $("#WindowPerksStage").style.opacity = "1"
     OLD_SCREEN_STAGE = $("#WindowPerksStage")
+
+    SetGameInfoVisible(true)
+    SetModVoteVisible(false)
+
     InitSpellList()
     UpdateCurrentSpells()
     UpdateListSelected()
@@ -699,9 +709,19 @@ function InitModVote()
         $("#ModVotePanel").visible = false
         return
     }
+
     $("#ModVotePanel").visible = true
+
+    $("#SettingsMod").text =
+        $.Localize("#wolves_mod_voting_desc") + " 0%"
+    $("#SettingsMod").visible = true
+
     $("#ModVoteYes").SetPanelEvent("onactivate", function(){
-        GameEvents.SendCustomGameEventToServer("troll_elves_mod_votes", {panel_id : 1});
+        GameEvents.SendCustomGameEventToServer(
+            "troll_elves_mod_votes",
+            {panel_id : 1}
+        )
+
         LocalChooseMod($("#ModVoteYes"))
     })
 }
@@ -740,6 +760,27 @@ function UpdateModVotes(data)
     {   
         $("#ModVoteYes").AddClass("SelectedModLocal")
         $("#ModVoteYes").AddClass("DisabledChoose")
+    }
+}
+
+function SetGameInfoVisible(visible)
+{
+    if ($("#GameInfo"))
+    {
+        $("#GameInfo").style.opacity = visible ? "1" : "0"
+    }
+}
+
+function SetModVoteVisible(visible)
+{
+    if ($("#ModVoteBlock"))
+    {
+        $("#ModVoteBlock").visible = visible
+    }
+
+    if ($("#ModVotePanel"))
+    {
+        $("#ModVotePanel").visible = visible
     }
 }
 

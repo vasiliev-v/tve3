@@ -14644,8 +14644,8 @@
 
 		"AbilityValues"
 		{
-			"duration"	"10 15 25"
-			"speed"		"700"
+			"duration"	"15 30 45"
+			"speed"		"1000"
 			"eva"		"2 4 6"
 		}
 		
@@ -15186,7 +15186,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-            "bonus_movement_speed_night" "20 40 50"
+            "bonus_movement_speed_night" "80 90 100"
             "bonus_attack_speed_night" "20 35 55"
             "bonus_evasion" "1 2 3"
         }
@@ -16302,7 +16302,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"troll_spell_haste"
 		"MaxLevel"						"3"
-		"AbilityCooldown"				"300 250 150"
+		"AbilityCooldown"				"200 150 100"
 		
 		"precache"
 		{
@@ -16854,7 +16854,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-            "bonus_movement_speed_night" "20 40 50"
+            "bonus_movement_speed_night" "80 90 100"
             "bonus_attack_speed_night" "20 35 55"
             "bonus_evasion" "1 2 3"
         }

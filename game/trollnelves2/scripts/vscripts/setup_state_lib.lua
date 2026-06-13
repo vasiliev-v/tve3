@@ -12,7 +12,7 @@ function setup_state_lib:SetNextStage()
 end
 
 function setup_state_lib:SetupStartMapVotes()
-    local THIS_STAGE_TIMER = 1
+    local THIS_STAGE_TIMER = 30
     local TIMER_STAGE = THIS_STAGE_TIMER + 1
     local TIMER_STAGE_MAX = THIS_STAGE_TIMER
 
