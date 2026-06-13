@@ -14634,7 +14634,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"troll_spell_haste"
 		"MaxLevel"						"3"
-		"AbilityCooldown"				"200 150 100"
+		"AbilityCooldown"				"300 250 150"
 		
 		"precache"
 		{
@@ -14644,8 +14644,8 @@
 
 		"AbilityValues"
 		{
-			"duration"	"15 30 45"
-			"speed"		"1000"
+			"duration"	"10 15 25"
+			"speed"		"700"
 			"eva"		"2 4 6"
 		}
 		
@@ -16302,7 +16302,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"troll_spell_haste"
 		"MaxLevel"						"3"
-		"AbilityCooldown"				"200 150 100"
+		"AbilityCooldown"				"300 250 150"
 		
 		"precache"
 		{
@@ -16312,7 +16312,7 @@
 
 		"AbilityValues"
         {
-            "duration" "15 30 45"
+            "duration" "10 15 25"
             "speed" "1000"
             "eva" "2 4 6"
         }
