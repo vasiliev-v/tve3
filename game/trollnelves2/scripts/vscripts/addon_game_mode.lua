@@ -1044,8 +1044,8 @@ function Activate()
 	GameRules.SPELL_MIN_COST = 500
 	GameRules.TROLL_DISCOUNT = 0.25 -- 15%
     ------------------------------------------------------------------------------------------------------------
-	GameRules.isTesting = true
-	GameRules.server =  "https://localhost:7133/test/" -- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
+	GameRules.isTesting = false
+	GameRules.server =  "https://tve4.eu/test/" -- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
 	GameRules.test = false
 	GameRules.test2 = false
 	if GameRules.MapSpeed == 4 then
