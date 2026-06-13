@@ -120,7 +120,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "elf_spell_armor_wall_description_level_2_shop", 
             }, 
             {
-                {"10%","15%","20%"},
+                {"15%","20%","25%"},
                 {"1","1","1"},
             },
             "0",
@@ -1107,7 +1107,7 @@ else -- X4
                 "elf_spell_armor_wall_description_level_2_shop_x4", 
             }, 
             {
-                {"10%","15%","20%"},
+                {"15%","20%","25%"},
                 {"1","1","1"},
             },
             "0",
