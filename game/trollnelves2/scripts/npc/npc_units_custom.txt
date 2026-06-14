@@ -15018,7 +15018,7 @@
   		"MovementSpeed"                         "360"
   		"MovementTurnRate"                      "1"
   		// Status
-  		"StatusHealth"                          "50"
+  		"StatusHealth"                          "75"
   		"StatusHealthRegen"                     "0"
   		"StatusMana"                            "0"
   		"StatusManaRegen"                       "0"
