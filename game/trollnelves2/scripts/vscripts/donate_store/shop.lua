@@ -452,11 +452,11 @@ function Shop.RequestBonusTroll(obj, pID, steam, callback)
 			PoolTable["2"]["1"] = obj[1].srok
 			local roll_chance = RandomInt(0, 100)
 
-			if GameRules.BonusGem[pID] ~= nil then
-				GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + tonumber(obj[1].chance) * 0.01 
-			else
-				GameRules.BonusGem[pID] = tonumber(obj[1].chance) * 0.01 + 1
-			end
+			--if GameRules.BonusGem[pID] ~= nil then
+			--	GameRules.BonusGem[pID] = GameRules.BonusGem[pID] + tonumber(obj[1].chance) * 0.01 
+			--else
+			--	GameRules.BonusGem[pID] = tonumber(obj[1].chance) * 0.01 + 1
+			--end
 			
 			if chanceCheck[pID] == nil and GameRules:GetGameTime() and GameRules:GetGameTime() < 60 then
 		---		GameRules:SendCustomMessage("<font color='#00FFFF '>"  .. tostring(PlayerResource:GetPlayerName(pID)) .. " your chance is increased by " .. obj[1].chance .. "%. Roll: ".. roll_chance .. " </font>" ,  0, 0)
