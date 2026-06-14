@@ -316,21 +316,21 @@ function GoldOnAttack (event)
 
       if caster:HasModifier("modifier_troll_spell_gold_hit") then
         if caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 1 then
-          dmg = math.floor(dmg * 1.33)
+          dmg = math.floor(dmg * 1.40)
         elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 2 then
-          dmg = math.floor(dmg * 1.66)
+          dmg = math.floor(dmg * 1.60)
         elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 3  then
-          dmg = math.floor(dmg * 2)
+          dmg = math.floor(dmg * 1.80)
         end
       end
 
       if caster:HasModifier("modifier_troll_spell_gold_hit_x4") then
         if caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 1 then
-          dmg = math.floor(dmg * 1.33)
+          dmg = math.floor(dmg * 1.40)
         elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 2 then
-          dmg = math.floor(dmg * 1.66)
+          dmg = math.floor(dmg * 1.60)
         elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 3 then
-          dmg = math.floor(dmg * 2)
+          dmg = math.floor(dmg * 1.80)
         end
       end
 
