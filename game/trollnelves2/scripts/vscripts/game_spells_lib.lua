@@ -496,14 +496,16 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_gold_hit_description_level_1_shop", 
                 "troll_spell_gold_hit_description_level_2_shop", 
                 "troll_spell_gold_hit_description_level_3_shop",
-                "troll_spell_gold_hit_description_level_4_shop"
+                "troll_spell_gold_hit_description_level_4_shop",
+                "troll_spell_gold_hit_description_level_5_shop"
                 
             }, 
             {
-                {"+33%","+66%","+100%"},
-                {"+400%", "+400%", "+400%"},
-                {5, 10, 15},
-                {300, 250, 200}
+                {"+10%","+20%","+30%"},
+                {"+800%", "+800%", "+800%"},
+                {4, 8, 12},
+                {300, 250, 200},
+                {300, 300, 300}
             },
             "1",
             "1",
@@ -1476,14 +1478,16 @@ else -- X4
                 "troll_spell_gold_hit_description_level_1_shop_x4", 
                 "troll_spell_gold_hit_description_level_2_shop_x4", 
                 "troll_spell_gold_hit_description_level_3_shop_x4",
-                "troll_spell_gold_hit_description_level_4_shop_x4"
+                "troll_spell_gold_hit_description_level_4_shop_x4",
+                "troll_spell_gold_hit_description_level_5_shop_x4"
                 
             }, 
             {
-                {"+33%","+66%","+100%"},
-                {"+400%", "+400%", "+400%"},
-                {5, 10, 15},
-                {300, 250, 200}
+                {"+10%","+20%","+30%"},
+                {"+800%", "+800%", "+800%"},
+                {4, 8, 12},
+                {300, 250, 200},
+                {120, 120, 120}
             },
             "1",
             "1",
