@@ -2,6 +2,11 @@ require('libraries/notifications')
 
 modifier_antifeed = class({})
 
+function SendAntifeedMessage( pID, string )
+    EmitSoundOnEntityForPlayer("General.Cancel", PlayerResource:GetPlayer(pID), pID)
+    Notifications:ClearBottom(pID)
+    Notifications:Bottom(pID, {text=string, style={color='FFFFFFFF'}, duration=6})
+end
 
 function modifier_antifeed:IsHidden() return false end
 function modifier_antifeed:IsDebuff() return false end
@@ -67,12 +72,6 @@ function modifier_antifeed:OnAttackStart(event)
             if not self or self:IsNull() then return end
             self.canNotify = true
         end)
-	self:GetParent():EmitSound("General.ButtonClick")
-    Notifications:ClearBottomFromAll()
-    Notifications:BottomToAll({
-        text = "antifeed_warning",
-        style = {color = 'FFFFFFFF'},
-        duration = 6
-    })
+        SendAntifeedMessage(pID, "antifeed_warning")
     end
 end
