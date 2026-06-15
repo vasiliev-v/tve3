@@ -765,8 +765,7 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 "troll_spell_gold_hit_description_level_1_shop", 
                 "troll_spell_gold_hit_description_level_2_shop", 
                 "troll_spell_gold_hit_description_level_3_shop",
-                "troll_spell_gold_hit_description_level_4_shop",
-                "troll_spell_gold_hit_description_level_5_shop"
+                "troll_spell_gold_hit_description_level_4_shop"
                 
             }, 
             {
@@ -1746,8 +1745,7 @@ else -- X4
                 "troll_spell_gold_hit_description_level_1_shop_x4", 
                 "troll_spell_gold_hit_description_level_2_shop_x4", 
                 "troll_spell_gold_hit_description_level_3_shop_x4",
-                "troll_spell_gold_hit_description_level_4_shop_x4",
-                "troll_spell_gold_hit_description_level_5_shop_x4"
+                "troll_spell_gold_hit_description_level_4_shop_x4"
                 
             }, 
             {

@@ -18,7 +18,6 @@ function modifier_troll_spell_gold_hit:OnCreated( kv )
 		hero:AddAbility("troll_spell_gold_hit")
 		local abil = hero:FindAbilityByName("troll_spell_gold_hit")
 		abil:SetLevel(countStack)
-		abil:StartCooldown(300)
 	end
 end
 
