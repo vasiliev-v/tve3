@@ -15039,8 +15039,8 @@
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
-            "duration" "4 8 12"
-			"damage"	"800"
+            "duration" "4 6 8"
+			"damage"	"400"
         }
 		"OnSpellStart"
 		{
@@ -16707,8 +16707,8 @@
 		"MaxLevel"						"3"
 		"AbilityValues"
         {
-            "duration" "4 8 12"
-			"damage"	"800"
+            "duration" "4 6 8"
+			"damage"	"400"
         }
 		"OnSpellStart"
 		{
