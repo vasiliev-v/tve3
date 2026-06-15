@@ -15415,7 +15415,7 @@
 	"MaxLevel"						"3"
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"350 300 300"
+	"AbilityCooldown"				"300 240 180"
 	"AbilityCastPoint"				"0"
 	
 	// Cost
@@ -15427,8 +15427,8 @@
 
 	"AbilityValues"
         {
-            "duration"					"15.0 30.0 60.0"
-			"fade_time"					"1.0 0.8 0.6"
+            "duration"					"25.0 40.0 60.0"
+			"fade_time"					"0.3 0.3 0.3"
 			"move_speed_bonus_pct"		"0 0 0 0"
         }
 
@@ -17081,7 +17081,7 @@
 
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"350 300 300"
+	"AbilityCooldown"				"300 240 180"
 	"AbilityCastPoint"				"0"
 	"MaxLevel"						"3"
 	// Cost
@@ -17093,8 +17093,8 @@
 
 	"AbilityValues"
         {
-            "duration"					"15.0 30.0 60.0"
-			"fade_time"					"1.0 0.8 0.6"
+            "duration"					"25.0 40.0 60.0"
+			"fade_time"					"0.3 0.3 0.3"
 			"move_speed_bonus_pct"		"0 0 0 0"
         }
 
