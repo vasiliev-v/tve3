@@ -489,28 +489,6 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {0, 10000, 30000}
         },
         {
-            "troll_spell_gold_hit", 
-            "troll_spell_gold_hit", 
-            "modifier_troll_spell_gold_hit", 
-            {
-                "troll_spell_gold_hit_description_level_1_shop", 
-                "troll_spell_gold_hit_description_level_2_shop", 
-                "troll_spell_gold_hit_description_level_3_shop",
-                "troll_spell_gold_hit_description_level_4_shop",
-                "troll_spell_gold_hit_description_level_5_shop"
-                
-            }, 
-            {
-                {"+22%","+44%","+66%"},
-                {"+400%", "+400%", "+400%"},
-                {4, 6, 8},
-                {300, 250, 200}
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
-        {
             "troll_spell_atkspeed",
             "troll_spell_atkspeed", 
             "modifier_troll_spell_atkspeed", 
@@ -774,6 +752,28 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
                 {80,90,100},
                 {20,35,55},
                 {'1%','2%','3%'},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_gold_hit", 
+            "troll_spell_gold_hit", 
+            "modifier_troll_spell_gold_hit", 
+            {
+                "troll_spell_gold_hit_description_level_1_shop", 
+                "troll_spell_gold_hit_description_level_2_shop", 
+                "troll_spell_gold_hit_description_level_3_shop",
+                "troll_spell_gold_hit_description_level_4_shop",
+                "troll_spell_gold_hit_description_level_5_shop"
+                
+            }, 
+            {
+                {"+22%","+44%","+66%"},
+                {"+400%", "+400%", "+400%"},
+                {4, 6, 8},
+                {300, 250, 200}
             },
             "1",
             "1",
@@ -1470,28 +1470,6 @@ else -- X4
             {0, 10000, 30000}
         },
         {
-            "troll_spell_gold_hit", 
-            "troll_spell_gold_hit", 
-            "modifier_troll_spell_gold_hit", 
-            {
-                "troll_spell_gold_hit_description_level_1_shop_x4", 
-                "troll_spell_gold_hit_description_level_2_shop_x4", 
-                "troll_spell_gold_hit_description_level_3_shop_x4",
-                "troll_spell_gold_hit_description_level_4_shop_x4",
-                "troll_spell_gold_hit_description_level_5_shop_x4"
-                
-            }, 
-            {
-                {"+22%","+44%","+66%"},
-                {"+400%", "+400%", "+400%"},
-                {4, 6, 8},
-                {300, 250, 200}
-            },
-            "1",
-            "1",
-            {0, 10000, 30000}
-        },
-        {
             "troll_spell_atkspeed",
             "troll_spell_atkspeed", 
             "modifier_troll_spell_atkspeed_x4", 
@@ -1755,6 +1733,28 @@ else -- X4
                 {80,90,100},
                 {20,35,55},
                 {'1%','2%','3%'},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_gold_hit", 
+            "troll_spell_gold_hit", 
+            "modifier_troll_spell_gold_hit", 
+            {
+                "troll_spell_gold_hit_description_level_1_shop_x4", 
+                "troll_spell_gold_hit_description_level_2_shop_x4", 
+                "troll_spell_gold_hit_description_level_3_shop_x4",
+                "troll_spell_gold_hit_description_level_4_shop_x4",
+                "troll_spell_gold_hit_description_level_5_shop_x4"
+                
+            }, 
+            {
+                {"+22%","+44%","+66%"},
+                {"+400%", "+400%", "+400%"},
+                {4, 6, 8},
+                {300, 250, 200}
             },
             "1",
             "1",
@@ -2261,7 +2261,7 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
         end
 
         if target_side == "1" then
-            cost = cost * (1 - GameRules.TROLL_DISCOUNT)
+             cost = cost * (1 - GameRules.TROLL_DISCOUNT)
         end
         cost = cost * (1 - discount_to_2)
 
@@ -2307,12 +2307,16 @@ function game_spells_lib:GetSpellCost(player_id, spell_name, level)
             end
         end
         if target_side == "1" then
-            cost = cost * (1 - GameRules.TROLL_DISCOUNT)
+             cost = cost * (1 - GameRules.TROLL_DISCOUNT)
         end
         cost = cost * (1 - discount_to_3)
     end
     if GameRules:IsCheatMode() and not GameRules.isTesting then
        return -2 
+    end
+
+    if target_side == "1" then
+        cost = math.ceil(cost / 100) * 100
     end
 
     return math.max(GameRules.SPELL_PRICE_BASE, math.floor(cost + 0.5)) -- округление до целого
