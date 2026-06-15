@@ -195,27 +195,6 @@ function chatcommand:OnPlayerChat(event)
 		local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )
 		local dropRadius = RandomFloat( 50, 100 )
 		newItem:LaunchLootInitialHeight( false, 0, 150, 0.5, spawnPoint + RandomVector( dropRadius ) )
-		elseif event.text == "1" then
-		GameRules.blockerBase = Entities:FindAllByName("trigger_block")
-		DebugPrintTable(GameRules.blockerBase )
-
-		elseif event.text == "2" then
-		GameRules.blockerBase = Entities:FindAllByName("trigger_block")	
-		for index, shopTrigger in ipairs(GameRules.blockerBase) do
-			shopTrigger:RemoveSelf()
-		end
-		elseif event.text == "3" then
-		GameRules.blockerBase = Entities:FindAllByName("trigger_block")	
-		for index, shopTrigger in ipairs(GameRules.blockerBase) do
-			shopTrigger:Disable()
-		end
-		elseif event.text == "4" then
-		BuildingHelper:UpdateGrid()
-		elseif event.text == "5" then
-		GameRules.base = Entities:FindAllByName("trigger_base")
-		for index, shopTrigger in ipairs(GameRules.base) do
-			shopTrigger:Disable()
-		end
 		--elseif event.text == "1" then
 		--	hero.hpReg = nil
 		--elseif event.text == "2" then
