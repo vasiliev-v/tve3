@@ -481,7 +481,7 @@
 	
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"999999"
+	"AbilityCastRange"				"3000"
 
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
@@ -1299,6 +1299,7 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"	"vengefulspirit_command_aura"
+	"AbilityCastRange"		"700"
 	
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
@@ -4199,7 +4200,6 @@
 		}
 		"AbilityValues"
         {
-			"bonus_damage" "999999"
             "gold_cost" "999999"
             "lumber_cost" "999999"
         }
@@ -8651,7 +8651,7 @@
 		"AbilityValues"
         {
             "bonus_hp_regen" "4"
-            "gold_cost" "75"
+            "gold_cost" "80"
             "lumber_cost" "0"
         }
 	}
@@ -8675,7 +8675,7 @@
 		"AbilityValues"
         {
             "bonus_hp_regen" "8"
-            "gold_cost" "150"
+            "gold_cost" "160"
             "lumber_cost" "0"
         }
 	}
@@ -8699,7 +8699,7 @@
 		"AbilityValues"
         {
             "bonus_hp_regen" "16"
-            "gold_cost" "300"
+            "gold_cost" "320"
             "lumber_cost" "0"
         }
 	}
@@ -11676,6 +11676,7 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"luna_lunar_blessing"
+	"AbilityCastRange"				"900"
 
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
@@ -11734,7 +11735,7 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"vengefulspirit_command_aura"
-
+	"AbilityCastRange"				"900"
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
 	"precache"
@@ -11791,7 +11792,7 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"mirana_invis"
-
+	"AbilityCastRange"				"900"
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
 	"precache"
