@@ -4892,6 +4892,10 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		// X4444444444444444444444444444444444444444444444444444
 		// x4
 
+		"DOTA_Tooltip_modifier_wall_spell_armor_x4"									"Wall Armor"
+		"DOTA_Tooltip_modifier_tower_spell_dmg_x4"									"Tower Buff"
+
+
         "modifier_troll_spell_ms_x4_description_level_1"               "Movespeed 15"
 		"modifier_troll_spell_ms_x4_description_level_2"               "Movespeed 35"
 		"modifier_troll_spell_ms_x4_description_level_3"               "Movespeed 55"
@@ -5004,14 +5008,17 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"troll_spell_stun_target_x4_description_level_1"               "Duration"
         "troll_spell_stun_target_x4_description_level_2"               "Cooldown"
 
+		"DOTA_Tooltip_modifier_troll_spell_stun_target_x4"												 "Active: Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4"                                                "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_Description"                                     "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_bolt_stun_duration"                 "DURATION: "
 				
-        "modifier_troll_spell_haste_x4_description_level_1"               "Duration: 10<br>CD: 300<br>Passive Evasion: 2%<br>Movespeed: MAX"
-        "modifier_troll_spell_haste_x4_description_level_2"               "Duration: 15<br>CD: 250<br>Passive Evasion: 4%<br>Movespeed: MAX"
-        "modifier_troll_spell_haste_x4_description_level_3"               "Duration: 25<br>CD: 150<br>Passive Evasion: 6%<br>Movespeed: MAX"
-		"DOTA_Tooltip_modifier_troll_spell_haste_x4"			 "Active: Increases movespeed"
+        "modifier_troll_spell_haste_x4_description_level_1"                  "Duration: 10<br>CD: 300<br>Passive Evasion: 2%<br>Movespeed: MAX"
+        "modifier_troll_spell_haste_x4_description_level_2"                  "Duration: 15<br>CD: 250<br>Passive Evasion: 4%<br>Movespeed: MAX"
+        "modifier_troll_spell_haste_x4_description_level_3"                  "Duration: 25<br>CD: 150<br>Passive Evasion: 6%<br>Movespeed: MAX"
+		"DOTA_Tooltip_modifier_troll_spell_haste_x4"			             "Active: Increases movespeed"
+		"DOTA_Tooltip_modifier_troll_spell_haste_x4_bonus_ms"	 			 "Haste"
+		"DOTA_Tooltip_modifier_troll_spell_haste_x4_bonus_ms_description"	 "Увеличивает скорость передвижения"
 
 		"troll_spell_haste_description_level_1_shop_x4"               "Duration"
         "troll_spell_haste_description_level_2_shop_x4"               "Evasion"
@@ -5067,6 +5074,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_slow_area_x4_description_level_2"               "MS: -60<br>Miss chance: 20%<br>Duration: 5<br>CD: 250"
         "modifier_troll_spell_slow_area_x4_description_level_3"               "MS: -70<br>Miss chance: 30%<br>Duration: 10<br>CD: 200"
 		"DOTA_Tooltip_modifier_troll_spell_slow_area_x4"			 "Active: Slows MS in an area"
+		"DOTA_Tooltip_modifier_drunken_haze"							 "Slowed In Area"
 
 		"troll_spell_slow_area_description_level_1_shop_x4"               "Movespeed"
         "troll_spell_slow_area_description_level_2_shop_x4"               "Miss chance"
