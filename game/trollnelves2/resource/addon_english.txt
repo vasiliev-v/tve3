@@ -85,9 +85,9 @@
 		"tower_17"                                                                        "Tower 17"
 		"tower_17_1"                                                                      "Tower 17 LVL 2"
 		"tower_18"                                                                        "Tower 18"
-		"tower_19"                                                                        "Tower 19 lvl 1(3 min!) NO DAMAGE!!!"
-		"tower_19_1"                                                                      "Tower 19 lvl 2(3 min!) NO DAMAGE!!!"
-		"tower_19_2"                                                                      "Tower 19 lvl 3(3 min!) NO DAMAGE!!!"
+		"tower_19"                                                                        "Pre-End Game Tower Lvl 1"
+		"tower_19_1"                                                                      "Pre-End Game Tower Lvl 1"
+		"tower_19_2"                                                                      "Pre-End Game Tower Lvl 1"
 		"tower_20"                                                                        "End Game"
 		"tower_21"                                                                        "Tower 21"
 		"tower_22"                                                                        "Tower 22"
@@ -540,6 +540,9 @@
 		"DOTA_Tooltip_modifier_fervor_target"										"PRACTICE AIM"
 		"DOTA_Tooltip_modifier_fervor_target_Description"							"Provides towers with bonus attack speed for each hit. Lasts 10 seconds."
 
+		"DOTA_Tooltip_modifier_fervor_stack_datadriven"								"Practice aim"
+		"DOTA_Tooltip_modifier_fervor_stack_datadriven_description"					"Provides towers with bonus attack speed for each hit. Lasts 10 seconds."
+
 		"DOTA_Tooltip_modifier_frost_slow_target"									"Frost Arrow"
 
 		"DOTA_Tooltip_ability_mars_bulwark"                                        "Bulwark"
@@ -653,6 +656,9 @@
 
 		"DOTA_Tooltip_modifier_builder_repairing"                                         "Builder Repairing"
 		"DOTA_Tooltip_modifier_builder_repairing_Description"                             ""
+
+		"DOTA_Tooltip_modifier_repairing"												  "Repairing"
+		"DOTA_Tooltip_modifier_repairing_description"									  ""
 
 		"DOTA_Tooltip_modifier_repairing_building"                                        "Repairing Building"
 		"DOTA_Tooltip_modifier_repairing_building_Description"                            ""
@@ -1029,12 +1035,12 @@
 
 
 		"DOTA_Tooltip_Ability_buy_reveal_area_bear"								"Buy Reveal Area for Bear"
-		"DOTA_Tooltip_Ability_buy_reveal_area_bear_Description"					""
+		"DOTA_Tooltip_Ability_buy_reveal_area_bear_Description"					"Shows the territory in a certain radius. Great for reconnaissance of enemy bases! Reveals invisible units."
 		"DOTA_Tooltip_Ability_buy_reveal_area_bear_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_Ability_buy_reveal_area_bear_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 
 		"DOTA_Tooltip_Ability_buy_troll_teleport_bear"								"Buy Teleport for Bear"
-		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_Description"					""
+		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_Description"					"Teleport to Troll's base!"
 		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 
@@ -1260,24 +1266,23 @@
 		"DOTA_Tooltip_ability_upgrade_to_tower_18_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_18_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 
-		"DOTA_Tooltip_ability_upgrade_to_tower_19"                                        "Upgrade To Tower 19 lvl 1 (3 minutes to build). The troll will receive a strong buff! NO DAMAGE!!!"
+		"DOTA_Tooltip_ability_upgrade_to_tower_19"                                        "Upgrade To Pre-End game tower Lvl 1"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_Description" 									"The tower doesn’t deal damage and the Troll always sees it.<br>The tower upgrades 3 times for 3 minutes each, then ends the game.<br> <font color='#ff0000'>While it stands, the Troll gets a permanent buff.</font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 		
-		"DOTA_Tooltip_ability_upgrade_to_tower_19_1"                                      "Upgrade To Tower 19 lvl 2 (3 minutes to build). The troll will receive a strong buff! NO DAMAGE!!!"
+		"DOTA_Tooltip_ability_upgrade_to_tower_19_1"                                      "Upgrade To Pre-End game tower Lvl 2"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_1_Description" 								  "The tower doesn’t deal damage and the Troll always sees it.<br>The tower upgrades 3 times for 3 minutes each, then ends the game.<br> <font color='#ff0000'>While it stands, the Troll gets a permanent buff.</font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_1_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_1_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 		
-		"DOTA_Tooltip_ability_upgrade_to_tower_19_2"                                      "Upgrade To Tower 19 lvl 3 (3 minutes to build). The troll will receive a strong buff! NO DAMAGE!!!"
+		"DOTA_Tooltip_ability_upgrade_to_tower_19_2"                                      "Upgrade To Pre-End game tower Lvl 3"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_2_Description"								  "The tower doesn’t deal damage and the Troll always sees it.<br>The tower upgrades 3 times for 3 minutes each, then ends the game.<br> <font color='#ff0000'>While it stands, the Troll gets a permanent buff.</font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_2_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_2_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 		
-		"DOTA_Tooltip_ability_upgrade_to_tower_20"                                        "Upgrade To End Game Tower "
+		"DOTA_Tooltip_ability_upgrade_to_tower_20"                                        "Upgrade To End Game Tower"
 		"DOTA_Tooltip_ability_upgrade_to_tower_20_Description" 							  "<font color='#00ff4c'>GG! Finish the game!</font>"
-		"DOTA_Tooltip_ability_upgrade_to_tower_20_bonus_damage"                                 "DAMAGE: "
 		"DOTA_Tooltip_ability_upgrade_to_tower_20_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_upgrade_to_tower_20_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 
@@ -1441,7 +1446,7 @@
 		"DOTA_Tooltip_modifier_psi_blades_Description" 										"Psi Blades. Deals <font color='#eeff00'>5000 pure damage</font> to the second target."
 		
 		"DOTA_Tooltip_modifier_dragon_blood_datadriven_effect"                             "Vengeful Spirit"
-		"DOTA_Tooltip_modifier_dragon_blood_datadriven_effect_Description" 				   "Gives <font color='#00ff2a'>+45</font> attack range in a <font color='#00ff2a'>900</font> radius"
+		"DOTA_Tooltip_modifier_dragon_blood_datadriven_effect_Description" 				   "Gives <font color='#00ff2a'>+45</font> attack range in a <font color='#00ff2a'>700</font> radius"
 
 		"DOTA_Tooltip_ability_dragon_blood_datadriven"                            			 "Vengeful Spirit"
 		"DOTA_Tooltip_ability_dragon_blood_datadriven_Description"                			 "Gives <font color='#00ff2a'>+%bonus_attack_range%</font> attack range in a <font color='#00ff2a'>%radius%</font> radius"
@@ -1461,12 +1466,18 @@
 		
 		"DOTA_Tooltip_modifier_fury_swipes2_caster_datadriven"                             "Ursa"
 		"DOTA_Tooltip_modifier_fury_swipes2_caster_datadriven_Description"                 "20 <font color='#68bbff'>magical damage</font> per stack.<br><font color='#00ff4c'>Lasts for 3 seconds</font>"
+
+		"DOTA_Tooltip_modifier_fury_swipes2_target_datadriven"                             "Ursa"
+		"DOTA_Tooltip_modifier_fury_swipes2_target_datadriven_Description"                 "20 <font color='#68bbff'>magical damage</font> per stack.<br><font color='#00ff4c'>Lasts for 3 seconds</font>"
 		
 		"DOTA_Tooltip_ability_ursa_fury_swipes2_datadriven"                             "Ursa"
 		"DOTA_Tooltip_ability_ursa_fury_swipes2_datadriven_Description"                 "%damage_per_stack% <font color='#68bbff'>magical damage</font> per stack.<br><font color='#00ff4c'>Lasts for %bonus_reset_time% seconds</font>"
 
 		"DOTA_Tooltip_modifier_clink_fury_swipes2_caster_datadriven"                             "Clinkz"
 		"DOTA_Tooltip_modifier_clink_fury_swipes2_caster_datadriven_Description"                 "20 <font color='#ffe600'>pure damage</font> per stack.<br><font color='#00ff4c'>Lasts for 3 seconds</font>"
+
+		"DOTA_Tooltip_modifier_clink_swipes2_target_datadriven"                             "Clinkz"
+		"DOTA_Tooltip_modifier_clink_swipes2_target_datadriven_Description"                 "20 <font color='#ffe600'>pure damage</font> per stack.<br><font color='#00ff4c'>Lasts for 3 seconds</font>"
 		
 		"DOTA_Tooltip_Ability_clink_fury_swipes2_datadriven"                             "Clinkz"
 		"DOTA_Tooltip_Ability_clink_fury_swipes2_datadriven_Description"                 "%damage_per_stack% <font color='#ffe600'>pure damage</font> per stack.<br><font color='#00ff4c'>Lasts for %bonus_reset_time% seconds</font>"
@@ -1687,7 +1698,8 @@
 		"DOTA_Tooltip_Ability_lone_druid_spirit_bear_datadriven_Description"			"Creates a tame bear that fights by your side. If the bear died, then you take 99.9% magic damage from your health and will be able to revive the bear in 6 minutes, and the bear itself will lose all its items. The skill becomes active after purchasing a level 6 Troll hut."
 		
 		"DOTA_Tooltip_modifier_shrapnel_stack_counter_datadriven"							"Number of charges"
-		
+		"DOTA_Tooltip_modifier_disconnected_unit"										  "Player Disconnected"
+
 		"DOTA_Tooltip_ability_repair"                                                     "Repair"
 		"DOTA_Tooltip_ability_repair_Description" 										  "Repair your buildings! <br><br><font color='#00ff15'>Right‑click to auto‑repair the wall</font>."
 		
@@ -4243,6 +4255,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_modifier_troll_spell_evasion_datadriven"					"Evasion"
 		"DOTA_Tooltip_modifier_invisible_truesight_immune"						"Immune To True Sight!"
 		"DOTA_Tooltip_modifier_troll_spell_bkb_datadriven"						"BKB"
+		"DOTA_Tooltip_modifier_elf_spell_reveal_anti"			 "Reveal Active"
 
 		"DOTA_Tooltip_modifier_wind_walk"										"Invisible"
 		"DOTA_Tooltip_modifier_elf_spell_evasion_datadriven"					"Evasion"

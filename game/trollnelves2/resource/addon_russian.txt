@@ -116,6 +116,8 @@
 		"DOTA_Tooltip_Ability_buy_skill_wisp_on_attack_Description"					"Убивает всех Gold Wisp в радиусе 128."
 		"DOTA_Tooltip_Ability_buy_skill_bear_desolator_Description"					"Применяет эффект, предотвращающий ремонт здания при атаке. Длится %dur_time% секунд. Не занимает слот."
 		"DOTA_Tooltip_Ability_buy_skill_bear_respawn_Description"					"Позволяет убрать КД на респавн Медведя. После покупки необходимо заново призвать Медведя."
+		"DOTA_Tooltip_Ability_buy_reveal_area_bear_Description"				"Показывает территорию в определенном радиусе. Отлично подходит для разведки вражеских баз! Раскрывает невидимовых юнитов."
+		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_Description"					"Телепортирует на базу тролля!"
 		"DOTA_Tooltip_Ability_attack_gold_wisp_Description"					"Убивает всех Gold Wisp в радиусе 128."
 		"DOTA_Tooltip_modifier_troll_spell_ms_max_Description"	 			"Дает максимальную скорость передвижения."
 		"DOTA_Tooltip_modifier_troll_spell_ms_max_x4_Description"	 			"Дает максимальную скорость передвижения."
@@ -168,11 +170,18 @@
 		"DOTA_Tooltip_modifier_fury_swipes2_caster_datadriven"                             "Ursa"
 		"DOTA_Tooltip_modifier_fury_swipes2_caster_datadriven_Description"                 "20 <font color='#68bbff'>магического урона</font> за стак.<br><font color='#00ff4c'>Действует 3 секунды</font>"
 		
+		"DOTA_Tooltip_modifier_fury_swipes2_target_datadriven"                             "Ursa"
+		"DOTA_Tooltip_modifier_fury_swipes2_target_datadriven_Description"                 "20 <font color='#68bbff'>магического урона</font> за стак.<br><font color='#00ff4c'>Действует 3 секунды</font>"
+
 		"DOTA_Tooltip_ability_ursa_fury_swipes2_datadriven"                             "Ursa"
 		"DOTA_Tooltip_ability_ursa_fury_swipes2_datadriven_Description"                 "%damage_per_stack% <font color='#68bbff'>магического урона</font> за стак.<br><font color='#00ff4c'>Действует %bonus_reset_time% секунды</font>"
 
 		"DOTA_Tooltip_modifier_clink_swipes2_caster_datadriven"                             "Clinkz"
 		"DOTA_Tooltip_modifier_clink_swipes2_caster_datadriven_Description"                 "20 <font color='#fffb00'>чистого урона</font> за стак.<br><font color='#00ff4c'>Действует 3 секунды</font>"
+
+		"DOTA_Tooltip_modifier_clink_swipes2_target_datadriven"                             "Clinkz"
+		"DOTA_Tooltip_modifier_clink_swipes2_target_datadriven_Description"                 "20 <font color='#fffb00'>чистого урона</font> за стак.<br><font color='#00ff4c'>Действует 3 секунды</font>"
+		
 		
 		"DOTA_Tooltip_Ability_clink_fury_swipes2_datadriven"                             "Clinkz"
 		"DOTA_Tooltip_Ability_clink_fury_swipes2_datadriven_Description"                 "%damage_per_stack% <font color='#fffb00'>чистого урона</font> за стак.<br><font color='#00ff4c'>Действует %bonus_reset_time% секунды</font>"
@@ -245,8 +254,6 @@
 
 		"DOTA_Tooltip_ability_upgrade_to_tower_19_2_bonus_damage" "УРОН: "
 
-		"DOTA_Tooltip_ability_upgrade_to_tower_20_bonus_damage" "УРОН: "
-
 		"DOTA_Tooltip_ability_upgrade_to_tower_21_bonus_damage" "<font color='#ff0000'>УРОН: </font>"
 
 "DOTA_Tooltip_ability_upgrade_to_tower_22_bonus_damage" "<font color='#ff0000'>УРОН: </font>"
@@ -288,6 +295,7 @@
 		"DOTA_Tooltip_ability_tower_poison_2_Description"	    								"Каждый удар накладывает на врага дебафф, который снижает его регенерацию на <font color='#00ff4c'>%regen%% </font>. Каждый стак длится <font color='#00ff37'>%duration%</font> секунды, регенерация HP не может быть ниже 0."
 		"DOTA_Tooltip_modifier_poison_counter_Description"                                 "Каждый стак снижает %regen%% регенерации."
 		"DOTA_Tooltip_modifier_fervor_target_Description"							"Обеспечивает вышкам дополнительную скорость атаки за каждый удар. Действует 10 секунд"
+		"DOTA_Tooltip_modifier_fervor_stack_datadriven_description"					"Обеспечивает вышкам дополнительную скорость атаки за каждый удар. Действует 10 секунд"
 		"DOTA_Tooltip_ability_sniper_headshot"                                         		"Время Пострелять!"
 		"DOTA_Tooltip_ability_sniper_headshot_Description"                             	"С вероятностью <font color='#15ff00'>5%</font> замедляет противника на <font color='#ff0000'>50%</font>. Длительность: <font color='#00ff37'>0.25 сек</font>"
 		"DOTA_Tooltip_modifier_dark_lord_presence_Description"                             "Аура: <font color='#ff0000'>-1500 защиты</font>"
@@ -295,7 +303,7 @@
 		"DOTA_Tooltip_modifier_dark_lord_presence_2_Description"                             "Аура: <font color='#ff0000'>-3065 защиты</font>"
 		"DOTA_Tooltip_ability_nevermore_dark_lord_datadriven_2_Description"                             	"Аура <font color='#ff0000'>-%presence_armor_reduction% защиты</font>"
 		"DOTA_Tooltip_modifier_psi_blades_Description"                             		   "Psi Blades. Наносит <font color='#eeff00'>5000 чистого урона</font> второй цели."
-		"DOTA_Tooltip_modifier_dragon_blood_datadriven_effect_Description"                 "Дает <font color='#00ff2a'>+45</font> к дальности атаки в радиусе <font color='#00ff2a'>900</font>"
+		"DOTA_Tooltip_modifier_dragon_blood_datadriven_effect_Description"                 "Дает <font color='#00ff2a'>+45</font> к дальности атаки в радиусе <font color='#00ff2a'>700</font>"
 		"DOTA_Tooltip_ability_dragon_blood_datadriven_Description"                			 "Увеличивает радиус атаки на <font color='#5eff00'>+%bonus_attack_range%</font>. Радиус действия <font color='#15ff00'>%radius%</font>."
 		"DOTA_Tooltip_ability_phantom_assassin_coup_de_grace_datadriven_Description"               "Наносит <font color='#ff0000'>%crit_bonus%%  критического урона</font>. Шанс <font color='#ff0000'>%crit_chance%%.</font>"
 		"DOTA_Tooltip_ability_phantom_phantom_assassin_coup_de_grace_datadriven_Description"               "Наносит %crit_bonus%%  критического урона. Шанс %crit_chance%% ."		
@@ -386,6 +394,7 @@
 		"DOTA_Tooltip_ability_block_buff"											"Устрашение"
 		"DOTA_Tooltip_ability_block_buff_Description"  								"Ваша броня крепчает при отсутствии Флага.<br>Если в радиусе 900 нет Флага, то вы получаете 50% снижения урона от башен, 35% магического сопротивления и 10% сопротивления эффектам"
 		"DOTA_Tooltip_Ability_lone_druid_spirit_bear_datadriven_Description"			"Создает ручного медведя, который сражается на вашей стороне. Если медведь погибнет, вы получите урон ввиде 99,9% его здоровья в виде магического урона и сможете воскресить медведя через 5 минут, а сам медведь потеряет все свои предметы из ранца" // Убрал текст что скилл становится активным после покупки 6 палатки потому что ты это описание не увидишь до покупки 6 палатки итак как минимум + исправил некореектное описание
+		"DOTA_Tooltip_modifier_disconnected_unit"										  "Игрок Отключился"
 		"DOTA_Tooltip_ability_repair_Description"                                         "Отремонтируйте свои постройки! <br><br><font color='#00ff15'>Щелкните правой кнопкой мыши для автоматического ремонта стены</font>."
 		"DOTA_Tooltip_ability_commit_suicide_Description"								  "Используйте эту способность, чтобы уничтожить свои постройки. Нельзя использовать, когда рядом враги! "
 		"DOTA_Tooltip_ability_gather_lumber_Description"                                "Используйте эту способность на деревья, чтобы начать добывать дерево(lumber). Дает 'Lumber amount' каждые 'Gather interval' секунд. Дерево может быть занято только одним WISP!"
@@ -456,7 +465,7 @@
 		"DOTA_Tooltip_ability_train_worker_5_3_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности"
 		"DOTA_Tooltip_ability_train_worker_5_4_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности"
 
-		"DOTA_Tooltip_ability_train_worker_6_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Shallow Grave: Дарует бессмертие на выбранную цель на 6 секунд</font><br><br><font color='#51ff00'>Shadow Wave: Увеличивает броню союзников и уменьшает броню врагов</font>"
+		"DOTA_Tooltip_ability_train_worker_6_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Shallow Grave: Дарует бессмертие на выбранную цель на короткий промежуток времени</font><br><br><font color='#51ff00'>Shadow Wave: Увеличивает броню союзников и уменьшает броню врагов</font>"
 		"DOTA_Tooltip_ability_train_worker_7_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Paralyzing cask: бросает каску, которая перебрасывается между врагами оглушая их</font><br><br><font color='#51ff00'>Heal Building: вылечивает выбранное здание с любой точки карты</font>"
 		"DOTA_Tooltip_ability_train_worker_8_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Smoke: Замедляет врагов в выбранной области, заставляя их промахиваться</font><br><br><font color='#51ff00'>Wave Of Terror: Выпускает волну, наносящую урон и снижающую броню врагов</font>"
 		"DOTA_Tooltip_ability_train_worker_9_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Root: Накладывает оцепенение на выбранную цель</font><br><br><font color='#51ff00'>Nova: Замедляет атаку и скорость передвижения врагов в небольшой области</font>"
@@ -538,6 +547,8 @@
 		"DOTA_Tooltip_ability_doom_bringer_devour_Description"                                  "КД: 30. МС: 1000."
 		"DOTA_Tooltip_ability_item_building_destroy_Description"                          "Разрушает постройку. Ресурсы не возвращаются, нельзя уничтожить, если рядом враг! "
 		"DOTA_Tooltip_ability_item_building_cancel_Description"                           "Отменить постройку"
+		"DOTA_Tooltip_Ability_max_building_level"										  "Максимальный уровень постройки"
+		"DOTA_Tooltip_Ability_max_building_level_description"										  "Способность ничего не делает, она нужна для того чтобы кнопки способностей не съезжали."
 		"DOTA_Tooltip_ability_wisp_select_Description"                           "Выбирает всех ваших Wisp на карте"
 		"DOTA_Tooltip_ability_wisp_select_7_Description"                           "Выбирает всех ваших Wisp 1-7 уровня на карте"
 		"DOTA_Tooltip_ability_wisp_select_8_14_Description"                           "Выбирает всех ваших Wisp 8-14 уровня на карте"
