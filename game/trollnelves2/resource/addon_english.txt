@@ -4587,6 +4587,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"elf_spell_solo_player_description_level_3_shop"				   "Unit Movespeed"
 		"DOTA_Tooltip_modifier_worker_spell_cd_reduce"			 "Reduces worker's abilities cooldowns."
 		"DOTA_Tooltip_modifier_unit_spell_solo_player"			 "Increases Unit's Movespeed."
+		"DOTA_Tooltip_modifier_unit_spell_solo_player_x4"		 "Increases Unit's Movespeed."
 
 		"elf_spell_ms"                            		 "Movespeed"
         "elf_spell_ms_description"                       "Passive: Increases movespeed"
