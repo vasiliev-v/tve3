@@ -20,8 +20,8 @@
 								surface_property = ""
 								translation_only = false
 								group_id = 0
-								hitbox_mins = [ -7.811429, -18.16005, -1.0 ]
-								hitbox_maxs = [ 14.153717, 4.182143, 28.622421 ]
+								hitbox_mins = [ -95.38075, -116.90813, -50.342896 ]
+								hitbox_maxs = [ 101.72304, 108.91458, 77.96532 ]
 							},
 						]
 					},
