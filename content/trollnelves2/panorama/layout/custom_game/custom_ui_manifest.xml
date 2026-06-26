@@ -5,6 +5,7 @@
 		<include src="file://{resources}/layout/custom_game/scripts/setup.js" /> 
 		<include src="file://{resources}/layout/custom_game/scripts/physical_resistance.js" />
 		<include src="file://{resources}/layout/custom_game/scripts/playertables_base.js" />
+		<include src="file://{resources}/layout/custom_game/scripts/modifiers_panel_fix.js" />
 	</scripts>
 	<styles>
 		<include src="file://{resources}/layout/custom_game/styles/setup.css" /> 
