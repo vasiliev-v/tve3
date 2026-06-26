@@ -119,6 +119,14 @@ Wearables.elfModels = {
     ["1711"] = { model = "models/creeps/lane_creeps/creep_bird_dire/creep_bird_dire_ranged.vmdl", scale = 1 },
     ["1712"] = { model = "models/creeps/lane_creeps/creep_bird_dire/creep_bird_dire_melee_mega.vmdl", scale = 1 },
     ["1713"] = { model = "models/creeps/lane_creeps/creep_bird_dire/creep_bird_dire_melee.vmdl", scale = 1 },
+    ["1714"] = { model = "models/creeps/lane_creeps/creep_dc_dire/creep_dc_dire_melee.vmdl", scale = 1 },
+    ["1715"] = { model = "models/creeps/lane_creeps/creep_dc_dire/creep_dc_dire_melee_mega.vmdl", scale = 1 },
+    ["1716"] = { model = "models/creeps/lane_creeps/creep_dc_dire/creep_dc_dire_ranged_mega.vmdl", scale = 1 },
+    ["1717"] = { model = "models/creeps/lane_creeps/creep_dc_radiant/creep_dc_radiant_melee.vmdl", scale = 1 },
+    ["1718"] = { model = "models/creeps/lane_creeps/creep_dc_radiant/creep_dc_radiant_melee_mega.vmdl", scale = 1 },
+    ["1719"] = { model = "models/creeps/lane_creeps/creep_dc_radiant/creep_dc_radiant_ranged.vmdl", scale = 1 },
+    ["1720"] = { model = "models/creeps/lane_creeps/creep_dc_radiant/creep_dc_radiant_ranged_mega.vmdl", scale = 1 },
+    ["1721"] = { model = "models/creeps/lane_creeps/creep_dc_dire/creep_dc_dire_ranged.vmdl", scale = 1 },
 
 
 }

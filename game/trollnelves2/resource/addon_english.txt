@@ -2078,7 +2078,10 @@
 		"DOTA_Tooltip_ability_train_gold_wisp_lumber_cost"                                "<font color='#008000'>LUMBER COST: </font>"
 		"DOTA_Tooltip_ability_train_gold_wisp_food_cost"                                  "FOOD COST: "
 		"DOTA_Tooltip_ability_train_gold_wisp_unit_count"                                 "UNIT COUNT: "
-	
+
+		"DOTA_Tooltip_modifier_kill_time"												  "Wisp's Remaining Time"
+
+		
 		"DOTA_Tooltip_ability_reveal_area_radius"                                         "RADIUS: "
 		"DOTA_Tooltip_ability_reveal_area_duration"                                       "DURATION: "
 
