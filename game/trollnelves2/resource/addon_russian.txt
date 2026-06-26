@@ -424,6 +424,8 @@
 		"DOTA_Tooltip_ability_train_wisp_14_Description"                                   "Создайте WISP. WISP добывает деревья(lumber) с деревьев! "
 		"DOTA_Tooltip_ability_train_wisp_15_Description"                                   "Создайте WISP. WISP добывает деревья(lumber) с деревьев! "
 		"DOTA_Tooltip_ability_train_gold_wisp_Description"                                "Создайте Gold Wisp. Gold Wisp может строить дополнительные золотые шахты(мешки), но при этом жертвуют собой."
+
+		"DOTA_Tooltip_modifier_kill_time"												  "Оставшееся время жизни виспа"
 		
 		"DOTA_Tooltip_ability_train_worker_1_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности"
 		"DOTA_Tooltip_ability_train_worker_1_2_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности"
