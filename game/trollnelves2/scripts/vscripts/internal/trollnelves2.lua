@@ -184,7 +184,7 @@ function trollnelves2:prequire(...)
 end
 
 function trollnelves2:ExperienceFilter( kv )
-    if kv.reason_const ~= 0 then
+    if kv.reason_const ~= 0 or 2 then
         kv.experience = 0
     end
     return true
