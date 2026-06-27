@@ -313,12 +313,13 @@ function CreateItem(panel, table, i, is_inventory)
         }
         else
         {
+            let item_type = GetItemActiveType(table[i])
             let check_item_id = table[i][1]
-            if (table[i][5].indexOf("particle") == 0) 
+            if (item_type == "effect")
             {
-                check_item_id = check_item_id - 100
+                check_item_id = Number(check_item_id) - 100
             }
-            let is_item_activated = IsItemActivated(check_item_id)
+            let is_item_activated = IsItemActivated(item_type, check_item_id)
             let PriceLabel = $.CreatePanel("Label", ItemPrice, "PriceLabel");
             PriceLabel.AddClass("PriceLabel");
             if (is_item_activated)
@@ -380,17 +381,12 @@ function IsItemChest(id)
     return false
 }
 
-function IsItemActivated(id)
+function IsItemActivated(slot, id)
 {
-    for (slot in player_active_items)
-    {
-        let item_id = player_active_items[slot]
-        if (item_id == id)
-        {
-            return true
-        }
-    }
-    return false
+    if (!player_active_items)
+        return false
+
+    return String(player_active_items[slot] || "0") == String(id)
 }
 
 function InitItems() 
@@ -1262,4 +1258,34 @@ function GetCurrencyAmountText(currency_info)
     }
 
     return String(min_value) + "-" + String(max_value);
+}
+
+function GetItemActiveType(item)
+{
+    let name = item[5]
+
+    if (name.indexOf("pet") == 0)
+        return "pet"
+
+    if (name.indexOf("particle") == 0)
+        return "effect"
+
+    if (name.indexOf("skin_wisp") == 0)
+        return "wisp"
+
+    if (name.indexOf("skin") == 0)
+        return "skin"
+
+    if (name.indexOf("label") == 0)
+        return "label"
+
+    if (
+        name.indexOf("tower") == 0 ||
+        name.indexOf("true_sight_tower") == 0 ||
+        name.indexOf("high_true_sight_tower") == 0 ||
+        name.indexOf("flag") == 0
+    )
+        return name
+
+    return name
 }
