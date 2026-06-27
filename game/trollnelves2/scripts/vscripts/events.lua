@@ -95,11 +95,16 @@ function trollnelves2:OnPlayerReconnect(event)
                     end
 
                     Timers:CreateTimer(2, function()
-                        hero:SetOwner(player)
-                        hero:SetControllableByPlayer(playerID, true)
+                        hero:SetTeam(DOTA_TEAM_GOODGUYS)
+                        PlayerResource:SetCustomTeamAssignment(playerID, DOTA_TEAM_GOODGUYS)
+                        player:SetSelectedHero(heroname)
                         player:SetAssignedHeroEntity(hero)
-                        PlayerResource:SetOverrideSelectionEntity(playerID, hero)
+                        hero:SetControllableByPlayer(playerID, true)
+                        PlayerResource:SetCustomTeamAssignment(playerID, DOTA_TEAM_GOODGUYS)
                         wearables:SetWolf(playerID)
+                        if oldhero then
+                            UTIL_Remove(oldhero)
+                        end
                     end)
 
                     if hero then
@@ -129,7 +134,7 @@ function trollnelves2:OnPlayerReconnect(event)
                             local active = game_spells_lib.current_activated_spell[playerID] or {}
                             for _, spell_name in ipairs(active) do
                                 local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
-                                local level = game_spells_lib:GetSpellLevel(id, spell_name)
+                                local level = game_spells_lib:GetSpellLevel(playerID, spell_name)
                                 if hero and not hero:HasModifier(modifier_name) then
                                     local mod = hero:AddNewModifier(hero, nil, modifier_name, {})
                                     if mod  then

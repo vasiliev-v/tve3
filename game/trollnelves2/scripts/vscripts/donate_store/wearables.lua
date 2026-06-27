@@ -629,3 +629,39 @@ function wearables:RestoreSelectedModel(playerID)
     end
 end
 
+
+function wearables:StripElfDefaultWearablesOnce(hero)
+    if not hero or hero:IsNull() then return end
+    if not hero:IsElf() then return end
+
+    local playerID = hero:GetPlayerOwnerID()
+    if playerID == nil or playerID < 0 then return end
+
+    local skinData = GameRules.SkinTower[playerID]
+    local skinID = skinData and skinData["skin"]
+
+    -- Если уже есть именно VIP-скин эльфа, ничего не делаем
+    if skinID ~= nil and skinID ~= "" and Wearables.elfModels[tostring(skinID)] ~= nil then
+        return
+    end
+
+    if hero._wearablesRefreshed then
+        return
+    end
+    hero._wearablesRefreshed = true
+
+    local megaModel = "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
+    local normalModel = "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
+
+    hero:SetOriginalModel(megaModel)
+    hero:SetModel(megaModel)
+    hero:SetModelScale(1)
+
+    Timers:CreateTimer(0.33, function()
+        if not hero or hero:IsNull() then return end
+
+        hero:SetOriginalModel(normalModel)
+        hero:SetModel(normalModel)
+        hero:SetModelScale(1)
+    end)
+end
