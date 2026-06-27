@@ -1273,19 +1273,21 @@ function GetItemActiveType(item)
     if (name.indexOf("skin_wisp") == 0)
         return "wisp"
 
-    if (name.indexOf("skin") == 0)
-        return "skin"
-
     if (name.indexOf("label") == 0)
         return "label"
 
-    if (
-        name.indexOf("tower") == 0 ||
-        name.indexOf("true_sight_tower") == 0 ||
-        name.indexOf("high_true_sight_tower") == 0 ||
-        name.indexOf("flag") == 0
-    )
-        return name
+    if (name.indexOf("skin") == 0)
+    {
+        let id = Number(item[1])
+
+        if (id >= 620 && id <= 631)
+            return "wolf"
+
+        if ((id >= 673 && id <= 682) || (id >= 1800 && id <= 1801))
+            return "bear"
+
+        return "skin"
+    }
 
     return name
 }
