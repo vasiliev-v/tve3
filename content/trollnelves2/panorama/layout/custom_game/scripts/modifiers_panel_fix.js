@@ -80,7 +80,7 @@ GameEvents.Subscribe("cdota_buff_alert", function (data) {
 });
 
 let ping_stacks = 2;
-let ping_cooldown = 1;
+let ping_cooldown = 5;
 $.RegisterForUnhandledEvent("DOTAShowBuffTooltip", function (buffpanel, ent, serial) {
 	let button = buffpanel.GetChild(0);
 	let name = Buffs.GetName(ent, serial);
