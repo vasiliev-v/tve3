@@ -31,9 +31,10 @@
 
 		"AbilityValues"
 		{
+			"gold_cost"                 "0"
+			"lumber_cost"               "5"
 			"dur_time"                  "10"
 			"radius1"                   "2400"
-			"lumber_cost"               "5"
 		}
 	}
 
