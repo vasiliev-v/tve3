@@ -296,6 +296,25 @@
     z-index: 10;
 }
 
+/*
+
+Иконка плюсика рядом с кол-вом гемом в шопе
+
+.SecondCurrency .PlusLabel 
+{
+    wash-color: #C184FF;
+}
+
+.SecondCurrency .DonateShopGiveDonate 
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #A362CA ), to( #612F73 ) );
+}
+
+*/
+.SecondCurrency .DonateShopCurrency 
+{
+    background-color: gradient( linear, 0% 0%, 100% 100%, from( rgba(91, 51, 141, 0.7)  ), to( rgba(61, 39, 97, 0.5) ) );
+}
 
 .SecondCurrency .GoldText 
 {
