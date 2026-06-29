@@ -1693,6 +1693,7 @@
 		"DOTA_Tooltip_ability_block_buff"											"Composure"
 		"DOTA_Tooltip_ability_block_buff_Description"  								"Your armor grows stronger when there is no flag. If there is no Flag within 900 range, you gain 50 percent tower damage reduction, 35 percent magic resistance, and 10 percent status resistance."
 
+		"DOTA_Tooltip_modifier_antibase"												"Muted"
 
 		"DOTA_Tooltip_Ability_lone_druid_spirit_bear_datadriven"						"Teddy bear"
 		"DOTA_Tooltip_Ability_lone_druid_spirit_bear_datadriven_Description"			"Creates a tame bear that fights by your side. If the bear died, then you take 99.9% magic damage from your health and will be able to revive the bear in 6 minutes, and the bear itself will lose all its items. The skill becomes active after purchasing a level 6 Troll hut."
@@ -4950,10 +4951,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_gold_hit_x4_description_level_3"               "+66% Incoming Gold<br>Incoming Damage: +400%<br>Duration: 8<br>CD: 200"
 
 		"troll_spell_gold_hit_description_level_1_shop_x4"               "Incoming Gold"
-        "troll_spell_gold_hit_description_level_2_shop_x4"               "Duration"
-		"troll_spell_gold_hit_description_level_3_shop_x4"               "Cooldown"
-		"troll_spell_gold_hit_description_level_4_shop_x4"				 "Incoming Damage"
-		"troll_spell_gold_hit_description_level_5_shop_x4"				 "Start CD"
+        "troll_spell_gold_hit_description_level_2_shop_x4"               "Incoming Damage"
+		"troll_spell_gold_hit_description_level_3_shop_x4"               "Duration"
+		"troll_spell_gold_hit_description_level_4_shop_x4"				 "Cooldown"
 		"DOTA_Tooltip_modifier_troll_spell_gold_hit_x4"			 "Gold Hit"
 		"DOTA_Tooltip_modifier_troll_spell_gold_hit_x4_description"			 "Active: Adds gold to hit."
 
@@ -4981,7 +4981,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_cd_reduce_x4_description_level_1"               "Cooldown -12%"
         "modifier_troll_spell_cd_reduce_x4_description_level_2"               "Cooldown -15%"
         "modifier_troll_spell_cd_reduce_x4_description_level_3"               "Cooldown -20%"
-		"DOTA_Tooltip_modifier_troll_spell_cd_reduce_x4"			  "Passive: Reduces ability cooldown"
+		"DOTA_Tooltip_modifier_troll_spell_cd_reduce_x4"			  "CD Reduce"
+		"DOTA_Tooltip_modifier_troll_spell_cd_reduce_x4_description"			  "Passive: Reduces ability cooldown"
 
 		"troll_spell_cd_reduce_description_level_1_shop_x4"               "Cooldown"
 				
@@ -5015,7 +5016,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_status_resist_x4_description_level_2"               "Status Resist +20%<br>Magic Resist +20%"
         "modifier_troll_spell_status_resist_x4_description_level_3"               "Status Resist +25%<br>Magic Resist +25%"
 		"DOTA_Tooltip_modifier_troll_spell_status_resist_x4"			 "Total Resist"
-		"DOTA_Tooltip_modifier_troll_spell_status_resist_x4"			 "Passive: Increases Status Resist and Magic Resist"
+		"DOTA_Tooltip_modifier_troll_spell_status_resist_x4_description"			 "Passive: Increases Status Resist and Magic Resist"
 
 		"troll_spell_status_resist_description_level_1_shop_x4"           "Status Resist"
 		"troll_spell_status_resist_description_level_2_shop_x4"           "Magic Resist"
@@ -5049,8 +5050,6 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"troll_spell_stun_target_description_level_1_shop_x4" "Duration"
 		"troll_spell_stun_target_description_level_2_shop_x4" "Cooldown"
 
-		"DOTA_Tooltip_modifier_troll_spell_stun_target_x4"												 "Active: Target Stun"
-		"DOTA_Tooltip_ability_troll_spell_stun_target_x4"                                                "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_Description"                                     "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_bolt_stun_duration"                 "DURATION: "
 				
@@ -5107,6 +5106,8 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_bkb_x4" "BKB"
 		"DOTA_Tooltip_ability_troll_spell_bkb_x4_Description" "Immunity to magic"
 		"DOTA_Tooltip_ability_troll_spell_bkb_x4_duration" "DURATION: "
+		"DOTA_Tooltip_modifier_troll_spell_bkb"			 "BKB"
+		"DOTA_Tooltip_modifier_troll_spell_bkb_description"			 "Active: Immunity to magic"
 
 		"DOTA_Tooltip_modifier_troll_spell_slow_target_x4" "Target Slow"
 		"DOTA_Tooltip_modifier_troll_spell_slow_target_x4_description" "Active: Slows the MS of the selected target"
