@@ -325,7 +325,7 @@
 		"DOTA_Tooltip_modifier_range_boost_range_effect_Description"										  "Дает <font color='#00ff2a'>+75</font> к дальности атаки в радиусе <font color='#00ff2a'>900</font>"
 		"DOTA_Tooltip_ability_medusa_split_shot_lua_Description"                 "Атакует <font color='#9dff00'>неограниченное количество целей</font> за раз"
 		"DOTA_Tooltip_modifier_item_desolator_datadriven_corruption"                             "Psi Blades"
-		"DOTA_Tooltip_modifier_item_desolator_datadriven_corruption_Description" 				  "Входящий урон увеличен на <font color='#ff0000'>+5%%</font>"
+		"DOTA_Tooltip_modifier_item_desolator_datadriven_corruption_Description" 				  "Входящий урон увеличен на <font color='#eeff00'>+5%%</font>"
 		"DOTA_Tooltip_modifier_convert_gold"						"Exchange of gold for lumber"
 		"DOTA_Tooltip_modifier_convert_gold_Description"			"Автоматический перевод золота в дерево при атаке."
 		"DOTA_Tooltip_modifier_troll_warlord_convert_gold_Description"			"Автоматический перевод золота в дерево при атаке."
