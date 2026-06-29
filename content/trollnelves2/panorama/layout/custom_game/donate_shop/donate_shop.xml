@@ -43,9 +43,6 @@
 					<Panel class="DonateShopCurrencyMain SecondCurrency">
 						<Panel class="DonateShopCurrency">
 							<Label id="Currency2" text="0" class="GoldText" />
-                            <Panel class="DonateShopGiveDonate">
-								<Panel class="PlusLabel" onactivate="BuyCurrencyPanelActive();"/>
-							</Panel>
 						</Panel>
 						<Panel class="CurrencyIconMain" />
 					</Panel>
