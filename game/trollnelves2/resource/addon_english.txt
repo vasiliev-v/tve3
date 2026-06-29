@@ -1486,7 +1486,7 @@
 		"DOTA_Tooltip_ability_luna_lunar_blessing_datadriven_Description" 				  "Gives <font color='#ff6767'>+%bonus_damage% damage</font> and <font color='#9c5fff'>+%bonus_night_vision% night vision</font> to allies in radius %radius%.</font>"
 
 		"DOTA_Tooltip_modifier_item_desolator_datadriven_corruption"                             "Psi Blades"
-		"DOTA_Tooltip_modifier_item_desolator_datadriven_corruption_Description" 				  "Incoming damage <font color='#ff0000'>+5%%</font>"
+		"DOTA_Tooltip_modifier_item_desolator_datadriven_corruption_Description" 				  "Incoming damage <font color='#eeff00'>+5%%</font>"
 		
 		"DOTA_Tooltip_modifier_lunar_blessing_datadriven"                             "Lunar Blessing"
 		"DOTA_Tooltip_modifier_lunar_blessing_datadriven_Description" 				  "Gives <font color='#ff6767'>+150000 damage</font> and %bonus_night_vision% night vision to allies in radius %radius%."
