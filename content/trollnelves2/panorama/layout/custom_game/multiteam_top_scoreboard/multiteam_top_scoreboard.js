@@ -121,7 +121,8 @@ UpdateTeam( 2 );
 let topbar = FindDotaHudElement("topbar")
 if (topbar)
 {
-    topbar.style.opacity = "0"
+    topbar.style.opacity = "0.0001"
+    topbar.style.padding = "20px 20px";
 }
 
 function timeToSeconds(str) 
