@@ -1257,18 +1257,17 @@
 				"CastAttack"			"0"
 			}
 
-			"OnOrbFire"
+			"OnAttack"
 			{
-				"ApplyModifier"
-				{
-					"Target"			"TARGET"
-					"ModifierName"		"modifier_item_desolator_datadriven_corruption"
-				}
-				
 				"FireSound"
 				{
 					"EffectName"		"Item_Desolator.Target"
 					"Target"			"TARGET"
+				}
+				"ApplyModifier"
+				{
+					"Target"			"TARGET"
+					"ModifierName"		"modifier_item_desolator_datadriven_corruption"
 				}
 			}
 		}
