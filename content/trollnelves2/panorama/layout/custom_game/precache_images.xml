@@ -161,6 +161,14 @@
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_23.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_24.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_25.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_37.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_38.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_39.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_40.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_41.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_42.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_43.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_44.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_3.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_4.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_5.png" />
