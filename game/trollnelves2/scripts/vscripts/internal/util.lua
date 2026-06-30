@@ -420,3 +420,22 @@ function InsertAbilityAfter(hero, ability_after, ability_to_insert)
         abi:SetLevel(info.level)
     end
 end
+
+function ReplaceAbility(hero, oldName, newName)
+    local oldAbi = hero:FindAbilityByName(oldName)
+    if not oldAbi then return end
+
+    local newAbi = hero:FindAbilityByName(newName)
+    if not newAbi then
+        newAbi = hero:AddAbility(newName)
+        newAbi:SetLevel(1)
+    end
+
+    hero:SwapAbilities(oldName, newName, false, true)
+
+    Timers:CreateTimer(FrameTime(), function()
+        if hero and not hero:IsNull() then
+            hero:RemoveAbility(oldName)
+        end
+    end)
+end

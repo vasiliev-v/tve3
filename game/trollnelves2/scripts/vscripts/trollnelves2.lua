@@ -207,9 +207,9 @@ function SetRoles()
             end
 
             if playerSelection == "troll" and PlayerResource:GetConnectionState(pID) == 2 and not PlayerResource:IsFakeClient(pID) and GameRules.FakeList[pID] == nil then
-                if GameRules.PlayersCount >= MIN_RATING_PLAYER and (repScore > -49 or PoolTable ~= "0") and not partyGame then
+                if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER and (repScore > -49 or PoolTable ~= "0") and not partyGame then
                     table.insert(wannabeTrollIDs, pID)
-                elseif GameRules.PlayersCount < MIN_RATING_PLAYER or GameRules:IsCheatMode() then
+                elseif GameRules.PlayersCount < GameRules.MIN_RATING_PLAYER or GameRules:IsCheatMode() then
                     table.insert(wannabeTrollIDs, pID)
                 end
             end
@@ -483,11 +483,9 @@ function InitializeBuilder(hero)
         PlayerResource:SetLumber(hero, ELF_STARTING_LUMBER_TURBO)
     end
     if string.match(GetMapName(),"turbo2x") then
-        if hero:isElf() then 
-            hero:RemoveModifierByName("build_tent")
-            hero:RemoveModifierByName("build_rock_1")
-            hero:AddAbilityByName("build_barrack")
-            hero:AddAbilityByName("build_demonic_wall")
+        if hero:IsElf() then 
+            ReplaceAbility(hero, "build_tent", "build_turbo_barracks")
+            ReplaceAbility(hero, "build_rock_1", "build_turbo_demonic")
         end
     end
 
@@ -928,6 +926,9 @@ function GetAllItems()
         end
         GameRules.PlayersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_1) + PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_CUSTOM_2)
         GameRules:SendCustomMessage("<font color='#00FFFF '> Number of players: " .. GameRules.PlayersCount .. "</font>" ,  0, 0)
+        if not string.match(GetMapName(),"1x1") then
+            GameRules:SendCustomMessage("<font color='#00FF80 '> Ranked mode is available from: " .. GameRules.MIN_RATING_PLAYER .. " players </font>",  0, 0) 
+        end
     end 
 end
 

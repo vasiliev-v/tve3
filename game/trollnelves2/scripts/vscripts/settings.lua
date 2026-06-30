@@ -84,7 +84,4 @@ for i = 2, MAX_LEVEL do
     XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + 100
 end
 
-
-MIN_RATING_PLAYER = 10
-MIN_RATING_PLAYER_CW = 10
 dedicatedServerKey = GetDedicatedServerKeyV3("1")   -- "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ" -- GetDedicatedServerKeyV3("1") 

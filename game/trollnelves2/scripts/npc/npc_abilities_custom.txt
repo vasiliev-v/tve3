@@ -1971,7 +1971,7 @@
 			}
 		}
 	}
-	"build_barrack"{
+	"build_turbo_barracks"{
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_barracks"//"build_tent"
@@ -1979,7 +1979,7 @@
 		"Building"				"1"
 		"BuildTime"				"2.0"
 		"Scale"					"1"
-		"UnitName"				"barracks_1"//"tent"
+		"UnitName"				"turbo_barracks"//"tent"
 		"MaxLevel"				"1"
 		"AbilityValues"
         {
@@ -2508,15 +2508,15 @@
 			}
 		}
 	}
-	"build_demonic_wall"{
+	"build_turbo_demonic"{
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"	"build_demonic_wall"//"build_rock"
 		"AbilityCastRange"		"150"
 		"Building"				"1"
 		"BuildTime"				"2.0"
-		"Scale"					"1"
-		"UnitName"				"rock_11"
+		"Scale"					"2"
+		"UnitName"				"turbo_demonic"
 		"MaxLevel"				"1"
 		"AbilityValues"
         {

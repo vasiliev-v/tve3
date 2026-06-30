@@ -306,7 +306,7 @@ function CancelBuilding( keys )
     local playerID = building:GetMainControllingPlayer()
     local units = FindUnitsInRadius(building:GetTeamNumber() , building:GetAbsOrigin() , nil , 200 , DOTA_UNIT_TARGET_TEAM_ENEMY ,  DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false)
     BuildingHelper:print("CancelBuilding "..building:GetUnitName().." "..building:GetEntityIndex())
-    if #units > 0 and building:GetUnitName() ~= "tent" then
+    if #units > 0 and building:GetUnitName() ~= "tent" and building:GetUnitName() ~= "turbo_barracks" then
         SendErrorMessage(playerID, "error_enemy_nearby")
         return
     end
@@ -334,7 +334,7 @@ function DestroyBuilding( keys )
     local ownerID = building:GetPlayerOwnerID()
     local playerID = building:GetMainControllingPlayer()
     local hero = building:GetOwner()
-    if #units > 0 and building:GetUnitName() ~= "tent" then
+    if #units > 0 and building:GetUnitName() ~= "tent" and building:GetUnitName() ~= "turbo_barracks" then
         SendErrorMessage(playerID, "error_enemy_nearby")
     else
         if building:GetUnitName() == "flag" then

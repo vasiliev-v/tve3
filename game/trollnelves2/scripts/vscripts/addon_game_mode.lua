@@ -1048,12 +1048,19 @@ function Activate()
 	GameRules.server =  "https://tve4.eu/test/" -- "https://localhost:7133/test/"  --  "https://tve4.eu/test/"
 	GameRules.test = false
 	GameRules.test2 = false
-	if GameRules.MapSpeed == 4 then
+	if GameRules.MapSpeed == 4 or GameRules.MapSpeed == 2 then
 		GameRules.MIN_TIME_FOR_QUEST_MIN = 900 -- 900
 	else 
 		GameRules.MIN_TIME_FOR_QUEST_MIN = 1200 -- 1200
 	end
 	GameRules.MIN_TIME_FOR_QUEST = 1200 -- 1200
+
+	if GameRules.MapSpeed == 2 then
+		GameRules.MIN_RATING_PLAYER = 8
+	else
+		GameRules.MIN_RATING_PLAYER = 10
+	end
+	GameRules.MIN_RATING_PLAYER_CW = 10
 	------------------------------------------------------------------------------------------------------------
 	
 

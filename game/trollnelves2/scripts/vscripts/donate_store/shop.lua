@@ -1162,7 +1162,7 @@ end
 
 function Shop:EventRewards(table, callback)
 	if not GameRules.isTesting  then
-		if GameRules:IsCheatMode() or GameRules.PlayersCount < MIN_RATING_PLAYER then 
+		if GameRules:IsCheatMode() or GameRules.PlayersCount < GameRules.MIN_RATING_PLAYER then 
 			SendErrorMessage(table.PlayerID, "error_take_reward")
 			GameRules:SendCustomMessage("<font color='#00FFFF '> THIS IS NOT A RATING GAME. </font>" ,  0, 0)
 			return 

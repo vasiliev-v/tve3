@@ -298,7 +298,7 @@ function GetQuestTimeText()
     const mapName = mapInfo.map_display_name;
 
     // пример проверки режима
-    if (mapName == "classic4x") {
+    if (mapName == "classic4x" || mapName == "turbo2x") {
         return "15";
     }
 

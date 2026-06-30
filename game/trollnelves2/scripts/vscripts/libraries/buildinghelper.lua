@@ -426,7 +426,7 @@ function BuildingHelper:OnGameRulesStateChange(keys)
 end
 
 function BuildingHelper:UpdateMapStage()
-    if string.match(GetMapName(),"classic") then
+    if string.match(GetMapName(),"classic") or string.match(GetMapName(),"turbo") then
         local map = map_system:GetCurrentMapFromVotes()
         GameRules.MapName = map[1]
         local vector = map[2]
@@ -2849,7 +2849,8 @@ function BuildingHelper:ValidPosition(size, location, unit, callbacks)
             end
         end
     end
-    if BuildingHelper:EnemyIsInsideBuildingArea(hero:GetAbsOrigin(), location,size) and buildingName ~= "tent" and
+    if BuildingHelper:EnemyIsInsideBuildingArea(hero:GetAbsOrigin(), location,size) and 
+        buildingName ~= "tent" and buildingName ~= "turbo_barracks" and
         (GameRules:GetGameTime() - GameRules.startTime > (2400 / GameRules.MapSpeed)) then -- остальное
         local baseIndex = BuildingHelper:IdBaseArea(unit)
         if baseIndex ~= nil and GameRules.PlayersBase[playerID] ~= nil then
@@ -3102,6 +3103,7 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
     if buildingName == nil then
         return
     end
+    DebugPrint(buildingName)
     if not builder:HasAbility("build_" .. buildingName) then
         SendErrorMessage(playerID, "error_take_normal_builder")
         return

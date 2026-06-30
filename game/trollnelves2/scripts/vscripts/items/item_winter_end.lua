@@ -11,7 +11,7 @@ function Feed(keys)
     local hero = keys.caster
     local item = keys.ability
     
-    if target.IS_HUNGER_ROSHAN and GameRules.PlayersCount >= MIN_RATING_PLAYER then
+    if target.IS_HUNGER_ROSHAN and GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
         
         if target:HasModifier("modifier_hunger") then
                     

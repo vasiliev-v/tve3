@@ -52,7 +52,7 @@ function ItemGetGem(event)
 	data.Gem = 50
 	data.Gold = 0
 	data.playerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetGem(data, callback)
 		local item = caster:FindItemInInventory("item_get_gem")
 		caster:TakeItem(item)
@@ -67,7 +67,7 @@ function ItemGetGold(event)
 	data.Gem = 0
 	data.Gold = 10
 	data.playerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetGem(data, callback)
 		local item = caster:FindItemInInventory("item_get_gold")
 		caster:TakeItem(item)
@@ -82,7 +82,7 @@ function ItemEffect(event)
 	data.Num = "2"
 	data.Srok = "01/09/2020"
 	data.PlayerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetVip(data, callback)
 		local item = caster:FindItemInInventory("item_vip")
 		caster:TakeItem(item)
@@ -97,7 +97,7 @@ function ItemEvent(event)
 	data.Num = "3"
 	data.Srok = "01/09/2020"
 	data.PlayerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetVip(data, callback)
 		local item = caster:FindItemInInventory(event.ability:GetAbilityName())
 		caster:TakeItem(item)
@@ -112,7 +112,7 @@ function ItemEventStresS(event)
 	data.Num = "3"
 	data.Srok = "01/09/2020"
 	data.PlayerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetVip(data, callback)
 		local item = caster:FindItemInInventory("item_winter_stress")
 		caster:TakeItem(item)
@@ -127,7 +127,7 @@ function ItemEventDesert(event)
 	data.Num = "24"
 	data.Srok = "01/09/2020"
 	data.PlayerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetVip(data, callback)
 		local item = caster:FindItemInInventory("item_event_desert")
 		caster:TakeItem(item)
@@ -142,7 +142,7 @@ function ItemEventWinter(event)
 	data.Num = "18"
 	data.Srok = "01/09/2020"
 	
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetVip(data, callback)
 		local item = caster:FindItemInInventory("item_event_winter")
 		caster:TakeItem(item)
@@ -157,7 +157,7 @@ function ItemEventHelheim(event)
 	data.Num = "29"
 	data.Srok = "01/09/2020"
 	data.PlayerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetVip(data, callback)
 		local item = caster:FindItemInInventory("item_event_helheim")
 		caster:TakeItem(item)
@@ -172,7 +172,7 @@ function ItemEventBirthday(event)
 	data.Num = "23"
 	data.Srok = "01/09/2020"
 	data.PlayerID = playerID
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		Shop.GetVip(data, callback)
 		local item = caster:FindItemInInventory("item_event_birthday")
 		caster:TakeItem(item)

@@ -432,6 +432,79 @@
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	    "MovementSpeed"             "0"
 	}
+
+	"turbo_barracks"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creature"
+		"HasInventory" 				"1" 
+		"Model"						"models/barracks_1.vmdl"
+		"precache"
+		{
+			"model"     "models/barracks_1.vmdl"
+		}
+	    "ModelScale"                "0.55"
+	    "ModelRotation"             "90"
+		"HealthBarOffset"			"150"
+		"PlayerCanControl"			"1"
+		"Scale"						"1"
+		"UniqueBuilding"			"1"
+		"RequiresRepair"			"1"
+		"Limit"						"1"
+		"StartingBuilding"          "1"
+
+	    // Stats
+	    //-----------------------------
+	    "Level"                     "8"
+	    "BuildTime"                 "1"
+	    "Upgrades"
+	    {
+	        "Count"     "1"
+	        "1"{
+				"unit_name"			"barracks_2"
+				"gold_cost"			"6400"
+				"lumber_cost"		"256"
+			}
+	    }
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"gain_gold"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability10"					""
+
+	    // General
+	    //-----------------------------
+
+	    "ArmorPhysical"             "0"//"5"
+		"StatusHealth"              "4000"//"8000"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "0"
+	    "StatusManaRegen"           "0"
+	    "MagicalResistance"         "0"
+
+		"ConstructionSize"          "4"
+	    "BlockPathingSize"          "4"
+		"CollisionSize"				"128"
+
+	    "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+	    "TeamName"                  "DOTA_TEAM_NEUTRALS"
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "900"
+	    "VisionNighttimeRange"      "600"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "ProjectileCollisionSize"   "100"
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+	}
+
+	
 	//=================================================================================
 	// Building: Tent 2
 	//=================================================================================
@@ -1896,6 +1969,80 @@
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "ProjectileCollisionSize"   "64"
 	    "RingRadius"                "64"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+	}
+
+	//=================================================================================
+	// Building: Demonic Wall 1
+	//=================================================================================
+	"turbo_demonic"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creature"
+		"HasInventory" 				"1" 
+		"Model"						"models/demonic_wall_1.vmdl"
+	    "precache"
+		{
+			"model"						"models/demonic_wall_1.vmdl"
+	    }
+		"ModelScale"                "0.7"
+	    "ModelRotation"             "90"
+		"HealthBarOffset"			"150"
+		"PlayerCanControl"			"1"
+		"Scale"						"1"
+
+		"RequiresRepair"			"1"
+		"Limit"						"2"
+		"StartingBuilding"          "1"
+
+	    // Stats
+	    //-----------------------------
+	    "Level"                     "11"
+	    "BuildTime"                 "1"
+	    "Upgrades"
+	    {
+	        "Count"     "1"
+	        "1"{
+				"unit_name"			"rock_12"
+				"gold_cost"			"8192"
+				"lumber_cost"		"64"
+			}
+	    }
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"antifeed_skill"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability10"					""
+
+	    // General
+	    //-----------------------------
+
+	    "ArmorPhysical"             "7"
+		"StatusHealth"              "10240"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "200"
+	    "StatusManaRegen"           "-0.30"
+	    "MagicalResistance"         "100" //"0"
+
+		"ConstructionSize"          "2"
+	    "BlockPathingSize"          "2"
+		"CollisionSize"				"64"
+
+	    "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+	    "TeamName"                  "DOTA_TEAM_NEUTRALS"
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "900"
+	    "VisionNighttimeRange"      "600"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "ProjectileCollisionSize"   "100"
+	    "RingRadius"                "100"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	    "MovementSpeed"             "0"
 	}

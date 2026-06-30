@@ -79,7 +79,7 @@ item_drop = {
 
 function drop:RollItemDrop(unit)
 	local unit_name = unit:GetUnitName()
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		for _,drop in ipairs(item_drop) do
 			local items = drop.items or nil
 			local items_num = #items

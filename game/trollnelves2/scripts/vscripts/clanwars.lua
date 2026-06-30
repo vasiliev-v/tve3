@@ -48,7 +48,7 @@ function Clanwars.SubmitMatchData(winner,callback)
 		end
 	end
 
-	if GameRules.PlayersCount >= MIN_RATING_PLAYER_CW then
+	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER_CW then
 		for pID=0,DOTA_MAX_TEAM_PLAYERS do
 			if PlayerResource:IsValidPlayerID(pID) and not PlayerResource:IsFakeClient(pID) and PlayerResource:GetTeam(pID) ~= 5 then
 				data.MatchID = tostring(GameRules:Script_GetMatchID() or 0)
