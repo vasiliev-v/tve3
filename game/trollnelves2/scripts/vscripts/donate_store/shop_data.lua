@@ -659,7 +659,23 @@ Shop.DonateList =
 	{"1055", "gold", "300", "sight_tower_28", "true_sight_tower", false, 7}, 
 	{"1056", "gold", "300", "sight_tower_29", "true_sight_tower", false, 7}, 
 	{"1057", "gold", "300", "sight_tower_30", "true_sight_tower", false, 7}, 
-	{"1058", "gold", "300", "sight_tower_31", "true_sight_tower", false, 7}, 
+	{"1058", "gold", "300", "sight_tower_31", "true_sight_tower", false, 7},
+	
+	-- NEW ADDED SKINS
+	{"1061", "gold", "1000", "1_tower_11", "tower_11", false, 7},
+	{"1068", "gold", "1000", "1_tower_11_1", "tower_11_1", false, 7},
+	{"1073", "gold", "1000", "1_tower_12_1", "tower_12_1", false, 7},
+	{"1076", "gold", "1000", "1_tower_14", "tower_14", false, 7},
+	{"1077", "gold", "1000", "1_tower_15", "tower_15", false, 7},
+	{"1083", "gold", "1000", "1_tower_16", "tower_16", false, 7},
+	{"1097", "gold", "1000", "1_tower_19", "tower_19", false, 7},
+	{"1099", "gold", "1000", "1_tower_18", "tower_18", false, 7},
+	{"1100", "gold", "1000", "1_tower_17", "tower_17", false, 7},
+	{"1101", "gold", "1000", "tower_17_1", "tower_17_1", false, 7},
+	{"1103", "gold", "1000", "1_tower_15_1", "tower_15_1", false, 7},
+	{"1104", "gold", "1000", "2_tower_12", "tower_12", false, 7},
+	{"1105", "gold", "1000", "1_tower_17_1", "tower_17_1", false, 7},
+
 
 
 
