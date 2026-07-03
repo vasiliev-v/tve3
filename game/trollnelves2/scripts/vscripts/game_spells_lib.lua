@@ -1293,12 +1293,10 @@ else -- X4
             "elf_spell_teleport", 
             "modifier_elf_spell_teleport_x4", 
             {
-                "elf_spell_teleport_description_level_1_shop_x4",
-                "elf_spell_teleport_description_level_2_shop_x4",  
+                "elf_spell_teleport_description_level_1_shop_x4", 
             }, 
             {
-                {1, 1, 2},
-                {"None", "None", 600},
+                {500, 400, 300},
             },
             "0",
             "1",
