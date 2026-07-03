@@ -27,6 +27,9 @@ function Shop.RequestDonate(pID, steam, callback)
 			PoolTable["1"][id] = tostring(id)
 			parts[id] = "normal"
 		end
+		for id = 1100, 1105 do
+			PoolTable["1"][id] = tostring(id)
+		end
 		for id = 600, 1099 do
 			PoolTable["1"][id] = tostring(id)
 		end	

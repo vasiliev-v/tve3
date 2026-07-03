@@ -877,6 +877,66 @@ Wearables.TowerSkinConfigs = {
         { path = "particles/econ/items/enigma/ti9_cache_enigma_lord_head/ti9_cache_enigma_lord_head_ambient.vpcf", cp = 1, attachType = PATTACH_POINT_FOLLOW, attachName = "follow_origin" },
     },
 },
+["1099"] = { -- Jewels Of anamnessa
+    attachments = {
+        "models/items/medusa/jewelled_splendor_armor/jewelled_splendor_armor.vmdl",
+        "models/items/medusa/jewelled_splendor_arms/jewelled_splendor_arms.vmdl",
+        "models/items/medusa/jewelled_splendor_head/jewelled_splendor_head.vmdl",
+        "models/items/medusa/jewelled_splendor_tail/jewelled_splendor_tail.vmdl",
+        "models/items/medusa/jewelled_splendor_weapon/jewelled_splendor_weapon.vmdl",
+    },
+},
+["1100"] = { -- Leonid Luminosity
+    attachments = {
+        "models/items/luna/luna_cosmic/luna_cosmic_head.vmdl",
+        "models/items/luna/luna_cosmic/luna_cosmic_mount.vmdl",
+        "models/items/luna/luna_cosmic/luna_cosmic_offhand.vmdl",
+        "models/items/luna/luna_cosmic/luna_cosmic_shoulders.vmdl",
+        "models/items/luna/luna_cosmic/luna_cosmic_weapon.vmdl",
+    },
+},
+["1101"] = { -- Photax Fluttercat
+    attachments = {
+        "models/items/mirana/meoth_luminous_priestess_meoth/meoth_luminous_priestess_meoth.vmdl",
+        "models/items/mirana/meoth_luminous_priestess_bow/meoth_luminous_priestess_bow.vmdl",
+        "models/items/mirana/meoth_luminous_priestess_bracelets/meoth_luminous_priestess_bracelets.vmdl",
+        "models/items/mirana/meoth_luminous_priestess_cape/meoth_luminous_priestess_cape.vmdl",
+        "models/items/mirana/meoth_luminous_priestess_crown/meoth_luminous_priestess_crown.vmdl",
+        "models/items/mirana/meoth_luminous_priestess_skirt/meoth_luminous_priestess_skirt.vmdl",
+        "models/items/mirana/meoth_luminous_priestess_quiver/meoth_luminous_priestess_quiver.vmdl",
+        "models/items/mirana/meoth_luminous_priestess_meoth/meoth_luminous_priestess_meoth.vmdl ",
+    },
+},
+["1103"] = { -- Lord of the sundered souls
+    attachments = {
+        "models/items/nevermore/lord_of_the_elder_dunes_arms/lord_of_the_elder_dunes_arms.vmdl",
+        "models/items/nevermore/lord_of_the_elder_dunes_shoulders/lord_of_the_elder_dunes_shoulders.vmdl",
+        "models/items/nevermore/lord_of_the_elder_dunes_head/lord_of_the_elder_dunes_head.vmdl",
+    },
+},
+["1104"] = { -- Motley Marauder || Dark Carnival Event 
+    attachments = {
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_arms.vmdl",
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_back.vmdl",
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_head.vmdl",
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_head_legs.vmdl",
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_legs.vmdl",
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_quiver.vmdl",
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_shoulders.vmdl",
+        "models/items/drow/drow_dark_carnival/drow_dark_carnival_weapon.vmdl",
+    },
+},
+["1105"] = { -- Selemene Showgirl 
+    attachments = {
+        "models/items/mirana/mirana_dark_carnival/mirana_dark_carnival_arms.vmdl",
+        "models/items/mirana/mirana_dark_carnival/mirana_dark_carnival_back.vmdl",
+        "models/items/mirana/mirana_dark_carnival/mirana_dark_carnival_head.vmdl",
+        "models/items/mirana/mirana_dark_carnival/mirana_dark_carnival_misc.vmdl",
+        "models/items/mirana/mirana_dark_carnival/mirana_dark_carnival_mount.vmdl",
+        "models/items/mirana/mirana_dark_carnival/mirana_dark_carnival_shoulders.vmdl",
+        "models/items/mirana/mirana_dark_carnival/mirana_dark_carnival_weapon.vmdl",
+    },
+},
 
 
 

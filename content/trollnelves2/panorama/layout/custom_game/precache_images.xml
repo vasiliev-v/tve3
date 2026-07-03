@@ -377,6 +377,23 @@
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/sight_tower_7.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/sight_tower_8.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/sight_tower_9.png" />
+
+		<!-- NEW TOWER SKINS -->
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_11.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_11_1.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/2_tower_12.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_12_1.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_14.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_15.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_16.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_17.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/tower_17_1.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_17_1.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/2_tower_17_1.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_18.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_19.png" />
+	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/1_tower_15_1.png" />
+
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_1.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_10.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/skin_11.png" />
