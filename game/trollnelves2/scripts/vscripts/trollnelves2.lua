@@ -967,6 +967,63 @@ end
 function trollnelves2:Inittrollnelves2()
     trollnelves2 = self
     trollnelves2:_Inittrollnelves2()
+
+    GameRules.PendingSellItems = {}
+
+    Timers:CreateTimer(function()
+
+        for entindex, data in pairs(GameRules.PendingSellItems) do
+
+            local item = EntIndexToHScript(entindex)
+            local unit = EntIndexToHScript(data.unit)
+
+            if not item
+            or item:IsNull()
+            or not unit
+            or unit:IsNull() then
+
+                GameRules.PendingSellItems[entindex] = nil
+
+            else
+                local playerID = data.playerID
+                local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+                local found = false
+
+                for slot = 0, 8 do
+                    if unit:GetItemInSlot(slot) == item then
+                        found = true
+                        break
+                    end
+                end
+
+                if not found then
+
+                GameRules.PendingSellItems[entindex] = nil
+                elseif unit:GetPlayerOwnerID() ~= playerID then
+                    GameRules.PendingSellItems[entindex] = nil
+
+                else
+                    local owner = item:GetOwner()
+
+                    if not owner
+                    or owner:GetPlayerOwnerID() ~= playerID then
+
+                        GameRules.PendingSellItems[entindex] = nil
+
+                    elseif hero
+                    and IsInsideShopArea(hero)
+                    and unit:CanSellItems()
+                    and item:IsSellable() then
+                        SellItem(unit, item)
+                        GameRules.PendingSellItems[entindex] = nil
+                    end
+                end
+            end
+        end
+
+        return 0.2
+    end)
 end
 
 function ModifyLumberPrice(amount)
