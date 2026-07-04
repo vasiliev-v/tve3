@@ -7,6 +7,8 @@ require('libraries/util')
 require('stats')
 require('settings')
 
+GameRules.PendingSellItems = GameRules.PendingSellItems or {}
+
 GameRules.MapSpeed = tonumber(string.match(GetMapName(),"%d+")) or 1
 if not BuildingHelper then BuildingHelper = class({}) end
 
@@ -1252,6 +1254,7 @@ function BuildingHelper:OrderFilter(order)
             SendErrorMessage(issuerID, "error_shop_out_of_range")
             return false
         end
+        GameRules.PendingSellItems[item:entindex()] = nil
         SellItem(unit, item)
         return false
     end
@@ -1275,14 +1278,64 @@ function BuildingHelper:OrderFilter(order)
             SendErrorMessage(issuerID, "error_shop_out_of_range")
             return false
         end
+        GameRules.PendingSellItems[item:entindex()] = nil
         SellItem(unit, item)
         return false
     end
 
-    if order_type == 42 then -- mark for sell 
-        SendErrorMessage(issuerID, "error_shop_out_of_range")
+    if order_type == 42 then
+    local item = EntIndexToHScript(order.entindex_ability)
+    if not item or item:IsNull() then
         return false
     end
+
+    -- Предмет должен лежать у этого юнита
+    local found = false
+
+    for slot = 0, 8 do
+        if unit:GetItemInSlot(slot) == item then
+            found = true
+            break
+        end
+    end
+
+    if not found then
+        return false
+    end
+    
+    -- Юнит должен принадлежать игроку
+    if unit:GetPlayerOwnerID() ~= issuerID then
+        return false
+    end
+
+    -- Предмет тоже должен принадлежать этому игроку
+    local owner = item:GetOwner()
+    if not owner or owner:GetPlayerOwnerID() ~= issuerID then
+        return false
+    end
+
+    local entindex = item:entindex()
+    local hero = PlayerResource:GetSelectedHeroEntity(issuerID)
+
+    if GameRules.PendingSellItems[entindex] then
+        GameRules.PendingSellItems[entindex] = nil
+
+        if hero then
+            EmitSoundOnEntityForPlayer("General.Cancel", hero, issuerID)
+        end
+    else
+        GameRules.PendingSellItems[entindex] = {
+            unit = unit:entindex(),
+            playerID = issuerID,
+        }
+
+        if hero then
+            EmitSoundOnEntityForPlayer("General.ButtonClick", hero, issuerID)
+        end
+    end
+
+    return false
+end
     
     return ret
 end
