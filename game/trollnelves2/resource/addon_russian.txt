@@ -320,7 +320,7 @@
 		"DOTA_Tooltip_modifier_mirana_star_blessing_datadriven_Description"                 "Дает %bonus_atkspd% скорости атаки и <font color='#9c5fff'>+%bonus_night_vision% к обзору ночью союзникам</font> радиуса обзора ночью в радиусе %radius%."
 		"DOTA_Tooltip_modifier_star_blessing_atkspd_effect_Description"                 "Дает <font color='#00d9ff'>+16 скорости атаки</font> и <font color='#9c5fff'>+300 радиуса обзора ночью</font> в радиусе 900."
 		"DOTA_Tooltip_ability_venge_range_boost_datadriven_Description"                 "Дает <font color='#00ff2a'>+%bonus_range%</font> к дальности атаки в радиусе <font color='#00ff00'>%radius%</font>."
-		"DOTA_Tooltip_modifier_range_boost_datadriven_Description"                 "Дает <font color='#00ff2a'>+45</font> к дальности атаки в радиусе <font color='#00ff2a'>700</font>"
+		"DOTA_Tooltip_modifier_range_boost_datadriven_Description"                 "Дает <font color='#00ff2a'>%%bonus_range%%</font> к дальности атаки в радиусе <font color='#00ff2a'>700</font>"
 		"DOTA_Tooltip_modifier_modifier_range_boost_range_effect_Description"                 "Дает +%bonus_range% к дальности атаки в радиусе %radius%."
 		"DOTA_Tooltip_modifier_range_boost_range_effect_Description"										  "Дает <font color='#00ff2a'>+75</font> к дальности атаки в радиусе <font color='#00ff2a'>900</font>"
 		"DOTA_Tooltip_ability_medusa_split_shot_lua_Description"                 "Атакует <font color='#9dff00'>неограниченное количество целей</font> за раз"

@@ -11,9 +11,13 @@
   {
     "MaxPlayers"        "14"
   }
-  "turbo2x"
+  "classic2x"
   {
     "MaxPlayers"        "14"
+  }
+  "turbo2x"
+  {
+    "MaxPlayers"        "12"
   }
   "classic4x"
   {
