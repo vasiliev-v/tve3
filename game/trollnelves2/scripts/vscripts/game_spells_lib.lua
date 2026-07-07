@@ -2454,17 +2454,16 @@ function game_spells_lib:SetSpellPlayers(id)
 
 
     -- GOOD GUYS: DOTA_TEAM_GOODGUYS
-if team == DOTA_TEAM_GOODGUYS then
-    local has_solo = false
-    for _, name in ipairs(active) do
-        if name == "elf_spell_solo_player" then
-            has_solo = true
-            break
-        end
-    end
+    if team == DOTA_TEAM_GOODGUYS then
+        local has_solo = false
 
-    -- Если есть solo-перк и аспектов меньше 3
-    if has_solo and #active < 3 then
+        for _, name in ipairs(active) do
+            if name == "elf_spell_solo_player" then
+                has_solo = true
+                break
+            end
+        end
+
         local candidates = {}
         local exists = {}
 
@@ -2487,12 +2486,20 @@ if team == DOTA_TEAM_GOODGUYS then
             end
         end
 
-        while #active < 3 and #candidates > 0 do
-            local idx = RandomInt(1, #candidates)
-            table.insert(active, candidates[idx])
-            table.remove(candidates, idx)
+        if has_solo then
+            -- С solo-перком добираем до 3 аспектов
+            while #active < 3 and #candidates > 0 do
+                local idx = RandomInt(1, #candidates)
+                table.insert(active, candidates[idx])
+                table.remove(candidates, idx)
+            end
+        else
+            -- Без solo-перка максимум 1 аспект
+            if #active < 1 and #candidates > 0 then
+                local idx = RandomInt(1, #candidates)
+                table.insert(active, candidates[idx])
+            end
         end
-    end
 
 -- BAD GUYS
 elseif team == DOTA_TEAM_BADGUYS then
