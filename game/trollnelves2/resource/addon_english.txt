@@ -633,9 +633,6 @@
 		"DOTA_Tooltip_modifier_death_armor_bear"                                     "Debuff Health"
 		"DOTA_Tooltip_modifier_death_armor_bear_Description"                         "Reduces health by 50%."
 
-		"DOTA_Tooltip_modifier_buff_glyph_counter"                                     "Glyph Counter"
-		"DOTA_Tooltip_modifier_buff_glyph_counter_Description"                         "1 stack - 12 sec, 2 stacks - 8 sec, 3 stacks - 4 sec, 4 and more stacks - 2 sec."
-
 		"DOTA_Tooltip_modifier_gain_gold"                                                 "Gain Gold"
 		"DOTA_Tooltip_modifier_gain_gold_Description"                                     ""
 		
@@ -1047,12 +1044,6 @@
 		"DOTA_Tooltip_ability_upgrade_to_rock_21_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_upgrade_to_rock_21_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 
-
-		"DOTA_Tooltip_Ability_buy_reveal_area_bear"								"Buy Reveal Area for Bear"
-		"DOTA_Tooltip_Ability_buy_reveal_area_bear_Description"					"Shows the territory in a certain radius. Great for reconnaissance of enemy bases! Reveals invisible units."
-		"DOTA_Tooltip_Ability_buy_reveal_area_bear_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
-		"DOTA_Tooltip_Ability_buy_reveal_area_bear_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
-
 		"DOTA_Tooltip_Ability_buy_troll_teleport_bear"								"Buy Teleport for Bear"
 		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_Description"					"Teleport to Troll's base!"
 		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
@@ -1066,7 +1057,7 @@
 
 
 		"DOTA_Tooltip_Ability_buy_reveal_area_bear"								"Buy Reveal Area for Bear"
-		"DOTA_Tooltip_Ability_buy_reveal_area_bear_Description"					""
+		"DOTA_Tooltip_Ability_buy_reveal_area_bear_Description"					"Shows the territory in a certain radius. Great for reconnaissance of enemy bases! Reveals invisible units."
 		"DOTA_Tooltip_Ability_buy_reveal_area_bear_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_Ability_buy_reveal_area_bear_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
 
@@ -1525,7 +1516,6 @@
 		"DOTA_Tooltip_modifier_range_boost_datadriven"                             "Spirit of ravenge"
 		"DOTA_Tooltip_modifier_range_boost_datadriven_Description" 				   "Gives <font color='#00ff2a'>+45</font> attack range in a <font color='#00ff2a'>700</font> radius"
 		
-		"DOTA_Tooltip_modifier_range_boost_range_effect"                             "Spirit of ravenge"
 		"DOTA_Tooltip_modifier_range_boost_range_effect_Description" 						  "Gives <font color='#00ff2a'>+75</font> attack range in a <font color='#00ff2a'>900</font> radius"
 
 		"DOTA_Tooltip_ability_medusa_split_shot_lua"                             "Split Shot"
@@ -1610,9 +1600,6 @@
 
 		"DOTA_Tooltip_ability_troll_warlord_attack_speed_200_datadriven"                  "Buff/Debuff Troll"
 		"DOTA_Tooltip_ability_troll_warlord_attack_speed_200_datadriven_Description"      "Buff/Debuff: Atack speed +200"
-
-		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven"                  "Buff/Debuff"
-		"DOTA_Tooltip_ability_troll_warlord_attack_presence_datadriven_Description"      "Buff/Debuff: Atack speed +200"
 
 		"DOTA_Tooltip_modifier_troll_warlord_attack_speed_200"									"Buff: Increased attack speed"
 		"DOTA_Tooltip_modifier_troll_warlord_anti"											"Buff: Increased attack speed"
@@ -3999,7 +3986,6 @@ The effect is issued for 1 year. Your support helps the game develop."
 		"donate7"																			"<font color='#58ACFA'>SHOP: https://tve-shop.com</font>"
 		"donate8"																			"<font color='#58ACFA'>Our team has created a new game VAMPIRISM SPEED. More info on Discord.</font>"
 		"DOTA_Tooltip_Ability_item_dmg_18"													"dmg 18"
-		"DOTA_Tooltip_Ability_item_armor_14"												"armor 14"
 		"DOTA_Tooltip_Ability_item_troll_boots_3"											"boots 3"
 		"DOTA_Tooltip_Ability_item_gold"													"Gold"
 		"DOTA_Tooltip_Ability_item_full"													"Full"
@@ -4644,8 +4630,10 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"elf_spell_solo_player_description_level_2_shop"               "Movespeed"
 		"elf_spell_solo_player_description_level_3_shop"				   "Unit Movespeed"
 		"DOTA_Tooltip_modifier_worker_spell_cd_reduce"			 "Reduces worker's abilities cooldowns."
-		"DOTA_Tooltip_modifier_unit_spell_solo_player"			 "Increases Unit's Movespeed."
-		"DOTA_Tooltip_modifier_unit_spell_solo_player_x4"		 "Increases Unit's Movespeed."
+		"DOTA_Tooltip_modifier_unit_spell_solo_player"			 "Unit Movespeed"
+		"DOTA_Tooltip_modifier_unit_spell_solo_player_x4"		 "Unit Movespeed"
+		"DOTA_Tooltip_modifier_unit_spell_solo_player_description"			 ""
+		"DOTA_Tooltip_modifier_unit_spell_solo_player_x4_description"		 ""
 
 		"elf_spell_ms"                            		 "Movespeed"
         "elf_spell_ms_description"                       "Passive: Increases movespeed"
@@ -5077,7 +5065,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_haste_x4_description_level_1"                  "Duration: 10<br>CD: 300<br>Passive Evasion: 2%<br>Movespeed: MAX"
         "modifier_troll_spell_haste_x4_description_level_2"                  "Duration: 15<br>CD: 250<br>Passive Evasion: 4%<br>Movespeed: MAX"
         "modifier_troll_spell_haste_x4_description_level_3"                  "Duration: 25<br>CD: 150<br>Passive Evasion: 6%<br>Movespeed: MAX"
-		"DOTA_Tooltip_modifier_troll_spell_haste_x4"			             "Active: Increases movespeed"
+		"DOTA_Tooltip_modifier_troll_spell_haste_x4"			             "Haste"
 		"DOTA_Tooltip_modifier_troll_spell_haste_x4_bonus_ms"	 			 "Haste"
 		"DOTA_Tooltip_modifier_troll_spell_haste_x4_bonus_ms_description"	 "Increases Movement speed"
 
@@ -5085,7 +5073,6 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_Description" "Target Stun"
 		"DOTA_Tooltip_ability_troll_spell_stun_target_x4_bolt_stun_duration" "DURATION: "
 
-		"DOTA_Tooltip_modifier_troll_spell_haste_x4" "Haste"
 		"DOTA_Tooltip_modifier_troll_spell_haste_x4_description" "Active: Increases movespeed"
 
 		"troll_spell_haste_description_level_1_shop_x4" "Duration"
@@ -5118,7 +5105,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
         "modifier_troll_spell_slow_area_x4_description_level_1"               "MS: -50<br>Miss chance: 10%<br>Duration: 2<br>CD: 300"
         "modifier_troll_spell_slow_area_x4_description_level_2"               "MS: -60<br>Miss chance: 20%<br>Duration: 5<br>CD: 250"
         "modifier_troll_spell_slow_area_x4_description_level_3"               "MS: -70<br>Miss chance: 30%<br>Duration: 10<br>CD: 200"
-		"DOTA_Tooltip_modifier_troll_spell_slow_area_x4"			 "Active: Slows MS in an area"
+		"DOTA_Tooltip_modifier_troll_spell_slow_area_x4"			 "Area Slow"
 		"DOTA_Tooltip_modifier_drunken_haze"							 "Slowed In Area"
 
 		"troll_spell_bkb_description_level_1_shop_x4" "Duration"
@@ -5142,7 +5129,6 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_ability_troll_spell_slow_target_x4_duration" "DURATION: "
 		"DOTA_Tooltip_ability_troll_spell_slow_target_x4_speed" "REDUCE MS: "
 
-		"DOTA_Tooltip_modifier_troll_spell_slow_area_x4" "Area Slow"
 		"DOTA_Tooltip_modifier_troll_spell_slow_area_x4_description" "Active: Slows MS in an area"
 
 		"troll_spell_slow_area_description_level_1_shop_x4" "Movespeed"
@@ -5441,18 +5427,12 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 "modifier_troll_spell_armor_x4_description_level_1" "Armor +2<br>Regeneration: 2"
 "modifier_troll_spell_armor_x4_description_level_2" "Armor +4<br>Regeneration: 4"
 "modifier_troll_spell_armor_x4_description_level_3" "Armor +8<br>Regeneration: 8"
-"modifier_troll_spell_status_resist_x4_description_level_1" "Status Resist: +15%<br>Magic Resist: +15%"
-"modifier_troll_spell_status_resist_x4_description_level_2" "Status Resist: +20%<br>Magic Resist: +20%"
-"modifier_troll_spell_status_resist_x4_description_level_3" "Status Resist: +25%<br>Magic Resist: +25%"
 "modifier_troll_spell_silence_target_x4_description_level_1" "Duration: 7<br>CD: 250"
 "modifier_troll_spell_silence_target_x4_description_level_2" "Duration: 8<br>CD: 200"
 "modifier_troll_spell_silence_target_x4_description_level_3" "Duration: 9<br>CD: 150"
 "modifier_troll_spell_silence_area_x4_description_level_1" "Duration: 5<br>CD: 300"
 "modifier_troll_spell_silence_area_x4_description_level_2" "Duration: 5<br>CD: 300"
 "modifier_troll_spell_silence_area_x4_description_level_3" "Duration: 5<br>CD: 300"
-"modifier_troll_spell_haste_x4_description_level_1" "Duration: 10<br>CD: 300<br>Passive Evasion: 2%<br>Movespeed: MAX"
-"modifier_troll_spell_haste_x4_description_level_2" "Duration: 10<br>CD: 300<br>Passive Evasion: 2%<br>Movespeed: MAX"
-"modifier_troll_spell_haste_x4_description_level_3" "Duration: 10<br>CD: 300<br>Passive Evasion: 2%<br>Movespeed: MAX"
 "modifier_troll_spell_ward_x4_description_level_1" "Duration: 60<br>Troll Vision: +300"
 "modifier_troll_spell_ward_x4_description_level_2" "Duration: 60<br>Troll Vision: +300"
 "modifier_troll_spell_ward_x4_description_level_3" "Duration: 60<br>Troll Vision: +300"
