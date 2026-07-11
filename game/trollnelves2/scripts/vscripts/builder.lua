@@ -158,7 +158,7 @@ function Build( event )
                     end
                 end
             end
-            if string.match(building_name,"rock") and unit:GetMana() > 0  then
+            if string.match(building_name,"rock") or string.match(building_name,"turbo_demonic") and unit:GetMana() > 0  then
                 unit:SetMana(0)
             end
 
@@ -484,6 +484,9 @@ function UpgradeBuilding( event )
     local position = newBuilding:GetAbsOrigin()
     
     if string.match(building:GetUnitName(),"rock") then
+        newBuilding:SetMana(building:GetMana())
+    end
+    if string.match(building:GetUnitName(),"turbo_demonic") then
         newBuilding:SetMana(building:GetMana())
     end
     if building:HasModifier("modifier_shallow_grave_datadriven") then

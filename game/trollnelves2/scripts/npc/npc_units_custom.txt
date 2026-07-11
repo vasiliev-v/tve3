@@ -460,11 +460,16 @@
 	    "BuildTime"                 "1"
 	    "Upgrades"
 	    {
-	        "Count"     "1"
+	        "Count"     "2"
 	        "1"{
 				"unit_name"			"barracks_2"
 				"gold_cost"			"6400"
 				"lumber_cost"		"256"
+			}
+			"2"{
+				"unit_name"			"bank"
+				"gold_cost"			"999999"
+				"lumber_cost"		"999999"
 			}
 	    }
 
@@ -2003,11 +2008,26 @@
 	    "BuildTime"                 "1"
 	    "Upgrades"
 	    {
-	        "Count"     "1"
+	        "Count"     "4"
 	        "1"{
 				"unit_name"			"rock_12"
 				"gold_cost"			"8192"
 				"lumber_cost"		"64"
+			}
+			"2"{
+				"unit_name"			"rock_16"
+				"gold_cost"			"131072"
+				"lumber_cost"		"1024"
+			}
+			"3"{
+				"unit_name"			"rock_17"
+				"gold_cost"			"262144"
+				"lumber_cost"		"2048"
+			}
+			"4"{
+				"unit_name"			"rock_18"
+				"gold_cost"			"999999"
+				"lumber_cost"		"999999"
 			}
 	    }
 
