@@ -354,7 +354,7 @@ function GoldOnAttack (event)
 			PlayerResource:SetGold(caster, gold, true)
 			PlayerResource:ModifyLumber(caster, lumber, true)
 		end
-		if string.match(target:GetUnitName(),"rock") and not string.match(GetMapName(),"1x1") and not target:HasModifier("modifier_fountain_glyph") and not string.match(GetMapName(),"clanwars")  then
+		if string.match(target:GetUnitName(),"rock") or string.match(target:GetUnitName(),"turbo_demonic") and not string.match(GetMapName(),"1x1") and not target:HasModifier("modifier_fountain_glyph") and not string.match(GetMapName(),"clanwars")  then
 			if GameRules.MapSpeed == 2 then
 				target:GiveMana(2.5/duoBase)
 			elseif GameRules.MapSpeed == 4 then
