@@ -658,15 +658,22 @@ function InitializeTroll(hero)
         hero:AddItemByName("item_disable_repair_2")
         hero:AddItemByName("item_disable_repair")
     end
-    -- 17k gold || на 16к если именно хочешь то удали два предмета с комментом xxx, но я бы 17к оставил
-    if string.match(GetMapName(),"turbo2x") then
-        hero:AddItemByName("item_dmg_6")
-        hero:AddItemByName("item_dmg_7")
-        hero:AddItemByName("item_hp_6")
-        hero:AddItemByName("item_atk_spd_6")
-        hero:AddItemByName("item_atk_spd_3") -- xxx
-        hero:AddItemByName("item_hp_reg_4") -- xxx
-    end
+
+    
+    if string.match(GetMapName(), "turbo2x") then
+    Timers:CreateTimer(35, function()
+        if hero and not hero:IsNull() then
+            hero:AddItemByName("item_dmg_6")
+            hero:AddItemByName("item_dmg_7")
+            hero:AddItemByName("item_hp_6")
+            hero:AddItemByName("item_atk_spd_6")
+            hero:AddItemByName("item_atk_spd_3")
+            hero:AddItemByName("item_hp_reg_4")
+        end
+
+        return nil -- таймер больше не повторится
+    end)
+end
     hero:SetStashEnabled(false)
     
     -- check count elf 
