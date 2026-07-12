@@ -79,7 +79,10 @@ function SpiritBearSpawn( event )
 					caster.bear:TakeItem(item)
 				end
 			end
-			if GameRules.MapSpeed >= 2 then
+			if GameRules.MapSpeed == 2 then
+				caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x2", {})
+			end
+			if GameRules.MapSpeed == 4 then
 				caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x4", {})
 			end
 			return
@@ -98,7 +101,10 @@ function SpiritBearSpawn( event )
 				caster.bear:RemoveModifierByName("modifier_bear_synergy")
 				synergyAbility:ApplyDataDrivenModifier(caster, caster.bear, "modifier_bear_synergy", nil)
 			end
-			if GameRules.MapSpeed >= 2 then
+			if GameRules.MapSpeed == 2 then
+				caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x2", {})
+			end
+			if GameRules.MapSpeed == 4 then
 				caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x4", {})
 			end
 		else
@@ -133,7 +139,10 @@ function SpiritBearSpawn( event )
 			caster.bear:RemoveModifierByName("bear_movespeed")
 			caster.bear:RemoveModifierByName("modifier_disable_repair2_carrier")
 			caster.bear:RemoveModifierByName("gold_wisp_on_attack")
-			if GameRules.MapSpeed >= 2 then
+			if GameRules.MapSpeed == 2 then
+				caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x2", {})
+			end
+			if GameRules.MapSpeed == 4 then
 				caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x4", {})
 			end
 		end
@@ -186,7 +195,10 @@ function SpiritBearLevel( event )
 		caster.bear:RemoveAbility("reveal_area")
 		caster.bear:RemoveAbility("troll_teleport")
 		caster.bear:RemoveModifierByName("gold_wisp_on_attack")
-		if GameRules.MapSpeed >= 2 then
+		if GameRules.MapSpeed == 2 then
+				caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x2", {})
+			end
+		if GameRules.MapSpeed == 4 then
 			caster.bear:AddNewModifier(caster.bear, nil, "modifier_movespeed_x4", {})
 		end
 	end
