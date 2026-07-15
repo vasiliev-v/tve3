@@ -15728,7 +15728,7 @@
 			{
 				"ApplyModifier"
 				{
-					"ModifierName" "modifier_elf_spell_evasion_datadriven"
+					"ModifierName" "modifier_elf_spell_target_buff_datadriven"
 					"Target"       "TARGET"
 					"Duration"     "%duration"
 				}
@@ -15738,7 +15738,7 @@
 
     "Modifiers"
     {
-        "modifier_elf_spell_evasion_datadriven"
+        "modifier_elf_spell_target_buff_datadriven"
         {
             "Passive"  "0"
             "IsHidden" "0"
@@ -17396,7 +17396,7 @@
 			{
 				"ApplyModifier"
 				{
-					"ModifierName" "modifier_elf_spell_evasion_datadriven"
+					"ModifierName" "modifier_elf_spell_target_buff_datadriven"
 					"Target"       "TARGET"
 					"Duration"     "%duration"
 				}
@@ -17406,7 +17406,7 @@
 
     "Modifiers"
     {
-        "modifier_elf_spell_evasion_datadriven"
+        "modifier_elf_spell_target_buff_datadriven"
         {
             "Passive"  "0"
             "IsHidden" "0"
