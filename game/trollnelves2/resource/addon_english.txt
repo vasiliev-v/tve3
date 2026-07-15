@@ -4270,6 +4270,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_modifier_elf_spell_true_sight_reveal"						"True Sight"
 		"DOTA_Tooltip_modifier_elf_spell_target_damage_datadriven"				"Curse"
 		"DOTA_Tooltip_modifier_elf_spell_reveal_anti_aura"						"Revealed"
+		"DOTA_Tooltip_modifier_elf_spell_target_buff_datadriven"				"Buffed"
 
 		"troll_spell_ms"                                   "Movespeed"
         "troll_spell_ms_description"                       "Passive: Increases movespeed"
