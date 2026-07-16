@@ -987,23 +987,16 @@ function trollnelves2:Inittrollnelves2()
     GameRules.PendingSellItems = {}
 
     Timers:CreateTimer(function()
-
         for entindex, data in pairs(GameRules.PendingSellItems) do
-
             local item = EntIndexToHScript(entindex)
             local unit = EntIndexToHScript(data.unit)
 
-            if not item
-            or item:IsNull()
-            or not unit
-            or unit:IsNull() then
-
+            if not item or item:IsNull() or not unit or unit:IsNull() then
                 GameRules.PendingSellItems[entindex] = nil
-
+                CustomNetTables:SetTableValue("sell_items", tostring(entindex), nil) -- Очищаем на клиенте
             else
                 local playerID = data.playerID
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-
                 local found = false
 
                 for slot = 0, 8 do
@@ -1014,30 +1007,25 @@ function trollnelves2:Inittrollnelves2()
                 end
 
                 if not found then
-
-                GameRules.PendingSellItems[entindex] = nil
+                    GameRules.PendingSellItems[entindex] = nil
+                    CustomNetTables:SetTableValue("sell_items", tostring(entindex), nil) -- Очищаем на клиенте
                 elseif unit:GetPlayerOwnerID() ~= playerID then
                     GameRules.PendingSellItems[entindex] = nil
-
+                    CustomNetTables:SetTableValue("sell_items", tostring(entindex), nil) -- Очищаем на клиенте
                 else
                     local owner = item:GetOwner()
 
-                    if not owner
-                    or owner:GetPlayerOwnerID() ~= playerID then
-
+                    if not owner or owner:GetPlayerOwnerID() ~= playerID then
                         GameRules.PendingSellItems[entindex] = nil
-
-                    elseif hero
-                    and IsInsideShopArea(hero)
-                    and unit:CanSellItems()
-                    and item:IsSellable() then
+                        CustomNetTables:SetTableValue("sell_items", tostring(entindex), nil) -- Очищаем на клиенте
+                    elseif hero and IsInsideShopArea(hero) and unit:CanSellItems() and item:IsSellable() then
                         SellItem(unit, item)
                         GameRules.PendingSellItems[entindex] = nil
+                        CustomNetTables:SetTableValue("sell_items", tostring(entindex), nil) -- Очищаем на клиенте
                     end
                 end
             end
         end
-
         return 0.2
     end)
 end
