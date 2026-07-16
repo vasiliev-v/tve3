@@ -1318,16 +1318,20 @@ function BuildingHelper:OrderFilter(order)
     local hero = PlayerResource:GetSelectedHeroEntity(issuerID)
 
     if GameRules.PendingSellItems[entindex] then
+        -- Снимаем отметку о продаже
         GameRules.PendingSellItems[entindex] = nil
+        CustomNetTables:SetTableValue("sell_items", tostring(entindex), nil) -- Передаем на клиент пустоту
 
         if hero then
             EmitSoundOnEntityForPlayer("General.Cancel", hero, issuerID)
         end
     else
+        -- Добавляем предмет в очередь
         GameRules.PendingSellItems[entindex] = {
             unit = unit:entindex(),
             playerID = issuerID,
         }
+        CustomNetTables:SetTableValue("sell_items", tostring(entindex), { marked = 1 }) -- Сигнализируем клиенту
 
         if hero then
             EmitSoundOnEntityForPlayer("General.ButtonClick", hero, issuerID)
