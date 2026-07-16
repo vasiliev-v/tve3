@@ -5,6 +5,15 @@
 	{
 		"addon_game_name"			"Troll vs Elves 4"
 		
+		// ЛОКАЛИЗАЦИЯ ДЛЯ top_menu.js
+		"TopMenu_Profile"     "Профиль"
+        "TopMenu_Leaders"     "Лидеры"
+        "TopMenu_Shop"        "Магазин"
+        "TopMenu_BP"          "BP"
+        "TopMenu_Rewards"     "Награды"
+        "TopMenu_Info"        "Гайд"
+        "TopMenu_Discord"     "Discord"
+
 		"rock_18"                                                              "Golden Dragon Wall"
 		"tower_17_1"                                                                        "Tower 17 LVL 2"
 		"troll_hut_8"                                                                     "Troll Hut 8"

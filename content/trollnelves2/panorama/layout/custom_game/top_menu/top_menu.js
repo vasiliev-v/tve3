@@ -1,12 +1,12 @@
 var TOP_MENU_BUTTONS =
 [
-    ["ButtonStats", StatsClick, "Profile"],
-    ["ButtonLeaderboards", LeaderboardsClick, "Leaders"],
-    ["ButtonStore", StoreClick, "Shop"],
-    ["ButtonBattlePass", BattlePassClick, "BP"],
-    ["ButtonRewards", RewardsClick, "Rewards"],
-    ["ButtonInfo", InfoClick, "Info"],
-    ["Discord", DiscordOpen, "Discord"],
+    ["ButtonStats", StatsClick, "#TopMenu_Profile"],
+    ["ButtonLeaderboards", LeaderboardsClick, "#TopMenu_Leaders"],
+    ["ButtonStore", StoreClick, "#TopMenu_Shop"],
+    ["ButtonBattlePass", BattlePassClick, "#TopMenu_BP"],
+    ["ButtonRewards", RewardsClick, "#TopMenu_Rewards"],
+    ["ButtonInfo", InfoClick, "#TopMenu_Info"],
+    ["Discord", DiscordOpen, "#TopMenu_Discord"],
 ]
 
 var RewardsButton = null
@@ -31,7 +31,7 @@ function Init() {
         // Текст снизу
         let label = $.CreatePanel("Label", button, "")
         label.AddClass("ButtonTopMenuText")
-        label.text = button_info[2] || ""
+        label.text = $.Localize(button_info[2]) || ""
     }
 
     UpdateRewardsButtonLoop()
