@@ -4,21 +4,27 @@
     </styles>
     <scripts>
         <include src="file://{resources}/layout/custom_game/custom_loading_screen.js" />
-	</scripts>
-    <Panel class="AddonLoadingRoot">
+    </scripts>
+    
+    <!-- hittest="true" нужен, чтобы панель могла ловить клики -->
+    <Panel class="AddonLoadingRoot" hittest="true" hittestchildren="true">
         <Panel id="CustomBg" />
-		<!--
-  	    <Panel id = "LoadingTextContainer">
-		    <Label id = "LoadingText" text = "#loading_text" html = "true"/>
-	    </Panel> 
-	    <Panel id = "LoadingTextNoTrollContainer">
-		    <Label id = "LoadingText" text = "#loading_text_no_troll" html = "true"/>
-	    </Panel> 
-	    <Panel class="Hud" hittest="false"> 
-		    <Button id="DonateToggleButton" onactivate="ExternalBrowserGoToURL('https://discord.gg/tve4')"> 
-			    <Panel id="Arrow" />
-		    </Button> 
-	    </Panel>
-		-->
+        
+        <!-- Контейнер-пустышка для проверки кнопок -->
+        <Panel class="DummyContainer">
+            <Label class="DummyTitle" text="ТЕСТ ЗАГРУЗОЧНОГО ЭКРАНА" />
+
+            <Button class="DummyButton" onactivate="OpenExternalUrl('https://t.me/dota_rave')" hittest="true" hittestchildren="false">
+                <Label text="TELEGRAM" />
+            </Button>
+
+            <Button class="DummyButton" onactivate="OpenExternalUrl('https://discord.gg/UkDezmuQTp')" hittest="true" hittestchildren="false">
+                <Label text="DISCORD" />
+            </Button>
+
+            <Button class="DummyButton" onactivate="OpenExternalUrl('https://wtflegends.com/wiki')" hittest="true" hittestchildren="false">
+                <Label text="WIKI" />
+            </Button>
+        </Panel>
     </Panel>
 </root>

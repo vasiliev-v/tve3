@@ -8,7 +8,7 @@
 		<include src="file://{resources}/layout/custom_game/scripts/modifiers_panel_fix.js" />
 	</scripts>
 	<styles>
-		<include src="file://{resources}/layout/custom_game/styles/setup.css" /> 
+		<include src="file://{resources}/layout/custom_game/styles/setup.css" />
 	</styles>
     <Panel>
         <CustomUIElement type="HudTopBar"			layoutfile="file://{resources}/layout/custom_game/multiteam_top_scoreboard/multiteam_top_scoreboard.xml" />
