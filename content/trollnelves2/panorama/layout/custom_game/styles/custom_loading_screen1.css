@@ -144,7 +144,7 @@
     horizontal-align: center;
     margin-top: 10px; /* Отступ сверху от заголовка */
     border-radius: 8px; /* Немного скруглим углы для красоты */
-    border: 2px solid #b9ff46;
+    border: 1px solid #7cc900;
     box-shadow: 0px 8px 125px #000000dd; /* <--- Добавлена темная тень */
 }
 
