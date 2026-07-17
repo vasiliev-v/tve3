@@ -138,9 +138,14 @@
     /* Убрал flow-children: down, чтобы текст идеально встал по центру */
 }
 
-/* ВРЕМЕННО ПРЯЧЕМ КАРТИНКУ */
-#TipImage {
-    visibility: collapse; 
+#TipImage, #TipVideo {
+    width: 86%; /* Ширина видео/картинки (подгони под себя) */
+    height: 290px; /* Высота */
+    horizontal-align: center;
+    margin-top: 10px; /* Отступ сверху от заголовка */
+    border-radius: 8px; /* Немного скруглим углы для красоты */
+    border: 2px solid #b9ff46;
+    box-shadow: 0px 8px 125px #000000dd; /* <--- Добавлена темная тень */
 }
 
 /* Текст совета */
@@ -151,10 +156,9 @@
     font-weight: black;
     text-align: center;
     vertical-align: center;
-    margin-bottom: 80px; /* <--- ДОБАВЛЕНО: Отталкиваем текст снизу вверх */
+    margin-bottom: -320px; /* <--- ДОБАВЛЕНО: Отталкиваем текст снизу вверх */
     text-shadow: 0px 3px 8px #000000;
 }
-/* ... предыдущий код ... */
 
 /* Контейнер для кругов (ДОБАВЛЕНО) */
 #TipDotsContainer {

@@ -53,20 +53,24 @@ function SyncState() {
 
 var TIPS_DATA = [
     {
-        image: "file://{images}/custom_game/loading_screen/tips/root_glyph.png",
-        text: "Старайтесь как можно чаще нажимать свои предметы для замедления фарма тролля!"
+        // Слайд 1: Видео
+        video: "file://{resources}/videos/custom_game/video_1.webm",
+        text: "В начале игры сразу займите базу. Камень следует ставить на метку на входе в базу, а флаг сразу же за ним"
     },
     {
-        image: "file://{images}/custom_game/loading_screen/tips/tip2.png", // Путь ко 2 картинке
-        text: "Текст второго совета (замените меня в JS)."
+        // Слайд 2: Видео
+        video: "file://{resources}/videos/custom_game/video_2.webm",
+        text: "Не жалейте кнопки! Активно используйте свои предметы, чтобы максимально замедлить фарм Тролля."
     },
     {
-        image: "file://{images}/custom_game/loading_screen/tips/tip3.png", // Путь к 3 картинке
-        text: "Текст третьего совета (замените меня в JS)."
+        // Слайд 3: Пока что картинка (видео нет)
+        image: "file://{images}/custom_game/loading_screen/tips/tip3.png", 
+        text: "Играете соло? Смело выбирайте аспект Loner (самый первый в списке) - он даст вам дополнительный аспект для одиночной игры."
     },
     {
-        image: "file://{images}/custom_game/loading_screen/tips/tip4.png", // Путь к 4 картинке
-        text: "Текст четвертого совета (замените меня в JS)."
+        // Слайд 4: Видео
+        video: "file://{resources}/videos/custom_game/video_8.webm",
+        text: "Присоединяйтесь к нашему Discord! Там легко найти напарников, спросить совета и следить за обновлениями."
     }
 ];
 
@@ -116,12 +120,34 @@ function UpdateTipUI() {
     }
 
     var imgPanel = $('#TipImage');
+    var videoPanel = $('#TipVideo'); // Находим панель видео
     var textPanel = $('#TipText');
     var dotsContainer = $('#TipDotsContainer');
     
-    if (imgPanel && textPanel) {
-        imgPanel.SetImage(TIPS_DATA[currentTipIndex].image);
+    // Обновляем текст
+    if (textPanel) {
         textPanel.text = TIPS_DATA[currentTipIndex].text;
+    }
+
+    // Проверяем, есть ли у текущего слайда видео
+    if (TIPS_DATA[currentTipIndex].video) {
+        if (videoPanel) {
+            videoPanel.SetMovie(TIPS_DATA[currentTipIndex].video);
+            videoPanel.visible = true; // Показываем видео
+        }
+        if (imgPanel) {
+            imgPanel.visible = false; // Прячем картинку
+        }
+    } else {
+        // Если видео нет, показываем картинку
+        if (imgPanel) {
+            imgPanel.SetImage(TIPS_DATA[currentTipIndex].image);
+            imgPanel.visible = true; // Показываем картинку
+        }
+        if (videoPanel) {
+            videoPanel.SetMovie(""); // Очищаем видео, чтобы не играл звук в фоне
+            videoPanel.visible = false; // Прячем панель видео
+        }
     }
 
     // Обновляем состояние кругов

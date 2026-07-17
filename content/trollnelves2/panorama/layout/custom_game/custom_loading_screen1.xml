@@ -24,7 +24,12 @@
 
                 <!-- Центральная часть (картинка + текст) -->
                 <Panel class="TipContent" hittest="false">
+                    <!-- Для картинок (3-й слайд) -->
                     <Image id="TipImage" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
+                    
+                    <!-- Для видео (1, 2, 4 слайды) -->
+                    <Movie id="TipVideo" autoplay="onload" repeat="true" controls="none" hittest="false" />
+                    
                     <Label id="TipText" html="true" wrap="true" hittest="false" />
                 </Panel>
 
