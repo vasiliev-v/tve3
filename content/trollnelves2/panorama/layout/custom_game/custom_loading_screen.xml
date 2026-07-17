@@ -6,25 +6,39 @@
         <include src="file://{resources}/layout/custom_game/custom_loading_screen.js" />
     </scripts>
     
-    <!-- hittest="true" нужен, чтобы панель могла ловить клики -->
+    <!-- Корневая панель загрузочного экрана -->
     <Panel class="AddonLoadingRoot" hittest="true" hittestchildren="true">
-        <Panel id="CustomBg" />
         
-        <!-- Контейнер-пустышка для проверки кнопок -->
-        <Panel class="DummyContainer">
-            <Label class="DummyTitle" text="ТЕСТ ЗАГРУЗОЧНОГО ЭКРАНА" />
+        <!-- Панель советов (Слайдер) -->
+        <Panel class="TipsContainer" hittest="true" hittestchildren="true">
+            <!-- Заголовок -->
+            <Label class="TipsHeader" text="СОВЕТЫ" hittest="false" />
 
-            <Button class="DummyButton" onactivate="OpenExternalUrl('https://t.me/dota_rave')" hittest="true" hittestchildren="false">
-                <Label text="TELEGRAM" />
-            </Button>
+            <!-- Тело со стрелками и контентом -->
+            <Panel class="TipsBody" hittest="false">
+                
+                <!-- Левая стрелка -->
+                <Button class="TipArrow" onactivate="ChangeTip(-1)" hittest="true">
+                    <Label text="◄" />
+                </Button>
 
-            <Button class="DummyButton" onactivate="OpenExternalUrl('https://discord.gg/UkDezmuQTp')" hittest="true" hittestchildren="false">
-                <Label text="DISCORD" />
-            </Button>
+                <!-- Центральная часть (картинка + текст) -->
+                <Panel class="TipContent" hittest="false">
+                    <Image id="TipImage" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
+                    <Label id="TipText" html="true" wrap="true" hittest="false" />
+                </Panel>
 
-            <Button class="DummyButton" onactivate="OpenExternalUrl('https://wtflegends.com/wiki')" hittest="true" hittestchildren="false">
-                <Label text="WIKI" />
-            </Button>
+                <!-- Правая стрелка -->
+                <Button class="TipArrow" onactivate="ChangeTip(1)" hittest="true">
+                    <Label text="►" />
+                </Button>
+                
+            </Panel>
+
+            <!-- Контейнер для кругов навигации -->
+            <Panel id="TipDotsContainer" hittest="true" hittestchildren="true" />
+            
         </Panel>
+        
     </Panel>
 </root>

@@ -1,23 +1,21 @@
 .AddonLoadingRoot {
     width: 100%;
     height: 100%;
-    background-color: black;
-    opacity: 0;
-    transition-property: opacity;
-    transition-duration: 0.3s;
-    background-size:100% 100%;
-    background-image: url("file://{images}/custom_game/loading_screen/gamemode.png");
-}
+    
 
-/* Экран становится видимым только когда игра находится в нужной фазе */
+    opacity: 1; 
+    z-index: 9999;
+    
+
+    background-color: black; 
+    
+    background-size: 100% 100%;
+    background-image: url('file://{images}/custom_game/loading_screen/gamemode.png');
+}
 .AddonLoadingRoot.IsVisible {
     opacity: 1;
 }
 
-#CustomBg {
-    width: 100%;
-    height: 100%;
-}
 
 .DummyContainer {
     align: center center;
@@ -27,6 +25,7 @@
     border: 2px solid #555555;
     border-radius: 8px;
 }
+
 
 .DummyTitle {
     color: #ffffff;
@@ -56,4 +55,146 @@
     align: center center;
     font-size: 18px;
     font-weight: bold;
+}
+/* Главный контейнер советов */
+.TipsContainer {
+    width: 650px;
+    height: 750px;
+    horizontal-align: left;
+    vertical-align: center;
+    margin-left: 80px; /* Отступ от левого края экрана */
+    
+    background-color: #111111ee;
+    border: 3px solid #333333;
+    border-radius: 12px;
+    box-shadow: 0px 0px 30px #000000aa;
+    
+    flow-children: down;
+    padding: 20px 0px;
+}
+
+.TipsContainer {
+    width: 800px;  /* Было 1000px, сделал немного поуже */
+    height: 550px; /* Сильно уменьшил высоту, так как убрали картинку */
+    horizontal-align: left;
+    vertical-align: center;
+    margin-left: 80px;
+
+    background-image: url('file://{images}/custom_game/loading_screen/gamemode3.png');
+    background-size: cover;
+    background-position: center;
+
+    border: 4px solid #b9ff46;
+    border-radius: 24px;
+    box-shadow: 0px 0px 45px #b9ff4635;
+
+    flow-children: down;
+    padding: 20px 0px;
+}
+
+.TipsHeader {
+    color: #b9ff46;
+    font-size: 42px;
+    font-weight: bold;
+    horizontal-align: center;
+    margin-bottom: 10px;
+    text-shadow: 0px 4px 10px #000000;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.TipsBody {
+    width: 100%;
+    height: fill-parent-flow(1);
+    flow-children: right;
+}
+
+.TipArrow {
+    width: 90px;
+    height: 100%;
+    background-color: transparent;
+    transition-property: background-color, brightness, transform;
+    transition-duration: 0.15s;
+}
+
+.TipArrow:hover {
+    background-color: #b9ff4615;
+    brightness: 1.5;
+}
+
+.TipArrow:active {
+    background-color: #b9ff4630;
+    transform: scale3d(0.95, 0.95, 1);
+}
+
+.TipArrow Label {
+    color: #b9ff46;
+    font-size: 55px;
+    align: center center;
+    text-shadow: 0px 2px 8px #000000;
+    transition-property: color;
+    transition-duration: 0.15s;
+}
+
+.TipArrow:hover Label {
+    color: #ffffff;
+}
+
+/* Контейнер для текста */
+.TipContent {
+    width: fill-parent-flow(1);
+    height: 100%;
+    padding: -20px 0px;
+    /* Убрал flow-children: down, чтобы текст идеально встал по центру */
+}
+
+/* ВРЕМЕННО ПРЯЧЕМ КАРТИНКУ */
+#TipImage {
+    visibility: collapse; 
+}
+
+/* Текст совета */
+#TipText {
+    width: 100%;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: black;
+    text-align: center;
+    vertical-align: center;
+    margin-bottom: 80px; /* <--- ДОБАВЛЕНО: Отталкиваем текст снизу вверх */
+    text-shadow: 0px 3px 8px #000000;
+}
+/* ... предыдущий код ... */
+
+/* Контейнер для кругов (ДОБАВЛЕНО) */
+#TipDotsContainer {
+    horizontal-align: center;
+    flow-children: right;
+    margin-top: 15px; /* Отступ сверху от текста */
+    margin-bottom: 10px; /* Небольшой отступ снизу */
+}
+
+/* Базовый стиль круга (ДОБАВЛЕНО) */
+.TipDot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: black;
+    margin: 0px 8px;
+    border: 2px solid #555555;
+    transition-property: background-color, border, box-shadow, transform;
+    transition-duration: 0.2s;
+}
+
+/* Эффект при наведении (ДОБАВЛЕНО) */
+.TipDot:hover {
+    transform: translateY(-2px);
+    brightness: 1.5;
+}
+
+/* Активный зеленый круг (ДОБАВЛЕНО) */
+.TipDot.Active {
+    background-color: #b9ff46;
+    border: 2px solid #b9ff46;
+    box-shadow: 0px 0px 15px #b9ff4655;
 }

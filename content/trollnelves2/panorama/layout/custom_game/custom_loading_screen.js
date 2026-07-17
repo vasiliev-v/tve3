@@ -2,20 +2,17 @@ var GAME_SETUP_STATE = DOTA_GameState.DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP;
 var LOADING_INPUT_BLOCKER_ID = 'SidebarAndBattleCupLayoutContainer';
 
 // ==========================================
-// ЛОГИКА КЛИКАБЕЛЬНОСТИ И СОСТОЯНИЯ ЭКРАНА
+// 1. ЛОГИКА СОСТОЯНИЯ ЭКРАНА (Скрытие/Показ)
 // ==========================================
 
-// Открытие внешних ссылок
 function OpenExternalUrl(url) {
     $.DispatchEvent('ExternalBrowserGoToURL', url);
 }
 
-// Проверка фазы игры
 function IsWaitingForPlayers() {
     return Game.GameStateIsBefore(GAME_SETUP_STATE);
 }
 
-// Поиск корневой панели загрузочного экрана (рекурсивный обход вверх)
 function FindLoadingPanel(panelId) {
     var panel = $.GetContextPanel();
     while (panel != null && panel.GetParent() != null) {
@@ -26,7 +23,6 @@ function FindLoadingPanel(panelId) {
     return loadingRoot ? loadingRoot.FindChildTraverse(panelId) : null;
 }
 
-// Отключение невидимой панели Valve, которая блокирует клики
 function DisableNativeLoadingInputBlocker() {
     var panel = FindLoadingPanel(LOADING_INPUT_BLOCKER_ID);
     if (panel) {
@@ -35,16 +31,15 @@ function DisableNativeLoadingInputBlocker() {
     }
 }
 
-// Обновление состояния видимости и кликабельности
 function SyncState() {
-    var isVisible = IsWaitingForPlayers();
-    var root = $.GetContextPanel();
+    // Если вам нужно временно включить вечный экран для верстки, 
+    // закомментируйте нижнюю строку и раскомментируйте "var isVisible = true;"
+    var isVisible = IsWaitingForPlayers(); 
+    // var isVisible = true; 
 
-    // Управляем кликабельностью
+    var root = $.GetContextPanel();
     root.hittest = isVisible;
     root.hittestchildren = isVisible;
-    
-    // Добавляем класс для CSS анимаций
     root.SetHasClass("IsVisible", isVisible);
 
     if (isVisible) {
@@ -53,7 +48,95 @@ function SyncState() {
 }
 
 // ==========================================
-// ЛОГИКА ПОИСКА ЧАТА (Ваш код)
+// 2. ЛОГИКА СЛАЙДЕРА СОВЕТОВ
+// ==========================================
+
+var TIPS_DATA = [
+    {
+        image: "file://{images}/custom_game/loading_screen/tips/root_glyph.png",
+        text: "Старайтесь как можно чаще нажимать свои предметы для замедления фарма тролля!"
+    },
+    {
+        image: "file://{images}/custom_game/loading_screen/tips/tip2.png", // Путь ко 2 картинке
+        text: "Текст второго совета (замените меня в JS)."
+    },
+    {
+        image: "file://{images}/custom_game/loading_screen/tips/tip3.png", // Путь к 3 картинке
+        text: "Текст третьего совета (замените меня в JS)."
+    },
+    {
+        image: "file://{images}/custom_game/loading_screen/tips/tip4.png", // Путь к 4 картинке
+        text: "Текст четвертого совета (замените меня в JS)."
+    }
+];
+
+var currentTipIndex = 0;
+var isDotsInitialized = false;
+
+function ChangeTip(offset) {
+    currentTipIndex += offset;
+    
+    // Зацикливаем переключение слайдов
+    if (currentTipIndex < 0) {
+        currentTipIndex = TIPS_DATA.length - 1;
+    } else if (currentTipIndex >= TIPS_DATA.length) {
+        currentTipIndex = 0;
+    }
+    
+    UpdateTipUI();
+}
+
+function InitializeDots() {
+    var dotsContainer = $('#TipDotsContainer');
+    if (!dotsContainer) return;
+    
+    // Очищаем контейнер от старых точек
+    dotsContainer.RemoveAndDeleteChildren();
+
+    for (var i = 0; i < TIPS_DATA.length; i++) {
+        var dot = $.CreatePanel('Panel', dotsContainer, 'TipDot_' + i);
+        dot.AddClass('TipDot');
+        
+        // Создаем замыкание, чтобы каждая точка переключала на свой индекс при клике
+        (function(index) {
+            dot.SetPanelEvent('onactivate', function() {
+                currentTipIndex = index;
+                UpdateTipUI();
+            });
+        })(i);
+    }
+    
+    isDotsInitialized = true;
+}
+
+function UpdateTipUI() {
+    // Инициализируем круги при первом вызове
+    if (!isDotsInitialized) {
+        InitializeDots();
+    }
+
+    var imgPanel = $('#TipImage');
+    var textPanel = $('#TipText');
+    var dotsContainer = $('#TipDotsContainer');
+    
+    if (imgPanel && textPanel) {
+        imgPanel.SetImage(TIPS_DATA[currentTipIndex].image);
+        textPanel.text = TIPS_DATA[currentTipIndex].text;
+    }
+
+    // Обновляем состояние кругов
+    if (dotsContainer) {
+        for (var i = 0; i < TIPS_DATA.length; i++) {
+            var dot = dotsContainer.FindChildTraverse('TipDot_' + i);
+            if (dot) {
+                dot.SetHasClass('Active', i === currentTipIndex);
+            }
+        }
+    }
+}
+
+// ==========================================
+// 3. ЛОГИКА ПОИСКА ЧАТА
 // ==========================================
 
 function ChatUpdater() {
@@ -65,14 +148,17 @@ function ChatUpdater() {
 }
 
 // ==========================================
-// ИНИЦИАЛИЗАЦИЯ
+// ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
 // ==========================================
 
 (function() {
-    // 1. Инициализируем UI загрузочного экрана и подписываемся на смену фазы игры
+    // Подписываемся на смену статуса игры для скрытия экрана
     SyncState();
     GameEvents.Subscribe('game_rules_state_change', SyncState);
 
-    // 2. Запускаем ваш цикл поиска панели чата
+    // Запускаем скрипт поиска чата
     ChatUpdater();
+    
+    // Отрисовываем первый совет в слайдере и генерируем круги
+    UpdateTipUI();
 })();
