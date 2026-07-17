@@ -34,7 +34,7 @@ function DisableNativeLoadingInputBlocker() {
 function SyncState() {
     // Если вам нужно временно включить вечный экран для верстки, 
     // закомментируйте нижнюю строку и раскомментируйте "var isVisible = true;"
-    var isVisible = IsWaitingForPlayers(); 
+    var isVisible = true;
     // var isVisible = true; 
 
     var root = $.GetContextPanel();
