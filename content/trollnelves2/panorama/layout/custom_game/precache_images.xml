@@ -643,7 +643,7 @@
 		 <Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/gem.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/chest_90.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/quest/icons/chest_90.png" />
-		<Image style="opacity:0;" src="file://{images}/custom_game/loading_screen/tips/root_glyph.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/loading_screen/tips/aspects.png" />
 		
 	    
     </Panel>

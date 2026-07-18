@@ -2,7 +2,7 @@ var GAME_SETUP_STATE = DOTA_GameState.DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP;
 var LOADING_INPUT_BLOCKER_ID = 'SidebarAndBattleCupLayoutContainer';
 
 // ==========================================
-// 1. ЛОГИКА СОСТОЯНИЯ ЭКРАНА (Скрытие/Показ)
+// 1. ЛОГИКА СОСТОЯНИЯ ЭКРАНА
 // ==========================================
 
 function OpenExternalUrl(url) {
@@ -32,11 +32,7 @@ function DisableNativeLoadingInputBlocker() {
 }
 
 function SyncState() {
-    // Если вам нужно временно включить вечный экран для верстки, 
-    // закомментируйте нижнюю строку и раскомментируйте "var isVisible = true;"
     var isVisible = true;
-    // var isVisible = true; 
-
     var root = $.GetContextPanel();
     root.hittest = isVisible;
     root.hittestchildren = isVisible;
@@ -48,27 +44,23 @@ function SyncState() {
 }
 
 // ==========================================
-// 2. ЛОГИКА СЛАЙДЕРА СОВЕТОВ
+// 2. ЛОГИКА СЛАЙДЕРА СОВЕТОВ С АНИМАЦИЕЙ
 // ==========================================
 
 var TIPS_DATA = [
     {
-        // Слайд 1: Видео
         video: "file://{resources}/videos/custom_game/video_1.webm",
         text: "В начале игры сразу займите базу. Камень следует ставить на метку на входе в базу, а флаг рядом со входом"
     },
     {
-        // Слайд 2: Видео
         video: "file://{resources}/videos/custom_game/video_2.webm",
         text: "Не жалейте кнопки! Активно используйте свои предметы, чтобы максимально замедлить фарм Тролля."
     },
     {
-        // Слайд 3: Пока что картинка (видео нет)
-        image: "file://{images}/custom_game/loading_screen/tips/tip3.png", 
+        video: "file://{resources}/videos/custom_game/video_9.webm", 
         text: "Играете соло? Смело выбирайте аспект Loner (самый первый в списке) - он даст вам дополнительный слот под аспект"
     },
     {
-        // Слайд 4: Видео
         video: "file://{resources}/videos/custom_game/video_8.webm",
         text: "Присоединяйтесь к нашему Discord! Там легко найти напарников, спросить совета и следить за обновлениями."
     }
@@ -76,36 +68,78 @@ var TIPS_DATA = [
 
 var currentTipIndex = 0;
 var isDotsInitialized = false;
+var isAnimating = false;
 
+// Измененная функция переключения
 function ChangeTip(offset) {
-    currentTipIndex += offset;
+    if (isAnimating) return; // Блокируем спам кликами во время анимации
+    Game.EmitSound("General.buttonclick"); // Звук клика
+
+    var newIndex = currentTipIndex + offset;
     
-    // Зацикливаем переключение слайдов
-    if (currentTipIndex < 0) {
-        currentTipIndex = TIPS_DATA.length - 1;
-    } else if (currentTipIndex >= TIPS_DATA.length) {
-        currentTipIndex = 0;
+    if (newIndex < 0) {
+        newIndex = TIPS_DATA.length - 1;
+    } else if (newIndex >= TIPS_DATA.length) {
+        newIndex = 0;
     }
     
-    UpdateTipUI();
+    // offset > 0 значит листаем вперед (смахиваем влево)
+    AnimateToTip(newIndex, offset > 0);
+}
+
+// Главная логика анимации
+function AnimateToTip(newIndex, slideLeft) {
+    var contentPanel = $('#TipContent');
+    if (!contentPanel) {
+        // Фоллбэк, если панели нет
+        currentTipIndex = newIndex;
+        UpdateTipUI();
+        return;
+    }
+
+    isAnimating = true;
+
+    // Шаг 1: Убираем текущий слайд
+    if (slideLeft) contentPanel.AddClass('SlideOutLeft');
+    else contentPanel.AddClass('SlideOutRight');
+
+    // Ждем 0.25 сек, пока он уедет
+    $.Schedule(0.25, function() {
+        currentTipIndex = newIndex;
+        UpdateTipUI(); // Меняем картинку и текст пока панель прозрачна
+        
+        contentPanel.RemoveClass('SlideOutLeft');
+        contentPanel.RemoveClass('SlideOutRight');
+        
+        // Шаг 2: Показываем новый слайд с противоположной стороны
+        if (slideLeft) contentPanel.AddClass('SlideInRight');
+        else contentPanel.AddClass('SlideInLeft');
+
+        // Ждем 0.25 сек, пока он появится
+        $.Schedule(0.25, function() {
+            contentPanel.RemoveClass('SlideInRight');
+            contentPanel.RemoveClass('SlideInLeft');
+            isAnimating = false; // Разблокируем переключение
+        });
+    });
 }
 
 function InitializeDots() {
     var dotsContainer = $('#TipDotsContainer');
     if (!dotsContainer) return;
     
-    // Очищаем контейнер от старых точек
     dotsContainer.RemoveAndDeleteChildren();
 
     for (var i = 0; i < TIPS_DATA.length; i++) {
         var dot = $.CreatePanel('Panel', dotsContainer, 'TipDot_' + i);
         dot.AddClass('TipDot');
         
-        // Создаем замыкание, чтобы каждая точка переключала на свой индекс при клике
         (function(index) {
             dot.SetPanelEvent('onactivate', function() {
-                currentTipIndex = index;
-                UpdateTipUI();
+                if (isAnimating || currentTipIndex === index) return;
+                Game.EmitSound("General.buttonclick");
+                // Определяем направление анимации в зависимости от того, куда кликнули
+                AnimateToTip(index, index > currentTipIndex);
             });
         })(i);
     }
@@ -114,43 +148,54 @@ function InitializeDots() {
 }
 
 function UpdateTipUI() {
-    // Инициализируем круги при первом вызове
     if (!isDotsInitialized) {
         InitializeDots();
     }
 
     var imgPanel = $('#TipImage');
-    var videoPanel = $('#TipVideo'); // Находим панель видео
+    var videoPanel = $('#TipVideo');
     var textPanel = $('#TipText');
     var dotsContainer = $('#TipDotsContainer');
     
-    // Обновляем текст
     if (textPanel) {
         textPanel.text = TIPS_DATA[currentTipIndex].text;
     }
 
-    // Проверяем, есть ли у текущего слайда видео
-    if (TIPS_DATA[currentTipIndex].video) {
+    var currentTip = TIPS_DATA[currentTipIndex];
+
+    if (currentTip.video) {
         if (videoPanel) {
-            videoPanel.SetMovie(TIPS_DATA[currentTipIndex].video);
-            videoPanel.visible = true; // Показываем видео
+            videoPanel.SetMovie(currentTip.video);
+            videoPanel.visible = true;
+
+            // Проверяем, является ли текущее видео роликом Дискорда
+            if (currentTip.video.indexOf("video_8.webm") !== -1) {
+                videoPanel.hittest = true; // Разрешаем клики по видео
+                videoPanel.SetPanelEvent('onactivate', function() {
+                    Game.EmitSound("General.buttonclick");
+                    OpenExternalUrl("https://discord.gg/tve4");
+                });
+            } else {
+                videoPanel.hittest = false; // Отключаем клики для других видео
+                videoPanel.ClearPanelEvent('onactivate');
+            }
         }
         if (imgPanel) {
-            imgPanel.visible = false; // Прячем картинку
+            imgPanel.visible = false;
         }
     } else {
-        // Если видео нет, показываем картинку
         if (imgPanel) {
-            imgPanel.SetImage(TIPS_DATA[currentTipIndex].image);
-            imgPanel.visible = true; // Показываем картинку
+            imgPanel.SetImage(currentTip.image);
+            imgPanel.visible = true;
         }
         if (videoPanel) {
-            videoPanel.SetMovie(""); // Очищаем видео, чтобы не играл звук в фоне
-            videoPanel.visible = false; // Прячем панель видео
+            videoPanel.SetMovie("");
+            videoPanel.visible = false;
+            videoPanel.hittest = false;
+            videoPanel.ClearPanelEvent('onactivate');
         }
     }
 
-    // Обновляем состояние кругов
     if (dotsContainer) {
         for (var i = 0; i < TIPS_DATA.length; i++) {
             var dot = dotsContainer.FindChildTraverse('TipDot_' + i);
@@ -178,13 +223,8 @@ function ChatUpdater() {
 // ==========================================
 
 (function() {
-    // Подписываемся на смену статуса игры для скрытия экрана
     SyncState();
     GameEvents.Subscribe('game_rules_state_change', SyncState);
-
-    // Запускаем скрипт поиска чата
     ChatUpdater();
-    
-    // Отрисовываем первый совет в слайдере и генерируем круги
     UpdateTipUI();
 })();

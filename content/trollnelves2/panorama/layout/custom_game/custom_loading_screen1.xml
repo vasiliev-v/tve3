@@ -22,8 +22,8 @@
                     <Label text="◄" />
                 </Button>
 
-                <!-- Центральная часть (картинка + текст) -->
-                <Panel class="TipContent" hittest="false">
+                <!-- Центральная часть (картинка + текст). ДОБАВЛЕН ID -->
+                <Panel class="TipContent" id="TipContent" hittest="false">
                     <!-- Для картинок (3-й слайд) -->
                     <Image id="TipImage" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
                     
