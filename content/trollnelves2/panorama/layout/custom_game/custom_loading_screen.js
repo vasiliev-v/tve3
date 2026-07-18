@@ -32,11 +32,15 @@ function DisableNativeLoadingInputBlocker() {
 }
 
 function SyncState() {
-    var isVisible = true;
+    // Проверяем реальное состояние игры, а не ставим true жестко
+    var isVisible = IsWaitingForPlayers(); 
+    
     var root = $.GetContextPanel();
-    root.hittest = isVisible;
-    root.hittestchildren = isVisible;
-    root.SetHasClass("IsVisible", isVisible);
+    if (root) {
+        root.hittest = isVisible;
+        root.hittestchildren = isVisible;
+        root.SetHasClass("IsVisible", isVisible);
+    }
 
     if (isVisible) {
         DisableNativeLoadingInputBlocker();

@@ -18,7 +18,7 @@
             <Panel class="TipsBody" hittest="false">
                 
                 <!-- Левая стрелка -->
-                <Button class="TipArrow" onactivate="ChangeTip(-1)" hittest="true">
+                <Button class="TipArrow" onactivate="ChangeTip(-1)" hittest="true" hittestchildren="false">
                     <Label text="◄" />
                 </Button>
 
@@ -34,7 +34,7 @@
                 </Panel>
 
                 <!-- Правая стрелка -->
-                <Button class="TipArrow" onactivate="ChangeTip(1)" hittest="true">
+                <Button class="TipArrow" onactivate="ChangeTip(1)" hittest="true" hittestchildren="false">
                     <Label text="►" />
                 </Button>
                 
