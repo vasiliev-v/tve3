@@ -11,8 +11,6 @@
 		<include src="file://{resources}/layout/custom_game/styles/setup.css" />
 	</styles>
     <Panel>
-        <CustomUIElement type="HudTopBar"			layoutfile="file://{resources}/layout/custom_game/custom_loading_screen1.xml" />
-
         <CustomUIElement type="HudTopBar"			layoutfile="file://{resources}/layout/custom_game/multiteam_top_scoreboard/multiteam_top_scoreboard.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/building_helper/building_helper.xml" />
         <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/selection/selection.xml" />
