@@ -11,8 +11,8 @@
         
         <!-- Панель советов (Слайдер) -->
         <Panel class="TipsContainer" hittest="true" hittestchildren="true">
-            <!-- Заголовок -->
-            <Label class="TipsHeader" text="СОВЕТЫ" hittest="false" />
+            <!-- Заголовок (ИЗМЕНЕНО: добавлен токен локализации) -->
+            <Label class="TipsHeader" text="#loading_tips_title" hittest="false" />
 
             <!-- Тело со стрелками и контентом -->
             <Panel class="TipsBody" hittest="false">

@@ -14,6 +14,17 @@
 		"npc_dota_hero_bear"                                                    		  "Baby Bear"
 		"npc_dota_hero_night_stalker"                                                     "Night Hunter"
 
+		// custom_loading_screen.xml
+
+		"loading_tips_title"    "TIPS"
+
+		// custom_loading_screen.js
+
+		"loading_tip_1"     "Occupy a base immediately at the start of the game. Place the stone on the mark at the base entrance, and the flag nearby."
+        "loading_tip_2"     "Don't hold back! Actively use your items to slow down the Troll's farm as much as possible."
+        "loading_tip_3"     "Playing solo? Feel free to choose the Loner aspect (the first one in the list) - it grants an additional aspect slot."
+        "loading_tip_4"     "Join our Discord! It's easy to find teammates, ask for advice, and keep track of updates."
+
 		// ******************** UNITS ********************
 		"tent"                                                                            "Tent"
 		"turbo_barracks"                                                                  "Barracks 1"

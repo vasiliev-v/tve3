@@ -54,19 +54,19 @@ function SyncState() {
 var TIPS_DATA = [
     {
         video: "file://{resources}/videos/custom_game/video_1.webm",
-        text: "В начале игры сразу займите базу. Камень следует ставить на метку на входе в базу, а флаг рядом со входом"
+        text: "#loading_tip_1" // Используем токен локализации
     },
     {
         video: "file://{resources}/videos/custom_game/video_2.webm",
-        text: "Не жалейте кнопки! Активно используйте свои предметы, чтобы максимально замедлить фарм Тролля."
+        text: "#loading_tip_2"
     },
     {
         video: "file://{resources}/videos/custom_game/video_9.webm", 
-        text: "Играете соло? Смело выбирайте аспект Loner (самый первый в списке) - он даст вам дополнительный слот под аспект"
+        text: "#loading_tip_3"
     },
     {
         video: "file://{resources}/videos/custom_game/video_8.webm",
-        text: "Присоединяйтесь к нашему Discord! Там легко найти напарников, спросить совета и следить за обновлениями."
+        text: "#loading_tip_4"
     }
 ];
 
@@ -162,7 +162,8 @@ function UpdateTipUI() {
     var dotsContainer = $('#TipDotsContainer');
     
     if (textPanel) {
-        textPanel.text = TIPS_DATA[currentTipIndex].text;
+        // Пропускаем токен через $.Localize(), чтобы получить текст на языке клиента игрока
+        textPanel.text = $.Localize(TIPS_DATA[currentTipIndex].text);
     }
 
     var currentTip = TIPS_DATA[currentTipIndex];
