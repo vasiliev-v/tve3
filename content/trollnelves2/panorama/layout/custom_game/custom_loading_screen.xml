@@ -1,9 +1,9 @@
 <root>
     <styles>
-        <include src="file://{resources}/layout/custom_game/styles/custom_loading_screen1.css" />
+        <include src="file://{resources}/layout/custom_game/styles/custom_loading_screen.css" />
     </styles>
     <scripts>
-        <include src="file://{resources}/layout/custom_game/custom_loading_screen1.js" />
+        <include src="file://{resources}/layout/custom_game/custom_loading_screen.js" />
     </scripts>
     
     <!-- Корневая панель загрузочного экрана -->

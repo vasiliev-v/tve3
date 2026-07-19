@@ -1,21 +1,15 @@
 .AddonLoadingRoot {
     width: 100%;
     height: 100%;
-    
-
-    opacity: 1; 
     z-index: 9999;
     
-
     background-color: black; 
-    
     background-size: 100% 100%;
     background-image: url('file://{images}/custom_game/loading_screen/gamemode.png');
-}
-.AddonLoadingRoot.IsVisible {
-    opacity: 1;
+    /* Убрали opacity и скрытие отсюда, чтобы фон не пропадал */
 }
 
+/* Удали старый блок .AddonLoadingRoot.IsVisible, он больше не нужен */
 
 .DummyContainer {
     align: center center;
@@ -25,7 +19,6 @@
     border: 2px solid #555555;
     border-radius: 8px;
 }
-
 
 .DummyTitle {
     color: #ffffff;
@@ -56,26 +49,11 @@
     font-size: 18px;
     font-weight: bold;
 }
-/* Главный контейнер советов */
-.TipsContainer {
-    width: 650px;
-    height: 750px;
-    horizontal-align: left;
-    vertical-align: center;
-    margin-left: 80px; /* Отступ от левого края экрана */
-    
-    background-color: #111111ee;
-    border: 3px solid #333333;
-    border-radius: 12px;
-    box-shadow: 0px 0px 30px #000000aa;
-    
-    flow-children: down;
-    padding: 20px 0px;
-}
 
+/* Я объединил твои два дублирующихся класса .TipsContainer в один актуальный */
 .TipsContainer {
-    width: 800px;  /* Было 1000px, сделал немного поуже */
-    height: 550px; /* Сильно уменьшил высоту, так как убрали картинку */
+    width: 800px;
+    height: 550px; 
     horizontal-align: left;
     vertical-align: center;
     margin-left: 80px;
@@ -90,6 +68,18 @@
 
     flow-children: down;
     padding: 20px 0px;
+
+    /* Скрываем советы по умолчанию */
+    opacity: 0;
+    visibility: collapse;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+
+/* Когда скрипт вешает класс IsVisible на корень, советы появляются */
+.AddonLoadingRoot.IsVisible .TipsContainer {
+    opacity: 1;
+    visibility: visible;
 }
 
 .TipsHeader {
