@@ -15,7 +15,6 @@
         "Shop",
         "Shop_active",
         "game_spells_lib",
-        "shop_system",
-	"sell_items"
+	    "sell_items"
     ]
 }
