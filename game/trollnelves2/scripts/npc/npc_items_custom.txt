@@ -4099,6 +4099,7 @@
         {
             "bonus_hp_regen" "32"
             "gold_cost" "600"
+            "gold_cost_1x1" "800"
             "lumber_cost" "0"
         }
 
@@ -4155,6 +4156,7 @@
         {
             "bonus_hp_regen" "64"
             "gold_cost" "1200"
+            "gold_cost_1x1" "1600"
             "lumber_cost" "0"
         }
 
@@ -4211,6 +4213,7 @@
         {
             "bonus_hp_regen" "128"
             "gold_cost" "2400"
+            "gold_cost_1x1" "3200"
             "lumber_cost" "0"
         }
 
@@ -4267,6 +4270,7 @@
         {
             "bonus_hp_regen" "256"
             "gold_cost" "4800"
+            "gold_cost_1x1" "6400"
             "lumber_cost" "0"
         }
 
@@ -4323,6 +4327,7 @@
         {
             "bonus_hp_regen" "512"
             "gold_cost" "9600"
+            "gold_cost_1x1" "12800"
             "lumber_cost" "0"
         }
 
