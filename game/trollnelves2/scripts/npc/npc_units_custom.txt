@@ -15816,7 +15816,7 @@
 	        "Count"     "1"
 	        "1"{
 				"unit_name"			"troll_hut_5_1x1"
-				"gold_cost"			"800"
+				"gold_cost"			"1200"
 				"lumber_cost"		"0"//"128"//"32"//"8"
 			}
 	    }
