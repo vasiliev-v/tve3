@@ -285,3 +285,17 @@ function GenerateKV()
 end
 
 if not KeyValues.All then LoadGameKeyValues() end
+
+-- Патч цен для карты 1x1
+if string.match(GetMapName(), "1x1") then
+    for _, tbl in ipairs({ KeyValues.ItemKV, KeyValues.AbilityKV, KeyValues.All }) do
+        for _, info in pairs(tbl) do
+            if type(info) == "table" and type(info["AbilityValues"]) == "table" then
+                local av = info["AbilityValues"]
+                if av["gold_cost_1x1"] then
+                    av["gold_cost"] = av["gold_cost_1x1"]
+                end
+            end
+        end
+    end
+end

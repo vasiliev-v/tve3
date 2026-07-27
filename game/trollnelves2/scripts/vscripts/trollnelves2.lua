@@ -1088,8 +1088,8 @@ function SellItem(unit, item)
         if not item:IsSellable() then
             SendErrorMessage(issuerID, "error_item_not_sellable")
         end
-        local gold_cost = item:GetSpecialValueFor("gold_cost")
-        local lumber_cost = item:GetSpecialValueFor("lumber_cost")
+        local gold_cost = GetItemKV(item:GetAbilityName())["AbilityValues"]["gold_cost"]
+        local lumber_cost = GetItemKV(item:GetAbilityName())["AbilityValues"]["lumber_cost"]
         local playerID = unit:GetPlayerOwnerID()
         local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
