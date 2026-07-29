@@ -9393,6 +9393,7 @@
 		}
 		"Modifiers"{
 			"modifier_stand_invis"{
+				"IsHidden"				"1"
 				"ThinkInterval"			"0.5"
 				"OnIntervalThink"{
 					"RunScript"{

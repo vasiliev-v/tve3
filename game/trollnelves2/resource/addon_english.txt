@@ -1636,7 +1636,9 @@
 
 		"DOTA_Tooltip_modifier_buff_counter"                             				   "Root buff"
 		"DOTA_Tooltip_modifier_buff_counter_Description"                				   "1 stack - 4.5 sec. 2 stack - 2.5 sec. 3 stack - 2 sec. +4 stack - 0.3 sec Roots"
-	
+
+		"DOTA_Tooltip_invis_disabled"													   "Rooted"
+
 		"DOTA_Tooltip_ability_buy_lumber_10"                                              "Buy Lumber 10"
 		"DOTA_Tooltip_ability_buy_lumber_10_Description"                                  "Buy 10 lumber! Lumber is used for building/upgrading advanced buildings. Purchasing lumber increases lumbers price. The price is shown below your resources. "
 
@@ -2698,6 +2700,7 @@
 		"DOTA_Tooltip_ability_cm_haste_Description"                                       "Increases your movement speed to the maximum. %eva%% evasion."
 		"DOTA_Tooltip_ability_cm_haste_duration"                                          "DURATION: "
 		"DOTA_Tooltip_ability_cm_haste_speed"                                          	  "MOVESPEED: "
+		"DOTA_Tooltip_modifier_bonus_ms"												  "Haste"
 
 		"DOTA_Tooltip_ability_cm_heal_building"                                           "Heal Building"
 		"DOTA_Tooltip_ability_cm_heal_building_Description"                               "Use this ability on the building to heal it. Cancels the effect of Desol. "
@@ -3405,6 +3408,7 @@
 		"skin_82"					"SKIN 82"
 
 		"skin_83"					"SKIN 83"
+		"skin_1800"					"SKIN 84"
 		"skin_84"					"SKIN 84"
 		"skin_85"					"SKIN 85"
 		"skin_86"					"SKIN 86"
@@ -3420,6 +3424,30 @@
 		"skin_96"					"SKIN 96"
 		"skin_97"					"TOP 1 PATREON"
 		"skin_98"					"SKIN 98"
+
+		"skin_99"					"SKIN 99"
+		"skin_1700"					"SKIN 100"
+		"skin_1701"					"SKIN 101"
+		"skin_1702"					"SKIN 102"
+		"skin_1703"					"SKIN 103"
+		"skin_1704"					"SKIN 104"
+		"skin_1705"					"SKIN 105"
+		"skin_1706"					"SKIN 106"
+		"skin_1707"					"SKIN 107"
+		"skin_170"					"SKIN 108"
+		"skin_1709"					"SKIN 109"
+		"skin_1710"					"SKIN 110"
+		"skin_1711"					"SKIN 111"
+		"skin_1712"					"SKIN 112"
+		"skin_1713"					"SKIN 113"
+		"skin_1714"					"SKIN 114"
+		"skin_1715"					"SKIN 115"
+		"skin_1716"					"SKIN 116"
+		"skin_1717"					"SKIN 117"
+		"skin_171"					"SKIN 118"
+		"skin_1719"					"SKIN 119"
+		"skin_1720"					"SKIN 120"
+		"skin_1721"					"SKIN 121"
 
 
 		"skin_66"					"FREE VAMPIRISM"
@@ -3706,6 +3734,10 @@
 		"skin_wisp_24"		"WISP 24"
 		"skin_wisp_25"		"WISP 25"
 		"skin_wisp_26"		"WISP 26"
+		"skin_wisp_27"		"WISP 27"
+		"skin_wisp_28"		"WISP 28"
+		"skin_wisp_29"		"WISP 29"
+		"skin_wisp_30"		"WISP 30"
 		
 
 "sounds_1"		"[1] Killed three!!![RUS]"						
@@ -4270,12 +4302,13 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"DOTA_Tooltip_modifier_troll_spell_evasion_datadriven"					"Evasion"
 		"DOTA_Tooltip_modifier_invisible_truesight_immune"						"Immune To True Sight!"
 		"DOTA_Tooltip_modifier_troll_spell_bkb_datadriven"						"BKB"
-		"DOTA_Tooltip_modifier_elf_spell_reveal_anti"			 "Reveal Active"
+		"DOTA_Tooltip_modifier_elf_spell_reveal_anti"			 				"Reveal Active"
 
 		"DOTA_Tooltip_modifier_wind_walk"										"Invisible"
 		"DOTA_Tooltip_modifier_elf_spell_evasion_datadriven"					"Evasion"
 		"DOTA_Tooltip_modifier_elf_spell_buff_target"							"Area Buff"
 		"DOTA_Tooltip_modifier_storm_bolt_datadriven"							"Target Stun"
+		"DOTA_Tooltip_modifier_buff_counter_stun"								"Stun Counter"
 		"DOTA_Tooltip_modifier_elf_spell_true_sight_reveal"						"True Sight"
 		"DOTA_Tooltip_modifier_elf_spell_target_damage_datadriven"				"Curse"
 		"DOTA_Tooltip_modifier_elf_spell_reveal_anti_aura"						"Revealed"
