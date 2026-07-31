@@ -2,7 +2,6 @@
 {
 	"npc_dota_hero_treant"
 	{
-		"override_hero"				"npc_dota_hero_treant"
 		"Model"						"models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
 		"ModelScale"				"0.7"
 		"SoundSet"					"Hero_Wisp"
@@ -24,6 +23,7 @@
 		"Ability15"		"special_bonus_unique_treant_2"
 		"Ability16"		"special_bonus_unique_treant_14"
 		"Ability17"		"special_bonus_unique_treant_7"
+		"Ability18"		"attribute_antibonuses"
 		"RepairAbility"				"repair"
 		"FixedRepair"				"0"
 		"RepairSpeed"				"2"
@@ -65,7 +65,6 @@
 	}
 	"npc_dota_hero_troll_warlord"
 	{
-		"override_hero"				"npc_dota_hero_troll_warlord"
 		"SoundSet"					"Hero_TrollWarlord"
 		"Model"						"models/heroes/troll_warlord/troll_warlord.vmdl"
 		"Ability1" 			"reveal_area"
@@ -85,6 +84,7 @@
 		"Ability15"			"special_bonus_unique_troll_warlord_6"
 		"Ability16"			"special_bonus_unique_troll_warlord_7"
 		"Ability17"			"special_bonus_unique_troll_warlord_8"
+		"Ability18"			"attribute_antibonuses"
 
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
@@ -124,7 +124,6 @@
 	}
 	"npc_dota_hero_lycan"
 	{
-		"override_hero"				"npc_dota_hero_lycan"
 		"SoundSet"					"Hero_Lycan"
 		"Model"						"models/heroes/lycan/lycan_wolf.vmdl"
 		"Ability1" 			"troll_teleport"
@@ -144,6 +143,7 @@
 		"Ability15"			"special_bonus_unique_lycan_6"
 		"Ability16"			"special_bonus_unique_lycan_7"
 		"Ability17"			"special_bonus_unique_lycan_8"
+		"Ability18"			"attribute_antibonuses"
 
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
@@ -193,7 +193,6 @@
 	}
 	"npc_dota_hero_night_stalker"
 	{
-		"override_hero"				"npc_dota_hero_night_stalker"
 		"SoundSet"					"Hero_NightStalker"
 		"Model"						"models/heroes/nightstalker/nightstalker_night.vmdl"
 		"Ability1" 			"troll_teleport"
@@ -213,6 +212,7 @@
 		"Ability15"			"special_bonus_unique_night_stalker_6"
 		"Ability16"			"special_bonus_unique_night_stalker_7"
 		"Ability17"			"special_bonus_unique_night_stalker_8"
+		"Ability18"			"attribute_antibonuses"
 
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
@@ -253,7 +253,6 @@
 	}
 	"npc_dota_hero_crystal_maiden"
 	{
-		"override_hero"				"npc_dota_hero_crystal_maiden"
 		"SoundSet"					"Hero_Crystal_Maiden"
 		"Model"						"models/heroes/crystal_maiden/crystal_maiden.vmdl"
 		"Ability1" 			"cm_haste"
@@ -273,6 +272,7 @@
 		"Ability15"			"special_bonus_unique_crystal_maiden_6"
 		"Ability16"			"special_bonus_unique_crystal_maiden_7"
 		"Ability17"			"special_bonus_unique_crystal_maiden_8"
+		"Ability18"			"attribute_antibonuses"
 
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
@@ -312,7 +312,6 @@
 	}
 	"npc_dota_hero_dark_willow"
 	{
-		"override_hero"				"npc_dota_hero_dark_willow"
 		"SoundSet"					"Hero_DarkWillow"
 		"Model"						"models/heroes/dark_willow/dark_willow.vmdl"
 		"Ability1" 			"penitence_datadriven"
@@ -332,6 +331,7 @@
 		"Ability15"			"special_bonus_unique_dark_willow_6"
 		"Ability16"			"special_bonus_unique_dark_willow_7"
 		"Ability17"			"special_bonus_unique_dark_willow_8"
+		"Ability18"			"attribute_antibonuses"
 
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
@@ -380,7 +380,6 @@
 	}
 	"npc_dota_hero_wisp"
 	{
-		"override_hero"				"npc_dota_hero_wisp"
 		"SoundSet"					"Hero_Wisp"
 		"Model"						"models/development/invisiblebox.vmdl"
 		"Ability1"					"dummy_passive"
@@ -400,6 +399,7 @@
 		"Ability15"			"special_bonus_unique_wisp_6"
 		"Ability16"			"special_bonus_unique_wisp_7"
 		"Ability17"			"special_bonus_unique_wisp_8"
+		"Ability18"			"attribute_antibonuses"
 
 		"VisionNighttimeRange"		"0"
 		"VisionDaytimeRange"		"0"
