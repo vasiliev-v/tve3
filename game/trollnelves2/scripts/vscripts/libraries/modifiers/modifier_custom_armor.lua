@@ -16,10 +16,17 @@ function modifier_custom_armor:IsPermanent()
   return true
 end
 
+function modifier_custom_armor:CheckState()
+  return {
+    [MODIFIER_STATE_BLOCK_DISABLED] = true,
+  }
+end
+
 function modifier_custom_armor:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
     MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE,
+    MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK,
   }
 end
 
@@ -42,5 +49,9 @@ if IsServer() then
     self.checkArmor = false
     local physicalResistance = 0.06*armor/(1+0.06*math.abs(armor))*100*-1 -- Calculate physical resistance with custom formula
     return physicalResistance
+  end
+
+  function modifier_custom_armor:GetModifierPhysical_ConstantBlock(params)
+    return 0
   end
 end
