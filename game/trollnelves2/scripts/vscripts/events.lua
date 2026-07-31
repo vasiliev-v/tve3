@@ -43,9 +43,6 @@ function trollnelves2:OnNPCSpawned(keys)
                         if string.match(name, "special_bonus_") or name == "special_bonus_attributes" then
                             abil:SetLevel(0)
                         end
-                        if name == "attribute_antibonuses" or string.match(name, "troll_spell_") then
-                            abil:SetHidden(true)
-                        end
                     end
                 end
             end
