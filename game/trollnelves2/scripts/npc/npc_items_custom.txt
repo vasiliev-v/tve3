@@ -2595,7 +2595,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"item_datadriven"
-	"ID"							"1131"  //Valve's version of this item uses the ID "131".
+	"ID"							"15131"  //Changed from 1131 to avoid conflict with Valve ability special_bonus_unique_treant_14 (ID 1131)
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"Model"							"models/props_gameplay/red_box.vmdl"
 	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"

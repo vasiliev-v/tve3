@@ -34,6 +34,22 @@ function trollnelves2:OnNPCSpawned(keys)
         npc:AddNewModifier(npc, nil, "modifier_custom_armor", {})
     end
     if npc:IsHero() then
+        Timers:CreateTimer(0.1, function()
+            if npc and not npc:IsNull() then
+                for i = 0, npc:GetAbilityCount() - 1 do
+                    local abil = npc:GetAbilityByIndex(i)
+                    if abil then
+                        local name = abil:GetAbilityName()
+                        if string.match(name, "special_bonus_") or name == "special_bonus_attributes" then
+                            abil:SetLevel(0)
+                        end
+                        if name == "attribute_antibonuses" or string.match(name, "troll_spell_") then
+                            abil:SetHidden(true)
+                        end
+                    end
+                end
+            end
+        end)
         Timers:CreateTimer(0.1,function() for i=0,15 do
                 local item = npc:GetItemInSlot(i)
                 if item and (item:GetName() == "item_enchanted_mango"  or item:GetName() == "item_tpscroll") then

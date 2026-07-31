@@ -57,23 +57,56 @@ var uiWaitingSchedules = [];
     //Use 284 if you want to keep 4 ability minimum size, and only use 160 if you want ~2 ability min size
     centerBlock.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "284px";
 
-    centerBlock.FindChildTraverse("StatBranch").style.visibility = "collapse";
+    var statBranch = centerBlock.FindChildTraverse("StatBranch");
+    if (statBranch) {
+        statBranch.style.visibility = "collapse";
+        statBranch.hittest = false;
+    }
+
+    function HideTalentPopupDrawer() {
+        var panelsToHide = [
+            "StatBranchDrawer",
+            "StatBranchColumn",
+            "StatBranchDialog",
+            "StatUpgradeOption",
+            "StatBranchChannel"
+        ];
+
+        for (var i = 0; i < panelsToHide.length; i++) {
+            var pName = panelsToHide[i];
+            var p1 = newUI.FindChildTraverse(pName);
+            if (p1) {
+                p1.style.visibility = "collapse";
+                p1.hittest = false;
+            }
+            var p2 = centerBlock.FindChildTraverse(pName);
+            if (p2) {
+                p2.style.visibility = "collapse";
+                p2.hittest = false;
+            }
+        }
+
+        for (var j = 1; j <= 8; j++) {
+            var u1 = newUI.FindChildTraverse("Upgrade" + j);
+            if (u1) { u1.style.visibility = "collapse"; u1.hittest = false; }
+            var u2 = centerBlock.FindChildTraverse("Upgrade" + j);
+            if (u2) { u2.style.visibility = "collapse"; u2.hittest = false; }
+        }
+    }
+
+    HideTalentPopupDrawer();
+    $.Schedule(0.5, HideTalentPopupDrawer);
+    $.Schedule(1.0, HideTalentPopupDrawer);
+    $.Schedule(2.0, HideTalentPopupDrawer);
+
     centerBlock.FindChildTraverse("ContentsContainer").GetParent().style.visibility = "collapse";
     centerBlock.FindChildTraverse("AghsStatusContainer").style.visibility = "collapse";
-
 
     newUI.FindChildTraverse("BuffContainer").style.visibility = "visible";
     newUI.FindChildTraverse("BuffContainer").style.marginLeft = "-350px";
     newUI.FindChildTraverse("BuffContainer").style.marginTop = "125px";
 
-    newUI.FindChildTraverse("inventory_neutral_craft_holder").style.visibility = "collapse";   
-
-    //you are not spawning the talent UI, fuck off (Disabling mouseover and onactivate)
-    //We also don't want to crash, valve plz
-    centerBlock.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function () {
-    });
-    centerBlock.FindChildTraverse("StatBranch").SetPanelEvent("onactivate", function () {
-    });
+    newUI.FindChildTraverse("inventory_neutral_craft_holder").style.visibility = "collapse";
 
     // Remove xp circle
    // centerBlock.FindChildTraverse("xp").style.visibility = "collapse";

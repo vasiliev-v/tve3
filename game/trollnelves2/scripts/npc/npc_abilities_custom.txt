@@ -86,8 +86,8 @@
 	 {
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
-	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "BaseClass"	"ability_datadriven" 
 	
 	  "MaxLevel"               "1"
@@ -15170,8 +15170,8 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
-	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityTextureName"			"troll_spell_night_buff"
 	"MaxLevel"						"3"
 	// Precache
@@ -15253,8 +15253,8 @@
 
 "troll_spell_gold_wisp"{
 	"BaseClass"						"ability_datadriven"
-	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityTextureName"			"troll_spell_gold_wisp"
 	"MaxLevel"						"3"
 
@@ -16838,8 +16838,8 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
-	  "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityTextureName"			"troll_spell_night_buff"
 	"MaxLevel"						"3"
 	// Precache
@@ -16921,8 +16921,8 @@
 
 "troll_spell_gold_wisp_x4"{
 	"BaseClass"						"ability_datadriven"
-	"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityTextureName"			"troll_spell_gold_wisp"
 	"MaxLevel"						"3"
 
