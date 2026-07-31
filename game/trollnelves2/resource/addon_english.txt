@@ -883,12 +883,12 @@
 		"DOTA_Tooltip_ability_gain_gold"                                                  "Gain Gold"
 		"DOTA_Tooltip_ability_gain_gold_Description"                                      "Gives certain amount of gold every second"
 
-		"DOTA_Tooltip_ability_build_rock_1"                                                 "Build Demonic Wall 1"
+		"DOTA_Tooltip_ability_build_rock_1"                                                 "Build Rock"
 		"DOTA_Tooltip_ability_build_rock_1_Description" 								    "Build a rock in the middle of the path to block the Troll’s way to your base. <font color='#09ff00'>You must place it on the mark near the base entrance!</font>"
 		"DOTA_Tooltip_ability_build_rock_1_gold_cost"                                       "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_build_rock_1_lumber_cost"                                     "<font color='#008000'>LUMBER COST: </font>"
 
-		"DOTA_Tooltip_ability_build_turbo_demonic"                                                 "Build Rock"
+		"DOTA_Tooltip_ability_build_turbo_demonic"                                                 "Build Demonic Wall 1"
 		"DOTA_Tooltip_ability_build_turbo_demonic_Description" 								    "Build a rock in the middle of the path to block the Troll’s way to your base. <font color='#09ff00'>You must place it on the mark near the base entrance!</font>"
 		"DOTA_Tooltip_ability_build_turbo_demonic_gold_cost"                                       "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_build_turbo_demonic_lumber_cost"                                     "<font color='#008000'>LUMBER COST: </font>"
