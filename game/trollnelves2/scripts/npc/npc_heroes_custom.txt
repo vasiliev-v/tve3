@@ -89,6 +89,8 @@
 		"Ability17"			"special_bonus_unique_troll_warlord_8"
 		"Ability18"			"attribute_antibonuses"
 		"Ability19"			"high_five_custom"
+		"Ability20"			"special_bonus_cooldown_reduction_30"
+		"Ability21"			"special_bonus_cooldown_reduction_50"
 
 		"ArmorPhysical"				"0"
 		"MagicalResistance"			"0"
