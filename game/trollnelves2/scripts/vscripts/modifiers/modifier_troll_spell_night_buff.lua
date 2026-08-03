@@ -22,9 +22,13 @@ function modifier_troll_spell_night_buff:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("troll_spell_night_buff")
+		if not hero:HasAbility("troll_spell_night_buff") then
+			hero:AddAbility("troll_spell_night_buff")
+		end
 		local abil = hero:FindAbilityByName("troll_spell_night_buff")
-		abil:SetLevel(countStack)
+		if abil then
+			abil:SetLevel(countStack)
+		end
 	end
 end
 
@@ -39,8 +43,13 @@ function modifier_troll_spell_night_buff:OnRefresh( kv )
 	if IsServer() then
 		local hero = self:GetParent()
 		local abil = hero:FindAbilityByName("troll_spell_night_buff")
-		local countStack = hero:FindModifierByName("modifier_troll_spell_night_buff"):GetStackCount()
-		abil:SetLevel(countStack)
+		local countStack = self:GetStackCount()
+		if countStack == 0 then
+			countStack = 1
+		end
+		if abil then
+			abil:SetLevel(countStack)
+		end
 	end
 end
 
@@ -48,8 +57,13 @@ function modifier_troll_spell_night_buff:OnStackCountChanged()
 	if IsServer() then
 		local hero = self:GetParent()
 		local abil = hero:FindAbilityByName("troll_spell_night_buff")
-		local countStack = hero:FindModifierByName("modifier_troll_spell_night_buff"):GetStackCount()
-		abil:SetLevel(countStack)
+		local countStack = self:GetStackCount()
+		if countStack == 0 then
+			countStack = 1
+		end
+		if abil then
+			abil:SetLevel(countStack)
+		end
 	end
 end
 

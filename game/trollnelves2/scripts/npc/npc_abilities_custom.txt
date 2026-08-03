@@ -15192,6 +15192,15 @@
             "bonus_evasion" "1 2 3"
         }
 
+	"OnUpgrade"
+	{
+		"ApplyModifier"
+		{
+			"Target"            "CASTER"
+			"ModifierName"      "troll_spell_night_buff_datadriven"
+		}
+	}
+
 	"Modifiers"
 	{
 		"troll_spell_night_buff_datadriven"
@@ -15206,7 +15215,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/heroes/hero_night_stalker/hunter_in_the_night.lua"
+					"ScriptFile"	"heroes/hero_night_stalker/hunter_in_the_night.lua"
 					"Function"		"HunterInTheNight"
 					"modifier"		"troll_spell_night_buff_buff_datadriven"
 				}
@@ -15266,7 +15275,7 @@
             "radius" "128 160 192"
             "time" "5 10 20"
         }
-		"OnCreated"
+		"OnUpgrade"
 		{
 			"ApplyModifier"
 			{
@@ -16860,6 +16869,15 @@
             "bonus_evasion" "1 2 3"
         }
 
+	"OnUpgrade"
+	{
+		"ApplyModifier"
+		{
+			"Target"            "CASTER"
+			"ModifierName"      "troll_spell_night_buff_datadriven"
+		}
+	}
+
 	"Modifiers"
 	{
 		"troll_spell_night_buff_datadriven"
@@ -16874,7 +16892,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/heroes/hero_night_stalker/hunter_in_the_night.lua"
+					"ScriptFile"	"heroes/hero_night_stalker/hunter_in_the_night.lua"
 					"Function"		"HunterInTheNight"
 					"modifier"		"troll_spell_night_buff_buff_datadriven"
 				}
@@ -16934,7 +16952,7 @@
             "radius" "128 160 192"
             "time" "5 10 20"
         }
-		"OnCreated"
+		"OnUpgrade"
 		{
 			"ApplyModifier"
 			{

@@ -15,9 +15,13 @@ function modifier_troll_spell_gold_wisp:OnCreated( kv )
 		if countStack == 0 then
 			countStack = 1
 		end
-		hero:AddAbility("troll_spell_gold_wisp")
+		if not hero:HasAbility("troll_spell_gold_wisp") then
+			hero:AddAbility("troll_spell_gold_wisp")
+		end
 		local abil = hero:FindAbilityByName("troll_spell_gold_wisp")
-		abil:SetLevel(countStack)
+		if abil then
+			abil:SetLevel(countStack)
+		end
 	end
 end
 function modifier_troll_spell_gold_wisp:OnDestroy( kv )
@@ -31,8 +35,13 @@ function modifier_troll_spell_gold_wisp:OnRefresh( kv )
 	if IsServer() then
 		local hero = self:GetParent()
 		local abil = hero:FindAbilityByName("troll_spell_gold_wisp")
-		local countStack = hero:FindModifierByName("modifier_troll_spell_gold_wisp"):GetStackCount()
-		abil:SetLevel(countStack)
+		local countStack = self:GetStackCount()
+		if countStack == 0 then
+			countStack = 1
+		end
+		if abil then
+			abil:SetLevel(countStack)
+		end
 	end
 end
 
@@ -40,7 +49,12 @@ function modifier_troll_spell_gold_wisp:OnStackCountChanged()
 	if IsServer() then
 		local hero = self:GetParent()
 		local abil = hero:FindAbilityByName("troll_spell_gold_wisp")
-		local countStack = hero:FindModifierByName("modifier_troll_spell_gold_wisp"):GetStackCount()
-		abil:SetLevel(countStack)
+		local countStack = self:GetStackCount()
+		if countStack == 0 then
+			countStack = 1
+		end
+		if abil then
+			abil:SetLevel(countStack)
+		end
 	end
 end

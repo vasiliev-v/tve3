@@ -2018,7 +2018,7 @@ function game_spells_lib:AddPlayerSpell(id, spell_name, modifier_name, hero)
     end
     table.insert(game_spells_lib.current_activated_spell[id], spell_name)
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then return end
-    local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {}):SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
+    local spell_mod = hero:AddNewModifier(hero, nil, modifier_name, {})
     if spell_mod then
         spell_mod:SetStackCount(game_spells_lib:GetSpellLevel(id, spell_name))
     end
