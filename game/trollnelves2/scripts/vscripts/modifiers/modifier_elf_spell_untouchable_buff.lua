@@ -1,13 +1,13 @@
 -- Бафф на постройку/юнита. Слушает OnAttackStart — когда враг замахивается по этому юниту,
 -- применяет на атакующего дебафф замедления атакспида.
-modifier_elf_spell_untouachble_buff = class({})
+modifier_elf_spell_untouchable_buff = class({})
 
-function modifier_elf_spell_untouachble_buff:IsHidden()     return false end
-function modifier_elf_spell_untouachble_buff:IsDebuff()     return false end
-function modifier_elf_spell_untouachble_buff:IsPurgable()   return false end
-function modifier_elf_spell_untouachble_buff:GetTexture()   return "elf_spell_untouachble" end
+function modifier_elf_spell_untouchable_buff:IsHidden()     return false end
+function modifier_elf_spell_untouchable_buff:IsDebuff()     return false end
+function modifier_elf_spell_untouchable_buff:IsPurgable()   return false end
+function modifier_elf_spell_untouchable_buff:GetTexture()   return "elf_spell_untouchable" end
 
-function modifier_elf_spell_untouachble_buff:OnCreated(kv)
+function modifier_elf_spell_untouchable_buff:OnCreated(kv)
     if IsServer() then
         local fx = ParticleManager:CreateParticle(
             "particles/units/heroes/hero_omniknight/omniknight_repel.vpcf",
@@ -18,7 +18,7 @@ function modifier_elf_spell_untouachble_buff:OnCreated(kv)
     end
 end
 
-function modifier_elf_spell_untouachble_buff:OnDestroy()
+function modifier_elf_spell_untouchable_buff:OnDestroy()
     if IsServer() then
         if self.fxBuff then
             ParticleManager:DestroyParticle(self.fxBuff, false)
@@ -27,13 +27,13 @@ function modifier_elf_spell_untouachble_buff:OnDestroy()
     end
 end
 
-function modifier_elf_spell_untouachble_buff:DeclareFunctions()
+function modifier_elf_spell_untouchable_buff:DeclareFunctions()
     return {
         MODIFIER_EVENT_ON_ATTACK_START,
     }
 end
 
-function modifier_elf_spell_untouachble_buff:OnAttackStart(event)
+function modifier_elf_spell_untouchable_buff:OnAttackStart(event)
     if not IsServer() then return end
 
     local target   = event.target
@@ -51,7 +51,7 @@ function modifier_elf_spell_untouachble_buff:OnAttackStart(event)
     attacker:AddNewModifier(
         self:GetCaster(),
         ability,
-        "modifier_elf_spell_untouachble_slow",
+        "modifier_elf_spell_untouchable_slow",
         { duration = 0.8 }
     )
 end

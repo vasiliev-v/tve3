@@ -18096,12 +18096,12 @@
 
 
 	
-// elf_spell_untouachble - активка на союзного юнита/постройку. Бафф: враги замахивающиеся по цели получают -attackspeed
-"elf_spell_untouachble"
+// elf_spell_untouchable - активка на союзного юнита/постройку. Бафф: враги замахивающиеся по цели получают -attackspeed
+"elf_spell_untouchable"
 {
     "BaseClass"                 "ability_lua"
-    "ScriptFile"                "abilities/elf_spell_untouachble/elf_spell_untouachble_lua"
-    "AbilityTextureName"        "elf_spell_untouachble"
+    "ScriptFile"                "abilities/elf_spell_untouchable/elf_spell_untouchable_lua"
+    "AbilityTextureName"        "elf_spell_untouchable"
     "MaxLevel"                  "3"
 
     "precache"
@@ -18127,11 +18127,11 @@
     }
 }
 
-"elf_spell_untouachble_x4"
+"elf_spell_untouchable_x4"
 {
     "BaseClass"                 "ability_lua"
-    "ScriptFile"                "abilities/elf_spell_untouachble/elf_spell_untouachble_lua"
-    "AbilityTextureName"        "elf_spell_untouachble"
+    "ScriptFile"                "abilities/elf_spell_untouchable/elf_spell_untouchable_lua"
+    "AbilityTextureName"        "elf_spell_untouchable"
     "MaxLevel"                  "3"
 
     "precache"

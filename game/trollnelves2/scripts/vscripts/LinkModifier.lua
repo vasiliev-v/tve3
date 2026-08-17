@@ -170,8 +170,8 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_reveal_x4", "modifiers/modifier_elf_spell_reveal_x4", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_magic_resist_buff", "abilities/troll_spell_magic_resist", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_haste_x4_bonus_ms", "abilities/troll_spell_haste_x4.lua", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_elf_spell_untouachble_buff", "modifiers/modifier_elf_spell_untouachble_buff", LUA_MODIFIER_MOTION_NONE )
-	LinkLuaModifier("modifier_elf_spell_untouachble_slow", "modifiers/modifier_elf_spell_untouachble_slow", LUA_MODIFIER_MOTION_NONE )
+	LinkLuaModifier("modifier_elf_spell_untouchable_buff", "modifiers/modifier_elf_spell_untouchable_buff", LUA_MODIFIER_MOTION_NONE )
+	LinkLuaModifier("modifier_elf_spell_untouchable_slow", "modifiers/modifier_elf_spell_untouchable_slow", LUA_MODIFIER_MOTION_NONE )
     
 
 	

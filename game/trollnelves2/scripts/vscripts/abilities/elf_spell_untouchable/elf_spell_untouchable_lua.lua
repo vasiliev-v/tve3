@@ -1,6 +1,6 @@
-elf_spell_untouachble = class({})
+elf_spell_untouchable = class({})
 
-function elf_spell_untouachble:OnSpellStart()
+function elf_spell_untouchable:OnSpellStart()
     local caster = self:GetCaster()
     local target = self:GetCursorTarget()
 
@@ -11,7 +11,7 @@ function elf_spell_untouachble:OnSpellStart()
     target:AddNewModifier(
         caster,
         self,
-        "modifier_elf_spell_untouachble_buff",
+        "modifier_elf_spell_untouchable_buff",
         { duration = duration }
     )
 
