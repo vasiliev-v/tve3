@@ -12,6 +12,23 @@ var TOP_MENU_BUTTONS =
 var RewardsButton = null
 var updateRewardsLoop = true
 
+function GetPlayerMMR() {
+    let pId = Players.GetLocalPlayer()
+    let shop_table = CustomNetTables.GetTableValue("Shop", pId)
+    if (!shop_table) return 0
+    // shop_table[13] = {rank, steamID, sum, troll, elf, games} — данные из топ-таблицы
+    let rating_data = shop_table[13]
+    if (rating_data && Number(rating_data[3]) != null) {
+        return Number(rating_data[3]) + Number(rating_data[4] || 0)
+    }
+    // Запасной вариант: читать из raw score полей
+    let elf_data = shop_table[8] && shop_table[8][0]
+    let troll_data = shop_table[9] && shop_table[9][0]
+    let elf = (elf_data && Number(elf_data.score)) || 0
+    let troll = (troll_data && Number(troll_data.score)) || 0
+    return elf + troll
+}
+
 function Init() {
     let TopMenuCustom = $("#TopMenuCustom")
 
@@ -35,6 +52,19 @@ function Init() {
     }
 
     UpdateRewardsButtonLoop()
+    CheckMMRVisibility()
+}
+
+function CheckMMRVisibility() {
+    let mmr = GetPlayerMMR()
+    let TopMenuCustom = $("#TopMenuCustom")
+    if (isNaN(mmr) || mmr > 100) {
+        TopMenuCustom.style.visibility = "visible"
+        return
+    }
+    // Таблица ещё не загрузилась — повторить через 2 сек
+    TopMenuCustom.style.visibility = "collapse"
+    $.Schedule(2, CheckMMRVisibility)
 }
 
 function UpdateRewardsButtonLoop() {
