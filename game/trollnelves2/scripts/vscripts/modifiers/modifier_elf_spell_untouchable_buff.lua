@@ -9,11 +9,16 @@ function modifier_elf_spell_untouchable_buff:GetTexture()   return "elf_spell_un
 
 function modifier_elf_spell_untouchable_buff:OnCreated(kv)
     if IsServer() then
+        local parent = self:GetParent()
         local fx = ParticleManager:CreateParticle(
-            "particles/units/heroes/hero_omniknight/omniknight_repel.vpcf",
+            "particles/econ/courier/courier_hyeonmu_ambient/courier_hyeonmu_ambient_green.vpcf",
             PATTACH_ABSORIGIN_FOLLOW,
-            self:GetParent()
+            parent
         )
+        -- CP1 — масштаб/радиус частицы (увеличиваем в ~3 раза)
+        ParticleManager:SetParticleControl(fx, 1, Vector(300, 300, 300))
+        -- CP2 — дополнительный размер для некоторых систем
+        ParticleManager:SetParticleControl(fx, 2, Vector(300, 300, 300))
         self.fxBuff = fx
     end
 end
@@ -21,7 +26,9 @@ end
 function modifier_elf_spell_untouchable_buff:OnDestroy()
     if IsServer() then
         if self.fxBuff then
+            -- false = дать партиклу доиграть анимацию затухания
             ParticleManager:DestroyParticle(self.fxBuff, false)
+            ParticleManager:ReleaseParticleIndex(self.fxBuff)
             self.fxBuff = nil
         end
     end

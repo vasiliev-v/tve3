@@ -22,5 +22,7 @@ function elf_spell_untouchable:OnSpellStart()
         PATTACH_ABSORIGIN_FOLLOW,
         target
     )
+    ParticleManager:SetParticleControl(fx, 1, Vector(300, 300, 300))
+    ParticleManager:SetParticleControl(fx, 2, Vector(300, 300, 300))
     ParticleManager:ReleaseParticleIndex(fx)
 end
