@@ -5567,6 +5567,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 "modifier_troll_spell_stun_target_x4_description_level_2"               "Duration: 2<br>CD: 250"
 "modifier_troll_spell_stun_target_x4_description_level_3"               "Duration: 3<br>CD: 200"
 
+// elf_spell_untouchable
 "elf_spell_untouchable_description_level_1_shop"						"Attack speed"
 "elf_spell_untouchable_description_level_2_shop"						"Duration"
 "elf_spell_untouchable_description_level_3_shop"						"CD"
@@ -5577,13 +5578,36 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 "elf_spell_untouchable_description_level_3_shop_x4"						"CD"
 "elf_spell_untouchable_description_level_4_shop_x4"						"Start CD"
 
-"modifier_elf_spell_untouchable_description_level_1"               "Attack Speed: -200<br>Duration: 6<br>CD: 300"
-"modifier_elf_spell_untouchable_description_level_2"               "Attack Speed: -350<br>Duration: 12<br>CD: 250"
-"modifier_elf_spell_untouchable_description_level_3"               "Attack Speed: -450<br>Duration: 16<br>CD: 200"
+"modifier_elf_spell_untouchable_description_level_1"               "Attack Speed: -250<br>Duration: 6<br>CD: 250"
+"modifier_elf_spell_untouchable_description_level_2"               "Attack Speed: -350<br>Duration: 12<br>CD: 200"
+"modifier_elf_spell_untouchable_description_level_3"               "Attack Speed: -450<br>Duration: 16<br>CD: 150"
 
-"modifier_elf_spell_untouchable_x4_description_level_1"               "Attack Speed: -200<br>Duration: 6<br>CD: 300"
-"modifier_elf_spell_untouchable_x4_description_level_2"               "Attack Speed: -350<br>Duration: 12<br>CD: 250"
-"modifier_elf_spell_untouchable_x4_description_level_3"               "Attack Speed: -450<br>Duration: 16<br>CD: 200"
+"modifier_elf_spell_untouchable_x4_description_level_1"               "Attack Speed: -250<br>Duration: 6<br>CD: 250"
+"modifier_elf_spell_untouchable_x4_description_level_2"               "Attack Speed: -350<br>Duration: 12<br>CD: 200"
+"modifier_elf_spell_untouchable_x4_description_level_3"               "Attack Speed: -450<br>Duration: 16<br>CD: 150"
+
+		"DOTA_Tooltip_ability_elf_spell_untouchable"                          "Untouchable"
+		"DOTA_Tooltip_ability_elf_spell_untouchable_Description"              "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
+		"DOTA_Tooltip_ability_elf_spell_untouchable_attack_speed_slow"        "Untouchable"
+		"DOTA_Tooltip_ability_elf_spell_untouchable_duration"                 "Duration: "
+
+		"DOTA_Tooltip_ability_elf_spell_untouchable_x4"                       "Untouchable"
+		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_Description"           "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
+		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_attack_speed_slow"     "Untouchable"
+		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_duration"              "Duration: "
+
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff"                    "Untouchable"
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff_Description"        "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_slow"                    "Untouchable"
+
+		"elf_spell_untouchable"												  "Untouchable"
+		"elf_spell_untouchable_description"									  "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
+
+		"DOTA_Tooltip_modifier_elf_spell_untouchable"                    "Untouchable"
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_Description"        "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
+
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_x4"				 "Untouchable"
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_x4_description"	 "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
 
 
 		"quest_150"                         "+300 XP BP"
@@ -5841,21 +5865,7 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"_description_level_1_shop"               ""
 
 
-		// elf_spell_untouchable
-		"DOTA_Tooltip_ability_elf_spell_untouchable"                          "Untouchable"
-		"DOTA_Tooltip_ability_elf_spell_untouchable_Description"              "Casts a protective buff on an allied unit or building. Any enemy that winds up an attack on the target suffers a severe attack speed penalty."
-		"DOTA_Tooltip_ability_elf_spell_untouchable_attack_speed_slow"        "Attack Speed Slow: "
-		"DOTA_Tooltip_ability_elf_spell_untouchable_duration"                 "Duration: "
 
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4"                       "Untouchable"
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_Description"           "Casts a protective buff on an allied unit or building. Any enemy that winds up an attack on the target suffers a severe attack speed penalty."
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_attack_speed_slow"     "Attack Speed Slow: "
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_duration"              "Duration: "
-
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff"                    "Untouchable"
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff_Description"        "Enemies that wind up an attack suffer attack speed penalty."
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_slow"                    "Attack Slowed"
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_slow_Description"        "Attack speed is reduced."
 
 	}
 }

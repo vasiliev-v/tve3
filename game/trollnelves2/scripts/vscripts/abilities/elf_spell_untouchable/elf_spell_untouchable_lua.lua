@@ -18,7 +18,7 @@ function elf_spell_untouchable:OnSpellStart()
     -- звук и частицы применения
     EmitSoundOn("Hero_Omniknight.Repel", target)
     local fx = ParticleManager:CreateParticle(
-        "particles/units/heroes/hero_omniknight/omniknight_repel.vpcf",
+        "particles/econ/courier/courier_hyeonmu_ambient/courier_hyeonmu_ambient_green.vpcf",
         PATTACH_ABSORIGIN_FOLLOW,
         target
     )

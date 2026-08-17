@@ -18118,11 +18118,11 @@
     // Casting
     "AbilityCastPoint"          "0.8"
     "AbilityCastRange"          "600"
-    "AbilityCooldown"           "300 250 200"
+    "AbilityCooldown"           "350 275 225"
 
     "AbilityValues"
     {
-        "attack_speed_slow"     "200 350 450"
+        "attack_speed_slow"     "250 350 450"
         "duration"              "6 12 16"
     }
 }
@@ -18148,11 +18148,11 @@
     // Casting
     "AbilityCastPoint"          "0.8"
     "AbilityCastRange"          "600"
-    "AbilityCooldown"           "300 250 200"
+    "AbilityCooldown"           "250 200 150"
 
     "AbilityValues"
     {
-        "attack_speed_slow"     "200 350 450"
+        "attack_speed_slow"     "250 350 450"
         "duration"              "6 12 16"
     }
 }

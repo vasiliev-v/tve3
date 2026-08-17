@@ -1332,6 +1332,13 @@
 		"DOTA_Tooltip_modifier_troll_spell_stun_target_x4_description" "Активно: Оглушение цели."
 		"DOTA_Tooltip_modifier_elf_spell_stun_target_x4_description" "Активно: Оглушает героя."
 
+		"DOTA_Tooltip_ability_elf_spell_untouchable_Description"              "Накладывает бафф на союзного юнита или постройку. Любой враг, атакующий по цели, получает штраф к скорости атаки."
+		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_Description"           "Накладывает бафф на союзного юнита или постройку. Любой враг, атакующий по цели, получает штраф к скорости атаки."
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff_Description"        "Накладывает бафф на союзного юнита или постройку. Любой враг, атакующий по цели, получает штраф к скорости атаки."
+		"elf_spell_untouchable_description"									  "Накладывает бафф на союзного юнита или постройку. Любой враг, атакующий по цели, получает штраф к скорости атаки."
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_Description"             "Накладывает бафф на союзного юнита или постройку. Любой враг, атакующий по цели, получает штраф к скорости атаки."
+		"DOTA_Tooltip_modifier_elf_spell_untouchable_x4_description"	 "Накладывает бафф на союзного юнита или постройку. Любой враг, атакующий по цели, получает штраф к скорости атаки."
+
 		"quest_1" "Победите за Эльфа с аспектом 'Movespeed'"
 		"quest_2" "Победите за Эльфа с аспектом 'Starting Gold'"
 		"quest_3" "Победите за Эльфа с аспектом 'Starting Lumber'"
@@ -1450,32 +1457,7 @@
 		"modif_game_rules_header"	"МОДИФИКАТОР ИГРЫ"
 		"modif_game_rules_desc"		"Изменяет стандартные правила матча"
 
+
  
-		// elf_spell_untouchable
-		"DOTA_Tooltip_ability_elf_spell_untouchable"                          "Untouchable"
-		"DOTA_Tooltip_ability_elf_spell_untouchable_Description"              "Накладывает бафф на союзного юнита или постройку. Любой враг, замахивающийся по цели, получает штраф к скорости атаки."
-		"DOTA_Tooltip_ability_elf_spell_untouchable_attack_speed_slow"        "Atk Speed Reduction: "
-		"DOTA_Tooltip_ability_elf_spell_untouchable_duration"                 "Duration: "
-
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4"                       "Untouchable"
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_Description"           "Накладывает бафф на союзного юнита или постройку. Любой враг, замахивающийся по цели, получает штраф к скорости атаки."
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_attack_speed_slow"     "Atk Speed Reduction: "
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_duration"              "Duration: "
-
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff"                    "Untouchable"
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff_Description"        "Накладывает бафф на союзного юнита или постройку. Любой враг, замахивающийся по цели, получает штраф к скорости атаки."
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_slow"                    "Atk speed reduction: "
-
-		"elf_spell_untouchable"												  "Untouchable"
-		"elf_spell_untouchable_description"									  "Накладывает бафф на союзного юнита или постройку. Любой враг, замахивающийся по цели, получает штраф к скорости атаки."
-
-		"DOTA_Tooltip_modifier_elf_spell_untouchable"                    "Untouchable"
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_Description"        "Накладывает бафф на союзного юнита или постройку. Любой враг, замахивающийся по цели, получает штраф к скорости атаки."
-
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_x4"				 "Untouchable"
-		"DOTA_Tooltip_modifier_elf_spell_untouchable_x4_description"	 "Накладывает бафф на союзного юнита или постройку. Любой враг, замахивающийся по цели, получает штраф к скорости атаки."
-
-
-
 	}
 }
