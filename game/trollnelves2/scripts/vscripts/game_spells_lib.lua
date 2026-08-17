@@ -233,6 +233,22 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {0, 10000, 30000}
         },
         {
+            "elf_spell_untouchable",
+            "elf_spell_untouchable", 
+            "modifier_elf_spell_untouchable", 
+            {
+                "elf_spell_untouchable_description_level_1_shop", 
+                "elf_spell_untouchable_description_level_2_shop", 
+            }, 
+            {
+                {200, 400, 450},
+                {6, 12, 16},
+            },
+            "0",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
             "elf_spell_cd_reduce", 
             "elf_spell_cd_reduce", 
             "modifier_elf_spell_cd_reduce", 

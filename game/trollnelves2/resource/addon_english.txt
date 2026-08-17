@@ -5567,6 +5567,9 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 "modifier_troll_spell_stun_target_x4_description_level_2"               "Duration: 2<br>CD: 250"
 "modifier_troll_spell_stun_target_x4_description_level_3"               "Duration: 3<br>CD: 200"
 
+"elf_spell_untouchable_description_level_1_shop"						"Atk Speed Reduction"
+"elf_spell_untouchable_description_level_2_shop"						"Duration"
+
 		"quest_150"                         "+300 XP BP"
 		"quest_gem_chest"                   "Gem Chest"
 

@@ -18096,4 +18096,65 @@
 
 
 	
+// elf_spell_untouachble - активка на союзного юнита/постройку. Бафф: враги замахивающиеся по цели получают -attackspeed
+"elf_spell_untouachble"
+{
+    "BaseClass"                 "ability_lua"
+    "ScriptFile"                "abilities/elf_spell_untouachble/elf_spell_untouachble_lua"
+    "AbilityTextureName"        "elf_spell_untouachble"
+    "MaxLevel"                  "3"
+
+    "precache"
+    {
+        "soundfile"     "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+        "particle"      "particles/units/heroes/hero_omniknight/omniknight_repel.vpcf"
+    }
+
+    // Behavior
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+
+    // Casting
+    "AbilityCastPoint"          "0.8"
+    "AbilityCastRange"          "600"
+    "AbilityCooldown"           "30 25 20"
+
+    "AbilityValues"
+    {
+        "attack_speed_slow"     "200 350 450"
+        "duration"              "6 12 16"
+    }
+}
+
+"elf_spell_untouachble_x4"
+{
+    "BaseClass"                 "ability_lua"
+    "ScriptFile"                "abilities/elf_spell_untouachble/elf_spell_untouachble_lua"
+    "AbilityTextureName"        "elf_spell_untouachble"
+    "MaxLevel"                  "3"
+
+    "precache"
+    {
+        "soundfile"     "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+        "particle"      "particles/units/heroes/hero_omniknight/omniknight_repel.vpcf"
+    }
+
+    // Behavior
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+
+    // Casting
+    "AbilityCastPoint"          "0.8"
+    "AbilityCastRange"          "600"
+    "AbilityCooldown"           "30 25 20"
+
+    "AbilityValues"
+    {
+        "attack_speed_slow"     "200 350 450"
+        "duration"              "6 12 16"
+    }
+}
+
 }
