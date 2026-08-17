@@ -18118,7 +18118,7 @@
     // Casting
     "AbilityCastPoint"          "0.8"
     "AbilityCastRange"          "600"
-    "AbilityCooldown"           "30 25 20"
+    "AbilityCooldown"           "300 250 200"
 
     "AbilityValues"
     {
@@ -18148,7 +18148,7 @@
     // Casting
     "AbilityCastPoint"          "0.8"
     "AbilityCastRange"          "600"
-    "AbilityCooldown"           "30 25 20"
+    "AbilityCooldown"           "300 250 200"
 
     "AbilityValues"
     {

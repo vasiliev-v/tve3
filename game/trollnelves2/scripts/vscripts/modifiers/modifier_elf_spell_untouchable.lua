@@ -18,6 +18,7 @@ function modifier_elf_spell_untouchable:OnCreated( kv )
 		InsertAbilityAfter(hero, "build_research_lab", "elf_spell_untouchable")
 		local abil = hero:FindAbilityByName("elf_spell_untouchable")
 		abil:SetLevel(countStack)
+		abil:StartCooldown(600)
 	end
 end
 function modifier_elf_spell_untouchable:OnDestroy( kv )
