@@ -5725,6 +5725,76 @@
 		}	
 	}
 	
+	"bear_return"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName"			"lone_druid_spirit_bear_return"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityCastRange"              "0"
+		"AbilityChannelTime" 			"%channel_time"
+		"AbilityCooldown"               "30"
+		"MaxLevel"						"1"
+		
+		"AbilityValues"
+		{
+			"channel_time" "3.0"
+		}
+		
+		"OnAbilityPhaseStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"  "modifier_bear_return_teleportation"
+				"Target"        "CASTER"
+			}
+		}
+		"OnChannelInterrupted"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"  "modifier_bear_return_teleportation"
+				"Target"        "CASTER"
+			}
+		}
+		"OnChannelSucceeded"
+		{
+			"FireSound"
+			{
+				"EffectName"    "Hero_Furion.Teleport_Disappear"
+				"Target"        "CASTER"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"    "custom_abilities.lua"
+				"Function"      "BearReturnToTroll"
+			}
+
+			"FireSound"
+			{
+				"EffectName"    "Hero_Furion.Teleport_Appear"
+				"Target"        "CASTER"
+			}
+			"RemoveModifier"
+			{
+				"ModifierName"  "modifier_bear_return_teleportation"
+				"Target"        "CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_bear_return_teleportation"
+			{
+				"IsHidden"          "0"
+				"EffectName"        "particles/econ/events/league_teleport_2014/teleport_end_league.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+		}
+	}
+	
 	"troll_range"{
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -7495,6 +7565,29 @@
         {
             "gold_cost" "0"
             "lumber_cost" "256"
+        }
+	}
+	
+	"buy_skill_bear_return"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"lone_druid_spirit_bear_return"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"ItemName"					"item_bear_return"
+		"BuyItem"					"1"
+				
+		"OnSpellStart"{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_abilities.lua"
+				"Function"			"BuySkill"
+			}
+		}
+		"AbilityValues"
+        {
+            "gold_cost" "0"
+            "lumber_cost" "96"
         }
 	}
 	

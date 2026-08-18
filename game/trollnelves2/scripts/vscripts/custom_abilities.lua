@@ -252,6 +252,27 @@ function TeleportTo (event)
 	--caster:SetHullRadius(hull) --160
 end
 
+function BearReturnToTroll(event)
+	local caster = event.caster
+	if not caster or caster:IsNull() then return end
+	local playerID = caster:GetPlayerOwnerID()
+	local troll = PlayerResource:GetSelectedHeroEntity(playerID)
+	if not troll or troll:IsNull() or not troll:IsAlive() then
+		local owner = caster:GetOwner()
+		if owner and not owner:IsNull() and owner:IsAlive() then
+			troll = owner
+		end
+	end
+	
+	if troll and not troll:IsNull() and troll:IsAlive() then
+		local pos = troll:GetAbsOrigin()
+		FindClearSpaceForUnit(caster, pos, true)
+		ResolveNPCPositions(caster:GetAbsOrigin(), 130)
+		caster:AddNewModifier(caster, nil, "modifier_phased", {duration = 1})
+		caster:Stop()
+	end
+end
+
 function KillWispOnAttack (event)
 	local caster = event.caster
 	local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed

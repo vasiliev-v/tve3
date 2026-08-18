@@ -130,6 +130,8 @@
 		"DOTA_Tooltip_Ability_buy_skill_bear_respawn_Description"					"Позволяет убрать КД на респавн Медведя. После покупки необходимо заново призвать Медведя."
 		"DOTA_Tooltip_Ability_buy_reveal_area_bear_Description"				"Показывает территорию в определенном радиусе. Отлично подходит для разведки вражеских баз! Раскрывает невидимовых юнитов."
 		"DOTA_Tooltip_Ability_buy_troll_teleport_bear_Description"					"Телепортирует на базу тролля!"
+		"DOTA_Tooltip_Ability_buy_skill_bear_return_Description"					"Телепортирует медведя к троллю."
+		"DOTA_Tooltip_Ability_bear_return_Description"								"Телепортирует медведя к троллю!"
 		"DOTA_Tooltip_Ability_attack_gold_wisp_Description"					"Убивает всех Gold Wisp в радиусе 128."
 		"DOTA_Tooltip_modifier_troll_spell_ms_max_Description"	 			"Дает максимальную скорость передвижения."
 		"DOTA_Tooltip_modifier_troll_spell_ms_max_x4_Description"	 			"Дает максимальную скорость передвижения."

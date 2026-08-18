@@ -1,4 +1,4 @@
-﻿"lang"
+"lang"
 {
 	"Language"		"english"
 	"Tokens"
@@ -1079,6 +1079,15 @@
 		"DOTA_Tooltip_Ability_buy_skill_bear_respawn_Description"					"Allows you to remove the cooldown on the respawn of the Bear.<br>After the purchase, you must re-summon the Bear."
 		"DOTA_Tooltip_Ability_buy_skill_bear_respawn_gold_cost"                                    "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_Ability_buy_skill_bear_respawn_lumber_cost"                                  "<font color='#008000'>LUMBER COST: </font>"
+
+		"DOTA_Tooltip_Ability_buy_skill_bear_return"								"Buy Return for Bear"
+		"DOTA_Tooltip_Ability_buy_skill_bear_return_Description"					"Teleports Bear to Troll."
+		"DOTA_Tooltip_Ability_buy_skill_bear_return_gold_cost"                                      "<font color='#FFFF00'>GOLD COST: </font>"
+		"DOTA_Tooltip_Ability_buy_skill_bear_return_lumber_cost"                                    "<font color='#008000'>LUMBER COST: </font>"
+
+		"DOTA_Tooltip_Ability_bear_return"											"Return"
+		"DOTA_Tooltip_Ability_bear_return_Description"								"Teleports Bear to Troll!"
+		"DOTA_Tooltip_Ability_bear_return_channel_time"								"CHANNELING TIME: "
 
 
 		
