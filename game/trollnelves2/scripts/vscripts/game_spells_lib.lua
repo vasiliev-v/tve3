@@ -601,6 +601,20 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {0, 10000, 30000}
         },
         {
+            "troll_spell_gold_greed",
+            "troll_spell_gold_greed", 
+            "modifier_troll_spell_gold_greed", 
+            {
+                "troll_spell_gold_greed_description_level_1_shop", 
+            }, 
+            {
+                {"250%", "350%", "450%"},
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
             "troll_spell_silence_target",
             "troll_spell_silence_target", 
             "modifier_troll_spell_silence_target", 
@@ -1573,6 +1587,20 @@ else -- X4
                 {'2%','4%','6%'},
                 {300, 250, 150},
                 {"MAX", "MAX", "MAX"}
+            },
+            "1",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "troll_spell_gold_greed",
+            "troll_spell_gold_greed", 
+            "modifier_troll_spell_gold_greed_x4", 
+            {
+                "troll_spell_gold_greed_description_level_1_shop_x4", 
+            }, 
+            {
+                {"250%", "350%", "450%"},
             },
             "1",
             "1",

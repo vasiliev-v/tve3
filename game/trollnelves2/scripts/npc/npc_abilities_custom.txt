@@ -14628,6 +14628,21 @@
 			}
 		}	
 	}
+	"troll_spell_gold_greed"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"                    "abilities/troll_spell_gold_greed.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"troll_spell_gold_greed"
+		"MaxLevel"						"3"
+		"AbilityCooldown"				"999999"
+
+		"AbilityValues"
+		{
+			"gold_multiplier"			"250 350 450"
+		}
+	}
+
 	"troll_spell_haste"
 	{
 		"BaseClass"						"ability_lua"
@@ -16297,6 +16312,21 @@
 			}
 		}	
 	}
+	"troll_spell_gold_greed_x4"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"                    "abilities/troll_spell_gold_greed_x4.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"troll_spell_gold_greed"
+		"MaxLevel"						"3"
+		"AbilityCooldown"				"999999"
+
+		"AbilityValues"
+		{
+			"gold_multiplier"			"250 350 450"
+		}
+	}
+
 	"troll_spell_haste_x4"{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"                    "abilities/troll_spell_haste_x4.lua"
