@@ -289,11 +289,19 @@ function KillWispOnAttackTroll (event)
 			end
 		end	
 	end
-	if string.match(target:GetUnitName(),"%a+") ~= "rock"  then
-		caster:AddNewModifier(caster, nil, "modifier_troll_spell_ms_max", {Duration = time})
+	
+	if target and not target:IsNull() and caster and not caster:IsNull() then
+		local unit_name = target:GetUnitName()
+		
+		local is_rock = string.find(unit_name, "rock", 1, true) ~= nil
+		local is_hut = string.find(unit_name, "troll_hut", 1, true) ~= nil
+
+
+		if not is_rock and not is_hut then
+			caster:AddNewModifier(caster, nil, "modifier_troll_spell_ms_max", { duration = time })
+		end
 	end
 end
-
 function ExchangeLumber(event)
 	if IsServer() then
 		local caster = event.caster
