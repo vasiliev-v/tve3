@@ -5588,12 +5588,12 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 
 		"DOTA_Tooltip_ability_elf_spell_untouchable"                          "Untouchable"
 		"DOTA_Tooltip_ability_elf_spell_untouchable_Description"              "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
-		"DOTA_Tooltip_ability_elf_spell_untouchable_attack_speed_slow"        "Untouchable"
+		"DOTA_Tooltip_ability_elf_spell_untouchable_attack_speed_slow"        "Atk Speed Slow:"
 		"DOTA_Tooltip_ability_elf_spell_untouchable_duration"                 "Duration: "
 
 		"DOTA_Tooltip_ability_elf_spell_untouchable_x4"                       "Untouchable"
 		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_Description"           "Applies a buff to an allied unit or building. Any enemy that attacks on the target suffers a penalty to attack speed."
-		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_attack_speed_slow"     "Untouchable"
+		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_attack_speed_slow"     "Atk Speed Slow: "
 		"DOTA_Tooltip_ability_elf_spell_untouchable_x4_duration"              "Duration: "
 
 		"DOTA_Tooltip_modifier_elf_spell_untouchable_buff"                    "Untouchable"
