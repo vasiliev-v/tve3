@@ -107,6 +107,7 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_unit_spell_solo_player", "modifiers/modifier_unit_spell_solo_player", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_troll_spell_haste_bonus_ms", "abilities/troll_spell_haste.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_troll_spell_haste_no_limit", "abilities/troll_spell_haste.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_troll_spell_gold_greed", "modifiers/modifier_troll_spell_greed", LUA_MODIFIER_MOTION_NONE)
 
 	
 	-- X4
@@ -167,6 +168,7 @@ function LinkModifier:Start()
 	LinkLuaModifier("modifier_elf_spell_reveal_x4", "modifiers/modifier_elf_spell_reveal_x4", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_magic_resist_buff", "abilities/troll_spell_magic_resist", LUA_MODIFIER_MOTION_NONE )	
 	LinkLuaModifier("modifier_troll_spell_haste_x4_bonus_ms", "abilities/troll_spell_haste_x4.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_troll_spell_gold_greed_x4", "modifiers/modifier_troll_spell_greed_x4", LUA_MODIFIER_MOTION_NONE)
     
 
 	

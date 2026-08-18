@@ -312,6 +312,12 @@ function GoldOnAttack (event)
 			koeff = 0
 		end
 		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
+
+
+    if caster:HasModifier("modifier_troll_spell_gold_greed") then
+        dmg = math.floor(dmg * 0.80)
+    end
+    
 		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
 
       if caster:HasModifier("modifier_troll_spell_gold_hit") then
