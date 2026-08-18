@@ -37,7 +37,7 @@ function troll_spell_gold_greed_x4:OnSpellStart()
 		PopupGoldGain(caster, payout)
 	end
 
-	caster:EmitSound("General.Coins")
+	caster:EmitSound("DOTA_Item.Hand_Of_Midas")
 
 	if bankMod and not bankMod:IsNull() then
 		caster:RemoveModifierByName("modifier_troll_spell_gold_greed_bank")

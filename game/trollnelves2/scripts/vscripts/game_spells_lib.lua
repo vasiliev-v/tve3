@@ -1597,7 +1597,7 @@ else -- X4
             "troll_spell_gold_greed", 
             "modifier_troll_spell_gold_greed_x4", 
             {
-                "troll_spell_gold_greed_description_level_1_shop", 
+                "troll_spell_gold_greed_description_level_1_shop_x4", 
             }, 
             {
                 {"250%", "350%", "450%"},
