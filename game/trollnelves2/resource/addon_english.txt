@@ -1,4 +1,4 @@
-﻿"lang"
+"lang"
 {
 	"Language"		"english"
 	"Tokens"
@@ -4658,7 +4658,21 @@ P.S. feel free to sell wood to buy the required number of wisp faster. "
 		"troll_spell_gold_wisp_description_level_2_shop"               "Movespeed"	
         "troll_spell_gold_wisp_description_level_3_shop"               "Duration"		
 
-
+		"troll_spell_gold_greed"                                  "Gold Greed"
+		"troll_spell_gold_greed_description"                      "Active: Claim all accumulated gold with a bonus."
+		"troll_spell_gold_greed_description_level_1_shop"         "Bonus Gold"
+		"DOTA_Tooltip_ability_troll_spell_gold_greed"             "Gold Greed"
+		"DOTA_Tooltip_ability_troll_spell_gold_greed_Description" "You receive only 80% gold, remaining 20% is accumulated. Activate once per game to claim all accumulated gold with a bonus (250% / 350% / 450%)."
+		"DOTA_Tooltip_ability_troll_spell_gold_greed_gold_multiplier" "%BONUS GOLD:"
+		"DOTA_Tooltip_ability_troll_spell_gold_greed_x4"          "Gold Greed"
+		"DOTA_Tooltip_ability_troll_spell_gold_greed_x4_Description" "You receive only 80% gold, remaining 20% is accumulated. Activate once per game to claim all accumulated gold with a bonus (250% / 350% / 450%)."
+		"DOTA_Tooltip_ability_troll_spell_gold_greed_x4_gold_multiplier" "%BONUS GOLD:"
+		"DOTA_Tooltip_modifier_troll_spell_gold_greed"            "Gold Greed"
+		"DOTA_Tooltip_modifier_troll_spell_gold_greed_description" "You receive only 80% gold, remaining 20% is accumulated."
+		"DOTA_Tooltip_modifier_troll_spell_gold_greed_x4"         "Gold Greed"
+		"DOTA_Tooltip_modifier_troll_spell_gold_greed_x4_description" "You receive only 80% gold, remaining 20% is accumulated."
+		"DOTA_Tooltip_modifier_troll_spell_gold_greed_bank"       "Accumulated Gold"
+		"DOTA_Tooltip_modifier_troll_spell_gold_greed_bank_description" "Accumulated gold: %d"
 
         // ELF x1-x2 
 

@@ -314,32 +314,37 @@ function GoldOnAttack (event)
 		local dmg = math.floor(event.DamageDealt) * GameRules.MapSpeed * koeff
 
 
-    if caster:HasModifier("modifier_troll_spell_gold_greed") then
-        dmg = math.floor(dmg * 0.80)
-    end
-    
 		if caster:HasModifier("modifier_troll_spell_gold_hit_passive")  then
+			if caster:HasModifier("modifier_troll_spell_gold_hit") then
+				local stacks = caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount()
+				if stacks == 1 then
+					dmg = math.floor(dmg * 1.22)
+				elseif stacks == 2 then
+					dmg = math.floor(dmg * 1.44)
+				elseif stacks == 3  then
+					dmg = math.floor(dmg * 1.66)
+				end
+			end
 
-      if caster:HasModifier("modifier_troll_spell_gold_hit") then
-        if caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 1 then
-          dmg = math.floor(dmg * 1.22)
-        elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 2 then
-          dmg = math.floor(dmg * 1.44)
-        elseif caster:FindModifierByName("modifier_troll_spell_gold_hit"):GetStackCount() == 3  then
-          dmg = math.floor(dmg * 1.66)
-        end
-      end
+			if caster:HasModifier("modifier_troll_spell_gold_hit_x4") then
+				local stacks = caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount()
+				if stacks == 1 then
+					dmg = math.floor(dmg * 1.22)
+				elseif stacks == 2 then
+					dmg = math.floor(dmg * 1.44)
+				elseif stacks == 3 then
+					dmg = math.floor(dmg * 1.66)
+				end
+			end
+		end
 
-      if caster:HasModifier("modifier_troll_spell_gold_hit_x4") then
-        if caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 1 then
-          dmg = math.floor(dmg * 1.22)
-        elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 2 then
-          dmg = math.floor(dmg * 1.44)
-        elseif caster:FindModifierByName("modifier_troll_spell_gold_hit_x4"):GetStackCount() == 3 then
-          dmg = math.floor(dmg * 1.66)
-        end
-      end
-
+		local hasGreed = (caster:HasModifier("modifier_troll_spell_gold_greed") or caster:HasModifier("modifier_troll_spell_gold_greed_x4"))
+		local bankMod = caster:FindModifierByName("modifier_troll_spell_gold_greed_bank")
+		if hasGreed and bankMod and not caster.greed_activated then
+			local goldToGive = math.floor(dmg * 0.80) -- 80% to player
+			local goldToBank = dmg - goldToGive      -- 20% to bank
+			dmg = goldToGive
+			bankMod:SetStackCount(bankMod:GetStackCount() + goldToBank)
 		end
 		PlayerResource:ModifyGold(caster,dmg)
 		PopupGoldGain(caster,dmg)
