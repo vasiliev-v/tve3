@@ -208,7 +208,7 @@
 		"radius_scepter"				"775"
 		"duration_scepter"				"24"
 		"armor_per_second_scepter"		"10"
-		"negative_armor_per_second"		"-70"
+		"negative_armor_per_second"		"-55"
 		"tick_interval"					"1.0"
 		"vision_duration"				"3.0"
 	}
