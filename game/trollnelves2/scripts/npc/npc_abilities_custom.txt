@@ -12148,10 +12148,10 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-            "radius" "300"
+            "radius" "350"
             "duration" "10"
             "linger_duration" "0.5"
-            "move_slow" "-35"
+            "move_slow" "-45"
             "miss_chance" "99"
         }
 
@@ -12238,10 +12238,10 @@
 		"particle"  		"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
 	}
 
-	"AbilityCastRange"		"400"
+	"AbilityCastRange"		"600"
 	"AbilityCooldown"		"300"
-	"AbilityDuration"		"12"
-	"AbilityDamage"			"50000"
+	"AbilityDuration"		"20"
+	"AbilityDamage"			"100000"
 
 	"ScriptFile"			"heroes/hero_vengefulspirit/wave_of_terror.lua"
 
@@ -12249,8 +12249,8 @@
 	{
 		"wave_speed"		"2000.0"
 		"wave_width"		"300"
-		"armor_reduction"	"-1500"
-		"tooltip_duration"	"12.0"
+		"armor_reduction"	"-3500"
+		"tooltip_duration"	"20.0"
 		"vision_aoe"		"500"
 		"vision_duration"	"3.0"
 		"wave_range"		"700"
