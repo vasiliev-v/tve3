@@ -196,19 +196,19 @@
 		"particle"			"particles/units/heroes/hero_dazzle/dazzle_armor_enemy.vpcf"
 	}
 	"AbilityCastRange"		"575"
-	"AbilityCooldown"		"360"
+	"AbilityCooldown"		"300"
 	"AbilityManaCost"		"100"
 	"ScriptFile"			"heroes\hero_dazzle\weave.lua"
 	"AbilityValues"
 	{
 		"radius"						"575"
 		"vision"						"575"
-		"armor_per_second"				"1"
-		"duration"						"20.0"
+		"armor_per_second"				"3"
+		"duration"						"40.0"
 		"radius_scepter"				"775"
 		"duration_scepter"				"24"
 		"armor_per_second_scepter"		"10"
-		"negative_armor_per_second"		"-50"
+		"negative_armor_per_second"		"-70"
 		"tick_interval"					"1.0"
 		"vision_duration"				"3.0"
 	}
