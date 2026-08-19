@@ -5855,7 +5855,7 @@
 		"MaxLevel"					"1"
 		"UnitName"					"worker_1"
         "AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
-		"AbilityChannelTime"		"4"//"3"
+		"AbilityChannelTime"		"3"//"3"
 		"AbilityValues"
         {
             "gold_cost" "8"
@@ -6021,7 +6021,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"8"//"5"
+		"AbilityChannelTime"		"4"//"5"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -6180,7 +6180,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"16"//"10"
+		"AbilityChannelTime"		"5"//"10"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -6339,7 +6339,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"24"//"20"
+		"AbilityChannelTime"		"6"//"20"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -6497,7 +6497,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"32"
+		"AbilityChannelTime"		"7"
 		"OnSpellStart"{
 			"RunScript"
 			{
