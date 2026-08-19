@@ -1,4 +1,13 @@
+LinkLuaModifier("modifier_elf_spell_untouchable_buff", "modifiers/modifier_elf_spell_untouchable_buff", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_elf_spell_untouchable_slow", "modifiers/modifier_elf_spell_untouchable_slow", LUA_MODIFIER_MOTION_NONE)
+
 elf_spell_untouchable = class({})
+
+function elf_spell_untouchable:Precache(context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts", context)
+    PrecacheResource("particle", "particles/econ/events/fall_major_2015/teleport_start_fallmjr_2015_d.vpcf", context)
+    PrecacheResource("particle", "particles/econ/courier/courier_greevil_green/courier_greevil_green_ambient_3.vpcf", context)
+end
 
 function elf_spell_untouchable:OnSpellStart()
     local caster = self:GetCaster()
@@ -15,14 +24,9 @@ function elf_spell_untouchable:OnSpellStart()
         { duration = duration }
     )
 
-    -- звук и частицы применения
-    EmitSoundOn("Hero_Omniknight.Repel", target)
-    local fx = ParticleManager:CreateParticle(
-        "particles/econ/courier/courier_hyeonmu_ambient/courier_hyeonmu_ambient_green.vpcf",
-        PATTACH_ABSORIGIN_FOLLOW,
-        target
-    )
-    ParticleManager:SetParticleControl(fx, 1, Vector(300, 300, 300))
-    ParticleManager:SetParticleControl(fx, 2, Vector(300, 300, 300))
-    ParticleManager:ReleaseParticleIndex(fx)
+    -- звук применения
+    EmitSoundOn("Hero_Enchantress.NaturesAttendantsCast", target)
 end
+
+elf_spell_untouchable_x4 = class(elf_spell_untouchable)
+

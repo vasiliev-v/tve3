@@ -6,20 +6,21 @@ function modifier_elf_spell_untouchable_buff:IsHidden()     return false end
 function modifier_elf_spell_untouchable_buff:IsDebuff()     return false end
 function modifier_elf_spell_untouchable_buff:IsPurgable()   return false end
 function modifier_elf_spell_untouchable_buff:GetTexture()   return "elf_spell_untouchable" end
-
 function modifier_elf_spell_untouchable_buff:OnCreated(kv)
     if IsServer() then
         local parent = self:GetParent()
         local fx = ParticleManager:CreateParticle(
-            "particles/econ/courier/courier_hyeonmu_ambient/courier_hyeonmu_ambient_green.vpcf",
+            "particles/econ/events/fall_major_2015/teleport_start_fallmjr_2015_d.vpcf",
             PATTACH_ABSORIGIN_FOLLOW,
             parent
         )
-        -- CP1 — масштаб/радиус частицы (увеличиваем в ~3 раза)
-        ParticleManager:SetParticleControl(fx, 1, Vector(300, 300, 300))
-        -- CP2 — дополнительный размер для некоторых систем
-        ParticleManager:SetParticleControl(fx, 2, Vector(300, 300, 300))
+        local fx2 = ParticleManager:CreateParticle(
+            "particles/econ/courier/courier_greevil_green/courier_greevil_green_ambient_3.vpcf",
+            PATTACH_ABSORIGIN_FOLLOW,
+            parent
+        )
         self.fxBuff = fx
+        self.fxBuff2 = fx2
     end
 end
 
@@ -30,6 +31,12 @@ function modifier_elf_spell_untouchable_buff:OnDestroy()
             ParticleManager:DestroyParticle(self.fxBuff, false)
             ParticleManager:ReleaseParticleIndex(self.fxBuff)
             self.fxBuff = nil
+        end
+        if self.fxBuff2 then
+            -- false = дать партиклу доиграть анимацию затухания
+            ParticleManager:DestroyParticle(self.fxBuff2, false)
+            ParticleManager:ReleaseParticleIndex(self.fxBuff2)
+            self.fxBuff2 = nil
         end
     end
 end
