@@ -157,6 +157,7 @@
 		"worker_7"                                                                        "Worker 7"
 		"worker_8"                                                                        "Worker 8"
 		"worker_9"                                                                        "Worker 9"
+		"worker_10"                                                                       "Worker 10"
 		"worker_builder"                                                                  "Worker builder"
 		"attacker_1"                                                                      "Warrior 1"
 		"attacker_2"                                                                      "Warrior 2"
@@ -1897,6 +1898,25 @@
 		"DOTA_Tooltip_ability_train_worker_9" "Train Worker 9"
 		"DOTA_Tooltip_ability_train_worker_9_Description" "Workers are great at repairing buildings! Repair speed is shown in the first ability description.<br><br><font color='#51ff00'>Root: Roots the chosen target</font><br><br><font color='#51ff00'>Nova: Slows attack speed and movement speed of enemies in a small area</font>"
 		"DOTA_Tooltip_ability_train_worker_9_lumber_cost" "<font color='#008000'>LUMBER COST: </font>"
+
+		"DOTA_Tooltip_ability_train_worker_10" "Train Worker 10"
+		"DOTA_Tooltip_ability_train_worker_10_Description" "Workers are great at repairing buildings! Repair speed is shown in the first ability description.<br><br><font color='#51ff00'>Avalanche: Bombards an area with rocks, stunning and damaging enemy units</font><br><br><font color='#51ff00'>Tree Throw: Throws a tree that deals 199 999 magic damage and slows enemies by 85% for 1.5 sec</font>"
+		"DOTA_Tooltip_ability_train_worker_10_gold_cost" "<font color='#FFFF00'>GOLD COST: </font>"
+		"DOTA_Tooltip_ability_train_worker_10_lumber_cost" "<font color='#008000'>LUMBER COST: </font>"
+
+		"DOTA_Tooltip_ability_worker_avalanche" "Avalanche"
+		"DOTA_Tooltip_ability_worker_avalanche_Description" "Bombards an area with rocks, stunning and damaging enemy units over time."
+		"DOTA_Tooltip_ability_worker_avalanche_radius" "RADIUS:"
+		"DOTA_Tooltip_ability_worker_avalanche_damage" "DAMAGE:"
+		"DOTA_Tooltip_ability_worker_avalanche_duration" "DURATION:"
+
+		"DOTA_Tooltip_ability_worker_tree_throw" "Tree Throw"
+		"DOTA_Tooltip_ability_worker_tree_throw_Description" "Hurls a massive tree at the target location. Upon impact, deals %damage% magic damage and slows enemies by %movespeed_slow%%% for %slow_duration% seconds."
+		"DOTA_Tooltip_ability_worker_tree_throw_damage" "DAMAGE:"
+		"DOTA_Tooltip_ability_worker_tree_throw_movespeed_slow" "%MOVE SLOW:"
+		"DOTA_Tooltip_ability_worker_tree_throw_slow_duration" "SLOW DURATION:"
+		"DOTA_Tooltip_modifier_worker_tree_throw_slow" "Tree Throw Slow"
+		"DOTA_Tooltip_modifier_worker_tree_throw_slow_Description" "Movement speed reduced by 75%."
 
 		"DOTA_Tooltip_ability_train_worker_builder" "Train worker builder"
 		"DOTA_Tooltip_ability_train_worker_builder_Description" "Builder. Can create tower 1 and mother of nature"

@@ -448,6 +448,22 @@
 		"DOTA_Tooltip_ability_train_worker_7_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Paralyzing cask: бросает каску, которая перебрасывается между врагами оглушая их</font><br><br><font color='#51ff00'>Heal Building: вылечивает выбранное здание с любой точки карты</font>"
 		"DOTA_Tooltip_ability_train_worker_8_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Smoke: Замедляет врагов в выбранной области, заставляя их промахиваться</font><br><br><font color='#51ff00'>Wave Of Terror: Выпускает волну, наносящую урон и снижающую броню врагов</font>"
 		"DOTA_Tooltip_ability_train_worker_9_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Root: Накладывает оцепенение на выбранную цель</font><br><br><font color='#51ff00'>Nova: Замедляет атаку и скорость передвижения врагов в небольшой области</font>"
+		"DOTA_Tooltip_ability_train_worker_10_Description" "Рабочие отлично умеют ремонтировать здания! Скорость ремонта указана в описании первой способности<br><br><font color='#51ff00'>Avalanche: Обрушивает камни на выбранную область, оглушая врагов и нанося им урон</font><br><br><font color='#51ff00'>Tree Throw: Бросает дерево в область, нанося 199 000 маг. урона и замедляя врагов на 85% на 1.5 сек.</font>"
+
+		"DOTA_Tooltip_ability_worker_avalanche" "Avalanche"
+		"DOTA_Tooltip_ability_worker_avalanche_Description" "Обрушивает камни на выбранную область, нанося периодический магический урон и оглушая врагов."
+		"DOTA_Tooltip_ability_worker_avalanche_radius" "РАДИУС:"
+		"DOTA_Tooltip_ability_worker_avalanche_damage" "УРОН:"
+		"DOTA_Tooltip_ability_worker_avalanche_duration" "ДЛИТЕЛЬНОСТЬ:"
+
+		"DOTA_Tooltip_ability_worker_tree_throw" "Tree Throw"
+		"DOTA_Tooltip_ability_worker_tree_throw_Description" "Бросает огромное дерево в указанную точку. При падении дерево наносит %damage% магического урона и замедляет врагов на %movespeed_slow%%% на %slow_duration% сек."
+		"DOTA_Tooltip_ability_worker_tree_throw_damage" "УРОН:"
+		"DOTA_Tooltip_ability_worker_tree_throw_movespeed_slow" "%ЗАМЕДЛЕНИЕ СКОРОСТИ:"
+		"DOTA_Tooltip_ability_worker_tree_throw_slow_duration" "ДЛИТЕЛЬНОСТЬ ЗАМЕДЛЕНИЯ:"
+		"DOTA_Tooltip_modifier_worker_tree_throw_slow" "Замедление от броска дерева"
+		"DOTA_Tooltip_modifier_worker_tree_throw_slow_Description" "Скорость передвижения снижена на 75%."
+		"worker_10" "Рабочий 10"
 
 		"DOTA_Tooltip_ability_train_worker_builder_Description" "Строитель. Может создавать камни, башни, мать природу и лабораторию"
 

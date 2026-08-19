@@ -6777,6 +6777,48 @@
 			}
 		}
 	}
+	"train_worker_10"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"train_worker_10"
+		"MaxLevel"					"1"
+		"UnitName"					"worker_10"
+		
+		"AbilityValues"
+        {
+            "gold_cost" "999999"
+            "lumber_cost" "999999"
+            "food_cost" "1"
+            "unit_count" "1"
+            "wisp_cost" "0"
+        }
+	 
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	 
+		"AbilityChannelTime"		"64"
+		"OnSpellStart"{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_abilities.lua"
+				"Function"			"SpawnUnitOnSpellStart"
+			}
+		}
+		"OnChannelSucceeded"
+		{	 
+			"RunScript"
+			{
+				"ScriptFile"		"custom_abilities.lua"
+				"Function"			"SpawnUnitOnChannelSucceeded"
+			}
+		}
+		"OnChannelInterrupted"{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_abilities.lua"
+				"Function"			"SpawnUnitOnChannelInterrupted"
+			}
+		}
+	}
 	"train_worker_builder"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -12123,6 +12165,93 @@
         }
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
 	}
+
+	"worker_avalanche"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/tiny/worker_avalanche"
+		"AbilityTextureName"			"tiny_avalanche"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"AbilitySound"					"Ability.Avalanche"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.7"
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"300"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"radius"					"300"
+			"damage"					"100000"
+			"duration"					"2.0"
+			"tick_count"				"5"
+			"tick_interval"				"0.25"
+		}
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_tiny/tiny_avalanche_projectile_explode.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
+		}
+	}
+
+	"worker_tree_throw"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/tiny/worker_tree_throw"
+		"AbilityTextureName"			"tiny_tree_channel"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"AbilitySound"					"Hero_Tiny.Tree.Cast"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900"
+		"AbilityCastPoint"				"2.5"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"300"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"radius"					"400"
+			"damage"					"199999"
+			"slow_duration"				"1.5"
+			"movespeed_slow"			"-85"
+			"speed"						"500"
+			"arc_height"				"350"
+		}
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+		"precache"
+		{
+			"model"						"models/heroes/tiny_01/tiny_tree_proj.vmdl"
+			"particle"					"particles/units/heroes/hero_tiny/tiny_toss_impact.vpcf"
+			"particle"					"particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
+		}
+	}
+
 	"smoke_screen_datadriven"
 	{
 	// General
