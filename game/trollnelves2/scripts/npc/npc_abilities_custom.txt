@@ -12193,9 +12193,9 @@
 		{
 			"radius"					"300"
 			"damage"					"100000"
-			"duration"					"2.0"
+			"duration"					"3.0"
+			"stun_duration"				"1.2"
 			"tick_count"				"5"
-			"tick_interval"				"0.25"
 		}
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 
@@ -12234,9 +12234,10 @@
 		"AbilityValues"
 		{
 			"radius"					"400"
-			"damage"					"199999"
-			"slow_duration"				"1.5"
+			"damage"					"75000"
+			"slow_duration"				"2.0"
 			"movespeed_slow"			"-85"
+			"max_movespeed"				"150"
 			"speed"						"500"
 			"arc_height"				"350"
 		}

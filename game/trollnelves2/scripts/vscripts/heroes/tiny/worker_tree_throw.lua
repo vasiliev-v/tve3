@@ -146,7 +146,9 @@ function modifier_worker_tree_throw_slow:IsPurgable() return true end
 
 function modifier_worker_tree_throw_slow:OnCreated(kv)
 	local ability = self:GetAbility()
-	self.ms_slow = ability and ability:GetSpecialValueFor("movespeed_slow") or -75
+	self.ms_slow = ability and ability:GetSpecialValueFor("movespeed_slow") or -85
+	self.max_ms = ability and ability:GetSpecialValueFor("max_movespeed") or 150
+	if self.max_ms <= 0 then self.max_ms = 150 end
 end
 
 function modifier_worker_tree_throw_slow:OnRefresh(kv)
@@ -156,11 +158,26 @@ end
 function modifier_worker_tree_throw_slow:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		MODIFIER_PROPERTY_MOVESPEED_LIMIT,
+		MODIFIER_PROPERTY_MOVESPEED_MAX,
+		MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MAX,
 	}
 end
 
 function modifier_worker_tree_throw_slow:GetModifierMoveSpeedBonus_Percentage()
 	return self.ms_slow
+end
+
+function modifier_worker_tree_throw_slow:GetModifierMoveSpeed_Limit(params)
+	return self.max_ms
+end
+
+function modifier_worker_tree_throw_slow:GetModifierMoveSpeed_Max(params)
+	return self.max_ms
+end
+
+function modifier_worker_tree_throw_slow:GetModifierMoveSpeed_AbsoluteMax(params)
+	return self.max_ms
 end
 
 function modifier_worker_tree_throw_slow:GetEffectName()

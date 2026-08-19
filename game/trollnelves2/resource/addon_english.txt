@@ -1900,7 +1900,7 @@
 		"DOTA_Tooltip_ability_train_worker_9_lumber_cost" "<font color='#008000'>LUMBER COST: </font>"
 
 		"DOTA_Tooltip_ability_train_worker_10" "Train Worker 10"
-		"DOTA_Tooltip_ability_train_worker_10_Description" "Workers are great at repairing buildings! Repair speed is shown in the first ability description.<br><br><font color='#51ff00'>Avalanche: Bombards an area with rocks, stunning and damaging enemy units</font><br><br><font color='#51ff00'>Tree Throw: Throws a tree that deals 199 999 magic damage and slows enemies by 85% for 1.5 sec</font>"
+		"DOTA_Tooltip_ability_train_worker_10_Description" "Workers are great at repairing buildings! Repair speed is shown in the first ability description.<br><br><font color='#51ff00'>Avalanche: Bombards an area with rocks, stunning and damaging enemy units</font><br><br><font color='#51ff00'>Tree Throw: Throws a tree that deals 75 000 magic damage and slows enemies by 85% for 2 sec</font>"
 		"DOTA_Tooltip_ability_train_worker_10_gold_cost" "<font color='#FFFF00'>GOLD COST: </font>"
 		"DOTA_Tooltip_ability_train_worker_10_lumber_cost" "<font color='#008000'>LUMBER COST: </font>"
 

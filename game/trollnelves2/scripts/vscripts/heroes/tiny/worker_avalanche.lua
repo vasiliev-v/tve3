@@ -16,12 +16,14 @@ function worker_avalanche:OnSpellStart()
 	local radius = self:GetSpecialValueFor("radius")
 	local total_damage = self:GetSpecialValueFor("damage")
 	local duration = self:GetSpecialValueFor("duration")
+	local stun_duration = self:GetSpecialValueFor("stun_duration")
+	if stun_duration <= 0 then stun_duration = duration end
+
 	local tick_count = self:GetSpecialValueFor("tick_count")
 	if tick_count <= 0 then tick_count = 5 end
 	local tick_interval = self:GetSpecialValueFor("tick_interval")
 	if tick_interval <= 0 then tick_interval = duration / tick_count end
 	local damage_per_tick = total_damage / tick_count
-	local stun_per_tick = tick_interval * 1.5
 
 	-- Sound
 	EmitSoundOnLocationWithCaster(point, "Ability.Avalanche", caster)
@@ -72,7 +74,7 @@ function worker_avalanche:OnSpellStart()
 			if IsValidEntity(enemy) and enemy:IsAlive() and not enemy:IsMagicImmune() then
 				damageTable.victim = enemy
 				ApplyDamage(damageTable)
-				enemy:AddNewModifier(caster, self, "modifier_stunned", { duration = stun_per_tick })
+				enemy:AddNewModifier(caster, self, "modifier_stunned", { duration = stun_duration })
 			end
 		end
 
