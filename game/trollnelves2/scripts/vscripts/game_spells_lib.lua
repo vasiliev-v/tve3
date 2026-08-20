@@ -233,6 +233,26 @@ if GameRules.MapSpeed ~= 4  and GetMapName() ~= "1x1"then
             {0, 10000, 30000}
         },
         {
+            "elf_spell_untouchable",
+            "elf_spell_untouchable", 
+            "modifier_elf_spell_untouchable", 
+            {
+                "elf_spell_untouchable_description_level_1_shop", 
+                "elf_spell_untouchable_description_level_2_shop",
+                "elf_spell_untouchable_description_level_3_shop",
+                "elf_spell_untouchable_description_level_4_shop",
+            }, 
+            {
+                {"-250", "-350", "-450"},
+                {6, 12, 16},
+                {350, 275, 225},
+                {600, 600, 600},
+            },
+            "0",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
             "elf_spell_cd_reduce", 
             "elf_spell_cd_reduce", 
             "modifier_elf_spell_cd_reduce", 
@@ -1215,6 +1235,26 @@ else -- X4
                 {"55%", "75%", "85%"},
                 {3, 5 ,7},
                 {300, 275, 250},
+            },
+            "0",
+            "1",
+            {0, 10000, 30000}
+        },
+        {
+            "elf_spell_untouchable",
+            "elf_spell_untouchable", 
+            "modifier_elf_spell_untouchable_x4", 
+            {
+                "elf_spell_untouchable_description_level_1_shop_x4", 
+                "elf_spell_untouchable_description_level_2_shop_x4",
+                "elf_spell_untouchable_description_level_3_shop_x4",
+                "elf_spell_untouchable_description_level_4_shop_x4",
+            }, 
+            {
+                {"-250", "-350", "-450"},
+                {6, 12, 16},
+                {350, 275, 225},
+                {120, 120, 120},
             },
             "0",
             "1",
