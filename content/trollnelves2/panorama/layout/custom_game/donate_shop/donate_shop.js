@@ -17,6 +17,7 @@ function ToggleShop()
         InitItems()
         InitInventory()
     }
+    UpdateCurrencyVisibility()
 }
 
 CustomNetTables.SubscribeNetTableListener("Shop", UpdateShop);
@@ -38,6 +39,7 @@ function UpdateShop(t, k, d)
         {
             UPDATE_STORE = true
         }
+        UpdateCurrencyVisibility()
         if (GameUI.CustomUIConfig().UpdateBPButton)
         {
             GameUI.CustomUIConfig().UpdateBPButton()
@@ -48,10 +50,61 @@ function UpdateShop(t, k, d)
         player_active_items = d
         SetMainCurrency()
         InitInventory()
+        UpdateCurrencyVisibility()
     }
 }
 
-CustomNetTables.SubscribeNetTableListener("Shop", UpdateShop);
+function GetPlayerRating() 
+{
+    let pId = Players.GetLocalPlayer();
+    let shop_table = CustomNetTables.GetTableValue("Shop", pId);
+    if (!shop_table) return NaN;
+
+    let rating_data = shop_table[13];
+    if (rating_data) 
+    {
+        if (rating_data[3] != null || rating_data[4] != null) 
+        {
+            let sum = Number(rating_data[3] || 0) + Number(rating_data[4] || 0);
+            if (!isNaN(sum) && (rating_data[3] != null || rating_data[4] != null)) 
+            {
+                return sum;
+            }
+        }
+        if (rating_data[5] != null) 
+        {
+            let score = Number(rating_data[5]);
+            if (!isNaN(score)) return score;
+        }
+    }
+
+    let elf_data = shop_table[8] && shop_table[8][0];
+    let troll_data = shop_table[9] && shop_table[9][0];
+
+    let hasElf = elf_data && typeof elf_data === "object" && elf_data.score != null;
+    let hasTroll = troll_data && typeof troll_data === "object" && troll_data.score != null;
+
+    if (hasElf || hasTroll) 
+    {
+        let elf = hasElf ? Number(elf_data.score) : 0;
+        let troll = hasTroll ? Number(troll_data.score) : 0;
+        let sum = elf + troll;
+        return sum;
+    }
+
+    return NaN;
+}
+
+function UpdateCurrencyVisibility() 
+{
+    let rating = GetPlayerRating();
+    let isRatingNaN = isNaN(rating);
+    let topCurrency = $("#DonateShopTopCurrency");
+    if (topCurrency) 
+    {
+        topCurrency.style.visibility = isRatingNaN ? "collapse" : "visible";
+    }
+}
 
 function InitShop() 
 {
@@ -94,21 +147,25 @@ function InitShop()
         GameEvents.SubscribeProtected('shop_reward_request', RewardRequest);
         EVENT_REGISTERED = true
     }
+
+    UpdateCurrencyVisibility();
 }
 
 function SetMainCurrency() 
 {
-	if (player_table[0]) 
+	if (player_table && player_table[0]) 
     {
 		$("#Currency").text = String(player_table[0][0])
 		$("#Currency2").text = String(player_table[0][1])	
 	}
+    UpdateCurrencyVisibility();
 }
 
 function SetCurrency(data) 
 {
 	$("#Currency").text = String(data.gold || 0)
 	$("#Currency2").text = String(data.gem || 0)
+    UpdateCurrencyVisibility();
 }
 
 function ShopError(data) 
