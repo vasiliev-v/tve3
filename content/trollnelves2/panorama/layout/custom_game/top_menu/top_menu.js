@@ -12,21 +12,70 @@ var TOP_MENU_BUTTONS =
 var RewardsButton = null
 var updateRewardsLoop = true
 
-function GetPlayerMMR() {
+function GetPlayerRating() {
     let pId = Players.GetLocalPlayer()
     let shop_table = CustomNetTables.GetTableValue("Shop", pId)
-    if (!shop_table) return 0
-    // shop_table[13] = {rank, steamID, sum, troll, elf, games} — данные из топ-таблицы
+    if (!shop_table) return NaN
+
     let rating_data = shop_table[13]
-    if (rating_data && Number(rating_data[3]) != null) {
-        return Number(rating_data[3]) + Number(rating_data[4] || 0)
+    if (rating_data) {
+        if (rating_data[3] != null || rating_data[4] != null) {
+            let sum = Number(rating_data[3] || 0) + Number(rating_data[4] || 0)
+            if (!isNaN(sum) && (rating_data[3] != null || rating_data[4] != null)) {
+                return sum
+            }
+        }
+        if (rating_data[5] != null) {
+            let score = Number(rating_data[5])
+            if (!isNaN(score)) return score
+        }
     }
-    // Запасной вариант: читать из raw score полей
+
     let elf_data = shop_table[8] && shop_table[8][0]
     let troll_data = shop_table[9] && shop_table[9][0]
-    let elf = (elf_data && Number(elf_data.score)) || 0
-    let troll = (troll_data && Number(troll_data.score)) || 0
-    return elf + troll
+
+    let hasElf = elf_data && typeof elf_data === "object" && elf_data.score != null
+    let hasTroll = troll_data && typeof troll_data === "object" && troll_data.score != null
+
+    if (hasElf || hasTroll) {
+        let elf = hasElf ? Number(elf_data.score) : 0
+        let troll = hasTroll ? Number(troll_data.score) : 0
+        let sum = elf + troll
+        return sum
+    }
+
+    return NaN
+}
+
+function GetPlayerGames() {
+    let pId = Players.GetLocalPlayer()
+    let shop_table = CustomNetTables.GetTableValue("Shop", pId)
+    if (!shop_table) return null
+
+    let elf_data = shop_table[8] && shop_table[8][0]
+    let troll_data = shop_table[9] && shop_table[9][0]
+
+    let hasStats = (elf_data && typeof elf_data === "object") || (troll_data && typeof troll_data === "object")
+    let rating_data = shop_table[13]
+
+    if (!hasStats && !rating_data) {
+        return null
+    }
+
+    let elfGames = (elf_data && typeof elf_data === "object" && elf_data.matchID != null) ? Number(elf_data.matchID) : 0
+    let trollGames = (troll_data && typeof troll_data === "object" && troll_data.matchID != null) ? Number(troll_data.matchID) : 0
+    let totalStatsGames = (!isNaN(elfGames) ? elfGames : 0) + (!isNaN(trollGames) ? trollGames : 0)
+
+    let ratingGames = 0
+    if (rating_data) {
+        if (rating_data[6] !== undefined && !isNaN(Number(rating_data[6]))) {
+            ratingGames = Number(rating_data[6])
+        } else if (rating_data[5] !== undefined && !isNaN(Number(rating_data[5]))) {
+            ratingGames = Number(rating_data[5])
+        }
+    }
+
+    return Math.max(totalStatsGames, ratingGames)
 }
 
 function Init() {
@@ -52,20 +101,39 @@ function Init() {
     }
 
     UpdateRewardsButtonLoop()
-    CheckMMRVisibility()
+    CheckGamesVisibility()
 }
 
-function CheckMMRVisibility() {
-    let mmr = GetPlayerMMR()
+function CheckGamesVisibility() {
     let TopMenuCustom = $("#TopMenuCustom")
-    if (isNaN(mmr) || mmr > 100) {
-        TopMenuCustom.style.visibility = "visible"
+    if (!TopMenuCustom) return
+
+    let pId = Players.GetLocalPlayer()
+    let shop_table = CustomNetTables.GetTableValue("Shop", pId)
+
+    if (!shop_table) {
+        TopMenuCustom.style.visibility = "collapse"
+        $.Schedule(2, CheckGamesVisibility)
         return
     }
-    // Таблица ещё не загрузилась — повторить через 2 сек
-    TopMenuCustom.style.visibility = "collapse"
-    $.Schedule(2, CheckMMRVisibility)
+
+    let rating = GetPlayerRating()
+    let games = GetPlayerGames()
+
+    if (isNaN(rating)) {
+        TopMenuCustom.style.visibility = "visible"
+    } else if (games !== null && games > 5) {
+        TopMenuCustom.style.visibility = "visible"
+    } else {
+        TopMenuCustom.style.visibility = "collapse"
+    }
 }
+
+CustomNetTables.SubscribeNetTableListener("Shop", function(table, key, data) {
+    if (key == Players.GetLocalPlayer()) {
+        CheckGamesVisibility()
+    }
+})
 
 function UpdateRewardsButtonLoop() {
     if (!updateRewardsLoop) {
