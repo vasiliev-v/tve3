@@ -1598,14 +1598,9 @@
         }
 
 		"OnSpellStart"{
-			"ApplyModifier"{
-				"Target"				"TARGET"
-				"ModifierName"			"invis_disabled"
-				"Duration"				"%time_dur"
-			}
-			"ApplyModifier" {
-				"Target"        "TARGET"
-				"ModifierName"  "modifier_buff_target"
+			"RunScript" {
+				"ScriptFile"	"custom_abilities.lua"
+				"Function"		"RootItemCast"
 			}
 		}
 		"Modifiers"{

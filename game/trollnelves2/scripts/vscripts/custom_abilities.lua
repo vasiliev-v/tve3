@@ -1525,6 +1525,19 @@ function StackModifierCreated3(keys)
 	end
 end
 
+-- OnSpellStart handler for item_root_ability (moved from KV to avoid duplicate key issue)
+function RootItemCast(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	local duration = ability:GetSpecialValueFor("time_dur")
+
+	-- Apply root/disarm/reveal debuff
+	ability:ApplyDataDrivenModifier(caster, target, "invis_disabled", {Duration = duration})
+	-- Apply stacking tracker (triggers StackModifierCreated2 via OnCreated)
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_buff_target", {})
+end
+
 function StackModifierCreated2(keys)
 	local caster = keys.caster
 	local target = keys.target
