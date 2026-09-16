@@ -4956,7 +4956,7 @@
 	{
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ID"                            "3060"
+		"ID"                            "9999"
 		"ItemDisplayCharges"			"0"
 		"Model"                         "models/props_gameplay/red_box.vmdl"
 		"Effect"                        "particles/generic_gameplay/dropped_item.vpcf"

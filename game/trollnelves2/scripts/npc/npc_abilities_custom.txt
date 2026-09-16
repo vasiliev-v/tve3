@@ -12008,31 +12008,31 @@
 		//=================================================================================================================
 	// Riki: Backstab
 	//=================================================================================================================
-	"riki_permanent_invisibility"
-	{
+	//"riki_permanent_invisibility"
+	//{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"					"5144"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-        {
-            "damage_multiplier"
-            {
-                "value" "0.4"
-                "LinkedSpecialBonus" "special_bonus_unique_riki_1"
-            }
-            "backstab_angle" "105"
-            "fade_time" "0.0 0.0 0.0 0.0"
-            "fade_delay" "1"
-            "hp_regen" "2"
-        }
-		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
-	}
+	//	"ID"					"5144"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	//	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	//	"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+	//	
+	//	// Special
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityValues"
+    //    {
+    //        "damage_multiplier"
+    //        {
+    //           "value" "0.4"
+    //            "LinkedSpecialBonus" "special_bonus_unique_riki_1"
+    //        }
+    //        "backstab_angle" "105"
+    //        "fade_time" "0.0 0.0 0.0 0.0"
+    //        "fade_delay" "1"
+    //        "hp_regen" "2"
+    //    }
+	//	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	//}
 
 	//=================================================================================================================
 	// Lycan Summon Wolves: Permanent Invisibility
@@ -12513,44 +12513,44 @@
 //=================================================================================================================
 	// Abaddon: Borrowed Time
 	//=================================================================================================================
-	"abaddon_borrowed_time_event"
-	{
+//	"abaddon_borrowed_time_event"
+//	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"5588"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"FightRecapLevel"				"1"
-		"AbilitySound"					"Hero_Abaddon.BorrowedTime"
-		"HasShardUpgrade"				"0"
-		"HasScepterUpgrade"				"0"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCastGestureSlot"		"ABSOLUTE"
-
-		"HasScepterUpgrade"			"0"
-		
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"AbilityCooldown"				
-			{
-				"value"								"180"
-			}
-			"hp_threshold"							"100"
-			"duration"								"5.0"
-		}
-	}
+//		"ID"							"5588"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+//		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+//		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+//		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+//		"FightRecapLevel"				"1"
+//		"AbilitySound"					"Hero_Abaddon.BorrowedTime"
+//		"HasShardUpgrade"				"0"
+//		"HasScepterUpgrade"				"0"
+//
+//		// Casting
+//		//-------------------------------------------------------------------------------------------------------------
+//		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+//		"AbilityCastGestureSlot"		"ABSOLUTE"
+//
+//		"HasScepterUpgrade"			"0"
+//		
+//		// Time		
+//		//-------------------------------------------------------------------------------------------------------------
+//		// Cost
+//		//-------------------------------------------------------------------------------------------------------------
+//		"AbilityManaCost"				"0"
+//
+	//	// Special
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityValues"
+	//	{
+	//		"AbilityCooldown"				
+	//		{
+	//			"value"								"180"
+	//		}
+	//		"hp_threshold"							"100"
+	//		"duration"								"5.0"
+	//	}
+	//}
 	//=================================================================================================================
 	// Arc Warden: Magnetic Field
 	//=================================================================================================================
