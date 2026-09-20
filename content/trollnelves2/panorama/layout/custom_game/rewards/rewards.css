@@ -130,6 +130,7 @@
     horizontal-align: center;
     vertical-align: center;
     margin-top: 155px;
+    transform: translateY(20px);
     transition-property: brightness;
     transition-duration: 0.2s;
 }
