@@ -8,8 +8,7 @@
         return !!state && (state.isRestrictedClient === true || state.isRestrictedClient === 1);
     };
 
-    // Native inventory slots use this directly because their contents can change.
-    config.SetWriteControlRestricted = function (panel, restricted) {
+    var setWriteControlRestricted = function (panel, restricted) {
         if (!panel || !panel.IsValid()) return;
         if (restricted) {
             if (!panel.__restrictedClientOriginal) {
@@ -35,14 +34,14 @@
         if (!panel || !panel.IsValid()) return;
         controls = controls.filter(function (control) { return control.IsValid(); });
         if (controls.indexOf(panel) === -1) controls.push(panel);
-        config.SetWriteControlRestricted(panel, config.IsRestrictedClient());
+        setWriteControlRestricted(panel, config.IsRestrictedClient());
     };
 
     CustomNetTables.SubscribeNetTableListener("Shop", function (table, key) {
         if (key !== "restricted_client") return;
         controls = controls.filter(function (control) { return control.IsValid(); });
         controls.forEach(function (panel) {
-            config.SetWriteControlRestricted(panel, config.IsRestrictedClient());
+            setWriteControlRestricted(panel, config.IsRestrictedClient());
         });
     });
 })();

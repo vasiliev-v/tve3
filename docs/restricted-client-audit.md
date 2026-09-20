@@ -9,9 +9,7 @@ authorization boundary. The ASP.NET Core API remains responsible for authorizati
 The investigation covered both junction-backed source trees, including current and
 legacy Panorama scripts/layouts, Lua helpers, listeners, timers, chat/console paths,
 and item KV callbacks. The pre-edit findings and proposed changes were reported in
-the task before editing. Two details were refined during verification: `RequestXp`
-is commented out, and the native redemption list includes `little_spider` and
-`item_ghosttown`, rather than the unrelated `item_flicker`.
+the task before editing. `RequestXp` is commented out.
 
 `settings.lua` creates the global key with `GetDedicatedServerKeyV3("1")`.
 There were no existing sentinel checks or JS copies. Every HTTP call attaches the
@@ -60,7 +58,7 @@ client dispatch path was intentionally left unguarded.
 
 - `IsRestrictedClient()` in `settings.lua` is the single literal comparison.
 - The existing `Shop` net table publishes `restricted_client`, containing
-  `isRestrictedClient` and the native redemption item names. No raw key is exposed.
+  `isRestrictedClient`. No raw key is exposed.
 - `scripts/restricted_client.js`, loaded first in the manifest, supplies
   `GameUI.CustomUIConfig().IsRestrictedClient()` and control registration. It accepts
   replicated boolean or numeric flags and updates already-created panels when the
@@ -108,16 +106,6 @@ in restricted mode. Sound previews/playback, panel tabs, close
 buttons, statistics/leaderboards, quest information, owned-spell activation, voting,
 resource transfers, building actions, and external browser links remain available.
 
-The native redemption items are exactly:
-`item_vip`, `item_event_desert`, `item_event_winter`, `item_event_helheim`,
-`item_event_birthday`, `item_get_gem`, `item_get_gold`, `item_autumn`,
-`item_winter_stress`, `item_winter_1`, `item_spring`, `item_summer`,
-`item_ghosttown`, and `little_spider`. The existing inventory overlay update dims
-and disables only slots currently containing these items and restores a slot when
-its contents change. The existing `BuildingHelper:OrderFilter` rejects their
-no-target casts before item cooldowns/consumption, covering hotkeys and engine
-orders. Ordinary items, including `item_flicker`, remain unaffected.
-
 Guarded native callbacks: `ItemGetGem`, `ItemGetGold`, `ItemEffect`, `ItemEvent`,
 `ItemEventStresS`, `ItemEventDesert`, `ItemEventWinter`, `ItemEventHelheim`,
 `ItemEventBirthday`.
@@ -155,7 +143,7 @@ Lua paths relative to `game/trollnelves2/scripts/vscripts/`:
 
 | File | Change |
 | --- | --- |
-| `settings.lua` | Predicate, boolean replication, native redemption item set |
+| `settings.lua` | Predicate and boolean replication |
 | `stats.lua` | Guard match POST helper |
 | `clanwars.lua` | Guard clan POST helper |
 | `error_debug.lua` | Ensure settings helper is loaded; guard error-report POST |
@@ -164,7 +152,6 @@ Lua paths relative to `game/trollnelves2/scripts/vscripts/`:
 | `donate_store/selectpets.lua` | Guard saved pet default handler |
 | `game_spells_lib.lua` | Guard upgrade before local inventory mutation |
 | `custom_abilities.lua` | Guard nine native redemption callbacks |
-| `libraries/buildinghelper.lua` | Block native redemption cast orders |
 
 Panorama paths relative to `content/trollnelves2/panorama/layout/custom_game/`:
 
@@ -172,7 +159,6 @@ Panorama paths relative to `content/trollnelves2/panorama/layout/custom_game/`:
 | --- | --- |
 | `custom_ui_manifest.xml` | Load shared helper before UI scripts |
 | `scripts/restricted_client.js` (new) | Shared flag and targeted control disabling |
-| `scripts/inventory_sell_overlay.js` | Update native redemption slots in existing refresh |
 | `donate_shop/donate_shop.js` | Guard purchases/chest opening and cosmetic default-save dispatches; disable only purchase/chest confirmation controls |
 | `rewards/rewards.js` | Guard daily claim and disable claim button |
 | `battlepass/battlepass.js` | Guard pass claim and disable both claim overlay types |
@@ -237,6 +223,31 @@ purchase/chest/reward controls, settings, upgrades and native redemption guards.
 No live Dota session or API was run; actual model/particle rendering and engine
 transport remain in-engine checks, not claims made by these mocked tests.
 
+## Drop restriction
+
+`drop.lua` returns immediately for the exact key
+`Invalid_NotOnDedicatedServer` at each independently callable drop entry point:
+
+- `drop:RollItemDrop(unit)`: called by `events.lua`, before rolls, limit changes
+  or scheduling `RandomDropLoot`.
+- `RandomDropLoot(item_name)`: before calling the shared `DropLootByRules` utility.
+- `TimerRandomDrop(event)` and `TimerRandomDropWinter(event)`: ability callbacks
+  that independently create items; guarded before scheduling their timers.
+
+These independent paths require entry guards; they do not all pass through one
+drop function. The shared utility, drop probabilities, item pools, normal timer
+behavior and cleanup logic are unchanged. Native inventory slot activation and
+order-filter delegation remain available in both modes. Separate purchase,
+default-save, reward and API guards remain in effect.
+
+Verification passes with mocked engine objects: all four entry points produce no
+side effects for the exact sentinel, and other keys (including an empty string
+and a sentinel with a suffix) match HEAD for drops, timers and limit changes.
+Native sell-overlay refresh leaves all slots enabled and undimmed; cast orders
+reach the existing order filter in both modes. The Inventory cosmetic regression
+suite still passes, as do the existing HTTP protection checks. Live Dota rendering
+and drops have not been exercised.
+
 ## Original restricted-client verification results
 
 Passed:
@@ -256,9 +267,6 @@ Passed:
   mode; failed READ logging sends no POST; existing date/time retries still run.
 - Twenty higher-level Lua entry points return before dependent game objects are
   accessed; saved settings with `check == 1` still apply locally.
-- Native redemption names exactly match parsed item KV callbacks. Their cast
-  orders are blocked in restricted mode; normal mode and unrelated items still
-  delegate to the existing order filter.
 - `git diff --check` passes.
 
 The inventory-specific blocked-button expectations above were superseded by the
@@ -282,7 +290,7 @@ live UI rendering, gameplay and server responses have not been claimed as tested
 Remaining in-engine checks:
 
 1. Start a non-dedicated session; verify the replicated flag, disabled/dim write
-   controls, readable previews, and native redemption slots/hotkeys. Reopen panels
+   controls and readable previews. Reopen panels
    and reconnect to exercise UI reconstruction and net-table delivery.
 2. Monitor HTTP creation with test instrumentation while invoking write actions,
    ending normal/tournament/clan matches and completing quests: no POST should be

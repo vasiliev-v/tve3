@@ -78,6 +78,7 @@ item_drop = {
 }
 
 function drop:RollItemDrop(unit)
+    if dedicatedServerKey == "Invalid_NotOnDedicatedServer" then return end
 	local unit_name = unit:GetUnitName()
 	if GameRules.PlayersCount >= GameRules.MIN_RATING_PLAYER then
 		for _,drop in ipairs(item_drop) do
@@ -151,6 +152,7 @@ function KillLoot( item, drop )
 end
 
 function RandomDropLoot(item_name)
+    if dedicatedServerKey == "Invalid_NotOnDedicatedServer" then return end
     local spawnPoint = Vector(-320, -320, 256)
 
     return DropLootByRules(
@@ -164,6 +166,7 @@ function RandomDropLoot(item_name)
 end
 
 function TimerRandomDrop(event)
+    if dedicatedServerKey == "Invalid_NotOnDedicatedServer" then return end
 	local unit = event.caster
 	local countGift = 0
 	local maxGift = RandomInt( 25, 200 )
@@ -200,6 +203,7 @@ local winter_drop = {"item_event_winter_firework", "item_event_winter_snowball",
 					"item_event_winter_firework", "item_event_winter_snowball", "item_event_winter_cinder","item_event_winter_snowman", "item_event_winter_santa_hat"	} 
 
 function TimerRandomDropWinter(event)
+    if dedicatedServerKey == "Invalid_NotOnDedicatedServer" then return end
 	local unit = event.caster
 	local countGift = 0
 	local maxGift = RandomInt( 25, 100 )

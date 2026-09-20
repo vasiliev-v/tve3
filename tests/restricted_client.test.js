@@ -82,10 +82,23 @@ assert.equal(write.style.opacity, undefined);
 assert.equal(previouslyDisabled.enabled, false);
 env.setState(true); assert.equal(write.enabled, false);
 env.setState(false); assert.equal(write.enabled, true);
-// A native slot is restored when a read-only/local item replaces a write item.
-env.config.SetWriteControlRestricted(read, true);
-env.config.SetWriteControlRestricted(read, false);
-assert.equal(read.enabled, true);
+
+// Native sell-overlay refresh only affects sell markers, never slot activation.
+for (const restricted of [true, false]) {
+    const e = environment(restricted);
+    load(e, 'scripts/inventory_sell_overlay.js', ['UpdateSellOverlays']);
+    const slots = Array.from({ length: 9 }, () => e.panel());
+    Object.assign(e.context, { cachedOverlays: {},
+        GetDotaHud: () => ({ FindChildTraverse: id => slots[Number(id.split('_').pop())] }),
+        Entities: { GetItemInSlot: () => 123 } });
+    e.context.Players.GetLocalPlayerPortraitUnit = () => 1;
+    e.context.UpdateSellOverlays();
+    slots.forEach(slot => {
+        assert.equal(slot.enabled, true);
+        assert.equal(slot.style.opacity, undefined);
+        assert.equal(slot.style.saturation, undefined);
+    });
+}
 
 const cases = [
     ['donate_shop/donate_shop.js', 'BuyItemFunction', () => [[null, 601, 'gold', 10, 'skin', 'skin_1']]],

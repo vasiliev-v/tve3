@@ -128,7 +128,7 @@ assert len(request_log(lua)) == 2 and all(r['method'] == 'GET' for r in request_
 # Compile complete edited Lua files, including the project's goto statements.
 edited = ['settings.lua', 'error_debug.lua', 'stats.lua', 'clanwars.lua', 'donate_store/shop.lua',
           'donate_store/wearables.lua', 'donate_store/selectpets.lua', 'custom_abilities.lua',
-          'game_spells_lib.lua', 'libraries/buildinghelper.lua']
+          'game_spells_lib.lua', 'libraries/buildinghelper.lua', 'drop.lua']
 compiler = LuaRuntime(unpack_returned_tuples=True)
 for name in edited:
     result = compiler.eval('loadstring')(source(name), name)
@@ -247,41 +247,81 @@ for key in [SENTINEL, 'normal-key']:
             logs.append(request_log(lua))
         assert logs[0] == logs[1], (key, kind, 'normal default request changed')
 
-# Parse item KV blocks, including non-item_ names and keys followed by comments.
-kv = (ROOT / 'game/trollnelves2/scripts/npc/npc_items_custom.txt').read_text(encoding='utf-8')
-kv = re.sub(r'//[^\n]*', '', kv)
-tokens = re.findall(r'"([^"\n]*)"|([{}])', kv)
-stack, pending, redeem_items = [], None, set()
-for string, brace in tokens:
-    if brace == '{':
-        stack.append(pending); pending = None
-    elif brace == '}':
-        stack.pop(); pending = None
-    elif pending is None:
-        pending = string
-    else:
-        if pending == 'Function' and string in entries['custom_abilities.lua']:
-            redeem_items.add(stack[1])
-        pending = None
-lua = runtime(SENTINEL)
-assert set(plain(lua.globals().RESTRICTED_WRITE_ITEMS)) == redeem_items
-assert lua.globals().net.restricted_client.isRestrictedClient is True
+assert runtime(SENTINEL).globals().net.restricted_client.isRestrictedClient is True
 assert runtime('normal-key').globals().net.restricted_client.isRestrictedClient is False
 
-# The order filter blocks redemption hotkeys but delegates normal/local orders unchanged.
+# The existing order filter receives native cast orders in either mode.
 for key in [SENTINEL, 'normal-key']:
     lua = runtime(key)
-    lua.execute('''
-        DOTA_UNIT_ORDER_CAST_NO_TARGET=8
-        BuildingHelper={nextFilter=function() delegated=true return false end}
-        EntIndexToHScript=function() return {GetAbilityName=function() return itemName end} end
-    ''')
+    lua.execute('BuildingHelper={nextFilter=function() delegated=true return false end}')
     fn = function_body(lua, 'libraries/buildinghelper.lua', 'BuildingHelper:OrderFilter')
-    for item in redeem_items | {'item_blink_datadriven', 'item_flicker'}:
-        lua.globals().itemName = item
-        lua.globals().delegated = False
-        assert fn(None, lua.table_from({'order_type': 8, 'entindex_ability': 1})) is False
-        assert bool(lua.globals().delegated) == (key != SENTINEL or item not in redeem_items), item
+    assert fn(None, lua.table_from({'order_type': 8, 'entindex_ability': 1})) is False
+    assert lua.globals().delegated is True
 
-print('PASS: Lua syntax; 13 blocked writes and normal request/payload comparisons; 8 active READ sites; retries; 20 higher-level guards; saved settings; native item KV coverage and order filter.')
+# Drop entry points stop before random rolls, counters, timers or item creation.
+drop_calls = ['drop:RollItemDrop(unit)', 'RandomDropLoot("item_vip")',
+              'TimerRandomDrop({caster=unit})', 'TimerRandomDropWinter({caster=unit})']
+for call in drop_calls:
+    lua = runtime(SENTINEL)
+    lua.execute(source('drop.lua'))
+    limits = [entry.limit for _, entry in lua.globals().item_drop.items()]
+    lua.execute(call)  # No engine unit/random/item mocks: touching any would fail.
+    assert lua.globals().timerCallback is None, call
+    assert [entry.limit for _, entry in lua.globals().item_drop.items()] == limits, call
+
+    # Compare all drop side effects and timer repetitions to the pre-change code.
+    for key in ['normal-key', '', 'Invalid_NotOnDedicatedServer_extra']:
+        results = []
+        for original in [True, False]:
+            lua = runtime(key)
+            lua.execute('''
+                operations={}
+                function record(...) operations[#operations+1]={...} end
+                local vec=setmetatable({x=10,y=20}, {__add=function(a,b) return a end})
+                Vector=function(...) record('vector', ...) return vec end
+                RandomVector=function(n) record('randomVector',n) return vec end
+                unit={GetUnitName=function() return 'npc_dota_hero_treant' end,
+                    GetAbsOrigin=function() return vec end}
+                GameRules.PlayersCount=10
+                GameRules.MIN_RATING_PLAYER=1
+                SEASON_ITEM='item_season'
+                RandomInt=function(a,b) record('randomInt',a,b) return a end
+                RandomFloat=function(a,b) record('randomFloat',a,b) return a end
+                DropLootByRules=function(name,point,low,high,height,duration)
+                    record('drop',name,low,high,height,duration)
+                end
+                CreateItem=function(name)
+                    record('item',name)
+                    return {LaunchLootInitialHeight=function(_,a,b,c,d) record('launch',a,b,c,d) end,
+                        SetContextThink=function(_,name,fn,delay) record('cleanup',name,delay) end}
+                end
+                CreateItemOnPositionForLaunch=function() record('container') return {} end
+                MinimapEvent=function() record('minimap') end
+                AddFOWViewer=function() record('vision') end
+                pending={}
+                Timers.CreateTimer=function(_,delay,fn)
+                    if type(delay)=='function' then fn=delay delay=0 end
+                    record('timer',delay)
+                    pending[#pending+1]=fn
+                end
+                function drain()
+                    for _,fn in ipairs(pending) do
+                        for count=1,250 do
+                            local delay=fn()
+                            if not delay then break end
+                            record('repeat',delay)
+                            assert(count<250, 'unbounded timer')
+                        end
+                    end
+                end
+            ''')
+            lua.execute(source('drop.lua', original))
+            lua.execute(call + '; drain()')
+            result = plain(lua.globals().operations)
+            assert result, call
+            results.append((result, plain(lua.globals().item_drop)))
+        assert results[0] == results[1], (key, call)
+
+print('PASS: Lua syntax; 13 blocked writes and normal request/payload comparisons; 8 active READ sites; retries; 20 higher-level guards; saved settings.')
 print('PASS: 11 inventory cosmetic cases equip/unequip and publish active state; zero restricted writes/default counters; normal default requests match HEAD. Engine application helpers are mocked.')
+print('PASS: four drop entry points skip all side effects for the exact sentinel; other keys match HEAD drops, timers and limits.')

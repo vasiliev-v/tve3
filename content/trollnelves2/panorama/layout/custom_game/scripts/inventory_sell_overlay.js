@@ -24,13 +24,6 @@ function UpdateSellOverlays() {
 
     for (var i = 0; i <= 8; i++) {
         var itemIndex = Entities.GetItemInSlot(portraitUnit, i);
-        var state = CustomNetTables.GetTableValue("Shop", "restricted_client");
-        var itemName = itemIndex !== -1 ? Abilities.GetAbilityName(itemIndex) : "";
-        var writeItem = state && state.writeItems && state.writeItems[itemName];
-        GameUI.CustomUIConfig().SetWriteControlRestricted(
-            dotaHud.FindChildTraverse("inventory_slot_" + i),
-            GameUI.CustomUIConfig().IsRestrictedClient() && !!writeItem
-        );
         
         // КЭШИРОВАНИЕ: Ищем панели только один раз, если их еще нет в памяти
         if (!cachedOverlays[i]) {
