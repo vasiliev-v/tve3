@@ -265,6 +265,7 @@ function Shop.RequestSkill(obj, pID, steam, callback)
 end
 
 function Shop.GetSkill(data,callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -319,6 +320,7 @@ function Shop.RequestEvent(obj, pID, steam, callback)
 end
 
 function Shop.GetVip(data,callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -537,6 +539,7 @@ end
 
 
 function Shop:BuyShopItem(table, callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -600,6 +603,7 @@ function Shop:BuyShopItem(table, callback)
 end
 
 function Shop:BuyOpenChests(table, callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -644,6 +648,7 @@ function Shop:BuyOpenChests(table, callback)
 end
 
 function Shop.GetGem(data,callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -711,6 +716,7 @@ function Shop.RequestSounds(obj, pID, steam, callback)
 end
 
 function Shop:OpenChestAnimation(data)
+    if IsRestrictedClient() then return end
 	local id = data.PlayerID
 	local reward, count = Shop:GetReward(data.chest_id, id)
 	--DebugPrint("reward, count " .. reward .. ", " .. count)
@@ -725,6 +731,7 @@ function Shop:OpenChestAnimation(data)
 end
 
 function Shop:GetReward(chest_id, playerID)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -1164,6 +1171,7 @@ function Shop.RequestRewards(obj, pID, steam, callback)
 end
 
 function Shop:EventRewards(table, callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() or GameRules.PlayersCount < GameRules.MIN_RATING_PLAYER then 
 			SendErrorMessage(table.PlayerID, "error_take_reward")
@@ -1273,6 +1281,7 @@ function Shop.RequestBPplayer(obj, pID, steam, callback)
 end
 
 function Shop:EventBattlePass(table, callback)
+    if IsRestrictedClient() then return end
 	--DebugPrintTable(table)
 	--DebugPrint("test!!!!!!!!!!!!!!")
 	if not GameRules.isTesting  then
@@ -1409,6 +1418,7 @@ function Shop.RequestAchivements(obj, pID, steam, callback)
 end
 
 function Shop:Statistics(table, check, callback)
+    if check ~= 1 and IsRestrictedClient() then return end
 
 	local PoolTable = CustomNetTables:GetTableValue("Shop", tostring(table.id))
 	if table.type == "fps" then
@@ -1497,6 +1507,7 @@ function Shop:SetStats(i)
 end
 
 function SetDefaultStats(event)
+    if IsRestrictedClient() then return end
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
 	if event.part ~=  nil then
@@ -1547,6 +1558,7 @@ function Shop.RequestBan(obj, pID, steam, callback)
 end
 
 function Shop.GetXpBattlepass(playerID,callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -1594,6 +1606,7 @@ function Shop.GetXpBattlepass(playerID,callback)
 end	
 
 function Shop.GetGetGemChest(playerID,callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end
@@ -1641,6 +1654,7 @@ function Shop.GetGetGemChest(playerID,callback)
 end	
 
 function Shop.GetDayDone(data,callback)
+    if IsRestrictedClient() then return end
 	if not GameRules.isTesting  then
 		if GameRules:IsCheatMode() then return end
 	end

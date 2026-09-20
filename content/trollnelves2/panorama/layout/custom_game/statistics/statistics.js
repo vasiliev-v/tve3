@@ -198,8 +198,10 @@ function CreateButtonSetting(settings_info, player_table, button_name)
     let SettingButtonYes =  $.CreatePanel("Panel", SettingsButtonsContainer, "")
     SettingButtonYes.AddClass("SettingButton")
     SettingButtonYes.AddClass("SettingButtonYes")
+    GameUI.CustomUIConfig().RegisterWriteControl(SettingButtonYes);
     SettingButtonYes.SetPanelEvent("onactivate", function()
     {
+        if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
         GameEvents.SendCustomGameEventToServer( "Statistics", {id: Players.GetLocalPlayer(), count: 1, type: settings_info.function_name} );
     })
 
@@ -210,8 +212,10 @@ function CreateButtonSetting(settings_info, player_table, button_name)
     let SettingButtonNo =  $.CreatePanel("Panel", SettingsButtonsContainer, "")
     SettingButtonNo.AddClass("SettingButton")
     SettingButtonNo.AddClass("SettingButtonNo")
+    GameUI.CustomUIConfig().RegisterWriteControl(SettingButtonNo);
     SettingButtonNo.SetPanelEvent("onactivate", function()
     {
+        if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
         GameEvents.SendCustomGameEventToServer( "Statistics", {id: Players.GetLocalPlayer(), count: 0, type: settings_info.function_name} );
     })
  

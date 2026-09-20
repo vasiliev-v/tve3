@@ -66,6 +66,7 @@ function SelectPets:SetPets(i)
 end
 
 function SelectPets:SetDefaultPets(event)
+    if IsRestrictedClient() then return end
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
 	if event.part ~=  nil then

@@ -968,6 +968,14 @@ function BuildingHelper:RightClickOrder(event)
 end
 
 function BuildingHelper:OrderFilter(order)
+    -- Block native redemption hotkeys/orders before cooldowns or item consumption.
+    if IsRestrictedClient() and order.order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET
+        and order.entindex_ability then
+        local ability = EntIndexToHScript(order.entindex_ability)
+        if ability and RESTRICTED_WRITE_ITEMS[ability:GetAbilityName()] then
+            return false
+        end
+    end
     local ret = true
     if BuildingHelper.nextFilter then
         ret = BuildingHelper.nextFilter(BuildingHelper.nextContext, order)

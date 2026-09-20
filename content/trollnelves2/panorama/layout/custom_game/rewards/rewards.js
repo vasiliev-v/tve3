@@ -99,6 +99,7 @@ function CreateReward(day, reward_day, reward_table, week)
 
     let RewardClaimButton = $.CreatePanel("Panel", Reward, "RewardClaimButton");
 	RewardClaimButton.AddClass("RewardClaimButton");
+    GameUI.CustomUIConfig().RegisterWriteControl(RewardClaimButton);
 
     let RewardClaimButtonLabel = $.CreatePanel("Label", RewardClaimButton, "RewardClaimButtonLabel");
 	RewardClaimButtonLabel.AddClass("RewardClaimButtonLabel");
@@ -133,6 +134,7 @@ function CreateReward(day, reward_day, reward_table, week)
 
 function RecieveReward(claim_panel, reward_panel, type_reward, reward_count)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
 	claim_panel.SetPanelEvent("onactivate", function() {} );
     reward_panel.AddClass("reward_recieved")
     let RewardClaimButtonLabel = claim_panel.GetChild(0)

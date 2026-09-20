@@ -232,6 +232,7 @@ function UpdatePreviewSpellInf(info)
 
 function SetActivateSpell(panel, info)
 {
+    GameUI.CustomUIConfig().RegisterWriteControl(panel);
     panel.SetPanelEvent("onactivate", function() 
     { 
         Game.EmitSound("General.ButtonClick")
@@ -241,6 +242,7 @@ function SetActivateSpell(panel, info)
 
 function ActivateSpell(info)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (CheckBuyAllSpells())
     {
         return
@@ -276,6 +278,7 @@ function FindDotaHudElement(sId)
 
 function SetUpgradeSpell(panel, info)
 {
+    GameUI.CustomUIConfig().RegisterWriteControl(panel);
     panel.SetPanelEvent("onactivate", function()
     {
         Game.EmitSound("General.ButtonClick")
@@ -285,6 +288,7 @@ function SetUpgradeSpell(panel, info)
 
 function UpgradeSpell(info)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (buy_cooldown)
     {
         return

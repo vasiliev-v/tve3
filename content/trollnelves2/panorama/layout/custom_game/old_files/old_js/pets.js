@@ -189,6 +189,7 @@ function DefaultButtonReady()
 
 function DefaultButton()
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (selectedpart != null)
     {
         GameEvents.SendCustomGameEventToServer( "SetDefaultPets", { id: Players.GetLocalPlayer(),part:$("#NewPartNum"+selectedpart).text} );
@@ -248,3 +249,4 @@ function SetSelectedParticles(data)
     CustomNetTables.SubscribeNetTableListener( "Pets_Tabel", UpdateParticles );
     UpdateParticles( "Pets_Tabel", Players.GetLocalPlayer(), CustomNetTables.GetTableValue( "Pets_Tabel", Players.GetLocalPlayer() ) );
 })();
+GameUI.CustomUIConfig().RegisterWriteControl($("#DefaultButton"));

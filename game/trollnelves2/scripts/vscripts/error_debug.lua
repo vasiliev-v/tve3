@@ -1,8 +1,10 @@
+require("settings")
 Error_debug = Error_debug or {}
 
 Error_debug.server = "https://tve4.eu/debug/" -- "https://localhost:5001/test/" --
 
 function Error_debug.SendData(data,callback)
+    if IsRestrictedClient() then return end
 	local req = CreateHTTPRequestScriptVM("POST",Error_debug.server)
 	if not req then
 		return

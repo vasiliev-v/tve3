@@ -272,6 +272,7 @@ end
 
 
 function wearables:SetDefaultPart(event)
+    if IsRestrictedClient() then return end
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
 	if event.part ~=  nil then
@@ -289,6 +290,7 @@ function wearables:SetDefaultPart(event)
 end	
 
 function wearables:SetDefaultLabel(event)
+    if IsRestrictedClient() then return end
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
 	if event.part ~=  nil then
@@ -306,6 +308,7 @@ function wearables:SetDefaultLabel(event)
 end	
 
 function wearables:SetDefaultSkin(event)
+    if IsRestrictedClient() then return end
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
 	if event.part ~= nil then
@@ -345,6 +348,7 @@ function wearables:SetDefaultSkin(event)
 end	
 
 function wearables:SetDefaultSkinTower(event)
+    if IsRestrictedClient() then return end
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
 	if event.part ~= nil then
@@ -363,6 +367,7 @@ function wearables:SetDefaultSkinTower(event)
 end	
 
 function wearables:SetDefaultSkinWisp(event)
+    if IsRestrictedClient() then return end
     local player = PlayerResource:GetPlayer(event.PlayerID)
 	local data = {}
 	if event.part ~= nil then

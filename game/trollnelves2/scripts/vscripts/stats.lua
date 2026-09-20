@@ -397,6 +397,7 @@ end
 
 
 function Stats.SendData(data,callback)
+    if IsRestrictedClient() then return end
 	local req = CreateHTTPRequestScriptVM("POST",GameRules.server)
 	if not req then
 		return

@@ -572,7 +572,8 @@ function SetItemBuyFunction(panel, table)
 		PriceLabel.AddClass("PriceLabelInfo");
 		PriceLabel.text = $.Localize("#shop_buy")
 
-		BuyItemPanel.SetPanelEvent("onactivate", function() 
+		GameUI.CustomUIConfig().RegisterWriteControl(BuyItemPanel);
+		BuyItemPanel.SetPanelEvent("onactivate", function()
         { 
             BuyItemFunction(table); 
             CloseItemInfo(); 
@@ -582,6 +583,7 @@ function SetItemBuyFunction(panel, table)
 
 function BuyItemFunction(table) 
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
 	if (
 		(table[2] == "gold" && Number(table[3]) <= Number(player_table[0][0])) ||
 		(table[2] == "gem" && Number(table[3]) <= Number(player_table[0][1]))
@@ -723,42 +725,48 @@ function SetItemInventory(panel, table, is_item_activated)
 {
 	if (table[5].indexOf("pet") == 0) 
     {
-		panel.SetPanelEvent("onactivate", function() 
+		GameUI.CustomUIConfig().RegisterWriteControl(panel);
+		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectCourier(table[1], is_item_activated)
 	    });
 	} 
 	else if (table[5].indexOf("particle") == 0) 
     {
-		panel.SetPanelEvent("onactivate", function() 
+		GameUI.CustomUIConfig().RegisterWriteControl(panel);
+		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectParticle(table[1], is_item_activated)
 	    });
 	}
 	else if (table[5].indexOf("skin") == 0 && table[5].indexOf("skin_wisp") != 0) 
     {
-		panel.SetPanelEvent("onactivate", function() 
+		GameUI.CustomUIConfig().RegisterWriteControl(panel);
+		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectSkin(table[1], is_item_activated)
 	    });
 	}
 	else if (table[5].indexOf("skin_wisp") == 0) 
     {
-		panel.SetPanelEvent("onactivate", function() 
+		GameUI.CustomUIConfig().RegisterWriteControl(panel);
+		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectWisp(table[1], is_item_activated)
 	    });
 	}
 	else if (table[5].indexOf("tower") == 0 || table[5].indexOf("true_sight_tower") == 0 || table[5].indexOf("high_true_sight_tower") == 0 || table[5].indexOf("flag") == 0)
     {
-		panel.SetPanelEvent("onactivate", function() 
+		GameUI.CustomUIConfig().RegisterWriteControl(panel);
+		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectTower(table, is_item_activated)
 	    });
 	}
     else if (table[5].indexOf("label") == 0) 
     {
-		panel.SetPanelEvent("onactivate", function() 
+		GameUI.CustomUIConfig().RegisterWriteControl(panel);
+		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectLabel(table[1], is_item_activated)
 	    });
@@ -779,6 +787,7 @@ function CreateItemChance(panel, label)
 
 function SelectCourier(num, is_item_activated)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectPets", { id: Players.GetLocalPlayer(), part:num, offp:true, name:num });
@@ -791,6 +800,7 @@ function SelectCourier(num, is_item_activated)
 
 function SelectParticle(num, is_item_activated)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectPart", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
@@ -804,6 +814,7 @@ function SelectParticle(num, is_item_activated)
 
 function SelectSkin(num, is_item_activated)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectSkin", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
@@ -816,6 +827,7 @@ function SelectSkin(num, is_item_activated)
 
 function SelectLabel(num, is_item_activated)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectLabel", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
@@ -828,6 +840,7 @@ function SelectLabel(num, is_item_activated)
 
 function SelectTower(table, is_item_activated)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     var num = table[1];
 	var type = table[5];
     if (is_item_activated)
@@ -842,6 +855,7 @@ function SelectTower(table, is_item_activated)
 
 function SelectWisp(num, is_item_activated)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectSkinWisp", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
@@ -904,7 +918,8 @@ function SetOpenChestPanel(panel, table)
 
 	    CreateItemCurrencyPreview(ChestAllRewardsPanel, chest_table[2])
         RecreateRandomItemsList(chest_dropped_panel_line, chest_table)
-		OpenChestButton.SetPanelEvent("onactivate", function() { OpenChest(table); });
+		GameUI.CustomUIConfig().RegisterWriteControl(OpenChestButton);
+		OpenChestButton.SetPanelEvent("onactivate", function(){ OpenChest(table); });
     });  
 }
 
@@ -1007,6 +1022,7 @@ function GetItemInfo(ID)
 
 function OpenChest(table) 
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     let OpenChestButton = $("#ChestBodyInfo").FindChildTraverse("OpenChestButton")
     if (OpenChestButton)
     {
@@ -1182,7 +1198,8 @@ GameUI.CustomUIConfig().OpenPanelBuyPass = function()
     PriceLabel.AddClass("PriceLabelInfo");
     PriceLabel.text = $.Localize("#shop_buy")
 
-    BuyItemPanel.SetPanelEvent("onactivate", function() 
+    GameUI.CustomUIConfig().RegisterWriteControl(BuyItemPanel);
+    BuyItemPanel.SetPanelEvent("onactivate", function()
     { 
         BuyItemFunction(table); 
         CloseItemInfo(); 

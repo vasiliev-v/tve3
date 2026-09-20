@@ -190,6 +190,7 @@ function DefaultButtonReady()
 
 function DefaultButton()
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (selectedpart != null)
     {
         GameEvents.SendCustomGameEventToServer( "SetDefaultPart", { id: Players.GetLocalPlayer(),part:$("#NewPartNum"+selectedpart).text} );
@@ -254,3 +255,4 @@ function SetSelectedParticles(data)
     CustomNetTables.SubscribeNetTableListener( "Particles_Tabel", UpdateParticles );
     UpdateParticles( "Particles_Tabel", Players.GetLocalPlayer(), CustomNetTables.GetTableValue( "Particles_Tabel", Players.GetLocalPlayer() ) );
 })();
+GameUI.CustomUIConfig().RegisterWriteControl($("#DefaultButton"));

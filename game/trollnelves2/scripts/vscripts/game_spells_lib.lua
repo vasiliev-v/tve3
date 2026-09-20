@@ -2362,6 +2362,7 @@ function game_spells_lib:PlayerUpgradeSpellSelected(player_id, spell_name)
 end
 
 function game_spells_lib:event_upgrade_spell(data)
+    if IsRestrictedClient() then return end
     if not data.PlayerID or not data.spell_name then return end
     local player_id = data.PlayerID
     local spell_name = data.spell_name

@@ -148,6 +148,7 @@ function CreateFreeReward(parent, reward_level, lvl) {
 
     const PanelLock = $.CreatePanel("Panel", RewardPanelFree, "PanelLock");
     PanelLock.AddClass("PanelLock");
+    GameUI.CustomUIConfig().RegisterWriteControl(PanelLock);
 
     // Лейбл с количеством
     const RewardInfoLabel = $.CreatePanel("Label", RewardPanelFree, "");
@@ -183,6 +184,7 @@ function CreateFreeReward(parent, reward_level, lvl) {
 }
 
 function GiveReward(id, panel, rew_panel) {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
 	panel.SetPanelEvent("onactivate", function () { });
 	rew_panel.AddClass("PanelGives");
 	rew_panel.RemoveClass("Unlocked")
@@ -248,6 +250,7 @@ function CreateDonateReward(parent, reward_level, lvl) {
     // Панель «замка» и текст в ней
     const lockPanel   = $.CreatePanel("Panel", panel, "PanelLock");
     lockPanel.AddClass("PanelLock");
+    GameUI.CustomUIConfig().RegisterWriteControl(lockPanel);
     const statusLabel = $.CreatePanel("Label", lockPanel, "BpLockedText");
     statusLabel.AddClass("BpLockedText");
 

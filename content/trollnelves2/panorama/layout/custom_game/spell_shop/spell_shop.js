@@ -344,6 +344,7 @@ function ActivateSpell(info)
 
 function SetUpgradeSpell(panel, info)
 {
+    GameUI.CustomUIConfig().RegisterWriteControl(panel);
     panel.SetPanelEvent("onactivate", function()
     {
         Game.EmitSound("General.ButtonClick")
@@ -353,6 +354,7 @@ function SetUpgradeSpell(panel, info)
 
 function UpgradeSpell(info)
 {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (buy_cooldown)
     {
         return

@@ -84,4 +84,25 @@ for i = 2, MAX_LEVEL do
     XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + 100
 end
 
-dedicatedServerKey = GetDedicatedServerKeyV3("1")   -- "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ" -- GetDedicatedServerKeyV3("1") 
+dedicatedServerKey = GetDedicatedServerKeyV3("1")   -- "WHAT THE FUCK YOU MEDDLING FOR NOT YOUR BIZ" -- GetDedicatedServerKeyV3("1")
+
+-- UX guard only; API authorization remains the server's responsibility.
+function IsRestrictedClient()
+    return dedicatedServerKey == "Invalid_NotOnDedicatedServer"
+end
+
+-- Native items whose OnSpellStart redeems persistent rewards.
+RESTRICTED_WRITE_ITEMS = {
+    item_vip = 1, item_event_desert = 1, item_event_winter = 1,
+    item_event_helheim = 1, item_event_birthday = 1,
+    item_get_gem = 1, item_get_gold = 1, item_autumn = 1,
+    item_winter_stress = 1, item_winter_1 = 1, item_spring = 1,
+    item_summer = 1, item_ghosttown = 1, little_spider = 1,
+}
+
+if IsServer() then
+    CustomNetTables:SetTableValue("Shop", "restricted_client", {
+        isRestrictedClient = IsRestrictedClient(),
+        writeItems = RESTRICTED_WRITE_ITEMS,
+    })
+end

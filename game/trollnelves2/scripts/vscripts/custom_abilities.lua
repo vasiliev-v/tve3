@@ -45,6 +45,7 @@ end)
 end
 
 function ItemGetGem(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -60,6 +61,7 @@ function ItemGetGem(event)
 end
 
 function ItemGetGold(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -75,6 +77,7 @@ function ItemGetGold(event)
 end
 
 function ItemEffect(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -90,6 +93,7 @@ function ItemEffect(event)
 end
 
 function ItemEvent(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -105,6 +109,7 @@ function ItemEvent(event)
 end
 
 function ItemEventStresS(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -120,6 +125,7 @@ function ItemEventStresS(event)
 end
 
 function ItemEventDesert(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -135,6 +141,7 @@ function ItemEventDesert(event)
 end
 
 function ItemEventWinter(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -150,6 +157,7 @@ function ItemEventWinter(event)
 end
 
 function ItemEventHelheim(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()
@@ -165,6 +173,7 @@ function ItemEventHelheim(event)
 end
 
 function ItemEventBirthday(event)
+    if IsRestrictedClient() then return end
 	local data = {}
 	local caster = event.caster
 	local playerID = caster:GetPlayerOwnerID()

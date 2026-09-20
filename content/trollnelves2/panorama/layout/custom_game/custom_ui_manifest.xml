@@ -1,6 +1,7 @@
 
 <root>
 	<scripts>
+        <include src="file://{resources}/layout/custom_game/scripts/restricted_client.js" />
 		<include src="file://{resources}/layout/custom_game/scripts/events_protector.js" />
 		<include src="file://{resources}/layout/custom_game/scripts/setup.js" /> 
 		<include src="file://{resources}/layout/custom_game/scripts/physical_resistance.js" />
