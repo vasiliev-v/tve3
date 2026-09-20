@@ -6,6 +6,7 @@ var quest_information_table = {};
 var player_table = [0, []];
 
 var QUESTS_REBUILD_PENDING = false;
+var QUESTS_REBUILD_TIMER = null;
 var QUESTS_REBUILD_DELAY = 0.10;
 var QUESTS_INITIALIZED = false;
 
@@ -42,7 +43,7 @@ var QUESTS_INITIALIZED = false;
 })();
 
 function ToggleInfo() {
-    if (HIDE_QUESTS_PANEL) return;
+    if (AreQuestsHidden()) return;
 
     const main = $("#QuestMain");
     if (!main) return;
@@ -92,19 +93,20 @@ function HasBattlePass() {
 }
 
 function ScheduleRebuild(delay) {
-    if (HIDE_QUESTS_PANEL) return;
+    if (AreQuestsHidden()) return;
     if (QUESTS_REBUILD_PENDING) return;
 
     QUESTS_REBUILD_PENDING = true;
 
-    $.Schedule(delay || QUESTS_REBUILD_DELAY, function () {
+    QUESTS_REBUILD_TIMER = $.Schedule(delay || QUESTS_REBUILD_DELAY, function () {
+        QUESTS_REBUILD_TIMER = null;
         QUESTS_REBUILD_PENDING = false;
         RebuildQuests();
     });
 }
 
 function RebuildQuests() {
-    if (HIDE_QUESTS_PANEL) return;
+    if (AreQuestsHidden()) return;
 
     const questsPanel = $("#QuestsPanel");
     if (!questsPanel) {
@@ -239,7 +241,12 @@ function CreateQuest(quest_player_table, has_battlepass) {
 }
 
 function OnShopTableChanged(tableName, key, data) {
-    if (HIDE_QUESTS_PANEL) return;
+    if (key === "restricted_client") {
+        UpdateQuestVisibility();
+        ScheduleRebuild(0.05);
+        return;
+    }
+    if (AreQuestsHidden()) return;
 
     const localPlayerKey = GetLocalPlayerKey();
 
@@ -251,6 +258,7 @@ function OnShopTableChanged(tableName, key, data) {
 }
 
 function UpdateQuestAfter() {
+    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (HIDE_QUESTS_PANEL) {
         const root = $.GetContextPanel();
 
@@ -325,4 +333,19 @@ function CreateQuestInfoBlock(parent)
     desc.text = $.Localize("#quest_info_desc").replace("{time}", GetQuestTimeText());
 }
 
+function AreQuestsHidden() {
+    return HIDE_QUESTS_PANEL || GameUI.CustomUIConfig().IsRestrictedClient();
+}
+
+function UpdateQuestVisibility() {
+    const main = $("#QuestMain");
+    if (main) main.visible = !AreQuestsHidden();
+    if (AreQuestsHidden() && QUESTS_REBUILD_TIMER !== null) {
+        $.CancelScheduled(QUESTS_REBUILD_TIMER);
+        QUESTS_REBUILD_TIMER = null;
+        QUESTS_REBUILD_PENDING = false;
+    }
+}
+
+UpdateQuestVisibility();
 InitQuests();

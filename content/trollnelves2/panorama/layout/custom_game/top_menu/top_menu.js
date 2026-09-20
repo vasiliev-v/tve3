@@ -12,6 +12,15 @@ var TOP_MENU_BUTTONS =
 var RewardsButton = null
 var updateRewardsLoop = true
 
+function IsStoreAvailable() {
+    let shop = CustomNetTables.GetTableValue("Shop", String(Players.GetLocalPlayer()))
+    if (!shop) return false
+    let currencies = shop[0] || {}
+    return Number(currencies[0]) > 0 || Number(currencies[1]) > 0
+        || Object.keys(shop[1] || {}).some(id => Number(id) > 0)
+        || Object.values(shop[4] || {}).some(chest => chest && Number(chest[2]) > 0)
+}
+
 function Init() {
     let TopMenuCustom = $("#TopMenuCustom")
 
@@ -28,6 +37,16 @@ function Init() {
             updateVisibility()
             CustomNetTables.SubscribeNetTableListener("Shop", function (table, key) {
                 if (key === "restricted_client") updateVisibility()
+            })
+        }
+
+        if (button_info[0] == "ButtonStore") {
+            let updateStoreVisibility = function () {
+                if (button.IsValid()) button.visible = IsStoreAvailable()
+            }
+            updateStoreVisibility()
+            CustomNetTables.SubscribeNetTableListener("Shop", function (table, key) {
+                if (String(key) === String(Players.GetLocalPlayer())) updateStoreVisibility()
             })
         }
 
