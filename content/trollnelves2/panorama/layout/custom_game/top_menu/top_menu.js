@@ -21,6 +21,16 @@ function Init() {
         button.AddClass("ButtonTopMenu")
         button.AddClass(button_info[0])
 
+        if (["ButtonStats", "ButtonLeaderboards", "ButtonBattlePass", "ButtonRewards"].indexOf(button_info[0]) !== -1) {
+            let updateVisibility = function () {
+                if (button.IsValid()) button.visible = !GameUI.CustomUIConfig().IsRestrictedClient()
+            }
+            updateVisibility()
+            CustomNetTables.SubscribeNetTableListener("Shop", function (table, key) {
+                if (key === "restricted_client") updateVisibility()
+            })
+        }
+
         if (button_info[0] == "ButtonRewards") {
             RewardsButton = button
         }
