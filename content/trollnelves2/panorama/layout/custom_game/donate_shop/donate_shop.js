@@ -725,7 +725,6 @@ function SetItemInventory(panel, table, is_item_activated)
 {
 	if (table[5].indexOf("pet") == 0) 
     {
-		GameUI.CustomUIConfig().RegisterWriteControl(panel);
 		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectCourier(table[1], is_item_activated)
@@ -733,7 +732,6 @@ function SetItemInventory(panel, table, is_item_activated)
 	} 
 	else if (table[5].indexOf("particle") == 0) 
     {
-		GameUI.CustomUIConfig().RegisterWriteControl(panel);
 		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectParticle(table[1], is_item_activated)
@@ -741,7 +739,6 @@ function SetItemInventory(panel, table, is_item_activated)
 	}
 	else if (table[5].indexOf("skin") == 0 && table[5].indexOf("skin_wisp") != 0) 
     {
-		GameUI.CustomUIConfig().RegisterWriteControl(panel);
 		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectSkin(table[1], is_item_activated)
@@ -749,7 +746,6 @@ function SetItemInventory(panel, table, is_item_activated)
 	}
 	else if (table[5].indexOf("skin_wisp") == 0) 
     {
-		GameUI.CustomUIConfig().RegisterWriteControl(panel);
 		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectWisp(table[1], is_item_activated)
@@ -757,7 +753,6 @@ function SetItemInventory(panel, table, is_item_activated)
 	}
 	else if (table[5].indexOf("tower") == 0 || table[5].indexOf("true_sight_tower") == 0 || table[5].indexOf("high_true_sight_tower") == 0 || table[5].indexOf("flag") == 0)
     {
-		GameUI.CustomUIConfig().RegisterWriteControl(panel);
 		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectTower(table, is_item_activated)
@@ -765,7 +760,6 @@ function SetItemInventory(panel, table, is_item_activated)
 	}
     else if (table[5].indexOf("label") == 0) 
     {
-		GameUI.CustomUIConfig().RegisterWriteControl(panel);
 		panel.SetPanelEvent("onactivate", function()
         { 
 	 		SelectLabel(table[1], is_item_activated)
@@ -787,83 +781,77 @@ function CreateItemChance(panel, label)
 
 function SelectCourier(num, is_item_activated)
 {
-    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectPets", { id: Players.GetLocalPlayer(), part:num, offp:true, name:num });
-		GameEvents.SendCustomGameEventToServer("SetDefaultPets", { id: Players.GetLocalPlayer(), part:"0" });
+		if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultPets", { id: Players.GetLocalPlayer(), part:"0" });
         return
     }
     GameEvents.SendCustomGameEventToServer("SelectPets", { id: Players.GetLocalPlayer(), part:num, offp:false, name:num });
-    GameEvents.SendCustomGameEventToServer("SetDefaultPets", { id: Players.GetLocalPlayer(), part:String(num) });
+    if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultPets", { id: Players.GetLocalPlayer(), part:String(num) });
 }
 
 function SelectParticle(num, is_item_activated)
 {
-    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectPart", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
-		GameEvents.SendCustomGameEventToServer("SetDefaultPart", { id: Players.GetLocalPlayer(), part:"0" });
+		if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultPart", { id: Players.GetLocalPlayer(), part:"0" });
         return
     }
     let numPart = Number(num) - 100
     GameEvents.SendCustomGameEventToServer("SelectPart", { id: Players.GetLocalPlayer(), part:String(numPart), offp:false, name:String(numPart) });
-    GameEvents.SendCustomGameEventToServer("SetDefaultPart", { id: Players.GetLocalPlayer(), part:String(numPart) });	
+    if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultPart", { id: Players.GetLocalPlayer(), part:String(numPart) });
 }
 
 function SelectSkin(num, is_item_activated)
 {
-    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectSkin", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
-		GameEvents.SendCustomGameEventToServer("SetDefaultSkin", { id: Players.GetLocalPlayer(), part:"0" });
+		if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultSkin", { id: Players.GetLocalPlayer(), part:"0" });
         return
     }
     GameEvents.SendCustomGameEventToServer("SelectSkin", { id: Players.GetLocalPlayer(), part:String(num), offp:false, name:String(num) });
-    GameEvents.SendCustomGameEventToServer("SetDefaultSkin", { id: Players.GetLocalPlayer(), part:String(num) });	
+    if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultSkin", { id: Players.GetLocalPlayer(), part:String(num) });
 }
 
 function SelectLabel(num, is_item_activated)
 {
-    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectLabel", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
-		GameEvents.SendCustomGameEventToServer("SetDefaultLabel", { id: Players.GetLocalPlayer(), part:"0" });
+		if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultLabel", { id: Players.GetLocalPlayer(), part:"0" });
         return
     }
     GameEvents.SendCustomGameEventToServer("SelectLabel", { id: Players.GetLocalPlayer(), part:String(num), offp:false, name:String(num) });
-    GameEvents.SendCustomGameEventToServer("SetDefaultLabel", { id: Players.GetLocalPlayer(), part:String(num) });	
+    if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultLabel", { id: Players.GetLocalPlayer(), part:String(num) });
 }
 
 function SelectTower(table, is_item_activated)
 {
-    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     var num = table[1];
 	var type = table[5];
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectSkinTower", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num), type:type });
-		GameEvents.SendCustomGameEventToServer("SetDefaultSkinTower", { id: Players.GetLocalPlayer(), part:"0", type:type });
+		if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultSkinTower", { id: Players.GetLocalPlayer(), part:"0", type:type });
         return
     }
     GameEvents.SendCustomGameEventToServer("SelectSkinTower", { id: Players.GetLocalPlayer(), part:String(num), offp:false, name:String(num), type:type });
-    GameEvents.SendCustomGameEventToServer("SetDefaultSkinTower", { id: Players.GetLocalPlayer(), part:String(num), type:type });	
+    if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultSkinTower", { id: Players.GetLocalPlayer(), part:String(num), type:type });
 }
 
 function SelectWisp(num, is_item_activated)
 {
-    if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (is_item_activated)
     {
         GameEvents.SendCustomGameEventToServer("SelectSkinWisp", { id: Players.GetLocalPlayer(), part:String(num), offp:true, name:String(num) });
-		GameEvents.SendCustomGameEventToServer("SetDefaultSkinWisp", { id: Players.GetLocalPlayer(), part:"0" });
+		if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultSkinWisp", { id: Players.GetLocalPlayer(), part:"0" });
         return
     }
 	GameEvents.SendCustomGameEventToServer("SelectSkinWisp", { id: Players.GetLocalPlayer(), part:String(num), offp:false, name:String(num) });
-    GameEvents.SendCustomGameEventToServer("SetDefaultSkinWisp", { id: Players.GetLocalPlayer(), part:String(num) });	
+    if (!GameUI.CustomUIConfig().IsRestrictedClient()) GameEvents.SendCustomGameEventToServer("SetDefaultSkinWisp", { id: Players.GetLocalPlayer(), part:String(num) });
 }
 
 var SOUND_TICK_WIDTH = 128

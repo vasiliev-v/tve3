@@ -69,8 +69,9 @@ client dispatch path was intentionally left unguarded.
   Normal mode does not change their existing enabled/style state. If the replicated
   flag changes back, the helper restores the state it changed, including controls
   that were already disabled. Deleted panels are removed from its registry.
-- JS action guards run before optimistic UI changes, local selection events, or
-  cooldown scheduling. Lua write helpers return before creating HTTP requests or
+- JS write-action guards run before optimistic UI changes or cooldown scheduling.
+  Inventory cosmetics always send local selection events; only their separate
+  saved-default events are guarded. Lua write helpers return before creating HTTP requests or
   changing request data. Higher-level Lua guards also avoid optimistic inventory
   upgrades, item consumption, chest notifications, and saved-default counters.
 - Existing GET conditions, including pre-existing cheat-mode checks, remain intact.
@@ -101,8 +102,9 @@ registered in `game/trollnelves2/scripts/vscripts/internal/trollnelves2.lua`.
 | Native inventory redemption items (item KV `OnSpellStart`) | Engine cast; no Panorama custom event | Nine guarded `custom_abilities.lua` callbacks → `Shop.GetGem` or `Shop.GetVip` | `coint/` or API base |
 
 Item and chest preview cards remain usable; their confirmation buttons are disabled.
-The battle-pass purchase navigation still opens its readable preview. Cosmetics
-whose cards save defaults are disabled. Sound previews/playback, panel tabs, close
+The battle-pass purchase navigation still opens its readable preview. Owned cosmetic
+cards remain enabled for local equip/unequip; their saved-default events are skipped
+in restricted mode. Sound previews/playback, panel tabs, close
 buttons, statistics/leaderboards, quest information, owned-spell activation, voting,
 resource transfers, building actions, and external browser links remain available.
 
@@ -143,8 +145,8 @@ inventory synchronization POST, or active console/admin HTTP dispatcher was foun
 Commented chat-command writes, clan UI events, random spell purchase Lua handler and
 listener, and commented `RequestXp` are left inactive. The commented random-purchase
 JS bodies are unchanged. No pure READ helper has a restricted guard. Local-only
-cosmetic selection events remain callable separately; the combined UI actions that
-also save defaults are blocked. Ordinary gameplay mutations are intentionally
+cosmetic selection events remain callable through Inventory; only the separate
+default-save dispatch is blocked. Ordinary gameplay mutations are intentionally
 outside the web-persistence restriction.
 
 ## Changed files
@@ -171,7 +173,7 @@ Panorama paths relative to `content/trollnelves2/panorama/layout/custom_game/`:
 | `custom_ui_manifest.xml` | Load shared helper before UI scripts |
 | `scripts/restricted_client.js` (new) | Shared flag and targeted control disabling |
 | `scripts/inventory_sell_overlay.js` | Update native redemption slots in existing refresh |
-| `donate_shop/donate_shop.js` | Guard eight actions and disable purchase/chest/cosmetic controls |
+| `donate_shop/donate_shop.js` | Guard purchases/chest opening and cosmetic default-save dispatches; disable only purchase/chest confirmation controls |
 | `rewards/rewards.js` | Guard daily claim and disable claim button |
 | `battlepass/battlepass.js` | Guard pass claim and disable both claim overlay types |
 | `statistics/statistics.js` | Guard and disable persistent settings toggles |
@@ -183,7 +185,59 @@ Panorama paths relative to `content/trollnelves2/panorama/layout/custom_game/`:
 New repository files:
 `tests/restricted_client.test.js`, `tests/restricted_client_test.py`, and this audit.
 
-## Verification results
+## Inventory correction: local equip without persistence
+
+All cosmetic Inventory cards are **local + persisted default** in normal mode,
+with separate events for each responsibility:
+
+| Category | JS handler | Local event / Lua handler | Persistence event / Lua handler |
+| --- | --- | --- | --- |
+| Pets | `SelectCourier` | `SelectPets` / `SelectPets:SelectPets` | `SetDefaultPets` / `SelectPets:SetDefaultPets` |
+| Effects | `SelectParticle` | `SelectPart` / `wearables:SelectPart` | `SetDefaultPart` / `wearables:SetDefaultPart` |
+| Player skins, including wolf/bear | `SelectSkin` | `SelectSkin` / `wearables:SelectSkin` | `SetDefaultSkin` / `wearables:SetDefaultSkin` |
+| Tower, true-sight tower, high true-sight tower, flag | `SelectTower` | `SelectSkinTower` / `wearables:SelectSkinTower` | `SetDefaultSkinTower` / `wearables:SetDefaultSkinTower` |
+| WISP skins | `SelectWisp` | `SelectSkinWisp` / `wearables:SelectSkinWisp` | `SetDefaultSkinWisp` / `wearables:SetDefaultSkinWisp` |
+| Tag | `SelectLabel` | `SelectLabel` / `wearables:SelectLabel` | `SetDefaultLabel` / `wearables:SetDefaultLabel` |
+
+`CreateItem` filters ownership and `SetItemInventory` binds the cosmetic card.
+The local Lua handlers apply the existing pet/effect/model/label logic, maintain
+`GameRules.SkinTower`, and publish `Shop_active`. `UpdateShop` receives that state,
+rebuilds Inventory, and displays Activate/Deactivate using `IsItemActivated`.
+This indicates current-match activity, not a successful default save.
+
+The smallest production correction is confined to `donate_shop.js`: remove cosmetic
+card write-control registration and move the six handler-wide restrictions onto
+the twelve `SetDefault...` dispatches. Restricted clicks still send `Select...`.
+The existing Lua `SetDefault...` guards skip persistence and saved-default counters;
+`Shop.GetVip` also guards HTTP creation, including before JS receives the flag.
+No Lua production changes are necessary. Normal events, ordering, payloads, HTTP
+endpoints and response handling remain unchanged.
+
+Chests have no activation/default selection. Their preview is purely local;
+opening is a persistent consume/reward action through `OpenChest` →
+`OpenChestAnimation` → `Shop:GetReward` → `Shop:BuyOpenChests`. Its confirmation
+and write path remain blocked. The seven Inventory tabs are fully covered above;
+sounds appear in Shop, with no separate Inventory selection tab.
+
+Files changed for this correction:
+
+- `content/trollnelves2/panorama/layout/custom_game/donate_shop/donate_shop.js`
+- `tests/restricted_client.test.js`
+- `tests/restricted_client_test.py`
+- `docs/restricted-client-audit.md`
+
+Verification: both suites pass. JS covers 11 cosmetic cases in normal, restricted,
+and late-flag modes, both click directions, enabled visuals, active-state rendering,
+the net-table listener, ownership filtering, and normal event equality against HEAD.
+Lua executes the real selection/default handlers for the same 11 cases with mocked
+engine application helpers: equip/unequip publishes active state, restricted mode
+creates no HTTP or default counters, and normal default requests match HEAD.
+Existing coverage still verifies all 13 blocked writes, eight active GET sites,
+purchase/chest/reward controls, settings, upgrades and native redemption guards.
+No live Dota session or API was run; actual model/particle rendering and engine
+transport remain in-engine checks, not claims made by these mocked tests.
+
+## Original restricted-client verification results
 
 Passed:
 
@@ -207,7 +261,8 @@ Passed:
   delegate to the existing order filter.
 - `git diff --check` passes.
 
-Run from the repository root:
+The inventory-specific blocked-button expectations above were superseded by the
+correction below. Run the current suites from the repository root:
 
 ```text
 node tests/restricted_client.test.js
@@ -217,8 +272,7 @@ python tests/restricted_client_test.py
 The Python test requires `lupa` with `lupa.luajit21`. Tests use mocked HTTP and make
 no API requests. During implementation, lupa was installed in a temporary test
 directory, not added to the game or its runtime dependencies. Both suites compare
-against repository `HEAD`, which must be the pre-change revision for those baseline
-comparisons.
+normal-mode requests/events against repository `HEAD`.
 
 Normal-mode compatibility is supported by the request/event comparisons and the
 additive guards; routes, request bodies, callback code, game rules and API

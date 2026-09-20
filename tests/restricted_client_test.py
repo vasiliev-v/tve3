@@ -135,9 +135,9 @@ for name in edited:
     assert not isinstance(result, tuple), (name, result)
 
 
-def function_body(lua, file, name):
+def function_body(lua, file, name, original=False):
     """Extract an actual function using Lua's parser, without running unrelated game setup."""
-    text = source(file)
+    text = source(file, original)
     match = re.search(r'function ' + re.escape(name) + r'\(([^\n]*?)\)', text)
     assert match, name
     args = ('self, ' if ':' in name else '') + match[1]
@@ -171,6 +171,81 @@ lua = runtime(SENTINEL)
 lua.execute('GameRules.PlayersFPS={}; Shop:Statistics({id=0,PlayerID=0,type="fps",count=1},1)')
 assert lua.globals().GameRules.PlayersFPS[0] is True
 assert request_log(lua) == []
+
+# Inventory local selection is independent of the persistence event. Exercise the
+# actual handlers with engine objects mocked, then attempt each default-save event.
+inventory_cases = [
+    ('pet', 'SelectPets:SelectPets', 'SelectPets:SetDefaultPets', '121'),
+    ('effect', 'wearables:SelectPart', 'wearables:SetDefaultPart', '21'),
+    ('skin', 'wearables:SelectSkin', 'wearables:SetDefaultSkin', '601'),
+    ('wolf', 'wearables:SelectSkin', 'wearables:SetDefaultSkin', '620'),
+    ('bear', 'wearables:SelectSkin', 'wearables:SetDefaultSkin', '673'),
+    ('label', 'wearables:SelectLabel', 'wearables:SetDefaultLabel', '1900'),
+    *[(kind, 'wearables:SelectSkinTower', 'wearables:SetDefaultSkinTower', '701')
+      for kind in ['tower', 'true_sight_tower', 'high_true_sight_tower', 'flag']],
+    ('wisp', 'wearables:SelectSkinWisp', 'wearables:SetDefaultSkinWisp', '801'),
+]
+for key in [SENTINEL, 'normal-key']:
+    for kind, select_name, default_name, part in inventory_cases:
+        logs = []
+        for original in [True, False]:
+            lua = runtime(key, original)
+            lua.globals().slot = kind
+            lua.globals().itemPart = part
+            lua.execute('''
+                GameRules.SkinTower={[0]={}}
+                GameRules.SaveDefItem={[0]={}}
+                i=0 -- existing pet default handler's legacy publication index
+                localCalls=0
+                published=0
+                hero={IsNull=function() return false end,
+                    IsWolf=function() return false end, IsElf=function() return false end,
+                    RemoveModifierByName=function() localCalls=localCalls+1 end,
+                    AddNewModifier=function() localCalls=localCalls+1 end}
+                PlayerResource.GetSelectedHeroEntity=function() return hero end
+                PlayerResource.GetPlayer=function() return {} end
+                PlayerResource.GetPlayerName=function() return 'player' end
+                PlayerResource.GetSelectedHeroName=function() return 'hero' end
+                CustomGameEventManager={Send_ServerToAllClients=function() end}
+                CustomNetTables.GetTableValue=function(_, name, id)
+                    if name=='Pets_Tabel' or name=='Particles_Tabel' then return {[itemPart]=true} end
+                    return net[id]
+                end
+                CustomNetTables.SetTableValue=function(_, name, id, value)
+                    if name=='Shop_active' then
+                        published=published+1
+                        activeValue=value[slot]
+                    else net[id]=value end
+                end
+                Pets={DeletePet=function() localCalls=localCalls+1 end,
+                    CreatePet=function() localCalls=localCalls+1 end}
+                wearables={ApplyDefaultModel=function() localCalls=localCalls+1 end}
+                function SetModelVip() localCalls=localCalls+1 GameRules.SkinTower[0][slot]=itemPart end
+                function SetModelStandart() localCalls=localCalls+1 GameRules.SkinTower[0][slot]=nil end
+                SetLabelVip=SetModelVip
+                SetLabelStandart=SetModelStandart
+                SetModelVipTower=function() localCalls=localCalls+1 end
+                SetModelVipWisp=function() localCalls=localCalls+1 end
+                FrameTime=function() return 0 end
+                Timers.CreateTimer=function(_, delay, fn) fn() end
+            ''')
+            file = 'donate_store/selectpets.lua' if kind == 'pet' else 'donate_store/wearables.lua'
+            select = function_body(lua, file, select_name, original)
+            default = function_body(lua, file, default_name, original)
+            for off in [0, 1]:  # Panorama boolean transport is numeric in Lua.
+                info = lua.table_from({'PlayerID': 0, 'part': part, 'offp': off, 'type': kind})
+                previous_requests = len(request_log(lua))
+                select(None, info)
+                assert len(request_log(lua)) == previous_requests, (kind, 'local selection wrote HTTP')
+                assert lua.globals().activeValue == (part if off == 0 else None), (key, kind, off)
+                assert lua.globals().published > off, (kind, 'missing UI publication')
+                default(None, lua.table_from({'PlayerID': 0, 'part': part if off == 0 else '0', 'type': kind}))
+                assert len(request_log(lua)) == (0 if key == SENTINEL else off + 1), (key, kind, off)
+            assert lua.globals().localCalls > 0, kind
+            if key == SENTINEL:
+                assert plain(lua.globals().GameRules.SaveDefItem[0]) == {}, kind
+            logs.append(request_log(lua))
+        assert logs[0] == logs[1], (key, kind, 'normal default request changed')
 
 # Parse item KV blocks, including non-item_ names and keys followed by comments.
 kv = (ROOT / 'game/trollnelves2/scripts/npc/npc_items_custom.txt').read_text(encoding='utf-8')
@@ -209,3 +284,4 @@ for key in [SENTINEL, 'normal-key']:
         assert bool(lua.globals().delegated) == (key != SENTINEL or item not in redeem_items), item
 
 print('PASS: Lua syntax; 13 blocked writes and normal request/payload comparisons; 8 active READ sites; retries; 20 higher-level guards; saved settings; native item KV coverage and order filter.')
+print('PASS: 11 inventory cosmetic cases equip/unequip and publish active state; zero restricted writes/default counters; normal default requests match HEAD. Engine application helpers are mocked.')

@@ -90,8 +90,6 @@ assert.equal(read.enabled, true);
 const cases = [
     ['donate_shop/donate_shop.js', 'BuyItemFunction', () => [[null, 601, 'gold', 10, 'skin', 'skin_1']]],
     ['donate_shop/donate_shop.js', 'OpenChest', () => [[null, 590]]],
-    ...['SelectCourier', 'SelectParticle', 'SelectSkin', 'SelectLabel', 'SelectWisp'].flatMap(name => [false, true].map(active => ['donate_shop/donate_shop.js', name, () => [121, active]])),
-    ...[false, true].map(active => ['donate_shop/donate_shop.js', 'SelectTower', () => [[null, 601, null, null, null, 'tower'], active]]),
     ['rewards/rewards.js', 'RecieveReward', e => { const claim = e.panel(), reward = e.panel(); claim.children.push(e.panel()); return [claim, reward, 1, 25]; }],
     ['battlepass/battlepass.js', 'GiveReward', e => [1001, e.panel(), e.panel()]],
     ['spell_shop/spell_shop.js', 'UpgradeSpell', () => [[null, 'elf_spell_test']]],
@@ -124,12 +122,59 @@ assert.equal(settings.events.length, 2);
 for (const [file, builder] of [['spell_shop/spell_shop.js', 'SetUpgradeSpell'], ['spell_temple/spell_temple.js', 'SetUpgradeSpell'], ['spell_temple/spell_temple.js', 'SetActivateSpell']]) {
     const e = environment(true); load(e, file, [builder]); const p = e.panel(); e.context[builder](p, []); assert.equal(p.enabled, false);
 }
-const inventory = environment(true);
-load(inventory, 'donate_shop/donate_shop.js', ['SetItemInventory']);
-for (const type of ['pet_1', 'particle_1', 'skin_1', 'skin_wisp_1', 'tower_1', 'true_sight_tower_1', 'high_true_sight_tower_1', 'flag_1', 'label_1']) {
-    const p = inventory.panel(); inventory.context.SetItemInventory(p, [null, 1, null, null, null, type], false); assert.equal(p.enabled, false, type);
+// Owned cosmetic cards keep local events and active-state rendering in both modes.
+const cosmetics = ['pet_1', 'particle_1', 'skin_1', 'skin_wisp_1', 'tower_1', 'true_sight_tower_1', 'high_true_sight_tower_1', 'flag_1', 'label_1'].map(type => [type, 121]);
+cosmetics.push(['skin_wolf', 620], ['skin_bear', 673]);
+const inventoryFunctions = ['CreateItem', 'SetItemInventory', 'IsItemActivated', 'GetItemActiveType',
+    'SelectCourier', 'SelectParticle', 'SelectSkin', 'SelectLabel', 'SelectWisp', 'SelectTower', 'UpdateShop'];
+for (const restricted of [true, false, undefined]) {
+    for (const [type, id] of cosmetics) {
+        const inventory = environment(restricted), original = environment(false);
+        const item = [null, id, 'gold', 10, type, type];
+        for (const [e, before] of [[inventory, false], [original, true]]) {
+            load(e, 'donate_shop/donate_shop.js', inventoryFunctions, before);
+            Object.assign(e.context, { IsItemChest: () => false, PlayerHasItem: () => true,
+                ItemTooltipShow() {}, GetShortItemName: () => type, SetMainCurrency() {}, player_active_items: {} });
+        }
+        const slot = inventory.context.GetItemActiveType(item);
+        const selected = slot === 'effect' ? id - 100 : id;
+        let rebuilds = 0;
+        inventory.context.InitInventory = () => rebuilds++;
+        for (const active of [false, true]) {
+            const cards = [];
+            for (const e of [inventory, original]) {
+                e.context.player_active_items = active ? { [slot]: selected } : {};
+                const parent = e.panel();
+                e.context.CreateItem(parent, [item], 0, true);
+                const card = parent.children[0];
+                assert.equal(card.enabled, true, type);
+                assert.notEqual(card.style.opacity, '0.35', type);
+                assert.equal(card.BHasClass('DeactivateItem'), active, type);
+                const label = card.children.find(p => p.id === 'BuyItemPanel').children[0].children[0];
+                assert.equal(label.text, active ? '#SpellShop_Deactivate' : '#SpellShop_Activate', type);
+                cards.push(card);
+            }
+            if (restricted === undefined) inventory.setState(true); // Late replication must not dim cards.
+            assert.equal(cards[0].enabled, true, type);
+            inventory.events.length = original.events.length = 0;
+            cards.forEach(card => card.handlers.onactivate());
+            const expected = restricted === false ? original.events : original.events.filter(([name]) => !name.startsWith('SetDefault'));
+            assert.deepEqual(inventory.events, expected, type);
+            assert.equal(inventory.events[0][1].offp, active, type);
+            assert.equal(inventory.events.length, restricted === false ? 2 : 1, type);
+            // Deliver the authoritative Lua active-state update through the real UI listener.
+            inventory.context.UpdateShop('Shop_active', 0, active ? {} : { [slot]: selected });
+            assert.equal(inventory.context.IsItemActivated(slot, selected), !active, type);
+        }
+        assert.equal(rebuilds, 2);
+        assert.equal(inventory.schedules.length, 0);
+        // Ownership filtering remains in place.
+        inventory.context.PlayerHasItem = () => false;
+        const parent = inventory.panel();
+        inventory.context.CreateItem(parent, [item], 0, true);
+        assert.equal(parent.children.length, 0);
+    }
 }
-const nonWrite = inventory.panel(); inventory.context.SetItemInventory(nonWrite, [null, 1, null, null, null, 'sounds'], false); assert.equal(nonWrite.enabled, true);
 
 // Item/chest previews stay usable; only their confirmation controls are disabled.
 const shop = environment(true);
@@ -163,3 +208,4 @@ assert.equal(locks.length, 2);
 locks.forEach(p => { assert.equal(p.enabled, false); p.handlers.onactivate(); });
 assert.equal(bp.events.length, 0);
 console.log('PASS: JS syntax, late state delivery, dynamic controls, direct handlers, and ' + cases.length + ' normal-mode event/payload comparisons.');
+console.log('PASS: 11 inventory cosmetic cases activate/deactivate, render active state, handle late restriction, retain ownership filtering, and match normal-mode HEAD events.');
