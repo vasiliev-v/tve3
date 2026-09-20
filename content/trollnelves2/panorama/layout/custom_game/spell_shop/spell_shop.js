@@ -9,6 +9,12 @@ var SPELLS_TEXTURE = {}
 var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
 var active_shop = null
 
+function ArePerkUpgradesEnabled()
+{
+    let settings = CustomNetTables.GetTableValue("game_spells_lib", "settings")
+    return !!settings && (settings.enable_perk_upgrades === true || settings.enable_perk_upgrades === 1)
+}
+
 function InitSpellPanel()
 {
     let minimap_container = FindDotaHudElement("minimap_container")
@@ -151,6 +157,7 @@ function UpdatePreviewSpell(panel, info)
 
 function UpdatePreviewSpellInf(info)
 {
+    let upgradesEnabled = ArePerkUpgradesEnabled()
     $("#PreviewSpellInfo").RemoveAndDeleteChildren()
 
     let SpellShopInfoHeaderLabel = $.CreatePanel("Label", $("#PreviewSpellInfo"), "")
@@ -197,7 +204,7 @@ function UpdatePreviewSpellInf(info)
         }
     }
 
-    for (var i = 1; i <= 3; i++)
+    for (var i = 1; i <= (upgradesEnabled ? 3 : 1); i++)
     {
         SpellColumnBonus = $.CreatePanel("Panel", SpellBonusesPanel, "SpellColumnBonus_"+i)
         SpellColumnBonus.AddClass("SpellColumnBonus")
@@ -229,6 +236,7 @@ function UpdatePreviewSpellInf(info)
 
     let SpellPreviewPanelButtonActivate = $.CreatePanel("Panel", $("#PreviewSpellInfo"), "")
     SpellPreviewPanelButtonActivate.AddClass("SpellPreviewPanelButtonActivate")
+    if (!upgradesEnabled) SpellPreviewPanelButtonActivate.style.visibility = "collapse"
 
     let SpellPreviewPanelButtonActivateLabel = $.CreatePanel("Label", SpellPreviewPanelButtonActivate, "")
     SpellPreviewPanelButtonActivateLabel.AddClass("SpellPreviewPanelButtonActivateLabel")
@@ -251,7 +259,7 @@ function UpdatePreviewSpellInf(info)
     let player_coins = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["0"]["1"]
     SetUpgradeSpell(SpellPreviewPanelButtonUpgrade, info)
 
-    if (GetPlayerSpellLevel(info[1]) == 0)
+    if (!upgradesEnabled || GetPlayerSpellLevel(info[1]) == 0)
     {
         SpellPreviewPanelButtonUpgrade.visible = false
     }
@@ -354,6 +362,7 @@ function SetUpgradeSpell(panel, info)
 
 function UpgradeSpell(info)
 {
+    if (!ArePerkUpgradesEnabled()) return;
     if (GameUI.CustomUIConfig().IsRestrictedClient()) return;
     if (buy_cooldown)
     {
@@ -416,6 +425,12 @@ CustomNetTables.SubscribeNetTableListener( "Shop", UpdateItem);
 
 function UpdateSpellsLibTable(table, key, data ) 
 {
+    if (table == "game_spells_lib" && key == "settings")
+    {
+        UpdateHasSpells()
+        if (CURRENT_SPELL_SELECTED) UpdatePreviewSpellInf(CURRENT_SPELL_SELECTED)
+        UpdateVisualSelectedSpells()
+    }
 	if (table == "game_spells_lib") 
 	{
 		if (key == "spell_active") 
@@ -476,7 +491,7 @@ function GetPlayerSpellLevel(spell_name, texture)
             {
                 if (player_table[id][1] == spell_name)
                 {
-                    return player_table[id][2]
+                    return ArePerkUpgradesEnabled() ? player_table[id][2] : Math.min(Number(player_table[id][2]), 1)
                 }
             }
         }
@@ -499,7 +514,7 @@ function GetSelectedPlayerSpellLevel(spell_name, id)
             {
                 if (current_target_table[id][1] == spell_name)
                 {
-                    return current_target_table[id][2]
+                    return ArePerkUpgradesEnabled() ? current_target_table[id][2] : Math.min(Number(current_target_table[id][2]), 1)
                 }
             }
         }

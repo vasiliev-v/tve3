@@ -41,7 +41,7 @@ function environment(restricted) {
     $.Schedule = (_, cb) => schedules.push(cb);
     const context = vm.createContext({ $, console, GameUI: { CustomUIConfig: () => config },
         CustomNetTables: {
-            GetTableValue: (_, key) => key === 'restricted_client' ? state : { 0: { 0: 1000, 1: 1000 }, cost: 10 },
+            GetTableValue: (_, key) => key === 'restricted_client' ? state : key === 'settings' ? { enable_perk_upgrades: true } : { 0: { 0: 1000, 1: 1000 }, cost: 10 },
             SubscribeNetTableListener: (_, cb) => listeners.push(cb)
         },
         GameEvents: { SendCustomGameEventToServer: (name, data) => events.push([name, JSON.parse(JSON.stringify(data))]) },
@@ -57,6 +57,7 @@ function environment(restricted) {
 }
 function load(env, file, names, original = false) {
     const text = source(file, original);
+    if (file === 'spell_shop/spell_shop.js' && !original) vm.runInContext(declaration(text, 'ArePerkUpgradesEnabled'), env.context);
     names.forEach(name => vm.runInContext(declaration(text, name), env.context));
 }
 
@@ -222,3 +223,77 @@ locks.forEach(p => { assert.equal(p.enabled, false); p.handlers.onactivate(); })
 assert.equal(bp.events.length, 0);
 console.log('PASS: JS syntax, late state delivery, dynamic controls, direct handlers, and ' + cases.length + ' normal-mode event/payload comparisons.');
 console.log('PASS: 11 inventory cosmetic cases activate/deactivate, render active state, handle late restriction, retain ownership filtering, and match normal-mode HEAD events.');
+
+// Perk mode: real preview, selection and upgrade handlers, with saved levels intact.
+for (const enabled of [false, true, 0, 1, undefined]) {
+    for (const saved of [1, 2, 3]) {
+        const run = (original = false) => {
+            const e = environment(false);
+            const info = {1:'elf_spell_gold', 2:'elf_spell_gold', 3:'modifier_elf_spell_gold',
+                4:{1:'gold_description'}, 5:{1:{1:10,2:15,3:20}}, 6:'0', 7:'1'};
+            const shop = {0:{1:100000},12:{1:{1:info[1],2:saved}},18:{0:{1:10000}}};
+            let mode = enabled;
+            e.context.CustomNetTables.GetTableValue = (table, key) => {
+                if (table === 'Shop') return key === 'restricted_client' ? {isRestrictedClient:false} : shop;
+                if (key === 'settings') return mode === undefined ? undefined : {enable_perk_upgrades:mode};
+                if (key === 'spell_list') return {1:info};
+                if (key === 'spell_active') return {0:{1:info[1]}};
+            };
+            const create = e.context.$.CreatePanel;
+            e.context.$.CreatePanel = (...args) => {
+                const p = create(...args); p.visible = true;
+                p.FindChildTraverse = function(id) {
+                    for (const child of this.children) {
+                        if (child.id === id) return child;
+                        const found = child.FindChildTraverse(id); if (found) return found;
+                    }
+                    return null;
+                };
+                return p;
+            };
+            e.context.Players.GetPlayerSelectedHero = () => 'npc_dota_hero_treant';
+            e.context.activate_cooldown = false;
+            e.context.SPELLS_TEXTURE = {};
+            e.context.CURRENT_SPELL_SELECTED = info;
+            load(e, 'spell_shop/spell_shop.js', ['UpdatePreviewSpellInf','GetPlayerSpellLevel',
+                'GetSelectedPlayerSpellLevel','GetSpellTexture','GetSpellCost','PlayerHasSpell',
+                'IsSpellActivate','SetUpgradeSpell','UpgradeSpell','SetActivateSpell','ActivateSpell',
+                'UpdateSpellsLibTable'], original);
+            e.context.UpdateActivatedSpellVisual = () => {};
+            e.context.UpdateVisualSelectedSpells = () => {};
+            e.context.UpdateHasSpells = () => {};
+            e.context.UpdatePreviewSpellInf(info);
+            return {...e, info, shop, setMode(value){mode=value; e.context.UpdateSpellsLibTable('game_spells_lib','settings',{});}};
+        };
+        const e = run(), isEnabled = enabled === true || enabled === 1;
+        const columns = e.panels.filter(p => /^SpellColumnBonus_\d$/.test(p.id));
+        assert.equal(columns.length, isEnabled ? 3 : 1);
+        assert.equal(columns.find(p => p.BHasClass('IsActiveColumn')).id, 'SpellColumnBonus_' + (isEnabled ? saved : 1));
+        assert.deepEqual(columns.map(p => p.children.filter(c => c.BHasClass('SpellPreviewLevelLabelValue')).map(c => c.text)), isEnabled ? [[10],[15],[20]] : [[10]]);
+        const button = e.panels.find(p => p.BHasClass('SpellPreviewPanelButtonUpgrade'));
+        assert.equal(button.visible, isEnabled && saved < 3);
+        assert.equal(e.context.GetSelectedPlayerSpellLevel(e.info[1],0), isEnabled ? saved : 1);
+        e.context.UpgradeSpell(e.info);
+        assert.equal(e.events.length, isEnabled && saved < 3 ? 1 : 0);
+        assert.equal(e.schedules.length, isEnabled && saved < 3 ? 1 : 0);
+        e.context.ActivateSpell(e.info);
+        assert.equal(e.events.at(-1)[0], 'event_set_activate_spell');
+        assert.equal(e.shop[12][1][2], saved);
+        if (isEnabled) {
+            const before = run(true);
+            const snapshot = p => ({id:p.id, classes:[...p.classes], text:p.text, style:p.style, visible:p.visible});
+            assert.deepEqual(e.panels.map(snapshot), before.panels.map(snapshot));
+            before.context.UpgradeSpell(before.info); before.context.ActivateSpell(before.info);
+            assert.deepEqual(e.events, before.events);
+        } else {
+            assert.deepEqual(columns[0].style, {});
+            columns[0].children.forEach(child => assert.deepEqual(child.style, {}));
+            const bottom = e.panels.find(p => p.BHasClass('SpellPreviewPanelButtonActivate'));
+            assert.equal(bottom.style.visibility, 'collapse');
+        }
+        const count = e.panels.length;
+        e.setMode(!isEnabled);
+        assert.equal(e.panels.slice(count).filter(p=>/^SpellColumnBonus_\d$/.test(p.id)).length, isEnabled ? 1 : 3);
+    }
+}
+console.log('PASS: perk modes, LVL 1 values/highlight, hidden Upgrade, direct JS guard, selection, saved data, late mode delivery, normal preview/event equality.');

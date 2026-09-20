@@ -140,7 +140,7 @@ def function_body(lua, file, name, original=False):
     text = source(file, original)
     match = re.search(r'function ' + re.escape(name) + r'\(([^\n]*?)\)', text)
     assert match, name
-    args = ('self, ' if ':' in name else '') + match[1]
+    args = ('self' + (', ' if match[1] else '') if ':' in name else '') + match[1]
     tail = text[match.end():]
     for end in re.finditer(r'\bend\b', tail):
         code = 'return function(' + args + ')' + tail[:end.end()]
@@ -325,3 +325,86 @@ for call in drop_calls:
 print('PASS: Lua syntax; 13 blocked writes and normal request/payload comparisons; 8 active READ sites; retries; 20 higher-level guards; saved settings.')
 print('PASS: 11 inventory cosmetic cases equip/unequip and publish active state; zero restricted writes/default counters; normal default requests match HEAD. Engine application helpers are mocked.')
 print('PASS: four drop entry points skip all side effects for the exact sentinel; other keys match HEAD drops, timers and limits.')
+
+
+def perk_runtime(enabled, saved, original=False):
+    lua = runtime('normal-key', original)
+    lua.globals().saved = saved
+    lua.execute('''
+        tables={Shop={['0']={['0']={['1']=1000000000},
+            ['12']={['1']={['1']='elf_spell_gold',['2']=saved}, metadata=true}}},game_spells_lib={}}
+        tables.Shop['0'][12]=tables.Shop['0']['12']
+        CustomNetTables.GetTableValue=function(_,name,key) return tables[name] and tables[name][key] end
+        CustomNetTables.SetTableValue=function(_,name,key,value)
+            tables[name]=tables[name] or {} tables[name][key]=value
+        end
+        GameRules.SPELL_PRICE_BASE=10000
+        GameRules.PoolTable[18]={}
+        GameRules.SPELL_DISCOUNT_TO_2=0.2
+        GameRules.SPELL_DISCOUNT_TO_3=0.3
+        GameRules.TROLL_DISCOUNT=0.1
+        DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP=1
+        DOTA_TEAM_GOODGUYS=2 DOTA_TEAM_BADGUYS=3
+        phase=1
+        GameRules.State_Get=function() return phase end
+        PlayerResource.GetTeam=function() return 2 end
+        PlayerResource.GetPlayer=function() return {} end
+        modifier={SetStackCount=function(self,n) self.stack=n end, GetStackCount=function(self) return self.stack end}
+        hero={IsElf=function() return true end, IsTroll=function() return false end,
+            HasModifier=function() return false end,
+            AddNewModifier=function() return modifier end}
+        PlayerResource.GetSelectedHeroEntity=function() return hero end
+        CustomGameEventManager={Send_ServerToPlayer=function() notifications=(notifications or 0)+1 end}
+    ''')
+    # Exercise real setting publication, then load the complete perk library.
+    lua.execute(source('settings.lua').replace('ENABLE_PERK_UPGRADES = true',
+                                             'ENABLE_PERK_UPGRADES = ' + str(enabled).lower()))
+    lua.execute(source('game_spells_lib.lua', original))
+    assert lua.globals().tables.game_spells_lib.settings.enable_perk_upgrades == enabled
+    return lua
+
+
+for enabled in [False, True]:
+    for saved in [1, 2, 3]:
+        lua = perk_runtime(enabled, saved)
+        effective = saved if enabled else 1
+        assert lua.eval('game_spells_lib:GetSpellLevel(0,"elf_spell_gold")') == effective
+        assert lua.eval('game_spells_lib:GetSpellLevel(0,"missing")') == 0
+        # Actual custom event selection toggles, and the application paths set LVL 1 stacks.
+        lua.execute('''
+            selection={PlayerID=0,spell_name='elf_spell_gold',modifier_name='modifier_elf_spell_gold'}
+            game_spells_lib:event_set_activate_spell(selection)
+            assert(game_spells_lib:FindCurrentSpellPlayer(0,'elf_spell_gold'))
+            game_spells_lib:event_set_activate_spell(selection)
+            assert(not game_spells_lib:FindCurrentSpellPlayer(0,'elf_spell_gold'))
+            game_spells_lib:event_set_activate_spell(selection)
+            phase=2
+            game_spells_lib:SetSpellPlayers(0)
+        ''')
+        assert lua.globals().modifier.stack == effective
+        lua.execute('game_spells_lib:AddPlayerSpell(0,"elf_spell_gold","modifier_elf_spell_gold",hero)')
+        assert lua.globals().modifier.stack == effective
+        # Execute a real level-dependent modifier property, without changing its values.
+        effect = function_body(lua, 'modifiers/modifier_elf_spell_gold.lua',
+                               'modifier_elf_spell_gold:GetModifierMoveSpeedBonus_Constant')
+        assert effect(lua.globals().modifier) == {1: -20, 2: -10, 3: 0}[effective]
+        assert lua.globals().tables.Shop['0']['12']['1']['2'] == saved
+        if not enabled:
+            before = plain(lua.globals().tables.Shop['0'])
+            lua.execute('''
+                game_spells_lib:event_upgrade_spell({PlayerID=0,spell_name='elf_spell_gold'})
+                game_spells_lib:PlayerUpgradeSpellSelected(0,'elf_spell_gold')
+                game_spells_lib:PlayerUpgradeSpell(0,0)
+            ''')
+            assert plain(lua.globals().tables.Shop['0']) == before
+            assert request_log(lua) == []
+            assert lua.globals().notifications is None
+        else:
+            results = []
+            for original in [True, False]:
+                normal = perk_runtime(True, saved, original)
+                normal.execute('game_spells_lib:event_upgrade_spell({PlayerID=0,spell_name="elf_spell_gold"})')
+                assert len(request_log(normal)) == (1 if saved < 3 else 0)
+                results.append((request_log(normal), plain(normal.globals().tables.Shop['0'])))
+            assert results[0] == results[1], saved
+print('PASS: perk setting replication, selection, effective stacks/modifier effect, saved levels, direct Lua guards, zero disabled upgrade writes/cost changes, normal upgrade payload/cost equality.')

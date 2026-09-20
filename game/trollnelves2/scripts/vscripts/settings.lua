@@ -2,6 +2,9 @@ print ( '[[TROLLNELVES2] settings' )
 MAXIMUM_ATTACK_SPEED = 600
 MINIMUM_ATTACK_SPEED = 20
 
+-- Set before the match; saved perk levels are preserved when upgrades are disabled.
+ENABLE_PERK_UPGRADES = false
+
 TROLL_HERO = "npc_dota_hero_troll_warlord" --"npc_dota_hero_arc_warden "
 ELF_HERO = "npc_dota_hero_treant"
 ANGEL_HERO = {"npc_dota_hero_crystal_maiden","npc_dota_hero_dark_willow"}  --{"npc_dota_hero_enigma","npc_dota_hero_queenofpain"}
@@ -92,6 +95,9 @@ function IsRestrictedClient()
 end
 
 if IsServer() then
+    CustomNetTables:SetTableValue("game_spells_lib", "settings", {
+        enable_perk_upgrades = ENABLE_PERK_UPGRADES,
+    })
     CustomNetTables:SetTableValue("Shop", "restricted_client", {
         isRestrictedClient = IsRestrictedClient(),
     })

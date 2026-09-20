@@ -1954,7 +1954,9 @@ function game_spells_lib:GetSpellLevel(player_id, spell_name)
     game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
     for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
         if spell_name == game_spells_lib.PLAYER_INFO[player_id][tostring(i)][tostring(1)] then
-            return tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)][tostring(2)])
+            local level = tonumber(game_spells_lib.PLAYER_INFO[player_id][tostring(i)][tostring(2)])
+            if ENABLE_PERK_UPGRADES == false then return math.min(level, 1) end
+            return level
         end
     end
     return 0
@@ -2118,6 +2120,7 @@ function game_spells_lib:PlayerDropNewSpell(find_new_spell, player_id)
 end
 
 function game_spells_lib:PlayerUpgradeSpell(player_id, idPerk)
+    if ENABLE_PERK_UPGRADES == false then return end
     game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
     if game_spells_lib.PLAYER_INFO[player_id] == nil then
         return
@@ -2345,6 +2348,7 @@ function game_spells_lib:UpdatePlayerSpellCosts(player_id)
 end
 
 function game_spells_lib:PlayerUpgradeSpellSelected(player_id, spell_name)
+    if ENABLE_PERK_UPGRADES == false then return end
     game_spells_lib.PLAYER_INFO[player_id] = CustomNetTables:GetTableValue("Shop", tostring(player_id))["12"]
     if game_spells_lib.PLAYER_INFO[player_id] == nil then return nil end
     for i=1,GetTableLng(game_spells_lib.PLAYER_INFO[player_id])-1 do
@@ -2362,6 +2366,7 @@ function game_spells_lib:PlayerUpgradeSpellSelected(player_id, spell_name)
 end
 
 function game_spells_lib:event_upgrade_spell(data)
+    if ENABLE_PERK_UPGRADES == false then return end
     if IsRestrictedClient() then return end
     if not data.PlayerID or not data.spell_name then return end
     local player_id = data.PlayerID
