@@ -26,6 +26,13 @@ function Precache( context )
 	PrecacheResource("particle","particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf",context)
 	PrecacheResource("particle","particles/generic_gameplay/generic_stunned.vpcf",context)
 	
+	-- Tiny / Worker 10 precache
+	PrecacheResource("particle", "particles/units/heroes/hero_tiny/tiny_avalanche_projectile_explode.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_tiny/tiny_toss_impact.vpcf", context)
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts", context)
+	PrecacheResource("model", "models/heroes/tiny/tiny_01/tiny_01.vmdl", context)
+	PrecacheResource("model", "models/heroes/tiny_01/tiny_tree_proj.vmdl", context)
+	
 	PrecacheResource("particle","particles/units/heroes/hero_mirana/mirana_base_attack.vpcf",context)
 	PrecacheResource("particle","particles/base_attacks/ranged_tower_good.vpcf",context)
 	PrecacheResource("particle","particles/base_attacks/ranged_tower_bad.vpcf",context)
