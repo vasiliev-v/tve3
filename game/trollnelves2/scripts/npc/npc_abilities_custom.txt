@@ -196,19 +196,19 @@
 		"particle"			"particles/units/heroes/hero_dazzle/dazzle_armor_enemy.vpcf"
 	}
 	"AbilityCastRange"		"575"
-	"AbilityCooldown"		"360"
+	"AbilityCooldown"		"300"
 	"AbilityManaCost"		"100"
 	"ScriptFile"			"heroes\hero_dazzle\weave.lua"
 	"AbilityValues"
 	{
 		"radius"						"575"
 		"vision"						"575"
-		"armor_per_second"				"1"
-		"duration"						"20.0"
+		"armor_per_second"				"3"
+		"duration"						"40.0"
 		"radius_scepter"				"775"
 		"duration_scepter"				"24"
 		"armor_per_second_scepter"		"10"
-		"negative_armor_per_second"		"-50"
+		"negative_armor_per_second"		"-55"
 		"tick_interval"					"1.0"
 		"vision_duration"				"3.0"
 	}
@@ -237,7 +237,7 @@
 
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"%range_tooltip"//"550"
+	"AbilityCastRange"				"550"//"550"
 	
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
@@ -253,8 +253,8 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-            "duration_tooltip" "6"
-            "range_tooltip" "300"
+            "duration_tooltip" "8"
+            "range_tooltip" "550"
             "min_health" "1"
         }
 
@@ -5855,7 +5855,7 @@
 		"MaxLevel"					"1"
 		"UnitName"					"worker_1"
         "AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
-		"AbilityChannelTime"		"4"//"3"
+		"AbilityChannelTime"		"3"//"3"
 		"AbilityValues"
         {
             "gold_cost" "8"
@@ -6021,7 +6021,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"8"//"5"
+		"AbilityChannelTime"		"4"//"5"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -6180,7 +6180,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"16"//"10"
+		"AbilityChannelTime"		"5"//"10"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -6339,7 +6339,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"24"//"20"
+		"AbilityChannelTime"		"6"//"20"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -6497,7 +6497,7 @@
 	 
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	 
-		"AbilityChannelTime"		"32"
+		"AbilityChannelTime"		"7"
 		"OnSpellStart"{
 			"RunScript"
 			{
@@ -12148,10 +12148,10 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityValues"
         {
-            "radius" "300"
+            "radius" "350"
             "duration" "10"
             "linger_duration" "0.5"
-            "move_slow" "-35"
+            "move_slow" "-45"
             "miss_chance" "99"
         }
 
@@ -12238,10 +12238,10 @@
 		"particle"  		"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
 	}
 
-	"AbilityCastRange"		"400"
+	"AbilityCastRange"		"600"
 	"AbilityCooldown"		"300"
-	"AbilityDuration"		"12"
-	"AbilityDamage"			"50000"
+	"AbilityDuration"		"20"
+	"AbilityDamage"			"100000"
 
 	"ScriptFile"			"heroes/hero_vengefulspirit/wave_of_terror.lua"
 
@@ -12249,8 +12249,8 @@
 	{
 		"wave_speed"		"2000.0"
 		"wave_width"		"300"
-		"armor_reduction"	"-1500"
-		"tooltip_duration"	"12.0"
+		"armor_reduction"	"-3500"
+		"tooltip_duration"	"20.0"
 		"vision_aoe"		"500"
 		"vision_duration"	"3.0"
 		"wave_range"		"700"
