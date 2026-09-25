@@ -47,6 +47,7 @@
 		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_stun_target.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_heal.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_reveal.png" />
+		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/elf_spell_untouchable.png" />
 
 		<Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_ms.png" />
 	    <Image style="opacity:0;" src="file://{images}/custom_game/spell_shop/spell_icons/troll_spell_gold_hit.png" />
