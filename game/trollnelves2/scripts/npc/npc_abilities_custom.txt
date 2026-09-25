@@ -489,7 +489,7 @@
         {
             "presence_armor_reduction" "6131"
             "presence_radius" "999999"
-            //"COOLDOWN_REDUCTION" "1"
+            "COOLDOWN_REDUCTION" "10"
             "ATTACKSPEED_BONUS" "1200"
             "regen" "1000"
         }
@@ -540,7 +540,7 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%presence_armor_reduction"
-				//"MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT" 	"%COOLDOWN_REDUCTION"
+				"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE" 	        "%COOLDOWN_REDUCTION"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%ATTACKSPEED_BONUS"
 				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%regen"
 			}
