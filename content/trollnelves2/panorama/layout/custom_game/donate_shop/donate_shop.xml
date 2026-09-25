@@ -30,7 +30,7 @@
                         <Panel class="BattlePassButtonIcon" />
                     </Panel>
 				</Panel>
-				<Panel class="DonateShopTopCurrency"> 
+				<Panel id="DonateShopTopCurrency" class="DonateShopTopCurrency"> 
 					<Panel class="DonateShopCurrencyMain">
 						<Panel class="DonateShopCurrency">
 							<Label id="Currency" text="0" class="GoldText" />
