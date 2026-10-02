@@ -1273,7 +1273,7 @@ function StealGold(event)
 	local target = event.target
 	local playerID = GameRules.trollID
 	local hero = GameRules.trollHero
-	local sum = math.ceil(hero:GetNetworth()*0.0001)+1
+	local sum = math.ceil(hero:GetNetworth()*0.002)+10
 
 	if GameRules.FakeList[caster:GetPlayerOwnerID()] ~= nil  then
 		SendErrorMessage(caster:GetPlayerOwnerID(), "fake_list")
@@ -1287,7 +1287,7 @@ function StealGold(event)
 				local playerHero = PlayerResource:GetSelectedHeroEntity(pID) or false
 				if playerHero then
 					if playerHero:IsTroll() or playerHero:IsWolf() then
-						sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.0001)+1 ) --sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.002)+10 )
+						sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.0001)+10 ) --sum = math.max( sum,  math.ceil(playerHero:GetNetworth()*0.002)+10 )
 					end
 				end
 			end
@@ -1299,7 +1299,7 @@ function StealGold(event)
 		local unit_name = unit:GetUnitName();
 		if unit_name == "troll_hut_5" or unit_name == "troll_hut_6" then --if unit_name == "troll_hut_6" or unit_name == "troll_hut_7" then
 			maxSum = 500000
-			sum = math.ceil(hero:GetNetworth()*0.0001)+1 --sum = math.ceil(hero:GetNetworth()*0.004)+10
+			sum = math.ceil(hero:GetNetworth()*0.002)+10 --sum = math.ceil(hero:GetNetworth()*0.004)+10
 			caster:GiveMana(5)
 		end
 	end

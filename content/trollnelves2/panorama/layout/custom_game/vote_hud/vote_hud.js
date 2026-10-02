@@ -207,7 +207,11 @@ function CreatePanelMap(info, i)
     ChooseMapButtonName.AddClass("ChooseMapButtonName");
     ChooseMapButtonName.text = info[i][1];
 
-    let ChooseMapButtonVotesCounter = $.CreatePanel("Label", ChooseMapButtonInfo, "ChooseMapButtonVotesCounter");
+    let ChooseMapButtonVotesBadge = $.CreatePanel("Panel", ChooseMapButtonInfo, "ChooseMapButtonVotesBadge");
+    ChooseMapButtonVotesBadge.AddClass("ChooseMapButtonVotesBadge");
+    ChooseMapButtonVotesBadge.visible = false
+
+    let ChooseMapButtonVotesCounter = $.CreatePanel("Label", ChooseMapButtonVotesBadge, "ChooseMapButtonVotesCounter");
     ChooseMapButtonVotesCounter.AddClass("ChooseMapButtonVotesCounter");
     ChooseMapButtonVotesCounter.text = ""
 
@@ -241,9 +245,15 @@ function UpdateMapSelectorPlayers(data)
         let map_panel = $("#MapsList").FindChildTraverse("Map_id_"+map_info.map_id)
         if (map_panel)
         {
+            let ChooseMapButtonVotesBadge = map_panel.FindChildTraverse("ChooseMapButtonVotesBadge")
             let ChooseMapButtonVotesCounter = map_panel.FindChildTraverse("ChooseMapButtonVotesCounter")
             if (ChooseMapButtonVotesCounter)
             {
+                ChooseMapButtonVotesCounter.text = ""
+                if (ChooseMapButtonVotesBadge)
+                {
+                    ChooseMapButtonVotesBadge.visible = votes > 0
+                }
                 if (votes > 0)
                 {
                     all_votes = all_votes + votes

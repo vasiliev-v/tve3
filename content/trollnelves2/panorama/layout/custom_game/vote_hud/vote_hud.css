@@ -190,12 +190,31 @@
     color: white;
     text-transform: uppercase;
     font-size: 20px;
+
+    padding: 2px 7px 3px 7px;
+    background-color: rgba(8, 12, 16, 0.76);
+    border-radius: 3px;
+    text-shadow: 0px 1px 3px 2.0 #000000;
+}
+
+.ChooseMapButtonVotesBadge
+{
+    margin-top: 3px;
+    padding: 2px 7px 3px 7px;
+
+    flow-children: right;
+
+    background-color: rgba(8, 12, 16, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 3px;
 }
 
 .ChooseMapButtonVotesCounter
 {
     font-size: 16px;
-    color: #B8FF45;
+    font-weight: semi-bold;
+    color: white;
+    text-shadow: 0px 1px 3px 2.0 #000000;
 }
 
 .ChooseMapButton:hover
