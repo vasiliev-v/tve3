@@ -5453,7 +5453,7 @@
 		"AbilityValues"
 		{
 			"radius1"					"2400"
-			"duration"					"15"
+			"duration"					"9999999"
 			"maximum_charges"			"2"
 			"charge_replenish_time"		"60.0"
 			"charge_replenish_time2"	"30.0"

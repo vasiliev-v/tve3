@@ -7,14 +7,25 @@
     transition-duration: 0.5s;
 }
 
-.SetupStageBG
+.SetupStageBackgroundLayer
 {
     width: 100%;
     height: 100%;
-    /*
-    background-color: gradient( linear, 0% 0%, 0% 110%, from( rgba(42, 58, 78, 0.6) ), to( rgba(0, 0, 0, 0.6) ) ); 
-    */
+    z-index: 0;
+}
+
+.SetupStageBackgroundDimmer
+{
+    width: 100%;
+    height: 100%;
     background-color: gradient( linear, 0% 0%, 0% 110%, from( rgba(42, 58, 78, 0.95)  ), to( rgba(0, 0, 0, 0.95) ) );  
+}
+
+.SetupStageContent
+{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .StageTimer
@@ -113,9 +124,9 @@
     flow-children: down;
 }
 
-.WindowMapStage
+#WindowMapStage
 {
-    width: 700px;
+    width: 960px;
 }
 
 .WindowStageName
@@ -132,9 +143,11 @@
     horizontal-align: center;
 }
 
-.MapsList
+#MapsList
 {
-    margin-top: 60px;
+    /* Three 300px cards plus 5px margins on both sides use 930px. */
+    width: 960px;
+    margin-top: 24px;
     flow-children: right-wrap;
     horizontal-align: center;
 }
@@ -150,8 +163,8 @@
 
 .ChooseMapButton
 {
-    width: 330px;
-    height: 100px;
+    width: 300px;
+    height: 80px;
     margin: 5px;
     transition-property: box-shadow;
     transition-duration: 0.2s;
@@ -162,7 +175,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.596);
-    brightness: 0.25;
 }
 
 .ChooseMapButtonInfo

@@ -11,7 +11,11 @@
 
     <Panel hittest="false" style="width:100%;height:100%;">
         <Panel class="GameSetupStages" id="GameSetupStages">
-            <Panel class="SetupStageBG" onactivate="" />
+            <Panel class="SetupStageBackgroundLayer" hittest="false">
+                <Panel class="SetupStageBackgroundDimmer" hittest="false" />
+            </Panel>
+
+            <Panel class="SetupStageContent" hittest="false">
             <Label class="StageTimer" id="StageTimer" text="30" />
 
             <Panel class="GameInfo" id="GameInfo">
@@ -133,6 +137,7 @@
             <Panel class="GameTips">
                 <Label class="GameTip" text="#loading_text" />
                 <Label class="GameTip" text="#loading_text_no_troll" />
+            </Panel>
             </Panel>
         </Panel>
     </Panel>

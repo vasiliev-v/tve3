@@ -16,8 +16,15 @@
 		<Image style="opacity:0;" src="file://{images}/new_design/maps/1x1acropolis.png" />
 		<Image style="opacity:0;" src="file://{images}/custom_game/shop/itemicon/battlepass.png" />
 
-		
-		
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/summer.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/spring.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/autumn.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/ghosttown.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/winter.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/china.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/desert.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/jungle.png" />
+		<Image style="opacity:0;" src="file://{images}/new_design/maps/helheim.png" />
 
 		<Image style="opacity:0;" src="file://{images}/new_design/maps/athens.png" />
 		<Image style="opacity:0;" src="file://{images}/new_design/maps/kanyon.png" />
