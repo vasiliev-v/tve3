@@ -10,9 +10,12 @@ var UPDATED_CHANCE_TROLL = {}
 var player_table = CustomNetTables.GetTableValue("Shop", Players.GetLocalPlayer())["12"];
 var players_activated_spells = CustomNetTables.GetTableValue("game_spells_lib", "spell_active")
 var game_spells_lib = CustomNetTables.GetTableValue("game_spells_lib", "spell_list")
-var votedYesMod = false
-var modVoteLabelOverride = null
-var currentModState = null
+var votedMods = {1: false, 2: false}
+
+var MOD_VOTE_CONFIG = {
+    1: {button: "#ModVoteHelpers", percent: "#ModVotePercentHelpers"},
+    2: {button: "#ModVoteAspects", percent: "#ModVotePercentAspects"}
+}
 
 // ===== FIX 1x1 MAP STAGE (retry after 5 sec if team not ready) =====
 var LAST_MAP_STAGE_DATA = null;
@@ -273,11 +276,6 @@ function troll_elves_phase_time(data)
     let map = data.map
     let role = data.role
 
-    if (data.mod !== undefined)
-    {
-        currentModState = data.mod
-    }
-
     for (let i = 1; i <= 3; i++) 
     {
         let StageLinePanel = $("#StageLinePanel_"+i)
@@ -330,30 +328,6 @@ function troll_elves_phase_time(data)
         $("#GameInfo").style.opacity = "1"
         $("#SettingsMap").text = $.Localize("#is_current_map") + " " + map.toUpperCase()
         $("#SettingsMap").visible = true
-    }
-    if (stage >= 3)
-    {
-        modVoteLabelOverride = null
-
-        if (currentModState !== null)
-        {
-            $("#GameInfo").style.opacity = "1"
-            const text = currentModState ? $.Localize("#wolves_mod_disabled_desc") : $.Localize("#wolves_mod_enabled_desc")
-            $("#SettingsMod").text = text
-            $("#SettingsMod").visible = true
-        }
-    }
-    else if (data.mod !== undefined && !modVoteLabelOverride)
-    {
-        $("#GameInfo").style.opacity = "1"
-        const text = data.mod ? $.Localize("#wolves_mod_disabled_desc") : $.Localize("#wolves_mod_enabled_desc")
-        $("#SettingsMod").text = text
-        $("#SettingsMod").visible = true
-    }
-    else if (modVoteLabelOverride)
-    {
-        $("#SettingsMod").text = modVoteLabelOverride
-        $("#SettingsMod").visible = true
     }
 }
 
@@ -706,32 +680,36 @@ function InitModVote()
 {
     if (Game.GetMapInfo().map_display_name == "1x1")
     {
-        $("#ModVotePanel").visible = false
+        $("#ModVoteBlock").visible = false
         return
     }
 
-    $("#ModVotePanel").visible = true
+    $("#ModVoteBlock").visible = true
 
-    $("#SettingsMod").text =
-        $.Localize("#wolves_mod_voting_desc") + " 0%"
-    $("#SettingsMod").visible = true
+    for (let modifierId = 1; modifierId <= 2; modifierId++)
+    {
+        const button = $(MOD_VOTE_CONFIG[modifierId].button)
+        if (!votedMods[modifierId])
+        {
+            button.SetPanelEvent("onactivate", function(){
+                GameEvents.SendCustomGameEventToServer(
+                    "troll_elves_mod_votes",
+                    {panel_id : modifierId}
+                )
 
-    $("#ModVoteYes").SetPanelEvent("onactivate", function(){
-        GameEvents.SendCustomGameEventToServer(
-            "troll_elves_mod_votes",
-            {panel_id : 1}
-        )
-
-        LocalChooseMod($("#ModVoteYes"))
-    })
+                LocalChooseMod(modifierId)
+            })
+        }
+    }
 }
 
-function LocalChooseMod(panel)
+function LocalChooseMod(modifierId)
 {
-    $("#ModVoteYes").ClearPanelEvent("onactivate")
-    $("#ModVoteYes").AddClass("DisabledChoose")
-    panel.AddClass("SelectedModLocal")
-    votedYesMod = true
+    const button = $(MOD_VOTE_CONFIG[modifierId].button)
+    button.ClearPanelEvent("onactivate")
+    button.AddClass("DisabledChoose")
+    button.AddClass("SelectedModLocal")
+    votedMods[modifierId] = true
 }
 
 function UpdateModVotes(data)
@@ -740,26 +718,30 @@ function UpdateModVotes(data)
     {
         data = data.table_votes
     }
-    let yesPercent = 0
+    const percents = {1: 0, 2: 0}
 
     for (id in data)
     {
         let info = data[id]
-        if (info.map_id == 1)
+        const modifierId = Number(info.map_id)
+        if (MOD_VOTE_CONFIG[modifierId])
         {
-            yesPercent = info.percent
+            percents[modifierId] = Number(info.percent) || 0
         }
     }
 
-    const label = $("#SettingsMod")
-    label.text = $.Localize("#wolves_mod_voting_desc") + " " + Math.floor(yesPercent) + "%"
-    label.visible = true
+    for (let modifierId = 1; modifierId <= 2; modifierId++)
+    {
+        $(MOD_VOTE_CONFIG[modifierId].percent).text = Math.floor(percents[modifierId]) + "%"
+    }
 
-    modVoteLabelOverride = label.text
-    if (votedYesMod)
-    {   
-        $("#ModVoteYes").AddClass("SelectedModLocal")
-        $("#ModVoteYes").AddClass("DisabledChoose")
+    for (let modifierId = 1; modifierId <= 2; modifierId++)
+    {
+        if (votedMods[modifierId])
+        {
+            $(MOD_VOTE_CONFIG[modifierId].button).AddClass("SelectedModLocal")
+            $(MOD_VOTE_CONFIG[modifierId].button).AddClass("DisabledChoose")
+        }
     }
 }
 
@@ -778,10 +760,6 @@ function SetModVoteVisible(visible)
         $("#ModVoteBlock").visible = visible
     }
 
-    if ($("#ModVotePanel"))
-    {
-        $("#ModVotePanel").visible = visible
-    }
 }
 
 (function () {

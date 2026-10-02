@@ -23,18 +23,25 @@
 
                 <Label class="SettingsLabel" id="SettingsHero" html="true" text="" />
                 <Label class="SettingsLabel" id="SettingsMap" html="true" text="" />
-                <Label class="SettingsLabel" id="SettingsMod" html="true" text="" />
             </Panel>
 
             <Panel class="ModVoteBlock" id="ModVoteBlock">
                 <Label class="ModVoteHeader" text="#modif_game_rules_header" />
                 <Label class="ModVoteDescription" text="#modif_game_rules_desc" />
 
-                <Panel class="ModVoteCard" id="ModVotePanel">
+                <Panel class="ModVoteCard" id="ModVotePanelHelpers">
                     <Label class="ModVoteTitle" text="#wolves_angels_label" />
+                    <Label class="ModVotePercent" id="ModVotePercentHelpers" text="0%" />
+                    <Panel class="ModVoteButton" id="ModVoteHelpers">
+                        <Label class="ModVoteButtonText" text="#modifier_disable_button" />
+                    </Panel>
+                </Panel>
 
-                    <Panel class="ModVoteButton" id="ModVoteYes">
-                        <Label class="ModVoteButtonText" text="#wolves_angels_yes" />
+                <Panel class="ModVoteCard" id="ModVotePanelAspects">
+                    <Label class="ModVoteTitle" text="#modifier_aspects_label" />
+                    <Label class="ModVotePercent" id="ModVotePercentAspects" text="0%" />
+                    <Panel class="ModVoteButton" id="ModVoteAspects">
+                        <Label class="ModVoteButtonText" text="#modifier_disable_button" />
                     </Panel>
                 </Panel>
             </Panel>

@@ -1870,6 +1870,9 @@ function game_spells_lib:event_set_activate_spell(data)
     if GetMapName() == "1x1" then
         return
     end
+    if mod_system and not mod_system:AreAspectsEnabled() then
+        return
+    end
     if data.PlayerID == nil then return end
     local player_id = data.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(player_id)
@@ -2410,6 +2413,24 @@ end
 
 function game_spells_lib:SetSpellPlayers(id)
     if string.match(GetMapName(),"1x1") then
+        return
+    end
+
+    if mod_system and not mod_system:AreAspectsEnabled() then
+        local hero = PlayerResource:GetSelectedHeroEntity(id)
+        local active = game_spells_lib.current_activated_spell[id] or {}
+
+        if hero then
+            for _, spell_name in ipairs(active) do
+                local modifier_name = game_spells_lib:FindModifierFromSpellName(spell_name)
+                if modifier_name then
+                    hero:RemoveModifierByName(modifier_name)
+                end
+            end
+        end
+
+        game_spells_lib.current_activated_spell[id] = {}
+        CustomNetTables:SetTableValue("game_spells_lib", "spell_active", game_spells_lib.current_activated_spell)
         return
     end
      

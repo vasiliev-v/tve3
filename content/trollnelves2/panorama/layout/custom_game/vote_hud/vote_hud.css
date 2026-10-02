@@ -519,8 +519,8 @@
     x: 150px;
     y: 285px;
 
-    width: 300px;
-    height: 95px;
+    width: 330px;
+    height: 165px;
 
     flow-children: down;
     visibility: collapse;
@@ -546,8 +546,11 @@
 
 .ModVoteCard
 {
-    width: 250px;
+    width: 310px;
     height: 42px;
+    margin-bottom: 6px;
+
+    horizontal-align: center;
 
     flow-children: right;
 
@@ -559,7 +562,7 @@
 
 .ModVoteTitle
 {
-    width: 174px;
+    width: 120px;
     vertical-align: center;
 
     color: rgba(255,255,255,0.86);
@@ -570,15 +573,26 @@
     white-space: nowrap;
 }
 
+.ModVotePercent
+{
+    width: 62px;
+    vertical-align: center;
+
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    font-weight: semi-bold;
+    text-align: center;
+}
+
 .ModVoteButton
 {
-    width: 58px;
+    width: 94px;
     height: 24px;
 
     vertical-align: center;
 
     background-color: #141414;
-    border: 2px solid rgba(184,255,69,0.7);
+    border: 2px solid rgba(255,69,69,0.75);
 
     transition-property: background-color, border, box-shadow;
     transition-duration: 0.15s;
@@ -586,9 +600,9 @@
 
 .ModVoteButton:hover
 {
-    background-color: #4B6834;
-    border: 2px solid rgba(184,255,69,0.95);
-    box-shadow: rgba(184, 255, 69, 0.25) 0px 0px 8px 0px;
+    background-color: #683434;
+    border: 2px solid rgba(255,69,69,0.95);
+    box-shadow: rgba(255, 69, 69, 0.25) 0px 0px 8px 0px;
 }
 
 .ModVoteButtonText
@@ -608,7 +622,7 @@
 
 .SelectedModLocal
 {
-    background-color: rgba(75, 104, 52, 0.85);
-    border: 2px solid rgba(184, 255, 69, 0.95);
-    box-shadow: rgba(184, 255, 69, 0.35) 0px 0px 10px 0px;
+    background-color: rgba(104, 52, 52, 0.95);
+    border: 2px solid rgba(255, 69, 69, 0.95);
+    box-shadow: rgba(255, 69, 69, 0.4) 0px 0px 10px 0px;
 }

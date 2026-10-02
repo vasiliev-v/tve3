@@ -1,87 +1,138 @@
 mod_system = class({})
 print ( '[[TROLLNELVES2] mod_system' )
-local MOD_LIST = 
-	{
-		{"Yes", 0}
-	}
+
+mod_system.MODIFIER_ANGELS_WOLVES = 1
+mod_system.MODIFIER_ASPECTS = 2
+
+local MOD_LIST =
+{
+    mod_system.MODIFIER_ANGELS_WOLVES,
+    mod_system.MODIFIER_ASPECTS,
+}
 
 function mod_system:Init()
     mod_system.votes_map = {}
+    mod_system.enabled = {}
+    mod_system.voting_finalized = false
+
+    for _, modifier_id in ipairs(MOD_LIST) do
+        mod_system.votes_map[modifier_id] = {}
+        mod_system.enabled[modifier_id] = true
+    end
+
+    GameRules.AngelsEnabled = true
+    GameRules.WolvesEnabled = true
+    GameRules.AspectsEnabled = true
+
     CustomGameEventManager:RegisterListener("troll_elves_mod_votes", Dynamic_Wrap(mod_system, "SetVotesMap"))
-    Timers:CreateTimer(0, function()
-        if GameRules:State_Get() == DOTA_GAMERULES_STATE_PRE_GAME then
-            return
-        end
-      --  CustomGameEventManager:Send_ServerToAllClients("", {maps = MOD_LIST}) 
-        return 0.1
-    end)
 end
 
-function mod_system:SetVotesMap(data) 
-	mod_system.votes_map[data.PlayerID] = data.panel_id
-
-	local maps_list = MOD_LIST
-
-	local table_k = {}
-
-	for map_id, i in pairs(maps_list) do
-		local has_info = false
-		for _, map_id_select in pairs(mod_system.votes_map) do
-			if tostring(map_id_select) == tostring(map_id)  then
-				if table_k[tostring(map_id_select)] then
-					table_k[tostring(map_id_select)] = table_k[tostring(map_id_select)] + 1
-				else
-					table_k[tostring(map_id_select)] = 1
-				end
-				has_info = true
-			end
-		end
-		if not has_info then
-			table_k[tostring(map_id)] = 0
-		end
-	end
-
-	local table_votes = {}
-
-	for map_id, votes in pairs(table_k) do
-		local percent = votes / GameRules.PlayersCount * 100
-		table.insert( table_votes, { map_id = tonumber(map_id), votes = votes, percent = percent  } )
-	end
-
-	table.sort( table_votes, function(a,b) return ( a.votes > b.votes ) end )
-
-
-  CustomGameEventManager:Send_ServerToAllClients("troll_elves_mod_votes_change_visual", table_votes)
+function mod_system:GetEligiblePlayerCount()
+    local player_count = tonumber(GameRules.PlayersCount) or 0
+    return math.max(player_count, 1)
 end
 
+function mod_system:GetVoteCount(modifier_id)
+    local votes = mod_system.votes_map[modifier_id] or {}
+    local vote_count = 0
+
+    for _ in pairs(votes) do
+        vote_count = vote_count + 1
+    end
+
+    return vote_count
+end
+
+function mod_system:GetDisablePercent(modifier_id)
+    return mod_system:GetVoteCount(modifier_id) / mod_system:GetEligiblePlayerCount() * 100
+end
+
+function mod_system:BuildVotesPayload()
+    local table_votes = {}
+
+    for _, modifier_id in ipairs(MOD_LIST) do
+        table.insert(table_votes, {
+            map_id = modifier_id,
+            votes = mod_system:GetVoteCount(modifier_id),
+            percent = mod_system:GetDisablePercent(modifier_id),
+        })
+    end
+
+    return table_votes
+end
+
+function mod_system:SetVotesMap(data)
+    if mod_system.voting_finalized or data.PlayerID == nil then
+        return
+    end
+
+    if not PlayerResource:IsValidPlayerID(data.PlayerID) or PlayerResource:IsFakeClient(data.PlayerID) then
+        return
+    end
+
+    local modifier_id = tonumber(data.panel_id)
+    if mod_system.votes_map[modifier_id] == nil then
+        return
+    end
+
+    -- A set keyed by PlayerID makes repeated events idempotent while still
+    -- allowing the same player to vote once for each independent modifier.
+    mod_system.votes_map[modifier_id][data.PlayerID] = true
+
+    CustomGameEventManager:Send_ServerToAllClients(
+        "troll_elves_mod_votes_change_visual",
+        mod_system:BuildVotesPayload()
+    )
+end
+
+function mod_system:IsModifierEnabled(modifier_id)
+    if mod_system.voting_finalized then
+        return mod_system.enabled[modifier_id] ~= false
+    end
+
+    return mod_system:GetDisablePercent(modifier_id) < 50
+end
+
+function mod_system:AreAspectsEnabled()
+    return mod_system:IsModifierEnabled(mod_system.MODIFIER_ASPECTS)
+end
+
+function mod_system:AreHelpersEnabled()
+    return mod_system:IsModifierEnabled(mod_system.MODIFIER_ANGELS_WOLVES)
+end
+
+function mod_system:GetModifierStates()
+    return {
+        helpers_enabled = mod_system:AreHelpersEnabled(),
+        aspects_enabled = mod_system:AreAspectsEnabled(),
+    }
+end
+
+function mod_system:FinalizeVotes()
+    if mod_system.voting_finalized then
+        return
+    end
+
+    for _, modifier_id in ipairs(MOD_LIST) do
+        mod_system.enabled[modifier_id] = mod_system:GetDisablePercent(modifier_id) < 50
+    end
+
+    mod_system.voting_finalized = true
+    local helpers_enabled = mod_system.enabled[mod_system.MODIFIER_ANGELS_WOLVES]
+    GameRules.AngelsEnabled = helpers_enabled
+    GameRules.WolvesEnabled = helpers_enabled
+    GameRules.AspectsEnabled = mod_system.enabled[mod_system.MODIFIER_ASPECTS]
+
+    CustomGameEventManager:Send_ServerToAllClients(
+        "troll_elves_mod_votes_change_visual",
+        mod_system:BuildVotesPayload()
+    )
+end
+
+-- Compatibility for code that still treats Angels and Wolves as one helper
+-- modifier. Historically true meant that the combined modifier was disabled.
 function mod_system:GetCurrentModFromVotes()
-	local table_k = {}
-	for _, map_id in pairs(mod_system.votes_map) do
-		if table_k[tostring(map_id)] then
-			table_k[tostring(map_id)] = table_k[tostring(map_id)] + 1
-		else
-			table_k[tostring(map_id)] = 1
-		end
-	end
-	local table_votes = {}
-	for map_id, votes in pairs(table_k) do
-		local percent = votes / GameRules.PlayersCount * 100
-		table.insert( table_votes, { map_id = tonumber(map_id), votes = votes, percent = percent  } )
-	end
-
-	if table_votes[1] == nil then
-		return true
-	end
-	if table_votes[1].percent >= 50 then
-		return false
-	else
-		return true
-	end
-
-	return true
+    return not mod_system:AreHelpersEnabled()
 end
 
 mod_system:Init()
-
-
-
