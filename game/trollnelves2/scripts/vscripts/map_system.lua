@@ -26,7 +26,17 @@ else
 		{"mines", 		-127, 	"s2r://panorama/images/new_design/maps/mines.png"},
 		{"north", 		-127, 	"s2r://panorama/images/new_design/maps/north.png"},
 		{"oasis", 		-127,	"s2r://panorama/images/new_design/maps/oasis.png"},
-		{"okinawa", 	-127,	"s2r://panorama/images/new_design/maps/okinawa.png"}
+		{"okinawa", 	-127,	"s2r://panorama/images/new_design/maps/okinawa.png"},
+
+        {"summer",      -127,	"s2r://panorama/images/new_design/maps/okinawa.png"},
+		{"spring",      -127},	"s2r://panorama/images/new_design/maps/okinawa.png",
+		{"autumn",      -127.125,	"s2r://panorama/images/new_design/maps/okinawa.png"},
+		{"ghosttown",   -126,	"s2r://panorama/images/new_design/maps/okinawa.png"},
+		{"winter",         1,	"s2r://panorama/images/new_design/maps/okinawa.png"},
+		{"china",       -255.125,	"s2r://panorama/images/new_design/maps/okinawa.png"},
+		{"desert",      -127,	"s2r://panorama/images/new_design/maps/okinawa.png"},
+		{"jungle",      -127,	"s2r://panorama/images/new_design/maps/okinawa.png"}, 
+		{"helheim",      -125,	"s2r://panorama/images/new_design/maps/okinawa.png"}
 	}
 end
 
